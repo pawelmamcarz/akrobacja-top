@@ -954,6 +954,11 @@ footer {
     <p class="shop-sub">Każdy voucher ważny 12 miesięcy. Lot przełożony przy złej pogodzie — bez opłat.</p>
   </div>
 
+  <!-- TEST MODE BANNER -->
+  <div style="background:#fff3cd;border:2px solid #ffc107;border-radius:12px;padding:16px 24px;margin:0 auto 32px;max-width:700px;text-align:center;font-family:var(--font-body);font-size:15px;color:#664d03;">
+    🚧 <strong>Strona w trybie testowym</strong> — sklep nie jest jeszcze aktywny. Nie można dokonać zakupu. Wkrótce uruchamiamy sprzedaż — zapisz się lub zadzwoń: <a href="tel:+48535535221" style="color:#664d03;font-weight:600">+48 535 535 221</a>
+  </div>
+
   <div class="voucher-grid">
 
     <!-- PAKIET 1 — PIERWSZY LOT -->
@@ -973,7 +978,7 @@ footer {
         <li class="v-feat">Opcja przejęcia sterów</li>
         <li class="v-feat">Żadnego doświadczenia lotniczego nie potrzebujesz</li>
       </ul>
-      <button class="v-cta">Kup Voucher →</button>
+      <button class="v-cta" disabled style="opacity:0.5;cursor:not-allowed">🚧 Wkrótce dostępne</button>
       <div class="v-addon" onclick="this.classList.toggle('on')">
         <div class="v-addon-text">
           <div class="v-addon-title">+ Video 360° z lotu</div>
@@ -1000,7 +1005,7 @@ footer {
         <li class="v-feat">Briefing przed lotem</li>
         <li class="v-feat">Certyfikat uczestnictwa (PDF)</li>
       </ul>
-      <button class="v-cta">Kup Voucher →</button>
+      <button class="v-cta" disabled style="opacity:0.5;cursor:not-allowed">🚧 Wkrótce dostępne</button>
       <div class="v-addon" onclick="this.classList.toggle('on')">
         <div class="v-addon-text">
           <div class="v-addon-title">+ Video 360° z lotu</div>
@@ -1027,7 +1032,7 @@ footer {
         <li class="v-feat">Zdjęcia z GoPro + certyfikat premium z podpisem</li>
         <li class="v-feat">Max 2 loty tygodniowo — limitowana dostępność</li>
       </ul>
-      <button class="v-cta" style="background:var(--navy);color:var(--white)">Sprawdź Dostępność →</button>
+      <button class="v-cta" disabled style="opacity:0.5;cursor:not-allowed;background:var(--navy);color:var(--white)">🚧 Wkrótce dostępne</button>
       <div class="v-addon" onclick="this.classList.toggle('on')">
         <div class="v-addon-text">
           <div class="v-addon-title">+ Video 360° z lotu</div>
@@ -1080,6 +1085,7 @@ footer {
     <div>
       <p class="footer-col-title">Kontakt</p>
       <ul class="footer-links">
+        <li><a href="tel:+48535535221">+48 535 535 221</a></li>
         <li><a href="mailto:maciej@akrobacja.top">maciej@akrobacja.top</a></li>
         <li><a href="#">Lotnisko Radom-Piastów (EPRP)</a></li>
         <li><a href="#">ul. Lotników 1, Radom</a></li>
