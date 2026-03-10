@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>akrobacja.top — Loty Akrobacyjne Extra 300L | Paweł Mamcarz & Maciej Kulaszewski</title>
+
+<!-- Favicon inline SVG — Rising A mark on navy square -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230A2F7C'/%3E%3Cpolygon points='4,58 13,58 31,10 27,10' fill='%23ffffff'/%3E%3Cpolygon points='31,10 36,10 55,58 46,58' fill='%23ffffff'/%3E%3Cpolygon points='19,40 43,40 41,34 21,34' fill='%23ffffff'/%3E%3Cpolygon points='32,11 41,34 21,34' fill='%23E11E26'/%3E%3Cg transform='translate(48,5) rotate(-42)' fill='%23ffffff'%3E%3Cpath d='M 10,0 L 4,-2 L -10,-2 L -10,2 L 4,2 Z'/%3E%3Cpath d='M -1,-2 L 3,-2 L 3,-9 L -1,-9 L -3,-2 Z'/%3E%3Cpath d='M -1,2 L 3,2 L 3,9 L -1,9 L -3,2 Z'/%3E%3C/g%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════ */
+:root {
+  --navy:     #0A2F7C;
+  --navy-mid: #0D3A96;
+  --navy-deep:#071E52;
+  --red:      #E11E26;
+  --red-dark: #C01A21;
+  --white:    #F5F7FA;
+  --black:    #070F1A;
+  --chrome:   #8BA0B4;
+  --grey-lt:  #C8D4E0;
+  --font-h:   'Montserrat', sans-serif;
+  --font-b:   'Inter', sans-serif;
+  --r:        0px; /* aviation precision — no rounding */
+}
+
+/* ═══════════════════════════════════════════════════════
+   BASE RESET
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-b); background: var(--black); color: var(--white); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ═══════════════════════════════════════════════════════
+   LOGO SVG DEFINITIONS
+═══════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 22px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .35s, padding .35s, box-shadow .35s;
+}
+.nav.scrolled {
+  background: rgba(7,15,26,0.97);
+  backdrop-filter: blur(16px);
+  padding: 14px 64px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+}
+.nav-logo { display: flex; align-items: center; }
+.nav-menu { display: flex; gap: 44px; list-style: none; }
+.nav-menu a {
+  font-family: var(--font-h); font-size: 10px; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(245,247,250,.65); transition: color .2s;
+}
+.nav-menu a:hover { color: var(--white); }
+.nav-btn {
+  font-family: var(--font-h); font-size: 10px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--white); background: var(--red);
+  padding: 11px 26px; transition: background .2s;
+}
+.nav-btn:hover { background: var(--red-dark); }
+
+/* ═══════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  overflow: hidden; background: var(--black);
+}
+
+/* Atmospheric gradient background */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 35%, rgba(10,47,124,.30) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 55% at 15% 65%, rgba(7,30,82,.35) 0%, transparent 60%),
+    linear-gradient(170deg, #050c18 0%, #08162a 45%, #071a38 70%, #050c18 100%);
+}
+
+/* Technical grid overlay */
+.hero-grid {
+  position: absolute; inset: 0; z-index: 1;
+  background-image:
+    linear-gradient(rgba(139,160,180,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,160,180,.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+/* Large faint aircraft watermark */
+.hero-watermark {
+  position: absolute; right: -4%; top: 50%;
+  transform: translateY(-50%);
+  width: 62%; z-index: 2; opacity: .035; pointer-events: none;
+}
+
+/* Red accent line */
+.hero-accent-line {
+  position: absolute; left: 0; top: 50%;
+  width: 3px; height: 38%;
+  background: linear-gradient(180deg, transparent, var(--red), transparent);
+  z-index: 3;
+}
+
+.hero-content {
+  position: relative; z-index: 10;
+  padding: 0 64px 80px;
+}
+.hero-kicker {
+  font-family: var(--font-h); font-size: 9px; font-weight: 600;
+  letter-spacing: .32em; text-transform: uppercase; color: var(--red);
+  margin-bottom: 28px; display: flex; align-items: center; gap: 12px;
+}
+.hero-kicker::after {
+  content: ''; display: block; width: 40px; height: 1px; background: var(--red); opacity: .5;
+}
+
+.hero-headline {
+  font-family: var(--font-h); font-weight: 900; font-style: italic;
+  text-transform: uppercase; line-height: .87; letter-spacing: -.025em;
+  margin-bottom: 44px;
+}
+.hl-1 {
+  display: block;
+  font-size: clamp(64px, 10.5vw, 152px);
+  color: var(--white);
+}
+.hl-2 {
+  display: block;
+  font-size: clamp(64px, 10.5vw, 152px);
+  color: rgba(245,247,250,.22);
+  padding-left: 7vw;
+}
+.hl-3 {
+  display: block;
+  font-size: clamp(64px, 10.5vw, 152px);
+  color: var(--white);
+  text-align: right;
+}
+
+.hero-sub {
+  font-size: 11px; font-weight: 400;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--chrome); margin-bottom: 44px;
+}
+
+.hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.btn-primary {
+  font-family: var(--font-h); font-size: 12px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--white); background: var(--red);
+  padding: 18px 48px; display: inline-block;
+  animation: pulse-cta 2.8s ease-in-out infinite;
+  transition: background .2s;
+}
+.btn-primary:hover { background: var(--red-dark); }
+.btn-ghost {
+  font-family: var(--font-h); font-size: 10px; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--chrome); border-bottom: 1px solid rgba(139,160,180,.3);
+  padding-bottom: 3px; transition: color .2s, border-color .2s;
+}
+.btn-ghost:hover { color: var(--white); border-color: rgba(245,247,250,.6); }
+
+@keyframes pulse-cta {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(225,30,38,.45); }
+  50%       { box-shadow: 0 0 0 18px rgba(225,30,38,0); }
+}
+
+/* Stats strip */
+.hero-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,.05);
+  margin-top: 64px;
+}
+.stat-cell {
+  padding: 28px 0;
+  border-right: 1px solid rgba(255,255,255,.05);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-h); font-weight: 900;
+  font-size: clamp(28px, 3.2vw, 46px); line-height: 1;
+  color: var(--white);
+}
+.stat-num em { color: var(--red); font-style: normal; }
+.stat-lbl {
+  margin-top: 6px; font-size: 9px; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--chrome);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SECTION HELPERS
+═══════════════════════════════════════════════════════ */
+.section-label {
+  font-family: var(--font-h); font-size: 9px; font-weight: 600;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--chrome);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: var(--font-h); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(38px, 5.5vw, 76px); line-height: .95; letter-spacing: -.015em;
+}
+.accent-bar {
+  width: 44px; height: 3px; background: var(--red); margin-top: 14px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   MACHINE SECTION
+═══════════════════════════════════════════════════════ */
+.machine {
+  background: var(--navy-deep);
+  padding: 120px 64px;
+  position: relative; overflow: hidden;
+}
+.machine::before {
+  content: 'SP-EKS';
+  font-family: var(--font-h); font-size: 220px; font-weight: 900;
+  color: rgba(255,255,255,.018);
+  position: absolute; right: -20px; bottom: -40px;
+  pointer-events: none; line-height: 1; white-space: nowrap;
+}
+
+.machine-header { margin-bottom: 80px; }
+
+.machine-layout {
+  display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: start;
+}
+
+/* Aircraft viewer with hotspots */
+.aircraft-viewer {
+  position: relative;
+  background: rgba(5,12,24,.7);
+  border: 1px solid rgba(139,160,180,.08);
+  aspect-ratio: 16/9;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.aircraft-viewer-label {
+  position: absolute; top: 16px; left: 16px;
+  font-size: 8px; letter-spacing: .25em; text-transform: uppercase;
+  color: rgba(139,160,180,.35); font-weight: 500;
+  border: 1px solid rgba(139,160,180,.12); padding: 5px 10px;
+}
+
+/* Hotspots */
+.hotspot {
+  position: absolute; cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+.hotspot-dot {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1.5px solid var(--red);
+  background: rgba(225,30,38,.12);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; z-index: 2;
+  animation: dot-pulse 2.4s ease-in-out infinite;
+  transition: background .2s, transform .2s;
+}
+.hotspot:hover .hotspot-dot {
+  background: rgba(225,30,38,.35); transform: scale(1.18);
+}
+.hotspot-dot span {
+  font-family: var(--font-h); font-size: 10px; font-weight: 700; color: var(--white);
+}
+@keyframes dot-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(225,30,38,.5); }
+  50%      { box-shadow: 0 0 0 9px rgba(225,30,38,0); }
+}
+.hotspot:nth-child(2) .hotspot-dot { animation-delay: .5s; }
+.hotspot:nth-child(3) .hotspot-dot { animation-delay: 1s; }
+.hotspot:nth-child(4) .hotspot-dot { animation-delay: 1.5s; }
+.hotspot:nth-child(5) .hotspot-dot { animation-delay: 2s; }
+
+.hotspot-card {
+  position: absolute;
+  background: rgba(5,12,24,.96);
+  border: 1px solid rgba(225,30,38,.35);
+  border-left: 3px solid var(--red);
+  padding: 14px 18px; width: 210px;
+  pointer-events: none; opacity: 0;
+  transition: opacity .2s; z-index: 20;
+  bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+}
+.hotspot:hover .hotspot-card { opacity: 1; }
+.hotspot-card-title {
+  font-family: var(--font-h); font-size: 9px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--chrome);
+  margin-bottom: 4px;
+}
+.hotspot-card-val {
+  font-family: var(--font-h); font-size: 22px; font-weight: 900;
+  color: var(--red); line-height: 1.1; margin-bottom: 4px;
+}
+.hotspot-card-desc { font-size: 11px; color: var(--chrome); line-height: 1.45; }
+
+/* Spec table on right */
+.spec-list { border-top: 1px solid rgba(255,255,255,.06); }
+.spec-row {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 16px; align-items: baseline;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.spec-key {
+  font-size: 10px; font-weight: 600; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--chrome);
+}
+.spec-val {
+  font-family: var(--font-h); font-size: 14px; font-weight: 700;
+  color: var(--white); text-align: right;
+}
+.spec-val.red { color: var(--red); }
+
+/* ═══════════════════════════════════════════════════════
+   PILOT SECTION
+═══════════════════════════════════════════════════════ */
+.pilot {
+  background: var(--black);
+  display: grid; grid-template-columns: 440px 1fr;
+  min-height: 640px;
+}
+
+.pilot-photo {
+  position: relative; overflow: hidden;
+  background: linear-gradient(150deg, var(--navy-mid) 0%, var(--navy-deep) 50%, #050c18 100%);
+  display: flex; align-items: flex-end;
+}
+.pilot-photo-placeholder {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 14px;
+}
+.pilot-photo::before {
+  content: '4000';
+  position: absolute; bottom: -24px; left: -8px;
+  font-family: var(--font-h); font-size: 210px; font-weight: 900;
+  color: rgba(255,255,255,.03); line-height: 1; pointer-events: none;
+  white-space: nowrap;
+}
+.pilot-badge {
+  position: absolute; top: 28px; left: 28px;
+  border: 1px solid rgba(225,30,38,.35);
+  padding: 7px 14px;
+  font-size: 8px; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--red); font-weight: 600; font-family: var(--font-h);
+  background: rgba(225,30,38,.08);
+}
+.pilot-replace-note {
+  font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(139,160,180,.28); font-weight: 500;
+}
+
+.pilot-bio {
+  padding: 80px 60px 80px 72px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.pilot-stats-row {
+  display: flex; gap: 48px; margin-bottom: 52px; flex-wrap: wrap;
+}
+.pilot-stat-num {
+  font-family: var(--font-h); font-weight: 900;
+  font-size: clamp(44px, 5.5vw, 76px); line-height: 1;
+  color: var(--white);
+}
+.pilot-stat-num em { color: var(--red); font-style: normal; }
+.pilot-stat-unit {
+  font-size: 9px; font-weight: 500; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--chrome); margin-top: 4px;
+}
+.pilot-bio-text {
+  font-size: 14px; line-height: 1.75; color: rgba(245,247,250,.68);
+  max-width: 540px; margin-bottom: 40px;
+}
+.pilot-bio-text strong { color: var(--white); font-weight: 600; }
+
+.pilot-creds { display: flex; flex-direction: column; gap: 11px; margin-bottom: 40px; }
+.pilot-cred {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 13px; color: rgba(245,247,250,.68); line-height: 1.4;
+}
+.pilot-cred::before {
+  content: ''; width: 5px; height: 5px;
+  background: var(--red); flex-shrink: 0; margin-top: 5px;
+}
+.pilot-cred strong { color: var(--white); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════════════
+   SHOP SECTION
+═══════════════════════════════════════════════════════ */
+.shop { background: #F0F3F7; padding: 120px 64px; }
+.shop-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; margin-bottom: 72px; flex-wrap: wrap; gap: 24px;
+}
+.shop-header .section-label { color: #6B7A90; }
+.shop-header .section-title { color: var(--black); }
+.shop-header .accent-bar { background: var(--red); }
+.shop-sub {
+  font-size: 13px; color: #6B7A90; max-width: 280px;
+  text-align: right; line-height: 1.6;
+}
+
+.voucher-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  margin-bottom: 2px;
+}
+.v-card {
+  background: #fff; padding: 48px 36px;
+  border: 1px solid rgba(7,15,26,.07);
+  position: relative;
+  display: flex; flex-direction: column;
+  transition: transform .22s, box-shadow .22s;
+}
+.v-card:hover { transform: translateY(-5px); box-shadow: 0 24px 64px rgba(7,15,26,.13); }
+.v-card--featured {
+  background: var(--black); border-color: transparent;
+}
+
+.v-tag {
+  display: inline-block;
+  font-family: var(--font-h); font-size: 8px; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  padding: 5px 12px; margin-bottom: 28px;
+}
+.v-tag--start { background: rgba(7,15,26,.06); color: #6B7A90; }
+.v-tag--best  { background: var(--red); color: #fff; }
+.v-tag--limit {
+  background: rgba(225,30,38,.08); color: var(--red);
+  border: 1px solid rgba(225,30,38,.25);
+}
+
+.v-name {
+  font-family: var(--font-h); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.01em; line-height: 1;
+  color: var(--black); margin-bottom: 6px;
+}
+.v-card--featured .v-name { color: var(--white); }
+.v-subtitle { font-size: 12px; color: #6B7A90; margin-bottom: 28px; }
+.v-card--featured .v-subtitle { color: var(--chrome); }
+
+.v-price {
+  font-family: var(--font-h); font-weight: 900;
+  font-size: clamp(42px, 4vw, 58px); line-height: 1;
+  letter-spacing: -.025em; color: var(--black); margin-bottom: 4px;
+}
+.v-card--featured .v-price { color: var(--white); }
+.v-price-currency { font-size: 18px; font-weight: 600; vertical-align: super; }
+.v-price-unit { font-size: 12px; font-weight: 400; color: #6B7A90; margin-left: 6px; }
+.v-card--featured .v-price-unit { color: var(--chrome); }
+
+.v-divider { height: 1px; background: rgba(7,15,26,.07); margin: 26px 0; }
+.v-card--featured .v-divider { background: rgba(255,255,255,.07); }
+
+.v-features { list-style: none; flex: 1; margin-bottom: 32px; }
+.v-feat {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; color: #444D5C; padding: 7px 0;
+  border-bottom: 1px solid rgba(7,15,26,.05); line-height: 1.35;
+}
+.v-card--featured .v-feat { color: rgba(245,247,250,.72); border-color: rgba(255,255,255,.05); }
+.v-feat::before {
+  content: ''; width: 5px; height: 5px;
+  background: var(--red); flex-shrink: 0; margin-top: 5px;
+}
+
+.v-cta {
+  width: 100%; padding: 17px;
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: #fff; background: var(--red);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  transition: background .2s; border: none; cursor: pointer;
+}
+.v-cta:hover { background: var(--red-dark); }
+
+/* Add-on toggle */
+.v-addon {
+  margin-top: 12px; padding: 13px 14px;
+  background: rgba(7,15,26,.04);
+  border: 1px solid rgba(7,15,26,.08);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; cursor: pointer; transition: background .2s;
+}
+.v-card--featured .v-addon {
+  background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.1);
+}
+.v-addon:hover { background: rgba(225,30,38,.05); }
+.v-addon.on { background: rgba(225,30,38,.06); border-color: rgba(225,30,38,.3); }
+.v-addon-text { flex: 1; }
+.v-addon-title {
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
+  color: var(--black); margin-bottom: 2px;
+}
+.v-card--featured .v-addon-title { color: var(--white); }
+.v-addon-desc { font-size: 10px; color: #6B7A90; }
+.v-card--featured .v-addon-desc { color: var(--chrome); }
+.v-toggle {
+  width: 38px; height: 21px; border-radius: 11px;
+  background: rgba(7,15,26,.12); position: relative;
+  flex-shrink: 0; transition: background .2s;
+}
+.v-addon.on .v-toggle { background: var(--red); }
+.v-toggle::after {
+  content: ''; position: absolute;
+  width: 15px; height: 15px; border-radius: 50%;
+  background: #fff; top: 3px; left: 3px;
+  transition: left .18s;
+}
+.v-addon.on .v-toggle::after { left: 20px; }
+
+/* B2B stripe */
+.v-b2b {
+  background: var(--navy-deep);
+  border: 1px solid rgba(139,160,180,.1);
+  padding: 36px 48px;
+  display: flex; align-items: center; gap: 48px;
+}
+.v-b2b-body { flex: 1; }
+.v-b2b-title {
+  font-family: var(--font-h); font-size: 18px; font-weight: 800;
+  text-transform: uppercase; color: var(--white); margin-bottom: 6px;
+}
+.v-b2b-desc { font-size: 13px; color: var(--chrome); max-width: 480px; }
+.v-b2b-cta {
+  font-family: var(--font-h); font-size: 10px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--white); border: 1px solid rgba(255,255,255,.22);
+  padding: 14px 30px; white-space: nowrap;
+  transition: border-color .2s, background .2s;
+}
+.v-b2b-cta:hover { border-color: var(--white); background: rgba(255,255,255,.05); }
+
+/* Trust strip */
+.trust-strip {
+  margin-top: 56px; display: flex; flex-wrap: wrap;
+  gap: 36px; align-items: center; justify-content: center;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 12px; color: #6B7A90; font-weight: 500;
+}
+.trust-icon { color: var(--red); font-size: 14px; }
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════ */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,.05);
+  padding: 64px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 180px 1fr 1fr 1fr;
+  gap: 56px; margin-bottom: 56px;
+}
+.footer-brand-tag {
+  margin-top: 14px; font-size: 11px; color: var(--chrome); line-height: 1.5;
+}
+.footer-col-title {
+  font-family: var(--font-h); font-size: 8px; font-weight: 700;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: var(--chrome); margin-bottom: 20px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 13px; color: rgba(245,247,250,.45); transition: color .2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.05);
+  padding-top: 26px; display: flex;
+  justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.footer-copy { font-size: 11px; color: rgba(245,247,250,.25); }
+
+/* ═══════════════════════════════════════════════════════
+   STICKY CTA
+═══════════════════════════════════════════════════════ */
+.sticky-cta {
+  position: fixed; bottom: 32px; right: 32px; z-index: 900;
+  font-family: var(--font-h); font-size: 10px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--white); background: var(--red);
+  padding: 14px 24px;
+  display: flex; align-items: center; gap: 8px;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity .3s, transform .3s;
+  animation: pulse-cta 2.8s ease-in-out infinite;
+}
+.sticky-cta.vis { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════════════════ */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+</style>
+</head>
+
+<body>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     REUSABLE LOGO SVG SYMBOL (inline defs)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden">
+  <defs>
+    <!-- Rising-A symbol: the letter A with Extra 300L aircraft at apex -->
+    <!--
+      AKROBACJA.TOP — LOGO MARK SYMBOL
+      Pixel-accurate rebuild from hi-res brand photo
+      ─────────────────────────────────────────────
+      3D perspective "A":
+        Left leg  = navy  #0A2F7C
+        Inner red = depth face #E11E26
+        White swish = dynamic separation arc
+      Extra 300L aircraft silhouette = navy, upper-right
+    -->
+    <symbol id="logo-mark" viewBox="0 0 480 340">
+
+      <!-- LEFT LEG (navy — front/dominant face of 3D A) -->
+      <polygon points="52,320 86,320 196,68 170,68" fill="#0A2F7C"/>
+
+      <!-- RIGHT LEG (navy — outer right stroke) -->
+      <polygon points="194,68 224,68 336,320 302,320" fill="#0A2F7C"/>
+
+      <!-- CROSSBAR (navy) -->
+      <polygon points="110,224 268,224 260,198 118,198" fill="#0A2F7C"/>
+
+      <!-- INNER RED TRIANGLE — 3D depth / right face -->
+      <polygon points="206,74 260,198 118,198" fill="#E11E26"/>
+
+      <!-- WHITE SWISH — dynamic sweep separating navy from red -->
+      <path d="M 162,82 Q 210,148 252,210"
+            stroke="white" stroke-width="14" fill="none"
+            stroke-linecap="round"/>
+
+      <!-- EXTRA 300L AIRCRAFT — navy, nose pointing upper-right ~-44° -->
+      <g transform="translate(304,56) rotate(-44)">
+        <!-- Fuselage -->
+        <path d="M 78,0 L 40,-13 L -68,-13 L -68,13 L 40,13 Z" fill="#0A2F7C"/>
+        <!-- Main wings -->
+        <path d="M -8,-13 L 22,-13 L 22,-66 L 4,-62 L -20,-13 Z" fill="#0A2F7C"/>
+        <path d="M -8,13  L 22,13  L 22,66  L 4,62  L -20,13  Z" fill="#0A2F7C"/>
+        <!-- Horizontal stabilisers -->
+        <path d="M -48,-10 L -40,-10 L -40,-40 L -62,-36 Z" fill="#0A2F7C"/>
+        <path d="M -48,10  L -40,10  L -40,40  L -62,36  Z" fill="#0A2F7C"/>
+        <!-- Vertical fin -->
+        <path d="M -68,0 L -56,-46 L -46,-13 Z" fill="#0A2F7C"/>
+        <!-- Cockpit canopy -->
+        <ellipse cx="26" cy="0" rx="22" ry="10" fill="#071E52"/>
+        <!-- Propeller disc -->
+        <circle cx="72" cy="0" r="18" fill="#0A2F7C" opacity="0.35"/>
+      </g>
+
+    </symbol>
+
+    <!-- Horizontal logo (mark + wordmark) — on dark bg -->
+    <symbol id="logo-horiz-dark" viewBox="0 0 270 56">
+      <!-- mark at 56×50 scaled from 112×100 viewBox -->
+      <use href="#logo-mark" x="0" y="3" width="56" height="50"/>
+      <text x="66" y="42" font-family="Montserrat,sans-serif" font-weight="700" font-size="32" fill="#F5F7FA" letter-spacing="-1">akrobacja<tspan fill="#E11E26" font-weight="900">.top</tspan></text>
+    </symbol>
+
+    <!-- Horizontal logo — on white/light bg -->
+    <symbol id="logo-horiz-light" viewBox="0 0 270 56">
+      <use href="#logo-mark" x="0" y="3" width="56" height="50"/>
+      <text x="66" y="42" font-family="Montserrat,sans-serif" font-weight="700" font-size="32" fill="#0A2F7C" letter-spacing="-1">akrobacja<tspan fill="#E11E26" font-weight="900">.top</tspan></text>
+    </symbol>
+
+    <!-- Monogram — for favicon / app icon (circular AI-style) -->
+    <symbol id="logo-mono" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="30" fill="#0A2F7C"/>
+      <path d="M 2 32 A 30 30 0 0 1 62 32 Z" fill="#071E52"/>
+      <line x1="4" y1="32" x2="60" y2="32" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
+      <!-- Tick marks -->
+      <line x1="32" y1="4" x2="32" y2="9" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+      <line x1="32" y1="55" x2="32" y2="60" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+      <line x1="4" y1="32" x2="9" y2="32" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+      <line x1="55" y1="32" x2="60" y2="32" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+      <circle cx="32" cy="32" r="30" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+      <!-- Outer ring ticks every 30° -->
+      <circle cx="32" cy="32" r="28" fill="none" stroke="rgba(255,255,255,.1)" stroke-width=".5"/>
+      <!-- Rising-A mark centred, scaled small -->
+      <use href="#logo-mark" x="18" y="14" width="28" height="32"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     NAVIGATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-logo" aria-label="akrobacja.top — strona główna">
+    <img src="akrobacja-logo-light.png" alt="akrobacja.top" height="38" style="width:auto;display:block;max-height:38px">
+  </a>
+  <ul class="nav-menu">
+    <li><a href="#maszyna">Maszyna</a></li>
+    <li><a href="#pilot">Pilot</a></li>
+    <li><a href="#sklep">Loty</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="#sklep" class="nav-btn">Kup Voucher</a>
+</nav>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     HERO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-accent-line"></div>
+
+  <!-- Faint aircraft silhouette watermark -->
+  <div class="hero-watermark" aria-hidden="true">
+    <svg viewBox="0 0 480 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Simplified Extra 300L top-down silhouette -->
+      <ellipse cx="240" cy="80" rx="216" ry="14" fill="white" opacity="0.6"/>
+      <ellipse cx="240" cy="80" rx="22" ry="60" fill="white"/>
+      <path d="M 195 80 L 60 95 L 60 85 L 195 72 Z" fill="white" opacity="0.8"/>
+      <path d="M 285 80 L 420 95 L 420 85 L 285 72 Z" fill="white" opacity="0.8"/>
+      <path d="M 60 80 L 10 82 L 10 78 L 60 80 Z" fill="white" opacity="0.4"/>
+      <ellipse cx="226" cy="80" rx="5" ry="10" fill="white" opacity="0.7"/>
+      <path d="M 336 80 L 390 88 L 390 82 L 336 76 Z" fill="white" opacity="0.5"/>
+      <path d="M 336 80 L 390 72 L 390 78 L 336 84 Z" fill="white" opacity="0.5"/>
+      <path d="M 440 80 L 470 80" stroke="white" stroke-width="3" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-kicker reveal">Extra 300L SP-EKS · Radom-Piastów EPRP</p>
+
+    <h1 class="hero-headline">
+      <span class="hl-1 reveal reveal-d1">PRZEKROCZ</span>
+      <span class="hl-2 reveal reveal-d2">GRANICE</span>
+      <span class="hl-3 reveal reveal-d3">GRAWITACJI</span>
+    </h1>
+
+    <p class="hero-sub reveal reveal-d3">Maciej Kulaszewski — wielokrotny Mistrz Polski i Niemiec w akrobacji samolotowej<br><span style="font-size:0.75em;color:var(--chrome);font-weight:400">Projekt: Paweł Mamcarz</span></p>
+
+    <div class="hero-actions reveal reveal-d4">
+      <a href="#sklep" class="btn-primary">Rezerwuj Swój Lot →</a>
+      <a href="#pilot" class="btn-ghost">Kim jest Maciej?</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-cell reveal">
+        <div class="stat-num">4000<em>h+</em></div>
+        <div class="stat-lbl">Nalot na Extra 300L</div>
+      </div>
+      <div class="stat-cell reveal reveal-d1">
+        <div class="stat-num"><em>×</em>PL</div>
+        <div class="stat-lbl">Wielokrotny Mistrz Polski</div>
+      </div>
+      <div class="stat-cell reveal reveal-d2">
+        <div class="stat-num"><em>×</em>DE</div>
+        <div class="stat-lbl">Wielokrotny Mistrz Niemiec</div>
+      </div>
+      <div class="stat-cell reveal reveal-d3">
+        <div class="stat-num">+8<em>G</em></div>
+        <div class="stat-lbl">Max przeciążenie lotu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     MACHINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="machine" id="maszyna">
+  <div class="machine-header reveal">
+    <p class="section-label">Extra 300L · SP-EKS</p>
+    <h2 class="section-title">Maszyna</h2>
+    <div class="accent-bar"></div>
+  </div>
+
+  <div class="machine-layout">
+    <!-- Aircraft viewer with interactive hotspots -->
+    <div class="aircraft-viewer reveal">
+      <span class="aircraft-viewer-label">Extra 300L SP-EKS — widok z góry</span>
+
+      <!-- Real top-down drone photo, rotated 180° (nose points up) -->
+      <img src="samolot-top-web.jpg"
+           alt="Extra 300L SP-EKS — widok z góry"
+           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0.88">
+
+      <!-- Dark vignette overlay so hotspot cards stay readable -->
+      <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 85% 85% at 50% 50%, transparent 45%, rgba(5,12,24,0.65) 100%);pointer-events:none;z-index:1"></div>
+
+      <!-- Hotspot 1 — Silnik (nose / engine — top-center) -->
+      <div class="hotspot" style="left:50%;top:13%;z-index:10">
+        <div class="hotspot-dot"><span>1</span></div>
+        <div class="hotspot-card">
+          <div class="hotspot-card-title">Silnik</div>
+          <div class="hotspot-card-val">315 KM</div>
+          <div class="hotspot-card-desc">Lycoming AEIO-580-B1A · 231 kW · bezpośredni napęd śmigła MTV</div>
+        </div>
+      </div>
+
+      <!-- Hotspot 2 — Cockpit (just behind engine, center) -->
+      <div class="hotspot" style="left:50%;top:33%;z-index:10">
+        <div class="hotspot-dot"><span>2</span></div>
+        <div class="hotspot-card">
+          <div class="hotspot-card-title">Przeciążenia</div>
+          <div class="hotspot-card-val">+8G / −6G</div>
+          <div class="hotspot-card-desc">Certyfikacja FAA/EASA: +10G/−10G. Margines bezpieczeństwa zawsze po Twojej stronie.</div>
+        </div>
+      </div>
+
+      <!-- Hotspot 3 — Left wing (port side, mid-height) -->
+      <div class="hotspot" style="left:15%;top:46%;z-index:10">
+        <div class="hotspot-dot"><span>3</span></div>
+        <div class="hotspot-card" style="left:100%;bottom:auto;top:-50%;transform:none">
+          <div class="hotspot-card-title">Prędkość Przechyłu</div>
+          <div class="hotspot-card-val">420°/s</div>
+          <div class="hotspot-card-desc">Rozpiętość 8,0 m · konstrukcja kompozytowa · pełne wychylenie w osi roll</div>
+        </div>
+      </div>
+
+      <!-- Hotspot 4 — Tail (lower center) -->
+      <div class="hotspot" style="left:50%;top:82%;z-index:10">
+        <div class="hotspot-dot"><span>4</span></div>
+        <div class="hotspot-card" style="bottom:auto;top:calc(100% + 10px)">
+          <div class="hotspot-card-title">Usterzenie</div>
+          <div class="hotspot-card-val">V-tail</div>
+          <div class="hotspot-card-desc">Symetryczny profil usterzenia · pełna akrobacja dodatnia i ujemna</div>
+        </div>
+      </div>
+
+      <!-- Hotspot 5 — Right wing (starboard side, mid-height) -->
+      <div class="hotspot" style="left:85%;top:46%;z-index:10">
+        <div class="hotspot-dot"><span>5</span></div>
+        <div class="hotspot-card" style="right:100%;left:auto;bottom:auto;top:-50%;transform:none">
+          <div class="hotspot-card-title">Max Prędkość</div>
+          <div class="hotspot-card-val">370 km/h</div>
+          <div class="hotspot-card-desc">V<sub>NE</sub> 370 km/h · masa startowa max 950 kg · akrobin Austria</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spec table -->
+    <div class="machine-specs reveal reveal-d2">
+      <p style="font-family:var(--font-h);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--chrome);margin-bottom:20px">Parametry techniczne</p>
+      <div class="spec-list">
+        <div class="spec-row"><span class="spec-key">Typ</span><span class="spec-val">Extra 300L</span></div>
+        <div class="spec-row"><span class="spec-key">Znaki</span><span class="spec-val">SP-EKS</span></div>
+        <div class="spec-row"><span class="spec-key">Silnik</span><span class="spec-val">315 KM</span></div>
+        <div class="spec-row"><span class="spec-key">Maks. +G</span><span class="spec-val red">+10G</span></div>
+        <div class="spec-row"><span class="spec-key">Maks. −G</span><span class="spec-val red">−10G</span></div>
+        <div class="spec-row"><span class="spec-key">Roll</span><span class="spec-val">420°/s</span></div>
+        <div class="spec-row"><span class="spec-key">V(NE)</span><span class="spec-val">370 km/h</span></div>
+        <div class="spec-row"><span class="spec-key">Certyfikacja</span><span class="spec-val">FAA / EASA</span></div>
+        <div class="spec-row"><span class="spec-key">Baza</span><span class="spec-val">EPRP Radom</span></div>
+      </div>
+
+      <div style="margin-top:32px;padding:20px;background:rgba(225,30,38,.07);border-left:3px solid var(--red)">
+        <p style="font-size:12px;color:var(--chrome);line-height:1.6">
+          Każdy lot z pasażerem prowadzi <strong style="color:var(--white)">Maciej Kulaszewski osobiście</strong> — bez zastępstw, bez wyjątków.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     PILOT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="pilot" id="pilot">
+  <!-- Photo column -->
+  <div class="pilot-photo">
+    <div class="pilot-photo-placeholder">
+      <!-- Placeholder — add pilot photo: <img src="pilot-maciej.jpg" alt="Maciej Kulaszewski"> -->
+      <img src="akrobacja-logo-mark.png" alt=""
+           style="width:90px;height:auto;opacity:0.18;display:block;margin:0 auto">
+      <p class="pilot-replace-note">foto pilota</p>
+    </div>
+    <span class="pilot-badge">Mistrz Polski &amp; Niemiec</span>
+  </div>
+
+  <!-- Bio column -->
+  <div class="pilot-bio">
+    <div class="pilot-stats-row">
+      <div>
+        <div class="pilot-stat-num">4000<em>h+</em></div>
+        <div class="pilot-stat-unit">Nalot na Extra 300L</div>
+      </div>
+      <div>
+        <div class="pilot-stat-num"><em>×</em>PL</div>
+        <div class="pilot-stat-unit">Mistrz Polski</div>
+      </div>
+      <div>
+        <div class="pilot-stat-num"><em>×</em>DE</div>
+        <div class="pilot-stat-unit">Mistrz Niemiec</div>
+      </div>
+    </div>
+
+    <h2 class="section-title reveal" style="font-size:clamp(32px,3.5vw,52px);margin-bottom:28px;color:var(--white)">
+      Maciej<br>Kulaszewski
+    </h2>
+    <div class="accent-bar reveal" style="margin-bottom:36px"></div>
+
+    <p class="pilot-bio-text reveal">
+      Są piloci. Są mistrzowie. I jest Maciej Kulaszewski.<br><br>
+      Ponad <strong>4000 godzin nalotu na Extra 300L</strong> — prawdopodobnie
+      największe indywidualne doświadczenie na tym typie w Europie.
+      Żaden symulator. Żaden skrót. Tylko maszyna, niebo i nieustanna
+      praca nad doskonałością. Ten spokój jest teraz do Twojej dyspozycji.
+    </p>
+
+    <ul class="pilot-creds reveal">
+      <li class="pilot-cred"><strong>Wielokrotny Mistrz Polski</strong> w akrobacji samolotowej</li>
+      <li class="pilot-cred"><strong>Wielokrotny Mistrz Niemiec</strong> w akrobacji samolotowej</li>
+      <li class="pilot-cred">Certyfikowany instruktor akrobacji lotniczej</li>
+      <li class="pilot-cred">Baza: Lotnisko Radom-Piastów (EPRP)</li>
+      <li class="pilot-cred">Każdy lot prowadzi <strong>osobiście — bez wyjątku</strong></li>
+    </ul>
+
+    <a href="#sklep" class="btn-primary reveal" style="display:inline-flex;align-items:center;gap:8px">
+      Zarezerwuj Lot z Maciejem →
+    </a>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SHOP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="shop" id="sklep">
+  <div class="shop-header reveal">
+    <div class="shop-title">
+      <p class="section-label">Vouchery · Loty Joy Ride</p>
+      <h2 class="section-title">Wybierz Swój<br>Pakiet</h2>
+      <div class="accent-bar"></div>
+    </div>
+    <p class="shop-sub">Każdy voucher ważny 12 miesięcy. Lot przełożony przy złej pogodzie — bez opłat.</p>
+  </div>
+
+  <div class="voucher-grid">
+
+    <!-- PAKIET 1 — PIERWSZY LOT -->
+    <div class="v-card reveal">
+      <span class="v-tag v-tag--start">Idealny na start</span>
+      <h3 class="v-name">Pierwszy Lot</h3>
+      <p class="v-subtitle">Twoje pierwsze spotkanie z Extra 300L</p>
+      <div class="v-price">
+        <span class="v-price-currency">PLN</span>799
+        <span class="v-price-unit">/ osoba</span>
+      </div>
+      <div class="v-divider"></div>
+      <ul class="v-features">
+        <li class="v-feat">20 minut w powietrzu</li>
+        <li class="v-feat">Do +4G / −2G</li>
+        <li class="v-feat">Lot zapoznawczy z podstawowymi figurami</li>
+        <li class="v-feat">Opcja przejęcia sterów</li>
+        <li class="v-feat">Żadnego doświadczenia lotniczego nie potrzebujesz</li>
+      </ul>
+      <button class="v-cta">Kup Voucher →</button>
+      <div class="v-addon" onclick="this.classList.toggle('on')">
+        <div class="v-addon-text">
+          <div class="v-addon-title">+ Video 360° z lotu</div>
+          <div class="v-addon-desc">Montaż 90 sek · MP4 w 48h · +299 PLN</div>
+        </div>
+        <div class="v-toggle"></div>
+      </div>
+    </div>
+
+    <!-- PAKIET 2 — ADRENALINA (FEATURED) -->
+    <div class="v-card v-card--featured reveal reveal-d1">
+      <span class="v-tag v-tag--best">⭐ Bestseller</span>
+      <h3 class="v-name">Adrenalina</h3>
+      <p class="v-subtitle">Pełen program akrobacyjny z Mistrzem</p>
+      <div class="v-price">
+        <span class="v-price-currency">PLN</span>1199
+        <span class="v-price-unit">/ osoba</span>
+      </div>
+      <div class="v-divider"></div>
+      <ul class="v-features">
+        <li class="v-feat">30 minut w powietrzu</li>
+        <li class="v-feat">Do +6G / −4G</li>
+        <li class="v-feat">Pełny program: pętle, beczki, roll, lot odwrócony</li>
+        <li class="v-feat">Briefing przed lotem</li>
+        <li class="v-feat">Certyfikat uczestnictwa (PDF)</li>
+      </ul>
+      <button class="v-cta">Kup Voucher →</button>
+      <div class="v-addon" onclick="this.classList.toggle('on')">
+        <div class="v-addon-text">
+          <div class="v-addon-title">+ Video 360° z lotu</div>
+          <div class="v-addon-desc">Montaż 90 sek · MP4 w 48h · +299 PLN</div>
+        </div>
+        <div class="v-toggle"></div>
+      </div>
+    </div>
+
+    <!-- PAKIET 3 — MASTERCLASS -->
+    <div class="v-card reveal reveal-d2">
+      <span class="v-tag v-tag--limit">🔴 Limitowany</span>
+      <h3 class="v-name">Masterclass</h3>
+      <p class="v-subtitle">Prywatna sesja z Mistrzem Polski i Niemiec</p>
+      <div class="v-price">
+        <span class="v-price-currency">PLN</span>1899
+        <span class="v-price-unit">/ osoba</span>
+      </div>
+      <div class="v-divider"></div>
+      <ul class="v-features">
+        <li class="v-feat">45 minut w powietrzu</li>
+        <li class="v-feat">Do +8G / −6G · figury mistrzowskie</li>
+        <li class="v-feat">Briefing + debriefing z Maciejem (każda figura)</li>
+        <li class="v-feat">Zdjęcia z GoPro + certyfikat premium z podpisem</li>
+        <li class="v-feat">Max 2 loty tygodniowo — limitowana dostępność</li>
+      </ul>
+      <button class="v-cta" style="background:var(--navy);color:var(--white)">Sprawdź Dostępność →</button>
+      <div class="v-addon" onclick="this.classList.toggle('on')">
+        <div class="v-addon-text">
+          <div class="v-addon-title">+ Video 360° z lotu</div>
+          <div class="v-addon-desc">Montaż 90 sek · kamera cockpit + zewnętrzna · +299 PLN</div>
+        </div>
+        <div class="v-toggle"></div>
+      </div>
+    </div>
+
+  </div><!-- /voucher-grid -->
+
+  <!-- B2B stripe -->
+  <div class="v-b2b reveal">
+    <div class="v-b2b-body">
+      <div class="v-b2b-title">Corporate Experience — Pakiet Grupowy</div>
+      <div class="v-b2b-desc">Min. 5 osób · Faktura VAT · Certyfikaty dla każdego uczestnika · Możliwość organizacji cateringu na lotnisku. Teambuilding, nagrody dla pracowników, eventy dla klientów.</div>
+    </div>
+    <button class="v-b2b-cta">Zapytaj o Ofertę Grupową →</button>
+  </div>
+
+  <!-- Trust badges -->
+  <div class="trust-strip reveal">
+    <div class="trust-item"><span class="trust-icon">🔒</span>Bezpieczna płatność SSL</div>
+    <div class="trust-item"><span class="trust-icon">📄</span>Voucher PDF w 60 sekund</div>
+    <div class="trust-item"><span class="trust-icon">✈️</span>Ubezpieczenie NNW w cenie</div>
+    <div class="trust-item"><span class="trust-icon">🌦️</span>Bezpłatne przełożenie przy złej pogodzie</div>
+    <div class="trust-item"><span class="trust-icon">📅</span>Ważność vouchera: 12 miesięcy</div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FOOTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<footer id="kontakt">
+  <div class="footer-grid">
+    <div>
+      <img src="akrobacja-logo-light.png" alt="akrobacja.top" class="footer-logo"
+           style="height:32px;width:auto;display:block;margin-bottom:16px">
+      <p class="footer-brand-tag">Extra 300L SP-EKS<br>Radom-Piastów EPRP<br><span style="color:var(--chrome);font-size:11px;display:block;margin-top:6px">Właściciel: <strong style="color:var(--white)">Paweł Mamcarz</strong><br>Pilot: <strong style="color:var(--white)">Maciej Kulaszewski</strong></span></p>
+    </div>
+    <div>
+      <p class="footer-col-title">Nawigacja</p>
+      <ul class="footer-links">
+        <li><a href="#maszyna">Maszyna SP-EKS</a></li>
+        <li><a href="#pilot">Maciej Kulaszewski</a></li>
+        <li><a href="#sklep">Sklep z Voucherami</a></li>
+        <li><a href="#">Galeria</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Kontakt</p>
+      <ul class="footer-links">
+        <li><a href="mailto:maciej@akrobacja.top">maciej@akrobacja.top</a></li>
+        <li><a href="#">Lotnisko Radom-Piastów (EPRP)</a></li>
+        <li><a href="#">ul. Lotników 1, Radom</a></li>
+        <li><a href="#">Google Maps →</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Informacje</p>
+      <ul class="footer-links">
+        <li><a href="#">Regulamin</a></li>
+        <li><a href="#">Polityka Prywatności (RODO)</a></li>
+        <li><a href="#">FAQ — Często zadawane pytania</a></li>
+        <li><a href="#">Dojazd na lotnisko</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 akrobacja.top · Właściciel: Paweł Mamcarz · Pilot: Maciej Kulaszewski · Extra 300L SP-EKS · Radom-Piastów EPRP</p>
+    <img src="akrobacja-logo-light.png" alt="" aria-hidden="true"
+         style="height:22px;width:auto;display:block;opacity:0.6">
+  </div>
+</footer>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     STICKY CTA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<a href="#sklep" class="sticky-cta" id="stickyCta">
+  <img src="akrobacja-logo-mark-light.png" alt="" aria-hidden="true"
+       style="height:18px;width:auto;display:inline-block;vertical-align:middle;margin-right:4px">
+  Kup Voucher
+</a>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SCRIPTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<script>
+(function(){
+  /* ── NAV scroll effect ── */
+  const nav = document.getElementById('nav');
+  const stickyCta = document.getElementById('stickyCta');
+
+  function onScroll(){
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 60);
+    stickyCta.classList.toggle('vis', y > window.innerHeight * 0.6);
+  }
+  window.addEventListener('scroll', onScroll, {passive: true});
+
+  /* ── Scroll reveal (IntersectionObserver) ── */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ── Smooth active nav link ── */
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-menu a');
+  const sectionObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        navLinks.forEach(a => a.style.color = '');
+        const active = document.querySelector(`.nav-menu a[href="#${e.target.id}"]`);
+        if(active) active.style.color = 'var(--white)';
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => sectionObserver.observe(s));
+
+  /* ── Counter animation for stats ── */
+  function animateCounter(el, target, suffix){
+    let start = 0;
+    const duration = 1800;
+    const step = timestamp => {
+      if(!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if(progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  /* Trigger counters when hero stats become visible */
+  const statObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const nums = document.querySelectorAll('.stat-num');
+        nums[0]?.querySelector('span') || null; // will handle separately
+        statObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  const statsEl = document.querySelector('.hero-stats');
+  if(statsEl) statObserver.observe(statsEl);
+
+})();
+</script>
+</body>
+</html>
