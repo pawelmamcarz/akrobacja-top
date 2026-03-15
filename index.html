@@ -615,6 +615,56 @@ footer {
 .reveal-d2 { transition-delay: .2s; }
 .reveal-d3 { transition-delay: .3s; }
 .reveal-d4 { transition-delay: .4s; }
+
+/* ═══════════════════════════════════════════════════════
+   FAQ SECTION
+═══════════════════════════════════════════════════════ */
+.faq { background: #fff; padding: 120px 64px; }
+.faq-header {
+  text-align: center; margin-bottom: 72px;
+}
+.faq-header .section-label { color: #6B7A90; }
+.faq-header .section-title { color: var(--black); }
+.faq-header .accent-bar { margin-inline: auto; background: var(--red); }
+
+.faq-list {
+  max-width: 800px; margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(7,15,26,.08);
+}
+.faq-item:first-child { border-top: 1px solid rgba(7,15,26,.08); }
+
+.faq-q {
+  width: 100%; background: none; border: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 28px 0; gap: 24px; text-align: left;
+  font-family: var(--font-h); font-size: 16px; font-weight: 700;
+  color: var(--black); letter-spacing: -.01em;
+  transition: color .2s;
+}
+.faq-q:hover { color: var(--red); }
+
+.faq-q::after {
+  content: '+'; font-size: 24px; font-weight: 300;
+  color: var(--chrome); flex-shrink: 0;
+  transition: transform .3s, color .3s;
+}
+.faq-item.open .faq-q::after {
+  content: '\2212'; color: var(--red);
+}
+
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease, padding .4s ease;
+}
+.faq-item.open .faq-a {
+  max-height: 300px; padding-bottom: 28px;
+}
+.faq-a p {
+  font-family: var(--font-b); font-size: 14px; line-height: 1.75;
+  color: #6B7A90; margin: 0;
+}
 </style>
 </head>
 
@@ -718,6 +768,7 @@ footer {
     <li><a href="#maszyna">Maszyna</a></li>
     <li><a href="#pilot">Pilot</a></li>
     <li><a href="#sklep">Loty</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
   <a href="#sklep" class="nav-btn">Kup Voucher</a>
@@ -1064,6 +1115,77 @@ footer {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FAQ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="faq" id="faq">
+  <div class="faq-header reveal">
+    <p class="section-label">Pytania i Odpowiedzi</p>
+    <h2 class="section-title">FAQ</h2>
+    <div class="accent-bar"></div>
+  </div>
+
+  <div class="faq-list">
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Czy potrzebuję doświadczenia lotniczego?</button>
+      <div class="faq-a">
+        <p>Nie. Loty akrobacyjne z nami nie wymagają żadnego doświadczenia. Przed lotem przeprowadzamy briefing, w którym wyjaśniamy wszystko krok po kroku. Pilot dba o bezpieczeństwo przez cały czas.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d1">
+      <button class="faq-q">Jakie są ograniczenia zdrowotne?</button>
+      <div class="faq-a">
+        <p>Uczestnik powinien być w ogólnie dobrym stanie zdrowia. Przeciwwskazania to m.in. poważne schorzenia kardiologiczne, epilepsja, ciąża oraz niedawno przebyte operacje. W razie wątpliwości skonsultuj się z lekarzem przed rezerwacją.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d1">
+      <button class="faq-q">Co jeśli pogoda nie pozwoli na lot?</button>
+      <div class="faq-a">
+        <p>Bezpieczeństwo jest priorytetem. Jeśli warunki pogodowe nie pozwalają na lot, przenosimy termin bezpłatnie. Voucher jest ważny 12 miesięcy od daty zakupu — masz dużo czasu na wykorzystanie.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d2">
+      <button class="faq-q">Jak długo ważny jest voucher?</button>
+      <div class="faq-a">
+        <p>Voucher jest ważny 12 miesięcy od daty zakupu. W tym czasie możesz umówić lot w dowolnym terminie, w zależności od dostępności.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d2">
+      <button class="faq-q">Gdzie odbywają się loty?</button>
+      <div class="faq-a">
+        <p>Loty startują z lotniska Radom-Piastów (EPRP). Na miejscu dostępny jest parking. Dokładne wskazówki dojazdu otrzymasz w mailu po rezerwacji.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d3">
+      <button class="faq-q">Czy mogę kupić voucher na prezent?</button>
+      <div class="faq-a">
+        <p>Tak! Voucher to idealny prezent. Po zakupie otrzymasz elegancki PDF gotowy do wręczenia. Obdarowana osoba sama wybiera dogodny termin lotu.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d3">
+      <button class="faq-q">Ile trwa cała wizyta na lotnisku?</button>
+      <div class="faq-a">
+        <p>Zaplanuj około 1,5–2 godziny. Czas obejmuje briefing przed lotem, sam lot oraz chwilę na zdjęcia i wrażenia po wylądowaniu. Pakiet Masterclass może zająć do 2,5 godziny.</p>
+      </div>
+    </div>
+
+    <div class="faq-item reveal reveal-d4">
+      <button class="faq-q">Jaka jest maksymalna waga i wzrost pasażera?</button>
+      <div class="faq-a">
+        <p>Extra 300L to dwuosobowy samolot akrobacyjny. Maksymalna waga pasażera to ok. 110 kg, a wzrost do ok. 195 cm — wynika to z wymiarów kokpitu. W razie wątpliwości skontaktuj się z nami.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      FOOTER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <footer id="kontakt">
@@ -1079,6 +1201,7 @@ footer {
         <li><a href="#maszyna">Maszyna SP-EKS</a></li>
         <li><a href="#pilot">Maciej Kulaszewski</a></li>
         <li><a href="#sklep">Sklep z Voucherami</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#">Galeria</a></li>
       </ul>
     </div>
@@ -1183,6 +1306,16 @@ footer {
   }, { threshold: 0.5 });
   const statsEl = document.querySelector('.hero-stats');
   if(statsEl) statObserver.observe(statsEl);
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
 
 })();
 </script>
