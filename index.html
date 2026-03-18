@@ -675,6 +675,111 @@ footer {
 .footer-copy { font-size: 11px; color: rgba(255,255,255,.25); }
 
 /* ═══════════════════════════════════════════════════════
+   HOW IT WORKS — 4 STEPS
+═══════════════════════════════════════════════════════ */
+.steps { background: var(--white); padding: 80px 64px; }
+.steps-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 2px; max-width: 1100px; margin: 0 auto;
+}
+.step-card {
+  background: rgba(10,20,40,.02); padding: 40px 28px;
+  text-align: center; position: relative;
+}
+.step-num {
+  font-family: var(--font-h); font-size: 48px; font-weight: 900;
+  color: rgba(27,77,181,.1); line-height: 1; margin-bottom: 16px;
+}
+.step-title {
+  font-family: var(--font-h); font-size: 13px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--black); margin-bottom: 8px;
+}
+.step-desc { font-size: 12px; color: var(--chrome); line-height: 1.6; }
+.step-arrow {
+  position: absolute; right: -8px; top: 50%;
+  transform: translateY(-50%);
+  color: rgba(10,20,40,.15); font-size: 18px;
+  z-index: 1;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TESTIMONIALS
+═══════════════════════════════════════════════════════ */
+.reviews { background: var(--black); padding: 80px 64px; }
+.reviews-header { text-align: center; margin-bottom: 48px; }
+.reviews-stats {
+  display: flex; align-items: center; justify-content: center;
+  gap: 20px; margin-bottom: 32px;
+}
+.reviews-stars { color: #F5A623; font-size: 22px; letter-spacing: 2px; }
+.reviews-avg {
+  font-family: var(--font-h); font-size: 36px; font-weight: 900;
+  color: var(--white);
+}
+.reviews-count { font-size: 13px; color: var(--chrome); }
+.reviews-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; max-width: 1100px; margin: 0 auto;
+}
+.review-card {
+  background: rgba(255,255,255,.04); padding: 32px;
+  border: 1px solid rgba(255,255,255,.06);
+}
+.review-stars { color: #F5A623; font-size: 14px; margin-bottom: 14px; letter-spacing: 2px; }
+.review-text {
+  font-size: 14px; color: rgba(255,255,255,.75);
+  line-height: 1.7; margin-bottom: 20px; font-style: italic;
+}
+.review-author {
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
+  color: var(--white); text-transform: uppercase; letter-spacing: .1em;
+}
+.review-meta { font-size: 10px; color: var(--chrome); margin-top: 4px; }
+.reviews-social {
+  text-align: center; margin-top: 40px;
+  font-size: 12px; color: var(--chrome);
+}
+.reviews-social a {
+  color: var(--white); font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,.2);
+  transition: border-color .2s;
+}
+.reviews-social a:hover { border-color: var(--white); }
+
+/* ═══════════════════════════════════════════════════════
+   SOCIAL PROOF BAR
+═══════════════════════════════════════════════════════ */
+.proof-bar {
+  background: var(--white); padding: 36px 64px;
+  display: flex; justify-content: center; gap: 64px;
+  border-bottom: 1px solid rgba(10,20,40,.06);
+}
+.proof-bar-item { text-align: center; }
+.proof-bar-num {
+  font-family: var(--font-h); font-size: 28px; font-weight: 900;
+  color: var(--black);
+}
+.proof-bar-lbl {
+  font-size: 10px; color: var(--chrome); text-transform: uppercase;
+  letter-spacing: .15em; font-weight: 600; margin-top: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   GUARANTEE
+═══════════════════════════════════════════════════════ */
+.guarantee {
+  background: rgba(27,77,181,.04); border: 1px solid rgba(27,77,181,.12);
+  padding: 28px 36px; max-width: 680px; margin: 32px auto 0;
+  display: flex; align-items: center; gap: 20px;
+}
+.guarantee-icon { font-size: 32px; flex-shrink: 0; }
+.guarantee-text {
+  font-size: 13px; color: var(--chrome); line-height: 1.6;
+}
+.guarantee-text strong { color: var(--black); }
+
+/* ═══════════════════════════════════════════════════════
    STICKY CTA
 ═══════════════════════════════════════════════════════ */
 .sticky-cta {
@@ -1002,6 +1107,24 @@ footer {
   .shop-sub { text-align: left; max-width: 100%; }
   .v-card { padding: 32px 24px; }
   .v-b2b { padding: 24px 20px; }
+
+  /* Steps */
+  .steps { padding: 60px 20px; }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .step-arrow { display: none; }
+  .step-card { padding: 28px 20px; }
+
+  /* Reviews */
+  .reviews { padding: 60px 20px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .review-card { padding: 24px; }
+  .reviews-avg { font-size: 28px; }
+
+  /* Proof bar */
+  .proof-bar { flex-wrap: wrap; gap: 32px; padding: 28px 20px; }
+
+  /* Guarantee */
+  .guarantee { flex-direction: column; text-align: center; padding: 24px 20px; }
 
   /* FAQ */
   .faq { padding: 60px 20px; }
@@ -1659,6 +1782,119 @@ footer {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     HOW IT WORKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="steps reveal">
+  <div style="text-align:center;margin-bottom:48px">
+    <p class="section-label">Jak to działa</p>
+    <h2 class="section-title" style="color:var(--black)">4 kroki do lotu</h2>
+    <div class="accent-bar" style="background:var(--red)"></div>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Kup voucher</div>
+      <div class="step-desc">Wybierz pakiet i kup online. Voucher PDF otrzymasz na maila w ciągu 60 sekund.</div>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="step-card reveal reveal-d1">
+      <div class="step-num">02</div>
+      <div class="step-title">Zarezerwuj termin</div>
+      <div class="step-desc">Wybierz datę w kalendarzu online lub napisz na WhatsApp. Sezon: kwiecień–październik.</div>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="step-card reveal reveal-d2">
+      <div class="step-num">03</div>
+      <div class="step-title">Briefing na lotnisku</div>
+      <div class="step-desc">Maciej przeprowadzi Cię przez procedury, figury i technikę oddychania. ~20 minut.</div>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="step-card reveal reveal-d3">
+      <div class="step-num">04</div>
+      <div class="step-title">Leć!</div>
+      <div class="step-desc">Wsiadasz do kokpitu Extra 300L i przeżywasz lot, który zapamiętasz do końca życia.</div>
+    </div>
+  </div>
+  <div class="guarantee reveal">
+    <div class="guarantee-icon">🛡️</div>
+    <div class="guarantee-text">
+      <strong>Gwarancja satysfakcji.</strong> Jeśli pogoda uniemożliwi lot — przenosimy termin bezpłatnie, bez limitu. Voucher ważny 12 miesięcy. Możesz zmienić pakiet lub przekazać voucher innej osobie.
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SOCIAL PROOF BAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="proof-bar reveal">
+  <div class="proof-bar-item"><div class="proof-bar-num">200+</div><div class="proof-bar-lbl">Lotów w sezonie</div></div>
+  <div class="proof-bar-item"><div class="proof-bar-num">4 000+</div><div class="proof-bar-lbl">Godzin nalotu pilota</div></div>
+  <div class="proof-bar-item"><div class="proof-bar-num">50+</div><div class="proof-bar-lbl">Pokazów rocznie</div></div>
+  <div class="proof-bar-item"><div class="proof-bar-num">5.0</div><div class="proof-bar-lbl">Google Reviews</div></div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     TESTIMONIALS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="reviews" id="opinie">
+  <div class="reviews-header reveal">
+    <div class="reviews-stats">
+      <div class="reviews-avg">5.0</div>
+      <div>
+        <div class="reviews-stars">★★★★★</div>
+        <div class="reviews-count">6 opinii · Google Reviews</div>
+      </div>
+    </div>
+    <p class="section-label" style="color:rgba(255,255,255,.5)">Co mówią nasi klienci</p>
+    <h2 class="section-title" style="color:var(--white)">Opinie po lotach</h2>
+    <div class="accent-bar"></div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">„Lot akrobacyjny? Petarda! Nawet dla totalnego świeżaka w temacie, wrażenia jak po pierwszym przeciągnięciu i beczce. Pilot pełen profesjonalizm, briefing konkretny, a cała operacja dopięta jak w checklistach przed startem. Sprzęt zadbany."</div>
+      <div class="review-author">Mariusz Kosciolek</div>
+      <div class="review-meta">Lokalny przewodnik · Google Reviews</div>
+    </div>
+    <div class="review-card reveal reveal-d1">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">„Wrażenia nie z (tej) ziemii! Wspaniały prezent dla uzależnionych od adrenaliny!"</div>
+      <div class="review-author">Paweł Murak</div>
+      <div class="review-meta">Lokalny przewodnik · Google Reviews</div>
+    </div>
+    <div class="review-card reveal reveal-d2">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">„Doskonałe zaplecze szkoleniowe i świetnie utrzymana maszyna. Akrobacja uczy pokory i doskonałego czucia sterów, a tutaj uczą tego najlepiej. Instruktor nie odpuszcza, dopóki figura nie jest wykręcona 'w punkt'. To miejsce, gdzie buduje się prawdziwy kunszt pilotażowy."</div>
+      <div class="review-author">Marcin Kwiatosz</div>
+      <div class="review-meta">Google Reviews</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">„Lot dostałem w prezencie od żony. Niesamowite przeżycie!!! Polecam każdemu."</div>
+      <div class="review-author">kuczero91</div>
+      <div class="review-meta">Google Reviews</div>
+    </div>
+    <div class="review-card reveal reveal-d1">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">„Polecam! Super zabawa! Niesamowita adrenalina ;)"</div>
+      <div class="review-author">Rafał Madejewski</div>
+      <div class="review-meta">Google Reviews</div>
+    </div>
+    <div class="review-card reveal reveal-d2">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">„★★★★★"</div>
+      <div class="review-author">FilmoLot</div>
+      <div class="review-meta">Lokalny przewodnik · Google Reviews</div>
+    </div>
+  </div>
+  <div class="reviews-social reveal">
+    Więcej opinii i materiałów z lotów:
+    <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener">Instagram</a> ·
+    <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener">Facebook</a>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      SUBSCRIBE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <div style="background:var(--navy);padding:64px;text-align:center" class="reveal">
@@ -1679,7 +1915,7 @@ footer {
 <div style="background:var(--white);padding:80px 64px;text-align:center" class="reveal">
   <p style="font-family:var(--font-h);font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--black);text-transform:uppercase;margin-bottom:32px">Jak przygotować się<br>na lot akrobacyjny?</h2>
-  <img src="przewodnik.png" alt="Jak przygotować się na lot akrobacyjny - infografika" style="max-width:600px;width:100%;margin:0 auto;display:block">
+  <img src="przewodnik.png" alt="Jak przygotować się na lot akrobacyjny - infografika" style="max-width:1100px;width:100%;margin:0 auto;display:block">
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1909,9 +2145,9 @@ footer {
       <ul class="footer-links">
         <li><a href="https://wa.me/48535535221">+48 535 535 221</a></li>
         <li><a href="mailto:dto@akrobacja.top">dto@akrobacja.top</a></li>
-        <li><a href="https://maps.app.goo.gl/radom-piastow-eprp" target="_blank" rel="noopener">Lotnisko Radom-Piastów (EPRP)</a></li>
+        <li><a href="https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8" target="_blank" rel="noopener">Lotnisko Radom-Piastów (EPRP)</a></li>
         <li><span style="font-size:13px;color:rgba(245,247,250,.45)">ul. Lotników 1, Radom</span></li>
-        <li><a href="https://maps.app.goo.gl/radom-piastow-eprp" target="_blank" rel="noopener">Google Maps →</a></li>
+        <li><a href="https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8" target="_blank" rel="noopener">Google Maps →</a></li>
       </ul>
     </div>
     <div>
@@ -1920,14 +2156,15 @@ footer {
         <li><a href="/regulamin">Regulamin</a></li>
         <li><a href="/regulamin#rodo">Polityka Prywatności (RODO)</a></li>
         <li><a href="#faq">FAQ — Pytania i odpowiedzi</a></li>
-        <li><a href="https://maps.app.goo.gl/radom-piastow-eprp" target="_blank" rel="noopener">Dojazd na lotnisko</a></li>
+        <li><a href="https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8" target="_blank" rel="noopener">Dojazd na lotnisko</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 akrobacja.top · Doradztwo Paweł Mamcarz (DTO-58) · Extra 300L SP-EKS · EPRP</p>
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="https://www.facebook.com/bullet.aerobatics/" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Facebook</a>
+      <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Instagram</a>
+      <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Facebook</a>
       <a href="https://wa.me/48535535221" style="font-size:12px;color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">WhatsApp</a>
       <img src="akrobacja-logo-light.png" alt="" aria-hidden="true" style="height:22px;width:auto;display:block;opacity:0.6">
     </div>
