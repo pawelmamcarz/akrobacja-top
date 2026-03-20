@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeria — Extra 300L SP-EKS w akcji | akrobacja.top</title>
+<meta name="description" content="Galeria zdjęć Extra 300L SP-EKS — loty akrobacyjne, pokazy, kokpit, lotnisko Radom-Piastów. Profesjonalne fotografie z powietrza.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B4DB5;--red:#C41E3A;--black:#0A1428;--white:#FFFFFF;--chrome:#7A8FA6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--black);color:#fff}
+.topbar{background:rgba(10,20,40,.97);backdrop-filter:blur(16px);padding:18px 48px;display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;right:0;z-index:1000}
+.topbar a{color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700}
+.topbar-links{display:flex;gap:24px}
+.topbar-links a{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.topbar-links a:hover{color:#fff}
+.hero{padding:120px 48px 48px;text-align:center}
+.hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,5vw,56px);font-weight:900;text-transform:uppercase;margin-bottom:8px}
+.hero p{color:var(--chrome);font-size:14px}
+.gallery{max-width:1400px;margin:0 auto;padding:0 16px 80px;columns:3;column-gap:8px}
+.gallery img{width:100%;display:block;margin-bottom:8px;cursor:pointer;transition:opacity .2s}
+.gallery img:hover{opacity:.85}
+/* Lightbox */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:2000;display:none;align-items:center;justify-content:center;padding:40px}
+.lb.open{display:flex}
+.lb img{max-width:95%;max-height:90vh;object-fit:contain}
+.lb-close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:36px;cursor:pointer}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:48px;cursor:pointer;padding:20px}
+.lb-prev{left:8px}
+.lb-next{right:8px}
+.lb-caption{position:absolute;bottom:20px;left:0;right:0;text-align:center;font-size:12px;color:var(--chrome)}
+.cta-strip{text-align:center;padding:0 16px 80px}
+.cta-strip a{display:inline-block;background:var(--red);color:#fff;padding:16px 40px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;text-decoration:none}
+.footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:32px;text-align:center}
+.footer-links{display:flex;gap:20px;justify-content:center;margin-bottom:12px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,.5);text-decoration:none}
+.footer-copy{font-size:10px;color:rgba(255,255,255,.2)}
+@media(max-width:1024px){.gallery{columns:2}}
+@media(max-width:768px){.topbar{padding:14px 20px}.topbar-links{display:none}.hero{padding:100px 20px 32px}.gallery{columns:2;padding:0 8px 60px}.lb-nav{font-size:32px}}
+@media(max-width:480px){.gallery{columns:1}}
+</style>
+</head>
+<body>
+<div class="topbar">
+<a href="/">akrobacja.top</a>
+<div class="topbar-links"><a href="/lot-akrobacyjny">Loty</a><a href="/pokazy-lotnicze">Pokazy</a><a href="/sklep-merch">Sklep</a><a href="/blog">Blog</a><a href="/#kontakt">Kontakt</a></div>
+</div>
+
+<div class="hero">
+<h1>Galeria</h1>
+<p>Extra 300L SP-EKS w akcji — loty, pokazy, kokpit</p>
+</div>
+
+<div class="gallery" id="gallery">
+<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_001.jpg" alt="Extra 300L SP-EKS - start z dymem" loading="lazy" onclick="openLb(0)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_005.jpg" alt="SP-EKS w locie nad jesiennym lasem" loading="lazy" onclick="openLb(1)">
+<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_003.jpg" alt="Zbliżenie kokpitu Extra 300L w locie" loading="lazy" onclick="openLb(2)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_033.jpg" alt="SP-EKS nad miastem - widok z góry" loading="lazy" onclick="openLb(3)">
+<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_005.jpg" alt="Maciej Kulaszewski w kokpicie" loading="lazy" onclick="openLb(4)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_006.jpg" alt="Extra 300L SP-EKS - lot akrobacyjny" loading="lazy" onclick="openLb(5)">
+<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_007.jpg" alt="SP-EKS w locie - widok z boku" loading="lazy" onclick="openLb(6)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_008.jpg" alt="Lot akrobacyjny Extra 300L" loading="lazy" onclick="openLb(7)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_041.jpg" alt="SP-EKS - akrobacja nad Warszawą" loading="lazy" onclick="openLb(8)">
+<img src="/gallery/ATAM33_Grzegorz_Golus_007.jpg" alt="Extra 300L SP-EKS - zdjęcie z pokazu" loading="lazy" onclick="openLb(9)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_044.jpg" alt="Lot akrobacyjny nad jesiennym krajobrazem" loading="lazy" onclick="openLb(10)">
+<img src="/gallery/ATAM33_Maciej_Juniewicz_028.jpg" alt="SP-EKS w akcji" loading="lazy" onclick="openLb(11)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_045.jpg" alt="Extra 300L w locie" loading="lazy" onclick="openLb(12)">
+<img src="/gallery/ATAM33_Michal_Marzec_001.jpg" alt="Kokpit Extra 300L - przyrządy" loading="lazy" onclick="openLb(13)">
+<img src="/gallery/ATAM33_Przemek_Saracen_015.jpg" alt="SP-EKS - lot z dymem" loading="lazy" onclick="openLb(14)">
+<img src="/gallery/ATAM33_Tomasz_Chochol_005.jpg" alt="Extra 300L na tle nieba" loading="lazy" onclick="openLb(15)">
+<img src="/gallery/dji_fly_20240929_152324_0371_1727673297944_photo.jpg" alt="SP-EKS na lotnisku Radom-Piastów" loading="lazy" onclick="openLb(16)">
+<img src="/gallery/dji_fly_20240929_153058_0394_1727673213512_photo.jpg" alt="Extra 300L - widok z drona" loading="lazy" onclick="openLb(17)">
+<img src="/gallery/DSC_2287.JPG" alt="SP-EKS na pasie startowym" loading="lazy" onclick="openLb(18)">
+<img src="/gallery/DSC_2307.JPG" alt="Extra 300L - detal" loading="lazy" onclick="openLb(19)">
+<img src="/gallery/IMG_1437.jpeg" alt="Kokpit Extra 300L SP-EKS" loading="lazy" onclick="openLb(20)">
+<img src="/gallery/IMG_3011.jpeg" alt="SP-EKS - przygotowania do lotu" loading="lazy" onclick="openLb(21)">
+<img src="/gallery/IMG_9933.jpeg" alt="Panel przyrządów Extra 300L" loading="lazy" onclick="openLb(22)">
+</div>
+
+<div class="cta-strip">
+<a href="https://wa.me/48535535221?text=Chcę%20zarezerwować%20lot%20Extra%20300L">Zarezerwuj swój lot →</a>
+</div>
+
+<!-- Lightbox -->
+<div class="lb" id="lightbox" onclick="if(event.target===this)closeLb()">
+<button class="lb-close" onclick="closeLb()">&times;</button>
+<button class="lb-nav lb-prev" onclick="navLb(-1)">&#8249;</button>
+<img id="lbImg" src="" alt="">
+<button class="lb-nav lb-next" onclick="navLb(1)">&#8250;</button>
+<div class="lb-caption" id="lbCaption"></div>
+</div>
+
+<div class="footer">
+<div class="footer-links"><a href="/">Strona główna</a><a href="/lot-akrobacyjny">Loty</a><a href="/blog">Blog</a><a href="/sklep-merch">Sklep</a><a href="/regulamin">Regulamin</a><a href="https://wa.me/48535535221">WhatsApp</a></div>
+<div class="footer-copy">&copy; 2026 Doradztwo Paweł Mamcarz (DTO-58) · akrobacja.top</div>
+</div>
+
+<script>
+const imgs = document.querySelectorAll('.gallery img');
+let current = 0;
+function openLb(i) {
+  current = i;
+  document.getElementById('lbImg').src = imgs[i].src;
+  document.getElementById('lbCaption').textContent = imgs[i].alt;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navLb(dir) {
+  current = (current + dir + imgs.length) % imgs.length;
+  document.getElementById('lbImg').src = imgs[current].src;
+  document.getElementById('lbCaption').textContent = imgs[current].alt;
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowRight') navLb(1);
+  if (e.key === 'ArrowLeft') navLb(-1);
+});
+</script>
+<script src="/chat-widget.js" defer></script>
+</body>
+</html>

@@ -1,14 +1,31 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "akrobacja-top",
+  "pages_build_output_dir": "public",
   "compatibility_date": "2025-09-27",
   "observability": {
     "enabled": true
   },
-  "assets": {
-    "directory": "."
-  },
   "compatibility_flags": [
     "nodejs_compat"
-  ]
+  ],
+  // D1 database for orders
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "akrobacja-db",
+      "database_id": "ba036f53-e302-477a-9169-c385b0b06da4"
+    }
+  ],
+  // R2 bucket for voucher PDFs
+  "r2_buckets": [
+    {
+      "binding": "VOUCHER_BUCKET",
+      "bucket_name": "akrobacja-vouchers"
+    }
+  ],
+  // Workers AI (Llama)
+  "ai": {
+    "binding": "AI"
+  }
 }

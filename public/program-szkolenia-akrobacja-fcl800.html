@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Program Szkolenia Akrobacyjnego FCL.800 — DTO Doradztwo Paweł Mamcarz</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Times New Roman', serif; color: #000; background: #fff; font-size: 12pt; line-height: 1.6; }
+  .page { max-width: 210mm; margin: 0 auto; padding: 25mm 25mm 20mm 30mm; }
+  h1 { font-size: 16pt; text-align: center; margin-bottom: 6pt; text-transform: uppercase; }
+  h2 { font-size: 13pt; margin: 24pt 0 10pt; border-bottom: 1px solid #000; padding-bottom: 4pt; }
+  h3 { font-size: 12pt; margin: 16pt 0 6pt; }
+  p { margin-bottom: 8pt; text-align: justify; }
+  ol, ul { margin: 6pt 0 12pt 24pt; }
+  li { margin-bottom: 4pt; }
+  ol ol { list-style-type: lower-alpha; }
+  ol ol ol { list-style-type: lower-roman; }
+  table { width: 100%; border-collapse: collapse; margin: 12pt 0; font-size: 11pt; }
+  th, td { border: 1px solid #000; padding: 6pt 8pt; text-align: left; vertical-align: top; }
+  th { background: #f0f0f0; font-weight: bold; }
+  .center { text-align: center; }
+  .header-block { text-align: center; margin-bottom: 24pt; border: 2px solid #000; padding: 16pt; }
+  .header-block .org { font-size: 14pt; font-weight: bold; }
+  .header-block .sub { font-size: 10pt; color: #444; margin-top: 4pt; }
+  .footer-note { font-size: 9pt; color: #666; margin-top: 24pt; border-top: 1px solid #ccc; padding-top: 8pt; }
+  .sign-block { margin-top: 48pt; display: flex; justify-content: space-between; }
+  .sign-box { width: 45%; text-align: center; }
+  .sign-line { border-top: 1px solid #000; margin-top: 48pt; padding-top: 4pt; font-size: 10pt; }
+  @media print { .page { padding: 20mm 20mm 15mm 25mm; } body { font-size: 11pt; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header-block">
+  <div class="org">Doradztwo Paweł Mamcarz</div>
+  <div class="sub">Zadeklarowana Organizacja Szkoleniowa (DTO)</div>
+  <div class="sub">ul. Jesionowa 18, 05-825 Grodzisk Mazowiecki · NIP: 7122188089</div>
+  <div class="sub">Baza operacyjna: Lotnisko Radom-Piastów (EPRP)</div>
+</div>
+
+<h1>Program Szkolenia<br>Uprawnienie do Wykonywania Lotów Akrobacyjnych</h1>
+<p class="center" style="font-size:11pt;color:#444;margin-bottom:24pt">
+  Zgodnie z FCL.800 Rozporządzenia Komisji (UE) nr 1178/2011<br>
+  oraz wymaganiami Part-DTO (Załącznik VIII do Rozporządzenia 1178/2011)
+</p>
+
+<h2>1. Informacje ogólne</h2>
+
+<h3>1.1. Cel szkolenia</h3>
+<p>Celem szkolenia jest uzyskanie przez ucznia-pilota uprawnienia do wykonywania lotów akrobacyjnych na samolotach (kategoria: aeroplane), zgodnie z FCL.800 Rozporządzenia Komisji (UE) nr 1178/2011.</p>
+
+<h3>1.2. Podstawy prawne</h3>
+<ol>
+  <li>Rozporządzenie Komisji (UE) nr 1178/2011 z dnia 3 listopada 2011 r., Załącznik I (Part-FCL), pkt FCL.800 — Uprawnienie do wykonywania lotów akrobacyjnych;</li>
+  <li>Rozporządzenie Komisji (UE) nr 1178/2011, Załącznik VIII (Part-DTO) — wymagania dla zadeklarowanych organizacji szkoleniowych;</li>
+  <li>AMC1 FCL.800 — Acceptable Means of Compliance do FCL.800;</li>
+  <li>Rozporządzenie Komisji (UE) nr 965/2012, Załącznik VII (Part-NCO) — operacje niekomercyjne;</li>
+  <li>Wytyczne Nr 9/2025 Prezesa Urzędu Lotnictwa Cywilnego z dnia 9 lipca 2025 r. w sprawie wykonywania lotów zapoznawczych.</li>
+</ol>
+
+<h3>1.3. Organizacja szkolenia</h3>
+<table>
+  <tr><th style="width:40%">Parametr</th><th>Wartość</th></tr>
+  <tr><td>Organizacja szkoleniowa</td><td>Doradztwo Paweł Mamcarz (DTO)</td></tr>
+  <tr><td>Przedstawiciel DTO</td><td>Paweł Mamcarz</td></tr>
+  <tr><td>Kierownik szkolenia (Head of Training)</td><td>Maciej Kulaszewski, FI(A)</td></tr>
+  <tr><td>Instruktor akrobacji</td><td>Maciej Kulaszewski, FI(A)</td></tr>
+  <tr><td>Samolot szkoleniowy</td><td>Extra 300L, SP-EKS (CofA EASA)</td></tr>
+  <tr><td>Baza szkoleniowa</td><td>Lotnisko Radom-Piastów (EPRP)</td></tr>
+  <tr><td>Strefa akrobacji</td><td>Wyznaczona strefa w rejonie EPRP</td></tr>
+</table>
+
+<h3>1.4. Wymagania wstępne dla kandydata (FCL.800)</h3>
+<ol>
+  <li>Posiadanie ważnej licencji pilota: PPL(A), LAPL(A), CPL(A) lub ATPL(A);</li>
+  <li>Nalot co najmniej <strong>40 godzin</strong> jako pilot dowódca (PIC) na samolotach lub motoszybowcach turystycznych (TMG) po uzyskaniu licencji;</li>
+  <li>Ważne orzeczenie lotniczo-lekarskie klasy 1 lub klasy 2;</li>
+  <li>Brak przeciwwskazań zdrowotnych do wykonywania lotów z przeciążeniami.</li>
+</ol>
+
+<h2>2. Program szkolenia teoretycznego</h2>
+
+<p>Szkolenie teoretyczne obejmuje minimum <strong>8 godzin</strong> zajęć, prowadzonych przez instruktora lub wykładowcę posiadającego doświadczenie w lotach akrobacyjnych.</p>
+
+<table>
+  <tr><th>Lp.</th><th>Temat</th><th>Godziny</th></tr>
+  <tr><td class="center">1</td><td><strong>Czynnik ludzki i ograniczenia organizmu</strong>
+    <ul>
+      <li>Wpływ przeciążeń na organizm ludzki (G+ i G-)</li>
+      <li>Grey-out, blackout, red-out — mechanizmy i zapobieganie</li>
+      <li>Dezorientacja przestrzenna — przyczyny i przeciwdziałanie</li>
+      <li>Choroba powietrzna — fizjologia i postępowanie</li>
+      <li>Stres fizyczny i psychiczny podczas akrobacji</li>
+      <li>Oddychanie i techniki przeciwdziałania przeciążeniom (AGSM)</li>
+    </ul>
+  </td><td class="center">2,0</td></tr>
+  <tr><td class="center">2</td><td><strong>Aerodynamika lotu akrobacyjnego</strong>
+    <ul>
+      <li>Aerodynamika w nietypowych położeniach samolotu</li>
+      <li>Rozkład sił podczas figur akrobacyjnych</li>
+      <li>Przeciągnięcie i korkociąg — mechanizm i wychodzenie</li>
+      <li>Energia kinetyczna i potencjalna — zarządzanie energią w figurach</li>
+      <li>Wpływ prędkości, kąta natarcia i obciążenia na zachowanie samolotu</li>
+    </ul>
+  </td><td class="center">2,0</td></tr>
+  <tr><td class="center">3</td><td><strong>Znajomość samolotu Extra 300L</strong>
+    <ul>
+      <li>Dane techniczne i osiągi samolotu Extra 300L</li>
+      <li>Obwiednia akrobacyjna (aerobatic envelope) — dopuszczalne przeciążenia i prędkości</li>
+      <li>Ograniczenia eksploatacyjne: V<sub>A</sub>, V<sub>NE</sub>, G-limity (+10G / -10G)</li>
+      <li>Systemy samolotu: silnik, śmigło, paliwo (lot odwrócony), instalacja olejowa</li>
+      <li>Wyposażenie kabiny: pasy bezpieczeństwa, spadochron ratunkowy</li>
+    </ul>
+  </td><td class="center">1,5</td></tr>
+  <tr><td class="center">4</td><td><strong>Procedury awaryjne</strong>
+    <ul>
+      <li>Awaryjne opuszczenie samolotu — procedura użycia spadochronu ratunkowego</li>
+      <li>Awaria silnika podczas figur akrobacyjnych</li>
+      <li>Niezamierzony korkociąg — rozpoznanie i wychodzenie</li>
+      <li>Utrata orientacji przestrzennej — procedura recovery</li>
+      <li>Awaryjne wychodzenie z figur akrobacyjnych</li>
+      <li>Procedury lądowania przymusowego</li>
+    </ul>
+  </td><td class="center">1,5</td></tr>
+  <tr><td class="center">5</td><td><strong>Przepisy i bezpieczeństwo</strong>
+    <ul>
+      <li>Przepisy dotyczące lotów akrobacyjnych (Part-NCO, NCO.SPEC)</li>
+      <li>Strefy akrobacji — wyznaczanie, minimalne wysokości</li>
+      <li>Wymagania dotyczące spadochronów ratunkowych</li>
+      <li>Planowanie lotu akrobacyjnego — briefing i debriefing</li>
+      <li>Notacja figur akrobacyjnych (system Aresti)</li>
+    </ul>
+  </td><td class="center">1,0</td></tr>
+  <tr><td colspan="2" style="text-align:right"><strong>RAZEM szkolenie teoretyczne</strong></td><td class="center"><strong>8,0</strong></td></tr>
+</table>
+
+<h3>2.1. Forma szkolenia teoretycznego</h3>
+<p>Szkolenie teoretyczne prowadzone jest w formie wykładów, prezentacji multimedialnych oraz ćwiczeń z wykorzystaniem modeli i materiałów dydaktycznych. Szkolenie może być prowadzone w sali wykładowej na terenie lotniska EPRP lub w innym wyznaczonym miejscu.</p>
+
+<h3>2.2. Sprawdzian wiedzy teoretycznej</h3>
+<p>Po zakończeniu szkolenia teoretycznego uczeń-pilot przystępuje do sprawdzianu wiedzy w formie testu pisemnego (minimum 20 pytań). Wymagany wynik pozytywny: 75% poprawnych odpowiedzi.</p>
+
+<h2>3. Program szkolenia praktycznego (w locie)</h2>
+
+<p>Szkolenie praktyczne obejmuje minimum <strong>5 godzin</strong> lotu szkoleniowego z instruktorem na samolocie Extra 300L (SP-EKS), zgodnie z FCL.800 i AMC1 FCL.800.</p>
+
+<h3>3.1. Etapy szkolenia praktycznego</h3>
+
+<table>
+  <tr><th>Etap</th><th>Ćwiczenia</th><th>Min. godz.</th></tr>
+  <tr><td class="center"><strong>I</strong><br>Wprowadzenie</td><td>
+    <strong>Lot 1–2: Zapoznanie z samolotem i lotami z przeciążeniami</strong>
+    <ul>
+      <li>Zapoznanie z kabiną, wyposażeniem, pasami, spadochronem</li>
+      <li>Start, wznoszenie, lot poziomy, podejście i lądowanie Extra 300L</li>
+      <li>Łagodne manewry z przeciążeniami do +3G / -1G</li>
+      <li>Reakcja organizmu na przeciążenia — stopniowe zwiększanie G</li>
+      <li>Ostra zakręty (steep turns) 60°</li>
+      <li>Przeciągnięcie i wychodzenie w konfiguracji czystej</li>
+    </ul>
+  </td><td class="center">1,0</td></tr>
+
+  <tr><td class="center"><strong>II</strong><br>Figury podstawowe</td><td>
+    <strong>Lot 3–5: Podstawowe figury akrobacyjne</strong>
+    <ul>
+      <li><strong>Pętla (loop)</strong> — wejście, utrzymanie kształtu, wyjście</li>
+      <li><strong>Beczka (aileron roll)</strong> — pełna beczka, pół beczki</li>
+      <li><strong>Odwrócona ósemka (Immelmann)</strong></li>
+      <li><strong>Split-S (pół pętli z pół beczką)</strong></li>
+      <li><strong>Lot odwrócony (inverted flight)</strong> — lot poziomy w pozycji odwróconej, zakręty odwrócone</li>
+      <li>Zarządzanie energią i prędkością między figurami</li>
+      <li>Utrzymywanie osi lotu i orientacji przestrzennej</li>
+    </ul>
+  </td><td class="center">1,5</td></tr>
+
+  <tr><td class="center"><strong>III</strong><br>Figury zaawansowane</td><td>
+    <strong>Lot 6–8: Figury zaawansowane i kombinacje</strong>
+    <ul>
+      <li><strong>Hammerhead (wywrotka)</strong></li>
+      <li><strong>Korkociąg kontrolowany (spin)</strong> — wejście, utrzymanie, wyjście (prosty i odwrócony)</li>
+      <li><strong>Kubański ósemka (Cuban eight)</strong></li>
+      <li><strong>Humpty bump</strong></li>
+      <li><strong>Snap roll (autorotacja)</strong></li>
+      <li>Łączenie figur w sekwencje</li>
+      <li>Korekta wysokości i prędkości między figurami</li>
+    </ul>
+  </td><td class="center">1,5</td></tr>
+
+  <tr><td class="center"><strong>IV</strong><br>Sekwencje i sprawdzian</td><td>
+    <strong>Lot 9–10: Sekwencje akrobacyjne i przygotowanie do samodzielności</strong>
+    <ul>
+      <li>Planowanie i wykonanie pełnej sekwencji akrobacyjnej (5–8 figur)</li>
+      <li>Samodzielne wykonywanie figur pod nadzorem instruktora</li>
+      <li>Debriefing — analiza wykonania, korekty</li>
+      <li>Procedury awaryjne w praktyce — symulacja awarii silnika podczas figury</li>
+      <li>Sprawdzian praktyczny — ocena kompetencji</li>
+    </ul>
+  </td><td class="center">1,0</td></tr>
+
+  <tr><td colspan="2" style="text-align:right"><strong>RAZEM szkolenie praktyczne</strong></td><td class="center"><strong>5,0</strong></td></tr>
+</table>
+
+<h3>3.2. Lot samodzielny (solo)</h3>
+<p>Po pomyślnym ukończeniu szkolenia z instruktorem i uzyskaniu pozytywnej oceny, uczeń-pilot wykonuje lot samodzielny (solo) obejmujący sekwencję figur akrobacyjnych. Lot solo odbywa się pod nadzorem instruktora utrzymującego łączność radiową z uczniem-pilotem.</p>
+
+<h3>3.3. Warunki meteorologiczne</h3>
+<p>Szkolenie praktyczne odbywa się wyłącznie w warunkach VMC (Visual Meteorological Conditions) w dzień, przy widzialności nie mniejszej niż 5 km i podstawie chmur nie niższej niż 1500 m nad poziomem strefy akrobacji.</p>
+
+<h3>3.4. Minimalne wysokości</h3>
+<table>
+  <tr><th>Etap</th><th>Minimalna wysokość rozpoczęcia figury (AGL)</th></tr>
+  <tr><td>Etap I — wprowadzenie</td><td>1500 m (5000 ft)</td></tr>
+  <tr><td>Etap II — figury podstawowe</td><td>1200 m (4000 ft)</td></tr>
+  <tr><td>Etap III — figury zaawansowane</td><td>1200 m (4000 ft)</td></tr>
+  <tr><td>Etap IV — sekwencje</td><td>1000 m (3300 ft)</td></tr>
+  <tr><td>Lot solo</td><td>1200 m (4000 ft)</td></tr>
+</table>
+
+<h2>4. Ocena postępów i sprawdzian końcowy</h2>
+
+<h3>4.1. Bieżąca ocena postępów</h3>
+<p>Instruktor ocenia postępy ucznia-pilota po każdym locie szkoleniowym. Ocenie podlegają:</p>
+<ol>
+  <li>Precyzja wykonania figur (kształt, prędkości, przeciążenia);</li>
+  <li>Orientacja przestrzenna i świadomość sytuacyjna;</li>
+  <li>Zarządzanie energią (prędkość, wysokość);</li>
+  <li>Bezpieczeństwo — przestrzeganie ograniczeń samolotu i strefy akrobacji;</li>
+  <li>Postępowanie w sytuacjach awaryjnych.</li>
+</ol>
+
+<h3>4.2. Sprawdzian końcowy</h3>
+<p>Sprawdzian końcowy obejmuje:</p>
+<ol>
+  <li><strong>Część teoretyczną</strong> — test pisemny (min. 75% poprawnych odpowiedzi);</li>
+  <li><strong>Część praktyczną</strong> — samodzielne wykonanie sekwencji minimum 5 figur akrobacyjnych w obecności instruktora, ocenianych pod kątem bezpieczeństwa i kompetencji.</li>
+</ol>
+<p>Uczeń-pilot musi wykazać się bezpiecznym i kompetentnym wykonaniem figur akrobacyjnych, zgodnie z wymogiem FCL.800(b).</p>
+
+<h3>4.3. Kryteria zaliczenia</h3>
+<p>Ćwiczenia powtarza się do momentu osiągnięcia przez ucznia-pilota bezpiecznego i kompetentnego standardu wykonania, zgodnie z FCL.800(b): „exercises shall be repeated until the applicant reaches a safe and competent standard".</p>
+
+<h2>5. Dokumentacja szkolenia</h2>
+
+<ol>
+  <li>Dla każdego ucznia-pilota prowadzona jest indywidualna dokumentacja szkolenia zawierająca:
+    <ol>
+      <li>dane osobowe ucznia-pilota i numer licencji;</li>
+      <li>potwierdzenie spełnienia wymagań wstępnych;</li>
+      <li>zapisy z każdego lotu szkoleniowego (data, czas lotu, ćwiczenia, ocena, podpis instruktora);</li>
+      <li>wynik sprawdzianu teoretycznego;</li>
+      <li>wynik sprawdzianu praktycznego;</li>
+      <li>potwierdzenie wykonania lotu solo.</li>
+    </ol>
+  </li>
+  <li>Dokumentacja szkolenia jest przechowywana przez okres minimum <strong>3 lat</strong> od daty zakończenia szkolenia, zgodnie z DTO.GEN.220.</li>
+</ol>
+
+<h2>6. Zaświadczenie o ukończeniu szkolenia</h2>
+
+<p>Po pomyślnym ukończeniu szkolenia teoretycznego i praktycznego oraz zdaniu sprawdzianu końcowego, DTO wydaje uczniowi-pilotowi <strong>zaświadczenie o ukończeniu szkolenia</strong> (Certificate of Completion) potwierdzające nabycie kompetencji do wykonywania lotów akrobacyjnych na samolotach.</p>
+<p>Zaświadczenie stanowi podstawę do wpisu uprawnienia do wykonywania lotów akrobacyjnych do licencji pilota przez Prezesa Urzędu Lotnictwa Cywilnego.</p>
+
+<h2>7. Ograniczenia uprawnienia</h2>
+
+<ol>
+  <li>Uprawnienie do wykonywania lotów akrobacyjnych jest ograniczone do kategorii statku powietrznego (samolot), na której przeprowadzono szkolenie — zgodnie z FCL.800(c).</li>
+  <li>Rozszerzenie uprawnienia na kategorię TMG wymaga ukończenia dodatkowych 3 lotów szkoleniowych z instruktorem obejmujących pełny program akrobacyjny na TMG.</li>
+</ol>
+
+<h2>8. Polityka bezpieczeństwa</h2>
+
+<ol>
+  <li>Organizacja szkoleniowa zobowiązuje się do:
+    <ol>
+      <li>zapewnienia najwyższego poziomu bezpieczeństwa podczas szkolenia;</li>
+      <li>utrzymywania samolotu szkoleniowego w pełnej zdatności do lotu;</li>
+      <li>prowadzenia szkolenia wyłącznie w wyznaczonych strefach akrobacji;</li>
+      <li>stosowania spadochronów ratunkowych podczas wszystkich lotów akrobacyjnych;</li>
+      <li>monitorowania stanu zdrowia i samopoczucia uczniów-pilotów przed każdym lotem;</li>
+      <li>raportowania zdarzeń i incydentów lotniczych zgodnie z obowiązującymi przepisami.</li>
+    </ol>
+  </li>
+  <li>Instruktor ma prawo przerwać szkolenie w każdym momencie ze względów bezpieczeństwa.</li>
+  <li>Uczeń-pilot ma prawo odmówić wykonania ćwiczenia, jeśli nie czuje się na siłach.</li>
+</ol>
+
+<h2>9. Loty zapoznawcze</h2>
+
+<p>Organizacja prowadzi loty zapoznawcze zgodnie z Wytycznymi Nr 9/2025 Prezesa ULC, na zasadach określonych w art. 6 ust. 4a lit. c Rozporządzenia (UE) nr 965/2012. Loty zapoznawcze:</p>
+<ol>
+  <li>stanowią działalność marginalną organizacji (nie więcej niż 20% całkowitego czasu lotu w roku kalendarzowym);</li>
+  <li>odbywają się na samolocie Extra 300L (SP-EKS) z ważnym CofA;</li>
+  <li>rozpoczynają się i kończą na lotnisku Radom-Piastów (EPRP);</li>
+  <li>trwają maksymalnie 50 minut;</li>
+  <li>odbywają się zgodnie z przepisami VFR w dzień;</li>
+  <li>prowadzone są przez pilota spełniającego wymagania § 5 Wytycznych;</li>
+  <li>obejmują maksymalnie 1 pasażera (ograniczenie kokpitu Extra 300L);</li>
+  <li>minimalny wiek uczestnika: 13 lat (za zgodą opiekunów prawnych dla osób niepełnoletnich).</li>
+</ol>
+<p>Organizacja składa roczne zestawienie wykonanych lotów zapoznawczych i liczby przewiezionych osób do Prezesa ULC w terminie do dnia 31 stycznia każdego następnego roku.</p>
+
+<div class="sign-block">
+  <div class="sign-box">
+    <div class="sign-line">Paweł Mamcarz<br>Przedstawiciel DTO</div>
+  </div>
+  <div class="sign-box">
+    <div class="sign-line">Maciej Kulaszewski<br>Kierownik Szkolenia / Instruktor FI(A)</div>
+  </div>
+</div>
+
+<p style="text-align:center;margin-top:24pt;font-size:10pt;color:#666">
+  Grodzisk Mazowiecki, .................... 2026 r.
+</p>
+
+<div class="footer-note">
+  <strong>Podstawy prawne:</strong> Rozporządzenie Komisji (UE) nr 1178/2011, Załącznik I (Part-FCL) pkt FCL.800 oraz AMC1 FCL.800; Załącznik VIII (Part-DTO) pkt DTO.GEN.110, DTO.GEN.115, DTO.GEN.230; Rozporządzenie Komisji (UE) nr 965/2012, art. 6 ust. 4a lit. c; Wytyczne Nr 9/2025 Prezesa ULC z dnia 9 lipca 2025 r.
+</div>
+
+</div>
+</body>
+</html>

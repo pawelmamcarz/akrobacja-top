@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Przed Lotem — Sprawdź swoją gotowość | akrobacja.top</title>
+<meta name="description" content="Sprawdź czy jesteś gotowy na lot akrobacyjny Extra 300L. 6 pytań o przygotowanie, bezpieczeństwo i przeciążenia G-force.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B4DB5;--red:#C41E3A;--black:#0A1428;--white:#FFFFFF;--chrome:#7A8FA6;--green:#28a745}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--black);color:#fff}
+.topbar{background:rgba(10,20,40,.97);backdrop-filter:blur(16px);padding:18px 48px;display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;right:0;z-index:1000}
+.topbar a{color:#fff;text-decoration:none;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700}
+.topbar-links{display:flex;gap:24px}
+.topbar-links a{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.topbar-links a:hover{color:#fff}
+
+.hero{padding:120px 48px 48px;text-align:center}
+.hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:900;text-transform:uppercase;margin-bottom:8px}
+.hero p{color:var(--chrome);font-size:14px;max-width:500px;margin:0 auto}
+
+.quiz{max-width:700px;margin:0 auto;padding:0 24px 80px}
+.question{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:32px;margin-bottom:16px;transition:border-color .3s}
+.question.correct{border-color:var(--green)}
+.question.wrong{border-color:var(--red)}
+.q-number{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);margin-bottom:12px}
+.q-text{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:20px;line-height:1.4}
+.options{display:flex;flex-direction:column;gap:8px}
+.option{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:2px solid rgba(255,255,255,.1);cursor:pointer;transition:all .2s;font-size:14px;line-height:1.5;color:rgba(255,255,255,.8)}
+.option:hover{border-color:var(--navy);background:rgba(27,77,181,.08)}
+.option.selected{border-color:var(--navy);background:rgba(27,77,181,.15);color:#fff}
+.option.correct-answer{border-color:var(--green);background:rgba(40,167,69,.15);color:#fff}
+.option.wrong-answer{border-color:var(--red);background:rgba(196,30,58,.15);color:rgba(255,255,255,.5)}
+.option-letter{font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;color:var(--navy);flex-shrink:0;width:24px}
+.option.correct-answer .option-letter{color:var(--green)}
+.option.wrong-answer .option-letter{color:var(--red)}
+.option.locked{pointer-events:none}
+.q-explanation{display:none;margin-top:16px;padding:14px 16px;background:rgba(40,167,69,.08);border-left:3px solid var(--green);font-size:13px;color:rgba(255,255,255,.7);line-height:1.6}
+.q-explanation.show{display:block}
+
+.result{display:none;text-align:center;padding:48px 32px;background:rgba(255,255,255,.04);border:2px solid var(--navy);margin-bottom:32px}
+.result.show{display:block}
+.result h2{font-family:'Montserrat',sans-serif;font-size:32px;font-weight:900;margin-bottom:8px}
+.result .score{font-family:'Montserrat',sans-serif;font-size:64px;font-weight:900;color:var(--navy);margin-bottom:16px}
+.result .message{font-size:15px;color:var(--chrome);line-height:1.6;margin-bottom:24px}
+.result .cta{display:inline-block;background:var(--red);color:#fff;padding:16px 36px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;text-decoration:none}
+.result .cta:hover{background:#A31830}
+
+.submit-btn{display:block;width:100%;padding:18px;background:var(--navy);color:#fff;border:none;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;cursor:pointer;margin-bottom:16px;transition:background .2s}
+.submit-btn:hover{background:#0A1428}
+.submit-btn:disabled{opacity:.4;cursor:not-allowed}
+
+.progress{display:flex;gap:6px;justify-content:center;margin-bottom:40px}
+.progress-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.1);transition:background .3s}
+.progress-dot.answered{background:var(--navy)}
+.progress-dot.correct{background:var(--green)}
+.progress-dot.wrong{background:var(--red)}
+
+.footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:32px;text-align:center}
+.footer-links{display:flex;gap:20px;justify-content:center;margin-bottom:12px}
+.footer-links a{font-size:12px;color:rgba(255,255,255,.5);text-decoration:none}
+.footer-copy{font-size:10px;color:rgba(255,255,255,.2)}
+
+@media(max-width:768px){
+  .topbar{padding:14px 20px}.topbar-links{display:none}
+  .hero{padding:100px 20px 32px}
+  .quiz{padding:0 16px 60px}
+  .question{padding:24px 20px}
+  .q-text{font-size:14px}
+  .option{padding:12px 14px;font-size:13px}
+  .result .score{font-size:48px}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+<a href="/">akrobacja.top</a>
+<div class="topbar-links"><a href="/lot-akrobacyjny">Loty</a><a href="/galeria">Galeria</a><a href="/blog">Blog</a><a href="/#kontakt">Kontakt</a></div>
+</div>
+
+<div class="hero">
+<h1>Quiz przed lotem</h1>
+<p>Sprawdź swoją gotowość na lot akrobacyjny Extra 300L. 6 pytań — ile trafisz?</p>
+</div>
+
+<div class="quiz">
+<div class="progress" id="progress">
+<div class="progress-dot"></div>
+<div class="progress-dot"></div>
+<div class="progress-dot"></div>
+<div class="progress-dot"></div>
+<div class="progress-dot"></div>
+<div class="progress-dot"></div>
+</div>
+
+<!-- Q1 -->
+<div class="question" data-correct="1">
+<div class="q-number">Pytanie 1 z 6</div>
+<div class="q-text">Kiedy i co powinieneś zjeść przed lotem akrobacyjnym?</div>
+<div class="options">
+<div class="option" onclick="answer(0,0)"><span class="option-letter">A</span>Najlepiej być całkowicie na czczo.</div>
+<div class="option" onclick="answer(0,1)"><span class="option-letter">B</span>Lekki posiłek — kanapka czy banan — na 2-3 godziny przed startem.</div>
+<div class="option" onclick="answer(0,2)"><span class="option-letter">C</span>Duży, sycący obiad tuż przed wejściem do kokpitu.</div>
+</div>
+<div class="q-explanation">Lekki posiłek 2-3h przed lotem to klucz. Pusty żołądek = zawroty głowy, pełny żołądek = mdłości przy przeciążeniach. Pij wodę, unikaj kawy na czczo.</div>
+</div>
+
+<!-- Q2 -->
+<div class="question" data-correct="1">
+<div class="q-number">Pytanie 2 z 6</div>
+<div class="q-text">Jaki ubiór jest najbardziej odpowiedni do lotu samolotem Extra 300L?</div>
+<div class="options">
+<div class="option" onclick="answer(1,0)"><span class="option-letter">A</span>Luźne ubrania, szaliki i dowolne obuwie.</div>
+<div class="option" onclick="answer(1,1)"><span class="option-letter">B</span>Wygodne sportowe buty (zakaz klapek!), długie spodnie, a przy długich włosach — spięcie ich pod kask.</div>
+<div class="option" onclick="answer(1,2)"><span class="option-letter">C</span>Elegancki strój wyjściowy.</div>
+</div>
+<div class="q-explanation">Sportowe buty i wygodne, przylegające ubranie. Luźne elementy (szaliki, krawaty) mogą zaplątać się w elementy kokpitu. Klapki zakazane ze względów bezpieczeństwa.</div>
+</div>
+
+<!-- Q3 -->
+<div class="question" data-correct="0">
+<div class="q-number">Pytanie 3 z 6</div>
+<div class="q-text">Jakie słowo powiedziane przez interkom pozwala na natychmiastowe przerwanie akrobacji?</div>
+<div class="options">
+<div class="option" onclick="answer(2,0)"><span class="option-letter">A</span>STOP</div>
+<div class="option" onclick="answer(2,1)"><span class="option-letter">B</span>PRZERWA</div>
+<div class="option" onclick="answer(2,2)"><span class="option-letter">C</span>LĄDUJEMY</div>
+</div>
+<div class="q-explanation">Hasło STOP jest ustalane podczas briefingu. Kiedy je powiesz, pilot natychmiast przerywa akrobację i przechodzi do lotu poziomego. Masz pełną kontrolę nad swoim komfortem.</div>
+</div>
+
+<!-- Q4 -->
+<div class="question" data-correct="2">
+<div class="q-number">Pytanie 4 z 6</div>
+<div class="q-text">Czym jest technika AGSM, o której opowie Ci pilot podczas briefingu?</div>
+<div class="options">
+<div class="option" onclick="answer(3,0)"><span class="option-letter">A</span>To sposób odczytywania przyrządów w kokpicie.</div>
+<div class="option" onclick="answer(3,1)"><span class="option-letter">B</span>To procedura awaryjnego opuszczania samolotu w locie.</div>
+<div class="option" onclick="answer(3,2)"><span class="option-letter">C</span>To technika oddechowa — napinanie mięśni nóg, brzucha i pośladków z krótkimi, gwałtownymi wydechami, która zwiększa tolerancję na przeciążenia.</div>
+</div>
+<div class="q-explanation">AGSM (Anti-G Straining Maneuver) to technika, której używają piloci myśliwców i akrobacyjni. Napinasz mięśnie dolnej części ciała i wykonujesz krótkie wydechy — to zapobiega odpływowi krwi od mózgu przy dużych przeciążeniach.</div>
+</div>
+
+<!-- Q5 -->
+<div class="question" data-correct="2">
+<div class="q-number">Pytanie 5 z 6</div>
+<div class="q-text">Jakie jest dopuszczalne, certyfikowane obciążenie dla Extra 300L?</div>
+<div class="options">
+<div class="option" onclick="answer(4,0)"><span class="option-letter">A</span>Od -1.52G do +3.8G</div>
+<div class="option" onclick="answer(4,1)"><span class="option-letter">B</span>Od -3G do +6G</div>
+<div class="option" onclick="answer(4,2)"><span class="option-letter">C</span>Od -10G do +10G — potężny margines bezpieczeństwa</div>
+</div>
+<div class="q-explanation">Extra 300L jest certyfikowany do +10G/-10G. Podczas lotów z pasażerami operujemy do max +6G — więc samolot ma ogromny zapas wytrzymałości. To jak jazda Ferrari z limitem 60 km/h.</div>
+</div>
+
+<!-- Q6 -->
+<div class="question" data-correct="0">
+<div class="q-number">Pytanie 6 z 6</div>
+<div class="q-text">Co oznacza zjawisko „grey-out", z którym możesz się spotkać przy większych przeciążeniach?</div>
+<div class="options">
+<div class="option" onclick="answer(5,0)"><span class="option-letter">A</span>Całkowicie normalne zawężenie i poszarzenie pola widzenia spowodowane odpływem krwi z siatkówki oka — natychmiast mija po wyrównaniu lotu.</div>
+<div class="option" onclick="answer(5,1)"><span class="option-letter">B</span>Całkowita utrata przytomności na skutek stresu.</div>
+<div class="option" onclick="answer(5,2)"><span class="option-letter">C</span>Nieprzyjemne napłynięcie krwi do głowy powodujące czerwone widzenie.</div>
+</div>
+<div class="q-explanation">Grey-out to normalna reakcja organizmu na przeciążenia +4G i więcej. Pole widzenia się zawęża i szarzeje, ale to nie jest niebezpieczne — pilot o tym wie i dostosowuje intensywność figur. Technika AGSM pomaga go opóźnić.</div>
+</div>
+
+<button class="submit-btn" id="submitBtn" onclick="showResults()" disabled>Sprawdź wyniki</button>
+
+<div class="result" id="result">
+<h2>Twój wynik</h2>
+<div class="score" id="scoreText"></div>
+<div class="message" id="resultMsg"></div>
+<a href="https://wa.me/48535535221?text=Hej!%20Zrobiłem%20quiz%20przed%20lotem%20i%20jestem%20gotowy!%20Chcę%20zarezerwować%20lot." class="cta">Jestem gotowy — zarezerwuj lot →</a>
+</div>
+</div>
+
+<div class="footer">
+<div class="footer-links"><a href="/">Strona główna</a><a href="/lot-akrobacyjny">Loty</a><a href="/blog">Blog</a><a href="/galeria">Galeria</a><a href="https://wa.me/48535535221">WhatsApp</a></div>
+<div class="footer-copy">&copy; 2026 Doradztwo Paweł Mamcarz (DTO-58) · akrobacja.top</div>
+</div>
+
+<script>
+const questions = document.querySelectorAll('.question');
+const dots = document.querySelectorAll('.progress-dot');
+let answers = new Array(6).fill(-1);
+let answered = 0;
+
+function answer(qIdx, optIdx) {
+  const q = questions[qIdx];
+  if (q.classList.contains('answered')) return;
+  q.classList.add('answered');
+
+  const correct = parseInt(q.dataset.correct);
+  const options = q.querySelectorAll('.option');
+  answers[qIdx] = optIdx;
+  answered++;
+
+  options.forEach((opt, i) => {
+    opt.classList.add('locked');
+    if (i === correct) opt.classList.add('correct-answer');
+    if (i === optIdx && i !== correct) opt.classList.add('wrong-answer');
+  });
+
+  if (optIdx === correct) {
+    q.classList.add('correct');
+    dots[qIdx].classList.add('correct');
+  } else {
+    q.classList.add('wrong');
+    dots[qIdx].classList.add('wrong');
+  }
+  dots[qIdx].classList.add('answered');
+
+  q.querySelector('.q-explanation').classList.add('show');
+
+  if (answered === 6) {
+    document.getElementById('submitBtn').disabled = false;
+  }
+}
+
+function showResults() {
+  const correct = answers.filter((a, i) => a === parseInt(questions[i].dataset.correct)).length;
+  document.getElementById('scoreText').textContent = correct + '/6';
+
+  const msgs = {
+    6: 'Perfekcyjnie! Jesteś w pełni gotowy na lot akrobacyjny. Maciej czeka w kokpicie!',
+    5: 'Prawie idealnie! Masz świetną wiedzę. Czas ją sprawdzić w powietrzu!',
+    4: 'Dobry wynik! Briefing przed lotem uzupełni resztę. Jesteś gotowy!',
+    3: 'Nieźle! Przeczytaj nasz przewodnik przed lotem i będziesz w 100% przygotowany.',
+    2: 'Jest nad czym pracować. Zajrzyj na naszego bloga — tam znajdziesz wszystkie odpowiedzi!',
+    1: 'Spokojnie — od tego jest briefing przed lotem! Pilot wszystko Ci wytłumaczy.',
+    0: 'Każdy kiedyś zaczyna! Na szczęście nasz pilot przeprowadzi Cię przez wszystko krok po kroku.'
+  };
+
+  document.getElementById('resultMsg').textContent = msgs[correct];
+  document.getElementById('result').classList.add('show');
+  document.getElementById('submitBtn').style.display = 'none';
+  document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+</script>
+<script src="/chat-widget.js" defer></script>
+</body>
+</html>

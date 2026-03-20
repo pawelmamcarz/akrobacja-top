@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+Disallow: /seo-implementation
+
+Sitemap: https://akrobacja.top/sitemap.xml

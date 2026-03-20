@@ -1,0 +1,14 @@
+# Stripe
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+
+# wFirma.pl (login + hasło do konta)
+WFIRMA_LOGIN=pawel@mamcarz.com
+WFIRMA_PASSWORD=twoje_haslo
+WFIRMA_COMPANY_ID=26009
+
+# Resend (email)
+RESEND_API_KEY=re_...
+
+# Site
+SITE_URL=https://akrobacja-top.pages.dev

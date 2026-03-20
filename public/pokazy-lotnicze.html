@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokazy Lotnicze na Event | Akrobacje Extra 300L | akrobacja.top</title>
+<meta name="description" content="Pokaz akrobacyjny samolotem Extra 300L z Mistrzem Polski. Od 11 900 PLN. Eventy firmowe, festiwale, dni miasta. Ubezpieczenie w cenie.">
+<meta name="keywords" content="pokazy lotnicze, pokaz akrobacyjny, extra 300l, event lotniczy, dni miasta, pokazy lotnicze na event, airshow Polska">
+<meta name="author" content="Doradztwo Paweł Mamcarz">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://akrobacja.top/pokazy-lotnicze">
+<meta property="og:title" content="Pokazy Lotnicze na Event | Extra 300L | akrobacja.top">
+<meta property="og:description" content="Pokaz akrobacyjny samolotem Extra 300L z Mistrzem Polski. Od 11 900 PLN. Eventy firmowe, festiwale, dni miasta.">
+<meta property="og:image" content="https://akrobacja.top/samolot-top-web.jpg">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="akrobacja.top">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pokazy Lotnicze na Event | Extra 300L | akrobacja.top">
+<meta name="twitter:description" content="Pokaz akrobacyjny z Mistrzem Polski. Od 11 900 PLN. Eventy, festiwale, dni miasta.">
+<meta name="twitter:image" content="https://akrobacja.top/samolot-top-web.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231B4DB5'/%3E%3Cpolygon points='4,58 13,58 31,10 27,10' fill='%23ffffff'/%3E%3Cpolygon points='31,10 36,10 55,58 46,58' fill='%23ffffff'/%3E%3Cpolygon points='19,40 43,40 41,34 21,34' fill='%23ffffff'/%3E%3Cpolygon points='32,11 41,34 21,34' fill='%23C41E3A'/%3E%3Cg transform='translate(48,5) rotate(-42)' fill='%23ffffff'%3E%3Cpath d='M 10,0 L 4,-2 L -10,-2 L -10,2 L 4,2 Z'/%3E%3Cpath d='M -1,-2 L 3,-2 L 3,-9 L -1,-9 L -3,-2 Z'/%3E%3Cpath d='M -1,2 L 3,2 L 3,9 L -1,9 L -3,2 Z'/%3E%3C/g%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════ */
+:root {
+  --navy:     #1B4DB5;
+  --navy-mid: #2258C3;
+  --navy-deep:#0A1428;
+  --red:      #C41E3A;
+  --red-dark: #A31830;
+  --white:    #FFFFFF;
+  --black:    #0A1428;
+  --chrome:   #7A8FA6;
+  --grey-lt:  #C8D4E0;
+  --font-h:   'Montserrat', sans-serif;
+  --font-b:   'Inter', sans-serif;
+  --r:        0px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   BASE RESET
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-b); background: var(--black); color: var(--white); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+img { display: block; max-width: 100%; }
+
+/* ═══════════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 22px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(10,20,40,0.97);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+}
+.nav-logo { display: flex; align-items: center; }
+.nav-menu { display: flex; gap: 44px; list-style: none; }
+.nav-menu a {
+  font-family: var(--font-h); font-size: 10px; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.65); transition: color .2s;
+}
+.nav-menu a:hover { color: var(--white); }
+.nav-btn {
+  font-family: var(--font-h); font-size: 10px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--white); background: var(--red);
+  padding: 11px 26px; transition: background .2s;
+}
+.nav-btn:hover { background: var(--red-dark); }
+
+/* ═══════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════ */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  overflow: hidden; background: var(--black);
+  padding-top: 80px;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 35%, rgba(27,77,181,.30) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 55% at 15% 65%, rgba(10,20,40,.35) 0%, transparent 60%),
+    linear-gradient(170deg, #0A1428 0%, #0e1e38 45%, #0e2040 70%, #0A1428 100%);
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 1;
+  background-image:
+    linear-gradient(rgba(122,143,166,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122,143,166,.025) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+.hero-accent-line {
+  position: absolute; left: 0; top: 50%;
+  width: 3px; height: 38%;
+  background: linear-gradient(180deg, transparent, var(--red), transparent);
+  z-index: 3;
+}
+.hero-content {
+  position: relative; z-index: 10;
+  padding: 80px 64px;
+  max-width: 900px;
+}
+.hero-kicker {
+  font-family: var(--font-h); font-size: 9px; font-weight: 600;
+  letter-spacing: .32em; text-transform: uppercase; color: var(--red);
+  margin-bottom: 28px; display: flex; align-items: center; gap: 12px;
+}
+.hero-kicker::after {
+  content: ''; display: block; width: 40px; height: 1px; background: var(--red); opacity: .5;
+}
+.hero-headline {
+  font-family: var(--font-h); font-weight: 900;
+  text-transform: uppercase; line-height: .92; letter-spacing: -.025em;
+  font-size: clamp(42px, 7vw, 84px);
+  margin-bottom: 28px;
+}
+.hero-sub {
+  font-size: 16px; font-weight: 400;
+  line-height: 1.6;
+  color: var(--chrome); margin-bottom: 44px;
+  max-width: 560px;
+}
+.hero-sub strong { color: var(--white); font-weight: 600; }
+
+.btn-primary {
+  font-family: var(--font-h); font-size: 12px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--white); background: var(--red);
+  padding: 18px 48px; display: inline-block;
+  animation: pulse-cta 2.8s ease-in-out infinite;
+  transition: background .2s;
+}
+.btn-primary:hover { background: var(--red-dark); }
+@keyframes pulse-cta {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196,30,58,.45); }
+  50%       { box-shadow: 0 0 0 18px rgba(196,30,58,0); }
+}
+
+/* ═══════════════════════════════════════════════════════
+   SOCIAL PROOF STRIP
+═══════════════════════════════════════════════════════ */
+.proof-strip {
+  background: var(--navy);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.proof-cell {
+  padding: 28px 24px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,.1);
+}
+.proof-cell:last-child { border-right: none; }
+.proof-num {
+  font-family: var(--font-h); font-weight: 900;
+  font-size: 22px; color: var(--white); margin-bottom: 4px;
+}
+.proof-lbl {
+  font-size: 9px; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.6);
+}
+
+/* ═══════════════════════════════════════════════════════
+   SECTION HELPERS
+═══════════════════════════════════════════════════════ */
+.section { padding: 120px 64px; }
+.section--dark { background: var(--black); }
+.section--navy { background: var(--navy); }
+.section--white { background: #fff; color: var(--black); }
+.section--light { background: #F0F3F7; color: var(--black); }
+
+.section-label {
+  font-family: var(--font-h); font-size: 9px; font-weight: 600;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--chrome);
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: var(--font-h); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(32px, 5vw, 64px); line-height: .95; letter-spacing: -.015em;
+  margin-bottom: 16px;
+}
+.accent-bar {
+  width: 44px; height: 3px; background: var(--red); margin-top: 14px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PACKAGES GRID
+═══════════════════════════════════════════════════════ */
+.packages-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  margin-top: 64px;
+}
+.pkg-card {
+  background: rgba(255,255,255,.06); padding: 48px 36px;
+  border: 1px solid rgba(255,255,255,.1);
+  display: flex; flex-direction: column;
+  transition: transform .22s, box-shadow .22s;
+}
+.pkg-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.3); background: rgba(255,255,255,.1); }
+.pkg-card--featured { border-top: 3px solid var(--white); }
+
+.pkg-tag {
+  display: inline-block;
+  font-family: var(--font-h); font-size: 8px; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  padding: 5px 12px; margin-bottom: 20px;
+  background: rgba(255,255,255,.08); color: rgba(255,255,255,.6);
+}
+.pkg-tag--best { background: var(--red); color: #fff; }
+.pkg-tag--premium { background: rgba(255,255,255,.15); color: #fff; }
+
+.pkg-name {
+  font-family: var(--font-h); font-size: 22px; font-weight: 800;
+  color: #fff; margin-bottom: 8px;
+}
+.pkg-sub {
+  font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; line-height: 1.5;
+}
+.pkg-price {
+  font-family: var(--font-h); font-size: clamp(28px, 3vw, 42px); font-weight: 900;
+  color: #fff; margin-bottom: 24px; line-height: 1;
+}
+.pkg-price small { font-size: 14px; font-weight: 400; color: var(--chrome); }
+.pkg-divider { height: 1px; background: rgba(255,255,255,.08); margin-bottom: 24px; }
+.pkg-features { list-style: none; flex: 1; margin-bottom: 32px; }
+.pkg-feat {
+  font-size: 13px; color: rgba(255,255,255,.72);
+  padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.06);
+  line-height: 1.4;
+}
+.pkg-feat::before { content: '\2192 '; color: #fff; font-weight: 600; }
+
+.pkg-cta {
+  display: inline-block; padding: 16px 28px; text-align: center;
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: #fff; border: 2px solid rgba(255,255,255,.4);
+  transition: background .2s, border-color .2s;
+}
+.pkg-cta:hover { background: #fff; color: var(--navy); border-color: #fff; }
+.pkg-cta--primary { background: var(--red); border-color: var(--red); }
+.pkg-cta--primary:hover { background: var(--red-dark); border-color: var(--red-dark); color: #fff; }
+
+/* ═══════════════════════════════════════════════════════
+   CHECKLIST
+═══════════════════════════════════════════════════════ */
+.checklist {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  margin-top: 48px; max-width: 800px;
+}
+.check-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(10,20,40,.08);
+  font-size: 15px; color: var(--black); line-height: 1.5;
+}
+.check-item::before {
+  content: '';
+  width: 6px; height: 6px; flex-shrink: 0;
+  background: var(--red); margin-top: 7px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   TIMELINE
+═══════════════════════════════════════════════════════ */
+.timeline {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+  margin-top: 64px;
+}
+.timeline-step {
+  background: rgba(255,255,255,.06);
+  padding: 40px 28px;
+  border: 1px solid rgba(255,255,255,.08);
+  position: relative;
+}
+.timeline-num {
+  font-family: var(--font-h); font-size: 48px; font-weight: 900;
+  color: rgba(255,255,255,.08); line-height: 1; margin-bottom: 16px;
+}
+.timeline-title {
+  font-family: var(--font-h); font-size: 14px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--white); margin-bottom: 8px;
+}
+.timeline-desc {
+  font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════════════════ */
+.faq-list { max-width: 800px; margin: 48px auto 0; }
+.faq-item { border-bottom: 1px solid rgba(10,20,40,.08); }
+.faq-item:first-child { border-top: 1px solid rgba(10,20,40,.08); }
+.faq-q {
+  width: 100%; background: none; border: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 28px 0; gap: 24px; text-align: left;
+  font-family: var(--font-h); font-size: 16px; font-weight: 700;
+  color: var(--black); letter-spacing: -.01em;
+  transition: color .2s;
+}
+.faq-q:hover { color: var(--red); }
+.faq-q::after {
+  content: '+'; font-size: 24px; font-weight: 300;
+  color: var(--chrome); flex-shrink: 0;
+  transition: transform .3s, color .3s;
+}
+.faq-item.open .faq-q::after { content: '\2212'; color: var(--red); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s ease, padding .4s ease;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-bottom: 28px; }
+.faq-a p {
+  font-family: var(--font-b); font-size: 14px; line-height: 1.75;
+  color: var(--chrome); margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CONTACT FORM
+═══════════════════════════════════════════════════════ */
+.contact-section { background: var(--black); padding: 120px 64px; }
+.contact-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  align-items: start; max-width: 1100px;
+}
+.contact-form { display: flex; flex-direction: column; gap: 18px; }
+.form-field label {
+  display: block; font-family: var(--font-h); font-size: 10px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .15em;
+  color: var(--chrome); margin-bottom: 6px;
+}
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%; padding: 14px 16px; border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04); color: var(--white);
+  font-family: var(--font-b); font-size: 14px;
+  outline: none; transition: border-color .2s;
+}
+.form-field input::placeholder,
+.form-field select { color: var(--chrome); }
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus { border-color: var(--navy); }
+.form-field select option { background: var(--black); color: var(--white); }
+
+.form-submit {
+  width: 100%; padding: 18px; background: var(--red); color: #fff;
+  border: none; font-family: var(--font-h); font-size: 13px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .14em;
+  cursor: pointer; transition: background .2s; margin-top: 8px;
+}
+.form-submit:hover { background: var(--red-dark); }
+
+.wa-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--white); border: 1px solid rgba(255,255,255,.22);
+  padding: 16px 32px; transition: border-color .2s, background .2s;
+  margin-top: 12px;
+}
+.wa-btn:hover { border-color: var(--white); background: rgba(255,255,255,.05); }
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════ */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(255,255,255,.05);
+  padding: 80px 64px 64px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 180px 1fr 1fr 1fr;
+  gap: 56px; margin-bottom: 56px;
+}
+.footer-brand-tag {
+  margin-top: 14px; font-size: 11px; color: var(--chrome); line-height: 1.5;
+}
+.footer-col-title {
+  font-family: var(--font-h); font-size: 8px; font-weight: 700;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: var(--chrome); margin-bottom: 20px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a {
+  font-size: 13px; color: rgba(255,255,255,.45); transition: color .2s;
+}
+.footer-links a:hover { color: var(--white); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.05);
+  padding-top: 26px; display: flex;
+  justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.footer-copy { font-size: 11px; color: rgba(255,255,255,.25); }
+
+/* ═══════════════════════════════════════════════════════
+   STICKY CTA
+═══════════════════════════════════════════════════════ */
+.sticky-cta {
+  position: fixed; bottom: 32px; right: 32px; z-index: 900;
+  font-family: var(--font-h); font-size: 10px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--white); background: var(--red);
+  padding: 14px 24px;
+  display: flex; align-items: center; gap: 8px;
+  animation: pulse-cta 2.8s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════════════════ */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .nav { padding: 16px 28px; }
+  .nav-menu { display: none; }
+  .hero-content { padding: 60px 28px; }
+  .section { padding: 80px 28px; }
+  .packages-grid { grid-template-columns: 1fr; }
+  .timeline { grid-template-columns: 1fr 1fr; }
+  .checklist { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+  .contact-section { padding: 80px 28px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  footer { padding: 56px 28px 40px; }
+  .proof-strip { grid-template-columns: 1fr 1fr; }
+  .sticky-cta { bottom: 20px; right: 20px; }
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 14px 20px; }
+  .hero-content { padding: 48px 20px; }
+  .hero-headline { font-size: clamp(32px, 7vw, 56px); }
+  .hero-sub { font-size: 14px; margin-bottom: 32px; }
+  .btn-primary { padding: 16px 32px; font-size: 11px; width: 100%; text-align: center; }
+  .section { padding: 60px 20px; }
+  .section-title { font-size: clamp(28px, 7vw, 48px); }
+  .proof-strip { grid-template-columns: 1fr 1fr; }
+  .proof-cell { padding: 20px 16px; }
+  .pkg-card { padding: 32px 24px; }
+  .pkg-cta { width: 100%; text-align: center; }
+  .timeline { grid-template-columns: 1fr; }
+  .timeline-step { padding: 28px 20px; }
+  .faq-q { font-size: 14px; padding: 22px 0; }
+  .contact-section { padding: 60px 20px; }
+  .contact-layout { grid-template-columns: 1fr; gap: 36px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  footer { padding: 40px 20px 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .sticky-cta { bottom: 16px; right: auto; left: 50%; transform: translateX(-50%); font-size: 9px; padding: 12px 20px; }
+}
+
+@media (max-width: 480px) {
+  .nav { padding: 12px 16px; }
+  .nav-btn { padding: 9px 18px; font-size: 9px; }
+  .hero-content { padding: 36px 16px; }
+  .section { padding: 48px 16px; }
+  .proof-strip { grid-template-columns: 1fr; }
+  .proof-cell { padding: 16px 12px; }
+  .pkg-card { padding: 24px 16px; }
+  .faq-q { font-size: 13px; }
+  .contact-section { padding: 48px 16px; }
+  footer { padding: 32px 16px 24px; }
+  .btn-primary { padding: 14px 24px; font-size: 10px; }
+  .wa-btn { padding: 14px 20px; font-size: 10px; width: 100%; text-align: center; justify-content: center; }
+}
+</style>
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Pokazy Lotnicze Extra 300L",
+  "description": "Pokaz akrobacyjny samolotem Extra 300L SP-EKS z Mistrzem Polski i Niemiec Maciejem Kulaszewskim. Eventy firmowe, festiwale, dni miasta.",
+  "provider": {
+    "@type": "Organization",
+    "name": "akrobacja.top",
+    "url": "https://akrobacja.top"
+  },
+  "areaServed": "PL",
+  "offers": [
+    {"@type": "Offer", "name": "Solo Display", "price": "11900", "priceCurrency": "PLN"},
+    {"@type": "Offer", "name": "Event Package", "price": "16900", "priceCurrency": "PLN"},
+    {"@type": "Offer", "name": "Premium Partnership", "priceCurrency": "PLN"}
+  ]
+}
+</script>
+</head>
+
+<body>
+
+<!-- ━━━━ NAVIGATION ━━━━ -->
+<nav class="nav">
+  <a href="/" class="nav-logo" aria-label="akrobacja.top — strona glowna">
+    <img src="akrobacja-logo-mark-light.png" alt="akrobacja.top" height="42" style="width:auto;display:block">
+  </a>
+  <ul class="nav-menu">
+    <li><a href="/#maszyna">Maszyna</a></li>
+    <li><a href="/#pilot">Pilot</a></li>
+    <li><a href="/#sklep">Loty</a></li>
+    <li><a href="/sklep-merch">Sklep</a></li>
+    <li><a href="/pokazy-lotnicze" style="color:var(--white)">Pokazy</a></li>
+    <li><a href="/sponsoring">Sponsoring</a></li>
+    <li><a href="/kalendarz">Kalendarz</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="https://wa.me/48535535221" class="nav-btn">Napisz</a>
+</nav>
+
+<!-- ━━━━ HERO ━━━━ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-accent-line"></div>
+
+  <div class="hero-content">
+    <p class="hero-kicker reveal">Pokazy Lotnicze Extra 300L SP-EKS</p>
+    <h1 class="hero-headline reveal reveal-d1">Pokaz Akrobacyjny Extra&nbsp;300L na Twoim Evencie</h1>
+    <p class="hero-sub reveal reveal-d2">
+      Samolotem <strong>Mistrza Polski i Niemiec</strong>.<br>
+      Od <strong>11 900 PLN</strong>. Ubezpieczenie OC w cenie.
+    </p>
+    <a href="https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20chcia%C5%82bym%20zapyta%C4%87%20o%20wolny%20termin%20na%20pokaz%20lotniczy" class="btn-primary reveal reveal-d3">Zapytaj o wolny termin &rarr;</a>
+  </div>
+</section>
+
+<!-- ━━━━ SOCIAL PROOF BAR ━━━━ -->
+<div class="proof-strip reveal">
+  <div class="proof-cell">
+    <div class="proof-num">50+</div>
+    <div class="proof-lbl">Pokazow w sezonie</div>
+  </div>
+  <div class="proof-cell">
+    <div class="proof-num">Mistrz PL & DE</div>
+    <div class="proof-lbl">Pilot</div>
+  </div>
+  <div class="proof-cell">
+    <div class="proof-num">Extra 300L</div>
+    <div class="proof-lbl">SP-EKS</div>
+  </div>
+  <div class="proof-cell">
+    <div class="proof-num">OC w cenie</div>
+    <div class="proof-lbl">Ubezpieczenie</div>
+  </div>
+</div>
+
+<!-- ━━━━ PACKAGES ━━━━ -->
+<section class="section section--dark" id="pakiety">
+  <div class="reveal">
+    <p class="section-label">Pakiety pokazowe</p>
+    <h2 class="section-title" style="color:var(--white)">Wybierz Pakiet</h2>
+    <div class="accent-bar"></div>
+  </div>
+
+  <div class="packages-grid">
+
+    <div class="pkg-card reveal">
+      <span class="pkg-tag">Podstawowy</span>
+      <h3 class="pkg-name">Solo Display</h3>
+      <p class="pkg-sub">Pojedynczy pokaz akrobacyjny Extra 300L SP-EKS</p>
+      <div class="pkg-price">11 900 <small>PLN</small></div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-features">
+        <li class="pkg-feat">Pokaz akrobacyjny 10-15 minut</li>
+        <li class="pkg-feat">Briefing z organizatorem eventu</li>
+        <li class="pkg-feat">Ubezpieczenie OC pokazu</li>
+        <li class="pkg-feat">Koordynacja z CAA / PAZP</li>
+        <li class="pkg-feat">Dojazd samolotu do 200 km w cenie</li>
+        <li class="pkg-feat">System dymow kolorowych</li>
+      </ul>
+      <a href="https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20pokaz%20Solo%20Display" class="pkg-cta">Zapytaj o termin &rarr;</a>
+    </div>
+
+    <div class="pkg-card pkg-card--featured reveal reveal-d1">
+      <span class="pkg-tag pkg-tag--best">Najczesciej wybierany</span>
+      <h3 class="pkg-name">Event Package</h3>
+      <p class="pkg-sub">Pelna oprawa lotnicza Twojego eventu</p>
+      <div class="pkg-price">16 900 <small>PLN</small></div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-features">
+        <li class="pkg-feat">2-3 pokazy w ciagu dnia</li>
+        <li class="pkg-feat">Strefa meet & greet przy samolocie</li>
+        <li class="pkg-feat">Zdjecia samolotu do PR</li>
+        <li class="pkg-feat">Koordynacja z CAA / PAZP</li>
+        <li class="pkg-feat">Ubezpieczenie OC + NNW</li>
+        <li class="pkg-feat">System dymow kolorowych</li>
+        <li class="pkg-feat">Dojazd samolotu w cenie</li>
+      </ul>
+      <a href="https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20Event%20Package%20na%20pokazy" class="pkg-cta pkg-cta--primary">Zapytaj o wycene &rarr;</a>
+    </div>
+
+    <div class="pkg-card reveal reveal-d2">
+      <span class="pkg-tag pkg-tag--premium">Premium</span>
+      <h3 class="pkg-name">Premium Partnership</h3>
+      <p class="pkg-sub">Wylaczna wspolpraca - pelny dzien z samolotem i pilotem</p>
+      <div class="pkg-price" style="font-size:clamp(22px,2.5vw,32px)">Wycena indywidualna</div>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-features">
+        <li class="pkg-feat">Pelny dzien z samolotem i pilotem</li>
+        <li class="pkg-feat">Pokazy + loty VIP dla gosci</li>
+        <li class="pkg-feat">Branding samolotu logo eventu</li>
+        <li class="pkg-feat">Relacja foto + video z pokazu</li>
+        <li class="pkg-feat">Pelna koordynacja logistyczna</li>
+        <li class="pkg-feat">Obecnosc w PR eventu</li>
+      </ul>
+      <a href="https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20Premium%20Partnership" class="pkg-cta">Porozmawiajmy &rarr;</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ━━━━ CO OTRZYMUJESZ ━━━━ -->
+<section class="section section--light">
+  <div class="reveal">
+    <p class="section-label" style="color:var(--chrome)">W cenie pokazu</p>
+    <h2 class="section-title" style="color:var(--black)">Co Otrzymujesz</h2>
+    <div class="accent-bar"></div>
+  </div>
+
+  <div class="checklist reveal reveal-d1">
+    <div class="check-item">Koordynacja z organizatorem eventu</div>
+    <div class="check-item">Plan bezpieczenstwa i briefing operacyjny</div>
+    <div class="check-item">Ubezpieczenie OC pokazu</div>
+    <div class="check-item">Koordynacja z CAA / PAZP</div>
+    <div class="check-item">System dymow kolorowych</div>
+    <div class="check-item">Opcja brandingu samolotu logo eventu</div>
+    <div class="check-item">Materialy foto/video do wykorzystania w PR</div>
+  </div>
+</section>
+
+<!-- ━━━━ JAK TO DZIALA ━━━━ -->
+<section class="section section--dark">
+  <div class="reveal">
+    <p class="section-label">Proces</p>
+    <h2 class="section-title" style="color:var(--white)">Jak To Dziala</h2>
+    <div class="accent-bar"></div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-step reveal">
+      <div class="timeline-num">01</div>
+      <div class="timeline-title">Kontakt</div>
+      <div class="timeline-desc">Ustalenie terminu i lokalizacji. Minimum 60 dni przed planowanym eventem.</div>
+    </div>
+    <div class="timeline-step reveal reveal-d1">
+      <div class="timeline-num">02</div>
+      <div class="timeline-title">Wizja lokalna</div>
+      <div class="timeline-desc">Koordynacja przestrzeni powietrznej i ocena mozliwosci operacyjnych.</div>
+    </div>
+    <div class="timeline-step reveal reveal-d2">
+      <div class="timeline-num">03</div>
+      <div class="timeline-title">Briefing</div>
+      <div class="timeline-desc">Spotkanie z organizatorem. Plan pokazu, scenariusz, bezpieczenstwo.</div>
+    </div>
+    <div class="timeline-step reveal reveal-d3">
+      <div class="timeline-num">04</div>
+      <div class="timeline-title">Dzien eventu</div>
+      <div class="timeline-desc">Pokaz akrobacyjny + opcje dodatkowe: strefa meet & greet, sesja foto.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ FAQ ━━━━ -->
+<section class="section section--white" id="faq">
+  <div class="reveal" style="text-align:center">
+    <p class="section-label" style="color:var(--chrome)">Pytania i odpowiedzi</p>
+    <h2 class="section-title" style="color:var(--black)">FAQ</h2>
+    <div class="accent-bar" style="margin-inline:auto"></div>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-q">Ile przestrzeni potrzebuje pokaz?</button>
+      <div class="faq-a"><p>Pokaz akrobacyjny wymaga strefy o promieniu ok. 1 km od punktu centralnego. Dokladne wymagania ustalamy indywidualnie na podstawie lokalizacji i rodzaju pokazu.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d1">
+      <button class="faq-q">Czy pokaz wymaga pozwolenia ULC?</button>
+      <div class="faq-a"><p>Tak, pokazy lotnicze wymagaja zgody ULC / PAZP. Cala koordynacja z urzedami jest po naszej stronie i wliczona w cene pakietu.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d1">
+      <button class="faq-q">Co w razie zlej pogody?</button>
+      <div class="faq-a"><p>Bezpieczenstwo jest priorytetem. Jesli warunki pogodowe nie pozwalaja na pokaz, ustalamy termin zastepczy. Decyzja o odwolaniu zapada najpozniej 24h przed eventem.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d2">
+      <button class="faq-q">Ile czasu wczesniej zamowic?</button>
+      <div class="faq-a"><p>Zalecamy minimum 60 dni przed planowanym eventem. Wynika to z procedur koordynacji przestrzeni powietrznej z PAZP.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d2">
+      <button class="faq-q">Czy moge zamowic dym w kolorach firmy?</button>
+      <div class="faq-a"><p>Tak, dysponujemy systemem dymow kolorowych. Kolory mozna dobrac do identyfikacji wizualnej firmy lub eventu. Dostepne kolory ustalamy przy zamowieniu.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d3">
+      <button class="faq-q">Czy pokaz mozna przeprowadzic w dowolnym miejscu?</button>
+      <div class="faq-a"><p>Pokaz mozna przeprowadzic w wiekszosci lokalizacji w Polsce. Kluczowe sa warunki przestrzeni powietrznej i bezpieczenstwa. Oceniamy kazda lokalizacje indywidualnie.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━ CONTACT FORM ━━━━ -->
+<section class="contact-section" id="kontakt">
+  <div class="contact-layout">
+    <div>
+      <p class="section-label reveal">Zapytanie o pokaz</p>
+      <h2 class="section-title reveal reveal-d1" style="color:var(--white);font-size:clamp(28px,4vw,48px)">Wyslij Zapytanie</h2>
+      <div class="accent-bar reveal reveal-d1" style="margin-bottom:28px"></div>
+      <p style="font-size:14px;color:var(--chrome);line-height:1.7;max-width:380px;margin-bottom:28px" class="reveal reveal-d2">
+        Wypelnij formularz lub napisz bezposrednio na WhatsApp. Odpowiadamy w ciagu 24h.
+      </p>
+      <a href="https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20chcia%C5%82bym%20zapyta%C4%87%20o%20pokaz%20lotniczy%20na%20moim%20evencie" class="wa-btn reveal reveal-d3">
+        WhatsApp: +48 535 535 221
+      </a>
+    </div>
+
+    <form class="contact-form reveal reveal-d2" id="eventForm" onsubmit="submitEventForm(event)">
+      <div class="form-field">
+        <label for="eventDate">Data eventu</label>
+        <input type="date" id="eventDate" required>
+      </div>
+      <div class="form-field">
+        <label for="eventLocation">Lokalizacja</label>
+        <input type="text" id="eventLocation" placeholder="Miasto, miejsce" required>
+      </div>
+      <div class="form-field">
+        <label for="eventType">Typ eventu</label>
+        <select id="eventType" required>
+          <option value="" disabled selected>Wybierz typ eventu</option>
+          <option value="Dni miasta / gminy">Dni miasta / gminy</option>
+          <option value="Event firmowy">Event firmowy</option>
+          <option value="Festiwal">Festiwal</option>
+          <option value="Piknik rodzinny">Piknik rodzinny</option>
+          <option value="Impreza sportowa">Impreza sportowa</option>
+          <option value="Otwarcie / inauguracja">Otwarcie / inauguracja</option>
+          <option value="Inny">Inny</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="eventName">Imie i nazwisko</label>
+        <input type="text" id="eventName" placeholder="Jan Kowalski" required>
+      </div>
+      <div class="form-field">
+        <label for="eventEmail">Email</label>
+        <input type="email" id="eventEmail" placeholder="jan@firma.pl" required>
+      </div>
+      <div class="form-field">
+        <label for="eventPhone">Telefon</label>
+        <input type="tel" id="eventPhone" placeholder="+48 500 000 000" required>
+      </div>
+      <button type="submit" class="form-submit">Wyslij zapytanie &rarr;</button>
+    </form>
+  </div>
+</section>
+
+<!-- ━━━━ FOOTER ━━━━ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img src="akrobacja-logo-light.png" alt="akrobacja.top" class="footer-logo"
+           style="height:72px;width:auto;display:block;margin-bottom:16px">
+      <p class="footer-brand-tag">Extra 300L SP-EKS<br>Radom-Piastow EPRP<br><span style="color:var(--chrome);font-size:11px;display:block;margin-top:6px">Doradztwo Pawel Mamcarz (DTO-58)<br>Pilot: <strong style="color:var(--white)">Maciej Kulaszewski</strong></span></p>
+    </div>
+    <div>
+      <p class="footer-col-title">Nawigacja</p>
+      <ul class="footer-links">
+        <li><a href="/">Strona Glowna</a></li>
+        <li><a href="/#maszyna">Maszyna SP-EKS</a></li>
+        <li><a href="/#pilot">Maciej Kulaszewski</a></li>
+        <li><a href="/#sklep">Sklep z Voucherami</a></li>
+        <li><a href="/sklep-merch">Sklep Merch</a></li>
+        <li><a href="/pokazy-lotnicze">Pokazy Lotnicze</a></li>
+        <li><a href="/sponsoring">Sponsoring</a></li>
+        <li><a href="/kalendarz">Kalendarz</a></li>
+        <li><a href="/konto">Konto pilota</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Kontakt</p>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/48535535221">+48 535 535 221</a></li>
+        <li><a href="mailto:dto@akrobacja.top">dto@akrobacja.top</a></li>
+        <li><a href="https://maps.app.goo.gl/radom-piastow-eprp" target="_blank" rel="noopener">Lotnisko Radom-Piastow (EPRP)</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Informacje</p>
+      <ul class="footer-links">
+        <li><a href="/regulamin">Regulamin</a></li>
+        <li><a href="/regulamin#rodo">Polityka Prywatnosci (RODO)</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 akrobacja.top &middot; Doradztwo Pawel Mamcarz (DTO-58) &middot; Pilot: Maciej Kulaszewski &middot; Extra 300L SP-EKS &middot; EPRP</p>
+    <img src="akrobacja-logo-light.png" alt="" aria-hidden="true"
+         style="height:22px;width:auto;display:block;opacity:0.6">
+  </div>
+</footer>
+
+<!-- ━━━━ STICKY CTA ━━━━ -->
+<a href="https://wa.me/48535535221" class="sticky-cta">
+  <img src="akrobacja-logo-mark-light.png" alt="" aria-hidden="true"
+       style="height:18px;width:auto;display:inline-block;vertical-align:middle;margin-right:4px">
+  +48 535 535 221
+</a>
+
+<!-- ━━━━ SCRIPTS ━━━━ -->
+<script>
+(function(){
+  /* Scroll reveal */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+})();
+
+/* Form submit via WhatsApp */
+function submitEventForm(e) {
+  e.preventDefault();
+  const data = {
+    date: document.getElementById('eventDate').value,
+    location: document.getElementById('eventLocation').value,
+    type: document.getElementById('eventType').value,
+    name: document.getElementById('eventName').value,
+    email: document.getElementById('eventEmail').value,
+    phone: document.getElementById('eventPhone').value,
+  };
+  const msg = `Dzien dobry, chcialabym/chcialbym zamowic pokaz lotniczy.\n\nData: ${data.date}\nLokalizacja: ${data.location}\nTyp eventu: ${data.type}\nImie: ${data.name}\nEmail: ${data.email}\nTelefon: ${data.phone}`;
+  window.open('https://wa.me/48535535221?text=' + encodeURIComponent(msg), '_blank');
+}
+</script>
+<script src="/chat-widget.js" defer></script>
+</body>
+</html>

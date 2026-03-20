@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalendarz lotów — akrobacja.top</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#1B4DB5; --navy-mid:#2258C3; --navy-deep:#0A1428; --red:#C41E3A; --red-dark:#A31830; --white:#FFFFFF; --black:#0A1428; --chrome:#7A8FA6; --grey-lt:#C8D4E0; --green:#28a745; --font-h:'Montserrat',sans-serif; --font-b:'Inter',sans-serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:var(--font-b); background:var(--white); color:#1a1a2e; }
+
+  .topbar { background:rgba(10,20,40,0.97); backdrop-filter:blur(16px); padding:16px 32px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 1px 0 rgba(255,255,255,0.05); position:sticky; top:0; z-index:50; }
+  .topbar a { color:#fff; text-decoration:none; font-family:var(--font-h); font-size:14px; font-weight:700; }
+  .topbar .right { display:flex; gap:16px; align-items:center; }
+  .topbar .right a { font-size:12px; opacity:.7; }
+  .topbar .pilot-badge { background:var(--green); color:#fff; padding:4px 12px; font-size:11px; font-weight:600; font-family:var(--font-h); }
+
+  .container { max-width:960px; margin:0 auto; padding:32px 24px 80px; }
+
+  .page-title { font-family:var(--font-h); font-size:24px; color:var(--navy); margin-bottom:4px; }
+  .page-sub { color:var(--chrome); font-size:13px; margin-bottom:32px; }
+
+  /* Legend */
+  .legend { display:flex; gap:20px; margin-bottom:24px; flex-wrap:wrap; }
+  .legend-item { display:flex; align-items:center; gap:6px; font-size:11px; color:#666; }
+  .legend-dot { width:12px; height:12px; }
+  .legend-dot.free { background:#d4edda; border:1px solid var(--green); }
+  .legend-dot.partial { background:#fff3cd; border:1px solid #ffc107; }
+  .legend-dot.full { background:#f8d7da; border:1px solid #dc3545; }
+  .legend-dot.weather { background:#f0f4f8; border:1px solid #a0b4c8; }
+  .legend-dot.blocked { background:repeating-linear-gradient(45deg,#eee,#eee 2px,#ddd 2px,#ddd 4px); border:1px solid #ccc; }
+
+  /* Calendar */
+  .cal-nav { display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+  .cal-nav button { background:var(--navy); color:#fff; border:none; padding:10px 20px; cursor:pointer; font-family:var(--font-h); font-size:12px; font-weight:600; }
+  .cal-nav button:hover { background:#0A1428; }
+  .cal-month { font-family:var(--font-h); font-size:20px; font-weight:800; color:var(--navy); }
+
+  .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; margin-bottom:32px; }
+  .cal-head { text-align:center; font-size:10px; font-weight:700; color:var(--chrome); padding:10px; text-transform:uppercase; letter-spacing:.1em; font-family:var(--font-h); }
+  .cal-day { text-align:center; padding:14px 6px; font-size:14px; font-weight:600; cursor:pointer; border:2px solid transparent; transition:all .15s; min-height:70px; background:#fff; position:relative; }
+  .cal-day:hover:not(.cd-disabled):not(.cd-empty) { border-color:var(--navy); }
+  .cal-day.cd-empty { cursor:default; background:transparent; }
+  .cal-day.cd-disabled { color:#ccc; cursor:default; background:#fafafa; }
+  .cal-day.cd-free { border-left:3px solid var(--green); }
+  .cal-day.cd-partial { border-left:3px solid #ffc107; }
+  .cal-day.cd-full { border-left:3px solid #dc3545; color:#999; }
+  .cal-day.cd-blocked { background:repeating-linear-gradient(45deg,transparent,transparent 3px,rgba(0,0,0,.03) 3px,rgba(0,0,0,.03) 6px); color:#aaa; cursor:default; }
+  .cal-day.cd-weather { background:#f0f4f8; color:#7a8fa3; cursor:pointer; border-left:3px solid #a0b4c8; }
+  .cal-day.cd-weather .cd-slots { color:#7a8fa3; }
+  .cal-day.cd-selected { background:var(--navy); color:#fff; border-color:var(--navy); }
+  .cal-day .cd-slots { display:block; font-size:9px; margin-top:4px; font-weight:400; }
+  .cal-day.cd-free .cd-slots { color:var(--green); }
+  .cal-day.cd-partial .cd-slots { color:#856404; }
+  .cal-day.cd-full .cd-slots { color:#dc3545; }
+  .cal-day.cd-selected .cd-slots { color:rgba(255,255,255,.7); }
+  .cal-day .cd-weather { display:block; font-size:8px; margin-top:2px; font-weight:400; color:var(--chrome); }
+  .cal-day.cd-selected .cd-weather { color:rgba(255,255,255,.5); }
+
+  /* Day detail panel */
+  .day-panel { background:#fff; border:2px solid var(--navy); padding:32px; margin-bottom:32px; display:none; }
+  .day-panel.active { display:block; }
+  .day-panel-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+  .day-panel-title { font-family:var(--font-h); font-size:18px; color:var(--navy); }
+  .day-panel-close { background:none; border:none; font-size:24px; cursor:pointer; color:var(--chrome); }
+  .day-panel-info { font-size:12px; color:var(--chrome); margin-bottom:20px; }
+  .day-panel-info strong { color:var(--navy); }
+
+  .slots-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:24px; }
+  .slot { padding:14px 8px; text-align:center; border:2px solid #e8ecf1; cursor:pointer; transition:all .15s; background:#fff; }
+  .slot:hover:not(.sl-taken):not(.sl-bad) { border-color:var(--navy); }
+  .slot.sl-selected { background:var(--navy); color:#fff; border-color:var(--navy); }
+  .slot.sl-taken { background:#f8f8f8; color:#ccc; cursor:default; }
+  .slot.sl-bad { background:#fff5f5; color:#daa; cursor:default; }
+  .slot-time { font-family:var(--font-h); font-size:14px; font-weight:700; }
+  .slot-info { font-size:10px; color:var(--chrome); margin-top:2px; }
+  .slot.sl-selected .slot-info { color:rgba(255,255,255,.7); }
+  .slot.sl-taken .slot-info { color:#ccc; }
+
+  /* Booking form */
+  .book-form { border-top:1px solid #eee; padding-top:20px; }
+  .book-form.hidden { display:none; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+  .field label { display:block; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; color:var(--chrome); margin-bottom:4px; font-family:var(--font-h); }
+  .field input, .field select, .field textarea { width:100%; padding:10px; border:1px solid #ddd; font-size:13px; font-family:var(--font-b); }
+  .field input:focus, .field textarea:focus { border-color:var(--navy); outline:none; }
+  .field textarea { height:60px; resize:vertical; }
+
+  .type-select { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+  .type-btn { padding:10px 16px; border:2px solid #e8ecf1; background:#fff; cursor:pointer; font-size:12px; font-family:var(--font-h); font-weight:600; transition:all .15s; }
+  .type-btn:hover { border-color:var(--navy); }
+  .type-btn.selected { background:var(--navy); color:#fff; border-color:var(--navy); }
+
+  .btn { padding:14px 28px; font-family:var(--font-h); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; border:none; cursor:pointer; }
+  .btn-primary { background:var(--red); color:#fff; }
+  .btn-primary:hover { background:#A31830; }
+  .btn-primary:disabled { opacity:.5; cursor:wait; }
+
+  .msg { padding:14px 20px; font-size:13px; margin:16px 0; }
+  .msg-ok { background:#d4edda; color:#155724; }
+  .msg-err { background:#f8d7da; color:#721c24; }
+
+  .hidden { display:none; }
+  .loading { text-align:center; padding:40px; color:var(--chrome); }
+
+  /* ═══ RESPONSIVE — TABLET ═══ */
+  @media (max-width: 1024px) {
+    .topbar { padding: 14px 24px; }
+    .container { padding: 28px 20px 60px; }
+    .slots-grid { grid-template-columns: repeat(3, 1fr); }
+    .day-panel { padding: 24px; }
+    .form-row { grid-template-columns: 1fr; gap: 10px; }
+  }
+
+  /* ═══ RESPONSIVE — MOBILE ═══ */
+  @media (max-width: 768px) {
+    .topbar { padding: 12px 20px; }
+    .topbar a { font-size: 13px; }
+    .topbar .right { gap: 10px; }
+    .topbar .right a { font-size: 11px; }
+    .container { padding: 24px 16px 48px; }
+    .page-title { font-size: 20px; }
+    .page-sub { font-size: 12px; margin-bottom: 24px; }
+    .legend { gap: 12px; margin-bottom: 20px; }
+    .legend-item { font-size: 10px; }
+    .cal-nav button { padding: 8px 14px; font-size: 11px; }
+    .cal-month { font-size: 16px; }
+    .cal-grid { gap: 1px; }
+    .cal-head { padding: 8px 2px; font-size: 9px; }
+    .cal-day { padding: 10px 4px; font-size: 12px; min-height: 56px; }
+    .cal-day .cd-slots { font-size: 8px; }
+    .slots-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .slot { padding: 12px 6px; }
+    .slot-time { font-size: 13px; }
+    .slot-info { font-size: 9px; }
+    .day-panel { padding: 20px 16px; }
+    .day-panel-title { font-size: 16px; }
+    .day-panel-info { font-size: 11px; }
+    .type-select { gap: 6px; }
+    .type-btn { padding: 8px 12px; font-size: 11px; }
+    .btn { padding: 12px 20px; font-size: 11px; width: 100%; text-align: center; }
+  }
+
+  /* ═══ RESPONSIVE — SMALL MOBILE ═══ */
+  @media (max-width: 480px) {
+    .topbar { padding: 10px 12px; }
+    .container { padding: 20px 12px 40px; }
+    .page-title { font-size: 18px; }
+    .cal-nav { flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .cal-nav button { padding: 7px 12px; font-size: 10px; }
+    .cal-month { font-size: 14px; width: 100%; text-align: center; }
+    .cal-day { padding: 8px 2px; font-size: 11px; min-height: 48px; }
+    .cal-day .cd-slots { font-size: 7px; }
+    .slots-grid { grid-template-columns: 1fr 1fr; }
+    .type-btn { padding: 7px 10px; font-size: 10px; flex: 1; text-align: center; }
+    .day-panel { padding: 16px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/">akrobacja.top</a>
+  <div class="right">
+    <a href="/" id="homeLink">Strona główna</a>
+    <a href="/konto" id="accountLink">Konto pilota</a>
+    <span class="pilot-badge hidden" id="pilotBadge"></span>
+  </div>
+</div>
+
+<div class="container">
+  <h1 class="page-title">Kalendarz lotów</h1>
+  <p class="page-sub">Wybierz dzień i slot czasowy. Każda rezerwacja wymaga zatwierdzenia.</p>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot free"></div> Wolne sloty</div>
+    <div class="legend-item"><div class="legend-dot partial"></div> Ostatnie miejsca</div>
+    <div class="legend-item"><div class="legend-dot full"></div> Brak miejsc</div>
+    <div class="legend-item"><div class="legend-dot weather"></div> &#9729; Pogoda — nie latamy</div>
+    <div class="legend-item"><div class="legend-dot blocked"></div> Zablokowane</div>
+  </div>
+
+  <div class="cal-nav">
+    <button onclick="prevMonth()">← Poprzedni</button>
+    <span class="cal-month" id="calMonth"></span>
+    <button onclick="nextMonth()">Następny →</button>
+  </div>
+  <div class="cal-grid" id="calGrid"></div>
+
+  <!-- Day detail panel -->
+  <div class="day-panel" id="dayPanel">
+    <div class="day-panel-header">
+      <div class="day-panel-title" id="dayTitle"></div>
+      <button class="day-panel-close" onclick="closePanel()">&times;</button>
+    </div>
+    <div class="day-panel-info" id="dayInfo"></div>
+    <div class="slots-grid" id="slotsGrid"></div>
+
+    <!-- Booking form -->
+    <div class="book-form hidden" id="bookForm">
+      <div style="font-family:var(--font-h);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px">Typ lotu</div>
+      <div class="type-select" id="typeSelect">
+        <div class="type-btn" data-type="voucher" onclick="selectType(this)">Voucher</div>
+        <div class="type-btn" data-type="proficiency" onclick="selectType(this)">Lot doskonalący</div>
+        <div class="type-btn" data-type="training" onclick="selectType(this)">Szkolenie</div>
+        <div class="type-btn" data-type="course" onclick="selectType(this)">Kurs FCL.800</div>
+      </div>
+
+      <div id="voucherField" class="hidden" style="margin-bottom:12px">
+        <div class="field"><label>Kod vouchera</label><input type="text" id="voucherCode" placeholder="AKR-XXXX-XXXX" style="text-transform:uppercase"></div>
+      </div>
+      <div id="courseField" class="hidden" style="margin-bottom:12px">
+        <div class="field"><label>ID kursu</label><input type="text" id="courseId"></div>
+      </div>
+
+      <div id="guestFields">
+        <div class="form-row">
+          <div class="field"><label>Imię i nazwisko *</label><input type="text" id="bookName"></div>
+          <div class="field"><label>Email *</label><input type="email" id="bookEmail"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Telefon</label><input type="tel" id="bookPhone" placeholder="+48..."></div>
+          <div class="field"><label>Uwagi</label><input type="text" id="bookNotes" placeholder="Opcjonalnie..."></div>
+        </div>
+      </div>
+
+      <div id="pilotInfo" class="hidden" style="margin-bottom:16px;padding:12px;background:#d4edda;color:#155724;font-size:13px"></div>
+
+      <button class="btn btn-primary" onclick="submitBooking()" id="submitBtn" disabled>Wybierz typ lotu</button>
+      <div id="bookMsg"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const MONTHS_PL = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
+const DAYS_PL = ['Pn','Wt','Śr','Cz','Pt','Sb','Nd'];
+
+let calMonth = new Date().getMonth();
+let calYear = new Date().getFullYear();
+let selectedDate = null;
+let selectedSlot = null;
+let selectedType = null;
+let pilot = null;
+let dayCache = {};
+
+// Check if pilot logged in
+const pilotToken = localStorage.getItem('pilot_token');
+if (pilotToken) {
+  fetch('/api/auth/profile', { headers: { 'Authorization': `Bearer ${pilotToken}` } })
+    .then(r => r.json())
+    .then(data => {
+      if (data.pilot && data.pilot.name) {
+        pilot = data.pilot;
+        document.getElementById('pilotBadge').textContent = pilot.name;
+        document.getElementById('pilotBadge').classList.remove('hidden');
+        document.getElementById('accountLink').textContent = 'Moje konto';
+      }
+    }).catch(() => {});
+}
+
+renderCalendar();
+loadMonthAvailability();
+
+function renderCalendar() {
+  document.getElementById('calMonth').textContent = `${MONTHS_PL[calMonth]} ${calYear}`;
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = DAYS_PL.map(d => `<div class="cal-head">${d}</div>`).join('');
+
+  const firstDay = new Date(calYear, calMonth, 1);
+  let startDay = firstDay.getDay() - 1;
+  if (startDay < 0) startDay = 6;
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  const today = new Date().toISOString().split('T')[0];
+
+  for (let i = 0; i < startDay; i++) grid.innerHTML += '<div class="cal-day cd-empty"></div>';
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const ds = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const isPast = ds < today;
+    const cached = dayCache[ds];
+    let cls = isPast ? 'cd-disabled' : '';
+    let slotsText = '';
+
+    if (!isPast && cached) {
+      if (cached.blocked) { cls = 'cd-blocked'; slotsText = cached.reason || 'zablokowane'; }
+      else if (cached.allWeatherBad) { cls = 'cd-weather'; slotsText = '&#9729; nie latamy'; }
+      else if (cached.free === 0 && cached.weatherBad > 0) { cls = 'cd-weather'; slotsText = '&#9729; pogoda'; }
+      else if (cached.free === 0) { cls = 'cd-full'; slotsText = 'brak miejsc'; }
+      else if (cached.free <= 2) { cls = 'cd-partial'; slotsText = `${cached.free} wolne`; }
+      else { cls = 'cd-free'; slotsText = `${cached.free} wolnych`; }
+    }
+
+    if (ds === selectedDate) cls += ' cd-selected';
+
+    grid.innerHTML += `<div class="cal-day ${cls}" data-date="${ds}" onclick="openDay('${ds}')">
+      ${d}
+      ${slotsText ? `<span class="cd-slots">${slotsText}</span>` : ''}
+    </div>`;
+  }
+}
+
+async function loadMonthAvailability() {
+  const today = new Date().toISOString().split('T')[0];
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+  // Load each day in parallel (max 7 days ahead for weather, all for slots)
+  const promises = [];
+  for (let d = 1; d <= daysInMonth; d++) {
+    const ds = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    if (ds < today || dayCache[ds]) continue;
+    promises.push(
+      fetch(`/api/calendar/slots?date=${ds}`)
+        .then(r => r.json())
+        .then(data => {
+          if (!data.available && data.reason) {
+            dayCache[ds] = { blocked: true, reason: data.reason, free: 0, total: 0 };
+          } else {
+            const slots = data.slots || [];
+            const free = slots.filter(s => s.available).length;
+            const total = slots.length;
+            const booked = slots.filter(s => s.booked).length;
+            const weatherBad = slots.filter(s => !s.booked && !s.available).length;
+            const allWeatherBad = data.weather_available && weatherBad > 0 && free === 0 && booked === 0;
+            dayCache[ds] = { blocked: false, free, total, booked, weatherBad, allWeatherBad, data };
+          }
+        })
+        .catch(() => {})
+    );
+  }
+  await Promise.all(promises);
+  renderCalendar();
+}
+
+async function openDay(ds) {
+  const today = new Date().toISOString().split('T')[0];
+  if (ds < today) return;
+
+  const cached = dayCache[ds];
+  if (cached?.blocked) return;
+
+  selectedDate = ds;
+  selectedSlot = null;
+  selectedType = null;
+  renderCalendar();
+
+  const panel = document.getElementById('dayPanel');
+  panel.classList.add('active');
+
+  const date = new Date(ds + 'T12:00:00');
+  const dayName = ['niedziela','poniedziałek','wtorek','środa','czwartek','piątek','sobota'][date.getDay()];
+  document.getElementById('dayTitle').textContent = `${parseInt(ds.split('-')[2])} ${MONTHS_PL[parseInt(ds.split('-')[1])-1]} ${ds.split('-')[0]}, ${dayName}`;
+
+  // Load or use cached slots
+  let data;
+  if (cached?.data) {
+    data = cached.data;
+  } else {
+    document.getElementById('slotsGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--chrome)">Ładowanie...</div>';
+    const res = await fetch(`/api/calendar/slots?date=${ds}`);
+    data = await res.json();
+  }
+
+  // Daylight info
+  const dl = data.daylight;
+  document.getElementById('dayInfo').innerHTML = dl
+    ? `Wschód <strong>${dl.sunrise}</strong> · Zachód <strong>${dl.sunset}</strong> · ${Math.floor(dl.daylightMinutes/60)}h ${dl.daylightMinutes%60}min dnia${data.weather_available ? '' : ' · <span style="color:var(--chrome)">prognoza pogody niedostępna (>7 dni)</span>'}`
+    : '';
+
+  // Render slots
+  if (!data.slots?.length) {
+    document.getElementById('slotsGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--chrome)">Brak slotów w tym dniu</div>';
+    return;
+  }
+
+  document.getElementById('slotsGrid').innerHTML = data.slots.map(s => {
+    const cls = s.booked ? 'sl-taken' : !s.available ? 'sl-bad' : '';
+    const info = s.booked ? 'zajęty' : !s.available ? (s.weather?.reason || 'niedostępny') :
+      (s.weather ? `${s.weather.temp_c}° · ${s.weather.wind_kmh} km/h` : 'dostępny');
+    return `<div class="slot ${cls}" onclick="selectSlot(this,'${s.start}')" data-start="${s.start}">
+      <div class="slot-time">${s.start}–${s.end}</div>
+      <div class="slot-info">${info}</div>
+    </div>`;
+  }).join('');
+
+  // Reset form
+  document.getElementById('bookForm').classList.add('hidden');
+  document.getElementById('bookMsg').innerHTML = '';
+  document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('submitBtn').textContent = 'Wybierz typ lotu';
+}
+
+function closePanel() {
+  document.getElementById('dayPanel').classList.remove('active');
+  selectedDate = null;
+  renderCalendar();
+}
+
+function selectSlot(el, start) {
+  if (el.classList.contains('sl-taken') || el.classList.contains('sl-bad')) return;
+  document.querySelectorAll('.slot').forEach(s => s.classList.remove('sl-selected'));
+  el.classList.add('sl-selected');
+  selectedSlot = start;
+
+  // Show booking form
+  const form = document.getElementById('bookForm');
+  form.classList.remove('hidden');
+
+  // If pilot is logged in, hide guest fields and show info
+  if (pilot && pilot.name && pilot.email) {
+    document.getElementById('guestFields').classList.add('hidden');
+    document.getElementById('pilotInfo').classList.remove('hidden');
+    document.getElementById('pilotInfo').textContent = `Rezerwacja jako ${pilot.name} (${pilot.email})`;
+    document.getElementById('bookName').value = pilot.name;
+    document.getElementById('bookEmail').value = pilot.email;
+    if (pilot.phone) document.getElementById('bookPhone').value = pilot.phone;
+  } else {
+    document.getElementById('guestFields').classList.remove('hidden');
+    document.getElementById('pilotInfo').classList.add('hidden');
+  }
+
+  updateSubmitBtn();
+}
+
+function selectType(el) {
+  document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedType = el.dataset.type;
+  document.getElementById('voucherField').classList.toggle('hidden', selectedType !== 'voucher');
+  document.getElementById('courseField').classList.toggle('hidden', selectedType !== 'course');
+  updateSubmitBtn();
+}
+
+function updateSubmitBtn() {
+  const btn = document.getElementById('submitBtn');
+  if (selectedSlot && selectedType) {
+    btn.disabled = false;
+    btn.textContent = 'Zarezerwuj ' + selectedSlot + ' →';
+  } else {
+    btn.disabled = true;
+    btn.textContent = selectedSlot ? 'Wybierz typ lotu' : 'Wybierz godzinę';
+  }
+}
+
+async function submitBooking() {
+  const name = document.getElementById('bookName').value.trim();
+  const email = document.getElementById('bookEmail').value.trim();
+  if (!name || !email) { alert('Podaj imię i email (lub zaloguj się na /konto)'); return; }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Rezerwuję...';
+
+  const body = {
+    date: selectedDate,
+    start_time: selectedSlot,
+    type: selectedType,
+    customer_name: name,
+    customer_email: email,
+    customer_phone: document.getElementById('bookPhone').value.trim() || undefined,
+    notes: document.getElementById('bookNotes')?.value.trim() || undefined,
+  };
+
+  if (selectedType === 'voucher') body.voucher_code = document.getElementById('voucherCode').value.trim().toUpperCase();
+  if (selectedType === 'course') body.course_id = document.getElementById('courseId').value.trim();
+
+  try {
+    const res = await fetch('/api/calendar/book', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+
+    document.getElementById('bookMsg').innerHTML = `
+      <div class="msg msg-ok">
+        <strong>Rezerwacja złożona!</strong> ${selectedDate} o ${selectedSlot}<br>
+        Oczekuje na zatwierdzenie — potwierdzenie na ${email}.<br>
+        ${pilot ? '<a href="/konto" style="color:#155724;font-weight:600">Zobacz na koncie →</a>' : '<a href="/konto" style="color:#155724;font-weight:600">Załóż konto pilota →</a>'}
+      </div>`;
+    document.getElementById('bookForm').classList.add('hidden');
+
+    // Update cache
+    if (dayCache[selectedDate]) dayCache[selectedDate].free = Math.max(0, dayCache[selectedDate].free - 1);
+    renderCalendar();
+  } catch (err) {
+    document.getElementById('bookMsg').innerHTML = `<div class="msg msg-err">${err.message}</div>`;
+  } finally {
+    btn.disabled = false;
+    updateSubmitBtn();
+  }
+}
+
+function prevMonth() {
+  calMonth--;
+  if (calMonth < 0) { calMonth = 11; calYear--; }
+  renderCalendar();
+  loadMonthAvailability();
+}
+
+function nextMonth() {
+  calMonth++;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  renderCalendar();
+  loadMonthAvailability();
+}
+</script>
+
+<div style="background:var(--black);border-top:1px solid rgba(255,255,255,.05);padding:48px 32px 32px;text-align:center;font-family:var(--font-b)">
+  <div style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:12px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap">
+    <a href="/" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Strona g&lstrok;owna</a>
+    <a href="/sklep-merch" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Sklep</a>
+    <a href="/konto" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Konto pilota</a>
+    <a href="/pokazy-lotnicze" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Pokazy</a>
+    <a href="/sponsoring" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Sponsoring</a>
+    <a href="/regulamin" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Regulamin</a>
+    <a href="https://wa.me/48535535221" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Kontakt</a>
+    <a href="mailto:dto@akrobacja.top" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">dto@akrobacja.top</a>
+  </div>
+  <div style="font-size:10px;color:rgba(255,255,255,.25)">&copy; 2026 akrobacja.top &middot; Doradztwo Pawe&lstrok; Mamcarz (DTO-58) &middot; Pilot: Maciej Kulaszewski &middot; Extra 300L SP-EKS &middot; EPRP</div>
+</div>
+
+<script src="/chat-widget.js" defer></script>
+</body>
+</html>
