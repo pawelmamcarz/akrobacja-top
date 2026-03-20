@@ -6,16 +6,16 @@ const NOINDEX_PATHS = new Set(['/admin', '/sukces', '/konto', '/seo-implementati
 const SITE_ORIGIN = 'https://akrobacja.top';
 
 export const onRequest: PagesFunction = async (context) => {
+  const url = new URL(context.request.url);
+  // Skip API routes — no SEO tags needed
+  if (url.pathname.startsWith('/api/')) {
+    return context.next();
+  }
+
   const response = await context.next();
 
   const contentType = response.headers.get('content-type') || '';
   if (!contentType.includes('text/html')) {
-    return response;
-  }
-
-  const url = new URL(context.request.url);
-  // Skip API routes
-  if (url.pathname.startsWith('/api/')) {
     return response;
   }
 
