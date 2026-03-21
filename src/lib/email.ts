@@ -20,7 +20,7 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
       'Authorization': `Bearer ${env.RESEND_API_KEY}`,
     },
     body: JSON.stringify({
-      from: 'akrobacja.top <voucher@akrobacja.top>',
+      from: 'akrobacja.com <voucher@akrobacja.com>',
       to: [params.to],
       subject: `Twój voucher ${pkg.name} — ${params.voucherCode}`,
       html: buildHtml(params),
@@ -49,7 +49,7 @@ function buildHtml(p: EmailParams): string {
 <body style="margin:0;padding:0;font-family:Arial,sans-serif;background:#f5f7fa">
   <div style="max-width:600px;margin:0 auto;background:#fff">
     <div style="background:#0A2F7C;padding:40px;text-align:center">
-      <h1 style="color:#fff;margin:0;font-size:28px">akrobacja.top</h1>
+      <h1 style="color:#fff;margin:0;font-size:28px">akrobacja.com</h1>
       <p style="color:rgba(255,255,255,0.7);margin:8px 0 0;font-size:13px">Extra 300L · SP-EKS</p>
     </div>
     <div style="padding:40px">
@@ -80,12 +80,12 @@ function buildHtml(p: EmailParams): string {
       <hr style="border:none;border-top:1px solid #eee;margin:32px 0">
       <p style="color:#6B7A90;font-size:13px;line-height:1.6;margin:0">
         <strong>Jak umówić lot?</strong><br>
-        Zadzwoń pod <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a> lub napisz na <a href="mailto:dto@akrobacja.top" style="color:#0A2F7C">dto@akrobacja.top</a> podając kod vouchera.
+        Zadzwoń pod <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a> lub napisz na <a href="mailto:dto@akrobacja.com" style="color:#0A2F7C">dto@akrobacja.com</a> podając kod vouchera.
       </p>
     </div>
     <div style="background:#0A2F7C;padding:24px;text-align:center">
       <p style="color:rgba(255,255,255,0.5);font-size:11px;margin:0">
-        akrobacja.top · Lotnisko Radom-Piastów (EPRP) · +48 535 535 221
+        akrobacja.com · Lotnisko Radom-Piastów (EPRP) · +48 535 535 221
       </p>
     </div>
   </div>

@@ -28,7 +28,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       'INSERT INTO otp_codes (id, phone, code, expires_at) VALUES (?, ?, ?, ?)'
     ).bind(crypto.randomUUID(), normalized, code, expiresAt).run();
 
-    await sendSms(ctx.env, normalized, `Twoj kod akrobacja.top: ${code}. Wazny 5 minut.`);
+    await sendSms(ctx.env, normalized, `Twoj kod akrobacja.com: ${code}. Wazny 5 minut.`);
 
     return Response.json({ ok: true, message: 'Kod wysłany' });
   } catch (err) {

@@ -74,8 +74,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     params.append('mode', 'payment');
     params.append('customer_email', body.customer_email);
     params.append('metadata[merch_order_id]', orderId);
-    params.append('success_url', `${ctx.env.SITE_URL || 'https://akrobacja.top'}/sklep-merch?success=1&order=${orderId}`);
-    params.append('cancel_url', `${ctx.env.SITE_URL || 'https://akrobacja.top'}/sklep-merch`);
+    params.append('success_url', `${ctx.env.SITE_URL || 'https://akrobacja.com'}/sklep-merch?success=1&order=${orderId}`);
+    params.append('cancel_url', `${ctx.env.SITE_URL || 'https://akrobacja.com'}/sklep-merch`);
     params.append('locale', 'pl');
     params.append('payment_method_types[0]', 'card');
     params.append('payment_method_types[1]', 'p24');

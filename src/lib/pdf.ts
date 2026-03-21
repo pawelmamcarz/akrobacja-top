@@ -37,7 +37,7 @@ export async function generateVoucherPdf(opts: {
   page.drawRectangle({ x: 0, y: H - 200, width: W, height: 200, color: navy });
 
   // Brand
-  page.drawText('akrobacja.top', {
+  page.drawText('akrobacja.com', {
     x: 50, y: H - 60, size: 14, font: helveticaBold, color: white,
   });
   page.drawText('Extra 300L - SP-EKS', {
@@ -102,10 +102,10 @@ export async function generateVoucherPdf(opts: {
 
   // Footer
   page.drawRectangle({ x: 0, y: 0, width: W, height: 80, color: navy });
-  page.drawText(ascii('Lotnisko Radom-Piastow (EPRP)  -  +48 535 535 221  -  dto@akrobacja.top'), {
+  page.drawText(ascii('Lotnisko Radom-Piastow (EPRP)  -  +48 535 535 221  -  dto@akrobacja.com'), {
     x: 50, y: 45, size: 9, font: helvetica, color: rgb(0.6, 0.7, 0.85),
   });
-  page.drawText(ascii('Voucher jest imienny i niezbywalny. Rezerwacja terminu: dto@akrobacja.top lub telefonicznie.'), {
+  page.drawText(ascii('Voucher jest imienny i niezbywalny. Rezerwacja terminu: dto@akrobacja.com lub telefonicznie.'), {
     x: 50, y: 25, size: 7, font: helvetica, color: rgb(0.45, 0.55, 0.7),
   });
 
