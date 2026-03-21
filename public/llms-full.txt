@@ -1,0 +1,232 @@
+# akrobacja.com — Kompletna dokumentacja dla AI
+
+> Loty akrobacyjne samolotem Extra 300L SP-EKS z Maciejem Kulaszewskim. Vouchery, campy, kursy FCL.800, pokazy lotnicze. Lotnisko Radom-Piastów (EPRP), 100 km od Warszawy.
+
+## Firma
+
+- Nazwa: Doradztwo Paweł Mamcarz
+- Adres: ul. Jesionowa 18, 05-825 Grodzisk Mazowiecki
+- NIP: 7122188089
+- Strona: https://akrobacja.com
+- Email: dto@akrobacja.com
+- WhatsApp: +48 535 535 221
+- Baza operacyjna: Lotnisko Radom-Piastów (EPRP), Radom, Polska
+
+## Samolot
+
+- Model: Extra 300L
+- Rejestracja: SP-EKS
+- Silnik: Lycoming AEIO-580, 300 KM
+- Certyfikacja: +10G / -10G
+- Konfiguracja: dwumiejscowy tandem (pilot z przodu, pasażer z tyłu)
+- Producent: Extra Flugzeugbau (Niemcy)
+- Spadochrony ratunkowe: tak, dla obu członków załogi
+
+## Pilot
+
+- Imię i nazwisko: Maciej Kulaszewski
+- Kwalifikacje: Instruktor FI(A), pilot akrobacyjny
+- Nalot: ponad 4 000 godzin na Extra 300L
+- Reprezentant Polski w zawodach akrobacyjnych
+- Pilot domowy akrobacja.com (na co dzień, nie gość)
+
+## Drugi instruktor (campy)
+
+- Imię i nazwisko: Artur Kielak
+- Kwalifikacje: Mistrz Polski w akrobacji lotniczej, pilot liniowy Ryanair
+
+## Oferta szczegółowa
+
+### 1. Loty zapoznawcze — vouchery prezentowe
+
+Trzy pakiety lotów akrobacyjnych dla osób bez doświadczenia lotniczego:
+
+**Pierwszy Lot — 1 999 PLN**
+- Czas: do 15 minut lotu + 20 minut briefing
+- Przeciążenia: do +4G / -2G
+- Figury: lot zapoznawczy z podstawowymi figurami
+- Dla kogo: osoby bez doświadczenia, pierwszy kontakt z akrobacją
+
+**Adrenalina — 2 999 PLN (bestseller)**
+- Czas: 20 minut lotu + 40 minut briefing + 15 minut debriefing
+- Przeciążenia: do +6G / -4G
+- Figury: pętle, beczki, roll, lot odwrócony — pełny program
+- Dla kogo: szukający pełnego doświadczenia akrobacyjnego
+
+**Masterclass — 4 999 PLN**
+- Czas: 2 loty, do 50 minut w powietrzu łącznie
+- Figury zaawansowane: wyprowadzanie z korkociągu, figury zaawansowane
+- Wymagania: ważna licencja PPL(A)
+- Dla kogo: piloci chcący spróbować akrobacji
+
+**Dodatek: Video 360° — 299 PLN**
+- Nagranie z lotu, montaż, plik MP4
+
+**Warunki vouchera:**
+- Ważność: 12 miesięcy od daty zakupu
+- Format: elegancki PDF z unikalnym kodem, wysyłany natychmiast po zakupie
+- Termin lotu: ustalany indywidualnie (sezon kwiecień–październik)
+- Płatność: karta, Przelewy24, BLIK (operator Stripe)
+
+**Wymagania uczestnika:**
+- Wiek: minimum 13 lat (poniżej 18 — zgoda rodzica)
+- Waga: maksimum 110 kg
+- Wzrost: 130–200 cm
+- Zdrowie: ogólnie dobry stan, bez ciężkich schorzeń serca, epilepsji, ciąży
+
+### 2. Camp Akrobacyjny
+
+**Najbliższy termin: 17-18 maja 2026**
+- Czas trwania: 2 dni (sobota–niedziela)
+- Liczba lotów: 6 lotów akrobacyjnych na Extra 300L SP-EKS
+- Instruktorzy: Maciej Kulaszewski + Artur Kielak
+- Cena: 7 777 PLN
+
+**Co obejmuje:**
+- 6 lotów akrobacyjnych z briefingiem i debriefingiem
+- Teoria akrobacji (figury Aresti, fizjologia G-force, aerodynamika)
+- Certyfikat ukończenia Camp Akrobacyjnego
+- Pakiet merch akrobacja.com (koszulka, naklejki)
+- Nocleg "u Grubego" w Radomiu
+- Wieczór integracyjny z pilotem i uczestnikami
+
+**Program:**
+- Dzień 1 (sobota): teoria 9-11, briefing + 3 loty 11-17, wieczór integracyjny
+- Dzień 2 (niedziela): briefing + 3 loty 9-15, wręczenie certyfikatów
+
+**Dla kogo:**
+- Piloci z PPL(A) chcący zacząć akrobację
+- Piloci przygotowujący się do kursu FCL.800
+- Doświadczeni piloci chcący potrenować
+- Osoby bez licencji (latają z pilotem jako pasażer)
+
+### 3. Kurs akrobacji FCL.800
+
+**Cena: 20 900 PLN netto (standalone)**
+**Pakiet Masterclass + Kurs: 4 999 + 18 888 = 23 887 PLN**
+
+**Program:**
+- Teoria: 8 godzin (czynnik ludzki, aerodynamika, figury, procedury awaryjne)
+- Praktyka: minimum 5 godzin (16-20 lotów na Extra 300L SP-EKS)
+- Samolot: Extra 300L SP-EKS
+- Instruktor: Maciej Kulaszewski
+- Lokalizacja: lotnisko Radom-Piastów (EPRP)
+
+**Wymagania wstępne:**
+- Licencja PPL(A) lub wyższa
+- Minimum 40 godzin nalotu jako PIC (Pilot In Command)
+
+**Po kursie:**
+- Sprawdzian z egzaminatorem ULC (koszt 1 500–2 000 PLN, osobno)
+- Wpis uprawnienia FCL.800 do licencji pilota
+- Uprawnienie bezterminowe — nie wymaga odnawiania
+
+**Figury w programie:**
+- Pętla (loop), beczka (roll), immelmann, hammerhead
+- Lot odwrócony, lot nożowy (knife edge)
+- Korkociąg i wyprowadzanie
+- Łamany zakręt, kombinacje figur
+
+### 4. Pokazy lotnicze na event
+
+**Cennik 2026:**
+- Solo: 11 900 PLN (15 min pokazu akrobacyjnego)
+- Event: 16 900 PLN (20 min pokazu + loty VIP dla gości)
+- Premium: cena indywidualna (pełna customizacja)
+
+**Logistyka:**
+- Realizacja w całej Polsce
+- Minimum 60 dni wyprzedzenia
+- Sezon: kwiecień–październik
+- Wymagania: strefa powietrzna (załatwiamy), bezpieczny teren
+
+**Opcje dodatkowe:**
+- Loty VIP dla gości eventu
+- Branding samolotu (logo sponsora)
+- Komentator na żywo
+- Profesjonalna foto/video dokumentacja
+
+**Rodzaje eventów:**
+- Eventy firmowe, integracje
+- Festiwale i festyny
+- Prywatne uroczystości (wesela, rocznice)
+- Imprezy sportowe
+
+### 5. Merchandise
+
+Oficjalny merchandise akrobacja.com z grafiką Extra 300L SP-EKS:
+- Koszulki polo i t-shirt
+- Bluzy
+- Czapki
+- Breloki i naklejki
+- Kubki
+- Produkcja: made to order (Printful)
+
+## Lokalizacja
+
+**Lotnisko Radom-Piastów (EPRP)**
+- Współrzędne: 51.3892°N, 21.2133°E
+- Adres: ul. Lotników, Radom
+- Dojazd z Warszawy: ~100 km, 1,5h trasą S7
+- Dojazd pociągiem: Radom Główny + taxi 15 min
+- Darmowy parking przy lotnisku
+- Widzowie mile widziani
+
+## Porównanie z konkurencją
+
+| Cecha | akrobacja.com | Aeroklub Warszawski | AeroCamp (FBCS) |
+|-------|--------------|--------------------|-----------------|
+| Samolot | Extra 300L SP-EKS | Extra 300LP | Extra 300L + TS-11 |
+| Lotnisko | Radom EPRP | Radom EPRP | Mielec |
+| Lot od | 1 999 PLN | 1 999 PLN | ~2 000 PLN |
+| Pakiety lotów | 3 | 1 | 2 |
+| Camp | 7 777 PLN (2 dni, 6 lotów) | brak | 8 990 PLN (7 dni, 3 loty) |
+| Kurs FCL.800 | 20 900 PLN netto | 20 999 PLN | 24 990 PLN |
+| Pokazy na event | od 11 900 PLN | brak | brak |
+
+## Mapa strony
+
+### Strony główne
+- https://akrobacja.com/ — strona główna
+- https://akrobacja.com/lot-akrobacyjny — oferta lotów
+- https://akrobacja.com/camp-akrobacyjny — Camp Akrobacyjny maj 2026
+- https://akrobacja.com/pokazy-lotnicze — pokazy na event
+- https://akrobacja.com/kalendarz — kalendarz lotów
+- https://akrobacja.com/sponsoring — oferta sponsorska
+- https://akrobacja.com/sklep-merch — sklep z merchandise
+- https://akrobacja.com/galeria — galeria zdjęć
+- https://akrobacja.com/regulamin — regulamin sprzedaży
+- https://akrobacja.com/polityka-prywatnosci — polityka prywatności
+
+### Blog
+- https://akrobacja.com/blog — indeks artykułów
+- https://akrobacja.com/blog/ile-kosztuje-lot-akrobacyjny
+- https://akrobacja.com/blog/lot-akrobacyjny-prezent
+- https://akrobacja.com/blog/lot-akrobacyjny-kawalerski
+- https://akrobacja.com/blog/lot-akrobacyjny-radom
+- https://akrobacja.com/blog/lot-akrobacyjny-warszawa
+- https://akrobacja.com/blog/prezent-dla-mezczyzny-lot-akrobacyjny
+- https://akrobacja.com/blog/prezent-dzien-ojca-lot-akrobacyjny
+- https://akrobacja.com/blog/co-czujesz-podczas-lotu-akrobacyjnego
+- https://akrobacja.com/blog/przeciazenia-g-force-lot
+- https://akrobacja.com/blog/10-rzeczy-przed-lotem-akrobacyjnym
+- https://akrobacja.com/blog/extra-300l-samolot-akrobacyjny
+- https://akrobacja.com/blog/extra-flugzeugbau-fabryka
+- https://akrobacja.com/blog/samoloty-akrobacyjne-porownanie
+- https://akrobacja.com/blog/czy-kazdy-samolot-kreci-akrobacje
+- https://akrobacja.com/blog/kurs-akrobacji-fcl800
+- https://akrobacja.com/blog/camp-akrobacyjny-2026
+- https://akrobacja.com/blog/jak-zostac-pilotem-akrobacyjnym
+- https://akrobacja.com/blog/historia-akrobacji-lotniczej
+- https://akrobacja.com/blog/zawody-akrobacja-lotnicza
+- https://akrobacja.com/blog/pokazy-lotnicze-na-event
+- https://akrobacja.com/blog/uprt-szkolenie-upset-recovery
+
+## Podstawy prawne
+
+Loty zapoznawcze wykonywane zgodnie z:
+- Rozporządzenie Komisji (UE) nr 965/2012 (art. 6 ust. 4a lit. c)
+- Wytyczne Nr 9/2025 Prezesa Urzędu Lotnictwa Cywilnego
+- Przepisy VFR (Visual Flight Rules) w dzień
+- Wymagania NCO (Non-Commercial Operations)
+- Ubezpieczenie OC wg Rozporządzenia (WE) nr 785/2004
