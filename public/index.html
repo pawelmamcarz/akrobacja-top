@@ -442,7 +442,7 @@ img { display: block; max-width: 100%; }
 }
 
 .voucher-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
   margin-bottom: 2px;
 }
 .v-card {
@@ -1045,7 +1045,8 @@ footer {
 
   /* Shop */
   .shop { padding: 80px 28px; }
-  .voucher-grid { grid-template-columns: 1fr; }
+  .voucher-grid { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 600px) { .voucher-grid { grid-template-columns: 1fr; } }
   .v-b2b { flex-direction: column; padding: 28px; gap: 20px; text-align: center; }
   .v-b2b-cta { width: 100%; text-align: center; display: block; }
 
@@ -1758,6 +1759,32 @@ footer {
           <div class="v-addon-desc">Montaż 90 sek · kamera cockpit + zewnętrzna · +299 PLN</div>
         </div>
         <div class="v-toggle"></div>
+      </div>
+    </div>
+
+    <!-- PAKIET 4 — KURS AKROBACJI FCL.800 -->
+    <div class="v-card reveal reveal-d3" style="background:var(--black)">
+      <span class="v-tag" style="background:var(--navy);color:#fff">Licencja akrobacyjna</span>
+      <h3 class="v-name">Kurs FCL.800</h3>
+      <p class="v-subtitle">Uprawnienia pilota akrobacyjnego</p>
+      <div class="v-promo-tag" style="background:rgba(196,30,58,.15);color:#C41E3A">Dofinansowanie do 90%</div>
+      <div class="v-price">
+        <span class="v-price-currency">PLN</span>20 900
+        <span class="v-price-unit">netto</span>
+      </div>
+      <div class="v-divider"></div>
+      <ul class="v-features">
+        <li class="v-feat">16-20 lotów na Extra 300L (5h)</li>
+        <li class="v-feat">8h teorii akrobacji</li>
+        <li class="v-feat">Wpis FCL.800 do licencji</li>
+        <li class="v-feat">Pod egidą Aeroklubu Radomskiego</li>
+        <li class="v-feat">Wymaga PPL(A) + 40h PIC</li>
+      </ul>
+      <a href="/blog/kurs-akrobacji-fcl800" class="v-cta" style="background:var(--navy);text-decoration:none">Szczegóły kursu →</a>
+      <div style="margin-top:12px;padding:10px;background:rgba(196,30,58,.1);font-size:11px;color:rgba(255,255,255,.8);text-align:center;line-height:1.5">
+        <strong style="color:#C41E3A">Pakiet Masterclass + Kurs:</strong><br>
+        4 999 + 18 888 = <strong>23 887 PLN</strong><br>
+        <a href="/dotacje-szkolenie-lotnicze" style="color:#C41E3A;font-weight:700;font-size:10px">Sprawdź dotacje →</a>
       </div>
     </div>
 
