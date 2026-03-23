@@ -2218,6 +2218,10 @@ footer {
       <button type="submit" class="modal-submit" id="checkoutSubmit">Przejdź do płatności</button>
       <p class="modal-error" id="checkoutError"></p>
     </form>
+    <div id="dotacjaBanner" style="display:none;background:#f0f4fa;border-left:4px solid #C41E3A;padding:12px 16px;margin-top:16px;font-size:12px;line-height:1.5;color:#1a2a3a">
+      <strong style="color:#C41E3A">💰 Dofinansowanie do 90%!</strong> Ponad 10 kursantów skorzystało z dotacji BUR/PUP. Pomagamy w formalności.
+      <a href="/dotacje-szkolenie-lotnicze" style="color:#1B4DB5;font-weight:600;display:block;margin-top:4px">Sprawdź czy się kwalifikujesz →</a>
+    </div>
   </div>
 </div>
 
@@ -2323,6 +2327,8 @@ footer {
   const submitBtn = document.getElementById('checkoutSubmit');
   const errorEl = document.getElementById('checkoutError');
 
+  const dotacjaBanner = document.getElementById('dotacjaBanner');
+
   function openModal(packageId) {
     const pkg = PKGS[packageId];
     if (!pkg) return;
@@ -2331,6 +2337,7 @@ footer {
     modalSub.textContent = pkg.sub;
     videoCheck.checked = !!document.querySelector(`[data-addon="${packageId}"].on`);
     updatePrice(pkg.price);
+    dotacjaBanner.style.display = packageId === 'masterclass' ? 'block' : 'none';
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
