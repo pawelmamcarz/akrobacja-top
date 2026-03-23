@@ -22,7 +22,7 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
         unit: 'szt.',
         count: 1,
         price: pkg.price / 100, // PLN
-        vat: 'zw', // usługi lotnicze — zwolnione lub 23%, dostosuj do swojego PKWiU
+        vat: '23',
       },
     },
   ];
