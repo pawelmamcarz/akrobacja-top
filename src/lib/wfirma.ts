@@ -43,7 +43,7 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
     invoices: [
       {
         invoice: {
-          type: isCompany ? 'normal' : 'receipt', // faktura VAT / paragon
+          type: 'normal', // faktura VAT — dla firm (z NIP) i osób fizycznych (bez NIP)
           paymentmethod: 'transfer',
           paymentstate: 'paid',
           paymentdate: new Date().toISOString().split('T')[0],
@@ -52,6 +52,8 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
           contractor: {
             name: params.customerName,
             email: params.customerEmail,
+            zip: '00-000',
+            city: 'Warszawa',
             ...(isCompany ? { nip: params.customerNip } : {}),
           },
           invoicecontents: items,
