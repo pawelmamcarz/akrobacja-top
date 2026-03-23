@@ -14,6 +14,7 @@ interface InvoiceParams {
 export async function createInvoice(env: Env, params: InvoiceParams): Promise<string> {
   const pkg = PACKAGES[params.packageId];
   const isCompany = !!params.customerNip;
+  const totalBrutto = (pkg.price + (params.videoAddon ? VIDEO_ADDON_PRICE : 0)) / 100;
 
   const items: object[] = [
     {
@@ -34,7 +35,7 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
         unit: 'szt.',
         count: 1,
         price: VIDEO_ADDON_PRICE / 100,
-        vat: 'zw',
+        vat: '23',
       },
     });
   }
@@ -44,8 +45,11 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
       {
         invoice: {
           type: 'normal', // faktura VAT — dla firm (z NIP) i osób fizycznych (bez NIP)
+          price_type: 'brutto',
           paymentmethod: 'transfer',
           paymentstate: 'paid',
+          alreadypaid: totalBrutto.toFixed(2),
+          alreadypaid_initial: totalBrutto.toFixed(2),
           paymentdate: new Date().toISOString().split('T')[0],
           disposition: params.voucherCode,
           description: `Voucher ${params.voucherCode}`,
