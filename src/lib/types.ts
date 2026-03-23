@@ -45,14 +45,6 @@ export const PACKAGES = {
     duration: '2 loty, do 50 min w powietrzu lacznie',
     features: ['2 loty - do 50 min w powietrzu lacznie', 'Wyprowadzanie z korkociagu, figury zaawansowane', 'Wymagana licencja PPL(A)'],
   },
-  test: {
-    id: 'test',
-    name: 'TEST',
-    subtitle: 'Test 2 PLN',
-    price: 200,
-    duration: 'test',
-    features: ['Test'],
-  },
 } as const;
 
 export const VIDEO_ADDON_PRICE = 29900; // 299 PLN

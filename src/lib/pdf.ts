@@ -100,6 +100,36 @@ export async function generateVoucherPdf(opts: {
     y -= 18;
   }
 
+  // Preparation section
+  y -= 20;
+  page.drawRectangle({ x: 50, y: y - 5, width: W - 100, height: 2, color: rgb(0.9, 0.92, 0.95) });
+  y -= 25;
+  page.drawText('JAK SIE PRZYGOTOWAC DO LOTU:', {
+    x: 50, y, size: 9, font: helveticaBold, color: navy,
+  });
+  y -= 20;
+
+  const tips = [
+    'Lekki posilek 2h przed lotem - nie lataj na czczo ani po obfitym posilku',
+    'Pij duzo wody - nawodnienie obniza ryzyko choroby lokomocyjnej',
+    'Wygodne sportowe ubranie i buty (nie klapki) - spadochron i kask zapewniamy',
+    'Zabierz okulary przeciwsloneczne i dowod tozsamosci',
+    'Badz na lotnisku 30 min przed planowanym lotem (briefing)',
+    'Przeciwwskazania: ciaza, epilepsja, ciezkie schorzenia serca, alkohol',
+    'Max waga: 110 kg | Wiek: 13+ (niepelnoletni - zgoda rodzica)',
+  ];
+
+  for (const tip of tips) {
+    if (y < 100) break;
+    page.drawText(ascii(`-  ${tip}`), { x: 55, y, size: 8, font: helvetica, color: grey });
+    y -= 14;
+  }
+
+  y -= 10;
+  page.drawText(ascii('Wiecej: akrobacja.com/blog/10-rzeczy-przed-lotem-akrobacyjnym'), {
+    x: 55, y, size: 7, font: helvetica, color: navy,
+  });
+
   // Footer
   page.drawRectangle({ x: 0, y: 0, width: W, height: 80, color: navy });
   page.drawText(ascii('Lotnisko Radom-Piastow (EPRP)  -  +48 535 535 221  -  dto@akrobacja.com'), {
