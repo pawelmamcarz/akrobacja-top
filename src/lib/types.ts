@@ -41,7 +41,7 @@ export const PACKAGES = {
     id: 'masterclass',
     name: 'Masterclass',
     subtitle: 'Sesja szkoleniowa dla pilotow PPL(A)',
-    price: 399900,
+    price: 499900,
     duration: 'do 50 min w powietrzu + briefing + debriefing',
     features: ['Do 50 minut w powietrzu', 'Wyprowadzanie z korkociagu, figury zaawansowane', 'Wymagana licencja PPL(A)'],
   },
