@@ -141,7 +141,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         voucherCode,
         packageId,
         pdfBytes,
-        siteUrl: ctx.env.SITE_URL || 'https://akrobacja-top.pages.dev',
+        siteUrl: ctx.env.SITE_URL || 'https://akrobacja.com',
       });
       steps.push('email_sent');
     } catch (err) {

@@ -66,7 +66,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     params.append('customer_email', body.customerEmail);
     params.append('metadata[order_id]', orderId);
     params.append('metadata[voucher_code]', voucherCode);
-    const siteUrl = ctx.env.SITE_URL || 'https://akrobacja-top.pages.dev';
+    const siteUrl = ctx.env.SITE_URL || 'https://akrobacja.com';
     params.append('success_url', `${siteUrl}/sukces?code=${voucherCode}`);
     params.append('cancel_url', `${siteUrl}/#sklep`);
     params.append('locale', 'pl');
