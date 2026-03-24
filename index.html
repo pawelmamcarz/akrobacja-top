@@ -33,7 +33,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231B4DB5'/%3E%3Cpolygon points='4,58 13,58 31,10 27,10' fill='%23ffffff'/%3E%3Cpolygon points='31,10 36,10 55,58 46,58' fill='%23ffffff'/%3E%3Cpolygon points='19,40 43,40 41,34 21,34' fill='%23ffffff'/%3E%3Cpolygon points='32,11 41,34 21,34' fill='%23C41E3A'/%3E%3Cg transform='translate(48,5) rotate(-42)' fill='%23ffffff'%3E%3Cpath d='M 10,0 L 4,-2 L -10,-2 L -10,2 L 4,2 Z'/%3E%3Cpath d='M -1,-2 L 3,-2 L 3,-9 L -1,-9 L -3,-2 Z'/%3E%3Cpath d='M -1,2 L 3,2 L 3,9 L -1,9 L -3,2 Z'/%3E%3C/g%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 /* ═══════════════════════════════════════════════════════
@@ -52,6 +52,10 @@
   --font-h:   'Montserrat', sans-serif;
   --font-b:   'Inter', sans-serif;
   --r:        0px; /* aviation precision — no rounding */
+  /* 8px spacing scale */
+  --sp-1: 8px; --sp-2: 16px; --sp-3: 24px; --sp-4: 32px;
+  --sp-5: 40px; --sp-6: 48px; --sp-7: 56px; --sp-8: 64px;
+  --sp-10: 80px; --sp-12: 96px; --sp-15: 120px;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -88,7 +92,7 @@ img { display: block; max-width: 100%; }
 .nav-menu a {
   font-family: var(--font-h); font-size: 10px; font-weight: 600;
   letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(255,255,255,.65); transition: color .2s;
+  color: rgba(255,255,255,.75); transition: color .2s;
 }
 .nav-menu a:hover { color: var(--white); }
 .nav-btn {
@@ -98,6 +102,44 @@ img { display: block; max-width: 100%; }
   padding: 11px 26px; transition: background .2s;
 }
 .nav-btn:hover { background: var(--red-dark); }
+
+/* Skip to content — accessibility */
+.skip-link {
+  position: absolute; top: -100%; left: 16px;
+  background: var(--red); color: #fff; padding: 12px 24px;
+  font-family: var(--font-h); font-size: 12px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  z-index: 10000; transition: top .2s;
+}
+.skip-link:focus { top: 12px; }
+
+/* Mobile hamburger menu */
+.nav-hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 32px; height: 24px; position: relative; z-index: 1001;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 2px; background: var(--white);
+  position: absolute; left: 0; transition: transform .3s, opacity .3s;
+}
+.nav-hamburger span:nth-child(1) { top: 0; }
+.nav-hamburger span:nth-child(2) { top: 11px; }
+.nav-hamburger span:nth-child(3) { top: 22px; }
+.nav-hamburger.open span:nth-child(1) { top: 11px; transform: rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { top: 11px; transform: rotate(-45deg); }
+
+@media (max-width: 1024px) {
+  .nav-hamburger { display: block; }
+  .nav-menu {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,20,40,.98); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 32px; z-index: 1000;
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu a { font-size: 16px; color: rgba(255,255,255,.85); }
+}
 
 /* ═══════════════════════════════════════════════════════
    HERO
@@ -147,7 +189,7 @@ img { display: block; max-width: 100%; }
   padding: 0 64px 80px;
 }
 .hero-kicker {
-  font-family: var(--font-h); font-size: 9px; font-weight: 600;
+  font-family: var(--font-h); font-size: 11px; font-weight: 600;
   letter-spacing: .32em; text-transform: uppercase; color: var(--red);
   margin-bottom: 28px; display: flex; align-items: center; gap: 12px;
 }
@@ -168,7 +210,7 @@ img { display: block; max-width: 100%; }
 .hl-2 {
   display: block;
   font-size: clamp(64px, 10.5vw, 152px);
-  color: rgba(255,255,255,.22);
+  color: rgba(255,255,255,.32);
   padding-left: 7vw;
 }
 .hl-3 {
@@ -225,7 +267,7 @@ img { display: block; max-width: 100%; }
 }
 .stat-num em { color: var(--red); font-style: normal; }
 .stat-lbl {
-  margin-top: 6px; font-size: 9px; font-weight: 500;
+  margin-top: 6px; font-size: 11px; font-weight: 500;
   letter-spacing: .22em; text-transform: uppercase; color: var(--chrome);
 }
 
@@ -233,7 +275,7 @@ img { display: block; max-width: 100%; }
    SECTION HELPERS
 ═══════════════════════════════════════════════════════ */
 .section-label {
-  font-family: var(--font-h); font-size: 9px; font-weight: 600;
+  font-family: var(--font-h); font-size: 11px; font-weight: 600;
   letter-spacing: .3em; text-transform: uppercase; color: var(--chrome);
   margin-bottom: 10px;
 }
@@ -278,8 +320,8 @@ img { display: block; max-width: 100%; }
 }
 .aircraft-viewer-label {
   position: absolute; top: 16px; left: 16px;
-  font-size: 8px; letter-spacing: .25em; text-transform: uppercase;
-  color: rgba(122,143,166,.35); font-weight: 500;
+  font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+  color: rgba(122,143,166,.45); font-weight: 500;
   border: 1px solid rgba(122,143,166,.12); padding: 5px 10px;
 }
 
@@ -324,7 +366,7 @@ img { display: block; max-width: 100%; }
 }
 .hotspot:hover .hotspot-card { opacity: 1; }
 .hotspot-card-title {
-  font-family: var(--font-h); font-size: 9px; font-weight: 700;
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
   letter-spacing: .18em; text-transform: uppercase; color: var(--chrome);
   margin-bottom: 4px;
 }
@@ -361,7 +403,7 @@ img { display: block; max-width: 100%; }
   min-height: 640px;
 }
 .pilot-label {
-  font-family: var(--font-h); font-size: 9px; font-weight: 600;
+  font-family: var(--font-h); font-size: 11px; font-weight: 600;
   letter-spacing: .3em; text-transform: uppercase; color: var(--chrome);
   margin-bottom: 10px;
 }
@@ -388,7 +430,7 @@ img { display: block; max-width: 100%; }
   position: absolute; top: 28px; left: 28px;
   border: 1px solid rgba(27,77,181,.35);
   padding: 7px 14px;
-  font-size: 8px; letter-spacing: .22em; text-transform: uppercase;
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
   color: var(--navy); font-weight: 600; font-family: var(--font-h);
   background: rgba(27,77,181,.08);
 }
@@ -411,7 +453,7 @@ img { display: block; max-width: 100%; }
 }
 .pilot-stat-num em { color: var(--red); font-style: normal; }
 .pilot-stat-unit {
-  font-size: 9px; font-weight: 500; letter-spacing: .22em;
+  font-size: 11px; font-weight: 500; letter-spacing: .22em;
   text-transform: uppercase; color: var(--chrome); margin-top: 4px;
 }
 .pilot-bio-text {
@@ -465,7 +507,7 @@ img { display: block; max-width: 100%; }
 
 .v-tag {
   display: inline-block;
-  font-family: var(--font-h); font-size: 8px; font-weight: 700;
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
   letter-spacing: .22em; text-transform: uppercase;
   padding: 5px 12px; margin-bottom: 28px;
 }
@@ -594,7 +636,7 @@ img { display: block; max-width: 100%; }
   background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.03) 10px, rgba(255,255,255,.03) 20px);
 }
 .promo-label {
-  font-family: var(--font-h); font-size: 9px; font-weight: 700;
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
   letter-spacing: .25em; text-transform: uppercase;
   color: rgba(255,255,255,.7); margin-bottom: 6px;
   position: relative;
@@ -618,7 +660,7 @@ img { display: block; max-width: 100%; }
   display: block;
 }
 .promo-lbl {
-  font-size: 8px; font-weight: 600; text-transform: uppercase;
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
   letter-spacing: .15em; color: rgba(255,255,255,.5); margin-top: 4px;
   display: block;
 }
@@ -630,7 +672,7 @@ img { display: block; max-width: 100%; }
 .v-card--featured .v-price-old { color: rgba(255,255,255,.4); }
 .v-promo-tag {
   display: inline-block;
-  font-family: var(--font-h); font-size: 9px; font-weight: 800;
+  font-family: var(--font-h); font-size: 11px; font-weight: 800;
   letter-spacing: .12em; text-transform: uppercase;
   background: var(--red); color: #fff;
   padding: 4px 10px; margin-bottom: 8px;
@@ -663,13 +705,13 @@ footer {
   margin-top: 14px; font-size: 11px; color: var(--chrome); line-height: 1.5;
 }
 .footer-col-title {
-  font-family: var(--font-h); font-size: 8px; font-weight: 700;
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
   letter-spacing: .28em; text-transform: uppercase;
   color: var(--chrome); margin-bottom: 20px;
 }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .footer-links a {
-  font-size: 13px; color: rgba(255,255,255,.45); transition: color .2s;
+  font-size: 13px; color: rgba(255,255,255,.6); transition: color .2s;
 }
 .footer-links a:hover { color: var(--white); }
 .footer-bottom {
@@ -1028,7 +1070,6 @@ footer {
   /* Navigation */
   .nav { padding: 16px 28px; }
   .nav.scrolled { padding: 12px 28px; }
-  .nav-menu { display: none; }
 
   /* Hero */
   .hero-content { padding: 0 28px 60px; }
@@ -1150,7 +1191,7 @@ footer {
   .footer-bottom { flex-direction: column; text-align: center; }
 
   /* Sticky CTA */
-  .sticky-cta { bottom: 16px; right: auto; left: 50%; transform: translateX(-50%) translateY(12px); font-size: 9px; padding: 12px 20px; }
+  .sticky-cta { bottom: 16px; right: auto; left: 50%; transform: translateX(-50%) translateY(12px); font-size: 11px; padding: 12px 20px; }
   .sticky-cta.vis { transform: translateX(-50%) translateY(0); }
 
   /* Modal */
@@ -1165,14 +1206,14 @@ footer {
 ═══════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
   .nav { padding: 12px 16px; }
-  .nav-btn { padding: 9px 18px; font-size: 9px; }
+  .nav-btn { padding: 9px 18px; font-size: 11px; }
 
   .hero-content { padding: 0 16px 36px; }
   .hl-1, .hl-2, .hl-3 { font-size: clamp(28px, 10vw, 48px); }
   .hero-stats { gap: 0; }
   .stat-cell { padding: 16px 0; }
   .stat-num { font-size: clamp(20px, 5.5vw, 28px); }
-  .stat-lbl { font-size: 8px; letter-spacing: .16em; }
+  .stat-lbl { font-size: 11px; letter-spacing: .16em; }
 
   .machine { padding: 48px 16px; }
   .machine::before { font-size: 100px; }
@@ -1407,11 +1448,13 @@ footer {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      NAVIGATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<a href="#sklep" class="skip-link">Przejdź do treści</a>
+
 <nav class="nav" id="nav">
   <a href="#hero" class="nav-logo" aria-label="akrobacja.com — strona główna">
     <img src="/akrobacja-logo-mark-light.png" alt="akrobacja.com" style="height:56px;width:auto;max-width:none;display:block">
   </a>
-  <ul class="nav-menu">
+  <ul class="nav-menu" id="nav-menu">
     <li><a href="/lot-akrobacyjny">Loty</a></li>
     <li><a href="#pilot">Pilot</a></li>
     <li><a href="/pokazy-lotnicze">Pokazy</a></li>
@@ -1421,6 +1464,9 @@ footer {
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Otwórz menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <a href="https://wa.me/48535535221" class="nav-btn">Napisz</a>
 </nav>
 
@@ -1503,6 +1549,7 @@ footer {
       <!-- Real top-down drone photo, rotated 180° (nose points up) -->
       <img src="/samolot-top-web.jpg"
            alt="Extra 300L SP-EKS — widok z góry"
+           loading="lazy"
            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0.88">
 
       <!-- Dark vignette overlay so hotspot cards stay readable -->
@@ -1592,6 +1639,7 @@ footer {
   <!-- Photo column -->
   <div class="pilot-photo">
     <img src="/pilot-cockpit.jpg" alt="Maciej Kulaszewski — pilot akrobacyjny Extra 300L w kokpicie"
+         loading="lazy"
          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center">
     <span class="pilot-badge">Mistrz Świata · Mistrz Polski · Mistrz Niemiec · Mistrz UK</span>
   </div>
@@ -1653,9 +1701,9 @@ footer {
      OWNER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <div style="background:var(--white);padding:80px 64px;display:flex;align-items:center;gap:48px;max-width:100%;flex-wrap:wrap;justify-content:center" class="reveal">
-  <img src="/mamcarz.jpg" alt="Paweł Mamcarz — właściciel Extra 300L SP-EKS" style="width:280px;height:280px;object-fit:cover;border-radius:50%;flex-shrink:0">
+  <img src="/mamcarz.jpg" alt="Paweł Mamcarz — właściciel Extra 300L SP-EKS" loading="lazy" style="width:280px;height:280px;object-fit:cover;border-radius:50%;flex-shrink:0">
   <div style="max-width:480px">
-    <p style="font-family:var(--font-h);font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Właściciel SP-EKS</p>
+    <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Właściciel SP-EKS</p>
     <h2 style="font-family:var(--font-h);font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--black);text-transform:uppercase;line-height:1;margin-bottom:14px">Paweł<br>Mamcarz</h2>
     <div style="width:44px;height:3px;background:var(--red);margin-bottom:20px"></div>
     <p style="font-size:14px;line-height:1.75;color:var(--chrome);margin-bottom:20px">Pilot z 26-letnim doświadczeniem lotniczym i właściciel Extra 300L SP-EKS — byłego samolotu Royal Jordanian Falcons. Odpowiada za operacje, bezpieczeństwo i rozwój akrobacja.com.</p>
@@ -1947,7 +1995,7 @@ footer {
      SUBSCRIBE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <div style="background:var(--navy);padding:64px;text-align:center" class="reveal">
-  <p style="font-family:var(--font-h);font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px">Bądź na bieżąco</p>
+  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px">Bądź na bieżąco</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(22px,3vw,32px);font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:8px">Dowiedz się pierwszy o pokazach</h2>
   <p style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto">Zostaw numer — wyślemy SMS kiedy latamy na pokazach, mamy wolne terminy lub nowe produkty.</p>
   <form id="subForm" onsubmit="return subscribePhone(event)" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
@@ -1962,15 +2010,15 @@ footer {
      INFOGRAPHIC
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <div style="background:var(--white);padding:80px 64px;text-align:center" class="reveal">
-  <p style="font-family:var(--font-h);font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pasażerów</p>
+  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pasażerów</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--black);text-transform:uppercase;margin-bottom:32px">Briefing przed lotem akrobacyjnym</h2>
-  <img src="/przewodnik-briefing.png" alt="Briefing przed lotem akrobacyjnym Extra 300L - przygotowanie, bezpieczeństwo, fizjologia, parametry maszyny" style="max-width:1100px;width:100%;margin:0 auto;display:block">
+  <img src="/przewodnik-briefing.png" alt="Briefing przed lotem akrobacyjnym Extra 300L - przygotowanie, bezpieczeństwo, fizjologia, parametry maszyny" loading="lazy" style="max-width:1100px;width:100%;margin:0 auto;display:block">
 </div>
 
 <div style="background:var(--black);padding:80px 64px;text-align:center" class="reveal">
-  <p style="font-family:var(--font-h);font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pilotów</p>
+  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pilotów</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--white);text-transform:uppercase;margin-bottom:32px">Kurs akrobacji FCL.800</h2>
-  <img src="/przewodnik-fcl800.png" alt="Przewodnik po kursie akrobacji FCL.800 - wymagania, manewry, parametry Extra 300L" style="max-width:1100px;width:100%;margin:0 auto;display:block">
+  <img src="/przewodnik-fcl800.png" alt="Przewodnik po kursie akrobacji FCL.800 - wymagania, manewry, parametry Extra 300L" loading="lazy" style="max-width:1100px;width:100%;margin:0 auto;display:block">
   <a href="/blog/kurs-akrobacji-fcl800" style="display:inline-block;margin-top:32px;font-family:var(--font-h);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:14px 30px;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,.22)'">Dowiedz się więcej o szkoleniu →</a>
 </div>
 
@@ -2344,6 +2392,26 @@ footer {
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  /* ── Mobile hamburger menu ── */
+  const hamburger = document.getElementById('nav-hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
 
   /* ── NAV scroll effect ── */
   const nav = document.getElementById('nav');
