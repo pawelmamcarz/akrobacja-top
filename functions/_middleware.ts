@@ -7,6 +7,22 @@ const NOINDEX_PATHS = new Set(['/admin', '/sukces', '/konto', '/seo-implementati
 const PRIMARY_HOST = 'akrobacja.com';
 const SITE_ORIGIN = `https://${PRIMARY_HOST}`;
 
+// Old/legacy URLs → redirect to correct pages (cleanup from old WordPress/WFS site)
+const LEGACY_REDIRECTS: Record<string, string> = {
+  '/flota': '/blog/extra-300l-samolot-akrobacyjny',
+  '/flota/': '/blog/extra-300l-samolot-akrobacyjny',
+  '/szkolenia': '/blog/kurs-akrobacji-fcl800',
+  '/szkolenia/': '/blog/kurs-akrobacji-fcl800',
+  '/product-category/uncategorized': '/',
+  '/product-category/uncategorized/': '/',
+  '/product/warsaw-voucher': '/lot-akrobacyjny',
+  '/product/warsaw-voucher/': '/lot-akrobacyjny',
+  '/szkolenia/akrobacja': '/blog/kurs-akrobacji-fcl800',
+  '/szkolenia/akrobacja/': '/blog/kurs-akrobacji-fcl800',
+  '/szkolenia/uprt': '/blog/uprt-szkolenie-upset-recovery',
+  '/szkolenia/uprt/': '/blog/uprt-szkolenie-upset-recovery',
+};
+
 export const onRequest: PagesFunction = async (context) => {
   const url = new URL(context.request.url);
 
@@ -15,6 +31,15 @@ export const onRequest: PagesFunction = async (context) => {
     return new Response(null, {
       status: 301,
       headers: { Location: `${SITE_ORIGIN}${url.pathname}${url.search}` },
+    });
+  }
+
+  // 301 redirect legacy URLs from old site
+  const legacyTarget = LEGACY_REDIRECTS[url.pathname];
+  if (legacyTarget) {
+    return new Response(null, {
+      status: 301,
+      headers: { Location: `${SITE_ORIGIN}${legacyTarget}` },
     });
   }
 
