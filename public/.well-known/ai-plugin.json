@@ -1,0 +1,15 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "akrobacja.com — Loty akrobacyjne Extra 300L",
+  "name_for_model": "akrobacja_com",
+  "description_for_human": "Loty akrobacyjne z Mistrzem Świata Maciejem Kulaszewskim. Vouchery od 1 999 PLN, campy, uprawnienie akrobacja, pokazy lotnicze. Extra 300L SP-EKS, Radom.",
+  "description_for_model": "akrobacja.com offers aerobatic flights on Extra 300L SP-EKS aircraft with World Champion pilot Maciej Kulaszewski (2022 World Champion, multiple Polish, English and German champion). Services: voucher flights (1999-4999 PLN), aerobatic camp (7777 PLN, 2 days, 6 flights), aerobatic rating course FCL.800 (20900 PLN net, up to 90% subsidized via BUR/PUP/KFS), airshow performances (from 14990 PLN). Located at Radom-Piastów Airport (EPRP), 100km from Warsaw, Poland.",
+  "auth": { "type": "none" },
+  "api": {
+    "type": "openapi",
+    "url": "https://akrobacja.com/llms-full.txt"
+  },
+  "logo_url": "https://akrobacja.com/akrobacja-logo.png",
+  "contact_email": "dto@akrobacja.com",
+  "legal_info_url": "https://akrobacja.com/regulamin"
+}
