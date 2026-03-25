@@ -77,18 +77,18 @@ img { display: block; max-width: 100%; }
 ═══════════════════════════════════════════════════════ */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  padding: 22px 64px;
+  padding: 24px 64px;
   display: flex; align-items: center; justify-content: space-between;
   transition: background .35s, padding .35s, box-shadow .35s;
 }
 .nav.scrolled {
   background: rgba(10,20,40,0.97);
   backdrop-filter: blur(16px);
-  padding: 14px 64px;
+  padding: 16px 64px;
   box-shadow: 0 1px 0 rgba(255,255,255,0.05);
 }
 .nav-logo { display: flex; align-items: center; }
-.nav-menu { display: flex; gap: 44px; list-style: none; }
+.nav-menu { display: flex; gap: 40px; list-style: none; }
 .nav-menu a {
   font-family: var(--font-h); font-size: 10px; font-weight: 600;
   letter-spacing: .22em; text-transform: uppercase;
@@ -99,7 +99,7 @@ img { display: block; max-width: 100%; }
   font-family: var(--font-h); font-size: 10px; font-weight: 700;
   letter-spacing: .18em; text-transform: uppercase;
   color: var(--white); background: var(--red);
-  padding: 11px 26px; transition: background .2s;
+  padding: 12px 24px; transition: background .2s;
 }
 .nav-btn:hover { background: var(--red-dark); }
 
@@ -191,7 +191,7 @@ img { display: block; max-width: 100%; }
 .hero-kicker {
   font-family: var(--font-h); font-size: 11px; font-weight: 600;
   letter-spacing: .32em; text-transform: uppercase; color: var(--red);
-  margin-bottom: 28px; display: flex; align-items: center; gap: 12px;
+  margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
 }
 .hero-kicker::after {
   content: ''; display: block; width: 40px; height: 1px; background: var(--red); opacity: .5;
@@ -200,7 +200,7 @@ img { display: block; max-width: 100%; }
 .hero-headline {
   font-family: var(--font-h); font-weight: 900; font-style: italic;
   text-transform: uppercase; line-height: .87; letter-spacing: -.025em;
-  margin-bottom: 44px;
+  margin-bottom: 48px;
 }
 .hl-1 {
   display: block;
@@ -223,15 +223,15 @@ img { display: block; max-width: 100%; }
 .hero-sub {
   font-size: 11px; font-weight: 400;
   letter-spacing: .22em; text-transform: uppercase;
-  color: var(--chrome); margin-bottom: 44px;
+  color: var(--chrome); margin-bottom: 48px;
 }
 
-.hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.hero-actions { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
 .btn-primary {
   font-family: var(--font-h); font-size: 12px; font-weight: 700;
   letter-spacing: .18em; text-transform: uppercase;
   color: var(--white); background: var(--red);
-  padding: 18px 48px; display: inline-block;
+  padding: 16px 48px; display: inline-block;
   animation: pulse-cta 2.8s ease-in-out infinite;
   transition: background .2s;
 }
@@ -256,7 +256,7 @@ img { display: block; max-width: 100%; }
   margin-top: 64px;
 }
 .stat-cell {
-  padding: 28px 0;
+  padding: 32px 0;
   border-right: 1px solid rgba(255,255,255,.05);
 }
 .stat-cell:last-child { border-right: none; }
@@ -267,7 +267,7 @@ img { display: block; max-width: 100%; }
 }
 .stat-num em { color: var(--red); font-style: normal; }
 .stat-lbl {
-  margin-top: 6px; font-size: 11px; font-weight: 500;
+  margin-top: 8px; font-size: 11px; font-weight: 500;
   letter-spacing: .22em; text-transform: uppercase; color: var(--chrome);
 }
 
@@ -277,14 +277,14 @@ img { display: block; max-width: 100%; }
 .section-label {
   font-family: var(--font-h); font-size: 11px; font-weight: 600;
   letter-spacing: .3em; text-transform: uppercase; color: var(--chrome);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .section-title {
   font-family: var(--font-h); font-weight: 900; text-transform: uppercase;
   font-size: clamp(38px, 5.5vw, 76px); line-height: .95; letter-spacing: -.015em;
 }
 .accent-bar {
-  width: 44px; height: 3px; background: var(--red); margin-top: 14px;
+  width: 44px; height: 3px; background: var(--red); margin-top: 16px;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -359,7 +359,7 @@ img { display: block; max-width: 100%; }
   background: rgba(10,20,40,.96);
   border: 1px solid rgba(27,77,181,.35);
   border-left: 3px solid var(--navy);
-  padding: 14px 18px; width: 210px;
+  padding: 16px 16px; width: 210px;
   pointer-events: none; opacity: 0;
   transition: opacity .2s; z-index: 20;
   bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
@@ -405,7 +405,7 @@ img { display: block; max-width: 100%; }
 .pilot-label {
   font-family: var(--font-h); font-size: 11px; font-weight: 600;
   letter-spacing: .3em; text-transform: uppercase; color: var(--chrome);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .pilot-photo {
@@ -436,7 +436,7 @@ img { display: block; max-width: 100%; }
 }
 .pilot-replace-note {
   font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
-  color: rgba(122,143,166,.28); font-weight: 500;
+  color: rgba(122,143,166,.55); font-weight: 500;
 }
 
 .pilot-bio {
@@ -457,15 +457,15 @@ img { display: block; max-width: 100%; }
   text-transform: uppercase; color: var(--chrome); margin-top: 4px;
 }
 .pilot-bio-text {
-  font-size: 14px; line-height: 1.75; color: rgba(255,255,255,.68);
+  font-size: 14px; line-height: 1.75; color: rgba(255,255,255,.75);
   max-width: 540px; margin-bottom: 40px;
 }
 .pilot-bio-text strong { color: var(--white); font-weight: 600; }
 
-.pilot-creds { display: flex; flex-direction: column; gap: 11px; margin-bottom: 40px; }
+.pilot-creds { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
 .pilot-cred {
   display: flex; align-items: flex-start; gap: 12px;
-  font-size: 13px; color: rgba(255,255,255,.68); line-height: 1.4;
+  font-size: 13px; color: rgba(255,255,255,.75); line-height: 1.4;
 }
 .pilot-cred::before {
   content: ''; width: 5px; height: 5px;
@@ -494,7 +494,7 @@ img { display: block; max-width: 100%; }
   margin-bottom: 2px;
 }
 .v-card {
-  background: #fff; padding: 48px 36px;
+  background: #fff; padding: 48px 40px;
   border: 1px solid rgba(10,20,40,.07);
   position: relative;
   display: flex; flex-direction: column;
@@ -509,7 +509,7 @@ img { display: block; max-width: 100%; }
   display: inline-block;
   font-family: var(--font-h); font-size: 11px; font-weight: 700;
   letter-spacing: .22em; text-transform: uppercase;
-  padding: 5px 12px; margin-bottom: 28px;
+  padding: 4px 12px; margin-bottom: 28px;
 }
 .v-tag--start { background: rgba(10,20,40,.06); color: var(--chrome); }
 .v-tag--best  { background: var(--navy); color: #fff; }
@@ -564,7 +564,7 @@ img { display: block; max-width: 100%; }
 
 /* Add-on toggle */
 .v-addon {
-  margin-top: 12px; padding: 13px 14px;
+  margin-top: 12px; padding: 12px 16px;
   background: rgba(10,20,40,.04);
   border: 1px solid rgba(10,20,40,.08);
   display: flex; align-items: center; justify-content: space-between;
@@ -681,7 +681,7 @@ img { display: block; max-width: 100%; }
 /* Trust strip */
 .trust-strip {
   margin-top: 56px; display: flex; flex-wrap: wrap;
-  gap: 36px; align-items: center; justify-content: center;
+  gap: 40px; align-items: center; justify-content: center;
 }
 .trust-item {
   display: flex; align-items: center; gap: 9px;
@@ -719,7 +719,7 @@ footer {
   padding-top: 26px; display: flex;
   justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
 }
-.footer-copy { font-size: 11px; color: rgba(255,255,255,.25); }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,.55); }
 
 /* ═══════════════════════════════════════════════════════
    HOW IT WORKS — 4 STEPS
@@ -817,7 +817,7 @@ footer {
 ═══════════════════════════════════════════════════════ */
 .guarantee {
   background: rgba(27,77,181,.04); border: 1px solid rgba(27,77,181,.12);
-  padding: 28px 36px; max-width: 680px; margin: 32px auto 0;
+  padding: 32px 40px; max-width: 680px; margin: 32px auto 0;
   display: flex; align-items: center; gap: 20px;
 }
 .guarantee-icon { font-size: 32px; flex-shrink: 0; }
@@ -2005,7 +2005,7 @@ footer {
     <button type="submit" id="subBtn" style="padding:14px 28px;background:var(--red);color:#fff;border:none;font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;cursor:pointer">Zapisz się</button>
   </form>
   <p id="subMsg" style="font-size:12px;margin-top:12px;color:rgba(255,255,255,.6);display:none"></p>
-  <p style="font-size:10px;color:rgba(255,255,255,.25);margin-top:16px">Bez spamu. Max 2-3 SMS w miesiącu. Możesz zrezygnować w każdej chwili.</p>
+  <p style="font-size:11px;color:rgba(255,255,255,.55);margin-top:16px">Bez spamu. Max 2-3 SMS w miesiącu. Możesz zrezygnować w każdej chwili.</p>
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -2264,15 +2264,15 @@ footer {
 <footer id="kontakt">
   <div class="footer-grid">
     <div>
-      <img src="/akrobacja-logo-light.png" alt="akrobacja.com" class="footer-logo"
+      <img src="/akrobacja-logo-light.png" alt="akrobacja.com" class="footer-logo" loading="lazy"
            style="height:72px;width:auto;display:block;margin-bottom:16px">
       <p class="footer-brand-tag">Extra 300L SP-EKS<br>Radom-Piastów EPRP</p>
       <div style="display:flex;gap:12px;align-items:center;margin-top:16px">
-        <img src="/mamcarz.jpg" alt="Paweł Mamcarz" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+        <img src="/mamcarz.jpg" alt="Paweł Mamcarz" loading="lazy" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
         <span style="font-size:11px;color:var(--chrome);line-height:1.4"><strong style="color:var(--white)">Paweł Mamcarz</strong><br>Właściciel SP-EKS · <a href="https://mamcarz.com" target="_blank" rel="noopener" style="color:var(--chrome)">mamcarz.com</a></span>
       </div>
       <div style="display:flex;gap:12px;align-items:center;margin-top:10px">
-        <img src="/kula.jpg" alt="Maciej Kulaszewski" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+        <img src="/kula.jpg" alt="Maciej Kulaszewski" loading="lazy" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
         <span style="font-size:11px;color:var(--chrome);line-height:1.4"><strong style="color:var(--white)">Maciej Kulaszewski</strong><br>Pilot · FI(A)</span>
       </div>
     </div>
@@ -2317,9 +2317,9 @@ footer {
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP</p>
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Instagram</a>
-      <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Facebook</a>
-      <a href="https://wa.me/48535535221" style="font-size:12px;color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">WhatsApp</a>
+      <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.6);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Instagram</a>
+      <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.6);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Facebook</a>
+      <a href="https://wa.me/48535535221" style="font-size:12px;color:rgba(255,255,255,.6);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">WhatsApp</a>
       <img src="/akrobacja-logo-light.png" alt="" aria-hidden="true" style="height:22px;width:auto;display:block;opacity:0.6">
     </div>
   </div>
