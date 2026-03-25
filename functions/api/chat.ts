@@ -212,7 +212,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     messages.push({ role: 'user', content: message });
 
-    const response = await ctx.env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
+    const response = await ctx.env.AI.run('@cf/meta/llama-3.1-8b-instruct' as keyof AiModels, {
       messages,
       max_tokens: 400,
       temperature: 0.7,

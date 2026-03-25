@@ -58,7 +58,7 @@ Potem przychodzi **beczka** (aileron roll). Świat obraca się wokół podłużn
 **Lot odwrócony** to moment, który zostaje z Tobą na zawsze. Niebo jest pod Tobą. Ziemia nad głową. Pasy trzymają Cię w fotelu, a Twój mózg próbuje zrozumieć, dlaczego horyzont jest nie tam, gdzie powinien być. To surrealistyczne - jak sen, z którego nie chcesz się budzić.
 
   
-    **G-force w praktyce:** Przy +6G Twoje ciało waży ~480 kg (przy masie 80 kg). Piloci myśliwców trenują latami, żeby to wytrzymać. Ty dostajesz tę dawkę wrażeń w locie akrobacyjnym Extra 300L - z fotelem za plecami pilota, który ma ponad 4000 godzin nalotu.
+    **G-force w praktyce:** Przy +6G Twoje ciało waży ~480 kg (przy masie 80 kg). Piloci myśliwców trenują latami, żeby to wytrzymać. Ty dostajesz tę dawkę wrażeń w locie akrobacyjnym Extra 300L - z fotelem za plecami pilota, który ma ponad 3000 godzin nalotu.
   
 
   
@@ -69,7 +69,7 @@ Potem przychodzi **beczka** (aileron roll). Świat obraca się wokół podłużn
 To pytanie zadaje sobie każdy, kto rozważa lot akrobacyjny. Odpowiedź jest prosta: tak - pod warunkiem, że latasz z odpowiednim pilotem i odpowiednim samolotem.
 
   
-    - **Pilot Maciej Kulaszewski** - Mistrz Polski w akrobacji samolotowej, ponad 4000 godzin nalotu, instruktor akrobacji z uprawnieniami FCL.800
+    - **Pilot Maciej Kulaszewski** - Mistrz Polski w akrobacji samolotowej, ponad 3000 godzin nalotu, instruktor akrobacji z uprawnieniami FCL.800
 
     - **Extra 300L SP-EKS** - samolot certyfikowany do przeciążeń **+10G / -10G**, zaprojektowany wyłącznie do akrobacji, regularnie serwisowany zgodnie z programem obsługi EASA
 

@@ -46,7 +46,7 @@ Zaawansowana kategoria wymagająca doskonałego opanowania samolotu i figur. Pro
 **Unlimited** to najwyższa kategoria akrobacji lotniczej - absolutny szczyt tego sportu. Nie ma ograniczeń co do figur ani przeciążeń (w ramach certyfikacji samolotu). Piloci wykonują najbardziej złożone sekwencje, łączące figury pozytywne i negatywne, snap rolle na wszystkich kątach, figury z zerową prędkością (tailslide). Przeciążenia sięgają +8G do +10G. To kategoria, w której startuje **Maciej Kulaszewski** na naszym Extra 300L.
 
   
-    **Maciej Kulaszewski** - wielokrotny Mistrz Polski w akrobacji lotniczej w kategorii Unlimited. Ponad 4 000 godzin nalotu, w tym tysiące godzin akrobacji. Doświadczenie zawodnicze na najwyższym poziomie, starty w Mistrzostwach Europy i Świata. Kiedy nie startuje w zawodach - uczy akrobacji i zabiera pasażerów na loty akrobacyjne.
+    **Maciej Kulaszewski** - wielokrotny Mistrz Polski w akrobacji lotniczej w kategorii Unlimited. Ponad 3 000 godzin nalotu, w tym tysiące godzin akrobacji. Doświadczenie zawodnicze na najwyższym poziomie, starty w Mistrzostwach Europy i Świata. Kiedy nie startuje w zawodach - uczy akrobacji i zabiera pasażerów na loty akrobacyjne.
   
 
   

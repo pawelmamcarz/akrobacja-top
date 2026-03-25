@@ -7,7 +7,7 @@
 **Cena lotu akrobacyjnego** w Polsce waha się od **1 999 PLN do 4 999 PLN** w zależności od wybranego pakietu, czasu trwania lotu i typu samolotu. Na rynku znajdziesz oferty na lekkich maszynach szkolnych, ale jeśli szukasz prawdziwych emocji w kokpicie dwumiejscowego samolotu akrobacyjnego klasy unlimited, to musisz liczyć się z wyższym budżetem. W tym artykule rozkładamy **cenę lotu akrobacyjnego** na czynniki pierwsze.
 
   
-W akrobacja.top latamy samolotem **Extra 300L SP-EKS** - jedną z najlepszych maszyn akrobacyjnych na świecie. Pilot, Maciej Kulaszewski, to Mistrz Polski w akrobacji samolotowej z ponad **4 000 godzin** doświadczenia w powietrzu. To ma bezpośredni wpływ na jakość i bezpieczeństwo Twojego lotu - a więc i na to, **ile kosztuje lot akrobacyjny** na najwyższym poziomie.
+W akrobacja.top latamy samolotem **Extra 300L SP-EKS** - jedną z najlepszych maszyn akrobacyjnych na świecie. Pilot, Maciej Kulaszewski, to Mistrz Polski w akrobacji samolotowej z ponad **3 000 godzin** doświadczenia w powietrzu. To ma bezpośredni wpływ na jakość i bezpieczeństwo Twojego lotu - a więc i na to, **ile kosztuje lot akrobacyjny** na najwyższym poziomie.
 
   
 ## Ceny lotów akrobacyjnych - porównanie pakietów
@@ -72,7 +72,7 @@ Każda minuta w powietrzu to konkretny koszt paliwa (Extra 300L spala około 100
 ### 3. Doświadczenie pilota
 
   
-Pilot z 4 000 godzin na akrobacyjnych i tytułem Mistrza Polski to gwarancja najwyższego poziomu bezpieczeństwa i precyzji figur. To nie jest kwestia prestiżu - to realne bezpieczeństwo i jakość manewrów, które wykonujesz. Płacisz za spokojny sen, nie za nazwisko na certyfikacie.
+Pilot z 3 000 godzin na akrobacyjnych i tytułem Mistrza Polski to gwarancja najwyższego poziomu bezpieczeństwa i precyzji figur. To nie jest kwestia prestiżu - to realne bezpieczeństwo i jakość manewrów, które wykonujesz. Płacisz za spokojny sen, nie za nazwisko na certyfikacie.
 
   
 ### 4. Lokalizacja - lotnisko

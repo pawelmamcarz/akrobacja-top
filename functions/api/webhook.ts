@@ -1,7 +1,42 @@
-import { type Env, type PackageId } from '../../src/lib/types';
+import { type Env, type PackageId, PACKAGES } from '../../src/lib/types';
 import { generateVoucherPdf } from '../../src/lib/pdf';
 import { sendVoucherEmail } from '../../src/lib/email';
 import { createInvoice } from '../../src/lib/wfirma';
+
+// Notify owner about new paid order via Resend
+async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: PackageId; customerName: string; customerEmail: string; amount: number; videoAddon: boolean }): Promise<void> {
+  try {
+    const pkg = PACKAGES[o.packageId];
+    const amountPLN = (o.amount / 100).toLocaleString('pl-PL') + ' PLN';
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: 'akrobacja.com <system@akrobacja.com>',
+        to: ['dto@akrobacja.com'],
+        subject: `💰 Nowe zamówienie: ${pkg.name} — ${amountPLN}`,
+        html: `
+          <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto">
+            <h2 style="color:#0A2F7C;margin:0 0 16px">Nowe zamówienie opłacone!</h2>
+            <table style="width:100%;border-collapse:collapse">
+              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Pakiet</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${pkg.name}</td></tr>
+              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Kwota</td><td style="padding:8px 0;font-weight:600;color:#27ae60;border-bottom:1px solid #eee;text-align:right">${amountPLN}</td></tr>
+              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Klient</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${o.customerName}</td></tr>
+              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Email</td><td style="padding:8px 0;border-bottom:1px solid #eee;text-align:right"><a href="mailto:${o.customerEmail}">${o.customerEmail}</a></td></tr>
+              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Voucher</td><td style="padding:8px 0;font-weight:600;font-family:monospace;border-bottom:1px solid #eee;text-align:right">${o.voucherCode}</td></tr>
+              <tr><td style="padding:8px 0;color:#6B7A90">Video 360°</td><td style="padding:8px 0;font-weight:600;text-align:right">${o.videoAddon ? 'Tak (+299 PLN)' : 'Nie'}</td></tr>
+            </table>
+            <p style="margin-top:16px"><a href="https://akrobacja.com/admin" style="color:#0A2F7C;font-weight:600">Otwórz panel admina →</a></p>
+          </div>`,
+      }),
+    });
+  } catch {
+    // Non-critical
+  }
+}
 
 // Stripe webhook signature verification (HMAC-SHA256)
 async function verifyStripeSignature(payload: string, sig: string, secret: string): Promise<boolean> {
@@ -154,6 +189,10 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       WHERE id = ?
     `).bind(invoiceId || null, session.id as string, orderId).run();
     steps.push('order_updated');
+
+    // 6. Notify owner about new order
+    ctx.waitUntil(notifyOwnerOrder(ctx.env, { voucherCode, packageId, customerName, customerEmail, amount: order.amount as number, videoAddon }));
+    steps.push('owner_notified');
 
     return Response.json({ ok: true, steps });
   } catch (err: unknown) {

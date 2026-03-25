@@ -106,7 +106,7 @@ Akrobacja lotnicza wymaga wydzielonej strefy powietrznej, w której pilot może 
   
 
   
-Bezpieczeństwo to nie slogan marketingowy - to fundament naszej operacji. Nasz pilot, **Maciej Kulaszewski**, ma ponad 4 000 godzin nalotu i tytuł Mistrza Polski w akrobacji. Każdy lot jest poprzedzony briefingiem, a decyzja o starcie uwzględnia aktualne warunki meteorologiczne, stan techniczny samolotu i samopoczucie pasażera.
+Bezpieczeństwo to nie slogan marketingowy - to fundament naszej operacji. Nasz pilot, **Maciej Kulaszewski**, ma ponad 3 000 godzin nalotu i tytuł Mistrza Polski w akrobacji. Każdy lot jest poprzedzony briefingiem, a decyzja o starcie uwzględnia aktualne warunki meteorologiczne, stan techniczny samolotu i samopoczucie pasażera.
 
   
 ## Sezon lotów: kwiecień - październik
