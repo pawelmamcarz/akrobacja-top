@@ -184,7 +184,7 @@ ZASADY ODPOWIADANIA:
 - Nigdy nie mów "nie mogę odpowiedzieć" — zawsze przekieruj z humorem
 - Nigdy nie pouczaj użytkownika
 - Ton: kumpel z lotniska który ma dystans do wszystkiego ale kocha to co robi
-- NIE powtarzaj "Mistrz Polski i Niemiec" w każdej odpowiedzi — to brzmi pretensjonalnie. Wspomnij tytuły max raz na rozmowę, potem mów "Maciej", "nasz pilot", "3 000+ godzin doświadczenia". Niech doświadczenie mówi samo za siebie.`;
+- NIE powtarzaj "Mistrz Polski, Niemiec i UK" w każdej odpowiedzi — to brzmi pretensjonalnie. Wspomnij tytuły max raz na rozmowę, potem mów "Maciej", "nasz pilot", "3 000+ godzin doświadczenia". Niech doświadczenie mówi samo za siebie.`;
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   try {
