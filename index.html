@@ -723,6 +723,12 @@ footer {
   justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
 }
 .footer-copy { font-size: 11px; color: rgba(255,255,255,.55); }
+.footer-social-link { font-size: 12px; color: rgba(255,255,255,.6); transition: color .2s; text-decoration: none; }
+.footer-social-link:hover { color: #fff; }
+.link-ghost-hover:hover { border-color: #fff !important; }
+.link-dotacje-hover:hover { opacity: 0.9; }
+.hotspot:focus .hotspot-card { opacity: 1; }
+.hotspot:focus { outline: none; }
 
 /* ═══════════════════════════════════════════════════════
    HOW IT WORKS — 4 STEPS
@@ -1464,7 +1470,7 @@ footer {
 
 <nav class="nav" id="nav">
   <a href="#hero" class="nav-logo" aria-label="akrobacja.com — strona główna">
-    <img src="/akrobacja-logo-mark-light.png" alt="akrobacja.com" style="height:56px;width:auto;max-width:none;display:block">
+    <img src="/akrobacja-logo-mark-light.png" alt="akrobacja.com" width="56" height="56" style="height:56px;width:auto;max-width:none;display:block">
   </a>
   <ul class="nav-menu" id="nav-menu">
     <li><a href="/lot-akrobacyjny">Loty</a></li>
@@ -1569,7 +1575,7 @@ footer {
       <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 85% 85% at 50% 50%, transparent 45%, rgba(10,20,40,0.65) 100%);pointer-events:none;z-index:1"></div>
 
       <!-- Hotspot 1 — Silnik (nose / engine — top-center) -->
-      <div class="hotspot" style="left:50%;top:13%;z-index:10">
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:13%;z-index:10">
         <div class="hotspot-dot"><span>1</span></div>
         <div class="hotspot-card">
           <div class="hotspot-card-title">Silnik</div>
@@ -1579,7 +1585,7 @@ footer {
       </div>
 
       <!-- Hotspot 2 — Cockpit (just behind engine, center) -->
-      <div class="hotspot" style="left:50%;top:33%;z-index:10">
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:33%;z-index:10">
         <div class="hotspot-dot"><span>2</span></div>
         <div class="hotspot-card">
           <div class="hotspot-card-title">Przeciążenia</div>
@@ -1589,7 +1595,7 @@ footer {
       </div>
 
       <!-- Hotspot 3 — Left wing (port side, mid-height) -->
-      <div class="hotspot" style="left:15%;top:46%;z-index:10">
+      <div class="hotspot" tabindex="0" role="button" style="left:15%;top:46%;z-index:10">
         <div class="hotspot-dot"><span>3</span></div>
         <div class="hotspot-card" style="left:100%;bottom:auto;top:-50%;transform:none">
           <div class="hotspot-card-title">Prędkość Przechyłu</div>
@@ -1599,7 +1605,7 @@ footer {
       </div>
 
       <!-- Hotspot 4 — Tail (lower center) -->
-      <div class="hotspot" style="left:50%;top:82%;z-index:10">
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:82%;z-index:10">
         <div class="hotspot-dot"><span>4</span></div>
         <div class="hotspot-card" style="bottom:auto;top:calc(100% + 10px)">
           <div class="hotspot-card-title">Usterzenie</div>
@@ -1609,7 +1615,7 @@ footer {
       </div>
 
       <!-- Hotspot 5 — Right wing (starboard side, mid-height) -->
-      <div class="hotspot" style="left:85%;top:46%;z-index:10">
+      <div class="hotspot" tabindex="0" role="button" style="left:85%;top:46%;z-index:10">
         <div class="hotspot-dot"><span>5</span></div>
         <div class="hotspot-card" style="right:100%;left:auto;bottom:auto;top:-50%;transform:none">
           <div class="hotspot-card-title">Max Prędkość</div>
@@ -1714,7 +1720,7 @@ footer {
      OWNER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <div style="background:var(--white);padding:80px 64px;display:flex;align-items:center;gap:48px;max-width:100%;flex-wrap:wrap;justify-content:center" class="reveal">
-  <img src="/mamcarz.jpg" alt="Paweł Mamcarz — właściciel Extra 300L SP-EKS" loading="lazy" style="width:280px;height:280px;object-fit:cover;border-radius:50%;flex-shrink:0">
+  <img src="/mamcarz.jpg" alt="Paweł Mamcarz — właściciel Extra 300L SP-EKS" loading="lazy" width="280" height="280" style="width:280px;height:280px;object-fit:cover;border-radius:50%;flex-shrink:0">
   <div style="max-width:480px">
     <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Właściciel SP-EKS</p>
     <h2 style="font-family:var(--font-h);font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--black);text-transform:uppercase;line-height:1;margin-bottom:14px">Paweł<br>Mamcarz</h2>
@@ -1771,7 +1777,7 @@ footer {
         <li class="v-feat">Doświadczenie lotnicze nie jest wymagane</li>
       </ul>
       <button class="v-cta" data-package="pierwszy_lot">Kup voucher — 1 999 PLN</button>
-      <div class="v-addon" onclick="this.classList.toggle('on')" data-addon="pierwszy_lot">
+      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="pierwszy_lot">
         <div class="v-addon-text">
           <div class="v-addon-title">+ Video 360° z lotu</div>
           <div class="v-addon-desc">Montaż 90 sek · MP4 w 48h · +299 PLN</div>
@@ -1800,7 +1806,7 @@ footer {
         <li class="v-feat">Doświadczenie lotnicze nie jest wymagane</li>
       </ul>
       <button class="v-cta" data-package="adrenalina">Kup voucher — 2 999 PLN</button>
-      <div class="v-addon" onclick="this.classList.toggle('on')" data-addon="adrenalina">
+      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="adrenalina">
         <div class="v-addon-text">
           <div class="v-addon-title">+ Video 360° z lotu</div>
           <div class="v-addon-desc">Montaż 90 sek · MP4 w 48h · +299 PLN</div>
@@ -1829,7 +1835,7 @@ footer {
         <li class="v-feat">Limitowana liczba miejsc</li>
       </ul>
       <button class="v-cta" data-package="masterclass">Kup voucher — 4 999 PLN</button>
-      <div class="v-addon" onclick="this.classList.toggle('on')" data-addon="masterclass">
+      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="masterclass">
         <div class="v-addon-text">
           <div class="v-addon-title">+ Video 360° z lotu</div>
           <div class="v-addon-desc">Montaż 90 sek · kamera cockpit + zewnętrzna · +299 PLN</div>
@@ -2011,7 +2017,7 @@ footer {
   <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px">Bądź na bieżąco</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(22px,3vw,32px);font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:8px">Dowiedz się pierwszy o pokazach</h2>
   <p style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto">Zostaw numer — wyślemy SMS kiedy latamy na pokazach, mamy wolne terminy lub nowe produkty.</p>
-  <form id="subForm" onsubmit="return subscribePhone(event)" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
+  <form id="subForm" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
     <input type="tel" id="subPhone" placeholder="+48 XXX XXX XXX" required pattern="\+?[0-9\s]{9,15}" title="Podaj numer telefonu (9-15 cyfr)" style="flex:1;min-width:200px;padding:14px 18px;border:none;font-size:14px;font-family:var(--font-b);outline:none">
     <button type="submit" id="subBtn" style="padding:14px 28px;background:var(--red);color:#fff;border:none;font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;cursor:pointer">Zapisz się</button>
   </form>
@@ -2025,21 +2031,21 @@ footer {
 <div style="background:var(--white);padding:80px 64px;text-align:center" class="reveal">
   <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pasażerów</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--black);text-transform:uppercase;margin-bottom:32px">Briefing przed lotem akrobacyjnym</h2>
-  <img src="/przewodnik-briefing.png" alt="Briefing przed lotem akrobacyjnym Extra 300L - przygotowanie, bezpieczeństwo, fizjologia, parametry maszyny" loading="lazy" style="max-width:1100px;width:100%;margin:0 auto;display:block">
+  <img src="/przewodnik-briefing.png" alt="Briefing przed lotem akrobacyjnym Extra 300L - przygotowanie, bezpieczeństwo, fizjologia, parametry maszyny" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
 </div>
 
 <div style="background:var(--black);padding:80px 64px;text-align:center" class="reveal">
   <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pilotów</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--white);text-transform:uppercase;margin-bottom:32px">Kurs akrobacji FCL.800</h2>
-  <img src="/przewodnik-fcl800.png" alt="Przewodnik po kursie akrobacji FCL.800 - wymagania, manewry, parametry Extra 300L" loading="lazy" style="max-width:1100px;width:100%;margin:0 auto;display:block">
-  <a href="/blog/kurs-akrobacji-fcl800" style="display:inline-block;margin-top:32px;font-family:var(--font-h);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:14px 30px;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,.22)'">Dowiedz się więcej o szkoleniu →</a>
+  <img src="/przewodnik-fcl800.png" alt="Przewodnik po kursie akrobacji FCL.800 - wymagania, manewry, parametry Extra 300L" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
+  <a href="/blog/kurs-akrobacji-fcl800" class="link-ghost-hover" style="display:inline-block;margin-top:32px;font-family:var(--font-h);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:14px 30px;text-decoration:none;transition:border-color .2s">Dowiedz się więcej o szkoleniu →</a>
 </div>
 
 <!-- DOTACJE BANNER -->
 <div style="background:#C41E3A;padding:28px 64px;text-align:center" class="reveal">
   <p style="font-family:var(--font-h);font-size:clamp(14px,2vw,20px);font-weight:800;color:#fff;margin:0 0 8px;text-transform:uppercase;letter-spacing:.05em">Dofinansowanie kursu akrobacji — do 90% taniej</p>
   <p style="color:rgba(255,255,255,.85);font-size:14px;margin:0 0 16px;max-width:700px;display:inline-block">BUR, PUP, KFS — ponad 10 kursantów już skorzystało. Szkolenie pod egidą Aeroklubu Radomskiego. Pomagamy w formalności od A do Z.</p>
-  <a href="/dotacje-szkolenie-lotnicze" style="display:inline-block;font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C41E3A;background:#fff;padding:14px 32px;text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Sprawdź czy się kwalifikujesz →</a>
+  <a href="/dotacje-szkolenie-lotnicze" class="link-dotacje-hover" style="display:inline-block;font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C41E3A;background:#fff;padding:14px 32px;text-decoration:none;transition:opacity .2s">Sprawdź czy się kwalifikujesz →</a>
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -2276,15 +2282,15 @@ footer {
 <footer id="kontakt">
   <div class="footer-grid">
     <div>
-      <img src="/akrobacja-logo-light.png" alt="akrobacja.com" class="footer-logo" loading="lazy"
+      <img src="/akrobacja-logo-light.png" alt="akrobacja.com" class="footer-logo" loading="lazy" width="200" height="72"
            style="height:72px;width:auto;display:block;margin-bottom:16px">
       <p class="footer-brand-tag">Extra 300L SP-EKS<br>Radom-Piastów EPRP</p>
       <div style="display:flex;gap:12px;align-items:center;margin-top:16px">
-        <img src="/mamcarz.jpg" alt="Paweł Mamcarz" loading="lazy" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+        <img src="/mamcarz.jpg" alt="Paweł Mamcarz" loading="lazy" width="40" height="40" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
         <span style="font-size:11px;color:var(--chrome);line-height:1.4"><strong style="color:var(--white)">Paweł Mamcarz</strong><br>Właściciel SP-EKS · <a href="https://mamcarz.com" target="_blank" rel="noopener" style="color:var(--chrome)">mamcarz.com</a></span>
       </div>
       <div style="display:flex;gap:12px;align-items:center;margin-top:10px">
-        <img src="/kula.jpg" alt="Maciej Kulaszewski" loading="lazy" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+        <img src="/kula.jpg" alt="Maciej Kulaszewski" loading="lazy" width="40" height="40" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
         <span style="font-size:11px;color:var(--chrome);line-height:1.4"><strong style="color:var(--white)">Maciej Kulaszewski</strong><br>Pilot · FI(A)</span>
       </div>
     </div>
@@ -2329,9 +2335,9 @@ footer {
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP</p>
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.6);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Instagram</a>
-      <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.6);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">Facebook</a>
-      <a href="https://wa.me/48535535221" style="font-size:12px;color:rgba(255,255,255,.6);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.6)'">WhatsApp</a>
+      <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener" class="footer-social-link">Instagram</a>
+      <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener" class="footer-social-link">Facebook</a>
+      <a href="https://wa.me/48535535221" class="footer-social-link">WhatsApp</a>
       <img src="/akrobacja-logo-light.png" alt="" aria-hidden="true" style="height:22px;width:auto;display:block;opacity:0.6">
     </div>
   </div>
@@ -2518,6 +2524,7 @@ footer {
     dotacjaBanner.style.display = packageId === 'masterclass' ? 'block' : 'none';
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    modal.querySelector('input:not([type=hidden])').focus();
   }
 
   function updatePrice(base) {
@@ -2539,7 +2546,15 @@ footer {
 
   document.getElementById('modalClose').addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Tab' && modal.classList.contains('active')) {
+      const focusable = modal.querySelectorAll('input:not([type=hidden]),button,a,[tabindex]:not([tabindex="-1"])');
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 
   document.querySelectorAll('[data-package]').forEach(btn => {
     btn.addEventListener('click', () => openModal(btn.dataset.package));
@@ -2577,7 +2592,7 @@ footer {
   });
 
   // Subscribe form
-  window.subscribePhone = async function(e) {
+  document.getElementById('subForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     const phone = document.getElementById('subPhone').value.trim();
     const btn = document.getElementById('subBtn');
@@ -2596,8 +2611,14 @@ footer {
       if (res.ok) { document.getElementById('subPhone').value = ''; }
     } catch { msg.textContent = 'Błąd — spróbuj ponownie'; msg.style.display = 'block'; msg.style.color = '#ff6b6b'; }
     btn.disabled = false; btn.textContent = 'Zapisz się';
-    return false;
-  };
+  });
+
+  // Addon toggles — keyboard accessible
+  document.querySelectorAll('.v-addon[role="checkbox"]').forEach(el => {
+    function toggle() { const on = el.classList.toggle('on'); el.setAttribute('aria-checked', on); }
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); } });
+  });
 
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
