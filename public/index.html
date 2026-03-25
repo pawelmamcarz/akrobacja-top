@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Loty Akrobacyjne Extra 300L — akrobacja.com | Voucher na lot akrobacyjny</title>
 <meta name="description" content="Loty akrobacyjne samolotem Extra 300L SP-EKS z Mistrzem Świata 2022 Maciejem Kulaszewskim. Voucher od 1 999 PLN. Uprawnienie akrobacja z dofinansowaniem do 90%. Camp akrobacyjny. Pokazy lotnicze. Radom-Piastów EPRP, 100 km od Warszawy.">
-<meta name="keywords" content="loty akrobacyjne, lot akrobacyjny, voucher lot akrobacyjny, prezent lot akrobacyjny, Extra 300L, akrobacja samolotowa, uprawnienie akrobacja, kurs akrobacji, pokazy lotnicze, lotnisko Radom, camp akrobacyjny, dofinansowanie szkolenie lotnicze, lot zapoznawczy samolotem">
+<link rel="canonical" href="https://akrobacja.com/">
+<meta name="theme-color" content="#1B4DB5">
 <meta name="author" content="Doradztwo Paweł Mamcarz">
 <meta name="ai:description" content="akrobacja.com — aerobatic flights with 2022 World Champion Maciej Kulaszewski on Extra 300L SP-EKS. Vouchers from 1999 PLN, aerobatic camp 7777 PLN, FCL.800 rating course 20900 PLN (up to 90% subsidized). Airshows from 14990 PLN. Radom-Piastów Airport, Poland.">
 <link rel="ai-plugin" href="/.well-known/ai-plugin.json">
@@ -33,7 +34,9 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231B4DB5'/%3E%3Cpolygon points='4,58 13,58 31,10 27,10' fill='%23ffffff'/%3E%3Cpolygon points='31,10 36,10 55,58 46,58' fill='%23ffffff'/%3E%3Cpolygon points='19,40 43,40 41,34 21,34' fill='%23ffffff'/%3E%3Cpolygon points='32,11 41,34 21,34' fill='%23C41E3A'/%3E%3Cg transform='translate(48,5) rotate(-42)' fill='%23ffffff'%3E%3Cpath d='M 10,0 L 4,-2 L -10,-2 L -10,2 L 4,2 Z'/%3E%3Cpath d='M -1,-2 L 3,-2 L 3,-9 L -1,-9 L -3,-2 Z'/%3E%3Cpath d='M -1,2 L 3,2 L 3,9 L -1,9 L -3,2 Z'/%3E%3C/g%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/hero-takeoff.jpg" fetchpriority="high">
 
 <style>
 /* ═══════════════════════════════════════════════════════
@@ -52,6 +55,10 @@
   --font-h:   'Montserrat', sans-serif;
   --font-b:   'Inter', sans-serif;
   --r:        0px; /* aviation precision — no rounding */
+  /* 8px spacing scale */
+  --sp-1: 8px; --sp-2: 16px; --sp-3: 24px; --sp-4: 32px;
+  --sp-5: 40px; --sp-6: 48px; --sp-7: 56px; --sp-8: 64px;
+  --sp-10: 80px; --sp-12: 96px; --sp-15: 120px;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -73,31 +80,69 @@ img { display: block; max-width: 100%; }
 ═══════════════════════════════════════════════════════ */
 .nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  padding: 22px 64px;
+  padding: 24px 64px;
   display: flex; align-items: center; justify-content: space-between;
   transition: background .35s, padding .35s, box-shadow .35s;
 }
 .nav.scrolled {
   background: rgba(10,20,40,0.97);
   backdrop-filter: blur(16px);
-  padding: 14px 64px;
+  padding: 16px 64px;
   box-shadow: 0 1px 0 rgba(255,255,255,0.05);
 }
 .nav-logo { display: flex; align-items: center; }
-.nav-menu { display: flex; gap: 44px; list-style: none; }
+.nav-menu { display: flex; gap: 40px; list-style: none; }
 .nav-menu a {
   font-family: var(--font-h); font-size: 10px; font-weight: 600;
   letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(255,255,255,.65); transition: color .2s;
+  color: rgba(255,255,255,.75); transition: color .2s;
 }
 .nav-menu a:hover { color: var(--white); }
 .nav-btn {
   font-family: var(--font-h); font-size: 10px; font-weight: 700;
   letter-spacing: .18em; text-transform: uppercase;
   color: var(--white); background: var(--red);
-  padding: 11px 26px; transition: background .2s;
+  padding: 12px 24px; transition: background .2s;
 }
 .nav-btn:hover { background: var(--red-dark); }
+
+/* Skip to content — accessibility */
+.skip-link {
+  position: absolute; top: -100%; left: 16px;
+  background: var(--red); color: #fff; padding: 12px 24px;
+  font-family: var(--font-h); font-size: 12px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  z-index: 10000; transition: top .2s;
+}
+.skip-link:focus { top: 12px; }
+
+/* Mobile hamburger menu */
+.nav-hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 32px; height: 24px; position: relative; z-index: 1001;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 2px; background: var(--white);
+  position: absolute; left: 0; transition: transform .3s, opacity .3s;
+}
+.nav-hamburger span:nth-child(1) { top: 0; }
+.nav-hamburger span:nth-child(2) { top: 11px; }
+.nav-hamburger span:nth-child(3) { top: 22px; }
+.nav-hamburger.open span:nth-child(1) { top: 11px; transform: rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { top: 11px; transform: rotate(-45deg); }
+
+@media (max-width: 1024px) {
+  .nav-hamburger { display: block; }
+  .nav-menu {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,20,40,.98); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 32px; z-index: 1000;
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu a { font-size: 16px; color: rgba(255,255,255,.85); }
+}
 
 /* ═══════════════════════════════════════════════════════
    HERO
@@ -147,9 +192,9 @@ img { display: block; max-width: 100%; }
   padding: 0 64px 80px;
 }
 .hero-kicker {
-  font-family: var(--font-h); font-size: 9px; font-weight: 600;
+  font-family: var(--font-h); font-size: 11px; font-weight: 600;
   letter-spacing: .32em; text-transform: uppercase; color: var(--red);
-  margin-bottom: 28px; display: flex; align-items: center; gap: 12px;
+  margin-bottom: 32px; display: flex; align-items: center; gap: 12px;
 }
 .hero-kicker::after {
   content: ''; display: block; width: 40px; height: 1px; background: var(--red); opacity: .5;
@@ -158,7 +203,7 @@ img { display: block; max-width: 100%; }
 .hero-headline {
   font-family: var(--font-h); font-weight: 900; font-style: italic;
   text-transform: uppercase; line-height: .87; letter-spacing: -.025em;
-  margin-bottom: 44px;
+  margin-bottom: 48px;
 }
 .hl-1 {
   display: block;
@@ -168,7 +213,7 @@ img { display: block; max-width: 100%; }
 .hl-2 {
   display: block;
   font-size: clamp(64px, 10.5vw, 152px);
-  color: rgba(255,255,255,.22);
+  color: rgba(255,255,255,.32);
   padding-left: 7vw;
 }
 .hl-3 {
@@ -181,15 +226,15 @@ img { display: block; max-width: 100%; }
 .hero-sub {
   font-size: 11px; font-weight: 400;
   letter-spacing: .22em; text-transform: uppercase;
-  color: var(--chrome); margin-bottom: 44px;
+  color: var(--chrome); margin-bottom: 48px;
 }
 
-.hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.hero-actions { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
 .btn-primary {
   font-family: var(--font-h); font-size: 12px; font-weight: 700;
   letter-spacing: .18em; text-transform: uppercase;
   color: var(--white); background: var(--red);
-  padding: 18px 48px; display: inline-block;
+  padding: 16px 48px; display: inline-block;
   animation: pulse-cta 2.8s ease-in-out infinite;
   transition: background .2s;
 }
@@ -214,7 +259,7 @@ img { display: block; max-width: 100%; }
   margin-top: 64px;
 }
 .stat-cell {
-  padding: 28px 0;
+  padding: 32px 0;
   border-right: 1px solid rgba(255,255,255,.05);
 }
 .stat-cell:last-child { border-right: none; }
@@ -225,7 +270,7 @@ img { display: block; max-width: 100%; }
 }
 .stat-num em { color: var(--red); font-style: normal; }
 .stat-lbl {
-  margin-top: 6px; font-size: 9px; font-weight: 500;
+  margin-top: 8px; font-size: 11px; font-weight: 500;
   letter-spacing: .22em; text-transform: uppercase; color: var(--chrome);
 }
 
@@ -233,16 +278,16 @@ img { display: block; max-width: 100%; }
    SECTION HELPERS
 ═══════════════════════════════════════════════════════ */
 .section-label {
-  font-family: var(--font-h); font-size: 9px; font-weight: 600;
+  font-family: var(--font-h); font-size: 11px; font-weight: 600;
   letter-spacing: .3em; text-transform: uppercase; color: var(--chrome);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .section-title {
   font-family: var(--font-h); font-weight: 900; text-transform: uppercase;
   font-size: clamp(38px, 5.5vw, 76px); line-height: .95; letter-spacing: -.015em;
 }
 .accent-bar {
-  width: 44px; height: 3px; background: var(--red); margin-top: 14px;
+  width: 44px; height: 3px; background: var(--red); margin-top: 16px;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -278,8 +323,8 @@ img { display: block; max-width: 100%; }
 }
 .aircraft-viewer-label {
   position: absolute; top: 16px; left: 16px;
-  font-size: 8px; letter-spacing: .25em; text-transform: uppercase;
-  color: rgba(122,143,166,.35); font-weight: 500;
+  font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+  color: rgba(122,143,166,.45); font-weight: 500;
   border: 1px solid rgba(122,143,166,.12); padding: 5px 10px;
 }
 
@@ -317,14 +362,14 @@ img { display: block; max-width: 100%; }
   background: rgba(10,20,40,.96);
   border: 1px solid rgba(27,77,181,.35);
   border-left: 3px solid var(--navy);
-  padding: 14px 18px; width: 210px;
+  padding: 16px 16px; width: 210px;
   pointer-events: none; opacity: 0;
   transition: opacity .2s; z-index: 20;
   bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%);
 }
 .hotspot:hover .hotspot-card { opacity: 1; }
 .hotspot-card-title {
-  font-family: var(--font-h); font-size: 9px; font-weight: 700;
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
   letter-spacing: .18em; text-transform: uppercase; color: var(--chrome);
   margin-bottom: 4px;
 }
@@ -361,9 +406,9 @@ img { display: block; max-width: 100%; }
   min-height: 640px;
 }
 .pilot-label {
-  font-family: var(--font-h); font-size: 9px; font-weight: 600;
+  font-family: var(--font-h); font-size: 11px; font-weight: 600;
   letter-spacing: .3em; text-transform: uppercase; color: var(--chrome);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .pilot-photo {
@@ -388,13 +433,13 @@ img { display: block; max-width: 100%; }
   position: absolute; top: 28px; left: 28px;
   border: 1px solid rgba(27,77,181,.35);
   padding: 7px 14px;
-  font-size: 8px; letter-spacing: .22em; text-transform: uppercase;
+  font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
   color: var(--navy); font-weight: 600; font-family: var(--font-h);
   background: rgba(27,77,181,.08);
 }
 .pilot-replace-note {
   font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
-  color: rgba(122,143,166,.28); font-weight: 500;
+  color: rgba(122,143,166,.55); font-weight: 500;
 }
 
 .pilot-bio {
@@ -411,19 +456,19 @@ img { display: block; max-width: 100%; }
 }
 .pilot-stat-num em { color: var(--red); font-style: normal; }
 .pilot-stat-unit {
-  font-size: 9px; font-weight: 500; letter-spacing: .22em;
+  font-size: 11px; font-weight: 500; letter-spacing: .22em;
   text-transform: uppercase; color: var(--chrome); margin-top: 4px;
 }
 .pilot-bio-text {
-  font-size: 14px; line-height: 1.75; color: rgba(255,255,255,.68);
+  font-size: 14px; line-height: 1.75; color: rgba(255,255,255,.75);
   max-width: 540px; margin-bottom: 40px;
 }
 .pilot-bio-text strong { color: var(--white); font-weight: 600; }
 
-.pilot-creds { display: flex; flex-direction: column; gap: 11px; margin-bottom: 40px; }
+.pilot-creds { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
 .pilot-cred {
   display: flex; align-items: flex-start; gap: 12px;
-  font-size: 13px; color: rgba(255,255,255,.68); line-height: 1.4;
+  font-size: 13px; color: rgba(255,255,255,.75); line-height: 1.4;
 }
 .pilot-cred::before {
   content: ''; width: 5px; height: 5px;
@@ -452,7 +497,7 @@ img { display: block; max-width: 100%; }
   margin-bottom: 2px;
 }
 .v-card {
-  background: #fff; padding: 48px 36px;
+  background: #fff; padding: 48px 40px;
   border: 1px solid rgba(10,20,40,.07);
   position: relative;
   display: flex; flex-direction: column;
@@ -465,9 +510,9 @@ img { display: block; max-width: 100%; }
 
 .v-tag {
   display: inline-block;
-  font-family: var(--font-h); font-size: 8px; font-weight: 700;
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
   letter-spacing: .22em; text-transform: uppercase;
-  padding: 5px 12px; margin-bottom: 28px;
+  padding: 4px 12px; margin-bottom: 28px;
 }
 .v-tag--start { background: rgba(10,20,40,.06); color: var(--chrome); }
 .v-tag--best  { background: var(--navy); color: #fff; }
@@ -516,13 +561,13 @@ img { display: block; max-width: 100%; }
   letter-spacing: .18em; text-transform: uppercase;
   color: #fff; background: var(--red);
   display: flex; align-items: center; justify-content: center; gap: 8px;
-  transition: background .2s; border: none; cursor: pointer;
+  transition: background .2s;
 }
 .v-cta:hover { background: var(--red-dark); }
 
 /* Add-on toggle */
 .v-addon {
-  margin-top: 12px; padding: 13px 14px;
+  margin-top: 12px; padding: 12px 16px;
   background: rgba(10,20,40,.04);
   border: 1px solid rgba(10,20,40,.08);
   display: flex; align-items: center; justify-content: space-between;
@@ -594,7 +639,7 @@ img { display: block; max-width: 100%; }
   background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.03) 10px, rgba(255,255,255,.03) 20px);
 }
 .promo-label {
-  font-family: var(--font-h); font-size: 9px; font-weight: 700;
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
   letter-spacing: .25em; text-transform: uppercase;
   color: rgba(255,255,255,.7); margin-bottom: 6px;
   position: relative;
@@ -618,7 +663,7 @@ img { display: block; max-width: 100%; }
   display: block;
 }
 .promo-lbl {
-  font-size: 8px; font-weight: 600; text-transform: uppercase;
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
   letter-spacing: .15em; color: rgba(255,255,255,.5); margin-top: 4px;
   display: block;
 }
@@ -630,7 +675,7 @@ img { display: block; max-width: 100%; }
 .v-card--featured .v-price-old { color: rgba(255,255,255,.4); }
 .v-promo-tag {
   display: inline-block;
-  font-family: var(--font-h); font-size: 9px; font-weight: 800;
+  font-family: var(--font-h); font-size: 11px; font-weight: 800;
   letter-spacing: .12em; text-transform: uppercase;
   background: var(--red); color: #fff;
   padding: 4px 10px; margin-bottom: 8px;
@@ -639,7 +684,7 @@ img { display: block; max-width: 100%; }
 /* Trust strip */
 .trust-strip {
   margin-top: 56px; display: flex; flex-wrap: wrap;
-  gap: 36px; align-items: center; justify-content: center;
+  gap: 40px; align-items: center; justify-content: center;
 }
 .trust-item {
   display: flex; align-items: center; gap: 9px;
@@ -663,13 +708,13 @@ footer {
   margin-top: 14px; font-size: 11px; color: var(--chrome); line-height: 1.5;
 }
 .footer-col-title {
-  font-family: var(--font-h); font-size: 8px; font-weight: 700;
+  font-family: var(--font-h); font-size: 11px; font-weight: 700;
   letter-spacing: .28em; text-transform: uppercase;
   color: var(--chrome); margin-bottom: 20px;
 }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .footer-links a {
-  font-size: 13px; color: rgba(255,255,255,.45); transition: color .2s;
+  font-size: 13px; color: rgba(255,255,255,.6); transition: color .2s;
 }
 .footer-links a:hover { color: var(--white); }
 .footer-bottom {
@@ -677,7 +722,13 @@ footer {
   padding-top: 26px; display: flex;
   justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
 }
-.footer-copy { font-size: 11px; color: rgba(255,255,255,.25); }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,.55); }
+.footer-social-link { font-size: 12px; color: rgba(255,255,255,.6); transition: color .2s; text-decoration: none; }
+.footer-social-link:hover { color: #fff; }
+.link-ghost-hover:hover { border-color: #fff !important; }
+.link-dotacje-hover:hover { opacity: 0.9; }
+.hotspot:focus .hotspot-card { opacity: 1; }
+.hotspot:focus { outline: none; }
 
 /* ═══════════════════════════════════════════════════════
    HOW IT WORKS — 4 STEPS
@@ -775,7 +826,7 @@ footer {
 ═══════════════════════════════════════════════════════ */
 .guarantee {
   background: rgba(27,77,181,.04); border: 1px solid rgba(27,77,181,.12);
-  padding: 28px 36px; max-width: 680px; margin: 32px auto 0;
+  padding: 32px 40px; max-width: 680px; margin: 32px auto 0;
   display: flex; align-items: center; gap: 20px;
 }
 .guarantee-icon { font-size: 32px; flex-shrink: 0; }
@@ -1028,7 +1079,6 @@ footer {
   /* Navigation */
   .nav { padding: 16px 28px; }
   .nav.scrolled { padding: 12px 28px; }
-  .nav-menu { display: none; }
 
   /* Hero */
   .hero-content { padding: 0 28px 60px; }
@@ -1150,7 +1200,7 @@ footer {
   .footer-bottom { flex-direction: column; text-align: center; }
 
   /* Sticky CTA */
-  .sticky-cta { bottom: 16px; right: auto; left: 50%; transform: translateX(-50%) translateY(12px); font-size: 9px; padding: 12px 20px; }
+  .sticky-cta { bottom: 16px; right: auto; left: 50%; transform: translateX(-50%) translateY(12px); font-size: 11px; padding: 12px 20px; }
   .sticky-cta.vis { transform: translateX(-50%) translateY(0); }
 
   /* Modal */
@@ -1165,14 +1215,14 @@ footer {
 ═══════════════════════════════════════════════════════ */
 @media (max-width: 480px) {
   .nav { padding: 12px 16px; }
-  .nav-btn { padding: 9px 18px; font-size: 9px; }
+  .nav-btn { padding: 9px 18px; font-size: 11px; }
 
   .hero-content { padding: 0 16px 36px; }
   .hl-1, .hl-2, .hl-3 { font-size: clamp(28px, 10vw, 48px); }
   .hero-stats { gap: 0; }
   .stat-cell { padding: 16px 0; }
   .stat-num { font-size: clamp(20px, 5.5vw, 28px); }
-  .stat-lbl { font-size: 8px; letter-spacing: .16em; }
+  .stat-lbl { font-size: 11px; letter-spacing: .16em; }
 
   .machine { padding: 48px 16px; }
   .machine::before { font-size: 100px; }
@@ -1247,10 +1297,17 @@ footer {
     "returnFees": "https://schema.org/FreeReturn"
   },
   "offers": [
-    {"@type": "Offer", "name": "Pierwszy Lot", "price": "1999", "priceCurrency": "PLN", "availability": "https://schema.org/PreOrder", "url": "https://akrobacja.com/#sklep", "seller": {"@type": "Organization", "name": "Doradztwo Paweł Mamcarz"}, "shippingDetails": {"@type": "OfferShippingDetails", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "PL"}, "deliveryTime": {"@type": "ShippingDeliveryTime", "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}, "transitTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}}, "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "PLN"}}},
-    {"@type": "Offer", "name": "Adrenalina", "price": "2999", "priceCurrency": "PLN", "availability": "https://schema.org/PreOrder", "url": "https://akrobacja.com/#sklep", "seller": {"@type": "Organization", "name": "Doradztwo Paweł Mamcarz"}, "shippingDetails": {"@type": "OfferShippingDetails", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "PL"}, "deliveryTime": {"@type": "ShippingDeliveryTime", "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}, "transitTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}}, "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "PLN"}}},
-    {"@type": "Offer", "name": "Masterclass", "price": "4999", "priceCurrency": "PLN", "availability": "https://schema.org/PreOrder", "url": "https://akrobacja.com/#sklep", "seller": {"@type": "Organization", "name": "Doradztwo Paweł Mamcarz"}, "shippingDetails": {"@type": "OfferShippingDetails", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "PL"}, "deliveryTime": {"@type": "ShippingDeliveryTime", "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}, "transitTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}}, "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "PLN"}}}
-  ]
+    {"@type": "Offer", "name": "Pierwszy Lot", "price": "1999", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://akrobacja.com/#sklep", "seller": {"@type": "Organization", "name": "Doradztwo Paweł Mamcarz"}, "shippingDetails": {"@type": "OfferShippingDetails", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "PL"}, "deliveryTime": {"@type": "ShippingDeliveryTime", "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}, "transitTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}}, "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "PLN"}}},
+    {"@type": "Offer", "name": "Adrenalina", "price": "2999", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://akrobacja.com/#sklep", "seller": {"@type": "Organization", "name": "Doradztwo Paweł Mamcarz"}, "shippingDetails": {"@type": "OfferShippingDetails", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "PL"}, "deliveryTime": {"@type": "ShippingDeliveryTime", "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}, "transitTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}}, "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "PLN"}}},
+    {"@type": "Offer", "name": "Masterclass", "price": "4999", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://akrobacja.com/#sklep", "seller": {"@type": "Organization", "name": "Doradztwo Paweł Mamcarz"}, "shippingDetails": {"@type": "OfferShippingDetails", "shippingDestination": {"@type": "DefinedRegion", "addressCountry": "PL"}, "deliveryTime": {"@type": "ShippingDeliveryTime", "handlingTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}, "transitTime": {"@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "d"}}, "shippingRate": {"@type": "MonetaryAmount", "value": "0", "currency": "PLN"}}}
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5",
+    "ratingCount": "6",
+    "reviewCount": "6"
+  }
 }
 </script>
 <script type="application/ld+json">
@@ -1263,7 +1320,9 @@ footer {
     {"@type": "Question", "name": "Jak długo ważny jest voucher?", "acceptedAnswer": {"@type": "Answer", "text": "Voucher jest ważny 12 miesięcy od daty zakupu."}},
     {"@type": "Question", "name": "Gdzie odbywają się loty?", "acceptedAnswer": {"@type": "Answer", "text": "Loty startują z lotniska Radom-Piastów (EPRP)."}},
     {"@type": "Question", "name": "Czy mogę kupić voucher na prezent?", "acceptedAnswer": {"@type": "Answer", "text": "Tak! Po zakupie otrzymasz elegancki PDF gotowy do wręczenia. Obdarowana osoba sama wybiera termin lotu."}},
-    {"@type": "Question", "name": "Ile trwa cała wizyta na lotnisku?", "acceptedAnswer": {"@type": "Answer", "text": "Pierwszy Lot to ok. 45 minut. Adrenalina to ok. 1,5 godziny. Masterclass to ok. 2,5-3 godziny."}}
+    {"@type": "Question", "name": "Ile trwa cała wizyta na lotnisku?", "acceptedAnswer": {"@type": "Answer", "text": "Pierwszy Lot to ok. 45 minut. Adrenalina to ok. 1,5 godziny. Masterclass to ok. 2,5-3 godziny."}},
+    {"@type": "Question", "name": "Jakie są ograniczenia zdrowotne?", "acceptedAnswer": {"@type": "Answer", "text": "Wymagany ogólnie dobry stan zdrowia. Przeciwwskazania: schorzenia kardiologiczne, epilepsja, ciąża, niedawne operacje. W razie wątpliwości — konsultacja z lekarzem."}},
+    {"@type": "Question", "name": "Jaka jest maksymalna waga i wzrost pasażera?", "acceptedAnswer": {"@type": "Answer", "text": "Max 110 kg, max 195 cm wzrostu — ograniczenia kokpitu Extra 300L. W razie wątpliwości — zadzwoń."}}
   ]
 }
 </script>
@@ -1407,11 +1466,13 @@ footer {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      NAVIGATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<a href="#main-content" class="skip-link">Przejdź do treści</a>
+
 <nav class="nav" id="nav">
   <a href="#hero" class="nav-logo" aria-label="akrobacja.com — strona główna">
-    <img src="/akrobacja-logo-mark-light.png" alt="akrobacja.com" style="height:56px;width:auto;max-width:none;display:block">
+    <img src="/akrobacja-logo-mark-light.png" alt="akrobacja.com" width="56" height="56" style="height:56px;width:auto;max-width:none;display:block">
   </a>
-  <ul class="nav-menu">
+  <ul class="nav-menu" id="nav-menu">
     <li><a href="/lot-akrobacyjny">Loty</a></li>
     <li><a href="#pilot">Pilot</a></li>
     <li><a href="/pokazy-lotnicze">Pokazy</a></li>
@@ -1421,9 +1482,13 @@ footer {
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Otwórz menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <a href="https://wa.me/48535535221" class="nav-btn">Napisz</a>
 </nav>
 
+<main id="main-content">
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      HERO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
@@ -1503,13 +1568,14 @@ footer {
       <!-- Real top-down drone photo, rotated 180° (nose points up) -->
       <img src="/samolot-top-web.jpg"
            alt="Extra 300L SP-EKS — widok z góry"
+           loading="lazy"
            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0.88">
 
       <!-- Dark vignette overlay so hotspot cards stay readable -->
       <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 85% 85% at 50% 50%, transparent 45%, rgba(10,20,40,0.65) 100%);pointer-events:none;z-index:1"></div>
 
       <!-- Hotspot 1 — Silnik (nose / engine — top-center) -->
-      <div class="hotspot" style="left:50%;top:13%;z-index:10">
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:13%;z-index:10">
         <div class="hotspot-dot"><span>1</span></div>
         <div class="hotspot-card">
           <div class="hotspot-card-title">Silnik</div>
@@ -1519,7 +1585,7 @@ footer {
       </div>
 
       <!-- Hotspot 2 — Cockpit (just behind engine, center) -->
-      <div class="hotspot" style="left:50%;top:33%;z-index:10">
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:33%;z-index:10">
         <div class="hotspot-dot"><span>2</span></div>
         <div class="hotspot-card">
           <div class="hotspot-card-title">Przeciążenia</div>
@@ -1529,7 +1595,7 @@ footer {
       </div>
 
       <!-- Hotspot 3 — Left wing (port side, mid-height) -->
-      <div class="hotspot" style="left:15%;top:46%;z-index:10">
+      <div class="hotspot" tabindex="0" role="button" style="left:15%;top:46%;z-index:10">
         <div class="hotspot-dot"><span>3</span></div>
         <div class="hotspot-card" style="left:100%;bottom:auto;top:-50%;transform:none">
           <div class="hotspot-card-title">Prędkość Przechyłu</div>
@@ -1539,7 +1605,7 @@ footer {
       </div>
 
       <!-- Hotspot 4 — Tail (lower center) -->
-      <div class="hotspot" style="left:50%;top:82%;z-index:10">
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:82%;z-index:10">
         <div class="hotspot-dot"><span>4</span></div>
         <div class="hotspot-card" style="bottom:auto;top:calc(100% + 10px)">
           <div class="hotspot-card-title">Usterzenie</div>
@@ -1549,7 +1615,7 @@ footer {
       </div>
 
       <!-- Hotspot 5 — Right wing (starboard side, mid-height) -->
-      <div class="hotspot" style="left:85%;top:46%;z-index:10">
+      <div class="hotspot" tabindex="0" role="button" style="left:85%;top:46%;z-index:10">
         <div class="hotspot-dot"><span>5</span></div>
         <div class="hotspot-card" style="right:100%;left:auto;bottom:auto;top:-50%;transform:none">
           <div class="hotspot-card-title">Max Prędkość</div>
@@ -1592,6 +1658,7 @@ footer {
   <!-- Photo column -->
   <div class="pilot-photo">
     <img src="/pilot-cockpit.jpg" alt="Maciej Kulaszewski — pilot akrobacyjny Extra 300L w kokpicie"
+         loading="lazy"
          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center">
     <span class="pilot-badge">Mistrz Świata · Mistrz Polski · Mistrz Niemiec · Mistrz UK</span>
   </div>
@@ -1653,9 +1720,9 @@ footer {
      OWNER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <div style="background:var(--white);padding:80px 64px;display:flex;align-items:center;gap:48px;max-width:100%;flex-wrap:wrap;justify-content:center" class="reveal">
-  <img src="/mamcarz.jpg" alt="Paweł Mamcarz — właściciel Extra 300L SP-EKS" style="width:280px;height:280px;object-fit:cover;border-radius:50%;flex-shrink:0">
+  <img src="/mamcarz.jpg" alt="Paweł Mamcarz — właściciel Extra 300L SP-EKS" loading="lazy" width="280" height="280" style="width:280px;height:280px;object-fit:cover;border-radius:50%;flex-shrink:0">
   <div style="max-width:480px">
-    <p style="font-family:var(--font-h);font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Właściciel SP-EKS</p>
+    <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Właściciel SP-EKS</p>
     <h2 style="font-family:var(--font-h);font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--black);text-transform:uppercase;line-height:1;margin-bottom:14px">Paweł<br>Mamcarz</h2>
     <div style="width:44px;height:3px;background:var(--red);margin-bottom:20px"></div>
     <p style="font-size:14px;line-height:1.75;color:var(--chrome);margin-bottom:20px">Pilot z 26-letnim doświadczeniem lotniczym i właściciel Extra 300L SP-EKS — byłego samolotu Royal Jordanian Falcons. Odpowiada za operacje, bezpieczeństwo i rozwój akrobacja.com.</p>
@@ -1710,7 +1777,7 @@ footer {
         <li class="v-feat">Doświadczenie lotnicze nie jest wymagane</li>
       </ul>
       <button class="v-cta" data-package="pierwszy_lot">Kup voucher — 1 999 PLN</button>
-      <div class="v-addon" onclick="this.classList.toggle('on')" data-addon="pierwszy_lot">
+      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="pierwszy_lot">
         <div class="v-addon-text">
           <div class="v-addon-title">+ Video 360° z lotu</div>
           <div class="v-addon-desc">Montaż 90 sek · MP4 w 48h · +299 PLN</div>
@@ -1739,7 +1806,7 @@ footer {
         <li class="v-feat">Doświadczenie lotnicze nie jest wymagane</li>
       </ul>
       <button class="v-cta" data-package="adrenalina">Kup voucher — 2 999 PLN</button>
-      <div class="v-addon" onclick="this.classList.toggle('on')" data-addon="adrenalina">
+      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="adrenalina">
         <div class="v-addon-text">
           <div class="v-addon-title">+ Video 360° z lotu</div>
           <div class="v-addon-desc">Montaż 90 sek · MP4 w 48h · +299 PLN</div>
@@ -1768,7 +1835,7 @@ footer {
         <li class="v-feat">Limitowana liczba miejsc</li>
       </ul>
       <button class="v-cta" data-package="masterclass">Kup voucher — 4 999 PLN</button>
-      <div class="v-addon" onclick="this.classList.toggle('on')" data-addon="masterclass">
+      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="masterclass">
         <div class="v-addon-text">
           <div class="v-addon-title">+ Video 360° z lotu</div>
           <div class="v-addon-desc">Montaż 90 sek · kamera cockpit + zewnętrzna · +299 PLN</div>
@@ -1890,7 +1957,7 @@ footer {
     <div class="reviews-stats">
       <div class="reviews-avg">5.0</div>
       <div>
-        <div class="reviews-stars">★★★★★</div>
+        <div class="reviews-stars" aria-label="5 na 5 gwiazdek">★★★★★</div>
         <div class="reviews-count">6 opinii · Google Reviews</div>
       </div>
     </div>
@@ -1900,37 +1967,37 @@ footer {
   </div>
   <div class="reviews-grid">
     <div class="review-card reveal">
-      <div class="review-stars">★★★★★</div>
+      <div class="review-stars" aria-label="5 na 5 gwiazdek">★★★★★</div>
       <div class="review-text">„Lot akrobacyjny? Petarda! Nawet dla totalnego świeżaka w temacie, wrażenia jak po pierwszym przeciągnięciu i beczce. Pilot pełen profesjonalizm, briefing konkretny, a cała operacja dopięta jak w checklistach przed startem. Sprzęt zadbany."</div>
       <div class="review-author">Mariusz Kosciolek</div>
       <div class="review-meta">Lokalny przewodnik · Google Reviews</div>
     </div>
     <div class="review-card reveal reveal-d1">
-      <div class="review-stars">★★★★★</div>
+      <div class="review-stars" aria-label="5 na 5 gwiazdek">★★★★★</div>
       <div class="review-text">„Wrażenia nie z (tej) ziemii! Wspaniały prezent dla uzależnionych od adrenaliny!"</div>
       <div class="review-author">Paweł Murak</div>
       <div class="review-meta">Lokalny przewodnik · Google Reviews</div>
     </div>
     <div class="review-card reveal reveal-d2">
-      <div class="review-stars">★★★★★</div>
+      <div class="review-stars" aria-label="5 na 5 gwiazdek">★★★★★</div>
       <div class="review-text">„Doskonałe zaplecze szkoleniowe i świetnie utrzymana maszyna. Akrobacja uczy pokory i doskonałego czucia sterów, a tutaj uczą tego najlepiej. Instruktor nie odpuszcza, dopóki figura nie jest wykręcona 'w punkt'. To miejsce, gdzie buduje się prawdziwy kunszt pilotażowy."</div>
       <div class="review-author">Marcin Kwiatosz</div>
       <div class="review-meta">Google Reviews</div>
     </div>
     <div class="review-card reveal">
-      <div class="review-stars">★★★★★</div>
+      <div class="review-stars" aria-label="5 na 5 gwiazdek">★★★★★</div>
       <div class="review-text">„Lot dostałem w prezencie od żony. Niesamowite przeżycie!!! Polecam każdemu."</div>
       <div class="review-author">kuczero91</div>
       <div class="review-meta">Google Reviews</div>
     </div>
     <div class="review-card reveal reveal-d1">
-      <div class="review-stars">★★★★★</div>
+      <div class="review-stars" aria-label="5 na 5 gwiazdek">★★★★★</div>
       <div class="review-text">„Polecam! Super zabawa! Niesamowita adrenalina ;)"</div>
       <div class="review-author">Rafał Madejewski</div>
       <div class="review-meta">Google Reviews</div>
     </div>
     <div class="review-card reveal reveal-d2">
-      <div class="review-stars">★★★★★</div>
+      <div class="review-stars" aria-label="5 na 5 gwiazdek">★★★★★</div>
       <div class="review-text">„★★★★★"</div>
       <div class="review-author">FilmoLot</div>
       <div class="review-meta">Lokalny przewodnik · Google Reviews</div>
@@ -1947,38 +2014,38 @@ footer {
      SUBSCRIBE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <div style="background:var(--navy);padding:64px;text-align:center" class="reveal">
-  <p style="font-family:var(--font-h);font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px">Bądź na bieżąco</p>
+  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px">Bądź na bieżąco</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(22px,3vw,32px);font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:8px">Dowiedz się pierwszy o pokazach</h2>
   <p style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto">Zostaw numer — wyślemy SMS kiedy latamy na pokazach, mamy wolne terminy lub nowe produkty.</p>
-  <form id="subForm" onsubmit="return subscribePhone(event)" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
-    <input type="tel" id="subPhone" placeholder="+48 XXX XXX XXX" required style="flex:1;min-width:200px;padding:14px 18px;border:none;font-size:14px;font-family:var(--font-b);outline:none">
+  <form id="subForm" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
+    <input type="tel" id="subPhone" placeholder="+48 XXX XXX XXX" required pattern="\+?[0-9\s]{9,15}" title="Podaj numer telefonu (9-15 cyfr)" style="flex:1;min-width:200px;padding:14px 18px;border:none;font-size:14px;font-family:var(--font-b);outline:none">
     <button type="submit" id="subBtn" style="padding:14px 28px;background:var(--red);color:#fff;border:none;font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;cursor:pointer">Zapisz się</button>
   </form>
   <p id="subMsg" style="font-size:12px;margin-top:12px;color:rgba(255,255,255,.6);display:none"></p>
-  <p style="font-size:10px;color:rgba(255,255,255,.25);margin-top:16px">Bez spamu. Max 2-3 SMS w miesiącu. Możesz zrezygnować w każdej chwili.</p>
+  <p style="font-size:11px;color:rgba(255,255,255,.55);margin-top:16px">Bez spamu. Max 2-3 SMS w miesiącu. Możesz zrezygnować w każdej chwili.</p>
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      INFOGRAPHIC
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <div style="background:var(--white);padding:80px 64px;text-align:center" class="reveal">
-  <p style="font-family:var(--font-h);font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pasażerów</p>
+  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pasażerów</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--black);text-transform:uppercase;margin-bottom:32px">Briefing przed lotem akrobacyjnym</h2>
-  <img src="/przewodnik-briefing.png" alt="Briefing przed lotem akrobacyjnym Extra 300L - przygotowanie, bezpieczeństwo, fizjologia, parametry maszyny" style="max-width:1100px;width:100%;margin:0 auto;display:block">
+  <img src="/przewodnik-briefing.png" alt="Briefing przed lotem akrobacyjnym Extra 300L - przygotowanie, bezpieczeństwo, fizjologia, parametry maszyny" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
 </div>
 
 <div style="background:var(--black);padding:80px 64px;text-align:center" class="reveal">
-  <p style="font-family:var(--font-h);font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pilotów</p>
+  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pilotów</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--white);text-transform:uppercase;margin-bottom:32px">Kurs akrobacji FCL.800</h2>
-  <img src="/przewodnik-fcl800.png" alt="Przewodnik po kursie akrobacji FCL.800 - wymagania, manewry, parametry Extra 300L" style="max-width:1100px;width:100%;margin:0 auto;display:block">
-  <a href="/blog/kurs-akrobacji-fcl800" style="display:inline-block;margin-top:32px;font-family:var(--font-h);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:14px 30px;text-decoration:none;transition:border-color .2s" onmouseover="this.style.borderColor='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,.22)'">Dowiedz się więcej o szkoleniu →</a>
+  <img src="/przewodnik-fcl800.png" alt="Przewodnik po kursie akrobacji FCL.800 - wymagania, manewry, parametry Extra 300L" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
+  <a href="/blog/kurs-akrobacji-fcl800" class="link-ghost-hover" style="display:inline-block;margin-top:32px;font-family:var(--font-h);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:14px 30px;text-decoration:none;transition:border-color .2s">Dowiedz się więcej o szkoleniu →</a>
 </div>
 
 <!-- DOTACJE BANNER -->
 <div style="background:#C41E3A;padding:28px 64px;text-align:center" class="reveal">
   <p style="font-family:var(--font-h);font-size:clamp(14px,2vw,20px);font-weight:800;color:#fff;margin:0 0 8px;text-transform:uppercase;letter-spacing:.05em">Dofinansowanie kursu akrobacji — do 90% taniej</p>
   <p style="color:rgba(255,255,255,.85);font-size:14px;margin:0 0 16px;max-width:700px;display:inline-block">BUR, PUP, KFS — ponad 10 kursantów już skorzystało. Szkolenie pod egidą Aeroklubu Radomskiego. Pomagamy w formalności od A do Z.</p>
-  <a href="/dotacje-szkolenie-lotnicze" style="display:inline-block;font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C41E3A;background:#fff;padding:14px 32px;text-decoration:none;transition:opacity .2s" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Sprawdź czy się kwalifikujesz →</a>
+  <a href="/dotacje-szkolenie-lotnicze" class="link-dotacje-hover" style="display:inline-block;font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C41E3A;background:#fff;padding:14px 32px;text-decoration:none;transition:opacity .2s">Sprawdź czy się kwalifikujesz →</a>
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1994,56 +2061,56 @@ footer {
   <div class="faq-list">
 
     <div class="faq-item reveal">
-      <button class="faq-q">Czy potrzebuję doświadczenia lotniczego?</button>
+      <button class="faq-q" aria-expanded="false">Czy potrzebuję doświadczenia lotniczego?</button>
       <div class="faq-a">
         <p>Nie. Przed lotem przeprowadzamy pełny briefing. Pilot dba o bezpieczeństwo przez cały czas.</p>
       </div>
     </div>
 
     <div class="faq-item reveal reveal-d1">
-      <button class="faq-q">Jakie są ograniczenia zdrowotne?</button>
+      <button class="faq-q" aria-expanded="false">Jakie są ograniczenia zdrowotne?</button>
       <div class="faq-a">
         <p>Wymagany ogólnie dobry stan zdrowia. Przeciwwskazania: schorzenia kardiologiczne, epilepsja, ciąża, niedawne operacje. W razie wątpliwości — konsultacja z lekarzem.</p>
       </div>
     </div>
 
     <div class="faq-item reveal reveal-d1">
-      <button class="faq-q">Co jeśli pogoda nie pozwoli na lot?</button>
+      <button class="faq-q" aria-expanded="false">Co jeśli pogoda nie pozwoli na lot?</button>
       <div class="faq-a">
         <p>Przenosimy termin bezpłatnie. Voucher ważny 12 miesięcy.</p>
       </div>
     </div>
 
     <div class="faq-item reveal reveal-d2">
-      <button class="faq-q">Jak długo ważny jest voucher?</button>
+      <button class="faq-q" aria-expanded="false">Jak długo ważny jest voucher?</button>
       <div class="faq-a">
         <p>12 miesięcy od daty zakupu. Termin lotu umawiasz indywidualnie.</p>
       </div>
     </div>
 
     <div class="faq-item reveal reveal-d2">
-      <button class="faq-q">Gdzie odbywają się loty?</button>
+      <button class="faq-q" aria-expanded="false">Gdzie odbywają się loty?</button>
       <div class="faq-a">
         <p>Lotnisko Radom-Piastów (EPRP). Parking na miejscu. Wskazówki dojazdu w mailu po rezerwacji.</p>
       </div>
     </div>
 
     <div class="faq-item reveal reveal-d3">
-      <button class="faq-q">Czy mogę kupić voucher na prezent?</button>
+      <button class="faq-q" aria-expanded="false">Czy mogę kupić voucher na prezent?</button>
       <div class="faq-a">
         <p>Tak. Otrzymasz elegancki PDF gotowy do wręczenia. Obdarowana osoba sama wybiera termin lotu.</p>
       </div>
     </div>
 
     <div class="faq-item reveal reveal-d3">
-      <button class="faq-q">Ile trwa cała wizyta na lotnisku?</button>
+      <button class="faq-q" aria-expanded="false">Ile trwa cała wizyta na lotnisku?</button>
       <div class="faq-a">
         <p>Pierwszy Lot: ok. 45 min. Adrenalina: ok. 1,5 h. Masterclass: ok. 3 h.</p>
       </div>
     </div>
 
     <div class="faq-item reveal reveal-d4">
-      <button class="faq-q">Jaka jest maksymalna waga i wzrost pasażera?</button>
+      <button class="faq-q" aria-expanded="false">Jaka jest maksymalna waga i wzrost pasażera?</button>
       <div class="faq-a">
         <p>Max 110 kg, max 195 cm wzrostu — ograniczenia kokpitu Extra 300L. W razie wątpliwości — zadzwoń.</p>
       </div>
@@ -2208,21 +2275,22 @@ footer {
 
 </section>
 
+</main>
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      FOOTER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <footer id="kontakt">
   <div class="footer-grid">
     <div>
-      <img src="/akrobacja-logo-light.png" alt="akrobacja.com" class="footer-logo"
+      <img src="/akrobacja-logo-light.png" alt="akrobacja.com" class="footer-logo" loading="lazy" width="200" height="72"
            style="height:72px;width:auto;display:block;margin-bottom:16px">
       <p class="footer-brand-tag">Extra 300L SP-EKS<br>Radom-Piastów EPRP</p>
       <div style="display:flex;gap:12px;align-items:center;margin-top:16px">
-        <img src="/mamcarz.jpg" alt="Paweł Mamcarz" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+        <img src="/mamcarz.jpg" alt="Paweł Mamcarz" loading="lazy" width="40" height="40" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
         <span style="font-size:11px;color:var(--chrome);line-height:1.4"><strong style="color:var(--white)">Paweł Mamcarz</strong><br>Właściciel SP-EKS · <a href="https://mamcarz.com" target="_blank" rel="noopener" style="color:var(--chrome)">mamcarz.com</a></span>
       </div>
       <div style="display:flex;gap:12px;align-items:center;margin-top:10px">
-        <img src="/kula.jpg" alt="Maciej Kulaszewski" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
+        <img src="/kula.jpg" alt="Maciej Kulaszewski" loading="lazy" width="40" height="40" style="width:40px;height:40px;border-radius:50%;object-fit:cover">
         <span style="font-size:11px;color:var(--chrome);line-height:1.4"><strong style="color:var(--white)">Maciej Kulaszewski</strong><br>Pilot · FI(A)</span>
       </div>
     </div>
@@ -2267,9 +2335,9 @@ footer {
   <div class="footer-bottom">
     <p class="footer-copy">© 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP</p>
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Instagram</a>
-      <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Facebook</a>
-      <a href="https://wa.me/48535535221" style="font-size:12px;color:rgba(255,255,255,.4);transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">WhatsApp</a>
+      <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener" class="footer-social-link">Instagram</a>
+      <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener" class="footer-social-link">Facebook</a>
+      <a href="https://wa.me/48535535221" class="footer-social-link">WhatsApp</a>
       <img src="/akrobacja-logo-light.png" alt="" aria-hidden="true" style="height:22px;width:auto;display:block;opacity:0.6">
     </div>
   </div>
@@ -2278,7 +2346,7 @@ footer {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      STICKY CTA
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<a href="https://wa.me/48535535221" class="sticky-cta" id="stickyCta">
+<a href="https://wa.me/48535535221" class="sticky-cta" id="stickyCta" aria-label="Napisz na WhatsApp: +48 535 535 221">
   <img src="/akrobacja-logo-mark-light.png" alt="" aria-hidden="true"
        style="height:18px;width:auto;display:inline-block;vertical-align:middle;margin-right:4px">
   +48 535 535 221
@@ -2288,7 +2356,7 @@ footer {
      CHECKOUT MODAL
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <div class="modal-overlay" id="checkoutModal">
-  <div class="modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal-close" id="modalClose">&times;</button>
     <h3 id="modalTitle">Kup Voucher</h3>
     <p class="modal-sub" id="modalSub"></p>
@@ -2344,6 +2412,26 @@ footer {
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  /* ── Mobile hamburger menu ── */
+  const hamburger = document.getElementById('nav-hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
 
   /* ── NAV scroll effect ── */
   const nav = document.getElementById('nav');
@@ -2436,6 +2524,7 @@ footer {
     dotacjaBanner.style.display = packageId === 'masterclass' ? 'block' : 'none';
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    modal.querySelector('input:not([type=hidden])').focus();
   }
 
   function updatePrice(base) {
@@ -2457,7 +2546,15 @@ footer {
 
   document.getElementById('modalClose').addEventListener('click', closeModal);
   modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'Tab' && modal.classList.contains('active')) {
+      const focusable = modal.querySelectorAll('input:not([type=hidden]),button,a,[tabindex]:not([tabindex="-1"])');
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 
   document.querySelectorAll('[data-package]').forEach(btn => {
     btn.addEventListener('click', () => openModal(btn.dataset.package));
@@ -2495,7 +2592,7 @@ footer {
   });
 
   // Subscribe form
-  window.subscribePhone = async function(e) {
+  document.getElementById('subForm')?.addEventListener('submit', async function(e) {
     e.preventDefault();
     const phone = document.getElementById('subPhone').value.trim();
     const btn = document.getElementById('subBtn');
@@ -2514,16 +2611,28 @@ footer {
       if (res.ok) { document.getElementById('subPhone').value = ''; }
     } catch { msg.textContent = 'Błąd — spróbuj ponownie'; msg.style.display = 'block'; msg.style.color = '#ff6b6b'; }
     btn.disabled = false; btn.textContent = 'Zapisz się';
-    return false;
-  };
+  });
+
+  // Addon toggles — keyboard accessible
+  document.querySelectorAll('.v-addon[role="checkbox"]').forEach(el => {
+    function toggle() { const on = el.classList.toggle('on'); el.setAttribute('aria-checked', on); }
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); } });
+  });
 
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.parentElement;
       const wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-      if (!wasOpen) item.classList.add('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q')?.setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 
