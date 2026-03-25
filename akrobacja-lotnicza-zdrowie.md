@@ -107,14 +107,14 @@ Lot trwa od 15 do 50 minut w zależności od pakietu. To nie jest maraton — to
 
 
 
-## Maciej Kulaszewski — 4000 godzin doświadczenia na Twoich usługach
+## Maciej Kulaszewski — 3000 godzin doświadczenia na Twoich usługach
 
 
-To nie jest przypadek, że powierzamy Ci lot z **Maciejem Kulaszewskim**. Maciej ma ponad **4000 godzin nalotu**, z czego znaczna część to akrobacja lotnicza na najwyższym poziomie. Jest doświadczonym pilotem akrobacyjnym, instruktorem i zawodnikiem.
+To nie jest przypadek, że powierzamy Ci lot z **Maciejem Kulaszewskim**. Maciej ma ponad **3000 godzin nalotu**, z czego znaczna część to akrobacja lotnicza na najwyższym poziomie. Jest doświadczonym pilotem akrobacyjnym, instruktorem i zawodnikiem.
 
 Ale to, co wyróżnia Macieja jako pilota lotów pasażerskich, to nie statystyki — to podejście do człowieka. Maciej dostosowuje każdy lot do pasażera. Podczas briefingu ocenia Twój poziom komfortu, pyta o stan zdrowia, o obawy, o oczekiwania. Jeśli masz nadciśnienie — ograniczy przeciążenia. Jeśli to Twój pierwszy kontakt z akrobacją — zacznie delikatnie i stopniowo zwiększy intensywność. Jeśli jesteś doświadczonym pasażerem i chcesz poczuć +6G — dostaniesz pełny program.
 
-**4000 godzin** w kokpicie to nie tylko umiejętność latania — to umiejętność czytania ludzi. Maciej wie, kiedy pasażer potrzebuje dodatkowej figury, a kiedy chwili oddechu. I właśnie dlatego nasi klienci wracają.
+**3000 godzin** w kokpicie to nie tylko umiejętność latania — to umiejętność czytania ludzi. Maciej wie, kiedy pasażer potrzebuje dodatkowej figury, a kiedy chwili oddechu. I właśnie dlatego nasi klienci wracają.
 
 
 ## Najczęściej zadawane pytania

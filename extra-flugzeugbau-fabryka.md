@@ -43,7 +43,7 @@ Produkcja jednego egzemplarza trwa kilka miesięcy. Każdy samolot jest testowan
 
 Nasz Extra 300L nosi znaki rejestracyjne SP-EKS. To dwumiejscowy tandem z silnikiem Lycoming AEIO-580 o mocy 300 KM, certyfikowany do przeciążeń +10G/-10G. Ten konkretny egzemplarz ma wyjątkową historię - był wcześniej jednym z samolotów Royal Jordanian Falcons, królewskiego zespołu akrobacyjnego Jordanii.
 
-Za jego sterami siedzi Maciej Kulaszewski - pilot z ponad 4000 godzin nalotu na tym typie. Samolot posiada ważne świadectwo zdatności do lotu (CofA) i jest bazowany na lotnisku Radom-Piastów (EPRP).
+Za jego sterami siedzi Maciej Kulaszewski - pilot z ponad 3000 godzin nalotu na tym typie. Samolot posiada ważne świadectwo zdatności do lotu (CofA) i jest bazowany na lotnisku Radom-Piastów (EPRP).
 
 Możesz przelecieć się tym samolotem - od lotu zapoznawczego za 1999 PLN po pełny program akrobacyjny za 2999 PLN.
 
