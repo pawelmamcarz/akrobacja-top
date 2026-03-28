@@ -1664,5 +1664,138 @@ footer {
 })();
 </script>
 <script src="/chat-widget.js" defer></script>
+
+<!-- Exit-Intent Popup -->
+<div id="exitPopup" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(10,20,40,.82);backdrop-filter:blur(4px);align-items:center;justify-content:center;opacity:0;transition:opacity .35s ease">
+  <div id="exitModal" style="position:relative;background:linear-gradient(160deg,#0e1e3a 0%,#142a52 100%);border:1px solid rgba(27,77,181,.35);border-radius:16px;padding:48px 36px 40px;max-width:440px;width:92%;box-shadow:0 24px 80px rgba(0,0,0,.55),0 0 0 1px rgba(27,77,181,.15);transform:translateY(24px) scale(.96);transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .4s ease;opacity:0;font-family:'Inter',sans-serif">
+    <button id="exitClose" aria-label="Zamknij" style="position:absolute;top:14px;right:14px;background:none;border:none;color:rgba(255,255,255,.5);font-size:22px;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .2s,color .2s">&times;</button>
+    <div id="exitForm">
+      <div style="text-align:center;margin-bottom:8px">
+        <span style="display:inline-block;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#C41E3A">Oferta specjalna</span>
+      </div>
+      <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(20px,4.5vw,26px);font-weight:800;color:#fff;text-align:center;margin:0 0 10px;line-height:1.25">Zapisz si&#281; na newsletter<br>i odbierz kod <span style="color:#C41E3A">-100 PLN</span><br>na pierwszy lot</h2>
+      <p style="text-align:center;font-size:14px;color:rgba(255,255,255,.55);margin:0 0 28px;line-height:1.5">Podaj e-mail i telefon — wy&#347;lemy Ci unikalny kod rabatowy.</p>
+      <form id="exitSubscribeForm" style="display:flex;flex-direction:column;gap:12px" novalidate>
+        <input id="exitEmail" type="email" placeholder="Tw&oacute;j adres e-mail" required autocomplete="email" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:8px;border:1px solid rgba(27,77,181,.35);background:rgba(255,255,255,.06);color:#fff;font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:border-color .2s">
+        <input id="exitPhone" type="tel" placeholder="Numer telefonu" required autocomplete="tel" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:8px;border:1px solid rgba(27,77,181,.35);background:rgba(255,255,255,.06);color:#fff;font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:border-color .2s">
+        <button type="submit" style="width:100%;padding:15px 16px;border:none;border-radius:8px;background:#C41E3A;color:#fff;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:background .2s;letter-spacing:.03em">Odbierz kod -100 PLN</button>
+      </form>
+      <p id="exitError" style="display:none;text-align:center;font-size:13px;color:#C41E3A;margin:10px 0 0"></p>
+      <p style="text-align:center;font-size:11px;color:rgba(255,255,255,.3);margin:16px 0 0;line-height:1.4">Bez spamu. Mo&#380;esz wypi&#347;a&#263; si&#281; w ka&#380;dej chwili.</p>
+    </div>
+    <div id="exitThankYou" style="display:none;text-align:center">
+      <div style="font-size:48px;margin-bottom:16px">&#10003;</div>
+      <h2 style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:#fff;margin:0 0 10px">Dzi&#281;kujemy!</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,.7);margin:0 0 20px;line-height:1.5">Tw&oacute;j kod rabatowy:</p>
+      <div style="display:inline-block;background:rgba(27,77,181,.2);border:2px dashed #1B4DB5;border-radius:10px;padding:16px 32px;margin-bottom:16px">
+        <span style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:#fff;letter-spacing:.08em">PIERWSZY100</span>
+      </div>
+      <p style="font-size:14px;color:rgba(255,255,255,.5);margin:16px 0 0">U&#380;yj go przy sk&#322;adaniu zam&oacute;wienia na <strong style="color:#fff">akrobacja.com</strong></p>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var STORAGE_KEY = 'exitPopupShown';
+  if (sessionStorage.getItem(STORAGE_KEY)) return;
+  if (document.referrer && document.referrer.indexOf('/sukces') !== -1) return;
+  if (document.cookie.indexOf('checkout') !== -1 || sessionStorage.getItem('checkoutStarted')) return;
+
+  var popup = document.getElementById('exitPopup');
+  var modal = document.getElementById('exitModal');
+  var shown = false;
+
+  function showPopup() {
+    if (shown) return;
+    if (sessionStorage.getItem(STORAGE_KEY)) return;
+    shown = true;
+    sessionStorage.setItem(STORAGE_KEY, '1');
+    popup.style.display = 'flex';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        popup.style.opacity = '1';
+        modal.style.transform = 'translateY(0) scale(1)';
+        modal.style.opacity = '1';
+      });
+    });
+  }
+
+  function hidePopup() {
+    popup.style.opacity = '0';
+    modal.style.transform = 'translateY(24px) scale(.96)';
+    modal.style.opacity = '0';
+    setTimeout(function(){ popup.style.display = 'none'; }, 350);
+  }
+
+  /* Desktop: exit intent */
+  document.addEventListener('mouseout', function(e) {
+    if (e.clientY <= 0) showPopup();
+  });
+
+  /* Mobile: 45-second timer */
+  var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth < 768;
+  if (isMobile) {
+    setTimeout(showPopup, 45000);
+  }
+
+  /* Close handlers */
+  document.getElementById('exitClose').addEventListener('click', hidePopup);
+  document.getElementById('exitClose').addEventListener('mouseenter', function(){
+    this.style.background = 'rgba(255,255,255,.08)';
+    this.style.color = '#fff';
+  });
+  document.getElementById('exitClose').addEventListener('mouseleave', function(){
+    this.style.background = 'none';
+    this.style.color = 'rgba(255,255,255,.5)';
+  });
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) hidePopup();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') hidePopup();
+  });
+
+  /* Focus styles for inputs */
+  ['exitEmail','exitPhone'].forEach(function(id){
+    var el = document.getElementById(id);
+    el.addEventListener('focus', function(){ el.style.borderColor = '#1B4DB5'; });
+    el.addEventListener('blur', function(){ el.style.borderColor = 'rgba(27,77,181,.35)'; });
+  });
+
+  /* Submit */
+  document.getElementById('exitSubscribeForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = document.getElementById('exitEmail').value.trim();
+    var phone = document.getElementById('exitPhone').value.trim();
+    var errEl = document.getElementById('exitError');
+    errEl.style.display = 'none';
+
+    if (!email || !phone) {
+      errEl.textContent = 'Podaj adres e-mail i numer telefonu.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    var btn = this.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Wysy\u0142anie...';
+
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, phone: phone })
+    }).then(function(r) {
+      if (!r.ok) throw new Error('Serwer zwr\u00f3ci\u0142 b\u0142\u0105d');
+      document.getElementById('exitForm').style.display = 'none';
+      document.getElementById('exitThankYou').style.display = 'block';
+    }).catch(function() {
+      errEl.textContent = 'Wyst\u0105pi\u0142 b\u0142\u0105d. Spr\u00f3buj ponownie.';
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Odbierz kod -100 PLN';
+    });
+  });
+})();
+</script>
 </body>
 </html>
