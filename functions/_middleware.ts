@@ -58,7 +58,10 @@ export const onRequest: PagesFunction = async (context) => {
   const canonicalUrl = path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
   const noindex = NOINDEX_PATHS.has(path);
 
-  return new HTMLRewriter()
+  // Cloudflare Web Analytics — inject beacon if token is configured
+  const cfAnalyticsToken = (context.env as Record<string, string>).CF_ANALYTICS_TOKEN;
+
+  const rewriter = new HTMLRewriter()
     // Remove existing canonical tags
     .on('link[rel="canonical"]', { element(el) { el.remove(); } })
     // Remove existing robots meta tags
@@ -72,6 +75,19 @@ export const onRequest: PagesFunction = async (context) => {
           { html: true },
         );
       },
-    })
-    .transform(response);
+    });
+
+  // Inject Cloudflare Web Analytics beacon before </body>
+  if (cfAnalyticsToken) {
+    rewriter.on('body', {
+      element(el) {
+        el.append(
+          `<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "${cfAnalyticsToken}"}'></script>`,
+          { html: true },
+        );
+      },
+    });
+  }
+
+  return rewriter.transform(response);
 };
