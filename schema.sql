@@ -56,10 +56,11 @@ CREATE TABLE IF NOT EXISTS merch_orders (
 CREATE INDEX IF NOT EXISTS idx_merch_orders_status ON merch_orders(status);
 CREATE INDEX IF NOT EXISTS idx_merch_orders_stripe ON merch_orders(stripe_session_id);
 
--- SMS subscribers
+-- SMS subscribers (email column used by welcome email sequence)
 CREATE TABLE IF NOT EXISTS subscribers (
   id TEXT PRIMARY KEY,
   phone TEXT UNIQUE NOT NULL,
+  email TEXT,
   name TEXT,
   source TEXT DEFAULT 'website',
   active INTEGER NOT NULL DEFAULT 1,
@@ -68,3 +69,14 @@ CREATE TABLE IF NOT EXISTS subscribers (
 
 CREATE INDEX IF NOT EXISTS idx_subscribers_phone ON subscribers(phone);
 CREATE INDEX IF NOT EXISTS idx_subscribers_active ON subscribers(active);
+
+-- Welcome email sequence tracking (avoids altering subscribers table)
+CREATE TABLE IF NOT EXISTS welcome_emails_sent (
+  id TEXT PRIMARY KEY,
+  subscriber_id TEXT NOT NULL,
+  step INTEGER NOT NULL,
+  sent_at TEXT NOT NULL DEFAULT (datetime('now')),
+  UNIQUE(subscriber_id, step)
+);
+
+CREATE INDEX IF NOT EXISTS idx_welcome_emails_subscriber ON welcome_emails_sent(subscriber_id);
