@@ -89,6 +89,22 @@ img { display: block; max-width: 100%; }
 }
 .nav-btn:hover { background: var(--red-dark); }
 
+/* Hamburger */
+.nav-hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 32px; height: 24px; position: relative; z-index: 1001;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 2px; background: var(--white);
+  position: absolute; left: 0; transition: transform .3s, opacity .3s;
+}
+.nav-hamburger span:nth-child(1) { top: 0; }
+.nav-hamburger span:nth-child(2) { top: 11px; }
+.nav-hamburger span:nth-child(3) { top: 22px; }
+.nav-hamburger.open span:nth-child(1) { top: 11px; transform: rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { top: 11px; transform: rotate(-45deg); }
+
 /* ═══════════════════════════════════════════════════════
    HERO
 ═══════════════════════════════════════════════════════ */
@@ -445,7 +461,15 @@ footer {
 ═══════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   .nav { padding: 16px 28px; }
-  .nav-menu { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-menu {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,20,40,.98); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 32px; z-index: 1000;
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu a { font-size: 16px; color: rgba(255,255,255,.85); }
   .hero-content { padding: 60px 28px; }
   .section { padding: 80px 28px; }
   .packages-grid { grid-template-columns: 1fr; }
@@ -537,6 +561,9 @@ footer {
     <li><a href="/kalendarz">Kalendarz</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Otwórz menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <a href="https://wa.me/48535535221" class="nav-btn">Napisz</a>
 </nav>
 
@@ -872,6 +899,28 @@ function submitEventForm(e) {
   const msg = `Dzien dobry, chcialabym/chcialbym zamowic pokaz lotniczy.\n\nData: ${data.date}\nLokalizacja: ${data.location}\nTyp eventu: ${data.type}\nImie: ${data.name}\nEmail: ${data.email}\nTelefon: ${data.phone}`;
   window.open('https://wa.me/48535535221?text=' + encodeURIComponent(msg), '_blank');
 }
+</script>
+<script>
+(function(){
+  const hamburger = document.getElementById('nav-hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('open');
+      hamburger.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+})();
 </script>
 <script src="/chat-widget.js" defer></script>
 </body>

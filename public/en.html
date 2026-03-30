@@ -3,12 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aerobatic Flights Extra 300L — akrobacja.com | Aerobatic Flight Voucher</title>
-<meta name="description" content="Aerobatic flights on Extra 300L SP-EKS with 2022 World Champion Maciej Kulaszewski. Vouchers from 1,999 PLN. FCL.800 aerobatic rating course with up to 90% subsidy. Aerobatic camp. Airshows. Radom-Piastow EPRP Airport, Poland.">
+<title>Aerobatic Flight Extra 300L with World Champion — Voucher from PLN 1,999 | akrobacja.com</title>
+<meta name="description" content="Aerobatic flight on Extra 300L SP-EKS with World Champion Maciej Kulaszewski. Voucher from PLN 1,999 — the perfect gift. FCL.800 aerobatic rating course with up to 90% subsidy. Airshows. Radom-Piastow Airport EPRP, 100 km from Warsaw.">
 <link rel="canonical" href="https://akrobacja.com/en">
 <link rel="alternate" hreflang="pl" href="https://akrobacja.com/">
 <link rel="alternate" hreflang="en" href="https://akrobacja.com/en">
 <link rel="alternate" hreflang="x-default" href="https://akrobacja.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="geo.region" content="PL-14">
+<meta name="geo.placename" content="Radom">
+<meta name="geo.position" content="51.3892;21.2133">
+<meta name="ICBM" content="51.3892, 21.2133">
 <meta name="theme-color" content="#1B4DB5">
 <meta name="author" content="Doradztwo Paweł Mamcarz">
 <meta name="ai:description" content="akrobacja.com — aerobatic flights with 2022 World Champion Maciej Kulaszewski on Extra 300L SP-EKS. Vouchers from 1999 PLN, aerobatic camp 7777 PLN, FCL.800 rating course 20900 PLN (up to 90% subsidized). Airshows from 14990 PLN. Radom-Piastow Airport, Poland.">
@@ -18,8 +23,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://akrobacja.com/en">
-<meta property="og:title" content="Aerobatic Flights Extra 300L — akrobacja.com">
-<meta property="og:description" content="Aerobatic flight with a World Champion. Voucher from 1,999 PLN. Extra 300L SP-EKS, Radom-Piastow Airport. Feel +6G!">
+<meta property="og:title" content="Aerobatic Flight Extra 300L with World Champion — Voucher from PLN 1,999">
+<meta property="og:description" content="Aerobatic flight on Extra 300L SP-EKS with World Champion Maciej Kulaszewski. Voucher from PLN 1,999 — the perfect gift. Radom-Piastow Airport, 100 km from Warsaw.">
 <meta property="og:image" content="https://akrobacja.com/samolot-top-web.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -29,8 +34,8 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Aerobatic Flights Extra 300L — akrobacja.com">
-<meta name="twitter:description" content="Aerobatic flight with a World Champion. Voucher from 1,999 PLN. Feel +6G!">
+<meta name="twitter:title" content="Aerobatic Flight Extra 300L with World Champion — Voucher from PLN 1,999">
+<meta name="twitter:description" content="Aerobatic flight on Extra 300L with World Champion. Voucher from PLN 1,999 — the perfect gift. Feel +6G!">
 <meta name="twitter:image" content="https://akrobacja.com/samolot-top-web.jpg">
 
 <!-- Favicon inline SVG — Rising A mark on navy square -->
@@ -636,11 +641,7 @@ img { display: block; max-width: 100%; }
   position: relative;
   overflow: hidden;
 }
-.promo-banner::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.03) 10px, rgba(255,255,255,.03) 20px);
-}
+.promo-banner::before { display: none; }
 .promo-label {
   font-family: var(--font-h); font-size: 11px; font-weight: 700;
   letter-spacing: .25em; text-transform: uppercase;
@@ -855,6 +856,82 @@ footer {
 .sticky-cta.vis { opacity: 1; transform: translateY(0); }
 
 /* ═══════════════════════════════════════════════════════
+   BENEFIT STRIP
+═══════════════════════════════════════════════════════ */
+.benefit-strip {
+  background: var(--navy-deep); padding: 28px 64px;
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.benefit-item {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-h); font-size: 11px; font-weight: 600;
+  letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.7);
+  white-space: nowrap;
+}
+.benefit-dot {
+  width: 6px; height: 6px; background: var(--red); flex-shrink: 0;
+}
+.hero-gift-hint {
+  font-size: 12px; font-weight: 500; color: rgba(255,255,255,.5);
+  letter-spacing: .12em; margin-bottom: 32px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   GIFT CTA SECTION
+═══════════════════════════════════════════════════════ */
+.gift-section { background: var(--white); padding: 96px 64px; text-align: center; }
+.gift-section .section-title { color: var(--black); }
+.gift-section .section-label { color: var(--chrome); }
+.gift-subtitle {
+  font-size: 15px; color: var(--chrome); line-height: 1.7;
+  max-width: 560px; margin: 20px auto 48px;
+}
+.gift-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  max-width: 800px; margin: 0 auto 48px;
+}
+.gift-card {
+  background: rgba(10,20,40,.03); padding: 36px 28px;
+  border: 1px solid rgba(10,20,40,.06);
+  transition: transform .2s, box-shadow .2s;
+}
+.gift-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(10,20,40,.08); }
+.gift-card-title {
+  font-family: var(--font-h); font-size: 15px; font-weight: 800;
+  text-transform: uppercase; color: var(--black); margin-bottom: 6px;
+}
+.gift-card-desc { font-size: 12px; color: var(--chrome); line-height: 1.5; }
+
+.gift-occasion-line {
+  font-size: 14px; color: var(--chrome); font-style: italic;
+  text-align: center; padding: 24px 20px 0; line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SECTION CTA ROW
+═══════════════════════════════════════════════════════ */
+.section-cta-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 24px; flex-wrap: wrap; margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .benefit-strip { padding: 20px 20px; gap: 20px; }
+  .benefit-item { font-size: 10px; }
+  .gift-section { padding: 60px 20px; }
+  .gift-cards { grid-template-columns: 1fr; }
+  .gift-subtitle { font-size: 13px; }
+  .section-cta-row { flex-direction: column; gap: 12px; }
+  .section-cta-row .btn-primary,
+  .section-cta-row .btn-ghost { width: 100%; text-align: center; display: block; }
+}
+@media (max-width: 480px) {
+  .benefit-strip { padding: 16px 16px; gap: 14px; flex-direction: column; align-items: center; }
+  .gift-section { padding: 48px 16px; }
+}
+
+/* ═══════════════════════════════════════════════════════
    SCROLL REVEAL
 ═══════════════════════════════════════════════════════ */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
@@ -965,7 +1042,7 @@ footer {
   padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,.08);
   line-height: 1.5;
 }
-.s-feat::before { content: '→ '; color: #fff; font-weight: 600; }
+.s-feat::before { content: '\2192 '; color: #fff; font-weight: 600; }
 
 .s-cta {
   display: inline-block; padding: 14px 24px; text-align: center;
@@ -1375,6 +1452,40 @@ footer {
   "knowsAbout": ["Aerobatic flying", "Extra 300L", "Flight instruction", "Airshow displays"]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "akrobacja.com",
+  "url": "https://akrobacja.com",
+  "logo": "https://akrobacja.com/akrobacja-logo-mark-light.png",
+  "description": "Aerobatic flights on Extra 300L SP-EKS with 2022 World Champion Maciej Kulaszewski. Vouchers, FCL.800 courses, airshows.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+48535535221",
+    "contactType": "customer service",
+    "availableLanguage": ["Polish", "English"]
+  },
+  "sameAs": [
+    "https://www.facebook.com/akrobacja.com.lot",
+    "https://www.instagram.com/akrobacja_com/",
+    "https://www.youtube.com/@akrobacja"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "akrobacja.com",
+  "url": "https://akrobacja.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://akrobacja.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 </head>
 
 <body>
@@ -1384,83 +1495,41 @@ footer {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <svg width="0" height="0" style="position:absolute;overflow:hidden">
   <defs>
-    <!-- Rising-A symbol: the letter A with Extra 300L aircraft at apex -->
-    <!--
-      AKROBACJA.TOP — LOGO MARK SYMBOL
-      Pixel-accurate rebuild from hi-res brand photo
-      ─────────────────────────────────────────────
-      3D perspective "A":
-        Left leg  = navy  #0A2F7C
-        Inner red = depth face #E11E26
-        White swish = dynamic separation arc
-      Extra 300L aircraft silhouette = navy, upper-right
-    -->
     <symbol id="logo-mark" viewBox="0 0 480 340">
-
-      <!-- LEFT LEG (navy — front/dominant face of 3D A) -->
       <polygon points="52,320 86,320 196,68 170,68" fill="#1B4DB5"/>
-
-      <!-- RIGHT LEG (navy — outer right stroke) -->
       <polygon points="194,68 224,68 336,320 302,320" fill="#1B4DB5"/>
-
-      <!-- CROSSBAR (navy) -->
       <polygon points="110,224 268,224 260,198 118,198" fill="#1B4DB5"/>
-
-      <!-- INNER RED TRIANGLE — 3D depth / right face -->
       <polygon points="206,74 260,198 118,198" fill="#C41E3A"/>
-
-      <!-- WHITE SWISH — dynamic sweep separating navy from red -->
-      <path d="M 162,82 Q 210,148 252,210"
-            stroke="white" stroke-width="14" fill="none"
-            stroke-linecap="round"/>
-
-      <!-- EXTRA 300L AIRCRAFT — navy, nose pointing upper-right ~-44° -->
+      <path d="M 162,82 Q 210,148 252,210" stroke="white" stroke-width="14" fill="none" stroke-linecap="round"/>
       <g transform="translate(304,56) rotate(-44)">
-        <!-- Fuselage -->
         <path d="M 78,0 L 40,-13 L -68,-13 L -68,13 L 40,13 Z" fill="#1B4DB5"/>
-        <!-- Main wings -->
         <path d="M -8,-13 L 22,-13 L 22,-66 L 4,-62 L -20,-13 Z" fill="#1B4DB5"/>
         <path d="M -8,13  L 22,13  L 22,66  L 4,62  L -20,13  Z" fill="#1B4DB5"/>
-        <!-- Horizontal stabilisers -->
         <path d="M -48,-10 L -40,-10 L -40,-40 L -62,-36 Z" fill="#1B4DB5"/>
         <path d="M -48,10  L -40,10  L -40,40  L -62,36  Z" fill="#1B4DB5"/>
-        <!-- Vertical fin -->
         <path d="M -68,0 L -56,-46 L -46,-13 Z" fill="#1B4DB5"/>
-        <!-- Cockpit canopy -->
         <ellipse cx="26" cy="0" rx="22" ry="10" fill="#0A1428"/>
-        <!-- Propeller disc -->
         <circle cx="72" cy="0" r="18" fill="#1B4DB5" opacity="0.35"/>
       </g>
-
     </symbol>
-
-    <!-- Horizontal logo (mark + wordmark) — on dark bg -->
     <symbol id="logo-horiz-dark" viewBox="0 0 270 56">
-      <!-- mark at 56×50 scaled from 112×100 viewBox -->
       <use href="#logo-mark" x="0" y="3" width="56" height="50"/>
       <text x="66" y="42" font-family="Montserrat,sans-serif" font-weight="700" font-size="32" fill="#FFFFFF" letter-spacing="-1">akrobacja<tspan fill="#C41E3A" font-weight="900">.top</tspan></text>
     </symbol>
-
-    <!-- Horizontal logo — on white/light bg -->
     <symbol id="logo-horiz-light" viewBox="0 0 270 56">
       <use href="#logo-mark" x="0" y="3" width="56" height="50"/>
       <text x="66" y="42" font-family="Montserrat,sans-serif" font-weight="700" font-size="32" fill="#1B4DB5" letter-spacing="-1">akrobacja<tspan fill="#C41E3A" font-weight="900">.top</tspan></text>
     </symbol>
-
-    <!-- Monogram — for favicon / app icon (circular AI-style) -->
     <symbol id="logo-mono" viewBox="0 0 64 64">
       <circle cx="32" cy="32" r="30" fill="#1B4DB5"/>
       <path d="M 2 32 A 30 30 0 0 1 62 32 Z" fill="#0A1428"/>
       <line x1="4" y1="32" x2="60" y2="32" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
-      <!-- Tick marks -->
       <line x1="32" y1="4" x2="32" y2="9" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
       <line x1="32" y1="55" x2="32" y2="60" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
       <line x1="4" y1="32" x2="9" y2="32" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
       <line x1="55" y1="32" x2="60" y2="32" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
       <circle cx="32" cy="32" r="30" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-      <!-- Outer ring ticks every 30° -->
       <circle cx="32" cy="32" r="28" fill="none" stroke="rgba(255,255,255,.1)" stroke-width=".5"/>
-      <!-- Rising-A mark centred, scaled small -->
       <use href="#logo-mark" x="18" y="14" width="28" height="32"/>
     </symbol>
   </defs>
@@ -1479,8 +1548,8 @@ footer {
     <li><a href="/lot-akrobacyjny">Flights</a></li>
     <li><a href="#pilot">Pilot</a></li>
     <li><a href="/pokazy-lotnicze">Airshows</a></li>
+    <li><a href="/blog/kurs-akrobacji-fcl800">Training</a></li>
     <li><a href="/sklep-merch">Shop</a></li>
-    <li><a href="/galeria">Gallery</a></li>
     <li><a href="/blog">Blog</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#kontakt">Contact</a></li>
@@ -1503,7 +1572,6 @@ footer {
   <!-- Faint aircraft silhouette watermark -->
   <div class="hero-watermark" aria-hidden="true">
     <svg viewBox="0 0 480 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Simplified Extra 300L top-down silhouette -->
       <ellipse cx="240" cy="80" rx="216" ry="14" fill="white" opacity="0.6"/>
       <ellipse cx="240" cy="80" rx="22" ry="60" fill="white"/>
       <path d="M 195 80 L 60 95 L 60 85 L 195 72 Z" fill="white" opacity="0.8"/>
@@ -1525,10 +1593,11 @@ footer {
       <span class="hl-3 reveal reveal-d3">FOR REAL</span>
     </h1>
 
-    <p class="hero-sub reveal reveal-d3">Aerobatic flight on Extra 300L with multiple Champion of Poland, Germany &amp; UK<br><span style="font-size:0.75em;color:var(--chrome);font-weight:400">Project: Paweł Mamcarz</span></p>
+    <p class="hero-sub reveal reveal-d3">Aerobatic flight on Extra 300L with multiple Champion of Poland, Germany &amp; UK</p>
+    <p class="hero-gift-hint reveal reveal-d3">The perfect gift — voucher PDF ready to give</p>
 
     <div class="hero-actions reveal reveal-d4">
-      <a href="#sklep" class="btn-primary">Buy Voucher →</a>
+      <a href="#sklep" class="btn-primary">Buy Voucher — from PLN 1,999 &rarr;</a>
       <a href="#pilot" class="btn-ghost">Meet the pilot</a>
     </div>
 
@@ -1538,11 +1607,11 @@ footer {
         <div class="stat-lbl">Flight hours on Extra 300L</div>
       </div>
       <div class="stat-cell reveal reveal-d1">
-        <div class="stat-num"><em>×</em>PL</div>
+        <div class="stat-num"><em>&times;</em>PL</div>
         <div class="stat-lbl">Multiple Polish Champion</div>
       </div>
       <div class="stat-cell reveal reveal-d2">
-        <div class="stat-num"><em>×</em>DE</div>
+        <div class="stat-num"><em>&times;</em>DE</div>
         <div class="stat-lbl">Multiple German Champion</div>
       </div>
       <div class="stat-cell reveal reveal-d3">
@@ -1554,102 +1623,294 @@ footer {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     MACHINE
+     BENEFIT STRIP
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="machine" id="maszyna">
-  <div class="machine-header reveal">
-    <p class="section-label">Extra 300L · SP-EKS</p>
-    <h2 class="section-title">The Machine</h2>
-    <div class="accent-bar"></div>
+<div class="benefit-strip">
+  <div class="benefit-item"><span class="benefit-dot"></span>World Champion at the controls</div>
+  <div class="benefit-item"><span class="benefit-dot"></span>Voucher valid 12 months</div>
+  <div class="benefit-item"><span class="benefit-dot"></span>Free rescheduling</div>
+  <div class="benefit-item"><span class="benefit-dot"></span>PDF to your email in 60 seconds</div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SHOP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="shop" id="sklep">
+  <div class="shop-header reveal">
+    <div class="shop-title">
+      <p class="section-label">Vouchers · Aerobatic Flights</p>
+      <h2 class="section-title">Choose your<br>adrenaline level</h2>
+      <div class="accent-bar"></div>
+    </div>
+    <p class="shop-sub">Voucher valid for 12 months. Bad weather = free rescheduling.</p>
   </div>
 
-  <div class="machine-layout">
-    <!-- Aircraft viewer with interactive hotspots -->
-    <div class="aircraft-viewer reveal">
-      <span class="aircraft-viewer-label">Extra 300L SP-EKS — top view</span>
+  <!-- PROMO BANNER -->
+  <div class="promo-banner reveal" style="background:linear-gradient(135deg, var(--navy-deep), var(--navy))">
+    <div class="promo-label">Season April&ndash;October</div>
+    <div class="promo-title">Book your flight — calendar fills up fast</div>
+    <div class="promo-countdown" id="promoCountdown">
+      <div class="promo-unit"><span class="promo-num" id="promoDays">--</span><span class="promo-lbl">Days</span></div>
+      <div class="promo-unit"><span class="promo-num" id="promoHours">--</span><span class="promo-lbl">Hrs</span></div>
+      <div class="promo-unit"><span class="promo-num" id="promoMins">--</span><span class="promo-lbl">Min</span></div>
+      <div class="promo-unit"><span class="promo-num" id="promoSecs">--</span><span class="promo-lbl">Sec</span></div>
+    </div>
+  </div>
 
-      <!-- Real top-down drone photo, rotated 180° (nose points up) -->
-      <img src="/samolot-top-web.jpg"
-           alt="Extra 300L SP-EKS — top view"
-           loading="lazy"
-           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0.88">
+  <div class="voucher-grid">
 
-      <!-- Dark vignette overlay so hotspot cards stay readable -->
-      <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 85% 85% at 50% 50%, transparent 45%, rgba(10,20,40,0.65) 100%);pointer-events:none;z-index:1"></div>
-
-      <!-- Hotspot 1 — Silnik (nose / engine — top-center) -->
-      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:13%;z-index:10">
-        <div class="hotspot-dot"><span>1</span></div>
-        <div class="hotspot-card">
-          <div class="hotspot-card-title">Engine</div>
-          <div class="hotspot-card-val">300 HP</div>
-          <div class="hotspot-card-desc">Lycoming AEIO-580 · 224 kW · direct drive MTV propeller</div>
-        </div>
+    <!-- PACKAGE 1 — FIRST FLIGHT -->
+    <div class="v-card reveal">
+      <span class="v-tag v-tag--start">First time</span>
+      <h3 class="v-name">First Flight</h3>
+      <p class="v-subtitle">Your first taste of aerobatics</p>
+      <div class="v-promo-tag">-20% until end of month</div>
+      <div class="v-price-old">PLN 2 499</div>
+      <div class="v-price">
+        <span class="v-price-currency">PLN</span>1999
+        <span class="v-price-unit">/ person</span>
       </div>
-
-      <!-- Hotspot 2 — Cockpit (just behind engine, center) -->
-      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:33%;z-index:10">
-        <div class="hotspot-dot"><span>2</span></div>
-        <div class="hotspot-card">
-          <div class="hotspot-card-title">G-limits</div>
-          <div class="hotspot-card-val">+10G / −10G</div>
-          <div class="hotspot-card-desc">FAA/EASA certified. Safety margins always on your side.</div>
+      <div class="v-divider"></div>
+      <ul class="v-features">
+        <li class="v-feat">Up to 15 min airborne</li>
+        <li class="v-feat">Ground briefing (20 min)</li>
+        <li class="v-feat">Up to +4G / &minus;2G</li>
+        <li class="v-feat">Basic aerobatic manoeuvres</li>
+        <li class="v-feat">No flight experience required</li>
+      </ul>
+      <button class="v-cta" data-package="pierwszy_lot">Buy voucher — 1,999 PLN</button>
+      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="pierwszy_lot">
+        <div class="v-addon-text">
+          <div class="v-addon-title">+ 360° Flight Video</div>
+          <div class="v-addon-desc">90 sec edit · MP4 in 48h · +299 PLN</div>
         </div>
-      </div>
-
-      <!-- Hotspot 3 — Left wing (port side, mid-height) -->
-      <div class="hotspot" tabindex="0" role="button" style="left:15%;top:46%;z-index:10">
-        <div class="hotspot-dot"><span>3</span></div>
-        <div class="hotspot-card" style="left:100%;bottom:auto;top:-50%;transform:none">
-          <div class="hotspot-card-title">Roll Rate</div>
-          <div class="hotspot-card-val">420°/s</div>
-          <div class="hotspot-card-desc">Wingspan 8.0 m · composite construction · full roll deflection</div>
-        </div>
-      </div>
-
-      <!-- Hotspot 4 — Tail (lower center) -->
-      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:82%;z-index:10">
-        <div class="hotspot-dot"><span>4</span></div>
-        <div class="hotspot-card" style="bottom:auto;top:calc(100% + 10px)">
-          <div class="hotspot-card-title">Tail</div>
-          <div class="hotspot-card-val">V-tail</div>
-          <div class="hotspot-card-desc">Symmetrical tail profile · full positive and negative aerobatics</div>
-        </div>
-      </div>
-
-      <!-- Hotspot 5 — Right wing (starboard side, mid-height) -->
-      <div class="hotspot" tabindex="0" role="button" style="left:85%;top:46%;z-index:10">
-        <div class="hotspot-dot"><span>5</span></div>
-        <div class="hotspot-card" style="right:100%;left:auto;bottom:auto;top:-50%;transform:none">
-          <div class="hotspot-card-title">Max Speed</div>
-          <div class="hotspot-card-val">220 kt</div>
-          <div class="hotspot-card-desc">V<sub>NE</sub> 220 kt (407 km/h) · MTOW 950 kg</div>
-        </div>
+        <div class="v-toggle"></div>
       </div>
     </div>
 
-    <!-- Spec table -->
-    <div class="machine-specs reveal reveal-d2">
-      <p style="font-family:var(--font-h);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--chrome);margin-bottom:20px">Technical specifications</p>
-      <div class="spec-list">
-        <div class="spec-row"><span class="spec-key">Type</span><span class="spec-val">Extra 300L</span></div>
-        <div class="spec-row"><span class="spec-key">Registration</span><span class="spec-val">SP-EKS</span></div>
-        <div class="spec-row"><span class="spec-key">Engine</span><span class="spec-val">300 HP</span></div>
-        <div class="spec-row"><span class="spec-key">Max +G</span><span class="spec-val red">+10G</span></div>
-        <div class="spec-row"><span class="spec-key">Max −G</span><span class="spec-val red">−10G</span></div>
-        <div class="spec-row"><span class="spec-key">Roll</span><span class="spec-val">420°/s</span></div>
-        <div class="spec-row"><span class="spec-key">V(NE)</span><span class="spec-val">220 kt</span></div>
-        <div class="spec-row"><span class="spec-key">MTOW</span><span class="spec-val">950 kg</span></div>
-        <div class="spec-row"><span class="spec-key">Cockpit</span><span class="spec-val">2 tandem</span></div>
-        <div class="spec-row"><span class="spec-key">Certification</span><span class="spec-val">FAA / EASA</span></div>
-        <div class="spec-row"><span class="spec-key">Base</span><span class="spec-val">EPRP Radom</span></div>
+    <!-- PACKAGE 2 — ADRENALINE (FEATURED) -->
+    <div class="v-card v-card--featured reveal reveal-d1">
+      <span class="v-tag v-tag--best">Bestseller</span>
+      <h3 class="v-name">Adrenaline</h3>
+      <p class="v-subtitle">Full aerobatic programme with the Champion</p>
+      <div class="v-promo-tag">-40% until end of month</div>
+      <div class="v-price-old">PLN 4 999</div>
+      <div class="v-price">
+        <span class="v-price-currency">PLN</span>2999
+        <span class="v-price-unit">/ person</span>
       </div>
+      <div class="v-divider"></div>
+      <ul class="v-features">
+        <li class="v-feat">20 min airborne</li>
+        <li class="v-feat">Briefing (40 min) + debriefing (15 min)</li>
+        <li class="v-feat">Up to +6G / &minus;4G</li>
+        <li class="v-feat">Loops, rolls, inverted flight</li>
+        <li class="v-feat">No flight experience required</li>
+      </ul>
+      <button class="v-cta" data-package="adrenalina">Buy voucher — 2,999 PLN</button>
+      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="adrenalina">
+        <div class="v-addon-text">
+          <div class="v-addon-title">+ 360° Flight Video</div>
+          <div class="v-addon-desc">90 sec edit · MP4 in 48h · +299 PLN</div>
+        </div>
+        <div class="v-toggle"></div>
+      </div>
+    </div>
 
-      <div style="margin-top:32px;padding:20px;background:rgba(27,77,181,.07);border-left:3px solid var(--navy)">
-        <p style="font-size:12px;color:var(--chrome);line-height:1.6">
-          Every passenger flight is flown by <strong style="color:var(--white)">Maciej Kulaszewski personally</strong> — no substitutes, no exceptions.
-        </p>
+    <!-- PACKAGE 3 — MASTERCLASS -->
+    <div class="v-card reveal reveal-d2">
+      <span class="v-tag v-tag--limit">For PPL pilots</span>
+      <h3 class="v-name">Masterclass</h3>
+      <p class="v-subtitle">Aerobatic training with the Champion</p>
+      <div class="v-price">
+        <span class="v-price-currency">PLN</span>4999
+        <span class="v-price-unit">/ person</span>
       </div>
+      <div class="v-divider"></div>
+      <ul class="v-features">
+        <li class="v-feat">Up to 50 min airborne (1 day)</li>
+        <li class="v-feat">Briefing + debriefing with figure analysis</li>
+        <li class="v-feat">Spins, advanced manoeuvres</li>
+        <li class="v-feat">Valid PPL(A)+ licence required</li>
+        <li class="v-feat">Limited availability</li>
+      </ul>
+      <button class="v-cta" data-package="masterclass">Buy voucher — 4,999 PLN</button>
+      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="masterclass">
+        <div class="v-addon-text">
+          <div class="v-addon-title">+ 360° Flight Video</div>
+          <div class="v-addon-desc">90 sec edit · cockpit + external camera · +299 PLN</div>
+        </div>
+        <div class="v-toggle"></div>
+      </div>
+    </div>
+
+    <!-- PACKAGE 4 — FCL.800 COURSE -->
+    <div class="v-card v-card--featured reveal reveal-d3" style="background:var(--black)">
+      <span class="v-tag" style="background:var(--navy);color:#fff">Aerobatic rating</span>
+      <h3 class="v-name">FCL.800 Course</h3>
+      <p class="v-subtitle">Licence endorsement</p>
+      <div class="v-promo-tag" style="background:rgba(196,30,58,.15);color:#C41E3A">Up to 90% subsidised</div>
+      <div class="v-price" style="color:#fff">
+        <span class="v-price-currency">PLN</span>20 900
+        <span class="v-price-unit" style="color:rgba(255,255,255,.5)">net</span>
+      </div>
+      <div class="v-divider"></div>
+      <ul class="v-features">
+        <li class="v-feat">16-20 flights on Extra 300L (5h)</li>
+        <li class="v-feat">8h aerobatic theory</li>
+        <li class="v-feat">FCL.800 rating entered in licence</li>
+        <li class="v-feat">Under the auspices of Radom Aeroclub</li>
+        <li class="v-feat">Requires PPL(A) + 40h PIC</li>
+      </ul>
+      <a href="/blog/kurs-akrobacji-fcl800" class="v-cta" style="background:var(--navy);text-decoration:none">Course details &rarr;</a>
+      <div style="margin-top:12px;padding:10px;background:rgba(196,30,58,.1);font-size:11px;color:rgba(255,255,255,.8);text-align:center;line-height:1.5">
+        <strong style="color:#C41E3A">Masterclass + Course bundle:</strong><br>
+        4,999 + 18,888 = <strong>23,887 PLN gross</strong> (19,420 net)<br>
+        <a href="/dotacje-szkolenie-lotnicze" style="color:#C41E3A;font-weight:700;font-size:10px">Check subsidies &rarr;</a>
+      </div>
+    </div>
+
+  </div><!-- /voucher-grid -->
+
+  <!-- B2B stripe -->
+  <div class="v-b2b reveal">
+    <div class="v-b2b-body">
+      <div class="v-b2b-title">Corporate Experience</div>
+      <div class="v-b2b-desc">Group package from 5 people. VAT invoice. Team building, rewards, corporate events.</div>
+    </div>
+    <a href="https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20Corporate%20Experience" class="v-b2b-cta">Ask about Group Offer &rarr;</a>
+  </div>
+
+  <p class="gift-occasion-line reveal">The perfect birthday, anniversary, bachelor party gift — or simply because you deserve it</p>
+
+  <!-- Trust badges -->
+  <div class="trust-strip reveal">
+    <div class="trust-item"><span class="trust-icon">🔒</span>Secure SSL payment</div>
+    <div class="trust-item"><span class="trust-icon">📄</span>PDF voucher in 60 seconds</div>
+    <div class="trust-item"><span class="trust-icon">✈️</span>Insurance included</div>
+    <div class="trust-item"><span class="trust-icon">🌦️</span>Free rescheduling in bad weather</div>
+    <div class="trust-item"><span class="trust-icon">📅</span>Voucher validity: 12 months</div>
+  </div>
+
+  <!-- Mini subsidy info -->
+  <div style="text-align:center;margin-top:24px;padding:16px;background:rgba(27,77,181,.06);border-radius:0" class="reveal">
+    <p style="font-size:13px;color:var(--navy);margin:0"><strong>PPL(A) pilots:</strong> FCL.800 aerobatic rating course with up to 90% subsidy. <a href="/dotacje-szkolenie-lotnicze" style="color:var(--red);font-weight:700">Check subsidies &rarr;</a></p>
+  </div>
+
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SOCIAL PROOF BAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="proof-bar reveal">
+  <div class="proof-bar-item"><div class="proof-bar-num">200+</div><div class="proof-bar-lbl">Flights per season</div></div>
+  <div class="proof-bar-item"><div class="proof-bar-num">3 000+</div><div class="proof-bar-lbl">Pilot flight hours</div></div>
+  <div class="proof-bar-item"><div class="proof-bar-num">10+</div><div class="proof-bar-lbl">Shows &amp; competitions per year</div></div>
+  <div class="proof-bar-item"><div class="proof-bar-num">5.0</div><div class="proof-bar-lbl">Google Reviews</div></div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     TESTIMONIALS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="reviews" id="opinie">
+  <div class="reviews-header reveal">
+    <div class="reviews-stats">
+      <div class="reviews-avg">5.0</div>
+      <div>
+        <div class="reviews-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="reviews-count">6 reviews · Google Reviews</div>
+      </div>
+    </div>
+    <p class="section-label" style="color:rgba(255,255,255,.5)">What our clients say</p>
+    <h2 class="section-title" style="color:var(--white)">Don't take our word for it.<br>Hear it from them</h2>
+    <div class="accent-bar"></div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="review-text">"Aerobatic flight? Absolutely incredible! Even for a complete beginner, the sensations after the first stall turn and barrel roll are unforgettable. The pilot is pure professionalism, the briefing was thorough, and the whole operation ran like a pre-flight checklist. Equipment in top shape."</div>
+      <div class="review-author">Mark K.</div>
+      <div class="review-meta">Local Guide · Google Reviews</div>
+    </div>
+    <div class="review-card reveal reveal-d1">
+      <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="review-text">"Out-of-this-world experience! A perfect gift for adrenaline junkies!"</div>
+      <div class="review-author">Anna W.</div>
+      <div class="review-meta">Local Guide · Google Reviews</div>
+    </div>
+    <div class="review-card reveal reveal-d2">
+      <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="review-text">"Excellent training facilities and a beautifully maintained aircraft. Aerobatics teaches humility and precise stick-and-rudder skills, and this is the best place to learn. The instructor doesn't let up until every figure is flown to perfection. This is where real airmanship is built."</div>
+      <div class="review-author">Tom R.</div>
+      <div class="review-meta">Google Reviews</div>
+    </div>
+    <div class="review-card reveal">
+      <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="review-text">"I got the flight as a gift from my wife. An absolutely amazing experience!!! I recommend it to everyone."</div>
+      <div class="review-author">Chris M.</div>
+      <div class="review-meta">Google Reviews</div>
+    </div>
+    <div class="review-card reveal reveal-d1">
+      <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="review-text">"Highly recommend! Super fun! Incredible adrenaline rush ;)"</div>
+      <div class="review-author">Robert D.</div>
+      <div class="review-meta">Google Reviews</div>
+    </div>
+    <div class="review-card reveal reveal-d2">
+      <div class="review-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="review-text">"&#9733;&#9733;&#9733;&#9733;&#9733;"</div>
+      <div class="review-author">FilmoLot</div>
+      <div class="review-meta">Local Guide · Google Reviews</div>
+    </div>
+  </div>
+  <div class="reviews-social reveal">
+    More reviews and flight footage:
+    <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener">Instagram</a> ·
+    <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener">Facebook</a>
+  </div>
+  <div class="section-cta-row reveal">
+    <a href="#sklep" class="btn-primary">Join them — buy a voucher &rarr;</a>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     HOW IT WORKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="steps reveal">
+  <div style="text-align:center;margin-bottom:48px">
+    <p class="section-label">How it works</p>
+    <h2 class="section-title" style="color:var(--black)">4 steps to your flight</h2>
+    <div class="accent-bar" style="background:var(--red)"></div>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Buy a voucher</div>
+      <div class="step-desc">Choose a package and buy online. You'll receive a PDF voucher by email within 60 seconds.</div>
+      <span class="step-arrow">&rarr;</span>
+    </div>
+    <div class="step-card reveal reveal-d1">
+      <div class="step-num">02</div>
+      <div class="step-title">Book a date</div>
+      <div class="step-desc">Pick a date in the online calendar or message us on WhatsApp. Season: April&ndash;October.</div>
+      <span class="step-arrow">&rarr;</span>
+    </div>
+    <div class="step-card reveal reveal-d2">
+      <div class="step-num">03</div>
+      <div class="step-title">Briefing at the airport</div>
+      <div class="step-desc">Maciej will walk you through procedures, figures and breathing technique. ~20 minutes.</div>
+      <span class="step-arrow">&rarr;</span>
+    </div>
+    <div class="step-card reveal reveal-d3">
+      <div class="step-num">04</div>
+      <div class="step-title">Fly!</div>
+      <div class="step-desc">You climb into the Extra 300L cockpit and experience a flight you'll remember for the rest of your life.</div>
+    </div>
+  </div>
+  <div class="guarantee reveal">
+    <div class="guarantee-icon">🛡️</div>
+    <div class="guarantee-text">
+      <strong>Satisfaction guarantee.</strong> If the weather prevents your flight, we reschedule free of charge with no limit. Voucher valid for 12 months. You can change your package or transfer the voucher to someone else.
     </div>
   </div>
 </section>
@@ -1710,11 +1971,204 @@ footer {
 
     <div class="reveal" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
       <a href="/kalendarz" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px">
-        Book a date →
+        Book a date &rarr;
       </a>
       <a href="https://www.facebook.com/bullet.aerobatics/" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-flex;align-items:center;gap:6px">
-        Maciej's Facebook →
+        Maciej's Facebook &rarr;
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     MACHINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="machine" id="maszyna">
+  <div class="machine-header reveal">
+    <p class="section-label">Extra 300L · SP-EKS</p>
+    <h2 class="section-title">The Machine</h2>
+    <div class="accent-bar"></div>
+  </div>
+
+  <div class="machine-layout">
+    <div class="aircraft-viewer reveal">
+      <span class="aircraft-viewer-label">Extra 300L SP-EKS — top view</span>
+      <img src="/samolot-top-web.jpg" alt="Extra 300L SP-EKS — top view" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0.88">
+      <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 85% 85% at 50% 50%, transparent 45%, rgba(10,20,40,0.65) 100%);pointer-events:none;z-index:1"></div>
+
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:13%;z-index:10">
+        <div class="hotspot-dot"><span>1</span></div>
+        <div class="hotspot-card">
+          <div class="hotspot-card-title">Engine</div>
+          <div class="hotspot-card-val">300 HP</div>
+          <div class="hotspot-card-desc">Lycoming AEIO-580 · 224 kW · direct drive MTV propeller</div>
+        </div>
+      </div>
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:33%;z-index:10">
+        <div class="hotspot-dot"><span>2</span></div>
+        <div class="hotspot-card">
+          <div class="hotspot-card-title">G-limits</div>
+          <div class="hotspot-card-val">+10G / &minus;10G</div>
+          <div class="hotspot-card-desc">FAA/EASA certified. Safety margins always on your side.</div>
+        </div>
+      </div>
+      <div class="hotspot" tabindex="0" role="button" style="left:15%;top:46%;z-index:10">
+        <div class="hotspot-dot"><span>3</span></div>
+        <div class="hotspot-card" style="left:100%;bottom:auto;top:-50%;transform:none">
+          <div class="hotspot-card-title">Roll Rate</div>
+          <div class="hotspot-card-val">420°/s</div>
+          <div class="hotspot-card-desc">Wingspan 8.0 m · composite construction · full roll deflection</div>
+        </div>
+      </div>
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:82%;z-index:10">
+        <div class="hotspot-dot"><span>4</span></div>
+        <div class="hotspot-card" style="bottom:auto;top:calc(100% + 10px)">
+          <div class="hotspot-card-title">Tail</div>
+          <div class="hotspot-card-val">V-tail</div>
+          <div class="hotspot-card-desc">Symmetrical tail profile · full positive and negative aerobatics</div>
+        </div>
+      </div>
+      <div class="hotspot" tabindex="0" role="button" style="left:85%;top:46%;z-index:10">
+        <div class="hotspot-dot"><span>5</span></div>
+        <div class="hotspot-card" style="right:100%;left:auto;bottom:auto;top:-50%;transform:none">
+          <div class="hotspot-card-title">Max Speed</div>
+          <div class="hotspot-card-val">220 kt</div>
+          <div class="hotspot-card-desc">V<sub>NE</sub> 220 kt (407 km/h) · MTOW 950 kg</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="machine-specs reveal reveal-d2">
+      <p style="font-family:var(--font-h);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--chrome);margin-bottom:20px">Technical specifications</p>
+      <div class="spec-list">
+        <div class="spec-row"><span class="spec-key">Type</span><span class="spec-val">Extra 300L</span></div>
+        <div class="spec-row"><span class="spec-key">Registration</span><span class="spec-val">SP-EKS</span></div>
+        <div class="spec-row"><span class="spec-key">Engine</span><span class="spec-val">300 HP</span></div>
+        <div class="spec-row"><span class="spec-key">Max +G</span><span class="spec-val red">+10G</span></div>
+        <div class="spec-row"><span class="spec-key">Max &minus;G</span><span class="spec-val red">&minus;10G</span></div>
+        <div class="spec-row"><span class="spec-key">Roll</span><span class="spec-val">420°/s</span></div>
+        <div class="spec-row"><span class="spec-key">V(NE)</span><span class="spec-val">220 kt</span></div>
+        <div class="spec-row"><span class="spec-key">MTOW</span><span class="spec-val">950 kg</span></div>
+        <div class="spec-row"><span class="spec-key">Cockpit</span><span class="spec-val">2 tandem</span></div>
+        <div class="spec-row"><span class="spec-key">Certification</span><span class="spec-val">FAA / EASA</span></div>
+        <div class="spec-row"><span class="spec-key">Base</span><span class="spec-val">EPRP Radom</span></div>
+      </div>
+      <div style="margin-top:32px;padding:20px;background:rgba(27,77,181,.07);border-left:3px solid var(--navy)">
+        <p style="font-size:12px;color:var(--chrome);line-height:1.6">
+          Every passenger flight is flown by <strong style="color:var(--white)">Maciej Kulaszewski personally</strong> — no substitutes, no exceptions.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     GIFT CTA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="gift-section">
+  <p class="section-label reveal">Gift</p>
+  <h2 class="section-title reveal">Looking for a gift they'll<br>remember forever?</h2>
+  <div class="accent-bar reveal" style="margin-inline:auto"></div>
+  <p class="gift-subtitle reveal">An aerobatic flight voucher — elegant PDF ready to give in 60 seconds. The recipient picks their own flight date in the online calendar.</p>
+  <div class="gift-cards">
+    <div class="gift-card reveal">
+      <div class="gift-card-title">Birthday</div>
+      <div class="gift-card-desc">A gift they'll talk about for years. An unforgettable day full of adrenaline.</div>
+    </div>
+    <div class="gift-card reveal reveal-d1">
+      <div class="gift-card-title">Bachelor Party</div>
+      <div class="gift-card-desc">+6G instead of another party. A flight with the World Champion takes it to the next level.</div>
+    </div>
+    <div class="gift-card reveal reveal-d2">
+      <div class="gift-card-title">Corporate Bonus</div>
+      <div class="gift-card-desc">A reward for the best. VAT invoice. Group packages from 5 people.</div>
+    </div>
+  </div>
+  <a href="#sklep" class="btn-primary reveal" style="background:var(--red);color:#fff;text-decoration:none">Buy a gift voucher &rarr;</a>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     FAQ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="faq" id="faq">
+  <div class="faq-header reveal">
+    <p class="section-label">Questions &amp; Answers</p>
+    <h2 class="section-title">Got questions?<br>We have 3,000 hours of answers</h2>
+    <div class="accent-bar"></div>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-q" aria-expanded="false">Do I need any flying experience?</button>
+      <div class="faq-a"><p>No. We conduct a full briefing before every flight. The pilot ensures your safety at all times.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d1">
+      <button class="faq-q" aria-expanded="false">Are there any health restrictions?</button>
+      <div class="faq-a"><p>Generally good health is required. Contraindications include heart conditions, epilepsy, pregnancy and recent surgery. If in doubt, consult your doctor.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d1">
+      <button class="faq-q" aria-expanded="false">What if the weather doesn't allow the flight?</button>
+      <div class="faq-a"><p>We reschedule free of charge. The voucher is valid for 12 months.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d2">
+      <button class="faq-q" aria-expanded="false">How long is the voucher valid?</button>
+      <div class="faq-a"><p>12 months from the date of purchase. You choose your flight date individually.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d2">
+      <button class="faq-q" aria-expanded="false">Where do the flights take place?</button>
+      <div class="faq-a"><p>Radom-Piastow Airport (EPRP), Poland. Free parking on site. Directions sent by email after booking.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d3">
+      <button class="faq-q" aria-expanded="false">Can I buy a voucher as a gift?</button>
+      <div class="faq-a"><p>Yes. You'll receive an elegant PDF ready to give. The recipient chooses their own flight date.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d3">
+      <button class="faq-q" aria-expanded="false">How long does the whole airport visit take?</button>
+      <div class="faq-a"><p>First Flight: approx. 45 min. Adrenaline: approx. 1.5 h. Masterclass: approx. 3 h.</p></div>
+    </div>
+    <div class="faq-item reveal reveal-d4">
+      <button class="faq-q" aria-expanded="false">What is the maximum passenger weight and height?</button>
+      <div class="faq-a"><p>Max 110 kg (242 lbs), max 195 cm (6'5") — Extra 300L cockpit limitations. If in doubt, give us a call.</p></div>
+    </div>
+  </div>
+
+  <div class="section-cta-row reveal" style="padding-bottom:20px">
+    <a href="https://wa.me/48535535221" class="btn-ghost" style="color:var(--navy);border-color:rgba(10,20,40,.2)">Didn't find your answer? Message us &rarr;</a>
+    <a href="#sklep" class="btn-primary">Buy voucher &rarr;</a>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SAFETY — 3 PILLARS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section style="padding:80px 20px;background:linear-gradient(180deg,rgba(10,22,40,.95),rgba(10,22,40,.98));border-top:1px solid rgba(255,255,255,.05)" id="bezpieczenstwo">
+  <div style="max-width:1100px;margin:0 auto;text-align:center">
+    <p class="section-label reveal">Safety</p>
+    <h2 class="section-title reveal" style="margin-bottom:16px">Why flying with a champion<br>is safer than you think</h2>
+    <div class="accent-bar reveal" style="margin:0 auto 48px"></div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;text-align:left">
+      <div class="reveal" style="padding:32px;background:rgba(255,255,255,.03);border-radius:12px;border:1px solid rgba(255,255,255,.06)">
+        <div style="font-size:36px;margin-bottom:16px">🎯</div>
+        <h3 style="color:var(--white);font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;margin-bottom:12px">Aircraft mastery</h3>
+        <p style="color:var(--chrome);font-size:14px;line-height:1.8">
+          3,000+ hours on the Extra 300L — one of the most resilient aerobatic aircraft in the world. Maciej knows every behaviour of this machine in every flight configuration. An airline pilot flies safely in normal conditions. <strong style="color:var(--white)">Maciej knows how to maintain control in any conditions.</strong>
+        </p>
+      </div>
+      <div class="reveal" style="padding:32px;background:rgba(255,255,255,.03);border-radius:12px;border:1px solid rgba(255,255,255,.06)">
+        <div style="font-size:36px;margin-bottom:16px">📐</div>
+        <h3 style="color:var(--white);font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;margin-bottom:12px">Safety margins</h3>
+        <p style="color:var(--chrome);font-size:14px;line-height:1.8">
+          Passenger flights are flown with margins many times greater than in competition. Figures are performed at safe altitudes, at speeds that ensure full control. <strong style="color:var(--white)">Your flight uses just 30% of the aircraft's and pilot's capabilities.</strong>
+        </p>
+      </div>
+      <div class="reveal" style="padding:32px;background:rgba(255,255,255,.03);border-radius:12px;border:1px solid rgba(255,255,255,.06)">
+        <div style="font-size:36px;margin-bottom:16px">🛡️</div>
+        <h3 style="color:var(--white);font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;margin-bottom:12px">Emergency training</h3>
+        <p style="color:var(--chrome);font-size:14px;line-height:1.8">
+          Certified FI(A) flight instructor and aerobatic judge. Thousands of hours of training covering emergency procedures, spins and recovery. <strong style="color:var(--white)">A World Champion leaves nothing to chance.</strong>
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -1723,295 +2177,15 @@ footer {
      OWNER
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <div style="background:var(--white);padding:80px 64px;display:flex;align-items:center;gap:48px;max-width:100%;flex-wrap:wrap;justify-content:center" class="reveal">
-  <img src="/mamcarz.jpg" alt="Paweł Mamcarz — owner of Extra 300L SP-EKS" loading="lazy" width="280" height="280" style="width:280px;height:280px;object-fit:cover;border-radius:50%;flex-shrink:0">
+  <img src="/mamcarz.jpg" alt="Pawel Mamcarz — owner of Extra 300L SP-EKS" loading="lazy" width="280" height="280" style="width:280px;height:280px;object-fit:cover;border-radius:50%;flex-shrink:0">
   <div style="max-width:480px">
     <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Owner of SP-EKS</p>
-    <h2 style="font-family:var(--font-h);font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--black);text-transform:uppercase;line-height:1;margin-bottom:14px">Paweł<br>Mamcarz</h2>
+    <h2 style="font-family:var(--font-h);font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--black);text-transform:uppercase;line-height:1;margin-bottom:14px">Pawel<br>Mamcarz</h2>
     <div style="width:44px;height:3px;background:var(--red);margin-bottom:20px"></div>
     <p style="font-size:14px;line-height:1.75;color:var(--chrome);margin-bottom:20px">Pilot with 26 years of aviation experience and owner of Extra 300L SP-EKS — a former Royal Jordanian Falcons aircraft. Responsible for operations, safety, and development of akrobacja.com.</p>
-    <a href="https://mamcarz.com" target="_blank" rel="noopener" style="font-family:var(--font-h);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid rgba(27,77,181,.3);padding-bottom:3px;text-decoration:none">mamcarz.com →</a>
+    <a href="https://mamcarz.com" target="_blank" rel="noopener" style="font-family:var(--font-h);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid rgba(27,77,181,.3);padding-bottom:3px;text-decoration:none">mamcarz.com &rarr;</a>
   </div>
 </div>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     SHOP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="shop" id="sklep">
-  <div class="shop-header reveal">
-    <div class="shop-title">
-      <p class="section-label">Vouchers · Aerobatic Flights</p>
-      <h2 class="section-title">Choose your<br>adrenaline level</h2>
-      <div class="accent-bar"></div>
-    </div>
-    <p class="shop-sub">Voucher valid for 12 months. Bad weather = free rescheduling.</p>
-  </div>
-
-  <!-- PROMO FOMO BANNER -->
-  <div class="promo-banner reveal">
-    <div class="promo-label">Limited offer</div>
-    <div class="promo-title">Seasonal prices — only until end of month</div>
-    <div class="promo-countdown" id="promoCountdown">
-      <div class="promo-unit"><span class="promo-num" id="promoDays">--</span><span class="promo-lbl">Days</span></div>
-      <div class="promo-unit"><span class="promo-num" id="promoHours">--</span><span class="promo-lbl">Hrs</span></div>
-      <div class="promo-unit"><span class="promo-num" id="promoMins">--</span><span class="promo-lbl">Min</span></div>
-      <div class="promo-unit"><span class="promo-num" id="promoSecs">--</span><span class="promo-lbl">Sec</span></div>
-    </div>
-  </div>
-
-  <div class="voucher-grid">
-
-    <!-- PAKIET 1 — PIERWSZY LOT -->
-    <div class="v-card reveal">
-      <span class="v-tag v-tag--start">First time</span>
-      <h3 class="v-name">First Flight</h3>
-      <p class="v-subtitle">Your first taste of aerobatics</p>
-      <div class="v-promo-tag">-20% until end of month</div>
-      <div class="v-price-old">PLN 2 499</div>
-      <div class="v-price">
-        <span class="v-price-currency">PLN</span>1999
-        <span class="v-price-unit">/ osoba</span>
-      </div>
-      <div class="v-divider"></div>
-      <ul class="v-features">
-        <li class="v-feat">Up to 15 min airborne</li>
-        <li class="v-feat">Ground briefing (20 min)</li>
-        <li class="v-feat">Up to +4G / −2G</li>
-        <li class="v-feat">Basic aerobatic manoeuvres</li>
-        <li class="v-feat">No flight experience required</li>
-      </ul>
-      <button class="v-cta" data-package="pierwszy_lot">Buy voucher — 1,999 PLN</button>
-      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="pierwszy_lot">
-        <div class="v-addon-text">
-          <div class="v-addon-title">+ 360° Flight Video</div>
-          <div class="v-addon-desc">90 sec edit · MP4 in 48h · +299 PLN</div>
-        </div>
-        <div class="v-toggle"></div>
-      </div>
-    </div>
-
-    <!-- PACKAGE 2 — ADRENALINE (FEATURED) -->
-    <div class="v-card v-card--featured reveal reveal-d1">
-      <span class="v-tag v-tag--best">Bestseller</span>
-      <h3 class="v-name">Adrenaline</h3>
-      <p class="v-subtitle">Full aerobatic programme with the Champion</p>
-      <div class="v-promo-tag">-25% until end of month</div>
-      <div class="v-price-old">PLN 4 999</div>
-      <div class="v-price">
-        <span class="v-price-currency">PLN</span>2999
-        <span class="v-price-unit">/ osoba</span>
-      </div>
-      <div class="v-divider"></div>
-      <ul class="v-features">
-        <li class="v-feat">20 min airborne</li>
-        <li class="v-feat">Briefing (40 min) + debriefing (15 min)</li>
-        <li class="v-feat">Up to +6G / −4G</li>
-        <li class="v-feat">Loops, rolls, inverted flight</li>
-        <li class="v-feat">No flight experience required</li>
-      </ul>
-      <button class="v-cta" data-package="adrenalina">Buy voucher — 2,999 PLN</button>
-      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="adrenalina">
-        <div class="v-addon-text">
-          <div class="v-addon-title">+ 360° Flight Video</div>
-          <div class="v-addon-desc">90 sec edit · MP4 in 48h · +299 PLN</div>
-        </div>
-        <div class="v-toggle"></div>
-      </div>
-    </div>
-
-    <!-- PACKAGE 3 — MASTERCLASS -->
-    <div class="v-card reveal reveal-d2">
-      <span class="v-tag v-tag--limit">For PPL pilots</span>
-      <h3 class="v-name">Masterclass</h3>
-      <p class="v-subtitle">Aerobatic training with the Champion</p>
-      <div class="v-promo-tag">-20% until end of month</div>
-      <div class="v-price-old">PLN 4 999</div>
-      <div class="v-price">
-        <span class="v-price-currency">PLN</span>4999
-        <span class="v-price-unit">/ osoba</span>
-      </div>
-      <div class="v-divider"></div>
-      <ul class="v-features">
-        <li class="v-feat">Up to 50 min airborne (1 day)</li>
-        <li class="v-feat">Briefing + debriefing with figure analysis</li>
-        <li class="v-feat">Spins, advanced manoeuvres</li>
-        <li class="v-feat">Valid PPL(A)+ licence required</li>
-        <li class="v-feat">Limited availability</li>
-      </ul>
-      <button class="v-cta" data-package="masterclass">Buy voucher — 4,999 PLN</button>
-      <div class="v-addon" role="checkbox" aria-checked="false" tabindex="0" data-addon="masterclass">
-        <div class="v-addon-text">
-          <div class="v-addon-title">+ 360° Flight Video</div>
-          <div class="v-addon-desc">90 sec edit · cockpit + external camera · +299 PLN</div>
-        </div>
-        <div class="v-toggle"></div>
-      </div>
-    </div>
-
-    <!-- PAKIET 4 — KURS AKROBACJI FCL.800 -->
-    <div class="v-card v-card--featured reveal reveal-d3" style="background:var(--black)">
-      <span class="v-tag" style="background:var(--navy);color:#fff">Aerobatic rating</span>
-      <h3 class="v-name">FCL.800 Course</h3>
-      <p class="v-subtitle">Licence endorsement</p>
-      <div class="v-promo-tag" style="background:rgba(196,30,58,.15);color:#C41E3A">Up to 90% subsidised</div>
-      <div class="v-price" style="color:#fff">
-        <span class="v-price-currency">PLN</span>20 900
-        <span class="v-price-unit" style="color:rgba(255,255,255,.5)">netto</span>
-      </div>
-      <div class="v-divider"></div>
-      <ul class="v-features">
-        <li class="v-feat">16-20 flights on Extra 300L (5h)</li>
-        <li class="v-feat">8h aerobatic theory</li>
-        <li class="v-feat">FCL.800 rating entered in licence</li>
-        <li class="v-feat">Under the auspices of Radom Aeroclub</li>
-        <li class="v-feat">Requires PPL(A) + 40h PIC</li>
-      </ul>
-      <a href="/blog/kurs-akrobacji-fcl800" class="v-cta" style="background:var(--navy);text-decoration:none">Course details →</a>
-      <div style="margin-top:12px;padding:10px;background:rgba(196,30,58,.1);font-size:11px;color:rgba(255,255,255,.8);text-align:center;line-height:1.5">
-        <strong style="color:#C41E3A">Masterclass + Course bundle:</strong><br>
-        4,999 + 18,888 = <strong>23,887 PLN gross</strong> (19,420 net)<br>
-        <a href="/dotacje-szkolenie-lotnicze" style="color:#C41E3A;font-weight:700;font-size:10px">Check subsidies →</a>
-      </div>
-    </div>
-
-  </div><!-- /voucher-grid -->
-
-  <!-- B2B stripe -->
-  <div class="v-b2b reveal">
-    <div class="v-b2b-body">
-      <div class="v-b2b-title">Corporate Experience</div>
-      <div class="v-b2b-desc">Group package from 5 people. VAT invoice. Team building, rewards, corporate events.</div>
-    </div>
-    <a href="https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20Corporate%20Experience" class="v-b2b-cta">Ask about Group Offer →</a>
-  </div>
-
-  <!-- Trust badges -->
-  <div class="trust-strip reveal">
-    <div class="trust-item"><span class="trust-icon">🔒</span>Secure SSL payment</div>
-    <div class="trust-item"><span class="trust-icon">📄</span>PDF voucher in 60 seconds</div>
-    <div class="trust-item"><span class="trust-icon">✈️</span>Insurance included</div>
-    <div class="trust-item"><span class="trust-icon">🌦️</span>Free rescheduling in bad weather</div>
-    <div class="trust-item"><span class="trust-icon">📅</span>Voucher validity: 12 months</div>
-  </div>
-
-  <!-- Mini dotacje info pod voucherami -->
-  <div style="text-align:center;margin-top:24px;padding:16px;background:rgba(27,77,181,.06);border-radius:0" class="reveal">
-    <p style="font-size:13px;color:var(--navy);margin:0"><strong>PPL(A) pilots:</strong> FCL.800 aerobatic rating course with up to 90% subsidy. <a href="/dotacje-szkolenie-lotnicze" style="color:var(--red);font-weight:700">Check subsidies →</a></p>
-  </div>
-
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     HOW IT WORKS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="steps reveal">
-  <div style="text-align:center;margin-bottom:48px">
-    <p class="section-label">How it works</p>
-    <h2 class="section-title" style="color:var(--black)">4 steps to your flight</h2>
-    <div class="accent-bar" style="background:var(--red)"></div>
-  </div>
-  <div class="steps-grid">
-    <div class="step-card reveal">
-      <div class="step-num">01</div>
-      <div class="step-title">Buy a voucher</div>
-      <div class="step-desc">Choose a package and buy online. You'll receive a PDF voucher by email within 60 seconds.</div>
-      <span class="step-arrow">→</span>
-    </div>
-    <div class="step-card reveal reveal-d1">
-      <div class="step-num">02</div>
-      <div class="step-title">Book a date</div>
-      <div class="step-desc">Pick a date in the online calendar or message us on WhatsApp. Season: April-October.</div>
-      <span class="step-arrow">→</span>
-    </div>
-    <div class="step-card reveal reveal-d2">
-      <div class="step-num">03</div>
-      <div class="step-title">Briefing at the airport</div>
-      <div class="step-desc">Maciej will walk you through procedures, figures and breathing technique. ~20 minutes.</div>
-      <span class="step-arrow">→</span>
-    </div>
-    <div class="step-card reveal reveal-d3">
-      <div class="step-num">04</div>
-      <div class="step-title">Fly!</div>
-      <div class="step-desc">You climb into the Extra 300L cockpit and experience a flight you'll remember for the rest of your life.</div>
-    </div>
-  </div>
-  <div class="guarantee reveal">
-    <div class="guarantee-icon">🛡️</div>
-    <div class="guarantee-text">
-      <strong>Satisfaction guarantee.</strong> If the weather prevents your flight, we reschedule free of charge with no limit. Voucher valid for 12 months. You can change your package or transfer the voucher to someone else.
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     SOCIAL PROOF BAR
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<div class="proof-bar reveal">
-  <div class="proof-bar-item"><div class="proof-bar-num">200+</div><div class="proof-bar-lbl">Flights per season</div></div>
-  <div class="proof-bar-item"><div class="proof-bar-num">3 000+</div><div class="proof-bar-lbl">Pilot flight hours</div></div>
-  <div class="proof-bar-item"><div class="proof-bar-num">10+</div><div class="proof-bar-lbl">Shows & competitions per year</div></div>
-  <div class="proof-bar-item"><div class="proof-bar-num">5.0</div><div class="proof-bar-lbl">Google Reviews</div></div>
-</div>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     TESTIMONIALS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="reviews" id="opinie">
-  <div class="reviews-header reveal">
-    <div class="reviews-stats">
-      <div class="reviews-avg">5.0</div>
-      <div>
-        <div class="reviews-stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <div class="reviews-count">6 reviews · Google Reviews</div>
-      </div>
-    </div>
-    <p class="section-label" style="color:rgba(255,255,255,.5)">What our clients say</p>
-    <h2 class="section-title" style="color:var(--white)">Don't take our word for it.<br>Hear it from them</h2>
-    <div class="accent-bar"></div>
-  </div>
-  <div class="reviews-grid">
-    <div class="review-card reveal">
-      <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-      <div class="review-text">"Aerobatic flight? Absolutely incredible! Even for a complete beginner, the sensations after the first stall turn and barrel roll are unforgettable. The pilot is pure professionalism, the briefing was thorough, and the whole operation ran like a pre-flight checklist. Equipment in top shape."</div>
-      <div class="review-author">Mark K.</div>
-      <div class="review-meta">Local Guide · Google Reviews</div>
-    </div>
-    <div class="review-card reveal reveal-d1">
-      <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-      <div class="review-text">"Out-of-this-world experience! A perfect gift for adrenaline junkies!"</div>
-      <div class="review-author">Anna W.</div>
-      <div class="review-meta">Local Guide · Google Reviews</div>
-    </div>
-    <div class="review-card reveal reveal-d2">
-      <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-      <div class="review-text">"Excellent training facilities and a beautifully maintained aircraft. Aerobatics teaches humility and precise stick-and-rudder skills, and this is the best place to learn. The instructor doesn't let up until every figure is flown to perfection. This is where real airmanship is built."</div>
-      <div class="review-author">Tom R.</div>
-      <div class="review-meta">Google Reviews</div>
-    </div>
-    <div class="review-card reveal">
-      <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-      <div class="review-text">"I got the flight as a gift from my wife. An absolutely amazing experience!!! I recommend it to everyone."</div>
-      <div class="review-author">Chris M.</div>
-      <div class="review-meta">Google Reviews</div>
-    </div>
-    <div class="review-card reveal reveal-d1">
-      <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-      <div class="review-text">"Highly recommend! Super fun! Incredible adrenaline rush ;)"</div>
-      <div class="review-author">Robert D.</div>
-      <div class="review-meta">Google Reviews</div>
-    </div>
-    <div class="review-card reveal reveal-d2">
-      <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-      <div class="review-text">"★★★★★"</div>
-      <div class="review-author">FilmoLot</div>
-      <div class="review-meta">Local Guide · Google Reviews</div>
-    </div>
-  </div>
-  <div class="reviews-social reveal">
-    More reviews and flight footage:
-    <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener">Instagram</a> ·
-    <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener">Facebook</a>
-  </div>
-</section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      SUBSCRIBE
@@ -2041,129 +2215,18 @@ footer {
   <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Guide · For pilots</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--white);text-transform:uppercase;margin-bottom:32px">FCL.800 Aerobatic Rating Course</h2>
   <img src="/przewodnik-fcl800.png" alt="FCL.800 aerobatic rating course guide - requirements, manoeuvres, Extra 300L parameters" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
-  <a href="/blog/kurs-akrobacji-fcl800" class="link-ghost-hover" style="display:inline-block;margin-top:32px;font-family:var(--font-h);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:14px 30px;text-decoration:none;transition:border-color .2s">Learn more about the course →</a>
+  <a href="/blog/kurs-akrobacji-fcl800" class="link-ghost-hover" style="display:inline-block;margin-top:32px;font-family:var(--font-h);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:14px 30px;text-decoration:none;transition:border-color .2s">Learn more about the course &rarr;</a>
 </div>
 
-<!-- DOTACJE BANNER -->
+<!-- SUBSIDIES BANNER -->
 <div style="background:#C41E3A;padding:28px 64px;text-align:center" class="reveal">
   <p style="font-family:var(--font-h);font-size:clamp(14px,2vw,20px);font-weight:800;color:#fff;margin:0 0 8px;text-transform:uppercase;letter-spacing:.05em">Aerobatic course subsidy — up to 90% off</p>
   <p style="color:rgba(255,255,255,.85);font-size:14px;margin:0 0 16px;max-width:700px;display:inline-block">BUR, PUP, KFS — over 10 students have already benefited. Training under the auspices of Radom Aeroclub. We handle all the paperwork from A to Z.</p>
-  <a href="/dotacje-szkolenie-lotnicze" class="link-dotacje-hover" style="display:inline-block;font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C41E3A;background:#fff;padding:14px 32px;text-decoration:none;transition:opacity .2s">Check if you qualify →</a>
+  <a href="/dotacje-szkolenie-lotnicze" class="link-dotacje-hover" style="display:inline-block;font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C41E3A;background:#fff;padding:14px 32px;text-decoration:none;transition:opacity .2s">Check if you qualify &rarr;</a>
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     FAQ
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="faq" id="faq">
-  <div class="faq-header reveal">
-    <p class="section-label">Questions & Answers</p>
-    <h2 class="section-title">Got questions?<br>We have 3,000 hours of answers</h2>
-    <div class="accent-bar"></div>
-  </div>
-
-  <div class="faq-list">
-
-    <div class="faq-item reveal">
-      <button class="faq-q" aria-expanded="false">Do I need any flying experience?</button>
-      <div class="faq-a">
-        <p>No. We conduct a full briefing before every flight. The pilot ensures your safety at all times.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal reveal-d1">
-      <button class="faq-q" aria-expanded="false">Are there any health restrictions?</button>
-      <div class="faq-a">
-        <p>Generally good health is required. Contraindications include heart conditions, epilepsy, pregnancy and recent surgery. If in doubt, consult your doctor.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal reveal-d1">
-      <button class="faq-q" aria-expanded="false">What if the weather doesn't allow the flight?</button>
-      <div class="faq-a">
-        <p>We reschedule free of charge. The voucher is valid for 12 months.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal reveal-d2">
-      <button class="faq-q" aria-expanded="false">How long is the voucher valid?</button>
-      <div class="faq-a">
-        <p>12 months from the date of purchase. You choose your flight date individually.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal reveal-d2">
-      <button class="faq-q" aria-expanded="false">Where do the flights take place?</button>
-      <div class="faq-a">
-        <p>Radom-Piastow Airport (EPRP), Poland. Free parking on site. Directions sent by email after booking.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal reveal-d3">
-      <button class="faq-q" aria-expanded="false">Can I buy a voucher as a gift?</button>
-      <div class="faq-a">
-        <p>Yes. You'll receive an elegant PDF ready to give. The recipient chooses their own flight date.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal reveal-d3">
-      <button class="faq-q" aria-expanded="false">How long does the whole airport visit take?</button>
-      <div class="faq-a">
-        <p>First Flight: approx. 45 min. Adrenaline: approx. 1.5 h. Masterclass: approx. 3 h.</p>
-      </div>
-    </div>
-
-    <div class="faq-item reveal reveal-d4">
-      <button class="faq-q" aria-expanded="false">What is the maximum passenger weight and height?</button>
-      <div class="faq-a">
-        <p>Max 110 kg (242 lbs), max 195 cm (6'5") — Extra 300L cockpit limitations. If in doubt, give us a call.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     BEZPIECZEŃSTWO — 3 FILARY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section style="padding:80px 20px;background:linear-gradient(180deg,rgba(10,22,40,.95),rgba(10,22,40,.98));border-top:1px solid rgba(255,255,255,.05)" id="bezpieczenstwo">
-  <div style="max-width:1100px;margin:0 auto;text-align:center">
-    <p class="section-label reveal">Safety</p>
-    <h2 class="section-title reveal" style="margin-bottom:16px">Why flying with a champion<br>is safer than you think</h2>
-    <div class="accent-bar reveal" style="margin:0 auto 48px"></div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;text-align:left">
-      <!-- Pillar 1 -->
-      <div class="reveal" style="padding:32px;background:rgba(255,255,255,.03);border-radius:12px;border:1px solid rgba(255,255,255,.06)">
-        <div style="font-size:36px;margin-bottom:16px">🎯</div>
-        <h3 style="color:var(--white);font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;margin-bottom:12px">Aircraft mastery</h3>
-        <p style="color:var(--chrome);font-size:14px;line-height:1.8">
-          3,000+ hours on the Extra 300L — one of the most resilient aerobatic aircraft in the world. Maciej knows every behaviour of this machine in every flight configuration. An airline pilot flies safely in normal conditions. <strong style="color:var(--white)">Maciej knows how to maintain control in any conditions.</strong>
-        </p>
-      </div>
-
-      <!-- Pillar 2 -->
-      <div class="reveal" style="padding:32px;background:rgba(255,255,255,.03);border-radius:12px;border:1px solid rgba(255,255,255,.06)">
-        <div style="font-size:36px;margin-bottom:16px">📐</div>
-        <h3 style="color:var(--white);font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;margin-bottom:12px">Safety margins</h3>
-        <p style="color:var(--chrome);font-size:14px;line-height:1.8">
-          Passenger flights are flown with margins many times greater than in competition. Figures are performed at safe altitudes, at speeds that ensure full control. <strong style="color:var(--white)">Your flight uses just 30% of the aircraft's and pilot's capabilities.</strong>
-        </p>
-      </div>
-
-      <!-- Pillar 3 -->
-      <div class="reveal" style="padding:32px;background:rgba(255,255,255,.03);border-radius:12px;border:1px solid rgba(255,255,255,.06)">
-        <div style="font-size:36px;margin-bottom:16px">🛡️</div>
-        <h3 style="color:var(--white);font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;margin-bottom:12px">Emergency training</h3>
-        <p style="color:var(--chrome);font-size:14px;line-height:1.8">
-          Certified FI(A) flight instructor and aerobatic judge. Thousands of hours of training covering emergency procedures, spins and recovery. <strong style="color:var(--white)">A World Champion leaves nothing to chance.</strong>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     POKAZY & BRANDING
+     AIRSHOWS & BRANDING
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <section class="shows" id="pokazy">
   <div class="shows-header reveal">
@@ -2172,11 +2235,9 @@ footer {
     <div class="accent-bar"></div>
   </div>
 
-  <!-- POKAZY -->
   <div class="shows-sub-title reveal">Aerobatic Displays</div>
 
   <div class="shows-grid">
-
     <div class="s-card reveal">
       <h3 class="s-name">Solo Display</h3>
       <p class="s-sub">Aerobatic display Extra 300L SP-EKS</p>
@@ -2188,7 +2249,7 @@ footer {
         <li class="s-feat">CAA/PANSA coordination</li>
         <li class="s-feat">Aircraft ferry up to 200 km included</li>
       </ul>
-      <a href="https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20the%20Solo%20Display%20package" class="s-cta">Ask about availability →</a>
+      <a href="https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20the%20Solo%20Display%20package" class="s-cta">Ask about availability &rarr;</a>
     </div>
 
     <div class="s-card s-card--accent reveal reveal-d1">
@@ -2197,13 +2258,13 @@ footer {
       <div class="s-price">from 24,990 PLN</div>
       <ul class="s-features">
         <li class="s-feat">2-3 displays throughout the day</li>
-        <li class="s-feat">Meet & greet zone by the aircraft</li>
+        <li class="s-feat">Meet &amp; greet zone by the aircraft</li>
         <li class="s-feat">Aircraft photos for promotional materials</li>
         <li class="s-feat">CAA/PANSA coordination</li>
         <li class="s-feat">Liability + accident insurance</li>
         <li class="s-feat">Aircraft ferry included</li>
       </ul>
-      <a href="https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20the%20Event%20Package" class="s-cta">Request a quote →</a>
+      <a href="https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20the%20Event%20Package" class="s-cta">Request a quote &rarr;</a>
     </div>
 
     <div class="s-card reveal reveal-d2">
@@ -2218,62 +2279,52 @@ footer {
         <li class="s-feat">Presence in event promotional materials</li>
         <li class="s-feat">Full logistical coordination</li>
       </ul>
-      <a href="https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20Premium%20Partnership" class="s-cta">Let's talk →</a>
+      <a href="https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20Premium%20Partnership" class="s-cta">Let's talk &rarr;</a>
     </div>
-
   </div>
 
-  <!-- BRANDING -->
   <div class="shows-sub-title reveal">Aircraft Branding · Annual Partnership</div>
 
   <div class="brand-grid">
-
     <div class="b-card reveal">
       <div class="b-name">Logo S — Tail</div>
       <div class="b-desc">Logo on vertical stabiliser, both sides</div>
       <div class="b-price">9,900 PLN / year</div>
     </div>
-
     <div class="b-card reveal reveal-d1">
       <div class="b-name">Logo M — Fuselage</div>
       <div class="b-desc">Logo on fuselage, both sides. Visible on the ground and in the air.</div>
       <div class="b-price">19,900 PLN / year</div>
     </div>
-
     <div class="b-card reveal reveal-d2">
       <div class="b-name">Logo M — Wings</div>
       <div class="b-desc">Logo on the underside of the wings. Visible from the ground during displays.</div>
       <div class="b-price">24,900 PLN / year</div>
     </div>
-
     <div class="b-card reveal">
       <div class="b-name">Package L — Fuselage + Tail</div>
       <div class="b-desc">Fuselage both sides + stabiliser. Dominant ground-level exposure.</div>
       <div class="b-price">34,900 PLN / year</div>
     </div>
-
     <div class="b-card reveal reveal-d1">
       <div class="b-name">Package XL — Fuselage + Wings + Tail</div>
       <div class="b-desc">Fuselage + wings + tail. Full exposure in the air and on the ground.</div>
       <div class="b-price">54,900 PLN / year</div>
     </div>
-
     <div class="b-card reveal reveal-d2">
       <div class="b-name">Package XXL — Custom Livery</div>
       <div class="b-desc">Sponsor colours, fully customised paint scheme. Design + execution.</div>
       <div class="b-price">from 69,900 PLN / year</div>
     </div>
-
     <div class="b-card b-card--full reveal">
       <div class="b-name" style="font-size:20px;margin-bottom:8px">Full Aircraft — Exclusive Sponsor</div>
       <div class="b-desc" style="font-size:13px;max-width:600px;margin:0 auto 16px">The entire aircraft in one sponsor's colours. Exclusivity at airshows, events, social media and the website.</div>
       <div class="b-price" style="font-size:22px">99,888 PLN / year</div>
     </div>
-
   </div>
 
   <div style="text-align:center;margin-top:48px" class="reveal">
-    <a href="https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20aircraft%20branding%20on%20Extra%20300L" class="s-cta" style="padding:18px 40px;font-size:12px">Ask about branding →</a>
+    <a href="https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20aircraft%20branding%20on%20Extra%20300L" class="s-cta" style="padding:18px 40px;font-size:12px">Ask about branding &rarr;</a>
   </div>
 
 </section>
@@ -2305,13 +2356,13 @@ footer {
         <li><a href="#pilot">Maciej Kulaszewski</a></li>
         <li><a href="#sklep">Voucher Shop</a></li>
         <li><a href="/sklep-merch">Merch Shop</a></li>
-        <li><a href="#pokazy">Airshows & Branding</a></li>
+        <li><a href="#pokazy">Airshows &amp; Branding</a></li>
         <li><a href="/pokazy-lotnicze">Event Displays</a></li>
         <li><a href="/sponsoring">Sponsorship</a></li>
         <li><a href="/kalendarz">Calendar</a></li>
         <li><a href="/konto">Pilot Account</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="/regulamin">Terms & Conditions</a></li>
+        <li><a href="/regulamin">Terms &amp; Conditions</a></li>
       </ul>
     </div>
     <div>
@@ -2321,22 +2372,22 @@ footer {
         <li><a href="mailto:dto@akrobacja.com">dto@akrobacja.com</a></li>
         <li><a href="https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8" target="_blank" rel="noopener">Radom-Piastow Airport (EPRP)</a></li>
         <li><span style="font-size:13px;color:rgba(245,247,250,.45)">ul. Lotnikow 1, Radom, Poland</span></li>
-        <li><a href="https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8" target="_blank" rel="noopener">Google Maps →</a></li>
+        <li><a href="https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8" target="_blank" rel="noopener">Google Maps &rarr;</a></li>
       </ul>
     </div>
     <div>
       <p class="footer-col-title">Information</p>
       <ul class="footer-links">
-        <li><a href="/regulamin">Terms & Conditions</a></li>
+        <li><a href="/regulamin">Terms &amp; Conditions</a></li>
         <li><a href="/polityka-prywatnosci">Privacy Policy</a></li>
         <li><a href="/dotacje-szkolenie-lotnicze" style="color:#C41E3A">Training Subsidies</a></li>
-        <li><a href="#faq">FAQ — Questions & Answers</a></li>
+        <li><a href="#faq">FAQ — Questions &amp; Answers</a></li>
         <li><a href="https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8" target="_blank" rel="noopener">Directions to the airport</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2026 akrobacja.com · Doradztwo Pawel Mamcarz · Extra 300L SP-EKS · EPRP</p>
+    <p class="footer-copy">&copy; 2026 akrobacja.com · Doradztwo Pawel Mamcarz · Extra 300L SP-EKS · EPRP</p>
     <div style="display:flex;align-items:center;gap:16px">
       <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener" class="footer-social-link">Instagram</a>
       <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener" class="footer-social-link">Facebook</a>
@@ -2349,10 +2400,8 @@ footer {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      STICKY CTA
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<a href="https://wa.me/48535535221" class="sticky-cta" id="stickyCta" aria-label="Message us on WhatsApp: +48 535 535 221">
-  <img src="/akrobacja-logo-mark-light.png" alt="" aria-hidden="true"
-       style="height:18px;width:auto;display:inline-block;vertical-align:middle;margin-right:4px">
-  +48 535 535 221
+<a href="#sklep" class="sticky-cta" id="stickyCta" aria-label="Buy aerobatic flight voucher">
+  Buy Voucher &rarr;
 </a>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -2387,7 +2436,7 @@ footer {
     </form>
     <div id="dotacjaBanner" style="display:none;background:#f0f4fa;border-left:4px solid #C41E3A;padding:12px 16px;margin-top:16px;font-size:12px;line-height:1.5;color:#1a2a3a">
       <strong style="color:#C41E3A">Up to 90% subsidy available!</strong> Over 10 students have already received BUR/PUP grants. We help with all the paperwork.
-      <a href="/dotacje-szkolenie-lotnicze" style="color:#1B4DB5;font-weight:600;display:block;margin-top:4px">Check if you qualify →</a>
+      <a href="/dotacje-szkolenie-lotnicze" style="color:#1B4DB5;font-weight:600;display:block;margin-top:4px">Check if you qualify &rarr;</a>
     </div>
   </div>
 </div>
@@ -2489,7 +2538,7 @@ footer {
     entries.forEach(e => {
       if(e.isIntersecting){
         const nums = document.querySelectorAll('.stat-num');
-        nums[0]?.querySelector('span') || null; // will handle separately
+        nums[0]?.querySelector('span') || null;
         statObserver.disconnect();
       }
     });

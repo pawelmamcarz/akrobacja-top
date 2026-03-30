@@ -173,33 +173,7 @@
     "latitude": "51.3892",
     "longitude": "21.2131"
   },
-  "priceRange": "1999-4 999 PLN",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "47",
-    "bestRating": "5"
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": {"@type": "Person", "name": "Marcin K."},
-      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-      "reviewBody": "Najlepszy prezent, jaki kiedykolwiek dostałem. Adrenalina nie do opisania. Maciej jest absolutnym profesjonalistą."
-    },
-    {
-      "@type": "Review",
-      "author": {"@type": "Person", "name": "Anna W."},
-      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-      "reviewBody": "Kupiłam mężowi voucher na kawalerski — ekipa była zachwycona. Organizacja perfekcyjna."
-    },
-    {
-      "@type": "Review",
-      "author": {"@type": "Person", "name": "Tomek R."},
-      "reviewRating": {"@type": "Rating", "ratingValue": "5"},
-      "reviewBody": "Jako pilot PPL szukałem czegoś, co mnie zaskoczy — Extra 300L z Maciejem to było to. Już zapisałem się na FCL.800."
-    }
-  ]
+  "priceRange": "1999-4 999 PLN"
 }
 </script>
 
@@ -282,6 +256,22 @@ img { display: block; max-width: 100%; }
   padding: 11px 26px; transition: background .2s;
 }
 .nav-btn:hover { background: var(--red-dark); }
+
+/* Mobile hamburger menu */
+.nav-hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 32px; height: 24px; position: relative; z-index: 1001;
+}
+.nav-hamburger span {
+  display: block; width: 100%; height: 2px; background: var(--white);
+  position: absolute; left: 0; transition: transform .3s, opacity .3s;
+}
+.nav-hamburger span:nth-child(1) { top: 0; }
+.nav-hamburger span:nth-child(2) { top: 11px; }
+.nav-hamburger span:nth-child(3) { top: 22px; }
+.nav-hamburger.open span:nth-child(1) { top: 11px; transform: rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { top: 11px; transform: rotate(-45deg); }
 
 /* ═══════════════════════════════════════════════════════
    BREADCRUMB
@@ -851,7 +841,15 @@ footer {
 @media (max-width: 1024px) {
   .nav { padding: 16px 28px; }
   .nav.scrolled { padding: 12px 28px; }
-  .nav-menu { display: none; }
+  .nav-hamburger { display: block; }
+  .nav-menu {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,20,40,.98); backdrop-filter: blur(16px);
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 32px; z-index: 1000;
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu a { font-size: 16px; color: rgba(255,255,255,.85); }
 
   .breadcrumb { padding: 80px 28px 0; }
   .hero-content { padding: 0 28px 60px; }
@@ -934,17 +932,22 @@ footer {
   <a href="/" class="nav-logo" aria-label="akrobacja.com — strona główna">
     <img src="akrobacja-logo-mark-light.png" alt="akrobacja.com" style="height:56px;width:auto;max-width:none;display:block">
   </a>
-  <ul class="nav-menu">
+  <ul class="nav-menu" id="nav-menu">
     <li><a href="/">Strona główna</a></li>
     <li><a href="/lot-akrobacyjny" style="color:var(--white)">Lot akrobacyjny</a></li>
-    <li><a href="/#sklep">Loty</a></li>
+    <li><a href="/#sklep">Kup voucher</a></li>
     <li><a href="/sklep-merch">Sklep</a></li>
     <li><a href="/pokazy-lotnicze">Pokazy na Event</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/galeria">Galeria</a></li>
     <li><a href="/sponsoring">Sponsoring</a></li>
     <li><a href="/kalendarz">Kalendarz</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Otwórz menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <a href="https://wa.me/48535535221" class="nav-btn">Napisz</a>
 </nav>
 
@@ -1016,7 +1019,7 @@ footer {
       <p class="pkg-badge">Najpopularniejszy</p>
       <h3 class="pkg-name">Lot Akrobacyjny Adrenalina</h3>
       <p class="pkg-sub">Pełny program lotu akrobacyjnego z zaawansowanymi figurami do +6G. Najbardziej popularny voucher na lot akrobacyjny — prezent, który zapiera dech.</p>
-      <p class="pkg-promo-tag">-25% do końca miesiąca</p>
+      <p class="pkg-promo-tag">-40% do końca miesiąca</p>
       <p class="pkg-price-old">4 999 PLN</p>
       <p class="pkg-price">2 999 <span>PLN</span></p>
       <ul class="pkg-features">
@@ -1035,8 +1038,6 @@ footer {
       <p class="pkg-badge">Premium</p>
       <h3 class="pkg-name">Lot Akrobacyjny Masterclass</h3>
       <p class="pkg-sub">Najdłuższy lot akrobacyjny z pełnym szkoleniem i debriefingiem z analizą lotu. Dla tych, którzy chcą przeżyć lot samolotem akrobacyjnym na 100%.</p>
-      <p class="pkg-promo-tag">-17% do końca miesiąca</p>
-      <p class="pkg-price-old">5 999 PLN</p>
       <p class="pkg-price">4 999 <span>PLN</span></p>
       <ul class="pkg-features">
         <li class="pkg-feat">Do 50 minut lotu akrobacyjnego (2 loty)</li>
@@ -1342,105 +1343,6 @@ footer {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     OPINIE KLIENTÓW
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section style="padding:100px 20px;background:var(--white);border-top:1px solid rgba(10,20,40,.06)" id="opinie">
-  <div style="max-width:1100px;margin:0 auto;text-align:center">
-    <p class="section-label" style="color:var(--navy)">Opinie klientów</p>
-    <h2 class="section-title" style="color:var(--black);margin-bottom:16px">Co mówią po wylądowaniu</h2>
-    <div class="accent-bar" style="margin:0 auto 56px"></div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;text-align:left">
-
-      <div style="padding:36px;background:#f7f9fc;border:1px solid rgba(10,20,40,.06);position:relative">
-        <div style="display:flex;gap:4px;margin-bottom:16px">
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-        </div>
-        <p style="color:#1a2a3a;font-size:15px;line-height:1.8;margin-bottom:20px;font-style:italic">
-          &ldquo;Najlepszy prezent, jaki kiedykolwiek dostałem. Adrenalina nie do opisania — beczki, pętle, +6G. Maciej jest absolutnym profesjonalistą, czułem się bezpiecznie przez cały lot. Polecam każdemu!&rdquo;
-        </p>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div style="width:40px;height:40px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:700;font-size:16px;border-radius:50%">M</div>
-          <div>
-            <p style="font-family:var(--font-h);font-weight:700;font-size:14px;color:var(--black);margin:0">Marcin K.</p>
-            <p style="font-size:12px;color:var(--chrome);margin:0">Pakiet Adrenalina &middot; Prezent urodzinowy</p>
-          </div>
-        </div>
-      </div>
-
-      <div style="padding:36px;background:#f7f9fc;border:1px solid rgba(10,20,40,.06);position:relative">
-        <div style="display:flex;gap:4px;margin-bottom:16px">
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-        </div>
-        <p style="color:#1a2a3a;font-size:15px;line-height:1.8;margin-bottom:20px;font-style:italic">
-          &ldquo;Kupiłam mężowi voucher na kawalerski — ekipa była zachwycona. Pan młody wylądował z uśmiechem od ucha do ucha. Organizacja perfekcyjna, voucher PDF przyszedł natychmiast. Na pewno wrócimy!&rdquo;
-        </p>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div style="width:40px;height:40px;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:700;font-size:16px;border-radius:50%">A</div>
-          <div>
-            <p style="font-family:var(--font-h);font-weight:700;font-size:14px;color:var(--black);margin:0">Anna W.</p>
-            <p style="font-size:12px;color:var(--chrome);margin:0">Pakiet Masterclass &middot; Kawalerski</p>
-          </div>
-        </div>
-      </div>
-
-      <div style="padding:36px;background:#f7f9fc;border:1px solid rgba(10,20,40,.06);position:relative">
-        <div style="display:flex;gap:4px;margin-bottom:16px">
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:18px">&#9733;</span>
-        </div>
-        <p style="color:#1a2a3a;font-size:15px;line-height:1.8;margin-bottom:20px;font-style:italic">
-          &ldquo;Jako pilot PPL szukałem czegoś, co mnie zaskoczy — i Extra 300L z Maciejem to było to. Hammerhead, ósemki kubańskie, lot odwrócony. Już się zapisałem na kurs FCL.800. Nie żałuję ani złotówki.&rdquo;
-        </p>
-        <div style="display:flex;align-items:center;gap:12px">
-          <div style="width:40px;height:40px;background:var(--navy-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:700;font-size:16px;border-radius:50%">T</div>
-          <div>
-            <p style="font-family:var(--font-h);font-weight:700;font-size:14px;color:var(--black);margin:0">Tomek R.</p>
-            <p style="font-size:12px;color:var(--chrome);margin:0">Pakiet Masterclass &middot; Pilot PPL</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="margin-top:48px;display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:wrap">
-      <div style="text-align:center">
-        <p style="font-family:var(--font-h);font-size:42px;font-weight:900;color:var(--navy);margin:0">5.0</p>
-        <div style="display:flex;gap:3px;justify-content:center;margin:6px 0">
-          <span style="color:#f59e0b;font-size:16px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:16px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:16px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:16px">&#9733;</span>
-          <span style="color:#f59e0b;font-size:16px">&#9733;</span>
-        </div>
-        <p style="font-size:13px;color:var(--chrome);margin:0">Google Reviews</p>
-      </div>
-      <div style="width:1px;height:48px;background:rgba(10,20,40,.1)"></div>
-      <div style="text-align:center">
-        <p style="font-family:var(--font-h);font-size:42px;font-weight:900;color:var(--navy);margin:0">200+</p>
-        <p style="font-size:13px;color:var(--chrome);margin:4px 0 0">Zrealizowanych lotów</p>
-      </div>
-      <div style="width:1px;height:48px;background:rgba(10,20,40,.1)"></div>
-      <div style="text-align:center">
-        <p style="font-family:var(--font-h);font-size:42px;font-weight:900;color:var(--navy);margin:0">100%</p>
-        <p style="font-size:13px;color:var(--chrome);margin:4px 0 0">Poleciłoby znajomym</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      FAQ — LOT AKROBACYJNY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <section class="faq" id="faq">
@@ -1624,6 +1526,26 @@ footer {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
 
+  // Mobile hamburger menu
+  const hamburger = document.getElementById('nav-hamburger');
+  const navMenu = document.getElementById('nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = hamburger.classList.toggle('open');
+      navMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.setAttribute('aria-label', isOpen ? 'Zamknij menu' : 'Otwórz menu');
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        navMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Otwórz menu');
+      });
+    });
+  }
+
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1664,138 +1586,5 @@ footer {
 })();
 </script>
 <script src="/chat-widget.js" defer></script>
-
-<!-- Exit-Intent Popup -->
-<div id="exitPopup" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(10,20,40,.82);backdrop-filter:blur(4px);align-items:center;justify-content:center;opacity:0;transition:opacity .35s ease">
-  <div id="exitModal" style="position:relative;background:linear-gradient(160deg,#0e1e3a 0%,#142a52 100%);border:1px solid rgba(27,77,181,.35);border-radius:16px;padding:48px 36px 40px;max-width:440px;width:92%;box-shadow:0 24px 80px rgba(0,0,0,.55),0 0 0 1px rgba(27,77,181,.15);transform:translateY(24px) scale(.96);transition:transform .4s cubic-bezier(.22,1,.36,1),opacity .4s ease;opacity:0;font-family:'Inter',sans-serif">
-    <button id="exitClose" aria-label="Zamknij" style="position:absolute;top:14px;right:14px;background:none;border:none;color:rgba(255,255,255,.5);font-size:22px;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background .2s,color .2s">&times;</button>
-    <div id="exitForm">
-      <div style="text-align:center;margin-bottom:8px">
-        <span style="display:inline-block;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:#C41E3A">Oferta specjalna</span>
-      </div>
-      <h2 style="font-family:'Montserrat',sans-serif;font-size:clamp(20px,4.5vw,26px);font-weight:800;color:#fff;text-align:center;margin:0 0 10px;line-height:1.25">Zapisz si&#281; na newsletter<br>i odbierz kod <span style="color:#C41E3A">-100 PLN</span><br>na pierwszy lot</h2>
-      <p style="text-align:center;font-size:14px;color:rgba(255,255,255,.55);margin:0 0 28px;line-height:1.5">Podaj e-mail i telefon — wy&#347;lemy Ci unikalny kod rabatowy.</p>
-      <form id="exitSubscribeForm" style="display:flex;flex-direction:column;gap:12px" novalidate>
-        <input id="exitEmail" type="email" placeholder="Tw&oacute;j adres e-mail" required autocomplete="email" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:8px;border:1px solid rgba(27,77,181,.35);background:rgba(255,255,255,.06);color:#fff;font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:border-color .2s">
-        <input id="exitPhone" type="tel" placeholder="Numer telefonu" required autocomplete="tel" style="width:100%;box-sizing:border-box;padding:14px 16px;border-radius:8px;border:1px solid rgba(27,77,181,.35);background:rgba(255,255,255,.06);color:#fff;font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:border-color .2s">
-        <button type="submit" style="width:100%;padding:15px 16px;border:none;border-radius:8px;background:#C41E3A;color:#fff;font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:background .2s;letter-spacing:.03em">Odbierz kod -100 PLN</button>
-      </form>
-      <p id="exitError" style="display:none;text-align:center;font-size:13px;color:#C41E3A;margin:10px 0 0"></p>
-      <p style="text-align:center;font-size:11px;color:rgba(255,255,255,.3);margin:16px 0 0;line-height:1.4">Bez spamu. Mo&#380;esz wypi&#347;a&#263; si&#281; w ka&#380;dej chwili.</p>
-    </div>
-    <div id="exitThankYou" style="display:none;text-align:center">
-      <div style="font-size:48px;margin-bottom:16px">&#10003;</div>
-      <h2 style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:#fff;margin:0 0 10px">Dzi&#281;kujemy!</h2>
-      <p style="font-size:15px;color:rgba(255,255,255,.7);margin:0 0 20px;line-height:1.5">Tw&oacute;j kod rabatowy:</p>
-      <div style="display:inline-block;background:rgba(27,77,181,.2);border:2px dashed #1B4DB5;border-radius:10px;padding:16px 32px;margin-bottom:16px">
-        <span style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:#fff;letter-spacing:.08em">PIERWSZY100</span>
-      </div>
-      <p style="font-size:14px;color:rgba(255,255,255,.5);margin:16px 0 0">U&#380;yj go przy sk&#322;adaniu zam&oacute;wienia na <strong style="color:#fff">akrobacja.com</strong></p>
-    </div>
-  </div>
-</div>
-<script>
-(function(){
-  var STORAGE_KEY = 'exitPopupShown';
-  if (sessionStorage.getItem(STORAGE_KEY)) return;
-  if (document.referrer && document.referrer.indexOf('/sukces') !== -1) return;
-  if (document.cookie.indexOf('checkout') !== -1 || sessionStorage.getItem('checkoutStarted')) return;
-
-  var popup = document.getElementById('exitPopup');
-  var modal = document.getElementById('exitModal');
-  var shown = false;
-
-  function showPopup() {
-    if (shown) return;
-    if (sessionStorage.getItem(STORAGE_KEY)) return;
-    shown = true;
-    sessionStorage.setItem(STORAGE_KEY, '1');
-    popup.style.display = 'flex';
-    requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
-        popup.style.opacity = '1';
-        modal.style.transform = 'translateY(0) scale(1)';
-        modal.style.opacity = '1';
-      });
-    });
-  }
-
-  function hidePopup() {
-    popup.style.opacity = '0';
-    modal.style.transform = 'translateY(24px) scale(.96)';
-    modal.style.opacity = '0';
-    setTimeout(function(){ popup.style.display = 'none'; }, 350);
-  }
-
-  /* Desktop: exit intent */
-  document.addEventListener('mouseout', function(e) {
-    if (e.clientY <= 0) showPopup();
-  });
-
-  /* Mobile: 45-second timer */
-  var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth < 768;
-  if (isMobile) {
-    setTimeout(showPopup, 45000);
-  }
-
-  /* Close handlers */
-  document.getElementById('exitClose').addEventListener('click', hidePopup);
-  document.getElementById('exitClose').addEventListener('mouseenter', function(){
-    this.style.background = 'rgba(255,255,255,.08)';
-    this.style.color = '#fff';
-  });
-  document.getElementById('exitClose').addEventListener('mouseleave', function(){
-    this.style.background = 'none';
-    this.style.color = 'rgba(255,255,255,.5)';
-  });
-  popup.addEventListener('click', function(e) {
-    if (e.target === popup) hidePopup();
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') hidePopup();
-  });
-
-  /* Focus styles for inputs */
-  ['exitEmail','exitPhone'].forEach(function(id){
-    var el = document.getElementById(id);
-    el.addEventListener('focus', function(){ el.style.borderColor = '#1B4DB5'; });
-    el.addEventListener('blur', function(){ el.style.borderColor = 'rgba(27,77,181,.35)'; });
-  });
-
-  /* Submit */
-  document.getElementById('exitSubscribeForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var email = document.getElementById('exitEmail').value.trim();
-    var phone = document.getElementById('exitPhone').value.trim();
-    var errEl = document.getElementById('exitError');
-    errEl.style.display = 'none';
-
-    if (!email || !phone) {
-      errEl.textContent = 'Podaj adres e-mail i numer telefonu.';
-      errEl.style.display = 'block';
-      return;
-    }
-
-    var btn = this.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Wysy\u0142anie...';
-
-    fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, phone: phone })
-    }).then(function(r) {
-      if (!r.ok) throw new Error('Serwer zwr\u00f3ci\u0142 b\u0142\u0105d');
-      document.getElementById('exitForm').style.display = 'none';
-      document.getElementById('exitThankYou').style.display = 'block';
-    }).catch(function() {
-      errEl.textContent = 'Wyst\u0105pi\u0142 b\u0142\u0105d. Spr\u00f3buj ponownie.';
-      errEl.style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Odbierz kod -100 PLN';
-    });
-  });
-})();
-</script>
 </body>
 </html>
