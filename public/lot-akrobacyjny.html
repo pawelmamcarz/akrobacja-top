@@ -458,10 +458,11 @@ img { display: block; max-width: 100%; }
 .pkg-feat::before { content: '→ '; color: var(--red); font-weight: 600; }
 .pkg-cta {
   display: block; text-align: center;
-  padding: 16px 24px;
+  padding: 16px 24px; width: 100%;
   font-family: var(--font-h); font-size: 11px; font-weight: 700;
   text-transform: uppercase; letter-spacing: .14em;
   color: var(--white); background: var(--red);
+  border: none; cursor: pointer;
   transition: background .2s;
   margin-top: 8px;
 }
@@ -921,6 +922,67 @@ footer {
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   CHECKOUT MODAL
+═══════════════════════════════════════════════════════ */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(10,20,40,.85); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 24px;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+  background: #fff; color: var(--black); width: 100%; max-width: 440px;
+  padding: 40px 32px; position: relative; transform: translateY(20px);
+  transition: transform .3s;
+}
+.modal-overlay.active .modal { transform: none; }
+.modal-close {
+  position: absolute; top: 16px; right: 16px; font-size: 28px;
+  color: var(--chrome); cursor: pointer; background: none; border: none;
+  line-height: 1; padding: 4px;
+}
+.modal-close:hover { color: var(--black); }
+#modalTitle {
+  font-family: var(--font-h); font-size: 22px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  margin-bottom: 4px;
+}
+.modal-sub { font-size: 13px; color: var(--chrome); margin-bottom: 8px; }
+.modal-price {
+  font-family: var(--font-h); font-size: 28px;
+  font-weight: 900; color: var(--red); margin-bottom: 24px;
+}
+.modal-field { margin-bottom: 16px; }
+.modal-field label {
+  display: block; font-size: 11px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--chrome);
+  margin-bottom: 6px;
+}
+.modal-field input {
+  width: 100%; padding: 12px 14px; border: 1px solid var(--grey-lt);
+  font-size: 14px; font-family: var(--font-b); outline: none;
+  transition: border-color .2s;
+}
+.modal-field input:focus { border-color: var(--navy); }
+.modal-checkbox {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 500; color: var(--black);
+  cursor: pointer; margin-bottom: 20px;
+}
+.modal-submit {
+  width: 100%; padding: 16px;
+  font-family: var(--font-h); font-size: 12px;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .15em;
+  color: #fff; background: var(--red); border: none; cursor: pointer;
+  transition: background .2s;
+}
+.modal-submit:hover { background: var(--red-dark); }
+.modal-error {
+  display: none; margin-top: 12px;
+  font-size: 13px; color: var(--red); text-align: center;
+}
 </style>
 </head>
 <body>
@@ -935,7 +997,7 @@ footer {
   <ul class="nav-menu" id="nav-menu">
     <li><a href="/">Strona główna</a></li>
     <li><a href="/lot-akrobacyjny" style="color:var(--white)">Lot akrobacyjny</a></li>
-    <li><a href="/#sklep">Kup voucher</a></li>
+    <li><a href="#pakiety">Kup voucher</a></li>
     <li><a href="/sklep-merch">Sklep</a></li>
     <li><a href="/pokazy-lotnicze">Pokazy na Event</a></li>
     <li><a href="/blog">Blog</a></li>
@@ -978,7 +1040,7 @@ footer {
       Lotnisko Radom-Piastów. Lot akrobacyjny to idealny prezent.
     </p>
     <div class="hero-actions">
-      <a href="/#sklep" class="btn-primary">Kup voucher na lot</a>
+      <a href="#pakiety" class="btn-primary">Kup voucher na lot</a>
       <a href="#pakiety" class="btn-ghost">Zobacz pakiety lotów</a>
     </div>
   </div>
@@ -1011,7 +1073,7 @@ footer {
         <li class="pkg-feat">Certyfikat ukończenia lotu</li>
         <li class="pkg-feat">Voucher ważny 12 miesięcy</li>
       </ul>
-      <a href="/#sklep" class="pkg-cta">Kup voucher — 1999 PLN</a>
+      <button class="pkg-cta" data-package="pierwszy_lot">Kup voucher — 1 999 PLN</button>
     </div>
 
     <!-- Adrenalina -->
@@ -1030,7 +1092,7 @@ footer {
         <li class="pkg-feat">Lot samolotem akrobacyjnym Extra 300L SP-EKS</li>
         <li class="pkg-feat">Certyfikat + voucher ważny 12 miesięcy</li>
       </ul>
-      <a href="/#sklep" class="pkg-cta">Kup voucher — 2999 PLN</a>
+      <button class="pkg-cta" data-package="adrenalina">Kup voucher — 2 999 PLN</button>
     </div>
 
     <!-- Masterclass -->
@@ -1048,7 +1110,7 @@ footer {
         <li class="pkg-feat">Video 360° z lotu w cenie</li>
         <li class="pkg-feat">Certyfikat + voucher ważny 12 miesięcy</li>
       </ul>
-      <a href="/#sklep" class="pkg-cta">Kup voucher — 4 999 PLN</a>
+      <button class="pkg-cta" data-package="masterclass">Kup voucher — 4 999 PLN</button>
     </div>
   </div>
 </section>
@@ -1175,7 +1237,7 @@ footer {
           3. Otrzymaj voucher na lot akrobacyjny PDF natychmiast<br>
           4. Zarezerwuj termin w kalendarzu
         </p>
-        <a href="/#sklep" style="display:inline-block;padding:14px 32px;background:var(--red);color:#fff;font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;transition:background .2s;text-decoration:none;margin-right:12px" onmouseover="this.style.background='#A31830'" onmouseout="this.style.background='#C41E3A'">Kup voucher teraz</a>
+        <a href="#pakiety" style="display:inline-block;padding:14px 32px;background:var(--red);color:#fff;font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;transition:background .2s;text-decoration:none;margin-right:12px" onmouseover="this.style.background='#A31830'" onmouseout="this.style.background='#C41E3A'">Kup voucher teraz</a>
         <a href="https://wa.me/48535535221?text=Mam%20pytanie%20o%20lot%20akrobacyjny" style="display:inline-block;padding:14px 32px;border:1px solid rgba(255,255,255,.25);color:#fff;font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;transition:border-color .2s;text-decoration:none" onmouseover="this.style.borderColor='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,.25)'">Napisz na WhatsApp</a>
       </div>
     </div>
@@ -1451,7 +1513,7 @@ footer {
       Zadzwoń: +48 535 535 221
     </a>
   </div>
-  <a href="/#sklep" class="cta-link">Kup voucher online na akrobacja.com</a>
+  <a href="#pakiety" class="cta-link">Kup voucher online na akrobacja.com</a>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1468,7 +1530,7 @@ footer {
       <ul class="footer-links">
         <li><a href="/">Strona główna</a></li>
         <li><a href="/lot-akrobacyjny">Lot akrobacyjny</a></li>
-        <li><a href="/#sklep">Sklep z Voucherami</a></li>
+        <li><a href="#pakiety">Sklep z Voucherami</a></li>
         <li><a href="/sklep-merch">Sklep Merch</a></li>
         <li><a href="/pokazy-lotnicze">Pokazy na Event</a></li>
         <li><a href="/sponsoring">Sponsoring</a></li>
@@ -1584,6 +1646,136 @@ footer {
     });
   }
 })();
+</script>
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <h3 id="modalTitle">Kup Voucher</h3>
+    <p class="modal-sub" id="modalSub"></p>
+    <p class="modal-price" id="modalPrice"></p>
+    <form id="checkoutForm">
+      <input type="hidden" id="checkoutPackage" value="">
+      <div class="modal-field">
+        <label for="checkoutName">Imię i Nazwisko</label>
+        <input type="text" id="checkoutName" required placeholder="Jan Kowalski">
+      </div>
+      <div class="modal-field">
+        <label for="checkoutEmail">Adres Email</label>
+        <input type="email" id="checkoutEmail" required placeholder="jan@example.com">
+      </div>
+      <div class="modal-field">
+        <label for="checkoutNip">NIP (opcjonalnie — dla faktury VAT)</label>
+        <input type="text" id="checkoutNip" placeholder="1234567890" pattern="[0-9]{10}" title="10 cyfr NIP">
+      </div>
+      <label class="modal-checkbox" id="videoAddonCheck">
+        <input type="checkbox" id="checkoutVideo">
+        + Video 360° z lotu (+299 PLN)
+      </label>
+      <button type="submit" class="modal-submit" id="checkoutSubmit">Przejdź do płatności</button>
+      <p class="modal-error" id="checkoutError"></p>
+    </form>
+    <div id="dotacjaBanner" style="display:none;background:#f0f4fa;border-left:4px solid #C41E3A;padding:12px 16px;margin-top:16px;font-size:12px;line-height:1.5;color:#1a2a3a">
+      <strong style="color:#C41E3A">💰 Dofinansowanie do 90%!</strong> Ponad 10 kursantów skorzystało z dotacji BUR/PUP. Pomagamy w formalności.
+      <a href="/dotacje-szkolenie-lotnicze" style="color:#1B4DB5;font-weight:600;display:block;margin-top:4px">Sprawdź czy się kwalifikujesz →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Checkout modal ──
+const PKGS = {
+  pierwszy_lot: { name: 'Pierwszy Lot', sub: 'Twój pierwszy kontakt z akrobacją', price: 1999 },
+  adrenalina:   { name: 'Adrenalina', sub: 'Pełny program akrobacyjny z Mistrzem', price: 2999 },
+  masterclass:  { name: 'Masterclass', sub: 'Sesja szkoleniowa z Mistrzem Świata — dla pilotów PPL(A)+', price: 4999 },
+};
+
+const modal = document.getElementById('checkoutModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalSub = document.getElementById('modalSub');
+const modalPrice = document.getElementById('modalPrice');
+const pkgInput = document.getElementById('checkoutPackage');
+const videoCheck = document.getElementById('checkoutVideo');
+const form = document.getElementById('checkoutForm');
+const submitBtn = document.getElementById('checkoutSubmit');
+const errorEl = document.getElementById('checkoutError');
+const dotacjaBanner = document.getElementById('dotacjaBanner');
+
+function openModal(packageId) {
+  const pkg = PKGS[packageId];
+  if (!pkg) return;
+  pkgInput.value = packageId;
+  modalTitle.textContent = pkg.name;
+  modalSub.textContent = pkg.sub;
+  videoCheck.checked = false;
+  updatePrice(pkg.price);
+  dotacjaBanner.style.display = packageId === 'masterclass' ? 'block' : 'none';
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  modal.querySelector('input:not([type=hidden])').focus();
+}
+
+function updatePrice(base) {
+  const video = videoCheck.checked ? 299 : 0;
+  const total = base + video;
+  modalPrice.textContent = total.toLocaleString('pl-PL') + ' PLN';
+}
+
+videoCheck.addEventListener('change', () => {
+  const pkg = PKGS[pkgInput.value];
+  if (pkg) updatePrice(pkg.price);
+});
+
+function closeModal() {
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+  errorEl.style.display = 'none';
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'Tab' && modal.classList.contains('active')) {
+    const focusable = modal.querySelectorAll('input:not([type=hidden]),button,a,[tabindex]:not([tabindex="-1"])');
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+});
+
+document.querySelectorAll('[data-package]').forEach(btn => {
+  btn.addEventListener('click', () => openModal(btn.dataset.package));
+});
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorEl.style.display = 'none';
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Przetwarzanie...';
+  try {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        packageId: pkgInput.value,
+        videoAddon: videoCheck.checked,
+        customerName: document.getElementById('checkoutName').value.trim(),
+        customerEmail: document.getElementById('checkoutEmail').value.trim(),
+        customerNip: document.getElementById('checkoutNip').value.trim() || undefined,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Błąd serwera');
+    if (data.url) window.location.href = data.url;
+  } catch (err) {
+    errorEl.textContent = err.message;
+    errorEl.style.display = 'block';
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Przejdź do płatności';
+  }
+});
 </script>
 <script src="/chat-widget.js" defer></script>
 </body>
