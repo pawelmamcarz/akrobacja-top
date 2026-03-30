@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loty Akrobacyjne Extra 300L — akrobacja.com | Voucher na lot akrobacyjny</title>
-<meta name="description" content="Loty akrobacyjne samolotem Extra 300L SP-EKS z Mistrzem Świata 2022 Maciejem Kulaszewskim. Voucher od 1 999 PLN. Uprawnienie akrobacja z dofinansowaniem do 90%. Camp akrobacyjny. Pokazy lotnicze. Radom-Piastów EPRP, 100 km od Warszawy.">
+<title>Lot Akrobacyjny Extra 300L z Mistrzem Świata — Voucher od 1 999 PLN | akrobacja.com</title>
+<meta name="description" content="Lot akrobacyjny samolotem Extra 300L SP-EKS z Mistrzem Świata Maciejem Kulaszewskim. Voucher od 1 999 PLN — idealny prezent. Kurs akrobacji FCL.800 z dofinansowaniem do 90%. Pokazy lotnicze. Lotnisko Radom-Piastów, 100 km od Warszawy.">
 <link rel="canonical" href="https://akrobacja.com/">
 <link rel="alternate" hreflang="pl" href="https://akrobacja.com/">
 <link rel="alternate" hreflang="en" href="https://akrobacja.com/en">
@@ -23,8 +23,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://akrobacja.com/">
-<meta property="og:title" content="Loty Akrobacyjne Extra 300L — akrobacja.com">
-<meta property="og:description" content="Lot akrobacyjny z Mistrzem Świata. Voucher od 1999 PLN. Extra 300L SP-EKS, lotnisko Radom-Piastów. Poczuj +6G!">
+<meta property="og:title" content="Lot Akrobacyjny z Mistrzem Świata — Voucher od 1 999 PLN">
+<meta property="og:description" content="Lot akrobacyjny Extra 300L SP-EKS z Mistrzem Świata Maciejem Kulaszewskim. Voucher od 1 999 PLN — idealny prezent. Lotnisko Radom-Piastów, 100 km od Warszawy.">
 <meta property="og:image" content="https://akrobacja.com/samolot-top-web.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -34,8 +34,8 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Loty Akrobacyjne Extra 300L — akrobacja.com">
-<meta name="twitter:description" content="Lot akrobacyjny z Mistrzem Świata. Voucher od 1999 PLN. Poczuj +6G!">
+<meta name="twitter:title" content="Lot Akrobacyjny z Mistrzem Świata — Voucher od 1 999 PLN">
+<meta name="twitter:description" content="Lot akrobacyjny Extra 300L z Mistrzem Świata. Voucher od 1 999 PLN — idealny prezent. Poczuj +6G!">
 <meta name="twitter:image" content="https://akrobacja.com/samolot-top-web.jpg">
 
 <!-- Favicon inline SVG — Rising A mark on navy square -->
@@ -641,11 +641,7 @@ img { display: block; max-width: 100%; }
   position: relative;
   overflow: hidden;
 }
-.promo-banner::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,.03) 10px, rgba(255,255,255,.03) 20px);
-}
+.promo-banner::before { display: none; }
 .promo-label {
   font-family: var(--font-h); font-size: 11px; font-weight: 700;
   letter-spacing: .25em; text-transform: uppercase;
@@ -858,6 +854,82 @@ footer {
   animation: pulse-cta 2.8s ease-in-out infinite;
 }
 .sticky-cta.vis { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════════════════════
+   BENEFIT STRIP
+═══════════════════════════════════════════════════════ */
+.benefit-strip {
+  background: var(--navy-deep); padding: 28px 64px;
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.benefit-item {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-h); font-size: 11px; font-weight: 600;
+  letter-spacing: .15em; text-transform: uppercase; color: rgba(255,255,255,.7);
+  white-space: nowrap;
+}
+.benefit-dot {
+  width: 6px; height: 6px; background: var(--red); flex-shrink: 0;
+}
+.hero-gift-hint {
+  font-size: 12px; font-weight: 500; color: rgba(255,255,255,.5);
+  letter-spacing: .12em; margin-bottom: 32px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   GIFT CTA SECTION
+═══════════════════════════════════════════════════════ */
+.gift-section { background: var(--white); padding: 96px 64px; text-align: center; }
+.gift-section .section-title { color: var(--black); }
+.gift-section .section-label { color: var(--chrome); }
+.gift-subtitle {
+  font-size: 15px; color: var(--chrome); line-height: 1.7;
+  max-width: 560px; margin: 20px auto 48px;
+}
+.gift-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  max-width: 800px; margin: 0 auto 48px;
+}
+.gift-card {
+  background: rgba(10,20,40,.03); padding: 36px 28px;
+  border: 1px solid rgba(10,20,40,.06);
+  transition: transform .2s, box-shadow .2s;
+}
+.gift-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(10,20,40,.08); }
+.gift-card-title {
+  font-family: var(--font-h); font-size: 15px; font-weight: 800;
+  text-transform: uppercase; color: var(--black); margin-bottom: 6px;
+}
+.gift-card-desc { font-size: 12px; color: var(--chrome); line-height: 1.5; }
+
+.gift-occasion-line {
+  font-size: 14px; color: var(--chrome); font-style: italic;
+  text-align: center; padding: 24px 20px 0; line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SECTION CTA ROW
+═══════════════════════════════════════════════════════ */
+.section-cta-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 24px; flex-wrap: wrap; margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .benefit-strip { padding: 20px 20px; gap: 20px; }
+  .benefit-item { font-size: 10px; }
+  .gift-section { padding: 60px 20px; }
+  .gift-cards { grid-template-columns: 1fr; }
+  .gift-subtitle { font-size: 13px; }
+  .section-cta-row { flex-direction: column; gap: 12px; }
+  .section-cta-row .btn-primary,
+  .section-cta-row .btn-ghost { width: 100%; text-align: center; display: block; }
+}
+@media (max-width: 480px) {
+  .benefit-strip { padding: 16px 16px; gap: 14px; flex-direction: column; align-items: center; }
+  .gift-section { padding: 48px 16px; }
+}
 
 /* ═══════════════════════════════════════════════════════
    SCROLL REVEAL
@@ -1564,10 +1636,11 @@ footer {
       <span class="hl-3 reveal reveal-d3">NA ŻYWO</span>
     </h1>
 
-    <p class="hero-sub reveal reveal-d3">Lot akrobacyjny Extra 300L z wielokrotnym Mistrzem Polski, Niemiec i UK<br><span style="font-size:0.75em;color:var(--chrome);font-weight:400">Projekt: Paweł Mamcarz</span></p>
+    <p class="hero-sub reveal reveal-d3">Lot akrobacyjny Extra 300L z wielokrotnym Mistrzem Polski, Niemiec i UK</p>
+    <p class="hero-gift-hint reveal reveal-d3">Idealny prezent — voucher PDF gotowy do wręczenia</p>
 
     <div class="hero-actions reveal reveal-d4">
-      <a href="#sklep" class="btn-primary">Kup Voucher →</a>
+      <a href="#sklep" class="btn-primary">Kup Voucher — od 1 999 PLN →</a>
       <a href="#pilot" class="btn-ghost">Poznaj pilota</a>
     </div>
 
@@ -1593,183 +1666,13 @@ footer {
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     MACHINE
+     BENEFIT STRIP
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="machine" id="maszyna">
-  <div class="machine-header reveal">
-    <p class="section-label">Extra 300L · SP-EKS</p>
-    <h2 class="section-title">Maszyna</h2>
-    <div class="accent-bar"></div>
-  </div>
-
-  <div class="machine-layout">
-    <!-- Aircraft viewer with interactive hotspots -->
-    <div class="aircraft-viewer reveal">
-      <span class="aircraft-viewer-label">Extra 300L SP-EKS — widok z góry</span>
-
-      <!-- Real top-down drone photo, rotated 180° (nose points up) -->
-      <img src="/samolot-top-web.jpg"
-           alt="Extra 300L SP-EKS — widok z góry"
-           loading="lazy"
-           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0.88">
-
-      <!-- Dark vignette overlay so hotspot cards stay readable -->
-      <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 85% 85% at 50% 50%, transparent 45%, rgba(10,20,40,0.65) 100%);pointer-events:none;z-index:1"></div>
-
-      <!-- Hotspot 1 — Silnik (nose / engine — top-center) -->
-      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:13%;z-index:10">
-        <div class="hotspot-dot"><span>1</span></div>
-        <div class="hotspot-card">
-          <div class="hotspot-card-title">Silnik</div>
-          <div class="hotspot-card-val">300 KM</div>
-          <div class="hotspot-card-desc">Lycoming AEIO-580 · 224 kW · bezpośredni napęd śmigła MTV</div>
-        </div>
-      </div>
-
-      <!-- Hotspot 2 — Cockpit (just behind engine, center) -->
-      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:33%;z-index:10">
-        <div class="hotspot-dot"><span>2</span></div>
-        <div class="hotspot-card">
-          <div class="hotspot-card-title">Przeciążenia</div>
-          <div class="hotspot-card-val">+10G / −10G</div>
-          <div class="hotspot-card-desc">Certyfikacja FAA/EASA. Margines bezpieczeństwa zawsze po Twojej stronie.</div>
-        </div>
-      </div>
-
-      <!-- Hotspot 3 — Left wing (port side, mid-height) -->
-      <div class="hotspot" tabindex="0" role="button" style="left:15%;top:46%;z-index:10">
-        <div class="hotspot-dot"><span>3</span></div>
-        <div class="hotspot-card" style="left:100%;bottom:auto;top:-50%;transform:none">
-          <div class="hotspot-card-title">Prędkość Przechyłu</div>
-          <div class="hotspot-card-val">420°/s</div>
-          <div class="hotspot-card-desc">Rozpiętość 8,0 m · konstrukcja kompozytowa · pełne wychylenie w osi roll</div>
-        </div>
-      </div>
-
-      <!-- Hotspot 4 — Tail (lower center) -->
-      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:82%;z-index:10">
-        <div class="hotspot-dot"><span>4</span></div>
-        <div class="hotspot-card" style="bottom:auto;top:calc(100% + 10px)">
-          <div class="hotspot-card-title">Usterzenie</div>
-          <div class="hotspot-card-val">V-tail</div>
-          <div class="hotspot-card-desc">Symetryczny profil usterzenia · pełna akrobacja dodatnia i ujemna</div>
-        </div>
-      </div>
-
-      <!-- Hotspot 5 — Right wing (starboard side, mid-height) -->
-      <div class="hotspot" tabindex="0" role="button" style="left:85%;top:46%;z-index:10">
-        <div class="hotspot-dot"><span>5</span></div>
-        <div class="hotspot-card" style="right:100%;left:auto;bottom:auto;top:-50%;transform:none">
-          <div class="hotspot-card-title">Max Prędkość</div>
-          <div class="hotspot-card-val">220 kt</div>
-          <div class="hotspot-card-desc">V<sub>NE</sub> 220 kt (407 km/h) · MTOW 950 kg</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Spec table -->
-    <div class="machine-specs reveal reveal-d2">
-      <p style="font-family:var(--font-h);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--chrome);margin-bottom:20px">Parametry techniczne</p>
-      <div class="spec-list">
-        <div class="spec-row"><span class="spec-key">Typ</span><span class="spec-val">Extra 300L</span></div>
-        <div class="spec-row"><span class="spec-key">Znaki</span><span class="spec-val">SP-EKS</span></div>
-        <div class="spec-row"><span class="spec-key">Silnik</span><span class="spec-val">300 KM</span></div>
-        <div class="spec-row"><span class="spec-key">Maks. +G</span><span class="spec-val red">+10G</span></div>
-        <div class="spec-row"><span class="spec-key">Maks. −G</span><span class="spec-val red">−10G</span></div>
-        <div class="spec-row"><span class="spec-key">Roll</span><span class="spec-val">420°/s</span></div>
-        <div class="spec-row"><span class="spec-key">V(NE)</span><span class="spec-val">220 kt</span></div>
-        <div class="spec-row"><span class="spec-key">MTOW</span><span class="spec-val">950 kg</span></div>
-        <div class="spec-row"><span class="spec-key">Kabina</span><span class="spec-val">2 tandem</span></div>
-        <div class="spec-row"><span class="spec-key">Certyfikacja</span><span class="spec-val">FAA / EASA</span></div>
-        <div class="spec-row"><span class="spec-key">Baza</span><span class="spec-val">EPRP Radom</span></div>
-      </div>
-
-      <div style="margin-top:32px;padding:20px;background:rgba(27,77,181,.07);border-left:3px solid var(--navy)">
-        <p style="font-size:12px;color:var(--chrome);line-height:1.6">
-          Każdy lot z pasażerem prowadzi <strong style="color:var(--white)">Maciej Kulaszewski osobiście</strong> — bez zastępstw, bez wyjątków.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     PILOT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="pilot" id="pilot">
-  <!-- Photo column -->
-  <div class="pilot-photo">
-    <img src="/pilot-cockpit.jpg" alt="Maciej Kulaszewski — pilot akrobacyjny Extra 300L w kokpicie"
-         loading="lazy"
-         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center">
-    <span class="pilot-badge">Mistrz Świata · Mistrz Polski · Mistrz Niemiec · Mistrz UK</span>
-  </div>
-
-  <!-- Bio column -->
-  <div class="pilot-bio">
-    <div class="pilot-stats-row">
-      <div>
-        <div class="pilot-stat-num">3000<em>h+</em></div>
-        <div class="pilot-stat-unit">Nalot na Extra 300L</div>
-      </div>
-      <div>
-        <div class="pilot-stat-num">WC</div>
-        <div class="pilot-stat-unit">Mistrz Świata</div>
-      </div>
-      <div>
-        <div class="pilot-stat-num">PL·DE·UK</div>
-        <div class="pilot-stat-unit">Mistrz Krajowy</div>
-      </div>
-    </div>
-
-    <p class="section-label reveal">Pilot akrobacyjny · Mistrz Świata · FI(A)</p>
-    <h2 class="section-title reveal" style="font-size:clamp(32px,3.5vw,52px);margin-bottom:28px;color:var(--white)">
-      Maciej<br>Kulaszewski
-    </h2>
-    <div class="accent-bar reveal" style="margin-bottom:36px"></div>
-
-    <p class="pilot-bio-text reveal">
-      <strong>Mistrz Świata w akrobacji samolotowej.</strong> 3 000+ godzin nalotu, w tym tysiące na Extra 300L — jedno z największych indywidualnych doświadczeń na tym typie w Europie. Mistrz Polski, Niemiec i Wielkiej Brytanii. Medalista Mistrzostw Europy. Instruktor FI(A). Zero symulatorów, zero skrótów. Każdy lot prowadzi osobiście.
-    </p>
-
-    <ul class="pilot-creds reveal">
-      <li class="pilot-cred"><strong>Mistrz Świata</strong> — akrobacja samolotowa</li>
-      <li class="pilot-cred"><strong>Mistrz Polski, Niemiec i Wielkiej Brytanii</strong></li>
-      <li class="pilot-cred"><strong>Medalista Mistrzostw Europy</strong></li>
-      <li class="pilot-cred"><strong>FI(A)</strong> — certyfikowany instruktor lotniczy</li>
-      <li class="pilot-cred"><strong>3 000+ godzin</strong> nalotu</li>
-      <li class="pilot-cred">Baza: <strong>Radom-Piastów (EPRP)</strong></li>
-      <li class="pilot-cred"><a href="https://mkaeros.com/pl" target="_blank" rel="noopener" style="color:var(--chrome);border-bottom:1px solid rgba(255,255,255,.2)">mkaeros.com</a></li>
-    </ul>
-
-    <blockquote class="reveal" style="margin:32px 0;padding:20px 24px;border-left:3px solid var(--red);background:rgba(255,255,255,.03);border-radius:0 8px 8px 0;font-style:italic;color:var(--chrome);font-size:15px;line-height:1.7">
-      „Każdy mój pasażer ląduje z uśmiechem i pytaniem: <strong style="color:var(--white)">kiedy następny raz?</strong>"
-      <span style="display:block;margin-top:8px;font-style:normal;font-size:12px;color:rgba(255,255,255,.4)">— Maciej Kulaszewski</span>
-    </blockquote>
-
-    <div class="reveal" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
-      <a href="/kalendarz" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px">
-        Zarezerwuj termin →
-      </a>
-      <a href="https://www.facebook.com/bullet.aerobatics/" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-flex;align-items:center;gap:6px">
-        Facebook Macieja →
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     OWNER
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<div style="background:var(--white);padding:80px 64px;display:flex;align-items:center;gap:48px;max-width:100%;flex-wrap:wrap;justify-content:center" class="reveal">
-  <img src="/mamcarz.jpg" alt="Paweł Mamcarz — właściciel Extra 300L SP-EKS" loading="lazy" width="280" height="280" style="width:280px;height:280px;object-fit:cover;border-radius:50%;flex-shrink:0">
-  <div style="max-width:480px">
-    <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Właściciel SP-EKS</p>
-    <h2 style="font-family:var(--font-h);font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--black);text-transform:uppercase;line-height:1;margin-bottom:14px">Paweł<br>Mamcarz</h2>
-    <div style="width:44px;height:3px;background:var(--red);margin-bottom:20px"></div>
-    <p style="font-size:14px;line-height:1.75;color:var(--chrome);margin-bottom:20px">Pilot z 26-letnim doświadczeniem lotniczym i właściciel Extra 300L SP-EKS — byłego samolotu Royal Jordanian Falcons. Odpowiada za operacje, bezpieczeństwo i rozwój akrobacja.com.</p>
-    <a href="https://mamcarz.com" target="_blank" rel="noopener" style="font-family:var(--font-h);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid rgba(27,77,181,.3);padding-bottom:3px;text-decoration:none">mamcarz.com →</a>
-  </div>
+<div class="benefit-strip">
+  <div class="benefit-item"><span class="benefit-dot"></span>Mistrz Świata za sterami</div>
+  <div class="benefit-item"><span class="benefit-dot"></span>Voucher ważny 12 miesięcy</div>
+  <div class="benefit-item"><span class="benefit-dot"></span>Bezpłatne przełożenie terminu</div>
+  <div class="benefit-item"><span class="benefit-dot"></span>PDF na maila w 60 sekund</div>
 </div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1785,10 +1688,10 @@ footer {
     <p class="shop-sub">Voucher ważny 12 miesięcy. Zła pogoda = bezpłatne przełożenie terminu.</p>
   </div>
 
-  <!-- PROMO FOMO BANNER -->
-  <div class="promo-banner reveal">
-    <div class="promo-label">Oferta limitowana</div>
-    <div class="promo-title">Ceny sezonowe — tylko do końca miesiąca</div>
+  <!-- PROMO BANNER -->
+  <div class="promo-banner reveal" style="background:linear-gradient(135deg, var(--navy-deep), var(--navy))">
+    <div class="promo-label">Sezon kwiecień–październik</div>
+    <div class="promo-title">Zarezerwuj lot — kalendarz zapełnia się szybko</div>
     <div class="promo-countdown" id="promoCountdown">
       <div class="promo-unit"><span class="promo-num" id="promoDays">--</span><span class="promo-lbl">Dni</span></div>
       <div class="promo-unit"><span class="promo-num" id="promoHours">--</span><span class="promo-lbl">Godz</span></div>
@@ -1923,6 +1826,8 @@ footer {
     <a href="https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20Corporate%20Experience" class="v-b2b-cta">Zapytaj o Ofertę Grupową →</a>
   </div>
 
+  <p class="gift-occasion-line reveal">Idealny prezent urodzinowy, na rocznicę, kawalerski lub po prostu — bo zasłużyłeś</p>
+
   <!-- Trust badges -->
   <div class="trust-strip reveal">
     <div class="trust-item"><span class="trust-icon">🔒</span>Bezpieczna płatność SSL</div>
@@ -1937,48 +1842,6 @@ footer {
     <p style="font-size:13px;color:var(--navy);margin:0"><strong>Piloci z PPL(A):</strong> Kurs akrobacji FCL.800 z dofinansowaniem do 90%. <a href="/dotacje-szkolenie-lotnicze" style="color:var(--red);font-weight:700">Sprawdź dotacje →</a></p>
   </div>
 
-</section>
-
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     HOW IT WORKS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="steps reveal">
-  <div style="text-align:center;margin-bottom:48px">
-    <p class="section-label">Jak to działa</p>
-    <h2 class="section-title" style="color:var(--black)">4 kroki do lotu</h2>
-    <div class="accent-bar" style="background:var(--red)"></div>
-  </div>
-  <div class="steps-grid">
-    <div class="step-card reveal">
-      <div class="step-num">01</div>
-      <div class="step-title">Kup voucher</div>
-      <div class="step-desc">Wybierz pakiet i kup online. Voucher PDF otrzymasz na maila w ciągu 60 sekund.</div>
-      <span class="step-arrow">→</span>
-    </div>
-    <div class="step-card reveal reveal-d1">
-      <div class="step-num">02</div>
-      <div class="step-title">Zarezerwuj termin</div>
-      <div class="step-desc">Wybierz datę w kalendarzu online lub napisz na WhatsApp. Sezon: kwiecień–październik.</div>
-      <span class="step-arrow">→</span>
-    </div>
-    <div class="step-card reveal reveal-d2">
-      <div class="step-num">03</div>
-      <div class="step-title">Briefing na lotnisku</div>
-      <div class="step-desc">Maciej przeprowadzi Cię przez procedury, figury i technikę oddychania. ~20 minut.</div>
-      <span class="step-arrow">→</span>
-    </div>
-    <div class="step-card reveal reveal-d3">
-      <div class="step-num">04</div>
-      <div class="step-title">Leć!</div>
-      <div class="step-desc">Wsiadasz do kokpitu Extra 300L i przeżywasz lot, który zapamiętasz do końca życia.</div>
-    </div>
-  </div>
-  <div class="guarantee reveal">
-    <div class="guarantee-icon">🛡️</div>
-    <div class="guarantee-text">
-      <strong>Gwarancja satysfakcji.</strong> Jeśli pogoda uniemożliwi lot — przenosimy termin bezpłatnie, bez limitu. Voucher ważny 12 miesięcy. Możesz zmienić pakiet lub przekazać voucher innej osobie.
-    </div>
-  </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -2050,45 +1913,243 @@ footer {
     <a href="https://www.instagram.com/warsawflightsafety" target="_blank" rel="noopener">Instagram</a> ·
     <a href="https://www.facebook.com/warsawflightsafety" target="_blank" rel="noopener">Facebook</a>
   </div>
+  <div class="section-cta-row reveal">
+    <a href="#sklep" class="btn-primary">Dołącz do nich — kup voucher →</a>
+  </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     SUBSCRIBE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<div style="background:var(--navy);padding:64px;text-align:center" class="reveal">
-  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px">Bądź na bieżąco</p>
-  <h2 style="font-family:var(--font-h);font-size:clamp(22px,3vw,32px);font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:8px">Dowiedz się pierwszy o pokazach</h2>
-  <p style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto">Zostaw numer — wyślemy SMS kiedy latamy na pokazach, mamy wolne terminy lub nowe produkty.</p>
-  <form id="subForm" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
-    <input type="tel" id="subPhone" placeholder="+48 XXX XXX XXX" required pattern="\+?[0-9\s]{9,15}" title="Podaj numer telefonu (9-15 cyfr)" style="flex:1;min-width:200px;padding:14px 18px;border:none;font-size:14px;font-family:var(--font-b);outline:none">
-    <button type="submit" id="subBtn" style="padding:14px 28px;background:var(--red);color:#fff;border:none;font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;cursor:pointer">Zapisz się</button>
-  </form>
-  <p id="subMsg" style="font-size:12px;margin-top:12px;color:rgba(255,255,255,.6);display:none"></p>
-  <p style="font-size:11px;color:rgba(255,255,255,.55);margin-top:16px">Bez spamu. Max 2-3 SMS w miesiącu. Możesz zrezygnować w każdej chwili.</p>
-</div>
+     HOW IT WORKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="steps reveal">
+  <div style="text-align:center;margin-bottom:48px">
+    <p class="section-label">Jak to działa</p>
+    <h2 class="section-title" style="color:var(--black)">4 kroki do lotu</h2>
+    <div class="accent-bar" style="background:var(--red)"></div>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <div class="step-title">Kup voucher</div>
+      <div class="step-desc">Wybierz pakiet i kup online. Voucher PDF otrzymasz na maila w ciągu 60 sekund.</div>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="step-card reveal reveal-d1">
+      <div class="step-num">02</div>
+      <div class="step-title">Zarezerwuj termin</div>
+      <div class="step-desc">Wybierz datę w kalendarzu online lub napisz na WhatsApp. Sezon: kwiecień–październik.</div>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="step-card reveal reveal-d2">
+      <div class="step-num">03</div>
+      <div class="step-title">Briefing na lotnisku</div>
+      <div class="step-desc">Maciej przeprowadzi Cię przez procedury, figury i technikę oddychania. ~20 minut.</div>
+      <span class="step-arrow">→</span>
+    </div>
+    <div class="step-card reveal reveal-d3">
+      <div class="step-num">04</div>
+      <div class="step-title">Leć!</div>
+      <div class="step-desc">Wsiadasz do kokpitu Extra 300L i przeżywasz lot, który zapamiętasz do końca życia.</div>
+    </div>
+  </div>
+  <div class="guarantee reveal">
+    <div class="guarantee-icon">🛡️</div>
+    <div class="guarantee-text">
+      <strong>Gwarancja satysfakcji.</strong> Jeśli pogoda uniemożliwi lot — przenosimy termin bezpłatnie, bez limitu. Voucher ważny 12 miesięcy. Możesz zmienić pakiet lub przekazać voucher innej osobie.
+    </div>
+  </div>
+</section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     INFOGRAPHIC
+     PILOT
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<div style="background:var(--white);padding:80px 64px;text-align:center" class="reveal">
-  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pasażerów</p>
-  <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--black);text-transform:uppercase;margin-bottom:32px">Briefing przed lotem akrobacyjnym</h2>
-  <img src="/przewodnik-briefing.png" alt="Briefing przed lotem akrobacyjnym Extra 300L - przygotowanie, bezpieczeństwo, fizjologia, parametry maszyny" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
-</div>
+<section class="pilot" id="pilot">
+  <!-- Photo column -->
+  <div class="pilot-photo">
+    <img src="/pilot-cockpit.jpg" alt="Maciej Kulaszewski — pilot akrobacyjny Extra 300L w kokpicie"
+         loading="lazy"
+         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center">
+    <span class="pilot-badge">Mistrz Świata · Mistrz Polski · Mistrz Niemiec · Mistrz UK</span>
+  </div>
 
-<div style="background:var(--black);padding:80px 64px;text-align:center" class="reveal">
-  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pilotów</p>
-  <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--white);text-transform:uppercase;margin-bottom:32px">Kurs akrobacji FCL.800</h2>
-  <img src="/przewodnik-fcl800.png" alt="Przewodnik po kursie akrobacji FCL.800 - wymagania, manewry, parametry Extra 300L" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
-  <a href="/blog/kurs-akrobacji-fcl800" class="link-ghost-hover" style="display:inline-block;margin-top:32px;font-family:var(--font-h);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:14px 30px;text-decoration:none;transition:border-color .2s">Dowiedz się więcej o szkoleniu →</a>
-</div>
+  <!-- Bio column -->
+  <div class="pilot-bio">
+    <div class="pilot-stats-row">
+      <div>
+        <div class="pilot-stat-num">3000<em>h+</em></div>
+        <div class="pilot-stat-unit">Nalot na Extra 300L</div>
+      </div>
+      <div>
+        <div class="pilot-stat-num">WC</div>
+        <div class="pilot-stat-unit">Mistrz Świata</div>
+      </div>
+      <div>
+        <div class="pilot-stat-num">PL·DE·UK</div>
+        <div class="pilot-stat-unit">Mistrz Krajowy</div>
+      </div>
+    </div>
 
-<!-- DOTACJE BANNER -->
-<div style="background:#C41E3A;padding:28px 64px;text-align:center" class="reveal">
-  <p style="font-family:var(--font-h);font-size:clamp(14px,2vw,20px);font-weight:800;color:#fff;margin:0 0 8px;text-transform:uppercase;letter-spacing:.05em">Dofinansowanie kursu akrobacji — do 90% taniej</p>
-  <p style="color:rgba(255,255,255,.85);font-size:14px;margin:0 0 16px;max-width:700px;display:inline-block">BUR, PUP, KFS — ponad 10 kursantów już skorzystało. Szkolenie pod egidą Aeroklubu Radomskiego. Pomagamy w formalności od A do Z.</p>
-  <a href="/dotacje-szkolenie-lotnicze" class="link-dotacje-hover" style="display:inline-block;font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C41E3A;background:#fff;padding:14px 32px;text-decoration:none;transition:opacity .2s">Sprawdź czy się kwalifikujesz →</a>
-</div>
+    <p class="section-label reveal">Pilot akrobacyjny · Mistrz Świata · FI(A)</p>
+    <h2 class="section-title reveal" style="font-size:clamp(32px,3.5vw,52px);margin-bottom:28px;color:var(--white)">
+      Maciej<br>Kulaszewski
+    </h2>
+    <div class="accent-bar reveal" style="margin-bottom:36px"></div>
+
+    <p class="pilot-bio-text reveal">
+      <strong>Mistrz Świata w akrobacji samolotowej.</strong> 3 000+ godzin nalotu, w tym tysiące na Extra 300L — jedno z największych indywidualnych doświadczeń na tym typie w Europie. Mistrz Polski, Niemiec i Wielkiej Brytanii. Medalista Mistrzostw Europy. Instruktor FI(A). Zero symulatorów, zero skrótów. Każdy lot prowadzi osobiście.
+    </p>
+
+    <ul class="pilot-creds reveal">
+      <li class="pilot-cred"><strong>Mistrz Świata</strong> — akrobacja samolotowa</li>
+      <li class="pilot-cred"><strong>Mistrz Polski, Niemiec i Wielkiej Brytanii</strong></li>
+      <li class="pilot-cred"><strong>Medalista Mistrzostw Europy</strong></li>
+      <li class="pilot-cred"><strong>FI(A)</strong> — certyfikowany instruktor lotniczy</li>
+      <li class="pilot-cred"><strong>3 000+ godzin</strong> nalotu</li>
+      <li class="pilot-cred">Baza: <strong>Radom-Piastów (EPRP)</strong></li>
+      <li class="pilot-cred"><a href="https://mkaeros.com/pl" target="_blank" rel="noopener" style="color:var(--chrome);border-bottom:1px solid rgba(255,255,255,.2)">mkaeros.com</a></li>
+    </ul>
+
+    <blockquote class="reveal" style="margin:32px 0;padding:20px 24px;border-left:3px solid var(--red);background:rgba(255,255,255,.03);border-radius:0 8px 8px 0;font-style:italic;color:var(--chrome);font-size:15px;line-height:1.7">
+      „Każdy mój pasażer ląduje z uśmiechem i pytaniem: <strong style="color:var(--white)">kiedy następny raz?</strong>"
+      <span style="display:block;margin-top:8px;font-style:normal;font-size:12px;color:rgba(255,255,255,.4)">— Maciej Kulaszewski</span>
+    </blockquote>
+
+    <div class="reveal" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <a href="/kalendarz" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px">
+        Zarezerwuj termin →
+      </a>
+      <a href="https://www.facebook.com/bullet.aerobatics/" target="_blank" rel="noopener" class="btn-ghost" style="display:inline-flex;align-items:center;gap:6px">
+        Facebook Macieja →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     MACHINE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="machine" id="maszyna">
+  <div class="machine-header reveal">
+    <p class="section-label">Extra 300L · SP-EKS</p>
+    <h2 class="section-title">Maszyna</h2>
+    <div class="accent-bar"></div>
+  </div>
+
+  <div class="machine-layout">
+    <!-- Aircraft viewer with interactive hotspots -->
+    <div class="aircraft-viewer reveal">
+      <span class="aircraft-viewer-label">Extra 300L SP-EKS — widok z góry</span>
+
+      <!-- Real top-down drone photo, rotated 180° (nose points up) -->
+      <img src="/samolot-top-web.jpg"
+           alt="Extra 300L SP-EKS — widok z góry"
+           loading="lazy"
+           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0.88">
+
+      <!-- Dark vignette overlay so hotspot cards stay readable -->
+      <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 85% 85% at 50% 50%, transparent 45%, rgba(10,20,40,0.65) 100%);pointer-events:none;z-index:1"></div>
+
+      <!-- Hotspot 1 — Silnik (nose / engine — top-center) -->
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:13%;z-index:10">
+        <div class="hotspot-dot"><span>1</span></div>
+        <div class="hotspot-card">
+          <div class="hotspot-card-title">Silnik</div>
+          <div class="hotspot-card-val">300 KM</div>
+          <div class="hotspot-card-desc">Lycoming AEIO-580 · 224 kW · bezpośredni napęd śmigła MTV</div>
+        </div>
+      </div>
+
+      <!-- Hotspot 2 — Cockpit (just behind engine, center) -->
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:33%;z-index:10">
+        <div class="hotspot-dot"><span>2</span></div>
+        <div class="hotspot-card">
+          <div class="hotspot-card-title">Przeciążenia</div>
+          <div class="hotspot-card-val">+10G / −10G</div>
+          <div class="hotspot-card-desc">Certyfikacja FAA/EASA. Margines bezpieczeństwa zawsze po Twojej stronie.</div>
+        </div>
+      </div>
+
+      <!-- Hotspot 3 — Left wing (port side, mid-height) -->
+      <div class="hotspot" tabindex="0" role="button" style="left:15%;top:46%;z-index:10">
+        <div class="hotspot-dot"><span>3</span></div>
+        <div class="hotspot-card" style="left:100%;bottom:auto;top:-50%;transform:none">
+          <div class="hotspot-card-title">Prędkość Przechyłu</div>
+          <div class="hotspot-card-val">420°/s</div>
+          <div class="hotspot-card-desc">Rozpiętość 8,0 m · konstrukcja kompozytowa · pełne wychylenie w osi roll</div>
+        </div>
+      </div>
+
+      <!-- Hotspot 4 — Tail (lower center) -->
+      <div class="hotspot" tabindex="0" role="button" style="left:50%;top:82%;z-index:10">
+        <div class="hotspot-dot"><span>4</span></div>
+        <div class="hotspot-card" style="bottom:auto;top:calc(100% + 10px)">
+          <div class="hotspot-card-title">Usterzenie</div>
+          <div class="hotspot-card-val">V-tail</div>
+          <div class="hotspot-card-desc">Symetryczny profil usterzenia · pełna akrobacja dodatnia i ujemna</div>
+        </div>
+      </div>
+
+      <!-- Hotspot 5 — Right wing (starboard side, mid-height) -->
+      <div class="hotspot" tabindex="0" role="button" style="left:85%;top:46%;z-index:10">
+        <div class="hotspot-dot"><span>5</span></div>
+        <div class="hotspot-card" style="right:100%;left:auto;bottom:auto;top:-50%;transform:none">
+          <div class="hotspot-card-title">Max Prędkość</div>
+          <div class="hotspot-card-val">220 kt</div>
+          <div class="hotspot-card-desc">V<sub>NE</sub> 220 kt (407 km/h) · MTOW 950 kg</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spec table -->
+    <div class="machine-specs reveal reveal-d2">
+      <p style="font-family:var(--font-h);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--chrome);margin-bottom:20px">Parametry techniczne</p>
+      <div class="spec-list">
+        <div class="spec-row"><span class="spec-key">Typ</span><span class="spec-val">Extra 300L</span></div>
+        <div class="spec-row"><span class="spec-key">Znaki</span><span class="spec-val">SP-EKS</span></div>
+        <div class="spec-row"><span class="spec-key">Silnik</span><span class="spec-val">300 KM</span></div>
+        <div class="spec-row"><span class="spec-key">Maks. +G</span><span class="spec-val red">+10G</span></div>
+        <div class="spec-row"><span class="spec-key">Maks. −G</span><span class="spec-val red">−10G</span></div>
+        <div class="spec-row"><span class="spec-key">Roll</span><span class="spec-val">420°/s</span></div>
+        <div class="spec-row"><span class="spec-key">V(NE)</span><span class="spec-val">220 kt</span></div>
+        <div class="spec-row"><span class="spec-key">MTOW</span><span class="spec-val">950 kg</span></div>
+        <div class="spec-row"><span class="spec-key">Kabina</span><span class="spec-val">2 tandem</span></div>
+        <div class="spec-row"><span class="spec-key">Certyfikacja</span><span class="spec-val">FAA / EASA</span></div>
+        <div class="spec-row"><span class="spec-key">Baza</span><span class="spec-val">EPRP Radom</span></div>
+      </div>
+
+      <div style="margin-top:32px;padding:20px;background:rgba(27,77,181,.07);border-left:3px solid var(--navy)">
+        <p style="font-size:12px;color:var(--chrome);line-height:1.6">
+          Każdy lot z pasażerem prowadzi <strong style="color:var(--white)">Maciej Kulaszewski osobiście</strong> — bez zastępstw, bez wyjątków.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     GIFT CTA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="gift-section">
+  <p class="section-label reveal">Prezent</p>
+  <h2 class="section-title reveal">Szukasz prezentu, który<br>zapamiętają na zawsze?</h2>
+  <div class="accent-bar reveal" style="margin-inline:auto"></div>
+  <p class="gift-subtitle reveal">Voucher na lot akrobacyjny — elegancki PDF gotowy do wręczenia w 60 sekund. Obdarowana osoba sama wybiera termin lotu w kalendarzu online.</p>
+  <div class="gift-cards">
+    <div class="gift-card reveal">
+      <div class="gift-card-title">Urodziny</div>
+      <div class="gift-card-desc">Prezent, o którym będą opowiadać latami. Niezapomniany dzień pełen adrenaliny.</div>
+    </div>
+    <div class="gift-card reveal reveal-d1">
+      <div class="gift-card-title">Kawalerski</div>
+      <div class="gift-card-desc">+6G zamiast kolejnej imprezy. Lot z Mistrzem Świata to poziom wyżej.</div>
+    </div>
+    <div class="gift-card reveal reveal-d2">
+      <div class="gift-card-title">Bonus firmowy</div>
+      <div class="gift-card-desc">Nagroda dla najlepszych. Faktura VAT. Pakiety grupowe od 5 osób.</div>
+    </div>
+  </div>
+  <a href="#sklep" class="btn-primary reveal" style="background:var(--red);color:#fff;text-decoration:none">Kup voucher na prezent →</a>
+</section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      FAQ
@@ -2159,6 +2220,11 @@ footer {
     </div>
 
   </div>
+
+  <div class="section-cta-row reveal" style="padding-bottom:20px">
+    <a href="https://wa.me/48535535221" class="btn-ghost" style="color:var(--navy);border-color:rgba(10,20,40,.2)">Nie znalazłeś odpowiedzi? Napisz do nas →</a>
+    <a href="#sklep" class="btn-primary">Kup voucher →</a>
+  </div>
 </section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -2200,6 +2266,58 @@ footer {
     </div>
   </div>
 </section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     OWNER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div style="background:var(--white);padding:80px 64px;display:flex;align-items:center;gap:48px;max-width:100%;flex-wrap:wrap;justify-content:center" class="reveal">
+  <img src="/mamcarz.jpg" alt="Paweł Mamcarz — właściciel Extra 300L SP-EKS" loading="lazy" width="280" height="280" style="width:280px;height:280px;object-fit:cover;border-radius:50%;flex-shrink:0">
+  <div style="max-width:480px">
+    <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Właściciel SP-EKS</p>
+    <h2 style="font-family:var(--font-h);font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--black);text-transform:uppercase;line-height:1;margin-bottom:14px">Paweł<br>Mamcarz</h2>
+    <div style="width:44px;height:3px;background:var(--red);margin-bottom:20px"></div>
+    <p style="font-size:14px;line-height:1.75;color:var(--chrome);margin-bottom:20px">Pilot z 26-letnim doświadczeniem lotniczym i właściciel Extra 300L SP-EKS — byłego samolotu Royal Jordanian Falcons. Odpowiada za operacje, bezpieczeństwo i rozwój akrobacja.com.</p>
+    <a href="https://mamcarz.com" target="_blank" rel="noopener" style="font-family:var(--font-h);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid rgba(27,77,181,.3);padding-bottom:3px;text-decoration:none">mamcarz.com →</a>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SUBSCRIBE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div style="background:var(--navy);padding:64px;text-align:center" class="reveal">
+  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:12px">Bądź na bieżąco</p>
+  <h2 style="font-family:var(--font-h);font-size:clamp(22px,3vw,32px);font-weight:900;color:#fff;text-transform:uppercase;margin-bottom:8px">Dowiedz się pierwszy o pokazach</h2>
+  <p style="font-size:13px;color:rgba(255,255,255,.6);margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto">Zostaw numer — wyślemy SMS kiedy latamy na pokazach, mamy wolne terminy lub nowe produkty.</p>
+  <form id="subForm" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
+    <input type="tel" id="subPhone" placeholder="+48 XXX XXX XXX" required pattern="\+?[0-9\s]{9,15}" title="Podaj numer telefonu (9-15 cyfr)" style="flex:1;min-width:200px;padding:14px 18px;border:none;font-size:14px;font-family:var(--font-b);outline:none">
+    <button type="submit" id="subBtn" style="padding:14px 28px;background:var(--red);color:#fff;border:none;font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;cursor:pointer">Zapisz się</button>
+  </form>
+  <p id="subMsg" style="font-size:12px;margin-top:12px;color:rgba(255,255,255,.6);display:none"></p>
+  <p style="font-size:11px;color:rgba(255,255,255,.55);margin-top:16px">Bez spamu. Max 2-3 SMS w miesiącu. Możesz zrezygnować w każdej chwili.</p>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     INFOGRAPHIC
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div style="background:var(--white);padding:80px 64px;text-align:center" class="reveal">
+  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pasażerów</p>
+  <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--black);text-transform:uppercase;margin-bottom:32px">Briefing przed lotem akrobacyjnym</h2>
+  <img src="/przewodnik-briefing.png" alt="Briefing przed lotem akrobacyjnym Extra 300L - przygotowanie, bezpieczeństwo, fizjologia, parametry maszyny" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
+</div>
+
+<div style="background:var(--black);padding:80px 64px;text-align:center" class="reveal">
+  <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pilotów</p>
+  <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--white);text-transform:uppercase;margin-bottom:32px">Kurs akrobacji FCL.800</h2>
+  <img src="/przewodnik-fcl800.png" alt="Przewodnik po kursie akrobacji FCL.800 - wymagania, manewry, parametry Extra 300L" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
+  <a href="/blog/kurs-akrobacji-fcl800" class="link-ghost-hover" style="display:inline-block;margin-top:32px;font-family:var(--font-h);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:14px 30px;text-decoration:none;transition:border-color .2s">Dowiedz się więcej o szkoleniu →</a>
+</div>
+
+<!-- DOTACJE BANNER -->
+<div style="background:#C41E3A;padding:28px 64px;text-align:center" class="reveal">
+  <p style="font-family:var(--font-h);font-size:clamp(14px,2vw,20px);font-weight:800;color:#fff;margin:0 0 8px;text-transform:uppercase;letter-spacing:.05em">Dofinansowanie kursu akrobacji — do 90% taniej</p>
+  <p style="color:rgba(255,255,255,.85);font-size:14px;margin:0 0 16px;max-width:700px;display:inline-block">BUR, PUP, KFS — ponad 10 kursantów już skorzystało. Szkolenie pod egidą Aeroklubu Radomskiego. Pomagamy w formalności od A do Z.</p>
+  <a href="/dotacje-szkolenie-lotnicze" class="link-dotacje-hover" style="display:inline-block;font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#C41E3A;background:#fff;padding:14px 32px;text-decoration:none;transition:opacity .2s">Sprawdź czy się kwalifikujesz →</a>
+</div>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      POKAZY & BRANDING
@@ -2392,10 +2510,8 @@ footer {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      STICKY CTA
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<a href="https://wa.me/48535535221" class="sticky-cta" id="stickyCta" aria-label="Napisz na WhatsApp: +48 535 535 221">
-  <img src="/akrobacja-logo-mark-light.png" alt="" aria-hidden="true"
-       style="height:18px;width:auto;display:inline-block;vertical-align:middle;margin-right:4px">
-  +48 535 535 221
+<a href="#sklep" class="sticky-cta" id="stickyCta" aria-label="Kup voucher na lot akrobacyjny">
+  Kup Voucher →
 </a>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
