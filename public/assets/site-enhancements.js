@@ -115,7 +115,7 @@ color:#7a8fa6;font-size:24px;cursor:pointer;line-height:1}\
       '<button class="akro-x" aria-label="Zamknij">&times;</button>' +
       '<h3>Zanim odlecisz...</h3>' +
       '<p>Zapisz się na newsletter i pobierz darmowy PDF <strong>"10 rzeczy do wiedzy przed pierwszym lotem akrobacyjnym"</strong>. Bonus: kod -5% na voucher.</p>' +
-      '<a class="akro-cta" href="/kalendarz?utm_source=exit_intent" data-akro-cta="exit_intent">✈️ Sprawdź dostępne terminy</a>' +
+      '<a class="akro-cta" href="/przewodnik-pierwszy-lot?utm_source=exit_intent" data-akro-cta="exit_intent">📩 Pobierz darmowy przewodnik PDF</a>' +
       '<small>Bez spamu. W każdej chwili możesz się wypisać.</small>' +
       '</div>';
     document.body.appendChild(modal);
