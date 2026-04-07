@@ -49,7 +49,7 @@ Przy +4G zaczyna się prawdziwa zabawa. Twoje ciało waży cztery razy więcej n
 ### +6G - granica dla pasażerów
 
   
-Przy **+6G** Twoje ciało waży 480 kg (przy masie własnej 80 kg). To ekstremalnie intensywne doświadczenie. Pole widzenia zwęża się dramatycznie, może wystąpić pełny grey-out. Oddychanie wymaga świadomego wysiłku. Mięśnie pracują na pełnych obrotach, żeby utrzymać krew w górnej części ciała. W akrobacja.top +6G to maksimum, do którego zabieramy pasażerów - i tylko w pakiecie Masterclass, po odpowiednim przygotowaniu.
+Przy **+6G** Twoje ciało waży 480 kg (przy masie własnej 80 kg). To ekstremalnie intensywne doświadczenie. Pole widzenia zwęża się dramatycznie, może wystąpić pełny grey-out. Oddychanie wymaga świadomego wysiłku. Mięśnie pracują na pełnych obrotach, żeby utrzymać krew w górnej części ciała. W akrobacja.com +6G to maksimum, do którego zabieramy pasażerów - i tylko w pakiecie Masterclass, po odpowiednim przygotowaniu.
 
   
 ## Grey-out, blackout, red-out - co to jest?
@@ -79,7 +79,7 @@ Przy **+6G** Twoje ciało waży 480 kg (przy masie własnej 80 kg). To ekstremal
 **AGSM** (Anti-G Straining Maneuver) to technika stosowana przez pilotów myśliwców i akrobacyjnych, żeby zwiększyć tolerancję na pozytywne G. Polega na jednoczesnym napinaniu mięśni nóg, brzucha i pośladków oraz specjalnej technice oddychania (krótkie, gwałtowne wydechy co 3-4 sekundy). Napięcie mięśni zapobiega odpływowi krwi z górnej części ciała, a rytmiczne oddychanie utrzymuje ciśnienie w klatce piersiowej.
 
   
-Bez AGSM przeciętna osoba traci widzenie przy około +4G do +5G. Z prawidłowo wykonanym AGSM tolerancja wzrasta do +7G, a nawet +9G. Przed każdym lotem akrobacyjnym w akrobacja.top nasz pilot **Maciej Kulaszewski** uczy pasażerów podstaw AGSM podczas briefingu - to kilka prostych technik, które robią ogromną różnicę w komforcie lotu.
+Bez AGSM przeciętna osoba traci widzenie przy około +4G do +5G. Z prawidłowo wykonanym AGSM tolerancja wzrasta do +7G, a nawet +9G. Przed każdym lotem akrobacyjnym w akrobacja.com nasz pilot **Maciej Kulaszewski** uczy pasażerów podstaw AGSM podczas briefingu - to kilka prostych technik, które robią ogromną różnicę w komforcie lotu.
 
   
     **Wskazówka od pilota:** Napinaj mięśnie nóg i brzucha, jakbyś chciał podnieść bardzo ciężki przedmiot. Oddychaj krótko i gwałtownie - „hak, hak, hak" co 3 sekundy. To brzmi prosto, ale działa - i pozwala cieszyć się lotem zamiast walczyć z przeciążeniami.

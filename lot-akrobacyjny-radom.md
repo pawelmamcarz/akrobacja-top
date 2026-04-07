@@ -4,7 +4,7 @@
 # Lot akrobacyjny Radom - idealna lokalizacja
 
   
-Szukasz **lotu akrobacyjnego blisko Warszawy**? Lotnisko **Radom-Piastów (EPRP)** to najlepsza baza do akrobacji w centralnej Polsce. Zaledwie godzina jazdy od stolicy, z doskonałym dojazdem drogą ekspresową S7, przyjazna strefa powietrzna i profesjonalna infrastruktura lotniskowa. W akrobacja.top latamy na **Extra 300L SP-EKS** właśnie z tego lotniska - i mamy ku temu bardzo konkretne powody.
+Szukasz **lotu akrobacyjnego blisko Warszawy**? Lotnisko **Radom-Piastów (EPRP)** to najlepsza baza do akrobacji w centralnej Polsce. Zaledwie godzina jazdy od stolicy, z doskonałym dojazdem drogą ekspresową S7, przyjazna strefa powietrzna i profesjonalna infrastruktura lotniskowa. W akrobacja.com latamy na **Extra 300L SP-EKS** właśnie z tego lotniska - i mamy ku temu bardzo konkretne powody.
 
   
 ## Dlaczego Radom-Piastów (EPRP)?

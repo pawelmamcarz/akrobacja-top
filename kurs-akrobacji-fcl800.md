@@ -4,7 +4,7 @@
 # Kurs akrobacji FCL.800
 
   
-Masz licencję pilota **PPL(A)** i chcesz latać do góry nogami? **Kurs akrobacji FCL.800** to jedyny legalny sposób, żeby zdobyć uprawnienia do wykonywania lotów akrobacyjnych w Europie. W akrobacja.top realizujemy pełne szkolenie akrobacyjne na samolocie Extra 300L SP-EKS - jednej z najlepszych maszyn akrobacyjnych na świecie. W tym artykule wyjaśniamy, czym jest FCL.800, jakie są wymagania, jak wygląda program szkolenia i ile to kosztuje.
+Masz licencję pilota **PPL(A)** i chcesz latać do góry nogami? **Kurs akrobacji FCL.800** to jedyny legalny sposób, żeby zdobyć uprawnienia do wykonywania lotów akrobacyjnych w Europie. W akrobacja.com realizujemy pełne szkolenie akrobacyjne na samolocie Extra 300L SP-EKS - jednej z najlepszych maszyn akrobacyjnych na świecie. W tym artykule wyjaśniamy, czym jest FCL.800, jakie są wymagania, jak wygląda program szkolenia i ile to kosztuje.
 
   
 ## Czym jest FCL.800?

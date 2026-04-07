@@ -54,7 +54,7 @@ Strona Główna / Blog / Lot akrobacyjny prezent
   
     - **PDF natychmiast po zakupie** - po opłaceniu zamówienia otrzymujesz elegancki voucher w formacie PDF, gotowy do wydrukowania lub wysłania mailem. Bez czekania na kuriera.
 
-    - **Elegancki design** - voucher jest zaprojektowany w kolorystyce akrobacja.top. Ciemne tło, wyraźna typografia, zdjęcie Extra 300L SP-EKS. Wygląda premium i robi wrażenie przy wręczaniu.
+    - **Elegancki design** - voucher jest zaprojektowany w kolorystyce akrobacja.com. Ciemne tło, wyraźna typografia, zdjęcie Extra 300L SP-EKS. Wygląda premium i robi wrażenie przy wręczaniu.
 
     - **Unikalny kod AKR-XXXX** - każdy voucher posiada indywidualny kod rezerwacji. Obdarowany podaje go przy umawianiu terminu lotu i gotowe - system go rozpoznaje.
 
@@ -112,7 +112,7 @@ Strona Główna / Blog / Lot akrobacyjny prezent
 
   
 
-    Chcesz, żeby prezent wyglądał jeszcze bardziej kompletnie? Połącz voucher na lot akrobacyjny z oryginalnym merch akrobacja.top. Koszulka z grafiką Extra 300L + voucher w eleganckiej kopercie = gotowy zestaw prezentowy, który robi wrażenie jeszcze przed rozpakowaniem.
+    Chcesz, żeby prezent wyglądał jeszcze bardziej kompletnie? Połącz voucher na lot akrobacyjny z oryginalnym merch akrobacja.com. Koszulka z grafiką Extra 300L + voucher w eleganckiej kopercie = gotowy zestaw prezentowy, który robi wrażenie jeszcze przed rozpakowaniem.
   
 
   
@@ -120,7 +120,7 @@ Strona Główna / Blog / Lot akrobacyjny prezent
     
       Voucher + koszulka = kompletny zestaw
       
-Oryginalne koszulki, bluzy i czapki akrobacja.top. Idealne uzupełnienie prezentu lotniczego. Zobacz kolekcję merch &rarr;
+Oryginalne koszulki, bluzy i czapki akrobacja.com. Idealne uzupełnienie prezentu lotniczego. Zobacz kolekcję merch &rarr;
 
     
   

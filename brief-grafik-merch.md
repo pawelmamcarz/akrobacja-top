@@ -1,14 +1,14 @@
-# Brief dla grafika — akrobacja.top Merchandise
+# Brief dla grafika — akrobacja.com Merchandise
 
 ## O projekcie
-Marka: **akrobacja.top** — loty akrobacyjne samolotem Extra 300L SP-EKS
+Marka: **akrobacja.com** — loty akrobacyjne samolotem Extra 300L SP-EKS
 Kolorystyka: granat (#0A2F7C), cyan (#00E5FF), biel, czerwony (#E11E26)
 Styl: lotniczy, dynamiczny, sportowy, premium
 
 ## Co potrzebujemy
 
 ### 1. Logo główne — wersja do druku
-**Opis:** Logo akrobacja.top z samolotem Extra 300 w dynamicznej pozie (wznoszenie z dymem) + napis "AKROBACJA.TOP"
+**Opis:** Logo akrobacja.com z samolotem Extra 300 w dynamicznej pozie (wznoszenie z dymem) + napis "AKROBACJA.TOP"
 **Na podstawie:** załączony mockup (logo jest już zaprojektowane — trzeba je odwzorować wektorowo)
 
 **Pliki do dostarczenia:**
@@ -33,23 +33,23 @@ Styl: lotniczy, dynamiczny, sportowy, premium
 
 #### 3a. T-Shirt — front
 - Rozmiar druku: 30x40 cm (A3), 300 DPI = 3543x4724px
-- Grafika: duży samolot Extra 300L w dynamicznej pozie + mały napis "akrobacja.top" pod spodem
+- Grafika: duży samolot Extra 300L w dynamicznej pozie + mały napis "akrobacja.com" pod spodem
 - Wersja na ciemne tło (granat/czarny) — jasne kolory (cyan + biel)
 - Wersja na jasne tło (cyan) — ciemne kolory (granat + czarny)
 
 #### 3b. T-Shirt — tył (opcja)
 - Rozmiar: 30x40 cm, 300 DPI
-- Mniejsze logo akrobacja.top na górze (między łopatkami) + "EXTRA 300L · SP-EKS" na dole
+- Mniejsze logo akrobacja.com na górze (między łopatkami) + "EXTRA 300L · SP-EKS" na dole
 
 #### 3c. Polo — haft na piersi (lewa strona)
 - Rozmiar haftu: max 8x8 cm
-- Uproszczone logo: mały samolot + "akrobacja.top"
+- Uproszczone logo: mały samolot + "akrobacja.com"
 - Format: SVG wektorowy (drukarnia przeliczy na ściegi)
 - Max 6 kolorów (ograniczenie haftu)
 
 #### 3d. Hoodie — front
 - Rozmiar druku: 30x30 cm, 300 DPI
-- Duże logo akrobacja.top (samolot + napis)
+- Duże logo akrobacja.com (samolot + napis)
 - Wersja na granatową bluzę (jasne kolory)
 
 #### 3e. Hoodie — tył (opcja)
@@ -59,7 +59,7 @@ Styl: lotniczy, dynamiczny, sportowy, premium
 #### 3f. Kurtka Softshell — plecy
 - Rozmiar druku: 25x30 cm, 300 DPI
 - Samolot Extra 300L w locie — widok z boku/trzy-czwarte
-- Pod spodem mały napis "akrobacja.top"
+- Pod spodem mały napis "akrobacja.com"
 - Kolory: cyan + biel na szarym tle kurtki
 
 #### 3g. Kurtka Softshell — pierś (lewa)
@@ -73,7 +73,7 @@ Styl: lotniczy, dynamiczny, sportowy, premium
 
 #### 3i. Naklejki (Sticker Pack)
 - 4 różne naklejki:
-  1. Logo akrobacja.top pełne (die-cut, ok. 10x6 cm)
+  1. Logo akrobacja.com pełne (die-cut, ok. 10x6 cm)
   2. Samolot Extra 300L sylwetka (die-cut, ok. 8x5 cm)
   3. Napis "AKROBACJA.TOP" (prostokąt, ok. 10x3 cm)
   4. Znak "SP-EKS" w stylu lotniczym (die-cut, ok. 8x3 cm)
@@ -127,5 +127,5 @@ ASAP — priorytet: logo wektorowe + grafiki na T-shirt i hoodie (żeby uruchomi
 - Logo na szarym tle (JPG) — referencja logo
 
 ## Kontakt
-dto@akrobacja.top
+dto@akrobacja.com
 +48 535 535 221

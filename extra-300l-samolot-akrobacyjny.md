@@ -4,7 +4,7 @@
 # Extra 300L - najlepszy samolot akrobacyjny
 
   
-Kiedy mowa o **samolocie akrobacyjnym** klasy unlimited, jedno nazwisko pojawia się natychmiast: **Extra 300L**. To maszyna, która od ponad trzech dekad wyznacza standardy w akrobacji lotniczej na całym świecie. Piloci Red Bull Air Race, mistrzowie FAI i zespoły akrobacyjne z kilkudziesięciu krajów wybierają Extrę jako swój podstawowy samolot. W akrobacja.top latamy właśnie na Extra 300L - egzemplarz **SP-EKS** - i w tym artykule wyjaśniamy, dlaczego to najlepsza maszyna akrobacyjna, jaką możesz doświadczyć z bliska.
+Kiedy mowa o **samolocie akrobacyjnym** klasy unlimited, jedno nazwisko pojawia się natychmiast: **Extra 300L**. To maszyna, która od ponad trzech dekad wyznacza standardy w akrobacji lotniczej na całym świecie. Piloci Red Bull Air Race, mistrzowie FAI i zespoły akrobacyjne z kilkudziesięciu krajów wybierają Extrę jako swój podstawowy samolot. W akrobacja.com latamy właśnie na Extra 300L - egzemplarz **SP-EKS** - i w tym artykule wyjaśniamy, dlaczego to najlepsza maszyna akrobacyjna, jaką możesz doświadczyć z bliska.
 
   
 ## Historia Extra Aircraft - od warsztatu Waltera Extra do legendy
@@ -133,7 +133,7 @@ Extra NG zachowuje filozofię oryginału - precyzja, moc, wytrzymałość - ale 
 ## Nasz egzemplarz - SP-EKS
 
   
-W akrobacja.top latamy na **Extra 300L o znakach rejestracyjnych SP-EKS**. Ten egzemplarz ma wyjątkową historię - był wcześniej jednym z samolotów **Royal Jordanian Falcons**, królewskiego zespołu akrobacyjnego Jordanii. SP-EKS przeszedł gruntowny przegląd strukturalny i posiada aktualny **Certificate of Airworthiness (CofA)** wydany przez Urząd Lotnictwa Cywilnego. Samolot jest utrzymywany zgodnie z programem obsługi technicznej producenta - każdy element, od silnika po łożyska sterów, jest regularnie inspekcjonowany i wymieniany w wymaganych interwałach.
+W akrobacja.com latamy na **Extra 300L o znakach rejestracyjnych SP-EKS**. Ten egzemplarz ma wyjątkową historię - był wcześniej jednym z samolotów **Royal Jordanian Falcons**, królewskiego zespołu akrobacyjnego Jordanii. SP-EKS przeszedł gruntowny przegląd strukturalny i posiada aktualny **Certificate of Airworthiness (CofA)** wydany przez Urząd Lotnictwa Cywilnego. Samolot jest utrzymywany zgodnie z programem obsługi technicznej producenta - każdy element, od silnika po łożyska sterów, jest regularnie inspekcjonowany i wymieniany w wymaganych interwałach.
 
   
 SP-EKS to maszyna, na której nasz pilot - **Maciej Kulaszewski**, Mistrz Polski w akrobacji samolotowej - wykonuje zarówno loty akrobacyjne z pasażerami, jak i treningi do zawodów FAI. Samolot bazuje na lotnisku **Radom-Piastów (EPRP)** i jest dostępny do lotów zgodnie z naszym kalendarzem.
