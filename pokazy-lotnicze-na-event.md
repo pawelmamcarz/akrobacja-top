@@ -4,7 +4,7 @@
 # Pokazy lotnicze na event
 
   
-Szukasz atrakcji, która wyróżni Twój event na tle konkurencji? **Pokaz akrobacyjny samolotem Extra 300L** to coś, czego Twoi goście nigdy nie zapomną. Ryk silnika o mocy 300 KM, figury akrobacyjne wykonywane kilkadziesiąt metrów nad głowami widzów, adrenalina i emocje - to doświadczenie, które nie ma odpowiednika na rynku eventowym. W akrobacja.top organizujemy pokazy lotnicze na terenie całej Polski. W tym artykule wyjaśniamy, jak to działa, ile kosztuje i co zawiera każdy pakiet.
+Szukasz atrakcji, która wyróżni Twój event na tle konkurencji? **Pokaz akrobacyjny samolotem Extra 300L** to coś, czego Twoi goście nigdy nie zapomną. Ryk silnika o mocy 300 KM, figury akrobacyjne wykonywane kilkadziesiąt metrów nad głowami widzów, adrenalina i emocje - to doświadczenie, które nie ma odpowiednika na rynku eventowym. W akrobacja.com organizujemy pokazy lotnicze na terenie całej Polski. W tym artykule wyjaśniamy, jak to działa, ile kosztuje i co zawiera każdy pakiet.
 
   
 ## Dlaczego pokaz lotniczy to najlepsza atrakcja na event?

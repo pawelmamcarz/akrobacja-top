@@ -7,7 +7,7 @@
 **Cena lotu akrobacyjnego** w Polsce waha się od **1 999 PLN do 4 999 PLN** w zależności od wybranego pakietu, czasu trwania lotu i typu samolotu. Na rynku znajdziesz oferty na lekkich maszynach szkolnych, ale jeśli szukasz prawdziwych emocji w kokpicie dwumiejscowego samolotu akrobacyjnego klasy unlimited, to musisz liczyć się z wyższym budżetem. W tym artykule rozkładamy **cenę lotu akrobacyjnego** na czynniki pierwsze.
 
   
-W akrobacja.top latamy samolotem **Extra 300L SP-EKS** - jedną z najlepszych maszyn akrobacyjnych na świecie. Pilot, Maciej Kulaszewski, to Mistrz Polski w akrobacji samolotowej z ponad **3 000 godzin** doświadczenia w powietrzu. To ma bezpośredni wpływ na jakość i bezpieczeństwo Twojego lotu - a więc i na to, **ile kosztuje lot akrobacyjny** na najwyższym poziomie.
+W akrobacja.com latamy samolotem **Extra 300L SP-EKS** - jedną z najlepszych maszyn akrobacyjnych na świecie. Pilot, Maciej Kulaszewski, to Mistrz Polski w akrobacji samolotowej z ponad **3 000 godzin** doświadczenia w powietrzu. To ma bezpośredni wpływ na jakość i bezpieczeństwo Twojego lotu - a więc i na to, **ile kosztuje lot akrobacyjny** na najwyższym poziomie.
 
   
 ## Ceny lotów akrobacyjnych - porównanie pakietów
@@ -115,7 +115,7 @@ Ludzie, którzy polecieli z nami, mówią jedno: **to wspomnienie na całe życi
 Voucher na lot akrobacyjny to jeden z najlepszych prezentów, jakie możesz podarować. Oto jak wygląda proces zakupu:
 
   
-    - **Kup online** - zamówienie składasz przez naszą stronę akrobacja.top/lot-akrobacyjny. Cały proces trwa 2 minuty.
+    - **Kup online** - zamówienie składasz przez naszą stronę akrobacja.com/lot-akrobacyjny. Cały proces trwa 2 minuty.
 
     - **PDF natychmiast** - po płatności otrzymujesz elegancki voucher w formacie PDF na maila. Możesz go wydrukować lub przesłać cyfrowo.
 

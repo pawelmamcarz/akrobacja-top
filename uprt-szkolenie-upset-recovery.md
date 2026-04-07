@@ -4,7 +4,7 @@
 # UPRT - szkolenie z wyprowadzania z sytuacji nietypowych
 
   
-**UPRT** - Upset Prevention and Recovery Training - to szkolenie, które może uratować życie. Dosłownie. Uczy pilotów rozpoznawania, zapobiegania i wyprowadzania samolotu z sytuacji nietypowych - takich jak niekontrolowane przechyły, przeciągnięcie, korkociąg czy dezorientacja przestrzenna. W akrobacja.top prowadzimy szkolenie UPRT na samolocie Extra 300L - idealnej maszynie do tego typu treningu. Instruktorem jest **Maciej Kulaszewski**, wielokrotny Mistrz Polski w akrobacji lotniczej.
+**UPRT** - Upset Prevention and Recovery Training - to szkolenie, które może uratować życie. Dosłownie. Uczy pilotów rozpoznawania, zapobiegania i wyprowadzania samolotu z sytuacji nietypowych - takich jak niekontrolowane przechyły, przeciągnięcie, korkociąg czy dezorientacja przestrzenna. W akrobacja.com prowadzimy szkolenie UPRT na samolocie Extra 300L - idealnej maszynie do tego typu treningu. Instruktorem jest **Maciej Kulaszewski**, wielokrotny Mistrz Polski w akrobacji lotniczej.
 
   
 ## Co to jest UPRT?
@@ -116,7 +116,7 @@ W praktyce oba szkolenia mają wspólne elementy (korkociąg, przeciągnięcie, 
 ## Nasze szkolenie UPRT
 
   
-Szkolenie UPRT w **akrobacja.top** prowadzi **Maciej Kulaszewski** - instruktor z ponad 3 000 godzin nalotu, wielokrotny Mistrz Polski w akrobacji lotniczej, z doświadczeniem szkoleniowym obejmującym setki kursantów. Szkolenie realizujemy na Extra 300L SP-EKS z bazy Radom-Piastów (EPRP).
+Szkolenie UPRT w **akrobacja.com** prowadzi **Maciej Kulaszewski** - instruktor z ponad 3 000 godzin nalotu, wielokrotny Mistrz Polski w akrobacji lotniczej, z doświadczeniem szkoleniowym obejmującym setki kursantów. Szkolenie realizujemy na Extra 300L SP-EKS z bazy Radom-Piastów (EPRP).
 
   
 Program obejmuje część teoretyczną (aerodynamika sytuacji nietypowych, fizjologia, procedury recovery) i część praktyczną w powietrzu. Szczegóły dotyczące programu, czasu trwania i ceny - napisz do nas na WhatsApp, dostosujemy program do Twoich potrzeb i poziomu doświadczenia.

@@ -4,7 +4,7 @@
 # Lot akrobacyjny na kawalerski - atrakcja nr 1
 
   
-Organizujesz **wieczór kawalerski** i szukasz czegoś, co naprawdę zaskoczy pana młodego? Zapomnij o paintballu, gokartach i escape roomach. Lot akrobacyjny samolotem **Extra 300L** to atrakcja, która wynosi kawalerski na zupełnie inny poziom - dosłownie. Przeciążenia do **+6G**, beczki, pętle, loty na plecach i adrenalina, której nie da się porównać z niczym innym. W akrobacja.top organizujemy loty akrobacyjne na kawalerskie od lat i wiemy, jak zrobić to dobrze.
+Organizujesz **wieczór kawalerski** i szukasz czegoś, co naprawdę zaskoczy pana młodego? Zapomnij o paintballu, gokartach i escape roomach. Lot akrobacyjny samolotem **Extra 300L** to atrakcja, która wynosi kawalerski na zupełnie inny poziom - dosłownie. Przeciążenia do **+6G**, beczki, pętle, loty na plecach i adrenalina, której nie da się porównać z niczym innym. W akrobacja.com organizujemy loty akrobacyjne na kawalerskie od lat i wiemy, jak zrobić to dobrze.
 
   
 ## Dlaczego lot akrobacyjny na kawalerski?
@@ -37,7 +37,7 @@ Jeśli chcecie lecieć w kilka osób - nie ma problemu. Loty odbywają się jede
 ## Pakiety lotów - dopasuj do odwagi pana młodego
 
   
-W akrobacja.top oferujemy trzy pakiety, które różnią się czasem trwania i intensywnością figur:
+W akrobacja.com oferujemy trzy pakiety, które różnią się czasem trwania i intensywnością figur:
 
   
     - **Pierwszy Lot (od 1 999 PLN)** - 15 minut akrobacji, idealne wprowadzenie. Pętle, beczki, loty na plecach. Dla tych, którzy chcą spróbować i poczuć, czym jest akrobacja. Idealny wybór, jeśli pan młody nigdy nie latał akrobacyjnie.
@@ -65,7 +65,7 @@ Za dodatkowe **299 PLN** montujemy w kokpicie kamerę 360°, która nagrywa cał
 ### Merch jako pamiątka
 
   
-W naszym sklepie znajdziesz koszulki, czapki i gadżety akrobacja.top, które mogą być dodatkowym prezentem dla pana młodego lub pamiątką dla całej ekipy. Koszulka z napisem „Przeżyłem +6G na kawalerskim" to coś, czego nie kupisz nigdzie indziej.
+W naszym sklepie znajdziesz koszulki, czapki i gadżety akrobacja.com, które mogą być dodatkowym prezentem dla pana młodego lub pamiątką dla całej ekipy. Koszulka z napisem „Przeżyłem +6G na kawalerskim" to coś, czego nie kupisz nigdzie indziej.
 
   
 ## Logistyka - jak do nas dotrzeć

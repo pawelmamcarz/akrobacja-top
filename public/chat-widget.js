@@ -73,11 +73,11 @@
   panel.className = 'cw-panel';
   panel.innerHTML = `
     <div class="cw-header">
-      <div><div class="cw-header-title">akrobacja.top</div><div class="cw-header-sub">Asystent · zwykle odpowiada natychmiast</div></div>
+      <div><div class="cw-header-title">akrobacja.com</div><div class="cw-header-sub">Asystent · zwykle odpowiada natychmiast</div></div>
       <button class="cw-close" onclick="document.querySelector('.cw-panel').classList.remove('open');document.querySelector('.cw-btn').classList.remove('has-dot')">&times;</button>
     </div>
     <div class="cw-messages" id="cwMessages">
-      <div class="cw-msg cw-msg-bot">Cześć! Jestem asystentem akrobacja.top. Pytaj o loty, pokazy, sponsoring — albo pomogę wybrać pakiet.</div>
+      <div class="cw-msg cw-msg-bot">Cześć! Jestem asystentem akrobacja.com. Pytaj o loty, pokazy, sponsoring — albo pomogę wybrać pakiet.</div>
     </div>
     <div class="cw-quick" id="cwQuick">
       <button class="cw-quick-btn" onclick="cwSendQuick('Ile kosztuje lot akrobacyjny?')">Ile kosztuje lot?</button>
