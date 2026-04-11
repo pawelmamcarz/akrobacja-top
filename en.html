@@ -878,6 +878,59 @@ footer {
 }
 
 /* ═══════════════════════════════════════════════════════
+   VIDEO SHOWCASE
+═══════════════════════════════════════════════════════ */
+.video-showcase { padding: 110px 20px 100px; background: var(--black); position: relative; overflow: hidden; }
+.video-showcase::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 64px; background: linear-gradient(180deg, var(--red), transparent);
+}
+.video-showcase-inner { max-width: 1180px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+.video-showcase .section-title { color: var(--white); margin-bottom: 20px; }
+.video-showcase .accent-bar { margin: 0 auto 48px; }
+.video-frame {
+  position: relative; width: 100%; max-width: 1080px; margin: 0 auto;
+  aspect-ratio: 16/9; background: #000;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 40px 100px -24px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.03) inset;
+  cursor: pointer; overflow: hidden;
+}
+.video-frame::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,20,40,.2) 0%, transparent 40%, rgba(10,20,40,.55) 100%);
+  z-index: 1; pointer-events: none; transition: opacity .3s;
+}
+.video-frame:hover::after { opacity: .5; }
+.video-frame img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; transition: transform .9s cubic-bezier(.2,.6,.2,1);
+}
+.video-frame:hover img { transform: scale(1.035); }
+.video-play {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 104px; height: 104px; border: none; background: transparent;
+  cursor: pointer; z-index: 2; padding: 0;
+  filter: drop-shadow(0 14px 36px rgba(196,30,58,.55));
+  transition: transform .35s cubic-bezier(.2,.6,.2,1);
+}
+.video-frame:hover .video-play { transform: translate(-50%,-50%) scale(1.09); }
+.video-play svg { width: 100%; height: 100%; }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; z-index: 3; }
+.video-caption {
+  margin-top: 28px; font-family: var(--font-h); font-size: 11px; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.5);
+}
+@media (max-width: 768px) {
+  .video-showcase { padding: 72px 16px 64px; }
+  .video-play { width: 80px; height: 80px; }
+}
+@media (max-width: 480px) {
+  .video-play { width: 64px; height: 64px; }
+  .video-caption { font-size: 10px; letter-spacing: .14em; }
+}
+
+/* ═══════════════════════════════════════════════════════
    GIFT CTA SECTION
 ═══════════════════════════════════════════════════════ */
 .gift-section { background: var(--white); padding: 96px 64px; text-align: center; }
@@ -1631,6 +1684,30 @@ footer {
   <div class="benefit-item"><span class="benefit-dot"></span>Free rescheduling</div>
   <div class="benefit-item"><span class="benefit-dot"></span>PDF to your email in 60 seconds</div>
 </div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     VIDEO SHOWCASE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="video-showcase" id="video" aria-labelledby="video-title">
+  <div class="video-showcase-inner">
+    <p class="section-label reveal">See it live</p>
+    <h2 class="section-title reveal" id="video-title">This is what an<br>Extra 300L aerobatic flight looks like</h2>
+    <div class="accent-bar reveal"></div>
+    <div class="video-frame reveal" data-video="SlSr4NH2ftQ" role="button" tabindex="0" aria-label="Play video — Extra 300L aerobatic flight">
+      <img src="https://i.ytimg.com/vi/SlSr4NH2ftQ/maxresdefault.jpg"
+           alt="Extra 300L aerobatic flight — video thumbnail"
+           loading="lazy" decoding="async"
+           onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/SlSr4NH2ftQ/hqdefault.jpg'">
+      <span class="video-play" aria-hidden="true">
+        <svg viewBox="0 0 104 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="52" cy="52" r="50" fill="#C41E3A" stroke="#ffffff" stroke-width="2"/>
+          <path d="M42 34 L72 52 L42 70 Z" fill="#ffffff"/>
+        </svg>
+      </span>
+    </div>
+    <p class="video-caption reveal">Extra 300L SP-EKS · Radom-Piastów EPRP</p>
+  </div>
+</section>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      SHOP
@@ -2686,6 +2763,23 @@ footer {
         btn.setAttribute('aria-expanded', 'true');
       }
     });
+  });
+
+  /* ═══ VIDEO FACADE (lazy-load YouTube iframe on click) ═══ */
+  document.querySelectorAll('.video-frame[data-video]').forEach(frame => {
+    const load = () => {
+      const id = frame.dataset.video;
+      if (!id || frame.dataset.loaded) return;
+      frame.dataset.loaded = '1';
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+      iframe.title = 'Extra 300L aerobatic flight';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      frame.appendChild(iframe);
+    };
+    frame.addEventListener('click', load);
+    frame.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); load(); } });
   });
 
 })();
