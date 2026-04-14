@@ -516,4 +516,94 @@ Cel: **EMQ > 7.5** (Events Manager → Overview → Event Match Quality). Poniż
 
 Bez CAPI mobilne zakupy z iOS są niewidoczne dla algorytmu → kampanie się „zamykają" (algorytm optymalizuje pod widocznych konwertów, pomija segmenty). Z CAPI ujawniają się → skalują się lepiej i taniej o 20–35%.
 
+---
+
+## 15. Abandoned Cart Recovery — auto-mail z rabatem 5%
+
+### Jak działa
+
+1. Klient wypełnia formularz w modalu, klika „Przejdź do płatności" → `/api/checkout` tworzy order ze statusem `pending`, redirect do Stripe
+2. Klient **nie kończy** płatności (zamknął kartę, zmienił zdanie, rozproszył się)
+3. Po **1h od rozpoczęcia** i w oknie **do 48h** cron wywołuje `/api/cron/abandoned-checkouts`:
+   - Znajduje wszystkie `orders.status='pending'` bez `abandon_email_sent_at`
+   - Wysyła premium mail z kodem **`WRACAM5`** (−5%)
+   - Zapisuje `abandon_email_sent_at = NOW()` → idempotentnie, nie wysyła drugi raz
+4. Klient klika link w mailu → `/voucher-prezent?pkg=X&discount=WRACAM5` → modal otwiera się z auto-wpisanym kodem i widoczną przekreśloną ceną bazową
+5. Klient kończy → nowy order ze statusem `pending`, po zapłacie → `purchase` + conversion (Google Ads/Meta), oryginalny order zostaje z `status='pending'` w D1 (śmieci, ale nieszkodliwe)
+
+### Konfiguracja cron (zewnętrzny scheduler — pick one)
+
+**Opcja A: cron-job.org (darmowe, 1 min setup)**
+1. `cron-job.org` → Register → Create cronjob
+2. URL: `https://akrobacja.com/api/cron/abandoned-checkouts`
+3. Schedule: `Every 1 hour`
+4. Success criteria: HTTP 200 (response zawiera `ok:true`)
+5. Notifications: email gdy failure > 3 razy
+
+**Opcja B: GitHub Actions**
+Utwórz `.github/workflows/abandoned-cart-cron.yml`:
+```yaml
+name: Abandoned Cart Recovery
+on:
+  schedule:
+    - cron: '15 * * * *'  # co godzinę, 15 min po pełnej
+  workflow_dispatch:
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -sSf -X POST https://akrobacja.com/api/cron/abandoned-checkouts
+```
+
+**Opcja C: Cloudflare Cron Trigger** (wymaga osobnego Worker — nie Pages) — tylko jak już masz. Cloudflare Pages Functions nie obsługują cronów natywnie.
+
+### Weryfikacja po deployu
+
+1. Utwórz testowy order: wejdź na `/voucher-prezent`, kliknij „Kup voucher", wypełnij dane, kliknij „Przejdź do płatności", **zamknij Stripe checkout przed płatnością**
+2. W D1 (Cloudflare Dashboard → D1 → akrobacja-db) sprawdź:
+   ```sql
+   SELECT id, customer_email, status, created_at FROM orders WHERE status='pending' ORDER BY created_at DESC LIMIT 5;
+   ```
+3. Poczekaj 1h (albo zmień `created_at` ręcznie w D1 na datę sprzed 2h — `UPDATE orders SET created_at = datetime('now', '-2 hours') WHERE id = '...'`)
+4. Wywołaj ręcznie: `curl https://akrobacja.com/api/cron/abandoned-checkouts`
+5. Sprawdź inbox — powinien przyjść mail „Dokończ zakup ze zniżką 5%"
+6. W D1:
+   ```sql
+   SELECT id, abandon_email_sent_at FROM orders WHERE abandon_email_sent_at IS NOT NULL;
+   ```
+
+### Rozbudowa — kolejne kroki (opcjonalne)
+
+**Email sequence (3 etapy):**
+- **T+1h** — pierwszy mail (−5%, obecny)
+- **T+24h** — przypomnienie z social proof (opinie klientów, FOMO „187 osób kupiło w tym miesiącu")
+- **T+48h** — last chance, podbijamy do −10% (`OSTATNIASZANSA10`), deadline 24h
+
+Implementacja: dodać kolumnę `abandon_step INTEGER DEFAULT 0`, w cron endpointcie iterować steps jak w `welcome-emails.ts`. Expected uplift: +5–10 pp do recovery rate.
+
+**SMS recovery (T+4h):**
+Przez `SMSAPI_TOKEN` (już masz w env). Krótki: „Cześć! Twój voucher na lot akrobacyjny czeka — kod WRACAM5 (−5%) ważny 48h: akrobacja.com/voucher-prezent?discount=WRACAM5". Działa gdy checkout zbierze telefon (obecnie nie zbiera, trzeba dodać pole do modalu).
+
+**Koszty i ROI (założenia branżowe):**
+- Abandon rate voucherów na Stripe: ~60–70% (wysokie bo duża wartość + wymaga dojścia do karty)
+- Recovery rate z 1 emailem z rabatem: ~10–15% z uciekinierów
+- Przy 100 rozpoczętych checkoutach → ~65 ucieka → odzyskujemy ~7–10 → +14–20 tys. zł przychodu miesięcznie przy skali 100 checkoutów
+- Koszt: ~0 zł (Resend free tier 3 000 maili/mies., Cron free, kod rabatowy 5% z 2500 zł = 125 zł per recovered sale)
+
+### Kod rabatowy WRACAM5 — gdzie jest w systemie
+
+- **Definicja:** `functions/api/checkout.ts` → const `DISCOUNTS = { WRACAM5: { pct: 5 } }`
+- **Walidacja UI:** `public/voucher-prezent.html` → `DISCOUNTS` object, live preview przy każdej zmianie inputu
+- **Auto-fill z URL:** `?discount=WRACAM5` automatycznie wpisuje się do inputu przy otwarciu
+- **Stripe:** jeden line_item z totalAmount (zamiast 2) + opis „rabat 5% kod WRACAM5"
+- **D1:** zapisuje się w kolumnie `orders.discount_code` — można analizować skuteczność:
+  ```sql
+  SELECT discount_code, COUNT(*) as orders, SUM(amount)/100 as revenue_pln
+  FROM orders
+  WHERE status = 'paid' AND discount_code IS NOT NULL
+  GROUP BY discount_code;
+  ```
+
+Aby dodać kolejny kod — np. `URODZINY10` na kampanię urodzinową — wystarczy jedna linia w `DISCOUNTS` (serwer + klient).
+
 

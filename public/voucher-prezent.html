@@ -448,6 +448,11 @@
         <input type="checkbox" id="checkoutVideo">
         + Video 360° z lotu (+299 zł)
       </label>
+      <div class="modal-field" id="discountField" style="margin-top:4px">
+        <label for="checkoutDiscount">Kod rabatowy (opcjonalnie)</label>
+        <input type="text" id="checkoutDiscount" placeholder="np. WRACAM5" autocomplete="off" style="text-transform:uppercase;letter-spacing:.08em">
+        <p id="discountStatus" style="font-size:11px;margin-top:6px;min-height:14px;font-family:var(--font-h);font-weight:700;letter-spacing:.05em"></p>
+      </div>
       <button type="submit" class="modal-submit" id="checkoutSubmit">Przejdź do płatności →</button>
       <p class="modal-error" id="checkoutError"></p>
       <div class="modal-secure">🔒 Płatność SSL · PDF w mailu · Zwrot 14 dni</div>
@@ -462,12 +467,16 @@ const PKGS = {
   masterclass:  { name: 'Masterclass',  sub: 'Voucher PDF — 2 loty, analiza z Mistrzem', price: 4999 },
 };
 
+const DISCOUNTS = { WRACAM5: { pct: 5 } };
+
 const modal = document.getElementById('checkoutModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalSub = document.getElementById('modalSub');
 const modalPrice = document.getElementById('modalPrice');
 const pkgInput = document.getElementById('checkoutPackage');
 const videoCheck = document.getElementById('checkoutVideo');
+const discountInput = document.getElementById('checkoutDiscount');
+const discountStatus = document.getElementById('discountStatus');
 const form = document.getElementById('checkoutForm');
 const submitBtn = document.getElementById('checkoutSubmit');
 const errorEl = document.getElementById('checkoutError');
@@ -479,22 +488,43 @@ function openModal(packageId) {
   modalTitle.textContent = 'Voucher: ' + pkg.name;
   modalSub.textContent = pkg.sub;
   videoCheck.checked = false;
-  updatePrice(pkg.price);
+  updatePrice();
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
   setTimeout(() => modal.querySelector('input:not([type=hidden])').focus(), 50);
   if (typeof gtag === 'function') gtag('event', 'begin_checkout', { value: pkg.price, currency: 'PLN', items: [{ item_id: packageId, item_name: pkg.name, price: pkg.price }] });
 }
 
-function updatePrice(base) {
-  const video = videoCheck.checked ? 299 : 0;
-  modalPrice.textContent = (base + video).toLocaleString('pl-PL') + ' zł';
+function getDiscount() {
+  const code = (discountInput.value || '').trim().toUpperCase();
+  return DISCOUNTS[code] ? { code, pct: DISCOUNTS[code].pct } : null;
 }
 
-videoCheck.addEventListener('change', () => {
+function updatePrice() {
   const pkg = PKGS[pkgInput.value];
-  if (pkg) updatePrice(pkg.price);
-});
+  if (!pkg) return;
+  const video = videoCheck.checked ? 299 : 0;
+  const base = pkg.price + video;
+  const d = getDiscount();
+  if (d) {
+    const total = Math.round(base * (100 - d.pct) / 100);
+    modalPrice.innerHTML = `<span style="text-decoration:line-through;color:#7A8FA6;font-size:18px;font-weight:600;margin-right:10px">${base.toLocaleString('pl-PL')} zł</span>${total.toLocaleString('pl-PL')} zł`;
+    discountStatus.textContent = `✓ Kod ${d.code} — rabat ${d.pct}% (−${(base - total).toLocaleString('pl-PL')} zł)`;
+    discountStatus.style.color = '#00E5FF';
+  } else {
+    modalPrice.textContent = base.toLocaleString('pl-PL') + ' zł';
+    const code = (discountInput.value || '').trim();
+    if (code.length > 0) {
+      discountStatus.textContent = '✗ Nieprawidłowy kod rabatowy';
+      discountStatus.style.color = '#ff6b6b';
+    } else {
+      discountStatus.textContent = '';
+    }
+  }
+}
+
+videoCheck.addEventListener('change', updatePrice);
+discountInput.addEventListener('input', updatePrice);
 
 function closeModal() {
   modal.classList.remove('active');
@@ -510,8 +540,13 @@ document.querySelectorAll('[data-package]').forEach(btn => {
   btn.addEventListener('click', () => openModal(btn.dataset.package));
 });
 
-// auto-open from ?pkg=
-const urlPkg = new URLSearchParams(location.search).get('pkg');
+// auto-open from ?pkg= and auto-fill ?discount=
+const urlParams = new URLSearchParams(location.search);
+const urlPkg = urlParams.get('pkg');
+const urlDiscount = (urlParams.get('discount') || '').trim().toUpperCase();
+if (urlDiscount && DISCOUNTS[urlDiscount]) {
+  discountInput.value = urlDiscount;
+}
 if (urlPkg && PKGS[urlPkg]) setTimeout(() => openModal(urlPkg), 300);
 
 form.addEventListener('submit', async (e) => {
@@ -529,6 +564,7 @@ form.addEventListener('submit', async (e) => {
         customerName: document.getElementById('checkoutName').value.trim(),
         customerEmail: document.getElementById('checkoutEmail').value.trim(),
         customerNip: document.getElementById('checkoutNip').value.trim() || undefined,
+        discountCode: (discountInput.value || '').trim().toUpperCase() || undefined,
         source: 'voucher-prezent',
       }),
     });

@@ -7,7 +7,14 @@ interface CheckoutBody {
   customerName: string;
   customerEmail: string;
   customerNip?: string;
+  discountCode?: string;
 }
+
+// Valid discount codes — simple registry to avoid D1 lookup on every checkout.
+// WRACAM5 = -5% recovery discount wysyłany z abandoned cart emaila.
+const DISCOUNTS: Record<string, { pct: number }> = {
+  WRACAM5: { pct: 5 },
+};
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   try {
@@ -22,43 +29,70 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     const voucherCode = generateVoucherCode();
-    const totalAmount = pkg.price + (body.videoAddon ? VIDEO_ADDON_PRICE : 0);
+    const baseAmount = pkg.price + (body.videoAddon ? VIDEO_ADDON_PRICE : 0);
+
+    // Apply discount if valid
+    const normalizedCode = body.discountCode?.trim().toUpperCase() || '';
+    const discount = normalizedCode && DISCOUNTS[normalizedCode];
+    const totalAmount = discount
+      ? Math.round(baseAmount * (100 - discount.pct) / 100)
+      : baseAmount;
+    const appliedDiscountCode = discount ? normalizedCode : null;
 
     // Create order in D1
     const orderId = crypto.randomUUID();
     const expiresAt = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
 
+    // Ensure columns exist (cheap, idempotent)
+    try { await ctx.env.DB.prepare(`ALTER TABLE orders ADD COLUMN abandon_email_sent_at TEXT`).run(); } catch {}
+    try { await ctx.env.DB.prepare(`ALTER TABLE orders ADD COLUMN discount_code TEXT`).run(); } catch {}
+
     await ctx.env.DB.prepare(`
-      INSERT INTO orders (id, voucher_code, package_id, video_addon, customer_name, customer_email, customer_nip, amount, status, created_at, expires_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', datetime('now'), ?)
+      INSERT INTO orders (id, voucher_code, package_id, video_addon, customer_name, customer_email, customer_nip, amount, status, created_at, expires_at, discount_code)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', datetime('now'), ?, ?)
     `).bind(
       orderId, voucherCode, body.packageId,
       body.videoAddon ? 1 : 0,
       body.customerName, body.customerEmail, body.customerNip || null,
-      totalAmount, expiresAt,
+      totalAmount, expiresAt, appliedDiscountCode,
     ).run();
 
     // Create Stripe Checkout session via fetch
-    const lineItems: Array<Record<string, unknown>> = [
-      {
+    const lineItems: Array<Record<string, unknown>> = [];
+
+    if (discount) {
+      // Single line item with total after discount — simpler display, avoids negative line_items (unsupported).
+      const parts = [`Voucher "${pkg.name}" — lot akrobacyjny Extra 300L`];
+      if (body.videoAddon) parts.push('+ Video 360°');
+      parts.push(`(rabat ${discount.pct}% kod ${appliedDiscountCode})`);
+      lineItems.push({
+        price_data: {
+          currency: 'pln',
+          product_data: { name: parts.join(' ') },
+          unit_amount: totalAmount,
+        },
+        quantity: 1,
+      });
+    } else {
+      lineItems.push({
         price_data: {
           currency: 'pln',
           product_data: { name: `Voucher "${pkg.name}" — lot akrobacyjny Extra 300L` },
           unit_amount: pkg.price,
         },
         quantity: 1,
-      },
-    ];
-
-    if (body.videoAddon) {
-      lineItems.push({
-        price_data: {
-          currency: 'pln',
-          product_data: { name: 'Video 360° z lotu akrobacyjnego' },
-          unit_amount: VIDEO_ADDON_PRICE,
-        },
-        quantity: 1,
       });
+
+      if (body.videoAddon) {
+        lineItems.push({
+          price_data: {
+            currency: 'pln',
+            product_data: { name: 'Video 360° z lotu akrobacyjnego' },
+            unit_amount: VIDEO_ADDON_PRICE,
+          },
+          quantity: 1,
+        });
+      }
     }
 
     const params = new URLSearchParams();
