@@ -77,15 +77,21 @@ export const onRequest: PagesFunction = async (context) => {
           `<link rel="canonical" href="${canonicalUrl}">` +
           (noindex ? `<meta name="robots" content="noindex, nofollow">` : '');
 
-        // Global gtag.js loader — GA4 + Google Ads
+        // Global gtag.js loader — GA4 + Google Ads with Consent Mode v2
         if (gaId || adsId) {
           const tagId = gaId || adsId;
           headInject +=
-            `<script async src="https://www.googletagmanager.com/gtag/js?id=${tagId}"></script>` +
-            `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());` +
+            // Consent Mode v2 — defaults DENIED (EU region).
+            // Must run BEFORE gtag.js loads. Banner updates via gtag('consent','update',…).
+            `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}` +
+            `gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500,region:['EU','EEA','PL']});` +
+            `gtag('set','url_passthrough',true);` +
+            `gtag('set','ads_data_redaction',true);` +
+            `gtag('js',new Date());` +
             (gaId ? `gtag('config','${gaId}');` : '') +
             (adsId ? `gtag('config','${adsId}');` : '') +
-            `</script>`;
+            `</script>` +
+            `<script async src="https://www.googletagmanager.com/gtag/js?id=${tagId}"></script>`;
         }
 
         el.prepend(headInject, { html: true });
@@ -106,6 +112,16 @@ export const onRequest: PagesFunction = async (context) => {
       },
     });
   }
+
+  // Cookie consent banner (always — also when gtag is absent, for future-proofing)
+  rewriter.on('body', {
+    element(el) {
+      el.append(
+        `<script src="/assets/consent-banner.js" defer></script>`,
+        { html: true },
+      );
+    },
+  });
 
   // Inject Cloudflare Web Analytics beacon before </body>
   if (cfAnalyticsToken) {
