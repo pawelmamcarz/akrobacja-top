@@ -272,5 +272,137 @@ W martwym sezonie (styczeń, luty, sierpień) → redukcja budżetu do 40%, skup
 - [ ] Conversion action „Purchase" utworzona w Google Ads
 - [ ] Env vars w Cloudflare Pages: `GA_MEASUREMENT_ID`, `GOOGLE_ADS_ID`, `GOOGLE_ADS_PURCHASE_LABEL`
 - [ ] Tag Assistant (Chrome) — test na `/voucher-prezent` (view) i `/sukces?code=AKR-TEST-TEST&amount=1999&pkg=pierwszy_lot` (purchase)
-- [ ] Remarketing audience w Google Ads: `Visitors of /voucher-prezent who did NOT visit /sukces` (7/14/30/90 dni)
+- [ ] Remarketing audiences utworzone (§ 11 poniżej)
 - [ ] Meta Pixel id + Conversions API (opcjonalnie, jeśli ruszamy FB/IG)
+
+---
+
+## 11. Remarketing audiences — utwórz wszystkie w Google Ads
+
+Google Ads → **Tools → Audience manager → Data segments → New → Website visitors**
+
+Kod wstrzykuje już `user_properties.page_type` (home / voucher_landing / product_page / blog / purchase_confirmation) oraz eventy `view_item_list`, `begin_checkout`, `purchase`. Poniższe listy oprą się na tych sygnałach.
+
+### Lista 1: „Voucher — Cart Abandoners" (priorytet #1 — największy ROI)
+
+| Pole | Wartość |
+|------|---------|
+| Typ | Website visitors |
+| Include | Event `begin_checkout` w ciągu 30 dni |
+| Exclude | Event `purchase` w ciągu 30 dni |
+| Membership duration | 30 dni |
+
+**Użycie:** Osobna kampania **Search — Remarketing Cart Abandoners** z bid +50%, headline „Dokończ zakup vouchera — PDF w 3 minuty", oferta rabatu 5% (kod `WRACAM5` przez webhook Stripe coupon albo manualna obsługa).
+
+### Lista 2: „Voucher Viewers — All"
+
+| Pole | Wartość |
+|------|---------|
+| Include | `page_type` equals `voucher_landing` OR `product_page` |
+| Duration | 60 dni |
+
+**Użycie:** PMax audience signal, Display remarketing.
+
+### Lista 3: „Voucher Viewers — 7-day Hot"
+
+| Pole | Wartość |
+|------|---------|
+| Include | `page_type` equals `voucher_landing` OR `product_page` |
+| Duration | 7 dni |
+
+**Użycie:** Najintensywniejszy retargeting (wyższe stawki, +80% bid), cały Display + YouTube preroll.
+
+### Lista 4: „Blog Readers — Cross-Sell"
+
+| Pole | Wartość |
+|------|---------|
+| Include | `page_type` equals `blog` |
+| Exclude | `page_type` equals `purchase_confirmation` |
+| Duration | 90 dni |
+
+**Użycie:** Miękka kampania Display z USP voucherem — czytali o akrobacji, nie kupili. Bid -30%.
+
+### Lista 5: „Past Purchasers — Repeat/Cross-Sell"
+
+| Pole | Wartość |
+|------|---------|
+| Include | Event `purchase` |
+| Duration | 540 dni (18 mies.) |
+
+**Użycie:**
+- **Exclude** z kampanii akwizycyjnych (Search Generic, PMax) — żeby nie płacić za klientów ponownie
+- **Include** w kampanii „Następny lot" (po 6 miesiącach) z headline „Dla niego było za mało? Masterclass czeka"
+
+### Lista 6: „Gift Intent — High Value"
+
+| Pole | Wartość |
+|------|---------|
+| Include | Event `begin_checkout` WHERE `value >= 2999` |
+| Exclude | `purchase` |
+| Duration | 60 dni |
+
+**Użycie:** Ludzie którzy chcieli kupić Adrenalinę lub Masterclass — tu bid ×2.5, oferta „zadzwoń a pomożemy" w kreacji.
+
+### Lista 7: „Kalendarz/Pokazy Visitors"
+
+| Pole | Wartość |
+|------|---------|
+| Include | `page_type` equals `calendar` OR `shows` |
+| Duration | 30 dni |
+
+**Użycie:** Ciepły leads — zainteresowani terminami, być może nie wiedzieli o voucherze. Display z USP „nie wiesz kiedy? daj voucher".
+
+---
+
+## 12. Plan Day 1–30 — uruchamianie krok po kroku
+
+### Dzień 1 (dziś, po konfiguracji konwersji):
+- [ ] Test `/sukces?code=AKR-TEST-TEST&amount=1999&pkg=pierwszy_lot` w Tag Assistant → potwierdź purchase + conversion
+- [ ] Włącz **Search Generic** — budżet 40 zł/dzień, Max Clicks (bez Max Conversions dopóki 0 konwersji)
+- [ ] Włącz **PMax** — budżet 50 zł/dzień, Max Conversion Value (bez tROAS dopóki brak danych)
+- [ ] Utwórz wszystkie 7 audiences (§ 11) — potrzebują 30 członków żeby się aktywować
+
+### Dzień 3–7:
+- [ ] Audit search terms w Search Generic — dodaj co najmniej 10 negatives do listy
+- [ ] Sprawdź że audiences się budują (Tools → Audience Manager → widok Size)
+- [ ] PMax — dostosuj Asset Group: usuń headliny z CTR < 1%, dodaj nowe warianty
+
+### Dzień 7–14:
+- [ ] Po 10–15 konwersjach → przełącz Search Generic na **Max Conversions** (automatyczne stawki)
+- [ ] Włącz **Search Remarketing Cart Abandoners** — budżet 20 zł/dzień, bid +50%
+- [ ] Włącz **Search Prezent** (tylko jeśli budżet na to pozwala)
+
+### Dzień 14–21:
+- [ ] Po 20–30 konwersjach → przełącz na **tCPA 150 zł** (Search) i **tROAS 400%** (PMax)
+- [ ] Enhanced Conversions w Google Ads → sprawdź coverage (powinno być > 70% po 2 tygodniach)
+- [ ] Porównaj Conversion Paths w GA4 — który kanał ile daje
+
+### Dzień 21–30:
+- [ ] Skalowanie: najlepsza kampania — budżet ×2
+- [ ] Ucinamy najsłabszą o 50% lub pauzujemy
+- [ ] Tworzymy kreację wideo z YouTube `SlSr4NH2ftQ` (16:9, 9:16, 1:1) — dodajemy do PMax
+- [ ] Jeśli CAC < 400 zł przy AOV 2500 zł → dokładamy budżet, odpalamy **Demand Gen** campaign
+
+### Kryteria sukcesu po 30 dniach:
+- ROAS ≥ 4x (tzn. 1 zł → 4 zł przychodu)
+- CAC ≤ 500 zł
+- Min. 20 konwersji (daje podstawę do pełnej automatyzacji bid)
+- Min. 5 list remarketingowych aktywnych (size > 1000)
+
+---
+
+## 13. Enhanced Conversions — co się dzieje pod spodem
+
+Kod automatycznie:
+1. **Checkout form submit** (w `voucher-prezent.html` lub `lot-akrobacyjny.html`) → `ecommerce-events.js` zapisuje email + imię do `sessionStorage` (klucz `akro_checkout_info`)
+2. **Redirect do Stripe** → użytkownik płaci
+3. **Redirect na `/sukces?code=X&amount=Y&pkg=Z`** → middleware wstrzykuje skrypt który:
+   - Czyta `sessionStorage.akro_checkout_info`
+   - Wysyła `gtag('set', 'user_data', { email, address: { first_name, last_name } })` — Google hashuje to lokalnie (SHA-256)
+   - Dopiero potem odpala `gtag('event', 'purchase', …)` i `gtag('event', 'conversion', …)`
+   - Czyści sessionStorage
+
+**Efekt:** Atrybucja wzrasta o 10–15%, bo Google potrafi połączyć zakup z adwords-clikiem nawet gdy cookie GCLID zostało stracone (inne urządzenie, ITP, browser clean).
+
+Weryfikacja po 2 tygodniach: Google Ads → Conversions → Purchase → **Enhanced conversions** tab → powinieneś widzieć coverage > 70%.
+

@@ -98,14 +98,23 @@ export const onRequest: PagesFunction = async (context) => {
       },
     });
 
-  // /sukces — fire purchase event with value from URL (?amount=…&code=…&pkg=…)
+  // /sukces — fire purchase + Enhanced Conversions from URL (?amount=…&code=…&pkg=…)
   if (path === '/sukces' && (gaId || adsId)) {
     rewriter.on('body', {
       element(el) {
         el.append(
-          `<script>(function(){var p=new URLSearchParams(location.search);var a=parseFloat(p.get('amount'))||0;var c=p.get('code')||'';var pk=p.get('pkg')||'';if(!a||!window.gtag)return;` +
+          `<script>(function(){` +
+          `var p=new URLSearchParams(location.search);` +
+          `var a=parseFloat(p.get('amount'))||0;` +
+          `var c=p.get('code')||'';` +
+          `var pk=p.get('pkg')||'';` +
+          `if(!a||!window.gtag)return;` +
+          // Enhanced Conversions — pull email/name from sessionStorage (set at checkout)
+          `var ud=null;try{var raw=sessionStorage.getItem('akro_checkout_info');if(raw){var o=JSON.parse(raw);if(o&&o.email){ud={email:o.email,address:{first_name:o.firstName||'',last_name:o.lastName||''}}}}}catch(e){}` +
+          `if(ud){gtag('set','user_data',ud);}` +
           (gaId ? `gtag('event','purchase',{transaction_id:c,value:a,currency:'PLN',items:[{item_id:pk,item_name:'Voucher '+pk,price:a,quantity:1}]});` : '') +
           (adsId && adsPurchaseLabel ? `gtag('event','conversion',{send_to:'${adsId}/${adsPurchaseLabel}',value:a,currency:'PLN',transaction_id:c});` : '') +
+          `try{sessionStorage.removeItem('akro_checkout_info');}catch(e){}` +
           `})();</script>`,
           { html: true },
         );
@@ -113,11 +122,12 @@ export const onRequest: PagesFunction = async (context) => {
     });
   }
 
-  // Cookie consent banner (always — also when gtag is absent, for future-proofing)
+  // Cookie consent banner + e-commerce events (remarketing, GA4 audiences)
   rewriter.on('body', {
     element(el) {
       el.append(
-        `<script src="/assets/consent-banner.js" defer></script>`,
+        `<script src="/assets/consent-banner.js" defer></script>` +
+        `<script src="/assets/ecommerce-events.js" defer></script>`,
         { html: true },
       );
     },
