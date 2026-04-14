@@ -59,7 +59,11 @@ export const onRequest: PagesFunction = async (context) => {
   const noindex = NOINDEX_PATHS.has(path);
 
   // Cloudflare Web Analytics — inject beacon if token is configured
-  const cfAnalyticsToken = (context.env as Record<string, string>).CF_ANALYTICS_TOKEN;
+  const env = context.env as unknown as Record<string, string>;
+  const cfAnalyticsToken = env.CF_ANALYTICS_TOKEN;
+  const gaId = env.GA_MEASUREMENT_ID;              // e.g. "G-XXXXXXXXXX"
+  const adsId = env.GOOGLE_ADS_ID;                 // e.g. "AW-123456789"
+  const adsPurchaseLabel = env.GOOGLE_ADS_PURCHASE_LABEL; // conversion label for purchase
 
   const rewriter = new HTMLRewriter()
     // Remove existing canonical tags
@@ -69,13 +73,39 @@ export const onRequest: PagesFunction = async (context) => {
     // Inject after <head>
     .on('head', {
       element(el) {
-        el.prepend(
+        let headInject =
           `<link rel="canonical" href="${canonicalUrl}">` +
-          (noindex ? `<meta name="robots" content="noindex, nofollow">` : ''),
+          (noindex ? `<meta name="robots" content="noindex, nofollow">` : '');
+
+        // Global gtag.js loader — GA4 + Google Ads
+        if (gaId || adsId) {
+          const tagId = gaId || adsId;
+          headInject +=
+            `<script async src="https://www.googletagmanager.com/gtag/js?id=${tagId}"></script>` +
+            `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());` +
+            (gaId ? `gtag('config','${gaId}');` : '') +
+            (adsId ? `gtag('config','${adsId}');` : '') +
+            `</script>`;
+        }
+
+        el.prepend(headInject, { html: true });
+      },
+    });
+
+  // /sukces — fire purchase event with value from URL (?amount=…&code=…&pkg=…)
+  if (path === '/sukces' && (gaId || adsId)) {
+    rewriter.on('body', {
+      element(el) {
+        el.append(
+          `<script>(function(){var p=new URLSearchParams(location.search);var a=parseFloat(p.get('amount'))||0;var c=p.get('code')||'';var pk=p.get('pkg')||'';if(!a||!window.gtag)return;` +
+          (gaId ? `gtag('event','purchase',{transaction_id:c,value:a,currency:'PLN',items:[{item_id:pk,item_name:'Voucher '+pk,price:a,quantity:1}]});` : '') +
+          (adsId && adsPurchaseLabel ? `gtag('event','conversion',{send_to:'${adsId}/${adsPurchaseLabel}',value:a,currency:'PLN',transaction_id:c});` : '') +
+          `})();</script>`,
           { html: true },
         );
       },
     });
+  }
 
   // Inject Cloudflare Web Analytics beacon before </body>
   if (cfAnalyticsToken) {

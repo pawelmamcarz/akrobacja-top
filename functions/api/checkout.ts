@@ -67,7 +67,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     params.append('metadata[order_id]', orderId);
     params.append('metadata[voucher_code]', voucherCode);
     const siteUrl = ctx.env.SITE_URL || 'https://akrobacja.com';
-    params.append('success_url', `${siteUrl}/sukces?code=${voucherCode}`);
+    params.append('success_url', `${siteUrl}/sukces?code=${voucherCode}&pkg=${body.packageId}&amount=${totalAmount / 100}`);
     params.append('cancel_url', `${siteUrl}/#sklep`);
     params.append('locale', 'pl');
     params.append('payment_method_types[0]', 'card');
