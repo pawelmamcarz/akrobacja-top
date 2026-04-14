@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
+  <channel>
+    <title>akrobacja.com — Vouchery na Loty Akrobacyjne</title>
+    <link>https://akrobacja.com/voucher-prezent</link>
+    <description>Vouchery PDF na loty akrobacyjne Extra 300L. Prezent natychmiastowy, ważny 12 miesięcy.</description>
+
+    <item>
+      <g:id>AKRO-V-PIERWSZY</g:id>
+      <g:title>Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min)</g:title>
+      <g:description>Voucher PDF na pierwszy lot akrobacyjny samolotem Extra 300L SP-EKS. 15 minut w powietrzu, podstawowe figury akrobacyjne (beczki, loopingi, loty nożowe). Z pilotem o 3 000+h doświadczenia. Lotnisko Radom-Piastów. Voucher ważny 12 miesięcy, dostarczany mailem natychmiast po zakupie. Idealny prezent.</g:description>
+      <g:link>https://akrobacja.com/voucher-prezent?pkg=pierwszy_lot</g:link>
+      <g:image_link>https://akrobacja.com/samolot-top-web.jpg</g:image_link>
+      <g:additional_image_link>https://akrobacja.com/cockpit-closeup.jpg</g:additional_image_link>
+      <g:additional_image_link>https://akrobacja.com/hero-takeoff.jpg</g:additional_image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>1999.00 PLN</g:price>
+      <g:brand>akrobacja.com</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>53</g:google_product_category>
+      <g:product_type>Vouchery &gt; Loty akrobacyjne &gt; Pierwszy Lot</g:product_type>
+      <g:shipping>
+        <g:country>PL</g:country>
+        <g:service>Email (PDF)</g:service>
+        <g:price>0.00 PLN</g:price>
+      </g:shipping>
+      <g:custom_label_0>pierwszy_lot</g:custom_label_0>
+      <g:custom_label_1>entry</g:custom_label_1>
+      <g:custom_label_2>gift</g:custom_label_2>
+    </item>
+
+    <item>
+      <g:id>AKRO-V-ADRENALINA</g:id>
+      <g:title>Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G)</g:title>
+      <g:description>Voucher PDF na lot akrobacyjny Adrenalina samolotem Extra 300L SP-EKS. 20 minut pełnego programu akrobacyjnego do +6G. Z pilotem o 3 000+h doświadczenia. Lotnisko Radom-Piastów. Voucher ważny 12 miesięcy, dostarczany mailem natychmiast po zakupie.</g:description>
+      <g:link>https://akrobacja.com/voucher-prezent?pkg=adrenalina</g:link>
+      <g:image_link>https://akrobacja.com/samolot-top-web.jpg</g:image_link>
+      <g:additional_image_link>https://akrobacja.com/cockpit-closeup.jpg</g:additional_image_link>
+      <g:additional_image_link>https://akrobacja.com/hero-takeoff.jpg</g:additional_image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>2999.00 PLN</g:price>
+      <g:brand>akrobacja.com</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>53</g:google_product_category>
+      <g:product_type>Vouchery &gt; Loty akrobacyjne &gt; Adrenalina</g:product_type>
+      <g:shipping>
+        <g:country>PL</g:country>
+        <g:service>Email (PDF)</g:service>
+        <g:price>0.00 PLN</g:price>
+      </g:shipping>
+      <g:custom_label_0>adrenalina</g:custom_label_0>
+      <g:custom_label_1>mid</g:custom_label_1>
+      <g:custom_label_2>gift</g:custom_label_2>
+    </item>
+
+    <item>
+      <g:id>AKRO-V-MASTERCLASS</g:id>
+      <g:title>Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)</g:title>
+      <g:description>Voucher PDF na Masterclass — sesja szkoleniowa z Mistrzem Świata akrobacji. Do 50 minut w powietrzu (2 loty), figury zaawansowane, pełny debriefing z analizą lotu. Samolot Extra 300L SP-EKS. Lotnisko Radom-Piastów. Voucher ważny 12 miesięcy.</g:description>
+      <g:link>https://akrobacja.com/voucher-prezent?pkg=masterclass</g:link>
+      <g:image_link>https://akrobacja.com/samolot-top-web.jpg</g:image_link>
+      <g:additional_image_link>https://akrobacja.com/cockpit-closeup.jpg</g:additional_image_link>
+      <g:additional_image_link>https://akrobacja.com/pilot-cockpit.jpg</g:additional_image_link>
+      <g:availability>in_stock</g:availability>
+      <g:price>4999.00 PLN</g:price>
+      <g:brand>akrobacja.com</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>no</g:identifier_exists>
+      <g:google_product_category>53</g:google_product_category>
+      <g:product_type>Vouchery &gt; Loty akrobacyjne &gt; Masterclass</g:product_type>
+      <g:shipping>
+        <g:country>PL</g:country>
+        <g:service>Email (PDF)</g:service>
+        <g:price>0.00 PLN</g:price>
+      </g:shipping>
+      <g:custom_label_0>masterclass</g:custom_label_0>
+      <g:custom_label_1>premium</g:custom_label_1>
+      <g:custom_label_2>pilot</g:custom_label_2>
+    </item>
+
+  </channel>
+</rss>
