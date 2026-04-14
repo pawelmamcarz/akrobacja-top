@@ -64,6 +64,7 @@ export const onRequest: PagesFunction = async (context) => {
   const gaId = env.GA_MEASUREMENT_ID;              // e.g. "G-XXXXXXXXXX"
   const adsId = env.GOOGLE_ADS_ID || 'AW-928813824'; // Google Ads tag (hardcoded fallback)
   const adsPurchaseLabel = env.GOOGLE_ADS_PURCHASE_LABEL; // conversion label for purchase
+  const metaPixelId = env.META_PIXEL_ID;           // e.g. "1234567890123456"
 
   const rewriter = new HTMLRewriter()
     // Remove existing canonical tags
@@ -94,12 +95,23 @@ export const onRequest: PagesFunction = async (context) => {
             `<script async src="https://www.googletagmanager.com/gtag/js?id=${tagId}"></script>`;
         }
 
+        // Meta Pixel (Facebook/Instagram) — respects consent (denied by default, banner grants)
+        if (metaPixelId) {
+          headInject +=
+            `<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');` +
+            `fbq('consent','revoke');` +
+            `fbq('init','${metaPixelId}');` +
+            `fbq('track','PageView');` +
+            `</script>` +
+            `<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1"/></noscript>`;
+        }
+
         el.prepend(headInject, { html: true });
       },
     });
 
   // /sukces — fire purchase + Enhanced Conversions from URL (?amount=…&code=…&pkg=…)
-  if (path === '/sukces' && (gaId || adsId)) {
+  if (path === '/sukces' && (gaId || adsId || metaPixelId)) {
     rewriter.on('body', {
       element(el) {
         el.append(
@@ -108,12 +120,20 @@ export const onRequest: PagesFunction = async (context) => {
           `var a=parseFloat(p.get('amount'))||0;` +
           `var c=p.get('code')||'';` +
           `var pk=p.get('pkg')||'';` +
-          `if(!a||!window.gtag)return;` +
+          `if(!a)return;` +
           // Enhanced Conversions — pull email/name from sessionStorage (set at checkout)
           `var ud=null;try{var raw=sessionStorage.getItem('akro_checkout_info');if(raw){var o=JSON.parse(raw);if(o&&o.email){ud={email:o.email,address:{first_name:o.firstName||'',last_name:o.lastName||''}}}}}catch(e){}` +
-          `if(ud){gtag('set','user_data',ud);}` +
-          (gaId ? `gtag('event','purchase',{transaction_id:c,value:a,currency:'PLN',items:[{item_id:pk,item_name:'Voucher '+pk,price:a,quantity:1}]});` : '') +
-          (adsId && adsPurchaseLabel ? `gtag('event','conversion',{send_to:'${adsId}/${adsPurchaseLabel}',value:a,currency:'PLN',transaction_id:c});` : '') +
+          (gaId || adsId ? (
+            `if(window.gtag){` +
+            `if(ud){gtag('set','user_data',ud);}` +
+            (gaId ? `gtag('event','purchase',{transaction_id:c,value:a,currency:'PLN',items:[{item_id:pk,item_name:'Voucher '+pk,price:a,quantity:1}]});` : '') +
+            (adsId && adsPurchaseLabel ? `gtag('event','conversion',{send_to:'${adsId}/${adsPurchaseLabel}',value:a,currency:'PLN',transaction_id:c});` : '') +
+            `}`
+          ) : '') +
+          (metaPixelId ? (
+            // Meta Pixel Purchase — eventID matches CAPI for dedup
+            `if(window.fbq){fbq('track','Purchase',{value:a,currency:'PLN',content_ids:[pk],content_type:'product',content_name:'Voucher '+pk,num_items:1},{eventID:'purchase_'+c});}`
+          ) : '') +
           `try{sessionStorage.removeItem('akro_checkout_info');}catch(e){}` +
           `})();</script>`,
           { html: true },

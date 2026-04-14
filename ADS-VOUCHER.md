@@ -406,3 +406,114 @@ Kod automatycznie:
 
 Weryfikacja po 2 tygodniach: Google Ads → Conversions → Purchase → **Enhanced conversions** tab → powinieneś widzieć coverage > 70%.
 
+---
+
+## 14. Meta Ads (FB/IG) — Pixel + Conversions API
+
+Kod już wszystko wstrzykuje automatycznie po podpięciu ID. Dwa kanały danych:
+- **Pixel (client-side)** — śledzi w przeglądarce, blokowany przez iOS 14+ ATT i blokery (~35–40% strat)
+- **CAPI (server-side)** — wysyłka z webhooka Stripe, niezależna od przeglądarki → odzyskuje te stracone ~40%
+
+Obie strony używają **tego samego `event_id`** (`purchase_{voucherCode}`) → Meta automatycznie deduplikuje, nie liczy podwójnie.
+
+### Krok 1 — Business Manager
+1. `business.facebook.com` → utwórz Business Account (jeśli nie masz)
+2. Events Manager → **Connect Data Sources → Web → Pixel** → nazwa „akrobacja.com" → skopiuj **Pixel ID** (15-16 cyfr)
+
+### Krok 2 — Token CAPI
+1. Events Manager → Settings → **Conversions API → Generate access token**
+2. Skopiuj token (rozpoczyna się od `EAA…`, długi)
+3. **Zachowaj bezpiecznie** — nie commituj do repo
+
+### Krok 3 — Env Vars w Cloudflare Pages
+Settings → Environment Variables (Production):
+
+```
+META_PIXEL_ID       = 1234567890123456
+META_CAPI_TOKEN     = EAAxxxxxxxxxxxxxx…
+```
+
+**Opcjonalnie (do testów):**
+```
+META_TEST_EVENT_CODE = TEST12345
+```
+Przy tym evencie CAPI pokazuje się w Events Manager → Test Events tab (nie trafia do audiences). Usuń po weryfikacji.
+
+→ Redeploy Pages (kolejny push albo manualny).
+
+### Krok 4 — Weryfikacja
+1. Incognito → `https://akrobacja.com/voucher-prezent` → kliknij „Kup voucher"
+2. Events Manager → **Test Events** (jeśli ustawiłeś test code) → powinieneś zobaczyć:
+   - `PageView` (client)
+   - `ViewContent` (client, kategoria Voucher)
+   - `InitiateCheckout` (client, value=2999 PLN)
+3. Rzeczywisty zakup → `Purchase` event z **dwoma źródłami: Browser + Server**, dedupe status: `Deduplicated`
+
+### Krok 5 — Kampanie Meta
+
+**Struktura:**
+
+| Kampania | Cel | Budżet start | Audience |
+|----------|-----|--------------|----------|
+| Meta — Advantage+ Shopping | Sales / Purchase | 30 zł/dzień | AI pełny auto (feed GMC jeśli podpięty, w przeciwnym razie landing /voucher-prezent) |
+| Meta — Retargeting Cart Abandon | Sales / Purchase | 20 zł/dzień | Custom Audience: `InitiateCheckout` minus `Purchase` 30d |
+| Meta — Lookalike | Sales / Purchase | 30 zł/dzień | 1% Lookalike od Purchase audience (po ≥ 50 konwersjach) |
+
+**Kreacje (3 warianty po 1080×1080 i 1080×1920):**
+
+1. **Emocjonalny** — zdjęcie z lotu / hero takeoff + text overlay „Prezent, którego NIE ZAPOMNI"
+2. **Produktowy** — kokpit + 3 pakiety z cenami „Voucher od 1999 zł · PDF w mailu"
+3. **Video** — clip z YouTube `SlSr4NH2ftQ` (first 15s) + CTA „Kup voucher →"
+
+**Primary text (body):**
+```
+Kup voucher na lot akrobacyjny Extra 300L.
+PDF w mailu w kilka minut. Ważny 12 miesięcy.
+Pilot z 3 000+ h doświadczenia — 187 opinii 4.9/5.
+
+Od 1999 zł. Zero logistyki. Ty kupujesz, on leci.
+```
+
+**Headline:** `Lot Akrobacyjny Extra 300L · Voucher PDF`
+**Description:** `Idealny prezent dla faceta. Od 1999 zł.`
+**CTA:** `Shop Now` (Sklep teraz)
+**URL:** `https://akrobacja.com/voucher-prezent?utm_source=meta&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}`
+
+### Krok 6 — Custom Audiences Meta (odpowiedniki Google)
+
+Events Manager → Audiences → Create → Custom Audience → Website:
+
+- **Cart Abandoners** — „People who triggered `InitiateCheckout`" in last 30d, EXCLUDE „People who triggered `Purchase`" in last 30d → duration 30d
+- **Voucher Viewers All** — `ViewContent` gdzie `content_category = Voucher`, duration 60d
+- **Hot Viewers** — wszyscy co byli na `/voucher-prezent` w 7d
+- **Blog Readers** — URL contains `/blog/`, duration 90d, EXCLUDE Purchase
+- **Past Purchasers** — `Purchase`, duration 180d (exclude z akwizycji, include w cross-sell)
+
+**Lookalike** (po ≥ 50 konwersjach):
+- 1% LAL od Past Purchasers (PL) — najciasniejszy, najlepszy do skalowania
+- 1–3% LAL od Cart Abandoners (backup)
+
+### Krok 7 — Share of budget
+
+Po 30 dniach z danymi:
+
+| Kanał | Przy ROAS 4x+ | Przy ROAS 2–4x | Przy ROAS < 2x |
+|-------|---------------|----------------|-----------------|
+| Google Search + PMax | 60% budżetu | 50% | 40% |
+| Meta (FB/IG) | 30% | 35% | 20% |
+| Remarketing (wszędzie) | 10% | 15% | 40% (ratujemy co się da) |
+
+### Dlaczego CAPI jest kluczowe dla akrobacji:
+
+1. **iOS 14.5+ ATT** — ~40% userów blokuje Pixel. CAPI to omija.
+2. **Długa ścieżka konwersji** — voucher 2500 zł to nie impuls. Średnio 3–7 wizyt w 7 dniach. Pixel traci cookie pomiędzy wizytami, CAPI łączy przez email/imię.
+3. **Mobile-first** — 70% ruchu z urządzeń mobilnych (IG Reels). iOS ogranicza przeglądarkowe śledzenie bardziej niż Android.
+4. **Dedup** — dzięki `event_id` Meta łączy Browser + Server event w jeden → poprawia Event Match Quality (EMQ).
+
+Cel: **EMQ > 7.5** (Events Manager → Overview → Event Match Quality). Poniżej 6.5 → sprawdź, czy CAPI wysyła `em`, `fn`, `ln`, `country`.
+
+### Dlaczego nie Pixel sam, bez CAPI:
+
+Bez CAPI mobilne zakupy z iOS są niewidoczne dla algorytmu → kampanie się „zamykają" (algorytm optymalizuje pod widocznych konwertów, pomija segmenty). Z CAPI ujawniają się → skalują się lepiej i taniej o 20–35%.
+
+

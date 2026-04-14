@@ -36,16 +36,22 @@
     } catch (e) {}
   }
 
-  // Apply to gtag Consent Mode v2
+  // Apply to gtag Consent Mode v2 + Meta Pixel
   function applyConsent(marketing) {
-    if (typeof window.gtag !== 'function') return;
     var state = marketing ? 'granted' : 'denied';
-    window.gtag('consent', 'update', {
-      ad_storage: state,
-      ad_user_data: state,
-      ad_personalization: state,
-      analytics_storage: state,
-    });
+    if (typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', {
+        ad_storage: state,
+        ad_user_data: state,
+        ad_personalization: state,
+        analytics_storage: state,
+      });
+    }
+    if (typeof window.fbq === 'function') {
+      window.fbq('consent', marketing ? 'grant' : 'revoke');
+      // Re-fire PageView when consent granted (initial PageView fired before consent decision)
+      if (marketing) window.fbq('track', 'PageView');
+    }
   }
 
   // Banner styles (inline, żadnych zewnętrznych zależności)

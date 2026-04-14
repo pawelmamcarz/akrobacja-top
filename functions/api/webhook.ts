@@ -2,6 +2,7 @@ import { type Env, type PackageId, PACKAGES } from '../../src/lib/types';
 import { generateVoucherPdf } from '../../src/lib/pdf';
 import { sendVoucherEmail } from '../../src/lib/email';
 import { createInvoice } from '../../src/lib/wfirma';
+import { sendMetaPurchase } from '../../src/lib/meta-capi';
 
 // Notify owner about new paid order via Resend
 async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: PackageId; customerName: string; customerEmail: string; amount: number; videoAddon: boolean }): Promise<void> {
@@ -193,6 +194,19 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     // 6. Notify owner about new order
     ctx.waitUntil(notifyOwnerOrder(ctx.env, { voucherCode, packageId, customerName, customerEmail, amount: order.amount as number, videoAddon }));
     steps.push('owner_notified');
+
+    // 7. Meta CAPI — server-side Purchase event (paired with client Pixel via event_id)
+    ctx.waitUntil(
+      sendMetaPurchase(ctx.env, {
+        voucherCode,
+        packageId,
+        customerEmail,
+        customerName,
+        amountGrosze: order.amount as number,
+        videoAddon,
+      }).catch(() => { /* non-critical */ }),
+    );
+    steps.push('meta_capi_queued');
 
     return Response.json({ ok: true, steps });
   } catch (err: unknown) {

@@ -12,7 +12,9 @@
 (function () {
   'use strict';
 
-  if (typeof window.gtag !== 'function') return;
+  var hasGtag = typeof window.gtag === 'function';
+  var hasFbq = typeof window.fbq === 'function';
+  if (!hasGtag && !hasFbq) return;
 
   var path = location.pathname.replace(/\/$/, '') || '/';
 
@@ -35,9 +37,9 @@
   else if (path === '/camp-akrobacyjny') pageType = 'camp';
 
   // Send page_type as user property (used for building audience lists)
-  window.gtag('set', 'user_properties', { page_type: pageType });
+  if (hasGtag) window.gtag('set', 'user_properties', { page_type: pageType });
 
-  // view_item_list — pages showing the 3 voucher packages
+  // view_item_list / ViewContent — pages showing the 3 voucher packages
   if (pageType === 'voucher_landing' || pageType === 'product_page') {
     var items = Object.keys(PKGS).map(function (key, i) {
       var p = PKGS[key];
@@ -50,16 +52,28 @@
         quantity: 1,
       };
     });
-    window.gtag('event', 'view_item_list', {
-      item_list_id: pageType === 'voucher_landing' ? 'voucher_prezent_landing' : 'lot_akrobacyjny_page',
-      item_list_name: 'Vouchery akrobacyjne',
-      currency: 'PLN',
-      value: 2999,
-      items: items,
-    });
+    if (hasGtag) {
+      window.gtag('event', 'view_item_list', {
+        item_list_id: pageType === 'voucher_landing' ? 'voucher_prezent_landing' : 'lot_akrobacyjny_page',
+        item_list_name: 'Vouchery akrobacyjne',
+        currency: 'PLN',
+        value: 2999,
+        items: items,
+      });
+    }
+    if (hasFbq) {
+      window.fbq('track', 'ViewContent', {
+        content_ids: items.map(function (i) { return i.item_id; }),
+        content_type: 'product_group',
+        content_name: 'Vouchery akrobacyjne',
+        content_category: 'Voucher',
+        currency: 'PLN',
+        value: 2999,
+      });
+    }
   }
 
-  // Fire begin_checkout when any [data-package] button is clicked
+  // Fire begin_checkout / InitiateCheckout when any [data-package] button is clicked
   document.addEventListener('click', function (e) {
     var btn = e.target && e.target.closest ? e.target.closest('[data-package]') : null;
     if (!btn) return;
@@ -67,17 +81,30 @@
     var pkg = PKGS[pkgKey];
     if (!pkg) return;
 
-    window.gtag('event', 'begin_checkout', {
-      currency: 'PLN',
-      value: pkg.price,
-      items: [{
-        item_id: pkg.id,
-        item_name: pkg.name,
-        item_category: 'Voucher',
-        price: pkg.price,
-        quantity: 1,
-      }],
-    });
+    if (hasGtag) {
+      window.gtag('event', 'begin_checkout', {
+        currency: 'PLN',
+        value: pkg.price,
+        items: [{
+          item_id: pkg.id,
+          item_name: pkg.name,
+          item_category: 'Voucher',
+          price: pkg.price,
+          quantity: 1,
+        }],
+      });
+    }
+    if (hasFbq) {
+      window.fbq('track', 'InitiateCheckout', {
+        content_ids: [pkg.id],
+        content_type: 'product',
+        content_name: pkg.name,
+        content_category: 'Voucher',
+        currency: 'PLN',
+        value: pkg.price,
+        num_items: 1,
+      });
+    }
   }, true);
 
   // Enhanced Conversions — capture checkout form submit and stash customer data
