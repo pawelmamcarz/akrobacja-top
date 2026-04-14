@@ -62,7 +62,7 @@ export const onRequest: PagesFunction = async (context) => {
   const env = context.env as unknown as Record<string, string>;
   const cfAnalyticsToken = env.CF_ANALYTICS_TOKEN;
   const gaId = env.GA_MEASUREMENT_ID;              // e.g. "G-XXXXXXXXXX"
-  const adsId = env.GOOGLE_ADS_ID;                 // e.g. "AW-123456789"
+  const adsId = env.GOOGLE_ADS_ID || 'AW-928813824'; // Google Ads tag (hardcoded fallback)
   const adsPurchaseLabel = env.GOOGLE_ADS_PURCHASE_LABEL; // conversion label for purchase
 
   const rewriter = new HTMLRewriter()
