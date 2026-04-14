@@ -63,7 +63,7 @@ export const onRequest: PagesFunction = async (context) => {
   const cfAnalyticsToken = env.CF_ANALYTICS_TOKEN;
   const gaId = env.GA_MEASUREMENT_ID;              // e.g. "G-XXXXXXXXXX"
   const adsId = env.GOOGLE_ADS_ID || 'AW-928813824'; // Google Ads tag (hardcoded fallback)
-  const adsPurchaseLabel = env.GOOGLE_ADS_PURCHASE_LABEL; // conversion label for purchase
+  const adsPurchaseLabel = env.GOOGLE_ADS_PURCHASE_LABEL || '3g00CNLcnZwcElCm8roD'; // "Zakup Vouchera" conversion label (hardcoded fallback)
   const metaPixelId = env.META_PIXEL_ID;           // e.g. "1234567890123456"
 
   const rewriter = new HTMLRewriter()
