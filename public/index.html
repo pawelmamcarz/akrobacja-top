@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lot Akrobacyjny Extra 300L z Mistrzem Świata — Voucher od 1 999 PLN | akrobacja.com</title>
-<meta name="description" content="Lot akrobacyjny samolotem Extra 300L SP-EKS z Mistrzem Świata Maciejem Kulaszewskim. Voucher od 1 999 PLN — idealny prezent. Kurs akrobacji FCL.800 z dofinansowaniem do 90%. Pokazy lotnicze. Lotnisko Radom-Piastów, 100 km od Warszawy.">
+<title>Lot Akrobacyjny Extra 300L z Wielokrotnym Mistrzem Polski — Voucher od 1 999 PLN | akrobacja.com</title>
+<meta name="description" content="Lot akrobacyjny samolotem Extra 300L SP-EKS z Wielokrotnym Mistrzem Polski Maciejem Kulaszewskim. Voucher od 1 999 PLN — idealny prezent. Kurs akrobacji FCL.800 z dofinansowaniem do 90%. Pokazy lotnicze. Lotnisko Radom-Piastów, 100 km od Warszawy.">
 <link rel="canonical" href="https://akrobacja.com/">
 <link rel="alternate" hreflang="pl" href="https://akrobacja.com/">
 <link rel="alternate" hreflang="en" href="https://akrobacja.com/en">
@@ -23,8 +23,8 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://akrobacja.com/">
-<meta property="og:title" content="Lot Akrobacyjny z Mistrzem Świata — Voucher od 1 999 PLN">
-<meta property="og:description" content="Lot akrobacyjny Extra 300L SP-EKS z Mistrzem Świata Maciejem Kulaszewskim. Voucher od 1 999 PLN — idealny prezent. Lotnisko Radom-Piastów, 100 km od Warszawy.">
+<meta property="og:title" content="Lot Akrobacyjny z Wielokrotnym Mistrzem Polski — Voucher od 1 999 PLN">
+<meta property="og:description" content="Lot akrobacyjny Extra 300L SP-EKS z Wielokrotnym Mistrzem Polski Maciejem Kulaszewskim. Voucher od 1 999 PLN — idealny prezent. Lotnisko Radom-Piastów, 100 km od Warszawy.">
 <meta property="og:image" content="https://akrobacja.com/samolot-top-web.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -34,8 +34,8 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Lot Akrobacyjny z Mistrzem Świata — Voucher od 1 999 PLN">
-<meta name="twitter:description" content="Lot akrobacyjny Extra 300L z Mistrzem Świata. Voucher od 1 999 PLN — idealny prezent. Poczuj +6G!">
+<meta name="twitter:title" content="Lot Akrobacyjny z Wielokrotnym Mistrzem Polski — Voucher od 1 999 PLN">
+<meta name="twitter:description" content="Lot akrobacyjny Extra 300L z Wielokrotnym Mistrzem Polski. Voucher od 1 999 PLN — idealny prezent. Poczuj +6G!">
 <meta name="twitter:image" content="https://akrobacja.com/samolot-top-web.jpg">
 
 <!-- Favicon inline SVG — Rising A mark on navy square -->
@@ -162,6 +162,15 @@ img { display: block; max-width: 100%; }
 }
 
 /* Hero photo background */
+
+.hero-video {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+  display: none;
+}
+.hero-video[src] { display: block; }
+@media (prefers-reduced-motion: reduce) { .hero-video { display: none !important; } }
 .hero-bg {
   position: absolute; inset: 0; z-index: 0;
   background: url('/hero-takeoff.jpg') center center / cover no-repeat;
@@ -1205,6 +1214,23 @@ footer {
   font-family: var(--font-b); display: none;
 }
 
+.modal-payment-badges {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin: 0 0 20px; align-items: center;
+}
+.modal-payment-badges span {
+  font-family: var(--font-h); font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--chrome); border: 1px solid rgba(10,20,40,.14);
+  padding: 4px 8px; white-space: nowrap;
+}
+.modal-payment-badges::before {
+  content: 'Płatność:';
+  font-family: var(--font-h); font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: rgba(122,143,166,.6); margin-right: 2px;
+}
+
 /* ═══════════════════════════════════════════════════════
    RESPONSIVE — TABLET (max 1024px)
 ═══════════════════════════════════════════════════════ */
@@ -1417,7 +1443,7 @@ footer {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "Voucher na lot akrobacyjny Extra 300L",
-  "description": "Lot akrobacyjny samolotem Extra 300L SP-EKS z Mistrzem Świata 2022 Maciejem Kulaszewskim. Lotnisko Radom-Piastów.",
+  "description": "Lot akrobacyjny samolotem Extra 300L SP-EKS z Wielokrotnym Mistrzem Polski 2022 Maciejem Kulaszewskim. Lotnisko Radom-Piastów.",
   "image": "https://akrobacja.com/samolot-top-web.jpg",
   "brand": {"@type": "Brand", "name": "akrobacja.com"},
   "url": "https://akrobacja.com/#sklep",
@@ -1464,7 +1490,7 @@ footer {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Pokazy Lotnicze — Akrobacje Extra 300L",
-  "description": "Pokaz akrobacyjny samolotem Extra 300L SP-EKS z Mistrzem Świata 2022 Maciejem Kulaszewskim na eventy firmowe, festiwale, dni miasta.",
+  "description": "Pokaz akrobacyjny samolotem Extra 300L SP-EKS z Wielokrotnym Mistrzem Polski 2022 Maciejem Kulaszewskim na eventy firmowe, festiwale, dni miasta.",
   "provider": {"@type": "LocalBusiness", "name": "akrobacja.com", "url": "https://akrobacja.com"},
   "serviceType": "Pokaz lotniczy",
   "areaServed": {"@type": "Country", "name": "Polska"},
@@ -1500,7 +1526,7 @@ footer {
   "@type": "Person",
   "name": "Maciej Kulaszewski",
   "jobTitle": "Pilot akrobacyjny, Instruktor FI(A)",
-  "description": "Mistrz Świata w akrobacji samolotowej. Mistrz Polski, Niemiec i Wielkiej Brytanii. Medalista ME. 3 000+ godzin nalotu.",
+  "description": "Wielokrotny Mistrz Polski, Niemiec i Wielkiej Brytanii. Medalista ME. 3 000+ godzin nalotu.",
   "worksFor": {"@type": "Organization", "name": "akrobacja.com", "url": "https://akrobacja.com"},
   "knowsAbout": ["Akrobacja samolotowa", "Extra 300L", "Instruktaż lotniczy", "Pokazy lotnicze"]
 }
@@ -1512,7 +1538,7 @@ footer {
   "name": "akrobacja.com",
   "url": "https://akrobacja.com",
   "logo": "https://akrobacja.com/akrobacja-logo-mark-light.png",
-  "description": "Loty akrobacyjne samolotem Extra 300L SP-EKS z Mistrzem Świata 2022 Maciejem Kulaszewskim. Vouchery, kursy FCL.800, pokazy lotnicze.",
+  "description": "Loty akrobacyjne samolotem Extra 300L SP-EKS z Wielokrotnym Mistrzem Polski 2022 Maciejem Kulaszewskim. Vouchery, kursy FCL.800, pokazy lotnicze.",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+48535535221",
@@ -1661,6 +1687,9 @@ footer {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
+  <video class="hero-video" autoplay muted loop playsinline poster="/hero-takeoff.webp">
+    <!-- Place hero-bg.mp4 in /public/ to activate -->
+  </video>
   <div class="hero-grid"></div>
   <div class="hero-accent-line"></div>
 
@@ -1722,7 +1751,7 @@ footer {
      BENEFIT STRIP
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
 <div class="benefit-strip">
-  <div class="benefit-item"><span class="benefit-dot"></span>Mistrz Świata za sterami</div>
+  <div class="benefit-item"><span class="benefit-dot"></span>Wielokrotny Mistrz Polski za sterami</div>
   <div class="benefit-item"><span class="benefit-dot"></span>Voucher ważny 12 miesięcy</div>
   <div class="benefit-item"><span class="benefit-dot"></span>Bezpłatne przełożenie terminu</div>
   <div class="benefit-item"><span class="benefit-dot"></span>PDF na maila w 60 sekund</div>
@@ -2008,7 +2037,7 @@ footer {
     </div>
     <div class="gift-card reveal reveal-d1">
       <div class="gift-card-title">Kawalerski</div>
-      <div class="gift-card-desc">+6G zamiast kolejnej imprezy. Lot z Mistrzem Świata to poziom wyżej.</div>
+      <div class="gift-card-desc">+6G zamiast kolejnej imprezy. Lot z Wielokrotnym Mistrzem Polski to poziom wyżej.</div>
     </div>
     <div class="gift-card reveal reveal-d2">
       <div class="gift-card-title">Bonus firmowy</div>
@@ -2069,7 +2098,7 @@ footer {
     <img src="/pilot-cockpit.jpg" alt="Maciej Kulaszewski — pilot akrobacyjny Extra 300L w kokpicie"
          loading="lazy"
          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center">
-    <span class="pilot-badge">Mistrz Świata · Mistrz Polski · Mistrz Niemiec · Mistrz UK</span>
+    <span class="pilot-badge">Mistrz Polski · Niemiec · UK · Medalista ME</span>
   </div>
 
   <!-- Bio column -->
@@ -2080,8 +2109,8 @@ footer {
         <div class="pilot-stat-unit">Nalot na Extra 300L</div>
       </div>
       <div>
-        <div class="pilot-stat-num">WC</div>
-        <div class="pilot-stat-unit">Mistrz Świata</div>
+        <div class="pilot-stat-num">ME</div>
+        <div class="pilot-stat-unit">Medalista ME</div>
       </div>
       <div>
         <div class="pilot-stat-num">PL·DE·UK</div>
@@ -2089,18 +2118,18 @@ footer {
       </div>
     </div>
 
-    <p class="section-label reveal">Pilot akrobacyjny · Mistrz Świata · FI(A)</p>
+    <p class="section-label reveal">Pilot akrobacyjny · Mistrz Polski · FI(A)</p>
     <h2 class="section-title reveal" style="font-size:clamp(32px,3.5vw,52px);margin-bottom:28px;color:var(--white)">
       Maciej<br>Kulaszewski
     </h2>
     <div class="accent-bar reveal" style="margin-bottom:36px"></div>
 
     <p class="pilot-bio-text reveal">
-      <strong>Mistrz Świata w akrobacji samolotowej.</strong> 3 000+ godzin nalotu, w tym tysiące na Extra 300L — jedno z największych indywidualnych doświadczeń na tym typie w Europie. Mistrz Polski, Niemiec i Wielkiej Brytanii. Medalista Mistrzostw Europy. Instruktor FI(A). Zero symulatorów, zero skrótów. Każdy lot prowadzi osobiście.
+      <strong>Wielokrotny Mistrz Polski, Niemiec i UK.</strong> 3 000+ godzin nalotu, w tym tysiące na Extra 300L — jedno z największych indywidualnych doświadczeń na tym typie w Europie. Mistrz Polski, Niemiec i Wielkiej Brytanii. Medalista Mistrzostw Europy. Instruktor FI(A). Zero symulatorów, zero skrótów. Każdy lot prowadzi osobiście.
     </p>
 
     <ul class="pilot-creds reveal">
-      <li class="pilot-cred"><strong>Mistrz Świata</strong> — akrobacja samolotowa</li>
+      <li class="pilot-cred"><strong>Wielokrotny Mistrz Polski</strong> — akrobacja samolotowa</li>
       <li class="pilot-cred"><strong>Mistrz Polski, Niemiec i Wielkiej Brytanii</strong></li>
       <li class="pilot-cred"><strong>Medalista Mistrzostw Europy</strong></li>
       <li class="pilot-cred"><strong>FI(A)</strong> — certyfikowany instruktor lotniczy</li>
@@ -2335,7 +2364,7 @@ footer {
         <div style="font-size:36px;margin-bottom:16px">🛡️</div>
         <h3 style="color:var(--white);font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;margin-bottom:12px">Trening na sytuacje awaryjne</h3>
         <p style="color:var(--chrome);font-size:14px;line-height:1.8">
-          Certyfikowany instruktor FI(A) i sędzia akrobacji lotniczej. Tysiące godzin treningu obejmujących procedury awaryjne, korkociągi i recovery. <strong style="color:var(--white)">Mistrz Świata nie zostawia niczego przypadkowi.</strong>
+          Certyfikowany instruktor FI(A) i sędzia akrobacji lotniczej. Tysiące godzin treningu obejmujących procedury awaryjne, korkociągi i recovery. <strong style="color:var(--white)">Wielokrotny Mistrz Polski nie zostawia niczego przypadkowi.</strong>
         </p>
       </div>
     </div>
@@ -2598,6 +2627,13 @@ footer {
     <h3 id="modalTitle">Kup Voucher</h3>
     <p class="modal-sub" id="modalSub"></p>
     <p class="modal-price" id="modalPrice"></p>
+    <div class="modal-payment-badges" aria-label="Dostępne metody płatności">
+      <span>BLIK</span>
+      <span>Apple Pay</span>
+      <span>Google Pay</span>
+      <span>Karta</span>
+      <span>Przelewy24</span>
+    </div>
     <form id="checkoutForm">
       <input type="hidden" id="checkoutPackage" value="">
       <div class="modal-field">
@@ -2735,7 +2771,7 @@ footer {
   const PKGS = {
     pierwszy_lot: { name: 'Pierwszy Lot', sub: 'Twój pierwszy kontakt z akrobacją', price: 1999 },
     adrenalina:   { name: 'Adrenalina', sub: 'Pełny program akrobacyjny z Mistrzem', price: 2999 },
-    masterclass:  { name: 'Masterclass', sub: 'Sesja szkoleniowa z Mistrzem Świata — dla pilotów PPL(A)+', price: 4999 },
+    masterclass:  { name: 'Masterclass', sub: 'Sesja szkoleniowa z Wielokrotnym Mistrzem Polski — dla pilotów PPL(A)+', price: 4999 },
   };
 
   const modal = document.getElementById('checkoutModal');
@@ -2893,6 +2929,5 @@ footer {
 })();
 </script>
 <script src="/chat-widget.js" defer></script>
-<script src="/assets/site-enhancements.js" defer></script>
 </body>
 </html>
