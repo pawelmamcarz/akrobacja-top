@@ -10,10 +10,10 @@ Akrobacja lotnicza jest niemal tak stara jak samo lotnictwo. Zaledwie dekadę po
 ## Początki - Adolphe Pégoud i narodziny akrobacji (1913)
 
   
-Za ojca akrobacji lotniczej uważa się Francuza **Adolphe'a Pégouda**, który 1 września 1913 roku wykonał pierwszy kontrolowany lot do góry nogami (lot odwrócony) nad lotniskiem Buc pod Paryżem. Kilka tygodni później, 21 września 1913 roku, Pégoud wykonał pierwszą pętlę (looping) w historii lotnictwa. Prasa okrzyknęła go „szaleńcem powietrza", ale Pégoud udowodnił, że samolot może latać w dowolnym położeniu - pod warunkiem, że pilot wie, co robi.
+Za ojca akrobacji lotniczej uważa się Francuza **Adolphe'a Pégouda** — mechanika i ucznia Louisa Blériota, który samodzielnie nauczył się latać i szybko przekroczył to, co ówcześni piloci uważali za granicę możliwości maszyny. 1 września 1913 roku, nad lotniskiem Buc pod Paryżem, wykonał pierwszy w historii kontrolowany lot do góry nogami. Kilka tygodni później, 21 września 1913 roku, Pégoud wykonał pierwszą pętlę (looping). Prasa okrzyknęła go „szaleńcem powietrza" — on sam traktował to jako dowód, że samolot może latać w dowolnym położeniu, pod warunkiem że pilot wie, co robi.
 
   
-W Niemczech akrobację lotniczą nazwano **„Kunstflug"** - dosłownie „sztuka lotu" lub „lot artystyczny". Termin ten doskonale oddaje ducha wczesnej akrobacji: nie chodziło o sport czy rywalizację, ale o piękno i maestrię kontrolowania maszyny w trzech wymiarach. Niemieccy piloci, inspirowani wyczynami Pégouda, szybko zaczęli eksperymentować z własnymi figurami.
+W Niemczech akrobację lotniczą nazwano **„Kunstflug"** — dosłownie „sztuka lotu". Termin doskonale oddaje ducha tamtych czasów: nie chodziło o sport czy rywalizację, ale o piękno i maestrię kontrolowania maszyny w trzech wymiarach. Niemieccy piloci, zainspirowani Pégoudem, zaczęli eksperymentować z własnymi figurami.
 
   
 Równolegle Rosjanin Piotr Niestierow wykonał pętlę 9 września 1913 roku (według części źródeł - jako pierwszy na świecie, choć chronologia jest dyskutowana). Niezależnie od tego, kto był „pierwszy", jesień 1913 roku uznaje się za narodziny akrobacji lotniczej jako dyscypliny.
@@ -28,7 +28,7 @@ Okres międzywojenny (1918-1939) to **złota era akrobacji lotniczej**. Rozwój 
 ### Ernst Udet - mistrz i showman
 
   
-**Ernst Udet**, niemiecki as myśliwski z I wojny światowej, stał się jednym z najsławniejszych pilotów akrobacyjnych okresu międzywojennego. Udet był nie tylko znakomitym pilotem, ale też showmanem - jego pokazy, w których chwytał chusteczkę z ziemi skrzydłem samolotu, przyciągały tłumy na całym świecie. Udet przyczynił się do popularyzacji akrobacji lotniczej jako widowiska i inspirował kolejne pokolenia pilotów.
+**Ernst Udet**, drugi po Richthofenie asy myśliwskie Niemiec w I wojnie światowej, stał się jednym z najsławniejszych pilotów akrobacyjnych okresu międzywojennego. Udet był nie tylko znakomitym pilotem, ale urodzonym showmanem — jego pokaz, w którym chwytał chusteczkę z ziemi samym skrzydłem samolotu, przyciągał dziesiątki tysięcy widzów na całym świecie. Hollywood nakręciło o nim filmy. Udet uczynił z akrobacji widowisko — i właśnie dzięki temu akrobacja trafiła pod strzechy, zamiast pozostać rozrywką dla nielicznych.
 
   
 ### Polska tradycja akrobacyjna
@@ -62,7 +62,7 @@ Równolegle rozwijały się inne konstrukcje: rosyjski **Sukhoi Su-26/29/31** (d
 ### Extra 300L - nasz samolot
 
   
-Extra 300L to dwumiejscowa wersja legendarnej „trójki" - samolot zaprojektowany zarówno do zawodów (w konfiguracji jednomiejscowej Extra 300S/330SC), jak i do szkolenia akrobacyjnego oraz lotów pasażerskich. Certyfikacja +10G/-10G, silnik Lycoming AEIO-540 o mocy 300 KM, masa własna zaledwie 660 kg - to parametry, które czynią go jednym z najlepszych samolotów akrobacyjnych na świecie. Nasz egzemplarz **SP-EKS** lata z bazy Radom-Piastów EPRP.
+Extra 300L to dwumiejscowa wersja legendarnej „trójki" - samolot zaprojektowany zarówno do zawodów (w konfiguracji jednomiejscowej Extra 300S/330SC), jak i do szkolenia akrobacyjnego oraz lotów pasażerskich. Certyfikacja +10G/-10G, silnik Lycoming AEIO-580-B1A o mocy 300 KM, masa własna zaledwie 660 kg - to parametry, które czynią go jednym z najlepszych samolotów akrobacyjnych na świecie. Nasz egzemplarz **SP-EKS** lata z bazy Radom-Piastów EPRP.
 
   
 ## Unlimited - szczyt akrobacji lotniczej
@@ -85,11 +85,11 @@ Od Pégouda do Kulaszewskiego - akrobacja lotnicza przeszła długą drogę. Ale
   
   
     
-### Dopisz się do historii
+### Pégoud, Udet, Kulaszewski — i Ty
 
     
-110 lat akrobacji lotniczej. Twoja kolej, żeby poczuć, czym jest lot akrobacyjny na Extra 300L.
+Ponad 110 lat akrobacji lotniczej. Od pierwszej pętli nad Buc po +6G nad Radomiem — każdy musi zacząć od pierwszego lotu. Twój czas.
 
     NAPISZ NA WHATSAPP
     
-lub zobacz pakiety i kup voucher online
+lub kup voucher online i wybierz termin kiedy chcesz

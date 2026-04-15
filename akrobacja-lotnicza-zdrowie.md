@@ -107,47 +107,47 @@ Lot trwa od 15 do 50 minut w zależności od pakietu. To nie jest maraton — to
 
 
 
-## Maciej Kulaszewski — 3000 godzin doświadczenia na Twoich usługach
+## Maciej Kulaszewski — pilot, który najpierw patrzy na człowieka
 
 
-To nie jest przypadek, że powierzamy Ci lot z **Maciejem Kulaszewskim**. Maciej ma ponad **3000 godzin nalotu**, z czego znaczna część to akrobacja lotnicza na najwyższym poziomie. Jest doświadczonym pilotem akrobacyjnym, instruktorem i zawodnikiem.
+To nie jest przypadek, że powierzamy Ci lot z **Maciejem Kulaszewskim**. Maciej ma ponad **3000 godzin nalotu**, z czego znaczna część to akrobacja lotnicza na najwyższym poziomie. Ale to, co wyróżnia go jako pilota pasażerskich lotów akrobacyjnych, to nie godziny w logu — to podejście do człowieka.
 
-Ale to, co wyróżnia Macieja jako pilota lotów pasażerskich, to nie statystyki — to podejście do człowieka. Maciej dostosowuje każdy lot do pasażera. Podczas briefingu ocenia Twój poziom komfortu, pyta o stan zdrowia, o obawy, o oczekiwania. Jeśli masz nadciśnienie — ograniczy przeciążenia. Jeśli to Twój pierwszy kontakt z akrobacją — zacznie delikatnie i stopniowo zwiększy intensywność. Jeśli jesteś doświadczonym pasażerem i chcesz poczuć +6G — dostaniesz pełny program.
+Każdy briefing zaczyna się od zwykłej rozmowy. Jak się czujesz? Czy latałeś wcześniej akrobacyjnie? Czy jest coś, czego się obawiasz? Maciej nie zadaje tych pytań pro forma — naprawdę słucha. Jeśli masz nadciśnienie, ograniczy przeciążenia. Jeśli to Twój pierwszy lot akrobacyjny i trochę się denerwujesz — zacznie spokojnie i stopniowo podniesie poprzeczkę. Jeśli chcesz poczuć +6G na pełnym programie — dostaniesz pełny program.
 
-**3000 godzin** w kokpicie to nie tylko umiejętność latania — to umiejętność czytania ludzi. Maciej wie, kiedy pasażer potrzebuje dodatkowej figury, a kiedy chwili oddechu. I właśnie dlatego nasi klienci wracają.
-
-
-## Najczęściej zadawane pytania
+**3000 godzin** w kokpicie Extra 300L to nie tylko perfekcyjne panowanie nad samolotem. To umiejętność wyczucia, kiedy pasażer potrzebuje jeszcze jednej figury, a kiedy chwili spokojnego lotu. I właśnie dlatego większość naszych klientów po wylądowaniu już planuje powrót.
 
 
-### Czy osoba z nadciśnieniem może lecieć akrobacyjnie?
-
-Tak, pod warunkiem że nadciśnienie jest kontrolowane lekami i stabilne. Poinformuj pilota podczas briefingu — dostosuje intensywność lotu, unikając najwyższych przeciążeń. Jeśli masz wątpliwości, skonsultuj się z kardiologiem przed lotem.
-
-### Czy lot akrobacyjny jest bezpieczny dla serca?
-
-Dla zdrowego serca — tak. Przeciążenia podczas lotu akrobacyjnego powodują przejściowy wzrost ciśnienia krwi i tętna, podobny do intensywnego wysiłku fizycznego. Jeśli możesz biegać lub jeździć na rowerze bez problemów, Twoje serce poradzi sobie z lotem. Osoby z chorobami serca powinny skonsultować się z lekarzem.
-
-### Czy mogę lecieć z lękiem wysokości?
-
-Tak — i to jedna z największych niespodzianek naszych pasażerów. Lęk wysokości w kokpicie samolotu akrobacyjnego praktycznie nie występuje. Zamknięta kabina, szelki, spadochron i zupełnie inna perspektywa wizualna sprawiają, że mózg nie interpretuje sytuacji jako „stanie na krawędzi". Wielu naszych klientów z silnym lękiem wysokości mówi po locie, że w ogóle go nie odczuwali.
-
-### Jak duże przeciążenia wytrzyma przeciętna osoba?
-
-Przeciętna, zdrowa osoba bez treningu wytrzymuje +3.5G do +4.5G zanim pojawią się objawy grey-out (utrata widzenia kolorów). Z prostą techniką AGSM (napinanie mięśni, kontrolowany oddech), której nauczysz się na briefingu, próg wzrasta do +5G–+6G. Nasz pakiet Pierwszy Lot nie przekracza ok. +3G — to komfortowy poziom dla prawie każdego.
-
-### Mam 65 lat — czy to nie za dużo na lot akrobacyjny?
-
-Zdecydowanie nie. Wiek sam w sobie nie jest przeciwwskazaniem. Liczy się ogólny stan zdrowia. Mieliśmy pasażerów w wieku 70+ lat, którzy świetnie się bawili. Jeśli prowadzisz aktywny tryb życia i nie masz poważnych chorób przewlekłych — zapraszamy. Maciej dostosuje lot do Twojego komfortu.
+## Pytania, które słyszymy najczęściej
 
 
+**Mam nadciśnienie — czy mogę lecieć?**
+
+Najczęściej tak. Jeśli ciśnienie jest kontrolowane lekami i stabilne, lot akrobacyjny jest zazwyczaj możliwy. Powiedz o tym Maciejowi podczas briefingu — dostosuje program, żebyś nie przekraczał/-a bezpiecznych przeciążeń. Jeśli masz wątpliwości, skonsultuj się z kardiologiem wcześniej.
+
+**Lot akrobacyjny a serce — czy to bezpieczne?**
+
+Dla zdrowego serca tak. Przeciążenia powodują przejściowy wzrost ciśnienia i tętna — podobnie jak intensywny wysiłek fizyczny. Jeśli możesz bez problemu biegać czy jeździć na rowerze, serce poradzi sobie z lotem. Osoby z poważnymi chorobami serca powinny skonsultować się z lekarzem.
+
+**Mam lęk wysokości — to dla mnie wykluczone?**
+
+Właśnie tu zaczynają się niespodzianki. Lęk wysokości w zamkniętym kokpicie praktycznie nie działa. Jesteś szczelnie zapięty/-a w szelki i spadochron, kabina otacza Cię ze wszystkich stron, a perspektywa z tysiąca metrów bardziej przypomina patrzenie na mapę niż stanie na krawędzi balkonu. Wielu naszych klientów z poważnym lękiem wysokości mówiło po locie, że w ogóle o nim nie myśleli.
+
+**Ile G wytrzyma zwykła osoba?**
+
+Bez żadnego treningu — zazwyczaj +3.5G do +4.5G zanim pojawi się grey-out. Po krótkim briefingu i zastosowaniu techniki AGSM (napinanie mięśni, kontrolowany oddech) próg rośnie do +5G–+6G. Pakiet Pierwszy Lot nie przekracza ok. +3G — komfortowy poziom dla prawie każdego.
+
+**Mam 65 lat — czy to nie za późno?**
+
+Wiek sam w sobie nie jest przeciwwskazaniem. Liczy się stan zdrowia, nie metryka. Nasi najstarsi pasażerowie mieli ponad 70 lat — i świetnie się bawili. Jeśli prowadzisz aktywny tryb życia i nie masz poważnych chorób, zapraszamy. Maciej dopasuje lot do Twojego tempa.
 
 
-### Przekonaj się sam — kup voucher
 
 
-Teraz wiesz, że lot akrobacyjny jest dostępny dla prawie każdego. Zostało tylko jedno — zarezerwować swoje miejsce w kokpicie Extra 300L SP-EKS.
+### Twoje obawy mają teraz odpowiedź — co dalej?
+
+
+Lot akrobacyjny jest dostępny dla prawie każdego zdrowego człowieka. Jeśli nadal masz wątpliwości co do swojego stanu zdrowia — napisz, opiszemy Twoją sytuację i powiemy wprost, czy lot jest możliwy.
 
     KUP VOUCHER OD 1 999 PLN
 
-lub przeczytaj 10 rzeczy, które musisz wiedzieć przed lotem akrobacyjnym
+lub napisz do nas z pytaniem — odpowiemy szczerze

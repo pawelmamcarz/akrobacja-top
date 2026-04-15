@@ -37,19 +37,19 @@ Negatywne przeciążenia działają odwrotnie - w kierunku stopy-głowa. Doświa
 ### +2G - delikatne wciśnięcie
 
   
-To mniej więcej tyle, ile doświadczasz na ostrym zakręcie rollercoastera. Czujesz się nieco cięższy, policzki lekko opadają. Większość ludzi nawet nie zauważa tego poziomu przeciążeń - to przyjemne uczucie, jak gdyby ktoś delikatnie wciskał Cię w fotel. Na +2G jesteś przez większość lotu akrobacyjnego w pakiecie Pierwszy Lot.
+To mniej więcej tyle, ile czujesz na ostrym zakręcie rollercoastera. Cięższy, policzki lekko opadają. Większość ludzi nie robi z tego żadnej afery — to przyjemne uczucie, jakby fotel zapraszał Cię głębiej. Przez większą część lotu w pakiecie Pierwszy Lot operujesz właśnie w tym zakresie.
 
   
 ### +4G - poważna siła
 
   
-Przy +4G zaczyna się prawdziwa zabawa. Twoje ciało waży cztery razy więcej niż normalnie. Ręce są ciężkie, trudno podnieść głowę. Widzenie zaczyna się zwężać - peryferyjne pole widzenia zanika jako pierwsze (to początki grey-outu). Oddychanie jest utrudnione, bo przepona musi pracować cztery razy ciężej. To poziom, który większość pasażerów dobrze znosi, pod warunkiem że napinają mięśnie i prawidłowo oddychają.
+Tu zaczyna się prawdziwa rozmowa z fizyką. Twoje ciało waży czterokrotnie więcej niż zwykle — żeby unieść rękę, musisz pokonać siłę równoważną trzymaniu 30-kilogramowego ciężaru. Widzenie zaczyna zwężać się od brzegów. Oddychanie jest utrudnione, bo przepona pracuje "pod obciążeniem". To poziom, który większość pasażerów znosi bez problemu — pod warunkiem że napinają mięśnie i oddychają prawidłowo, tak jak uczy pilot na briefingu.
 
   
 ### +6G - granica dla pasażerów
 
   
-Przy **+6G** Twoje ciało waży 480 kg (przy masie własnej 80 kg). To ekstremalnie intensywne doświadczenie. Pole widzenia zwęża się dramatycznie, może wystąpić pełny grey-out. Oddychanie wymaga świadomego wysiłku. Mięśnie pracują na pełnych obrotach, żeby utrzymać krew w górnej części ciała. W akrobacja.com +6G to maksimum, do którego zabieramy pasażerów - i tylko w pakiecie Masterclass, po odpowiednim przygotowaniu.
+Przy **+6G** Twoje ciało efektywnie waży 480 kg (przy masie 80 kg). To nie jest sformułowanie dla efektu — tak to naprawdę wygląda dla Twojego układu krążenia. Pole widzenia zwęża się dramatycznie, może wystąpić pełny grey-out. Oddychanie staje się aktem świadomego wysiłku. Mięśnie pracują na granicy możliwości, żeby utrzymać krew przy głowie. W akrobacja.com +6G to pułap pasażerski — i tylko w pakiecie Masterclass, po pełnym briefingu i odpowiednim przygotowaniu.
 
   
 ## Grey-out, blackout, red-out - co to jest?
@@ -95,16 +95,16 @@ Nasz samolot Extra 300L SP-EKS jest certyfikowany na przeciążenia **+10G/-10G*
 Dlaczego pasażerów zabieramy maksymalnie do +6G? Bo to granica komfortu i bezpieczeństwa fizjologicznego dla osoby bez specjalistycznego treningu. Pilot akrobacyjny z latami doświadczenia może bez problemu operować przy +8G - ale pasażer na swoim pierwszym (lub drugim, czy trzecim) locie nie powinien przekraczać +6G. To zasada bezpieczeństwa, której się trzymamy bez wyjątków.
 
   
-Chcesz poczuć, czym jest G-force na własnej skórze? Zarezerwuj lot akrobacyjny i przekonaj się, że fizyka potrafi być ekscytująca nie tylko w podręcznikach.
+G-force to fizyka. Ale to też najlepsze doświadczenie, jakie możesz mieć bez zostania pilotem myśliwca. Zarezerwuj lot i sprawdź, co dzieje się z Twoim ciałem przy +6G.
 
   
   
     
-### Poczuj G-force na własnej skórze
+### Poczujesz różnicę między +2G a +6G — na własnej skórze
 
     
-Extra 300L, +6G, profesjonalny pilot. Od 1 999 PLN. Fizyka w najczystszej formie.
+Briefing, Extra 300L, Maciej Kulaszewski, Radom-Piastów. Od 1 999 PLN. Napisz i zarezerwuj termin.
 
     NAPISZ NA WHATSAPP
     
-lub zobacz pakiety i kup voucher online
+lub kup voucher online i przyjedź kiedy masz ochotę

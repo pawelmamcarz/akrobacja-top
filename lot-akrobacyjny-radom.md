@@ -106,7 +106,7 @@ Akrobacja lotnicza wymaga wydzielonej strefy powietrznej, w której pilot może 
   
 
   
-Bezpieczeństwo to nie slogan marketingowy - to fundament naszej operacji. Nasz pilot, **Maciej Kulaszewski**, ma ponad 3 000 godzin nalotu i tytuł Mistrza Polski w akrobacji. Każdy lot jest poprzedzony briefingiem, a decyzja o starcie uwzględnia aktualne warunki meteorologiczne, stan techniczny samolotu i samopoczucie pasażera.
+Bezpieczeństwo to nie slogan — to praktyka. Nasz pilot, **Maciej Kulaszewski**, ma ponad 3 000 godzin nalotu i wielokrotny tytuł Mistrza Polski w akrobacji. Każdy lot poprzedza briefing, każda decyzja o starcie opiera się na aktualnym meteo, stanie technicznym samolotu i samopoczuciu pasażera. Jeśli cokolwiek nie gra — nie startujemy.
 
   
 ## Sezon lotów: kwiecień - październik
@@ -145,11 +145,11 @@ Odwiedź nasz sklep po vouchery, gadżety i więcej informacji. Do zobaczenia na
   
   
     
-### Zarezerwuj lot w Radomiu
+### Radom-Piastów czeka — godzina jazdy od Warszawy
 
     
-Extra 300L czeka na EPRP. 1h od Warszawy, 0 kompromisów na adrenalinie.
+Bezpłatny parking, sala briefingowa, SP-EKS gotowy do startu. Napisz albo kup voucher online i przyjedź kiedy chcesz.
 
     NAPISZ NA WHATSAPP
     
-lub zobacz pakiety i kup voucher online
+lub kup voucher online — ważny 12 miesięcy, termin wybierasz sam

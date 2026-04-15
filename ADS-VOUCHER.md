@@ -34,7 +34,7 @@ Voucher PDF w 3 Minuty
 Od 1999 zł — Płatność Online
 Pilot z 3 000+ h Doświadczenia
 Ważny 12 Miesięcy
-Mistrz Świata Akrobacji
+Mistrz Polski w Akrobacji
 Samolot Extra 300L SP-EKS
 Prezent Dla Faceta, Który Ma Wszystko
 187 Opinii · 4.9/5
@@ -50,7 +50,7 @@ Gwarancja Zwrotu 14 Dni
 Voucher PDF na lot akrobacyjny Extra 300L. W mailu w kilka minut, ważny 12 miesięcy. Płatność online — Blik, karta, P24.
 Pilot o 3 000+ h doświadczenia. Figury do +6G w certyfikowanym Extra 300L. 187 weryfikowanych opinii — 4.9/5.
 Prezent, którego nie zapomni nigdy. Zero planowania — kupujesz, dostajesz PDF, on sam umawia lot. Gwarancja 14 dni.
-Od 1999 zł za 15 min do 4999 zł za Masterclass z Mistrzem Świata. Faktura VAT dla firm. Radom, 1h z Warszawy.
+Od 1999 zł za 15 min do 4999 zł za Masterclass z Mistrzem Polski. Faktura VAT dla firm. Radom, 1h z Warszawy.
 ```
 
 ---
@@ -85,7 +85,7 @@ Od 1999 zł · Voucher 12 Miesięcy
 Koniec z krawatami. Kup voucher na lot akrobacyjny — PDF natychmiast, ważny rok. Od 1999 zł. On sam umawia termin.
 Prezent firmowy dla kontrahenta? Faktura VAT, elegancki PDF, zero logistyki. 187 opinii 4.9/5 — sprawdzony.
 Na 30, 40, 50-tkę. Kawalerski. Dzień Ojca. Komunia. Lot akrobacyjny Extra 300L to wspomnienie na lata — nie przedmiot.
-Mistrz Świata, 3 000+ h w powietrzu, certyfikowany samolot do +10G. Bezpieczeństwo to procedura, nie slogan.
+Wielokrotny Mistrz Polski, 3 000+ h w powietrzu, certyfikowany samolot do +10G. Bezpieczeństwo to procedura, nie slogan.
 ```
 
 ---
@@ -198,7 +198,7 @@ Dla „firmowy" i „integracja" kampanii — dodatkowo:
 - **Headlines:** te same co z „Generic" powyżej
 - **Long headlines (3):**
   - `Voucher na Lot Akrobacyjny Extra 300L — Prezent PDF od 1999 zł`
-  - `Prezent Dla Niego, Który Zapamięta Na Zawsze — Lot z Mistrzem Świata`
+  - `Prezent Dla Niego, Który Zapamięta Na Zawsze — Lot z Mistrzem Polski`
   - `Lot Akrobacyjny w Prezencie. PDF w Mailu w 3 Minuty. Ważny 12 Miesięcy.`
 - **Descriptions:** te same co z „Generic"
 - **Call to action:** `Kup teraz` / `Shop now`

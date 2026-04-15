@@ -4,7 +4,7 @@
 # Lot akrobacyjny na kawalerski - atrakcja nr 1
 
   
-Organizujesz **wieczór kawalerski** i szukasz czegoś, co naprawdę zaskoczy pana młodego? Zapomnij o paintballu, gokartach i escape roomach. Lot akrobacyjny samolotem **Extra 300L** to atrakcja, która wynosi kawalerski na zupełnie inny poziom - dosłownie. Przeciążenia do **+6G**, beczki, pętle, loty na plecach i adrenalina, której nie da się porównać z niczym innym. W akrobacja.com organizujemy loty akrobacyjne na kawalerskie od lat i wiemy, jak zrobić to dobrze.
+Zapomnij o paintballu, gokartach i escape roomach. Kiedy za tydzień pan młody zostaje mężem, ostatni wieczód wolności powinien skończyć się czymś, o czym będzie opowiadał do końca życia. Lot akrobacyjnym samolotem Extra 300L — z przeciążeniami do **+6G**, beczkami, pętlami i lotem na plecach — to atrakcja, która wynosi kawalerski dosłownie na wyższy poziom.
 
   
 ## Dlaczego lot akrobacyjny na kawalerski?
@@ -13,7 +13,7 @@ Organizujesz **wieczór kawalerski** i szukasz czegoś, co naprawdę zaskoczy pa
 Kawalerski to ostatni szalony weekend przed ślubem. Powinien być niezapomniany, pełen emocji i opowieści, które będą krążyć wśród znajomych latami. Lot akrobacyjny daje dokładnie to - doświadczenie, które jest jednocześnie ekstremalnie ekscytujące i absolutnie bezpieczne.
 
   
-Pan młody w kokpicie dwumiejscowego samolotu akrobacyjnego, z profesjonalnym pilotem za sterami, wykonuje figury wyższego pilotażu nad lotniskiem **Radom-Piastów (EPRP)**. W tym samym czasie reszta ekipy ogląda pokaz z ziemi, nagrywa filmy i czeka na lądowanie z transparentem i szampanem. To scenariusz, który sprawdza się za każdym razem.
+Wyobraź sobie: pan młody w tylnym kokpicie Extra 300L, z Maciejem Kulaszewskim za sterami, wykonuje pętle i beczki nad lotniskiem Radom-Piastów. Reszta ekipy ogląda z ziemi, nagrywają na telefony, krzyczą coś do siebie nawzajem, nie mogą uwierzyć w to co widzą. Po lądowaniu — szampan przy hangarze, wideo z kamery 360° i twarz pana młodego, która mówi wszystko. Ten scenariusz sprawdza się za każdym razem.
 
   
 Co sprawia, że lot akrobacyjny jest lepszy od innych atrakcji na kawalerski? Przede wszystkim **wyjątkowość**. Mało kto miał okazję latać w samolocie akrobacyjnym - to nie jest coś, co robi się w każdy weekend. Po drugie - **adrenalina**. Przeciążenia na poziomie +4G do +6G to coś, czego ciało nie zapomina. I wreszcie - **prestiż**. Lot samolotem Extra 300L, jednym z najlepszych samolotów akrobacyjnych na świecie, to doświadczenie klasy premium.
@@ -91,11 +91,11 @@ Coraz częściej organizujemy loty akrobacyjne na **wieczory panieńskie**. Pann
   
   
     
-### Zorganizuj kawalerski z klasą
+### On nie zapomni. Ty też nie.
 
     
-Lot akrobacyjny Extra 300L. Adrenalina, emocje i pamiątka na całe życie. Napisz - pomożemy zaplanować idealny dzień.
+Napisz do nas — razem zaplanujemy kawalerski, o którym będzie mówił jeszcze na srebrnym weselu.
 
     NAPISZ NA WHATSAPP
     
-lub zobacz pakiety i kup voucher online
+lub kup voucher online i niespodzianka gotowa — PDF w kilka minut

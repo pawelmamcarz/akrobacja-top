@@ -89,7 +89,7 @@ Współczesne samoloty akrobacyjne to cuda inżynierii. Projektowane od zera z j
 ## Co sprawia, że samolot jest akrobacyjny?
 
   
-Co odróżnia Extra 300L od Cessny 172? Dlaczego jeden może latać na plecach, a drugi nie? Kluczowe cechy samolotu akrobacyjnego:
+Co odróżnia Extra 300L od Cessny 172? Dlaczego jeden może latać na plecach, a drugi nie? To nie kwestia odwagi konstruktora ani kaprysu certyfikujących urzędów — to fizyka i inżynieria. Cztery rzeczy muszą współgrać jednocześnie:
 
   
 ### Konstrukcja wytrzymała na przeciążenia
@@ -101,7 +101,7 @@ Płatowiec (kadłub, skrzydła, usterzenie) musi wytrzymać ekstremalnie duże s
 ### Silnik na lot odwrócony
 
   
-Zwykły silnik lotniczy (np. w Cessnie) ma smarowanie grawitacyjne - olej spływa na dół zbiornika i jest pompowany do silnika. Przy locie na plecach olej spływa „na górę" (od silnika) i smarowanie ustaje. Po kilku sekundach - zatarcie silnika. Silniki akrobacyjne (jak **Lycoming AEIO-540** w Extra 300L) mają system smarowania na lot odwrócony (inverted oil system) - olej jest dostarczany do silnika niezależnie od położenia samolotu.
+Zwykły silnik lotniczy (np. w Cessnie) ma smarowanie grawitacyjne - olej spływa na dół zbiornika i jest pompowany do silnika. Przy locie na plecach olej spływa „na górę" (od silnika) i smarowanie ustaje. Po kilku sekundach - zatarcie silnika. Silniki akrobacyjne (jak **Lycoming AEIO-580-B1A** w Extra 300L) mają system smarowania na lot odwrócony (inverted oil system) - olej jest dostarczany do silnika niezależnie od położenia samolotu.
 
   
 ### Symetryczny profil skrzydła
@@ -140,11 +140,11 @@ Chcesz przekonać się na własnej skórze, czym różni się lot samolotem stwo
   
   
     
-### Poleć samolotem stworzonym do akrobacji
+### +10G/-10G to nie marketing — to certyfikacja
 
     
-Extra 300L SP-EKS. +10G/-10G certyfikacji. Poczuj różnicę, jaką robi prawdziwy samolot akrobacyjny.
+Extra 300L SP-EKS. Jedyny samolot w Polsce, którym możesz polecieć jako pasażer z pilotem akrobacyjnym na poziomie Unlimited. Napisz i zarezerwuj termin.
 
     NAPISZ NA WHATSAPP
     
-lub zobacz pakiety i kup voucher online
+lub kup voucher online — ważny 12 miesięcy, termin wybierasz kiedy chcesz
