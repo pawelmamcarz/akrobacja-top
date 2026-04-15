@@ -75,7 +75,7 @@ Nie każdy samolot nadaje się do szkolenia UPRT. Potrzebujesz maszyny, która:
 
     - **Jest dwumiejscowa z podwójnym sterowaniem** - instruktor w tylnym kokpicie ma pełną kontrolę i może w każdej chwili interweniować.
 
-    - **Ma silnik odporny na lot odwrócony** - silnik Lycoming AEIO-540 z wtryskiem i smarowaniem na lot odwrócony działa niezawodnie w każdym położeniu samolotu.
+    - **Ma silnik odporny na lot odwrócony** - silnik Lycoming AEIO-580-B1A z wtryskiem i smarowaniem na lot odwrócony działa niezawodnie w każdym położeniu samolotu.
 
   
 
@@ -116,19 +116,21 @@ W praktyce oba szkolenia mają wspólne elementy (korkociąg, przeciągnięcie, 
 ## Nasze szkolenie UPRT
 
   
-Szkolenie UPRT w **akrobacja.com** prowadzi **Maciej Kulaszewski** - instruktor z ponad 3 000 godzin nalotu, wielokrotny Mistrz Polski w akrobacji lotniczej, z doświadczeniem szkoleniowym obejmującym setki kursantów. Szkolenie realizujemy na Extra 300L SP-EKS z bazy Radom-Piastów (EPRP).
+Szkolenie UPRT w **akrobacja.com** prowadzi **Maciej Kulaszewski** — instruktor z ponad 3 000 godzin nalotu, wielokrotny Mistrz Polski w akrobacji lotniczej. Maciej wie, co to znaczy znaleźć się w sytuacji, która wykracza poza normalne parametry lotu — i wie, jak z niej wyjść. To nie jest wiedza zdobyta z podręcznika.
 
   
-Program obejmuje część teoretyczną (aerodynamika sytuacji nietypowych, fizjologia, procedury recovery) i część praktyczną w powietrzu. Szczegóły dotyczące programu, czasu trwania i ceny - napisz do nas na WhatsApp, dostosujemy program do Twoich potrzeb i poziomu doświadczenia.
+Program łączy część teoretyczną (aerodynamika sytuacji nietypowych, fizjologia, procedury recovery, złudzenia sensoryczne) z częścią praktyczną na Extra 300L SP-EKS. Program dostosowujemy do poziomu doświadczenia i celu szkolenia — inaczej wygląda UPRT dla kandydata na CPL(A), inaczej dla pilota PPL z kilkuset godzinami nalotu.
+
+Napisz do nas, żeby omówić szczegóły — wyjaśnimy co obejmuje szkolenie i czy to właściwy moment dla Ciebie.
 
   
   
     
-### Szkolenie UPRT na Extra 300L
+### UPRT to inwestycja w bezpieczeństwo — nie certyfikat na półkę
 
     
-Naucz się wyprowadzać samolot z każdej sytuacji. Instruktor z tytułem Mistrza Polski. Radom-Piastów EPRP.
+Extra 300L, Maciej Kulaszewski, Radom-Piastów. Szkolenie, po którym wiesz, co zrobić gdy samolot zrobi coś, czego nie powinien.
 
     NAPISZ NA WHATSAPP
     
-lub zobacz ofertę lotów akrobacyjnych
+lub zacznij od lotu akrobacyjnego, żeby poczuć maszynę i pilota

@@ -143,28 +143,28 @@ Jedyny dodatkowy koszt to opłata za sprawdzian z egzaminatorem ULC (ok. 1 500-2
   
 
   
-## Po kursie - wpis do licencji ULC
+## Po kursie - wpis do licencji i co dalej
 
   
-Po zdaniu sprawdzianu praktycznego z egzaminatorem, otrzymujesz zaświadczenie o ukończeniu szkolenia i pozytywnym wyniku egzaminu. Z tym dokumentem składasz wniosek do **Urzędu Lotnictwa Cywilnego (ULC)** o wpisanie uprawnienia FCL.800 do Twojej licencji pilota.
+Po zdaniu sprawdzianu praktycznego składasz wniosek do **Urzędu Lotnictwa Cywilnego** o wpisanie uprawnienia FCL.800 do licencji. Od tej chwili jesteś legalnie uprawnionym pilotem akrobacyjnym.
 
   
-Od tego momentu jesteś legalnie uprawnionym pilotem akrobacyjnym. Możesz wykonywać figury akrobacyjne na samolotach, do których masz odpowiednie uprawnienia typowe. Uprawnienie FCL.800 nie wygasa - raz zdobyte, pozostaje w Twojej licencji na stałe. Nie wymaga przedłużania ani odnawiania (w odróżnieniu od wielu innych uprawnień lotniczych).
+Uprawnienie FCL.800 nie wygasa — raz wpisane do licencji zostaje tam na zawsze. Nie ma konieczności odnawiania ani recurrency. To jeden z nielicznych wpisów w lotnictwie, który naprawdę jest "na całe życie".
 
   
-To otwarcie drzwi do świata akrobacji - od treningu rekreacyjnego, przez starty w zawodach FAI, po pokazy lotnicze. Wielu naszych absolwentów kontynuuje szkolenie w wyższych kategoriach akrobacyjnych i startuje w krajowych oraz międzynarodowych zawodach.
+Co dalej? Zależy od Ciebie. Wielu absolwentów korzysta z uprawnienia czysto rekreacyjnie — bo latanie do góry nogami jest po prostu fajne i daje niebywałą swobodę w powietrzu. Inni wchodzą na zawody w kategorii Sportsman i zaczynają rywalizować. Jeszcze inni idą dalej — FCL.800 to fundament pod szkolenie UPRT, trenerskie uprawnienia FI(A) z rozszerzeniem akrobacyjnym, albo po prostu kolejne lata coraz lepszej akrobacji.
 
   
-Zainteresowany? Sprawdź dostępne terminy w kalendarzu lub odwiedź nasz sklep po więcej informacji.
+Każda droga w akrobacji zaczyna się od jednej decyzji: zrobię kurs. Napisz do nas — opowiemy więcej o tym, jak to wygląda w praktyce.
 
   
   
     
-### Zostań pilotem akrobacyjnym
+### FCL.800 zaczyna się od rozmowy
 
     
-Kurs FCL.800 na Extra 300L. Radom-Piastów EPRP. Instruktor - Mistrz Polski.
+Napisz do Macieja — odpowie na każde pytanie i powie szczerze, czy jesteś gotowy na kurs, czy potrzebujesz jeszcze kilku godzin nalotu.
 
     NAPISZ NA WHATSAPP
     
-lub zobacz szczegółowy program szkolenia
+lub zacznij od lotu pasażerskiego Extra 300L, żeby poczuć, jak to jest

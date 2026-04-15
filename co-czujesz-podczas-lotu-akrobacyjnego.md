@@ -89,21 +89,21 @@ Akrobacja lotnicza wygląda ekstremalnie z ziemi, ale w kokpicie - z profesjonal
 ## Po wylądowaniu - euforia, której nie da się opisać
 
   
-Koła dotykają pasa startowego. Silnik przechodzi na wolne obroty. Zdejmujesz kask i... nie możesz przestać się uśmiechać. Dosłownie - **uśmiech, którego nie da się zdjąć z twarzy**. To nie metafora. To neurochemia.
+Koła dotykają pasa startowego. Silnik przechodzi na wolne obroty. Zdejmujesz kask i... nie możesz przestać się uśmiechać. Nie dlatego, że chcesz — po prostu nie możesz inaczej. Coś się w środku przestawiło.
 
   
-Podczas lotu akrobacyjnego Twój organizm zalewa się adrenaliną, endorfinami i dopaminą - koktajlem, który ewolucja zarezerwowała dla momentów absolutnego triumfu. Serce wciąż bije szybciej. Dłonie lekko drżą. Świat wydaje się ostrzejszy, kolory bardziej nasycone. Czujesz się... żywy. Tak żywy, jak nigdy wcześniej.
+Podczas lotu Twój organizm zalał się adrenaliną, endorfinami i dopaminą. Serce wciąż bije szybciej niż powinno. Dłonie lekko drżą. Kolory na płycie lotniska wyglądają jaśniej niż przed lotem — to nie złudzenie, to neurochemia. Ewolucja zarezerwowała ten stan dla absolutnych momentów triumfu. I właśnie przez to doświadczenie wylądowałeś.
 
   
-Większość osób po wyjściu z kokpitu mówi jedno zdanie: **"Chcę jeszcze raz."** I to chyba najlepsza recenzja, jaką można sobie wyobrazić, gdy ktoś pyta, co czujesz podczas lotu akrobacyjnego.
+Większość osób po wyjściu z kokpitu mówi to samo zdanie: **"Chcę jeszcze raz."** To chyba najlepsza odpowiedź na pytanie, co czujesz podczas lotu akrobacyjnego.
 
   
   
     
-### Chcesz to poczuć?
+### Opisałem ci to słowami — ale to za mało
 
     
-Napisz do nas i zarezerwuj swój lot akrobacyjny Extra 300L.
+Żadna relacja nie zastąpi 20 minut w tylnym kokpicie Extra 300L. Napisz lub kup voucher online — resztę Ci pokażemy.
 
     Napisz na WhatsApp
     

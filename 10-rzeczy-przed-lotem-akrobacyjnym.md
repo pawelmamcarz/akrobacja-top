@@ -44,7 +44,7 @@ Przy +3G do +4G poczujesz, że jesteś wciskany w fotel, policzki opadną, ręce
 ## 6. Choroba lotniana - jak zapobiec
 
   
-Choroba lotniana (motion sickness) dotyka niektórych pasażerów, zwłaszcza przy pierwszym locie akrobacyjnym. Statystycznie - około 15-20% naszych pasażerów odczuwa lekkie mdłości. Pełne wymiotowanie zdarza się rzadko (mamy woreczki w kokpicie, na wszelki wypadek). Jak zapobiec? Lekki posiłek (patrz punkt 1), dobre nawodnienie, patrzenie na horyzont podczas lotu (nie w podłogę kokpitu), a przede wszystkim - szczere komunikowanie pilotowi, jak się czujesz. Jeśli zaczyna Ci się kręcić w głowie - powiedz. Pilot dostosuje intensywność figur.
+Choroba lotniana (motion sickness) dotyka niektórych pasażerów, zwłaszcza przy pierwszym locie akrobacyjnym. Z naszego doświadczenia z setkami pasażerów — około 15-20% odczuwa lekkie mdłości. Pełne wymiotowanie zdarza się rzadko (mamy woreczki w kokpicie, na wszelki wypadek). Jak zapobiec? Lekki posiłek (patrz punkt 1), dobre nawodnienie, patrzenie na horyzont podczas lotu (nie w podłogę kokpitu), a przede wszystkim - szczere komunikowanie pilotowi, jak się czujesz. Jeśli zaczyna Ci się kręcić w głowie - powiedz. Pilot dostosuje intensywność figur.
 
   
 ## 7. Zdjęcia i video - opcja kamery 360°
@@ -68,19 +68,19 @@ Voucher na lot akrobacyjny jest ważny 12 miesięcy od daty zakupu. Masz więc c
 ## 10. Po locie będziesz chciał powtórzyć
 
   
-To nie jest slogan marketingowy - to fakt potwierdzony przez setki naszych klientów. Adrenalina po locie akrobacyjnym utrzymuje się przez kilka godzin. Wrażenia są tak intensywne, że większość osób już na lotnisku pyta o następny termin. Wielu naszych stałych klientów zaczynało od pakietu **Pierwszy Lot**, potem wracało na **Adrenalinę**, a w końcu na **Masterclass**. Niektórzy poszli dalej - na kurs akrobacji FCL.800, żeby nauczyć się latać samodzielnie.
+To nie jest slogan - po prostu tak jest. Adrenalina po locie akrobacyjnym utrzymuje się przez kilka godzin. Większość osób, zanim zdąży zdjąć kask, pyta przez nieśmiały uśmiech: "Kiedy można przyjechać następnym razem?" Wielu naszych stałych klientów zaczynało od pakietu **Pierwszy Lot**, wracało na **Adrenalinę**, potem na **Masterclass**. Kilku poszło o krok dalej - zrobiło kurs FCL.800 i teraz samodzielnie lata akrobacyjnie. Zaczęło się od jednego lotu.
 
   
-Lot akrobacyjny to nie jednorazowa atrakcja - to początek fascynacji, która może zmienić Twoje życie. Dosłownie. Więcej o tym, co czujesz podczas lotu akrobacyjnego, przeczytasz w osobnym artykule.
+Lot akrobacyjny to nie jednorazowa atrakcja. To moment, po którym świat normalnych prędkości wygląda inaczej. Co dokładnie czujesz w powietrzu - przeczytasz w osobnym artykule.
 
   
   
     
-### Gotowy na lot?
+### Masz już to wszystko w głowie — zostało tylko jedno
 
     
-Teraz wiesz wszystko. Czas zarezerwować swoje miejsce w kokpicie Extra 300L.
+Zadzwoń albo napisz, żeby zarezerwować termin. Samolot SP-EKS czeka w Radomiu.
 
     NAPISZ NA WHATSAPP
     
-lub zobacz pakiety i kup voucher online
+lub kup voucher online i umów termin kiedy chcesz

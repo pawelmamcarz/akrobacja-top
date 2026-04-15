@@ -132,20 +132,20 @@ Oryginalne koszulki, bluzy i czapki akrobacja.com. Idealne uzupełnienie prezent
 
   
 
-    **Prezent lot akrobacyjny** to coś więcej niż gadżet na półkę. To wspomnienie, które zostaje na zawsze - przeciążenie +6G, widok ziemi pod nietypowym kątem, dźwięk silnika Lycoming i uśmiech po lądowaniu. To prezent, po którym obdarowany powie: „To był najlepszy prezent w moim życiu."
+    Lot akrobacyjny to prezent, który żyje długo po lądowaniu. Przeciążenie +6G, widok ziemi pod głową, dźwięk silnika Lycoming AEIO-580 na pełnych obrotach — tego się nie odkłada na półkę i nie wyrzuca po roku. Opowiada się o tym znajomym. Planuje się powrót.
   
 
   
 
-    Nie czekaj na ostatnią chwilę. Voucher kupujesz online, PDF masz natychmiast, a termin lotu wybieracie wspólnie z kalendarza. Proste, szybkie i niezapomniane.
+    Voucher kupujesz online w kilka minut. PDF natychmiast na mailu. Termin lotu obdarowany wybiera sam, kiedy pasuje. Nie ma wygodniejszego sposobu na prezent, który naprawdę ma znaczenie.
   
 
   
   
     
-### Gotowy, żeby podarować lot akrobacyjny?
+### Ktoś zasługuje na ten prezent — wiesz kto
 
     
-Napisz do nas na WhatsApp - doradzimy pakiet i wystawimy voucher w kilka minut.
+PDF w kilka minut po zakupie. Pięknie zaprojektowany voucher, gotowy do wręczenia od razu. Napisz jeśli potrzebujesz pomocy w wyborze pakietu.
 
     Kup Voucher na WhatsApp

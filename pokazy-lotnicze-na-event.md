@@ -94,18 +94,19 @@ Zawody sportowe, biegi, rajdy samochodowe - pokaz lotniczy jako otwarcie lub fin
 ## Jak wygląda pokaz akrobacyjny?
 
   
-Typowy **pokaz akrobacyjny Extra 300L** trwa od 8 do 12 minut i obejmuje program figur dostosowany do lokalizacji, warunków pogodowych i typu publiczności. Oto co zobaczą Twoi goście:
+Pokaz zaczyna się, zanim ludzie go zobaczą. Najpierw słyszą — narastający ryk silnika gdzieś za horyzontem — a potem Extra 300L pojawia się nagle, nisko, z pełną prędkością (~350 km/h). Tłum instynktownie cofa się o krok. To dokładnie ten moment, o który chodzi.
 
   
-    - **Wejście z efektem** - samolot pojawia się nisko nad horyzontem z pełną prędkością (~350 km/h), zaskakując publiczność rykiem silnika i nagłą obecnością maszyny nad głowami.
+Przez kolejne 8–12 minut Maciej prowadzi maszynę przez program figur dobrany do lokalizacji i publiczności. Pętle, beczki, hammerheady, ósemki kubańskie — każda figura wykonana z precyzją wielokrotnego Mistrza Polski. Nie chodzi tylko o widowiskowość: chodzi o to, żeby każda figura była czytelna, żeby widzowie widzieli, co się dzieje i rozumieli, jak bardzo to jest trudne.
 
-    - **Figury dynamiczne** - loopingi, beczki, hammerheady, ósemki kubańskie, zwrotki. Każda figura wykonywana jest z precyzją zawodnika klasy unlimited - bo nasz pilot, Maciej Kulaszewski, jest Mistrzem Polski.
+  
+Przejścia nisko nad ziemią — tam gdzie zezwolenia i lokalizacja na to pozwalają — to chwile, kiedy 300-konna maszyna mija głowy widzów na minimalnej dozwolonej wysokości. Telefony idą w górę. Nikt nie mruga.
 
-    - **Przejścia nisko nad ziemią** - w zależności od zezwoleń i lokalizacji, samolot przelatuje na minimalnej dozwolonej wysokości nad widzami. To moment, w którym adrenalina sięga zenitu.
+  
+Opcjonalnie: ślad dymny. Kiedy Extra rysuje pętle i beczki białą smugą na tle nieba, każde zdjęcie wychodzi jak z profesjonalnej sesji. To szczegół, który sprawia, że nagrania z Twojego eventu żyją własnym życiem w internecie tygodniami po imprezie.
 
-    - **Dymki akrobacyjne** - opcjonalnie samolot może zostawiać ślad dymny, co znacząco wzmacnia efekt wizualny figur i jest idealne na zdjęcia i nagrania.
-
-    - **Finał z pozdrowieniem** - pokaz kończy się efektownym przejściem nad publicznością z kołysaniem skrzydeł na pożegnanie.
+  
+Pokaz kończy się efektownym przejściem z kołysaniem skrzydeł — tradycyjne pozdrowienie pilotów. Tłum odpowiada brawami. Nikt nie wraca do swojego telefonu tak szybko, jak myślisz.
 
   
 
@@ -156,11 +157,11 @@ Szczegółową ofertę pokazów znajdziesz na stronie pokazy lotnicze. Sprawdź 
   
   
     
-### Zamów pokaz na Twój event
+### Twój event będzie ostatni, o którym mówią rok później
 
     
-Extra 300L. Mistrz Polski za sterami. Cała Polska. Od 11 900 PLN.
+Napisz do nas — powiemy co jest możliwe w Twojej lokalizacji i terminie. Od 11 900 PLN, cała Polska, zezwolenia PAŻP po naszej stronie.
 
     NAPISZ NA WHATSAPP
     
-lub zobacz pełną ofertę pokazów lotniczych
+lub zapoznaj się z pełną ofertą pokazów akrobacyjnych

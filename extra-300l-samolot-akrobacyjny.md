@@ -4,7 +4,7 @@
 # Extra 300L - najlepszy samolot akrobacyjny
 
   
-Kiedy mowa o **samolocie akrobacyjnym** klasy unlimited, jedno nazwisko pojawia się natychmiast: **Extra 300L**. To maszyna, która od ponad trzech dekad wyznacza standardy w akrobacji lotniczej na całym świecie. Piloci Red Bull Air Race, mistrzowie FAI i zespoły akrobacyjne z kilkudziesięciu krajów wybierają Extrę jako swój podstawowy samolot. W akrobacja.com latamy właśnie na Extra 300L - egzemplarz **SP-EKS** - i w tym artykule wyjaśniamy, dlaczego to najlepsza maszyna akrobacyjna, jaką możesz doświadczyć z bliska.
+Kiedy mowa o **samolocie akrobacyjnym** klasy unlimited, jedno nazwisko pojawia się natychmiast: **Extra 300L**. To maszyna, która od ponad trzech dekad wyznacza standardy w akrobacji lotniczej na całym świecie. Mistrzowie FAI, zespoły akrobacyjne z kilkudziesięciu krajów i piloci Red Bull Air Race (prestiżowej serii wyścigów powietrznych, która trwała do 2019 roku) wybierali Extrę jako swój podstawowy samolot treningowy. W akrobacja.com latamy właśnie na Extra 300L - egzemplarz **SP-EKS** - i w tym artykule wyjaśniamy, dlaczego to najlepsza maszyna akrobacyjna, jaką możesz doświadczyć z bliska.
 
   
 ## Historia Extra Aircraft - od warsztatu Waltera Extra do legendy
@@ -19,7 +19,7 @@ Walter Extra nie był typowym konstruktorem zza biurka. Jako czynny pilot akroba
 Litera „L" w nazwie Extra 300L oznacza „Low-wing", czyli dolnopłat. W odróżnieniu od wersji Extra 300S (jednomiejscowej), model 300L to **dwumiejscowy samolot akrobacyjny** w układzie tandem - pilot siedzi z przodu, pasażer z tyłu. To właśnie ta konfiguracja czyni Extra 300L idealnym samolotem do lotów akrobacyjnych z pasażerami, szkolenia akrobacyjnego i przygotowań do zawodów FAI.
 
   
-Fabryka Extra Aircraft mieści się w Dinslaken w Nadrenii Północnej-Westfalii. Do dziś każdy egzemplarz jest w znacznej mierze składany ręcznie, z dbałością o detale, która jest rzadkością we współczesnym lotnictwie. Wyprodukowano ponad 300 sztuk Extra 300L, które trafiły do pilotów na wszystkich kontynentach.
+Fabryka Extra Aircraft mieści się w Dinslaken w Nadrenii Północnej-Westfalii. Do dziś każdy egzemplarz jest w znacznej mierze składany ręcznie, z dbałością o detale, która jest rzadkością we współczesnym lotnictwie. Wyprodukowano kilkaset egzemplarzy Extra 300L, które trafiły do pilotów na wszystkich kontynentach.
 
   
 ## Specyfikacja techniczna Extra 300L
@@ -133,43 +133,43 @@ Extra NG zachowuje filozofię oryginału - precyzja, moc, wytrzymałość - ale 
 ## Nasz egzemplarz - SP-EKS
 
   
-W akrobacja.com latamy na **Extra 300L o znakach rejestracyjnych SP-EKS**. Ten egzemplarz ma wyjątkową historię - był wcześniej jednym z samolotów **Royal Jordanian Falcons**, królewskiego zespołu akrobacyjnego Jordanii. SP-EKS przeszedł gruntowny przegląd strukturalny i posiada aktualny **Certificate of Airworthiness (CofA)** wydany przez Urząd Lotnictwa Cywilnego. Samolot jest utrzymywany zgodnie z programem obsługi technicznej producenta - każdy element, od silnika po łożyska sterów, jest regularnie inspekcjonowany i wymieniany w wymaganych interwałach.
+W akrobacja.com latamy na **Extra 300L o znakach rejestracyjnych SP-EKS**. Ten egzemplarz ma ciekawą historię — zanim trafił do Polski, był jednym z samolotów **Royal Jordanian Falcons**, królewskiego zespołu akrobacyjnego Jordanii. Po sprowadzeniu przeszedł gruntowny przegląd strukturalny i posiada aktualny **Certificate of Airworthiness (CofA)** wydany przez Urząd Lotnictwa Cywilnego. Każdy element — od silnika po łożyska sterów — jest regularnie inspekcjonowany zgodnie z programem obsługi producenta.
 
   
-SP-EKS to maszyna, na której nasz pilot - **Maciej Kulaszewski**, Mistrz Polski w akrobacji samolotowej - wykonuje zarówno loty akrobacyjne z pasażerami, jak i treningi do zawodów FAI. Samolot bazuje na lotnisku **Radom-Piastów (EPRP)** i jest dostępny do lotów zgodnie z naszym kalendarzem.
+Za sterami SP-EKS siedzi **Maciej Kulaszewski** — Mistrz Polski w akrobacji samolotowej — zarówno podczas treningów do zawodów FAI, jak i podczas lotów z pasażerami. Samolot stacjonuje na lotnisku **Radom-Piastów (EPRP)**.
 
   
-    **SP-EKS w liczbach:** aktualny CofA, regularne przeglądy wg programu producenta, silnik Lycoming AEIO-580 w pełnym resursie. Samolot jest ubezpieczony od odpowiedzialności cywilnej (OC) i gotowy do lotu w każdy weekend sezonu kwiecień-październik.
+    **SP-EKS w liczbach:** aktualny CofA, regularne przeglądy wg programu producenta, silnik Lycoming AEIO-580-B1A w pełnym resursie. Ubezpieczony OC, gotowy do lotu w każdy weekend sezonu kwiecień-październik.
   
 
   
 ## Kto lata na Extra 300L?
 
   
-**Extra 300L** to samolot wybierany przez najlepszych pilotów akrobacyjnych na świecie. Lista jest imponująca:
+**Extra 300L** to samolot, którym latają najlepsi. Kilka przykładów:
 
   
-    - **Red Bull Air Race** - wielu pilotów startujących w tych prestiżowych zawodach trenowało i kwalifikowało się na maszynach Extra. Seria wyścigów powietrznych Red Bull wymagała samolotów o ekstremalnej manewrowości i wytrzymałości - Extra 300L spełniała te kryteria z nawiązką.
+    - **Mistrzowskie podium FAI** — Extra 300L i jej jednoczesna wersja 330SC to jedne z najpopularniejszych typów w kategoriach Advanced i Unlimited na Mistrzostwach Świata i Europy. Polscy piloci regularnie startują na Extrach w zawodach międzynarodowych.
 
-    - **Zawody FAI** - Międzynarodowa Federacja Lotnicza (FAI) organizuje Mistrzostwa Świata i Europy w akrobacji samolotowej. Extra 300L jest jednym z najpopularniejszych typów w kategoriach Advanced i Unlimited. Polscy piloci regularnie startują na Extrach na zawodach międzynarodowych.
+    - **Red Bull Air Race (2003–2019)** — przez całą dekadę trwania tej prestiżowej serii wyścigów powietrznych wielu pilotów trenowało i kwalifikowało się na maszynach Extra. Wymagania były ekstremalnie wysokie — Extra spełniała je z nawiązką.
 
-    - **Zespoły akrobacyjne** - formacje pokazy lotnicze na największych imprezach w Europie. Od Czech, przez Francję po Niemcy - Extra 300L to standard zespołów akrobacyjnych na air show.
+    - **Zespoły akrobacyjne** — od Czech przez Francję po Niemcy, Extra 300L to standard formacji pokazowych na największych air show w Europie.
 
-    - **Szkoły akrobacji** - od Stanów Zjednoczonych po Australię, Extra 300L jest standardem w zaawansowanym szkoleniu akrobacyjnym i kursach FCL.800. Samolot jest na tyle wyrozumiały dla ucznia, żeby pozwolić na naukę, ale na tyle precyzyjny, żeby uczyć dobrych nawyków od pierwszego lotu.
-
-  
+    - **Szkolenie FCL.800** — od Stanów Zjednoczonych po Australię, Extra 300L jest punktem odniesienia w zaawansowanym szkoleniu akrobacyjnym. Wyrozumiały dla ucznia, ale wystarczająco precyzyjny, żeby od pierwszego lotu uczyć dobrych nawyków.
 
   
-W Polsce Extra 300L to rzadkość - w rejestrze cywilnym znajdziesz zaledwie kilka egzemplarzy. Nasz **SP-EKS** jest jednym z niewielu, na których możesz polecieć jako pasażer z profesjonalnym pilotem akrobacyjnym. Sprawdź nasz sklep i zarezerwuj swój lot.
+
+  
+W Polsce Extra 300L to rzadkość — w cywilnym rejestrze znajdziesz zaledwie kilka egzemplarzy. Nasz **SP-EKS** jest jednym z nielicznych, na których możesz polecieć jako pasażer z profesjonalnym pilotem akrobacyjnym klasy Unlimited.
 
   
   
     
-### Przeleć się Extra 300L
+### Jedna szansa, żeby poczuć Extra 300L jako pasażer
 
     
-Poczuj +6G na własnej skórze. Samolot SP-EKS czeka na lotnisku Radom-Piastów.
+SP-EKS, Radom-Piastów, Maciej Kulaszewski. Napisz i zarezerwuj swój termin.
 
     NAPISZ NA WHATSAPP
     
-lub zobacz pakiety i kup voucher online
+lub kup voucher online — PDF w kilka minut, lot kiedy chcesz

@@ -90,22 +90,22 @@ Do każdego pakietu możesz dokupić profesjonalne nagranie z kamery 360° w kok
 ## Lot akrobacyjny - czy to drogo?
 
   
-Odpowiedź brzmi: to zależy, z czym porównujesz. Zestawmy **cenę lotu akrobacyjnego** z innymi popularnymi aktywnościami premium:
+Zależy, z czym porównujesz. Każdy wydatek wygląda inaczej obok odpowiedniego punktu odniesienia.
 
   
-    - **Weekend w spa** - około 1 500 PLN za parę (nocleg + zabiegi). Miło i relaksująco, ale zapominasz po tygodniu.
+**Weekend w spa** — około 1 500 PLN za parę (nocleg + zabiegi). Relaks to coś innego niż adrenalina, ale obydwa kosztują podobnie.
 
-    - **Skok ze spadochronem (tandem)** - około 900 PLN. Jeden skok, 60 sekund swobodnego spadania. Adrenalina, ale masz minimalny wpływ na lot.
+**Skok ze spadochronem (tandem)** — około 900 PLN za 60 sekund swobodnego spadania. Adrenalina jest, ale kontroli nad tym, co się dzieje, masz zero.
 
-    - **Lot akrobacyjny Extra 300L** - od 1 999 PLN. Siedzisz w kokpicie obok Mistrza Polski, czujesz +6G na własnej skórze, widzisz świat do góry nogami z perspektywy pilota wyczynowego. To doświadczenie, które zmienia perspektywę - dosłownie i w przenośni.
-
-  
+**Lot akrobacyjny Extra 300L** — od 1 999 PLN za 15 minut w kokpicie wyczynowego samolotu akrobacyjnego, z Mistrzem Polski za drążkiem, z +6G na własnej skórze, z widokiem ziemi nad głową. To nie jest 15 minut "wziął mnie i leci" — to 15 minut, w których Twój mózg rejestruje coś, czego wcześniej nie znał.
 
   
-Ludzie, którzy polecieli z nami, mówią jedno: **to wspomnienie na całe życie**. Nie da się zapomnieć momentu, w którym samolot przechodzi przez szczyt loopingu i widzisz ziemię nad głową. To nie jest kolejna atrakcja turystyczna - to doświadczenie, które zmienia Twoje poczucie tego, co jest możliwe.
 
   
-    **Ile kosztuje lot akrobacyjny?** Tyle, ile kosztuje jedno z najintensywniejszych doświadczeń, jakie możesz przeżyć bez licencji pilota. Od 1 999 PLN za lot, który zapamiętasz do końca życia.
+Nie ma jednej odpowiedzi na pytanie "czy to drogo". Ale jest jedna stała: **wszyscy, którzy wrócili na ziemię z naszego samolotu, powiedzieli że to było warte każdej złotówki**. Nie dlatego, że tak powinni mówić — ale dlatego, że momentu, w którym świat odwraca się do góry nogami, nie da się zapomnieć.
+
+  
+    **Ile kosztuje lot akrobacyjny?** Tyle, ile kosztuje jedno z najintensywniejszych przeżyć, jakich możesz doświadczyć bez licencji pilota. Od 1 999 PLN.
   
 
   
@@ -134,11 +134,11 @@ Masz pytania o **cenę lotu akrobacyjnego** lub chcesz dopasować pakiet do swoi
   
   
     
-### Gotowy na lot?
+### Widzisz wartość — teraz wybierz pakiet
 
     
-Wybierz pakiet i zarezerwuj termin. Extra 300L czeka na lotnisku Radom-Piastów.
+Pierwszy Lot 1999 PLN, Adrenalina 2999 PLN, Masterclass 4999 PLN. Napisz, jeśli nie wiesz, który wybrać — podpowiemy.
 
     NAPISZ NA WHATSAPP
     
-lub zobacz pakiety i kup voucher online
+lub kup voucher online i daj komuś lot, którego nie zapomni
