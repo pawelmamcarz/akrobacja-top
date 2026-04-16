@@ -1,85 +1,6 @@
--- D1 Database schema for akrobacja.top voucher shop
--- Run: wrangler d1 execute akrobacja-db --file=schema.sql
-
-CREATE TABLE IF NOT EXISTS orders (
-  id TEXT PRIMARY KEY,
-  voucher_code TEXT UNIQUE NOT NULL,
-  package_id TEXT NOT NULL,
-  video_addon INTEGER NOT NULL DEFAULT 0,
-  customer_name TEXT NOT NULL,
-  customer_email TEXT NOT NULL,
-  customer_nip TEXT,
-  amount INTEGER NOT NULL,
-  stripe_session_id TEXT,
-  status TEXT NOT NULL DEFAULT 'pending',
-  invoice_id TEXT,
-  created_at TEXT NOT NULL,
-  paid_at TEXT,
-  expires_at TEXT
-);
-
-CREATE INDEX IF NOT EXISTS idx_orders_voucher_code ON orders(voucher_code);
-CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
-CREATE INDEX IF NOT EXISTS idx_orders_stripe_session ON orders(stripe_session_id);
-
--- Merch products
-CREATE TABLE IF NOT EXISTS products (
-  id TEXT PRIMARY KEY,
-  name TEXT NOT NULL,
-  description TEXT,
-  price INTEGER NOT NULL,
-  image_url TEXT,
-  variants TEXT DEFAULT '[]',
-  active INTEGER NOT NULL DEFAULT 1,
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
-);
-
--- Merch orders
-CREATE TABLE IF NOT EXISTS merch_orders (
-  id TEXT PRIMARY KEY,
-  customer_name TEXT NOT NULL,
-  customer_email TEXT NOT NULL,
-  customer_phone TEXT,
-  shipping_address TEXT NOT NULL,
-  shipping_city TEXT NOT NULL,
-  shipping_zip TEXT NOT NULL,
-  items TEXT NOT NULL,
-  total_amount INTEGER NOT NULL,
-  status TEXT NOT NULL DEFAULT 'pending',
-  stripe_session_id TEXT,
-  paid_at TEXT,
-  shipped_at TEXT,
-  tracking_number TEXT,
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
-);
-
-CREATE INDEX IF NOT EXISTS idx_merch_orders_status ON merch_orders(status);
-CREATE INDEX IF NOT EXISTS idx_merch_orders_stripe ON merch_orders(stripe_session_id);
-
--- SMS subscribers (email column used by welcome email sequence)
-CREATE TABLE IF NOT EXISTS subscribers (
-  id TEXT PRIMARY KEY,
-  phone TEXT UNIQUE NOT NULL,
-  email TEXT,
-  name TEXT,
-  source TEXT DEFAULT 'website',
-  active INTEGER NOT NULL DEFAULT 1,
-  created_at TEXT NOT NULL DEFAULT (datetime('now'))
-);
-
-CREATE INDEX IF NOT EXISTS idx_subscribers_phone ON subscribers(phone);
-CREATE INDEX IF NOT EXISTS idx_subscribers_active ON subscribers(active);
-
--- Welcome email sequence tracking (avoids altering subscribers table)
-CREATE TABLE IF NOT EXISTS welcome_emails_sent (
-  id TEXT PRIMARY KEY,
-  subscriber_id TEXT NOT NULL,
-  step INTEGER NOT NULL,
-  sent_at TEXT NOT NULL DEFAULT (datetime('now')),
-  UNIQUE(subscriber_id, step)
-);
-
-CREATE INDEX IF NOT EXISTS idx_welcome_emails_subscriber ON welcome_emails_sent(subscriber_id);
+-- Migration 003: Pilot portal + calendar + aircraft management + subscribers.email drift
+-- Backfills tables that were created ad-hoc in production but never captured in schema.
+-- Safe to run on fresh DBs and on existing DBs (IF NOT EXISTS guards everywhere).
 
 -- Pilot portal (SMS OTP login)
 CREATE TABLE IF NOT EXISTS pilots (
@@ -100,6 +21,7 @@ CREATE TABLE IF NOT EXISTS pilots (
 CREATE INDEX IF NOT EXISTS idx_pilots_phone ON pilots(phone);
 CREATE INDEX IF NOT EXISTS idx_pilots_session ON pilots(session_token);
 
+-- One-time codes for SMS login
 CREATE TABLE IF NOT EXISTS otp_codes (
   id TEXT PRIMARY KEY,
   phone TEXT NOT NULL,
@@ -111,6 +33,7 @@ CREATE TABLE IF NOT EXISTS otp_codes (
 
 CREATE INDEX IF NOT EXISTS idx_otp_phone ON otp_codes(phone, created_at);
 
+-- Pilot balance audit log
 CREATE TABLE IF NOT EXISTS balance_log (
   id TEXT PRIMARY KEY,
   pilot_id TEXT NOT NULL,
@@ -122,6 +45,7 @@ CREATE TABLE IF NOT EXISTS balance_log (
 
 CREATE INDEX IF NOT EXISTS idx_balance_log_pilot ON balance_log(pilot_id, created_at);
 
+-- FCL.800 aerobatic courses
 CREATE TABLE IF NOT EXISTS courses (
   id TEXT PRIMARY KEY,
   customer_name TEXT NOT NULL,
@@ -138,6 +62,7 @@ CREATE TABLE IF NOT EXISTS courses (
 
 CREATE INDEX IF NOT EXISTS idx_courses_email ON courses(customer_email);
 
+-- Calendar slots (hour blocks)
 CREATE TABLE IF NOT EXISTS slots (
   id TEXT PRIMARY KEY,
   date TEXT NOT NULL,
@@ -151,6 +76,7 @@ CREATE TABLE IF NOT EXISTS slots (
 CREATE INDEX IF NOT EXISTS idx_slots_date ON slots(date, start_time);
 CREATE INDEX IF NOT EXISTS idx_slots_booking ON slots(booking_id);
 
+-- Bookings (flight or course lesson)
 CREATE TABLE IF NOT EXISTS bookings (
   id TEXT PRIMARY KEY,
   slot_id TEXT NOT NULL,
@@ -171,6 +97,7 @@ CREATE TABLE IF NOT EXISTS bookings (
 CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status, created_at);
 CREATE INDEX IF NOT EXISTS idx_bookings_voucher ON bookings(voucher_code);
 
+-- Blocked dates (maintenance, weather, personal)
 CREATE TABLE IF NOT EXISTS availability_blocks (
   id TEXT PRIMARY KEY,
   date_from TEXT NOT NULL,
@@ -181,6 +108,7 @@ CREATE TABLE IF NOT EXISTS availability_blocks (
 
 CREATE INDEX IF NOT EXISTS idx_blocks_range ON availability_blocks(date_from, date_to);
 
+-- Aircraft maintenance schedule
 CREATE TABLE IF NOT EXISTS maintenance (
   id TEXT PRIMARY KEY,
   type TEXT NOT NULL,
@@ -194,6 +122,7 @@ CREATE TABLE IF NOT EXISTS maintenance (
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
+-- Aircraft documents (insurance, ARC, etc.)
 CREATE TABLE IF NOT EXISTS documents (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,
@@ -204,6 +133,7 @@ CREATE TABLE IF NOT EXISTS documents (
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
+-- Pilots requesting to be added to aircraft insurance
 CREATE TABLE IF NOT EXISTS insurance_pilots (
   id TEXT PRIMARY KEY,
   pilot_id TEXT NOT NULL,
@@ -214,3 +144,7 @@ CREATE TABLE IF NOT EXISTS insurance_pilots (
 );
 
 CREATE INDEX IF NOT EXISTS idx_insurance_pilot ON insurance_pilots(pilot_id, status);
+
+-- Schema drift fix: migration 001 created subscribers without email column,
+-- but code (welcome emails, subscribe.ts) writes/reads it.
+ALTER TABLE subscribers ADD COLUMN email TEXT;
