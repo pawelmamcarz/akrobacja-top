@@ -1,6 +1,42 @@
-# Google Ads — Kampanie Voucherowe
+# Google Ads + Meta + Multi-channel — Vouchery akrobacja.com
 
-Gotowy zestaw pod kopiuj-wklej do Google Ads. Landing: **`https://akrobacja.com/voucher-prezent`**.
+Gotowy zestaw pod kopiuj-wklej do Google Ads / Meta. Landing: **`https://akrobacja.com/voucher-prezent`**.
+
+---
+
+## 0. STATUS — co już skonfigurowane (stan na 2026-04-16)
+
+### W kodzie (deployed na produkcję):
+
+| Funkcja | Status | Plik |
+|---------|--------|------|
+| Landing `/voucher-prezent` (no nav, jeden CTA) | ✅ Live | `public/voucher-prezent.html` |
+| Landing `/test-konwersji` (1 zł produkt testowy, noindex) | ✅ Live | `public/test-konwersji.html` |
+| Product schema na `/lot-akrobacyjny` (sku, aggregateRating, shippingDetails) | ✅ Live | `public/lot-akrobacyjny.html` |
+| GMC feed `merchant-feed.xml` (3 vouchery, RSS 2.0 g:) | ✅ Live | `public/merchant-feed.xml` |
+| Google Ads `gtag.js` z **AW-928813824** (hardcoded) | ✅ Live | `functions/_middleware.ts` |
+| Google Ads conversion label **3g00CNLcnZwcElCm8roD** „Zakup Vouchera" (hardcoded) | ✅ Live | `functions/_middleware.ts` |
+| Consent Mode v2 (defaults DENIED w EU/PL) + banner cookies | ✅ Live | `public/assets/consent-banner.js` |
+| E-commerce events (view_item_list, begin_checkout, purchase) | ✅ Live | `public/assets/ecommerce-events.js` |
+| Enhanced Conversions (sessionStorage email/imie → user_data) | ✅ Live | `functions/_middleware.ts` |
+| Meta Pixel (client-side, warunkowy z env META_PIXEL_ID) | ⚙️ Code ready, **czeka na env vars** | `functions/_middleware.ts` |
+| Meta Conversions API (server-side z webhook Stripe) | ⚙️ Code ready, **czeka na env vars** | `src/lib/meta-capi.ts` |
+| Abandoned cart recovery + kod WRACAM5 (-5%) | ✅ Live | `functions/api/cron/abandoned-checkouts.ts` |
+| Stripe `cancel_url` mapowany przez body.source (Stripe Back wraca tam skąd przyszedł) | ✅ Live | `functions/api/checkout.ts` |
+| Email regex validation w checkout API | ✅ Live | `functions/api/checkout.ts` |
+| D1 migration: `abandon_email_sent_at` + `discount_code` | ✅ Applied (2026-04-16) | `migrations/002-abandoned-checkout.sql` |
+
+### Czeka na user-action:
+
+| Akcja | Gdzie | Krytyczność | Sekcja |
+|-------|-------|-------------|--------|
+| 🔴 **Zweryfikuj domenę akrobacja.com w Resend** | `resend.com/domains` + DNS w Cloudflare | KRYTYCZNE — wszystkie maile (vouchery PDF, abandoned cart, welcome, owner notif.) | §15 „Resend domain verify" |
+| 🟡 GA4 property + Measurement ID → env `GA_MEASUREMENT_ID` | Cloudflare Pages env vars | Wysoka — bez tego brak danych w GA4 | §8 |
+| 🟡 Meta Pixel ID + CAPI Token → env `META_PIXEL_ID`, `META_CAPI_TOKEN` | Cloudflare Pages env vars | Wysoka — bez tego brak Meta tracking | §14 |
+| 🟢 Cron job dla `/api/cron/abandoned-checkouts` (co 1h) | cron-job.org / GitHub Actions | Średnia — bez tego brak recovery email | §15 |
+| 🟢 Utworzyć 7 remarketing audiences | Google Ads → Audience Manager | Średnia — bez tego brak retargetingu | §11 |
+| 🟢 Odpalić kampanie (Search Generic, PMax, Search Prezent) | Google Ads → Campaigns | Średnia — kanał akwizycji | §2, §6 |
+| ⚪ Cleanup śmieciowych orderów testowych | wrangler CLI | Niska | §16 |
 
 ---
 
@@ -227,28 +263,40 @@ utm_source=meta&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_conten
 
 ---
 
-## 8. Konwersje — konfiguracja w Google Ads
+## 8. Konwersje — konfiguracja Google Ads / GA4
 
-Po deployu (kod już gotowy w middleware), w Google Ads:
+### Stan aktualny (już skonfigurowane):
 
-1. **Tools → Conversions → New conversion action → Website**
-2. Category: `Purchase`
-3. Value: `Use different values for each conversion`
-4. Count: `One`
-5. Conversion window: `30 days`
-6. Attribution: `Data-driven` (jak będzie min. 300 konwersji) lub `Position-based`
-7. Po utworzeniu skopiuj **Conversion ID** (`AW-1234567890`) i **Conversion Label** (`abcDEF123`)
-8. Wejdź do Cloudflare Pages → Settings → Environment Variables i ustaw:
-   - `GA_MEASUREMENT_ID` = `G-XXXXXXXXXX` (z GA4)
-   - `GOOGLE_ADS_ID` = `AW-1234567890`
-   - `GOOGLE_ADS_PURCHASE_LABEL` = `abcDEF123`
-9. Redeploy Pages (automatycznie przy push lub ręcznie)
+- ✅ Google Ads tag **AW-928813824** — hardcoded fallback w `functions/_middleware.ts`
+- ✅ Conversion action **„Zakup Vouchera"** label `3g00CNLcnZwcElCm8roD` — hardcoded fallback
+- ✅ Conversion event firuje na `/sukces?code=X&amount=Y&pkg=Z` przez middleware
+- ✅ Zweryfikowane Tag Assistantem (2026-04-15)
 
-Po tym każda wizyta na `/sukces?code=X&amount=Y&pkg=Z` odpali:
-- GA4 `purchase` event z transaction_id, value, currency
-- Google Ads conversion z tym samym value
+### Co jeszcze (opcjonalne, podnosi jakość danych):
 
-Weryfikacja: Google Ads → Tools → Conversion Actions → test z Tag Assistant Chrome extension.
+**GA4 Property** — bez tego nie zobaczysz danych w analytics.google.com:
+1. `analytics.google.com` → Admin → Create Property → `akrobacja.com` → Web stream → skopiuj **Measurement ID** (`G-XXXXXXXXXX`)
+2. Cloudflare Pages → Settings → Environment Variables (Production):
+   ```
+   GA_MEASUREMENT_ID = G-XXXXXXXXXX
+   ```
+3. Redeploy (push pusty commit albo Retry deployment z dashboard)
+4. Admin → Product Links → Google Ads → Link → wybierz konto Ads (ID 928813824)
+5. Włącz Enhanced Conversions w Google Ads: Tools → Conversions → Zakup Vouchera → Enhanced conversions ON → metoda: „Google tag"
+
+### Override w razie potrzeby
+
+Jeśli potrzebujesz **innego** Google Ads tagu lub label (np. nowy konto, refactor):
+```
+GOOGLE_ADS_ID            = AW-XXXXXXXXX        # nadpisuje 928813824
+GOOGLE_ADS_PURCHASE_LABEL = XXXXXXXXXXXXXX     # nadpisuje 3g00CNLcnZwcElCm8roD
+```
+
+### Weryfikacja
+
+1. **Tag Assistant (Chrome)** → wejdź na `/sukces?code=AKR-TEST-TEST&amount=1999&pkg=pierwszy_lot` → kliknij „Zgoda na wszystkie" w cookie banner → Tag Assistant powinien pokazać konwersję `Zakup Vouchera` jako wykryta
+2. **Google Ads → Conversions** → Status powinien być `Recording conversions` (po ~30 min od pierwszego eventu)
+3. **DevTools → Network → filter `google.com`** → szukaj request do `pagead/conversion/928813824/` (po consent grant)
 
 ---
 
@@ -266,14 +314,17 @@ W martwym sezonie (styczeń, luty, sierpień) → redukcja budżetu do 40%, skup
 
 ## 10. Quick checklist przed odpaleniem
 
-- [ ] Google Ads konto założone i zweryfikowane (billing, tax info)
-- [ ] Google Merchant Center + feed `https://akrobacja.com/merchant-feed.xml` dodany i zaakceptowany (24–72h pierwsza akceptacja)
-- [ ] GA4 property z Enhanced Conversions → linked to Google Ads (Admin → Product links)
-- [ ] Conversion action „Purchase" utworzona w Google Ads
-- [ ] Env vars w Cloudflare Pages: `GA_MEASUREMENT_ID`, `GOOGLE_ADS_ID`, `GOOGLE_ADS_PURCHASE_LABEL`
-- [ ] Tag Assistant (Chrome) — test na `/voucher-prezent` (view) i `/sukces?code=AKR-TEST-TEST&amount=1999&pkg=pierwszy_lot` (purchase)
-- [ ] Remarketing audiences utworzone (§ 11 poniżej)
-- [ ] Meta Pixel id + Conversions API (opcjonalnie, jeśli ruszamy FB/IG)
+- [x] Google Ads konto + Conversion „Zakup Vouchera" (AW-928813824 / `3g00CNLcnZwcElCm8roD`)
+- [x] Tag Assistant verified (2026-04-15)
+- [x] Cookie consent banner + Consent Mode v2
+- [x] Landing `/voucher-prezent` + `/test-konwersji` (1 zł test)
+- [ ] **Resend domain `akrobacja.com` zweryfikowana** (KRYTYCZNE — wszystkie maile zależą)
+- [ ] Google Merchant Center + feed `https://akrobacja.com/merchant-feed.xml` (24–72h)
+- [ ] GA4 property + Measurement ID w env (`GA_MEASUREMENT_ID`)
+- [ ] Cron job dla `/api/cron/abandoned-checkouts` (cron-job.org)
+- [ ] Remarketing audiences (§ 11)
+- [ ] Meta Pixel ID + CAPI Token w env (`META_PIXEL_ID`, `META_CAPI_TOKEN`) → § 14
+- [ ] Pierwsza kampania odpalona: Search Generic 40 zł/dzień + PMax 50 zł/dzień (§ 12 day 1)
 
 ---
 
@@ -605,5 +656,152 @@ Przez `SMSAPI_TOKEN` (już masz w env). Krótki: „Cześć! Twój voucher na lo
   ```
 
 Aby dodać kolejny kod — np. `URODZINY10` na kampanię urodzinową — wystarczy jedna linia w `DISCOUNTS` (serwer + klient).
+
+---
+
+## 16. Test konwersji — produkt 1 zł „Naklejka testowa"
+
+Dedykowany flow do weryfikacji **końcowej konwersji** z prawdziwą transakcją w Stripe live mode (tańsze niż voucher za 1999 zł).
+
+### Gdzie
+
+```
+https://akrobacja.com/test-konwersji
+```
+
+Strona jest **noindex** (middleware), nie ma jej w sitemap, nie linkuje z nikąd. Dostęp tylko przez bezpośredni URL.
+
+### Co dokładnie się dzieje
+
+| Krok | Co | Co weryfikuje |
+|------|-----|----------------|
+| 1 | Wpisujesz email + imię → kliknij „Kup naklejkę za 1 zł" | Walidacja UI + email regex w `/api/checkout` |
+| 2 | Redirect do Stripe Checkout (BLIK / karta / P24) | Stripe live mode + cancel_url poprawny |
+| 3 | Płacisz 1 zł | Real money flow (sprawdzasz że Stripe nie blokuje) |
+| 4 | Redirect na `/sukces?code=AKR-XXXX-YYYY&amount=1&pkg=test_naklejka` | Conversion event |
+| 5 | Middleware fairuje na `/sukces`: `gtag('event','purchase')`, `gtag('event','conversion')` z label `3g00CNLcnZwcElCm8roD`, `fbq('track','Purchase')` z eventID dla dedup CAPI | Client-side tracking |
+| 6 | Webhook Stripe (`/api/webhook`) → wykrywa `package_id='test_naklejka'` → SKIP voucher PDF + faktura wfirma + welcome email → tylko `UPDATE status='paid'` + `sendMetaPurchase` server-side CAPI | Server-side tracking + brak śmieciowych voucherów |
+
+### Symulacja BEZ wydawania 1 zł (czysty test client-side)
+
+Wejdź bezpośrednio (otwórz w incognito):
+
+```
+https://akrobacja.com/sukces?code=AKR-TEST-TEST&amount=1&pkg=test_naklejka
+```
+
+Odpala wszystkie client-side eventy (gtag conversion, GA4 purchase, Pixel Purchase). **Brak server-side CAPI** bo nie ma realnego webhook callbacku — ale do testu Tag Assistant wystarczy.
+
+### Cleanup po testach
+
+```bash
+# Usuń wszystkie test_naklejka orders z bazy
+wrangler d1 execute akrobacja-db --remote \
+  --command="UPDATE orders SET status='cancelled' WHERE package_id='test_naklejka'"
+```
+
+Albo zostaw — pojawią się w stats jako 1 zł, więc nie zaszkodzą revenue, tylko będą zaśmiecać `paid_at` w D1.
+
+### Bezpieczeństwo testu
+
+- Strona `/test-konwersji` ma `<meta name="robots" content="noindex,nofollow">` (przez middleware)
+- Brak linków do niej z publicznych stron
+- Nie pojawia się w sitemap
+- Webhook nie generuje PDF/faktury/email dla `test_naklejka` → zero śladów u klienta
+- Twój zakup pójdzie też do Resend jako conversion email do owner (`dto@akrobacja.com`) — w treści zobaczysz „Voucher Naklejka testowa — 1.00 PLN"
+
+### Kiedy używać
+
+- ✅ Po każdej zmianie Conversion Action w Google Ads (label changed)
+- ✅ Po dodaniu Meta Pixel + CAPI (sprawdza dedup eventID)
+- ✅ Po włączeniu nowej kampanii (stress test pełnego stacku)
+- ✅ Po zmianie env vars w Cloudflare Pages
+
+---
+
+## 17. Resend — weryfikacja domeny `akrobacja.com` (KRYTYCZNE)
+
+Bez tego **żaden mail z systemu nie chodzi**:
+- ❌ Vouchery PDF po zakupie (klient nie dostaje vouchera!)
+- ❌ Owner notifications („nowe zamówienie" do `dto@akrobacja.com`)
+- ❌ Welcome email sequence (3 maile po zapisie)
+- ❌ Abandoned cart recovery (nasz nowy system rabatu WRACAM5)
+- ✅ Działa tylko: maile do `pawel@mamcarz.com` (właściciel konta Resend — sandbox)
+
+### Setup (10 min)
+
+**1.** `resend.com/domains` → **Add Domain**:
+- Domain: `akrobacja.com`
+- Region: `eu-west-1` (Frankfurt — najbliżej PL)
+- Click „Add"
+
+**2.** Resend pokaże zestaw rekordów DNS — typowo:
+
+| Type | Name | Value |
+|------|------|-------|
+| TXT | `send.akrobacja.com` | `v=spf1 include:amazonses.com ~all` |
+| TXT | `resend._domainkey.akrobacja.com` | `p=MIGfMA0GCSqG…` (długi klucz publiczny RSA) |
+| MX | `send.akrobacja.com` | `feedback-smtp.eu-west-1.amazonses.com` (priority 10) |
+| TXT | `_dmarc.akrobacja.com` | `v=DMARC1; p=none;` (opcjonalne ale rekomendowane) |
+
+**3.** Cloudflare Dashboard → `akrobacja.com` → **DNS** → **Add record** dla każdego:
+- Type: jak w Resend
+- Name: jak w Resend (Cloudflare doda automatycznie sufiks `.akrobacja.com`)
+- Content/Target: jak w Resend
+- **WAŻNE: wyłącz pomarańczową chmurkę (proxy)** dla rekordów Resend → kliknij ikonę → szara „DNS only"
+- TTL: Auto
+
+**4.** Wracaj na `resend.com/domains` → kliknij **Verify DNS Records** → status powinien się zmienić na ✅ Verified w 1–10 min (czasem do 1h)
+
+**5.** Po weryfikacji nic w kodzie nie trzeba zmieniać — `FROM_EMAIL` w `welcome-emails.ts` i `abandoned-checkouts.ts` używa `dto@akrobacja.com` które działa od razu.
+
+### Weryfikacja działania
+
+```bash
+# Wymuś re-run abandoned cart cron (powinien teraz wysłać te 2 maile co dotąd dawały 403)
+curl -s https://akrobacja.com/api/cron/abandoned-checkouts | jq .
+
+# Powinno pokazać:
+# {
+#   "ok": true,
+#   "processed": 2,
+#   "results": [
+#     { "order": "...", "email": "p@f.pl", "status": "sent" },
+#     { "order": "...", "email": "test@test.com", "status": "sent" }
+#   ]
+# }
+```
+
+### Co jeszcze sprawdzić
+
+```bash
+# Czy są opłacone zamówienia, które klienci nigdy nie dostali (bo Resend 403)?
+wrangler d1 execute akrobacja-db --remote \
+  --command="SELECT id, voucher_code, customer_email, paid_at FROM orders WHERE status='paid' ORDER BY paid_at DESC LIMIT 20"
+```
+
+Jeśli są — masz **awarię klientów** którą trzeba ratować ręcznie:
+- Po weryfikacji Resend → wejdź na `/admin` (panel) i ręcznie wyślij voucher PDF dla każdego z tych orderów
+- Albo dopisz endpoint `/api/admin/resend-voucher?code=AKR-XXXX-YYYY` który re-triggeruje sendVoucherEmail
+
+### Monitoring na przyszłość
+
+Resend → Settings → **Webhooks** → URL: `https://akrobacja.com/api/webhooks/resend` → events: `email.bounced`, `email.complained`, `email.delivery_delayed`. Webhook może powiadamiać Cię SMS-em (przez SMSAPI_TOKEN) gdy mail się nie doszedł, żebyś nie odkrywał awarii dopiero przy testach.
+
+---
+
+## Historia zmian (changelog)
+
+| Data | Co | Commit |
+|------|-----|--------|
+| 2026-04-14 | Landing /voucher-prezent + GMC feed + Product schema | `0b405c3` |
+| 2026-04-14 | Conversion tracking middleware + ADS-VOUCHER playbook | `f06975d` |
+| 2026-04-15 | Hardcode AW-928813824 (tag), `3g00CNLcnZwcElCm8roD` (label) | `975be7c` `b723751` |
+| 2026-04-15 | Cookie consent banner + Consent Mode v2 | `12ed740` |
+| 2026-04-15 | E-commerce events + Enhanced Conversions (sessionStorage) | `8c6d0ca` |
+| 2026-04-15 | Meta Pixel + Conversions API (server-side) | `c864467` |
+| 2026-04-16 | Abandoned cart recovery + WRACAM5 -5% | `8ece6b7` |
+| 2026-04-16 | Permanent fail handling + email regex validation | `51fb354` |
+| 2026-04-16 | Test produkt 1 zł `/test-konwersji` + cancel_url fix | `9526622` |
 
 
