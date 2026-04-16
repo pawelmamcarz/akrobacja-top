@@ -56,10 +56,6 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const orderId = crypto.randomUUID();
     const expiresAt = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
 
-    // Ensure columns exist (cheap, idempotent)
-    try { await ctx.env.DB.prepare(`ALTER TABLE orders ADD COLUMN abandon_email_sent_at TEXT`).run(); } catch {}
-    try { await ctx.env.DB.prepare(`ALTER TABLE orders ADD COLUMN discount_code TEXT`).run(); } catch {}
-
     await ctx.env.DB.prepare(`
       INSERT INTO orders (id, voucher_code, package_id, video_addon, customer_name, customer_email, customer_nip, amount, status, created_at, expires_at, discount_code)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', datetime('now'), ?, ?)

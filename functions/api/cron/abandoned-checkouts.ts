@@ -6,16 +6,11 @@
 // na dokończenie sam (ktoś mógł pójść po kartę). Max 48h bo dalej to zimny lead.
 
 import { type Env, PACKAGES, type PackageId } from '../../../src/lib/types';
+import { escapeHtml } from '../../../src/lib/email';
 
 const FROM_EMAIL = 'akrobacja.com <dto@akrobacja.com>';
 const DISCOUNT_CODE = 'WRACAM5';
 const DISCOUNT_PCT = 5;
-
-// Make sure the new columns exist — safe to run on every request (ALTER throws if exists, we ignore)
-async function ensureColumns(db: D1Database): Promise<void> {
-  try { await db.prepare(`ALTER TABLE orders ADD COLUMN abandon_email_sent_at TEXT`).run(); } catch { /* exists */ }
-  try { await db.prepare(`ALTER TABLE orders ADD COLUMN discount_code TEXT`).run(); } catch { /* exists */ }
-}
 
 function buildRecoveryEmail(o: {
   customerName: string;
@@ -27,8 +22,8 @@ function buildRecoveryEmail(o: {
   const discountPLN = Math.round(pricePLN * DISCOUNT_PCT) / 100;
   const finalPLN = Math.round((pricePLN - discountPLN) * 100) / 100;
   const firstName = (o.customerName || '').split(/\s+/)[0] || '';
-  const greeting = firstName ? `Cześć ${firstName}!` : 'Cześć!';
-  const recoveryUrl = `https://akrobacja.com/voucher-prezent?pkg=${o.packageId}&discount=${DISCOUNT_CODE}&utm_source=email&utm_medium=recovery&utm_campaign=abandoned_cart`;
+  const greeting = firstName ? `Cześć ${escapeHtml(firstName)}!` : 'Cześć!';
+  const recoveryUrl = `https://akrobacja.com/voucher-prezent?pkg=${encodeURIComponent(o.packageId)}&discount=${DISCOUNT_CODE}&utm_source=email&utm_medium=recovery&utm_campaign=abandoned_cart`;
 
   return `<!DOCTYPE html>
 <html lang="pl">
@@ -43,7 +38,7 @@ function buildRecoveryEmail(o: {
     <div style="padding:40px">
       <h2 style="color:#0A2F7C;margin:0 0 16px;font-size:22px">${greeting}</h2>
       <p style="color:#333;line-height:1.7;margin:0 0 20px;font-size:15px">
-        Widzimy, że zainteresował Cię voucher <strong>${pkg.name}</strong> — ale zakup nie doszedł do końca.
+        Widzimy, że zainteresował Cię voucher <strong>${escapeHtml(pkg.name)}</strong> — ale zakup nie doszedł do końca.
         Rozumiemy, że życie bywa szybkie, dlatego przygotowaliśmy dla Ciebie coś, co ułatwi decyzję:
       </p>
 
@@ -55,7 +50,7 @@ function buildRecoveryEmail(o: {
       </div>
 
       <table style="width:100%;border-collapse:collapse;margin:0 0 24px">
-        <tr><td style="padding:10px 0;color:#6B7A90;border-bottom:1px solid #eee;font-size:14px">Pakiet</td><td style="padding:10px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right;font-size:14px">${pkg.name}</td></tr>
+        <tr><td style="padding:10px 0;color:#6B7A90;border-bottom:1px solid #eee;font-size:14px">Pakiet</td><td style="padding:10px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right;font-size:14px">${escapeHtml(pkg.name)}</td></tr>
         <tr><td style="padding:10px 0;color:#6B7A90;border-bottom:1px solid #eee;font-size:14px">Cena</td><td style="padding:10px 0;border-bottom:1px solid #eee;text-align:right;font-size:14px">${pricePLN.toLocaleString('pl-PL')} zł</td></tr>
         <tr><td style="padding:10px 0;color:#6B7A90;border-bottom:1px solid #eee;font-size:14px">Rabat ${DISCOUNT_PCT}%</td><td style="padding:10px 0;color:#27ae60;border-bottom:1px solid #eee;text-align:right;font-size:14px">−${discountPLN.toLocaleString('pl-PL')} zł</td></tr>
         <tr><td style="padding:10px 0;font-weight:800;color:#0A2F7C;font-size:15px">Do zapłaty</td><td style="padding:10px 0;font-weight:800;color:#0A2F7C;text-align:right;font-size:18px">${finalPLN.toLocaleString('pl-PL')} zł</td></tr>
@@ -120,8 +115,6 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const results: Array<{ order: string; email: string; status: string }> = [];
 
   try {
-    await ensureColumns(ctx.env.DB);
-
     // Candidates: pending, >1h old, <48h old, no email sent yet
     const rows = await ctx.env.DB.prepare(`
       SELECT id, customer_name, customer_email, package_id, amount

@@ -93,20 +93,20 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:#fff}
 </div>
 
 <div class="cta-strip">
-<a href="https://wa.me/48535535221?text=Chcę%20zarezerwować%20lot%20Extra%20300L">Zarezerwuj swój lot →</a>
+<a href="https://wa.me/48535535221?text=Chcę%20zarezerwować%20lot%20Extra%20300L" target="_blank" rel="noopener noreferrer">Zarezerwuj swój lot →</a>
 </div>
 
 <!-- Lightbox -->
-<div class="lb" id="lightbox" onclick="if(event.target===this)closeLb()">
-<button class="lb-close" onclick="closeLb()">&times;</button>
-<button class="lb-nav lb-prev" onclick="navLb(-1)">&#8249;</button>
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Podgląd zdjęcia" aria-hidden="true" onclick="if(event.target===this)closeLb()">
+<button class="lb-close" type="button" aria-label="Zamknij podgląd" onclick="closeLb()">&times;</button>
+<button class="lb-nav lb-prev" type="button" aria-label="Poprzednie zdjęcie" onclick="navLb(-1)">&#8249;</button>
 <img id="lbImg" src="" alt="">
-<button class="lb-nav lb-next" onclick="navLb(1)">&#8250;</button>
+<button class="lb-nav lb-next" type="button" aria-label="Następne zdjęcie" onclick="navLb(1)">&#8250;</button>
 <div class="lb-caption" id="lbCaption"></div>
 </div>
 
 <div class="footer">
-<div class="footer-links"><a href="/">Strona główna</a><a href="/lot-akrobacyjny">Lot akrobacyjny</a><a href="/kalendarz">Kalendarz</a><a href="/blog">Blog</a><a href="/sklep-merch">Sklep</a><a href="/regulamin">Regulamin</a><a href="/polityka-prywatnosci">Prywatność</a><a href="https://wa.me/48535535221">Kontakt</a></div>
+<div class="footer-links"><a href="/">Strona główna</a><a href="/lot-akrobacyjny">Lot akrobacyjny</a><a href="/kalendarz">Kalendarz</a><a href="/blog">Blog</a><a href="/sklep-merch">Sklep</a><a href="/regulamin">Regulamin</a><a href="/polityka-prywatnosci">Prywatność</a><a href="https://wa.me/48535535221" target="_blank" rel="noopener noreferrer">Kontakt</a></div>
 <div class="footer-copy">&copy; 2026 akrobacja.com &middot; Doradztwo Paweł Mamcarz &middot; Extra 300L SP-EKS &middot; EPRP</div>
 </div>
 
@@ -116,12 +116,17 @@ let current = 0;
 function openLb(i) {
   current = i;
   document.getElementById('lbImg').src = imgs[i].src;
+  document.getElementById('lbImg').alt = imgs[i].alt;
   document.getElementById('lbCaption').textContent = imgs[i].alt;
-  document.getElementById('lightbox').classList.add('open');
+  const lb = document.getElementById('lightbox');
+  lb.classList.add('open');
+  lb.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 }
 function closeLb() {
-  document.getElementById('lightbox').classList.remove('open');
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('open');
+  lb.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
 }
 function navLb(dir) {

@@ -1,26 +1,17 @@
 /* akrobacja.com — site enhancements
  * - Sticky mobile CTA "Zarezerwuj lot — od 1999 zł"
  * - Lazy-load any <img> still missing loading attr
- * - dataLayer init (GA4/GTM-ready; replace GTM_ID before go-live)
- * - Lightweight conversion event hooks
+ * - Lightweight conversion event hooks (dataLayer — gtag itself is injected by middleware)
  */
 (function () {
   'use strict';
 
-  // ---------- dataLayer / GTM bootstrap ----------
+  // ---------- dataLayer helper ----------
+  // gtag + consent mode are injected by functions/_middleware.ts before this runs.
+  // We only keep the dataLayer push helper for lightweight CTA tracking.
   window.dataLayer = window.dataLayer || [];
   function dl(ev, params) {
     try { window.dataLayer.push(Object.assign({ event: ev }, params || {})); } catch (e) {}
-  }
-  // NOTE: Replace GTM-XXXXXXX with real container before production rollout.
-  var GTM_ID = window.__GTM_ID__ || 'GTM-XXXXXXX';
-  if (GTM_ID && GTM_ID.indexOf('XXXX') === -1) {
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
-      j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', GTM_ID);
   }
 
   // ---------- Lazy-load fallback ----------
@@ -132,7 +123,8 @@ color:#7a8fa6;font-size:24px;cursor:pointer;line-height:1}\
     document.addEventListener('keyup', function (e) { if (e.key === 'Escape') close(); });
 
     document.addEventListener('mouseout', function (e) {
-      if (!e.toElement && !e.relatedTarget && e.clientY < 10) open();
+      // Fires when cursor leaves the document toward the top — treat as exit intent.
+      if (!e.relatedTarget && e.clientY < 10) open();
     });
   }
 
