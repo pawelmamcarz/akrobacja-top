@@ -62,8 +62,8 @@ export const onRequest: PagesFunction = async (context) => {
   const env = context.env as unknown as Record<string, string>;
   const cfAnalyticsToken = env.CF_ANALYTICS_TOKEN;
   const gaId = env.GA_MEASUREMENT_ID;              // e.g. "G-XXXXXXXXXX"
-  const adsId = env.GOOGLE_ADS_ID || 'AW-928813824'; // Google Ads tag (hardcoded fallback)
-  const adsPurchaseLabel = env.GOOGLE_ADS_PURCHASE_LABEL || '3g00CNLcnZwcElCm8roD'; // "Zakup Vouchera" conversion label (hardcoded fallback)
+  const adsId = env.GOOGLE_ADS_ID;                   // e.g. "AW-XXXXXXXXXX"
+  const adsPurchaseLabel = env.GOOGLE_ADS_PURCHASE_LABEL; // conversion label
   const metaPixelId = env.META_PIXEL_ID;           // e.g. "1234567890123456"
 
   const rewriter = new HTMLRewriter()
@@ -165,5 +165,13 @@ export const onRequest: PagesFunction = async (context) => {
     });
   }
 
-  return rewriter.transform(response);
+  const transformed = rewriter.transform(response);
+
+  // Security headers — applied to every HTML response.
+  const secured = new Response(transformed.body, transformed);
+  secured.headers.set('X-Content-Type-Options', 'nosniff');
+  secured.headers.set('X-Frame-Options', 'DENY');
+  secured.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  secured.headers.set('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
+  return secured;
 };

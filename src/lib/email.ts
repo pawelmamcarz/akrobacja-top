@@ -1,5 +1,17 @@
 import { type Env, PACKAGES, type PackageId } from './types';
 
+// HTML-escape user-controlled text before interpolating into email/webhook templates.
+// Prevents broken layout or injection when name/email contains < > & " '.
+export function escapeHtml(s: string | null | undefined): string {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 interface EmailParams {
   to: string;
   customerName: string;
@@ -53,14 +65,14 @@ function buildHtml(p: EmailParams): string {
       <p style="color:rgba(255,255,255,0.7);margin:8px 0 0;font-size:13px">Extra 300L · SP-EKS</p>
     </div>
     <div style="padding:40px">
-      <h2 style="color:#0A2F7C;margin:0 0 8px;font-size:22px">Cześć ${p.customerName}!</h2>
+      <h2 style="color:#0A2F7C;margin:0 0 8px;font-size:22px">Cześć ${escapeHtml(p.customerName)}!</h2>
       <p style="color:#6B7A90;line-height:1.6;margin:0 0 24px">
         Dziękujemy za zakup vouchera <strong>${pkg.name}</strong>. Twoja przygoda z akrobacją lotniczą właśnie się zaczyna!
       </p>
 
       <div style="background:#f0f3f7;padding:24px;margin-bottom:24px">
         <p style="color:#6B7A90;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;margin:0 0 8px">Kod Vouchera</p>
-        <p style="color:#0A2F7C;font-size:28px;font-weight:bold;margin:0;letter-spacing:0.05em">${p.voucherCode}</p>
+        <p style="color:#0A2F7C;font-size:28px;font-weight:bold;margin:0;letter-spacing:0.05em">${escapeHtml(p.voucherCode)}</p>
       </div>
 
       <table style="width:100%;border-collapse:collapse;margin-bottom:24px">
@@ -73,7 +85,7 @@ function buildHtml(p: EmailParams): string {
         Voucher PDF znajdziesz w załączniku tego maila. Możesz też pobrać go w dowolnym momencie:
       </p>
 
-      <a href="${p.siteUrl}/api/voucher/${p.voucherCode}" style="display:inline-block;background:#E11E26;color:#fff;text-decoration:none;padding:14px 28px;font-weight:700;font-size:14px">
+      <a href="${p.siteUrl}/api/voucher/${encodeURIComponent(p.voucherCode)}" style="display:inline-block;background:#E11E26;color:#fff;text-decoration:none;padding:14px 28px;font-weight:700;font-size:14px">
         Pobierz Voucher PDF
       </a>
 

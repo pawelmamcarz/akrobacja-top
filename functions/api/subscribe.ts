@@ -1,5 +1,6 @@
 import { type Env } from '../../src/lib/types';
 import { normalizePhone } from '../../src/lib/phone';
+import { escapeHtml } from '../../src/lib/email';
 
 // Notify owner about new subscriber via Resend
 async function notifyOwner(env: Env, phone: string, name: string | null, source: string): Promise<void> {
@@ -18,9 +19,9 @@ async function notifyOwner(env: Env, phone: string, name: string | null, source:
           <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto">
             <h2 style="color:#0A2F7C;margin:0 0 16px">Nowy subskrybent SMS</h2>
             <table style="width:100%;border-collapse:collapse">
-              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Telefon</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right"><a href="tel:${phone}">${phone}</a></td></tr>
-              ${name ? `<tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Imię</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${name}</td></tr>` : ''}
-              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Źródło</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${source}</td></tr>
+              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Telefon</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right"><a href="tel:${escapeHtml(phone)}">${escapeHtml(phone)}</a></td></tr>
+              ${name ? `<tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Imię</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(name)}</td></tr>` : ''}
+              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Źródło</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(source)}</td></tr>
               <tr><td style="padding:8px 0;color:#6B7A90">Data</td><td style="padding:8px 0;font-weight:600;text-align:right">${new Date().toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' })}</td></tr>
             </table>
             <p style="color:#6B7A90;font-size:12px;margin-top:16px">
