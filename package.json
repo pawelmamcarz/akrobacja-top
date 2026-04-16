@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler pages dev public --port 8788",
-    "deploy": "cp index.html sukces.html en.html lot-akrobacyjny.html pokazy-lotnicze.html sponsoring.html public/ && wrangler pages deploy --commit-dirty=true",
+    "deploy": "wrangler pages deploy --commit-dirty=true",
     "types": "wrangler types"
   },
   "dependencies": {
