@@ -65,35 +65,60 @@
   // Create widget HTML
   const btn = document.createElement('button');
   btn.className = 'cw-btn has-dot';
-  btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>';
-  btn.onclick = toggleChat;
+  btn.setAttribute('aria-label', 'Otwórz czat');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>';
+  btn.addEventListener('click', toggleChat);
   document.body.appendChild(btn);
 
   const panel = document.createElement('div');
   panel.className = 'cw-panel';
+  panel.setAttribute('role', 'dialog');
+  panel.setAttribute('aria-label', 'Czat z asystentem akrobacja.com');
   panel.innerHTML = `
     <div class="cw-header">
       <div><div class="cw-header-title">akrobacja.com</div><div class="cw-header-sub">Asystent · zwykle odpowiada natychmiast</div></div>
-      <button class="cw-close" onclick="document.querySelector('.cw-panel').classList.remove('open');document.querySelector('.cw-btn').classList.remove('has-dot')">&times;</button>
+      <button class="cw-close" type="button" aria-label="Zamknij czat">&times;</button>
     </div>
     <div class="cw-messages" id="cwMessages">
       <div class="cw-msg cw-msg-bot">Cześć! Jestem asystentem akrobacja.com. Pytaj o loty, pokazy, sponsoring — albo pomogę wybrać pakiet.</div>
     </div>
     <div class="cw-quick" id="cwQuick">
-      <button class="cw-quick-btn" onclick="cwSendQuick('Ile kosztuje lot akrobacyjny?')">Ile kosztuje lot?</button>
-      <button class="cw-quick-btn" onclick="cwSendQuick('Jak wygląda lot?')">Jak wygląda lot?</button>
-      <button class="cw-quick-btn" onclick="cwSendQuick('Chcę kupić voucher na prezent')">Voucher na prezent</button>
-      <button class="cw-quick-btn" onclick="cwSendQuick('Interesują mnie pokazy lotnicze na event')">Pokazy na event</button>
+      <button class="cw-quick-btn" type="button" data-quick="Ile kosztuje lot akrobacyjny?">Ile kosztuje lot?</button>
+      <button class="cw-quick-btn" type="button" data-quick="Jak wygląda lot?">Jak wygląda lot?</button>
+      <button class="cw-quick-btn" type="button" data-quick="Chcę kupić voucher na prezent">Voucher na prezent</button>
+      <button class="cw-quick-btn" type="button" data-quick="Interesują mnie pokazy lotnicze na event">Pokazy na event</button>
     </div>
-    <a class="cw-wa" href="https://wa.me/48535535221" target="_blank">💬 Napisz na WhatsApp</a>
+    <a class="cw-wa" href="https://wa.me/48535535221" target="_blank" rel="noopener noreferrer">💬 Napisz na WhatsApp</a>
     <div class="cw-input-area">
-      <input class="cw-input" id="cwInput" placeholder="Napisz wiadomość..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();cwSend()}">
-      <button class="cw-send" id="cwSendBtn" onclick="cwSend()"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+      <input class="cw-input" id="cwInput" aria-label="Wiadomość" placeholder="Napisz wiadomość...">
+      <button class="cw-send" id="cwSendBtn" type="button" aria-label="Wyślij wiadomość"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
     </div>
   `;
   document.body.appendChild(panel);
 
   let history = [];
+
+  // Linkifies wa.me/ and akrobacja.{com,top} URLs without innerHTML — XSS-safe.
+  const LINK_RE = /(https:\/\/wa\.me\/\d+|https:\/\/akrobacja\.(?:com|top)[^\s)"']*)/g;
+  function appendWithLinks(container, text) {
+    let last = 0;
+    let m;
+    while ((m = LINK_RE.exec(text)) !== null) {
+      if (m.index > last) container.appendChild(document.createTextNode(text.slice(last, m.index)));
+      const a = document.createElement('a');
+      a.href = m[0];
+      if (m[0].indexOf('wa.me') !== -1) {
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = 'WhatsApp';
+      } else {
+        a.textContent = m[0];
+      }
+      container.appendChild(a);
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) container.appendChild(document.createTextNode(text.slice(last)));
+  }
 
   function toggleChat() {
     panel.classList.toggle('open');
@@ -103,19 +128,32 @@
     }
   }
 
-  window.cwSendQuick = function(text) {
+  function sendQuick(text) {
     document.getElementById('cwQuick').style.display = 'none';
     sendMessage(text);
-  };
+  }
 
-  window.cwSend = function() {
+  function send() {
     const input = document.getElementById('cwInput');
     const text = input.value.trim();
     if (!text) return;
     input.value = '';
     document.getElementById('cwQuick').style.display = 'none';
     sendMessage(text);
-  };
+  }
+
+  // Wire handlers (no inline JS — CSP-friendly)
+  panel.querySelector('.cw-close').addEventListener('click', function () {
+    panel.classList.remove('open');
+    btn.classList.remove('has-dot');
+  });
+  panel.querySelectorAll('.cw-quick-btn').forEach(function (b) {
+    b.addEventListener('click', function () { sendQuick(b.dataset.quick || ''); });
+  });
+  document.getElementById('cwSendBtn').addEventListener('click', send);
+  document.getElementById('cwInput').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+  });
 
   async function sendMessage(text) {
     const msgs = document.getElementById('cwMessages');
@@ -155,15 +193,12 @@
       // Keep last 10 exchanges
       if (history.length > 20) history = history.slice(-20);
 
-      // Remove typing, add reply
+      // Remove typing, add reply (build nodes manually — never innerHTML untrusted text)
       typing.remove();
       const botMsg = document.createElement('div');
       botMsg.className = 'cw-msg cw-msg-bot';
-      // Convert URLs and WhatsApp links
-      let reply = (data.reply || data.error || 'Przepraszam, spróbuj ponownie.');
-      reply = reply.replace(/https:\/\/wa\.me\/\d+/g, '<a href="$&" target="_blank">WhatsApp</a>');
-      reply = reply.replace(/https:\/\/akrobacja\.top[^\s)"]*/g, '<a href="$&">$&</a>');
-      botMsg.innerHTML = reply;
+      const reply = (data.reply || data.error || 'Przepraszam, spróbuj ponownie.');
+      appendWithLinks(botMsg, reply);
       msgs.appendChild(botMsg);
     } catch (err) {
       typing.remove();
