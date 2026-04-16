@@ -8,7 +8,16 @@ interface CheckoutBody {
   customerEmail: string;
   customerNip?: string;
   discountCode?: string;
+  source?: string;        // page slug from where checkout was initiated (for cancel_url)
 }
+
+// Map source slug → cancel URL — Stripe "Back" button vraca user tam skąd przyszedł
+const CANCEL_URLS: Record<string, string> = {
+  'voucher-prezent': '/voucher-prezent',
+  'lot-akrobacyjny': '/lot-akrobacyjny',
+  'test-konwersji': '/test-konwersji',
+  'index': '/',
+};
 
 // Valid discount codes — simple registry to avoid D1 lookup on every checkout.
 // WRACAM5 = -5% recovery discount wysyłany z abandoned cart emaila.
@@ -106,7 +115,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     params.append('metadata[voucher_code]', voucherCode);
     const siteUrl = ctx.env.SITE_URL || 'https://akrobacja.com';
     params.append('success_url', `${siteUrl}/sukces?code=${voucherCode}&pkg=${body.packageId}&amount=${totalAmount / 100}`);
-    params.append('cancel_url', `${siteUrl}/#sklep`);
+    const cancelPath = CANCEL_URLS[body.source || ''] || '/voucher-prezent';
+    params.append('cancel_url', `${siteUrl}${cancelPath}`);
     params.append('locale', 'pl');
     params.append('payment_method_types[0]', 'card');
     params.append('payment_method_types[1]', 'p24');

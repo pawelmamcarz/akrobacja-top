@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test konwersji — akrobacja.com</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#1B4DB5; --red:#C41E3A; --cyan:#00E5FF; --black:#0A1428; --chrome:#7A8FA6; --font-h:'Montserrat',sans-serif; --font-b:'Inter',sans-serif; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:var(--font-b); background:var(--black); color:#fff; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .card { max-width:520px; width:100%; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); padding:48px 40px; }
+  .badge { display:inline-block; padding:5px 12px; background:rgba(196,30,58,.15); border:1px solid rgba(196,30,58,.4); color:var(--red); font-family:var(--font-h); font-size:10px; font-weight:800; letter-spacing:.15em; text-transform:uppercase; margin-bottom:18px; }
+  h1 { font-family:var(--font-h); font-size:28px; font-weight:900; letter-spacing:-.02em; margin-bottom:8px; }
+  .sub { color:var(--chrome); font-size:14px; margin-bottom:32px; line-height:1.6; }
+  .price-box { background:rgba(0,229,255,.05); border-left:3px solid var(--cyan); padding:18px 22px; margin-bottom:24px; }
+  .price-box-label { font-family:var(--font-h); font-size:10px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--chrome); margin-bottom:4px; }
+  .price-box-value { font-family:var(--font-h); font-size:32px; font-weight:900; color:var(--cyan); }
+  .field { margin-bottom:14px; }
+  .field label { display:block; font-family:var(--font-h); font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--chrome); margin-bottom:6px; }
+  .field input { width:100%; padding:12px 14px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); color:#fff; font-family:var(--font-b); font-size:14px; outline:none; transition:border-color .2s; }
+  .field input:focus { border-color:var(--cyan); }
+  .submit { width:100%; padding:18px; background:var(--red); color:#fff; border:none; font-family:var(--font-h); font-size:13px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; margin-top:12px; transition:background .2s; }
+  .submit:hover { background:#d62441; }
+  .submit:disabled { opacity:.5; cursor:not-allowed; }
+  .error { color:#ff6b6b; font-size:13px; margin-top:12px; min-height:18px; }
+  .checklist { background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06); padding:18px 22px; margin-top:28px; font-size:12px; color:var(--chrome); line-height:1.7; }
+  .checklist h3 { font-family:var(--font-h); font-size:11px; font-weight:800; letter-spacing:.15em; text-transform:uppercase; color:#fff; margin-bottom:10px; }
+  .checklist code { background:rgba(0,229,255,.08); padding:2px 6px; color:var(--cyan); font-family:monospace; font-size:11px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="badge">Strona testowa · noindex</div>
+  <h1>Naklejka testowa</h1>
+  <p class="sub">Produkt 1 zł do weryfikacji konwersji Google Ads / Meta Pixel / Stripe live mode. Bez vouchera PDF, bez faktury.</p>
+
+  <div class="price-box">
+    <div class="price-box-label">Cena</div>
+    <div class="price-box-value">1,00 zł</div>
+  </div>
+
+  <form id="testForm">
+    <div class="field">
+      <label for="testName">Imię i Nazwisko</label>
+      <input type="text" id="testName" required placeholder="Test Tester" autocomplete="name" value="Test Tester">
+    </div>
+    <div class="field">
+      <label for="testEmail">Email</label>
+      <input type="email" id="testEmail" required placeholder="test@example.com" autocomplete="email">
+    </div>
+    <button type="submit" class="submit" id="testSubmit">Kup naklejkę za 1 zł →</button>
+    <p class="error" id="testError"></p>
+  </form>
+
+  <div class="checklist">
+    <h3>Co się stanie po zakupie</h3>
+    1. Stripe pokaże formularz płatności (BLIK / karta / P24)<br>
+    2. Po opłaceniu redirect na <code>/sukces?code=…&amp;amount=1&amp;pkg=test_naklejka</code><br>
+    3. Middleware odpali <code>gtag('event','purchase')</code> + <code>fbq('track','Purchase')</code> z value 1 PLN<br>
+    4. Webhook (server-side) wyśle Meta CAPI Purchase event<br>
+    5. Tag Assistant powinien pokazać konwersję wykrytą<br>
+    <br>
+    <strong style="color:#fff">Jeśli chcesz tylko symulować bez Stripe</strong> — wejdź bezpośrednio na <code>/sukces?code=AKR-TEST-TEST&amp;amount=1&amp;pkg=test_naklejka</code>
+  </div>
+</div>
+
+<script>
+const form = document.getElementById('testForm');
+const submitBtn = document.getElementById('testSubmit');
+const errorEl = document.getElementById('testError');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorEl.textContent = '';
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Przetwarzanie…';
+  try {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        packageId: 'test_naklejka',
+        videoAddon: false,
+        customerName: document.getElementById('testName').value.trim(),
+        customerEmail: document.getElementById('testEmail').value.trim(),
+        source: 'test-konwersji',
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Błąd serwera');
+    if (data.url) window.location.href = data.url;
+  } catch (err) {
+    errorEl.textContent = err.message;
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Kup naklejkę za 1 zł →';
+  }
+});
+</script>
+</body>
+</html>

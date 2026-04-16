@@ -132,6 +132,29 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const videoAddon = order.video_addon === 1;
     const expiresAt = order.expires_at as string;
 
+    // Test product — skip voucher PDF, faktura i email; tylko mark as paid + Meta CAPI
+    if (packageId === 'test_naklejka') {
+      await ctx.env.DB.prepare(`
+        UPDATE orders SET status = 'paid', paid_at = datetime('now'), stripe_session_id = ?
+        WHERE id = ?
+      `).bind(session.id as string, orderId).run();
+      steps.push('test_product_paid');
+
+      ctx.waitUntil(
+        sendMetaPurchase(ctx.env, {
+          voucherCode,
+          packageId,
+          customerEmail,
+          customerName,
+          amountGrosze: order.amount as number,
+          videoAddon: false,
+        }).catch(() => { /* non-critical */ }),
+      );
+      steps.push('test_meta_capi_queued');
+
+      return Response.json({ ok: true, test: true, steps });
+    }
+
     // 1. Generate voucher PDF
     const pdfBytes = await generateVoucherPdf({
       voucherCode,

@@ -48,6 +48,16 @@ export const PACKAGES = {
     duration: 'do 50 min w powietrzu + briefing + debriefing',
     features: ['Do 50 minut w powietrzu', 'Wyprowadzanie z korkociagu, figury zaawansowane', 'Wymagana licencja PPL(A)'],
   },
+  // Test-only product — niewidoczne w publicznym UI, dostępne tylko z /test-konwersji.
+  // Webhook NIE generuje vouchera PDF i NIE wystawia faktury wfirma dla tego packageId.
+  test_naklejka: {
+    id: 'test_naklejka',
+    name: 'Naklejka testowa',
+    subtitle: 'Produkt testowy 1 zl — do weryfikacji konwersji Google Ads / Meta Pixel',
+    price: 100,
+    duration: 'n/a',
+    features: ['Test live checkoutu Stripe', 'Test conversion na /sukces', 'Brak vouchera PDF i faktury'],
+  },
 } as const;
 
 export const VIDEO_ADDON_PRICE = 29900; // 299 PLN

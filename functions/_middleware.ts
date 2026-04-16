@@ -2,7 +2,7 @@
 // Single source of truth for SEO directives — no need to hardcode them in each HTML file.
 // Uses HTMLRewriter for streaming transformation (zero-copy, no buffering).
 
-const NOINDEX_PATHS = new Set(['/admin', '/sukces', '/konto', '/seo-implementation']);
+const NOINDEX_PATHS = new Set(['/admin', '/sukces', '/konto', '/seo-implementation', '/test-konwersji']);
 
 const PRIMARY_HOST = 'akrobacja.com';
 const SITE_ORIGIN = `https://${PRIMARY_HOST}`;
