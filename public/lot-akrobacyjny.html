@@ -257,6 +257,16 @@ img { display: block; max-width: 100%; }
 }
 .nav-btn:hover { background: var(--red-dark); }
 
+/* Skip to content — accessibility */
+.skip-link {
+  position: absolute; top: -100%; left: 16px;
+  background: var(--red); color: #fff; padding: 12px 24px;
+  font-family: var(--font-h); font-size: 12px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  z-index: 10000; transition: top .2s;
+}
+.skip-link:focus { top: 12px; }
+
 /* Mobile hamburger menu */
 .nav-hamburger {
   display: none; background: none; border: none; cursor: pointer;
@@ -1059,6 +1069,8 @@ footer {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      NAVIGATION
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<a href="#main-content" class="skip-link">Przejdź do treści</a>
+
 <nav class="nav" id="nav">
   <a href="/" class="nav-logo" aria-label="akrobacja.com — strona główna">
     <img src="akrobacja-logo-mark-light.png" alt="akrobacja.com" style="height:56px;width:auto;max-width:none;display:block">
@@ -1092,7 +1104,7 @@ footer {
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      HERO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="hero" id="hero">
+<section class="hero" id="hero"><a id="main-content" tabindex="-1"></a>
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-accent-line"></div>
@@ -1166,7 +1178,7 @@ footer {
         <li class="pkg-feat">Certyfikat ukończenia lotu</li>
         <li class="pkg-feat">Voucher ważny 12 miesięcy</li>
       </ul>
-      <button class="pkg-cta" data-package="pierwszy_lot">Kup voucher — 1 999 PLN</button>
+      <button class="pkg-cta" data-package="pierwszy_lot">Kup voucher — 1 999 zł</button>
     </div>
 
     <!-- Adrenalina -->
@@ -1185,7 +1197,7 @@ footer {
         <li class="pkg-feat">Lot samolotem akrobacyjnym Extra 300L SP-EKS</li>
         <li class="pkg-feat">Certyfikat + voucher ważny 12 miesięcy</li>
       </ul>
-      <button class="pkg-cta" data-package="adrenalina">Kup voucher — 2 999 PLN</button>
+      <button class="pkg-cta" data-package="adrenalina">Kup voucher — 2 999 zł</button>
     </div>
 
     <!-- Masterclass -->
@@ -1203,7 +1215,7 @@ footer {
         <li class="pkg-feat">Video 360° z lotu w cenie</li>
         <li class="pkg-feat">Certyfikat + voucher ważny 12 miesięcy</li>
       </ul>
-      <button class="pkg-cta" data-package="masterclass">Kup voucher — 4 999 PLN</button>
+      <button class="pkg-cta" data-package="masterclass">Kup voucher — 4 999 zł</button>
     </div>
   </div>
 </section>
