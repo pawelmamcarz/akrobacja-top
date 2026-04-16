@@ -1,6 +1,6 @@
 import { type Env, type PackageId, PACKAGES } from '../../src/lib/types';
 import { generateVoucherPdf } from '../../src/lib/pdf';
-import { sendVoucherEmail } from '../../src/lib/email';
+import { sendVoucherEmail, escapeHtml } from '../../src/lib/email';
 import { createInvoice } from '../../src/lib/wfirma';
 import { sendMetaPurchase } from '../../src/lib/meta-capi';
 
@@ -23,11 +23,11 @@ async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: P
           <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto">
             <h2 style="color:#0A2F7C;margin:0 0 16px">Nowe zamówienie opłacone!</h2>
             <table style="width:100%;border-collapse:collapse">
-              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Pakiet</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${pkg.name}</td></tr>
+              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Pakiet</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(pkg.name)}</td></tr>
               <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Kwota</td><td style="padding:8px 0;font-weight:600;color:#27ae60;border-bottom:1px solid #eee;text-align:right">${amountPLN}</td></tr>
-              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Klient</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${o.customerName}</td></tr>
-              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Email</td><td style="padding:8px 0;border-bottom:1px solid #eee;text-align:right"><a href="mailto:${o.customerEmail}">${o.customerEmail}</a></td></tr>
-              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Voucher</td><td style="padding:8px 0;font-weight:600;font-family:monospace;border-bottom:1px solid #eee;text-align:right">${o.voucherCode}</td></tr>
+              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Klient</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(o.customerName)}</td></tr>
+              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Email</td><td style="padding:8px 0;border-bottom:1px solid #eee;text-align:right"><a href="mailto:${encodeURIComponent(o.customerEmail)}">${escapeHtml(o.customerEmail)}</a></td></tr>
+              <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Voucher</td><td style="padding:8px 0;font-weight:600;font-family:monospace;border-bottom:1px solid #eee;text-align:right">${escapeHtml(o.voucherCode)}</td></tr>
               <tr><td style="padding:8px 0;color:#6B7A90">Video 360°</td><td style="padding:8px 0;font-weight:600;text-align:right">${o.videoAddon ? 'Tak (+299 PLN)' : 'Nie'}</td></tr>
             </table>
             <p style="margin-top:16px"><a href="https://akrobacja.com/admin" style="color:#0A2F7C;font-weight:600">Otwórz panel admina →</a></p>
@@ -67,63 +67,67 @@ async function verifyStripeSignature(payload: string, sig: string, secret: strin
 }
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  const steps: string[] = [];
   try {
-    steps.push('start');
-
     const sig = ctx.request.headers.get('stripe-signature');
-    if (!sig) return Response.json({ error: 'Missing signature', steps }, { status: 400 });
-    steps.push('has_sig');
+    if (!sig) return Response.json({ error: 'Missing signature' }, { status: 400 });
 
     const rawBody = await ctx.request.text();
-    steps.push(`body_len:${rawBody.length}`);
 
     const webhookSecret = ctx.env.STRIPE_WEBHOOK_SECRET?.replace(/\s/g, '') || '';
-    steps.push(`secret_len:${webhookSecret.length}`);
+    if (!webhookSecret) {
+      // Fail loud — without a secret any payload would pass verification.
+      return Response.json({ error: 'Webhook not configured' }, { status: 500 });
+    }
 
     const valid = await verifyStripeSignature(rawBody, sig, webhookSecret);
-    steps.push(`sig_valid:${valid}`);
-
-    if (!valid) return Response.json({ error: 'Invalid signature', steps }, { status: 400 });
+    if (!valid) return Response.json({ error: 'Invalid signature' }, { status: 400 });
 
     const event = JSON.parse(rawBody) as { type: string; data: { object: Record<string, unknown> } };
-    steps.push(`event:${event.type}`);
 
     if (event.type !== 'checkout.session.completed') {
-      return Response.json({ ok: true, skipped: event.type, steps });
+      return Response.json({ ok: true, skipped: event.type });
     }
 
     const session = event.data.object;
     const metadata = session.metadata as Record<string, string> | undefined;
 
-    // Handle merch orders
+    // Handle merch orders — atomic update prevents double-processing on webhook retry.
     if (metadata?.merch_order_id) {
       const merchOrderId = metadata.merch_order_id;
-      steps.push(`merch_order:${merchOrderId}`);
-      await ctx.env.DB.prepare(
-        "UPDATE merch_orders SET status = 'paid', paid_at = datetime('now'), stripe_session_id = ? WHERE id = ?"
+      const res = await ctx.env.DB.prepare(
+        "UPDATE merch_orders SET status = 'paid', paid_at = datetime('now'), stripe_session_id = ? WHERE id = ? AND status = 'pending'"
       ).bind(session.id as string, merchOrderId).run();
-      steps.push('merch_paid');
+      if (res.meta.changes === 0) {
+        // Already processed — ack so Stripe stops retrying.
+        return Response.json({ ok: true, duplicate: true });
+      }
       // TODO: auto-create Printful order here when product mapping is configured
-      return Response.json({ ok: true, steps });
+      return Response.json({ ok: true });
     }
 
     const orderId = metadata?.order_id;
     const voucherCode = metadata?.voucher_code;
     if (!orderId || !voucherCode) {
-      return Response.json({ error: 'Missing metadata', steps }, { status: 400 });
+      return Response.json({ error: 'Missing metadata' }, { status: 400 });
     }
-    steps.push(`order:${orderId}`);
 
-    // Fetch order
+    // Atomic claim: flip status pending→processing in one step. If no rows change,
+    // another webhook (or retry) is already handling this order — ack and stop.
+    const claim = await ctx.env.DB.prepare(
+      "UPDATE orders SET status = 'processing' WHERE id = ? AND status = 'pending'"
+    ).bind(orderId).run();
+
+    if (claim.meta.changes === 0) {
+      return Response.json({ ok: true, duplicate: true });
+    }
+
     const order = await ctx.env.DB.prepare(
-      'SELECT * FROM orders WHERE id = ? AND status = ?'
-    ).bind(orderId, 'pending').first<Record<string, unknown>>();
+      'SELECT * FROM orders WHERE id = ?'
+    ).bind(orderId).first<Record<string, unknown>>();
 
     if (!order) {
-      return Response.json({ error: 'Order not found or already processed', steps }, { status: 404 });
+      return Response.json({ error: 'Order not found' }, { status: 404 });
     }
-    steps.push('order_found');
 
     const packageId = order.package_id as PackageId;
     const customerName = order.customer_name as string;
@@ -132,85 +136,84 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const videoAddon = order.video_addon === 1;
     const expiresAt = order.expires_at as string;
 
-    // 1. Generate voucher PDF
-    const pdfBytes = await generateVoucherPdf({
-      voucherCode,
-      packageId,
-      customerName,
-      videoAddon,
-      expiresAt,
-    });
-    steps.push(`pdf:${pdfBytes.length}bytes`);
-
-    // 2. Store PDF in R2
-    await ctx.env.VOUCHER_BUCKET.put(`vouchers/${voucherCode}.pdf`, pdfBytes, {
-      httpMetadata: { contentType: 'application/pdf' },
-    });
-    steps.push('r2_stored');
-
-    // 3. Create invoice in wFirma (skip in Stripe test mode)
-    let invoiceId: string | undefined;
-    const isLive = ctx.env.STRIPE_SECRET_KEY?.includes('_live_');
-    if (isLive) {
-      try {
-        invoiceId = await createInvoice(ctx.env, {
-          customerName,
-          customerEmail,
-          customerNip,
-          packageId,
-          videoAddon,
-          voucherCode,
-        });
-        steps.push(`invoice:${invoiceId}`);
-      } catch (err) {
-        steps.push(`invoice_err:${err instanceof Error ? err.message : 'unknown'}`);
-      }
-    } else {
-      steps.push('invoice_skipped_test');
-    }
-
-    // 4. Send email with PDF
     try {
-      await sendVoucherEmail(ctx.env, {
-        to: customerEmail,
-        customerName,
+      // 1. Generate voucher PDF
+      const pdfBytes = await generateVoucherPdf({
         voucherCode,
         packageId,
-        pdfBytes,
-        siteUrl: ctx.env.SITE_URL || 'https://akrobacja.com',
-      });
-      steps.push('email_sent');
-    } catch (err) {
-      steps.push(`email_err:${err instanceof Error ? err.message : 'unknown'}`);
-    }
-
-    // 5. Update order status
-    await ctx.env.DB.prepare(`
-      UPDATE orders SET status = 'paid', paid_at = datetime('now'), invoice_id = ?, stripe_session_id = ?
-      WHERE id = ?
-    `).bind(invoiceId || null, session.id as string, orderId).run();
-    steps.push('order_updated');
-
-    // 6. Notify owner about new order
-    ctx.waitUntil(notifyOwnerOrder(ctx.env, { voucherCode, packageId, customerName, customerEmail, amount: order.amount as number, videoAddon }));
-    steps.push('owner_notified');
-
-    // 7. Meta CAPI — server-side Purchase event (paired with client Pixel via event_id)
-    ctx.waitUntil(
-      sendMetaPurchase(ctx.env, {
-        voucherCode,
-        packageId,
-        customerEmail,
         customerName,
-        amountGrosze: order.amount as number,
         videoAddon,
-      }).catch(() => { /* non-critical */ }),
-    );
-    steps.push('meta_capi_queued');
+        expiresAt,
+      });
 
-    return Response.json({ ok: true, steps });
+      // 2. Store PDF in R2
+      await ctx.env.VOUCHER_BUCKET.put(`vouchers/${voucherCode}.pdf`, pdfBytes, {
+        httpMetadata: { contentType: 'application/pdf' },
+      });
+
+      // 3. Create invoice in wFirma (skip in Stripe test mode)
+      let invoiceId: string | undefined;
+      const isLive = ctx.env.STRIPE_SECRET_KEY?.includes('_live_');
+      if (isLive) {
+        try {
+          invoiceId = await createInvoice(ctx.env, {
+            customerName,
+            customerEmail,
+            customerNip,
+            packageId,
+            videoAddon,
+            voucherCode,
+          });
+        } catch {
+          // Invoice failure is non-fatal — order still proceeds, admin can reissue.
+        }
+      }
+
+      // 4. Send email with PDF
+      try {
+        await sendVoucherEmail(ctx.env, {
+          to: customerEmail,
+          customerName,
+          voucherCode,
+          packageId,
+          pdfBytes,
+          siteUrl: ctx.env.SITE_URL || 'https://akrobacja.com',
+        });
+      } catch {
+        // Email failure is non-fatal — PDF is in R2, admin can resend.
+      }
+
+      // 5. Finalize order
+      await ctx.env.DB.prepare(`
+        UPDATE orders SET status = 'paid', paid_at = datetime('now'), invoice_id = ?, stripe_session_id = ?
+        WHERE id = ?
+      `).bind(invoiceId || null, session.id as string, orderId).run();
+
+      // 6. Notify owner about new order
+      ctx.waitUntil(notifyOwnerOrder(ctx.env, { voucherCode, packageId, customerName, customerEmail, amount: order.amount as number, videoAddon }));
+
+      // 7. Meta CAPI — server-side Purchase event (paired with client Pixel via event_id)
+      ctx.waitUntil(
+        sendMetaPurchase(ctx.env, {
+          voucherCode,
+          packageId,
+          customerEmail,
+          customerName,
+          amountGrosze: order.amount as number,
+          videoAddon,
+        }).catch(() => { /* non-critical */ }),
+      );
+
+      return Response.json({ ok: true });
+    } catch (innerErr) {
+      // Fatal error mid-fulfilment — revert claim so Stripe retry can pick it up.
+      await ctx.env.DB.prepare(
+        "UPDATE orders SET status = 'pending' WHERE id = ? AND status = 'processing'"
+      ).bind(orderId).run();
+      throw innerErr;
+    }
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : 'Unknown error';
-    return Response.json({ error: message, steps }, { status: 500 });
+    return Response.json({ error: message }, { status: 500 });
   }
 };

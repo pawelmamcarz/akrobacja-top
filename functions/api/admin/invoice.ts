@@ -1,15 +1,10 @@
 import { type Env, type PackageId } from '../../../src/lib/types';
 import { createInvoice } from '../../../src/lib/wfirma';
-
-function checkAuth(request: Request, env: Env): boolean {
-  const auth = request.headers.get('Authorization');
-  if (!auth?.startsWith('Bearer ')) return false;
-  return auth.slice(7) === (env.ADMIN_PASSWORD || '').replace(/\s/g, '');
-}
+import { checkAdminAuth } from '../../../src/lib/admin-auth';
 
 // POST /api/admin/invoice { voucher_code }
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  if (!checkAuth(ctx.request, ctx.env)) {
+  if (!checkAdminAuth(ctx.request, ctx.env)) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

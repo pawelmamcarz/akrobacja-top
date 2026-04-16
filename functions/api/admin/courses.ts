@@ -1,14 +1,9 @@
 import { type Env } from '../../../src/lib/types';
-
-function checkAuth(request: Request, env: Env): boolean {
-  const auth = request.headers.get('Authorization');
-  if (!auth?.startsWith('Bearer ')) return false;
-  return auth.slice(7) === (env.ADMIN_PASSWORD || '').replace(/\s/g, '');
-}
+import { checkAdminAuth } from '../../../src/lib/admin-auth';
 
 // GET /api/admin/courses
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAuth(ctx.request, ctx.env)) {
+  if (!checkAdminAuth(ctx.request, ctx.env)) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -21,7 +16,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
 
 // POST /api/admin/courses — create or update course
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  if (!checkAuth(ctx.request, ctx.env)) {
+  if (!checkAdminAuth(ctx.request, ctx.env)) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
