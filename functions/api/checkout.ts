@@ -27,6 +27,10 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!body.customerName || !body.customerEmail) {
       return Response.json({ error: 'Imię i email są wymagane' }, { status: 400 });
     }
+    // RFC-5322 lite — must have local@domain.tld with TLD >= 2 chars
+    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(body.customerEmail.trim())) {
+      return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
+    }
 
     const voucherCode = generateVoucherCode();
     const baseAmount = pkg.price + (body.videoAddon ? VIDEO_ADDON_PRICE : 0);

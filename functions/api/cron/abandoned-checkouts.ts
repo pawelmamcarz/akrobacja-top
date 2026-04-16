@@ -86,6 +86,7 @@ function buildRecoveryEmail(o: {
 </html>`;
 }
 
+// Returns { permanent: boolean } — permanent failures (invalid email, blocked) shouldn't retry
 async function sendEmail(env: Env, to: string, subject: string, html: string): Promise<void> {
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -97,7 +98,13 @@ async function sendEmail(env: Env, to: string, subject: string, html: string): P
   });
   if (!res.ok) {
     const text = await res.text();
-    throw new Error(`Resend ${res.status}: ${text}`);
+    const err = new Error(`Resend ${res.status}: ${text}`) as Error & { status: number; permanent: boolean };
+    err.status = res.status;
+    // 422 = invalid email format → permanent (never retry)
+    // 403 = domain not verified → transient (will work once domain verified)
+    // 4xx other than 422 also permanent (auth errors etc.)
+    err.permanent = res.status === 422 || (res.status >= 400 && res.status < 500 && res.status !== 403 && res.status !== 429);
+    throw err;
   }
 }
 
@@ -158,10 +165,17 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
 
         results.push({ order: row.id, email: row.customer_email, status: 'sent' });
       } catch (err) {
+        const e = err as Error & { permanent?: boolean };
+        // Permanent fail (invalid email, banned address) → mark as "sent" to skip future retries
+        if (e.permanent) {
+          await ctx.env.DB.prepare(
+            `UPDATE orders SET abandon_email_sent_at = datetime('now') WHERE id = ?`
+          ).bind(row.id).run();
+        }
         results.push({
           order: row.id,
           email: row.customer_email,
-          status: `error: ${err instanceof Error ? err.message : 'unknown'}`,
+          status: `${e.permanent ? 'permanent_fail' : 'error'}: ${e.message || 'unknown'}`,
         });
       }
     }
