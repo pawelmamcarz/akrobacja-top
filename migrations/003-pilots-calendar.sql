@@ -145,6 +145,7 @@ CREATE TABLE IF NOT EXISTS insurance_pilots (
 
 CREATE INDEX IF NOT EXISTS idx_insurance_pilot ON insurance_pilots(pilot_id, status);
 
--- Schema drift fix: migration 001 created subscribers without email column,
--- but code (welcome emails, subscribe.ts) writes/reads it.
-ALTER TABLE subscribers ADD COLUMN email TEXT;
+-- NOTE: `subscribers.email` already exists in production (added ad-hoc before
+-- this migration was created). Skipping the ALTER here so D1 doesn't roll the
+-- whole transaction back on "duplicate column". Schema.sql remains the
+-- reference for fresh databases.
