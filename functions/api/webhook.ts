@@ -158,7 +158,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     try {
-      // 1. Generate voucher PDF
+      // PDF blocks everything else — R2, email, and the final invoice_id are derived from it.
       const pdfBytes = await generateVoucherPdf({
         voucherCode,
         packageId,
@@ -167,53 +167,38 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         expiresAt,
       });
 
-      // 2. Store PDF in R2
-      await ctx.env.VOUCHER_BUCKET.put(`vouchers/${voucherCode}.pdf`, pdfBytes, {
-        httpMetadata: { contentType: 'application/pdf' },
-      });
-
-      // 3. Create invoice in wFirma (skip in Stripe test mode)
-      let invoiceId: string | undefined;
+      // R2 upload, wFirma invoice, and customer email are independent — run in parallel.
+      // Each settles individually: R2 failure is fatal (no PDF to serve), invoice/email are
+      // non-critical (admin can reissue).
       const isLive = ctx.env.STRIPE_SECRET_KEY?.includes('_live_');
-      if (isLive) {
-        try {
-          invoiceId = await createInvoice(ctx.env, {
-            customerName,
-            customerEmail,
-            customerNip,
-            packageId,
-            videoAddon,
-            voucherCode,
-          });
-        } catch {
-          // Invoice failure is non-fatal — order still proceeds, admin can reissue.
-        }
-      }
-
-      // 4. Send email with PDF
-      try {
-        await sendVoucherEmail(ctx.env, {
+      const [, invoiceResult] = await Promise.all([
+        ctx.env.VOUCHER_BUCKET.put(`vouchers/${voucherCode}.pdf`, pdfBytes, {
+          httpMetadata: { contentType: 'application/pdf' },
+        }),
+        isLive
+          ? createInvoice(ctx.env, { customerName, customerEmail, customerNip, packageId, videoAddon, voucherCode })
+              .catch(() => undefined)
+          : Promise.resolve(undefined),
+        sendVoucherEmail(ctx.env, {
           to: customerEmail,
           customerName,
           voucherCode,
           packageId,
           pdfBytes,
           siteUrl: ctx.env.SITE_URL || 'https://akrobacja.com',
-        });
-      } catch {
-        // Email failure is non-fatal — PDF is in R2, admin can resend.
-      }
+        }).catch(() => undefined),
+      ]);
+      const invoiceId = invoiceResult;
 
-      // 5. Finalize order
+      // Finalize — guard on status='processing' so we never overwrite a manual cancel.
       await ctx.env.DB.prepare(`
         UPDATE orders SET status = 'paid', paid_at = datetime('now'), invoice_id = ?, stripe_session_id = ?
-        WHERE id = ?
+        WHERE id = ? AND status = 'processing'
       `).bind(invoiceId || null, session.id as string, orderId).run();
 
-      // 6. Notify owner about new order
       ctx.waitUntil(notifyOwnerOrder(ctx.env, { voucherCode, packageId, customerName, customerEmail, amount: order.amount as number, videoAddon }));
 
-      // 7. Meta CAPI — server-side Purchase event (paired with client Pixel via event_id)
+      // Meta CAPI Purchase pairs with client Pixel via event_id for dedup.
       ctx.waitUntil(
         sendMetaPurchase(ctx.env, {
           voucherCode,
@@ -227,7 +212,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
       return Response.json({ ok: true });
     } catch (innerErr) {
-      // Fatal error mid-fulfilment — revert claim so Stripe retry can pick it up.
+      // Revert claim so Stripe retry can pick it up. PDF/invoice/email fail soft above,
+      // so we only land here on R2 put or PDF generation errors.
       await ctx.env.DB.prepare(
         "UPDATE orders SET status = 'pending' WHERE id = ? AND status = 'processing'"
       ).bind(orderId).run();
