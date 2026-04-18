@@ -164,22 +164,29 @@
     <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Dokumenty</h4>
     <div id="documentsTable"></div>
 
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Piloci w polisie</h4>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Piloci w polisie
+      <button class="btn btn-blue" style="margin-left:8px;font-size:11px;padding:4px 10px" onclick="openModal('addInsurance')">+ Wpisz pilota</button>
+    </h4>
     <div id="insuranceTable"></div>
   </div>
 
   <!-- MERCH -->
   <div class="panel" id="panel-merch">
     <div class="toolbar">
+      <button class="btn btn-blue" onclick="openModal('newProduct')">+ Dodaj produkt</button>
       <div class="stats" id="merchStats"></div>
     </div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Produkty</h4>
+    <div id="productsTable"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Zamówienia</h4>
     <div id="merchTable"></div>
   </div>
 
   <!-- SMS SUBSCRIBERS -->
   <div class="panel" id="panel-subs">
     <div class="toolbar">
-      <button class="btn btn-blue" onclick="openModal('sendBlast')">Wyslij SMS do wszystkich</button>
+      <button class="btn btn-blue" onclick="openModal('newSub')">+ Dodaj subskrybenta</button>
+      <button class="btn btn-red" onclick="openModal('sendBlast')">Wyslij SMS do wszystkich</button>
       <div class="stats" id="subsStats"></div>
     </div>
     <div id="subsTable"></div>
@@ -293,6 +300,50 @@
     <div class="field"><label>Numer licencji</label><input id="npLicenseNumber"></div>
     <div class="field"><label>Początkowe saldo (minuty)</label><input type="number" id="npBalance" value="0" min="0"></div>
     <button class="btn btn-blue" onclick="createPilot()">Dodaj pilota</button>
+  </div>
+
+  <!-- New Subscriber -->
+  <div class="modal" id="modal-newSub" style="display:none">
+    <h3>Dodaj subskrybenta ręcznie</h3>
+    <div class="field"><label>Telefon *</label><input id="nsPhone" placeholder="np. 535535221"></div>
+    <div class="field"><label>Imię</label><input id="nsName"></div>
+    <div class="field"><label>Email</label><input id="nsEmail" type="email"></div>
+    <button class="btn btn-blue" onclick="createSub()">Dodaj</button>
+  </div>
+
+  <!-- Add to insurance -->
+  <div class="modal" id="modal-addInsurance" style="display:none">
+    <h3>Wpisz pilota do polisy</h3>
+    <div class="field"><label>Pilot</label>
+      <select id="insPilotSelect">
+        <option value="">— wybierz —</option>
+      </select>
+    </div>
+    <p style="font-size:11px;color:#888;margin-bottom:12px">Pilot musi być wcześniej w bazie (zakładka Piloci).</p>
+    <button class="btn btn-blue" onclick="addInsurancePilot()">Dodaj do polisy</button>
+  </div>
+
+  <!-- New Product -->
+  <div class="modal" id="modal-newProduct" style="display:none">
+    <h3>Dodaj produkt merch</h3>
+    <div class="field"><label>Nazwa *</label><input id="prodName" placeholder="np. T-shirt akrobacja.com"></div>
+    <div class="field"><label>Slug (opcjonalny, generuje z nazwy)</label><input id="prodSlug" placeholder="t-shirt-akrobacja"></div>
+    <div class="field"><label>Kategoria</label>
+      <select id="prodCategory">
+        <option value="">—</option>
+        <option value="clothing">Odzież</option>
+        <option value="accessories">Akcesoria</option>
+        <option value="stickers">Naklejki</option>
+        <option value="prints">Plakaty/Printy</option>
+        <option value="other">Inne</option>
+      </select>
+    </div>
+    <div class="field"><label>Opis</label><textarea id="prodDescription"></textarea></div>
+    <div class="field"><label>Cena (grosze) *</label><input type="number" id="prodPrice" placeholder="np. 14900 = 149 PLN"></div>
+    <div class="field"><label>URL obrazka</label><input id="prodImageUrl" placeholder="https://..."></div>
+    <div class="field"><label>Warianty (JSON array)</label><input id="prodVariants" value="[]" placeholder='["S","M","L","XL"]'></div>
+    <div class="field"><label>Kolejność sortowania</label><input type="number" id="prodSortOrder" value="100"></div>
+    <button class="btn btn-blue" onclick="createProduct()">Dodaj produkt</button>
   </div>
 
   <!-- Send SMS Blast -->
@@ -667,6 +718,19 @@ async function loadAircraft() {
       </td>
     </tr>`).join('')}
   </table>` : '<p style="padding:12px;color:#888">Brak pilotow w polisie</p>';
+
+  // Fill insurance pilot dropdown — pilots not already in active insurance
+  const inInsurance = new Set(ins.filter(i => i.status === 'approved' || i.status === 'pending').map(i => i.pilot_id));
+  if (!allPilots.length) {
+    const pr = await api('GET', '/api/admin/pilots');
+    allPilots = pr.pilots || [];
+  }
+  const available = allPilots.filter(p => !inInsurance.has(p.id));
+  const select = document.getElementById('insPilotSelect');
+  if (select) {
+    select.innerHTML = '<option value="">— wybierz —</option>' +
+      available.map(p => `<option value="${p.id}">${esc(p.name||'(bez imienia)')} — ${p.phone}</option>`).join('');
+  }
 }
 
 async function addMaintenance() {
@@ -752,6 +816,36 @@ async function loadMerch() {
       </tr>`;
     }).join('')}
   </table>` : '<p style="padding:20px;color:#888">Brak zamowien merch</p>';
+
+  // Products list
+  const products = res.products || [];
+  document.getElementById('productsTable').innerHTML = products.length ? `<table>
+    <tr><th>Nazwa</th><th>Slug</th><th>Kategoria</th><th>Cena</th><th>Warianty</th><th>Aktywny</th><th>Kolejność</th><th>Akcje</th></tr>
+    ${products.map(p => `<tr style="${p.active?'':'opacity:.5'}">
+      <td><strong>${esc(p.name)}</strong></td>
+      <td style="font-family:monospace;font-size:11px">${esc(p.slug||'-')}</td>
+      <td>${esc(p.category||'-')}</td>
+      <td class="amount">${(p.price/100).toLocaleString('pl-PL')} PLN</td>
+      <td style="font-size:11px">${esc(p.variants||'[]')}</td>
+      <td>${p.active?'Tak':'Nie'}</td>
+      <td>${p.sort_order}</td>
+      <td class="actions">
+        <button class="btn btn-grey" onclick="toggleProduct('${p.id}')">${p.active?'Ukryj':'Pokaż'}</button>
+        <button class="btn btn-red" onclick="deleteProduct('${p.id}')">Usuń</button>
+      </td>
+    </tr>`).join('')}
+  </table>` : '<p style="padding:12px;color:#888">Brak produktów — dodaj pierwszy przyciskiem „+ Dodaj produkt"</p>';
+}
+
+async function toggleProduct(id) {
+  const res = await api('POST', '/api/admin/merch', { action:'toggle_product_active', id });
+  if (res.ok) { showMsg('Zmieniono','ok'); loadMerch(); } else showMsg(res.error,'err');
+}
+
+async function deleteProduct(id) {
+  if (!confirm('Usunac produkt? (nieodwracalne)')) return;
+  const res = await api('POST', '/api/admin/merch', { action:'delete_product', id });
+  if (res.ok) { showMsg('Usunięty','ok'); loadMerch(); } else showMsg(res.error,'err');
 }
 
 async function merchAction(action, id) {
@@ -798,6 +892,61 @@ async function removeSub(id) {
   if (!confirm('Wypisac subskrybenta?')) return;
   const res = await api('POST', '/api/admin/subscribers', { action:'remove', id });
   if (res.ok) { showMsg('Wypisany','ok'); loadSubs(); } else showMsg(res.error,'err');
+}
+
+async function createSub() {
+  const phone = document.getElementById('nsPhone').value.trim();
+  if (!phone) { showMsg('Podaj numer telefonu','err'); return; }
+  const res = await api('POST', '/api/admin/subscribers', {
+    action:'create',
+    phone,
+    name: document.getElementById('nsName').value.trim() || undefined,
+    email: document.getElementById('nsEmail').value.trim() || undefined,
+  });
+  if (res.ok) {
+    showMsg(res.reactivated ? 'Przywrócony' : 'Dodany','ok');
+    ['nsPhone','nsName','nsEmail'].forEach(id => document.getElementById(id).value='');
+    closeModal();
+    loadSubs();
+  } else {
+    showMsg(res.error||'Nie udało się dodać','err');
+  }
+}
+
+async function addInsurancePilot() {
+  const pilotId = document.getElementById('insPilotSelect').value;
+  if (!pilotId) { showMsg('Wybierz pilota','err'); return; }
+  const res = await api('POST', '/api/admin/aircraft', { action:'add_insurance_pilot', pilot_id: pilotId });
+  if (res.ok) { showMsg('Wpisany do polisy','ok'); closeModal(); loadAircraft(); }
+  else showMsg(res.error||'Nie udało się','err');
+}
+
+async function createProduct() {
+  const name = document.getElementById('prodName').value.trim();
+  const price = parseInt(document.getElementById('prodPrice').value);
+  if (!name || !price) { showMsg('Nazwa i cena są wymagane','err'); return; }
+  const res = await api('POST', '/api/admin/merch', {
+    action:'create_product',
+    name,
+    slug: document.getElementById('prodSlug').value.trim() || undefined,
+    category: document.getElementById('prodCategory').value || undefined,
+    description: document.getElementById('prodDescription').value.trim() || undefined,
+    price,
+    image_url: document.getElementById('prodImageUrl').value.trim() || undefined,
+    variants: document.getElementById('prodVariants').value.trim() || '[]',
+    sort_order: parseInt(document.getElementById('prodSortOrder').value) || 100,
+  });
+  if (res.ok) {
+    showMsg('Produkt dodany','ok');
+    ['prodName','prodSlug','prodDescription','prodPrice','prodImageUrl'].forEach(id => document.getElementById(id).value='');
+    document.getElementById('prodCategory').value='';
+    document.getElementById('prodVariants').value='[]';
+    document.getElementById('prodSortOrder').value='100';
+    closeModal();
+    loadMerch();
+  } else {
+    showMsg(res.error||'Nie udało się dodać','err');
+  }
 }
 
 async function sendBlast() {

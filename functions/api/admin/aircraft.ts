@@ -78,6 +78,24 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     // ── INSURANCE PILOTS ──
+    case 'add_insurance_pilot': {
+      if (!body.pilot_id) return Response.json({ error: 'Podaj pilot_id' }, { status: 400 });
+      const pilot = await ctx.env.DB.prepare('SELECT id FROM pilots WHERE id = ?').bind(body.pilot_id).first();
+      if (!pilot) return Response.json({ error: 'Pilot nie znaleziony' }, { status: 404 });
+      const active = await ctx.env.DB.prepare(
+        "SELECT id FROM insurance_pilots WHERE pilot_id = ? AND removed_at IS NULL AND status != 'rejected'"
+      ).bind(body.pilot_id).first();
+      if (active) return Response.json({ error: 'Pilot już w polisie' }, { status: 409 });
+      const id = crypto.randomUUID();
+      await ctx.env.DB.prepare(
+        `INSERT INTO insurance_pilots (id, pilot_id, status, approved_at) VALUES (?, ?, 'approved', datetime('now'))`
+      ).bind(id, body.pilot_id).run();
+      await ctx.env.DB.prepare(
+        "UPDATE pilots SET insurance_status = 'approved' WHERE id = ?"
+      ).bind(body.pilot_id).run();
+      return Response.json({ ok: true, id });
+    }
+
     case 'approve_insurance': {
       await ctx.env.DB.prepare(
         "UPDATE insurance_pilots SET status = 'approved', approved_at = datetime('now') WHERE id = ?"

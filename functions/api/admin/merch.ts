@@ -51,6 +51,46 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       ).bind(body.id).run();
       return Response.json({ ok: true });
     }
+
+    case 'create_product': {
+      if (!body.name || typeof body.price !== 'number') {
+        return Response.json({ error: 'Podaj nazwę i cenę (w groszach)' }, { status: 400 });
+      }
+      const id = (body.id as string) || crypto.randomUUID();
+      const slug = (body.slug as string) || String(body.name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const variants = body.variants ? String(body.variants) : '[]';
+      try { JSON.parse(variants); } catch { return Response.json({ error: 'variants musi być JSON tablicą' }, { status: 400 }); }
+      await ctx.env.DB.prepare(
+        `INSERT INTO products (id, name, slug, category, description, price, image_url, variants, active, sort_order)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, ?)`
+      ).bind(
+        id,
+        body.name,
+        slug,
+        body.category || null,
+        body.description || null,
+        body.price,
+        body.image_url || null,
+        variants,
+        (body.sort_order as number) ?? 100,
+      ).run();
+      return Response.json({ ok: true, id, slug });
+    }
+
+    case 'toggle_product_active': {
+      if (!body.id) return Response.json({ error: 'Podaj id produktu' }, { status: 400 });
+      await ctx.env.DB.prepare(
+        'UPDATE products SET active = CASE active WHEN 1 THEN 0 ELSE 1 END WHERE id = ?'
+      ).bind(body.id).run();
+      return Response.json({ ok: true });
+    }
+
+    case 'delete_product': {
+      if (!body.id) return Response.json({ error: 'Podaj id produktu' }, { status: 400 });
+      await ctx.env.DB.prepare('DELETE FROM products WHERE id = ?').bind(body.id).run();
+      return Response.json({ ok: true });
+    }
+
     default:
       return Response.json({ error: 'Nieznana akcja' }, { status: 400 });
   }
