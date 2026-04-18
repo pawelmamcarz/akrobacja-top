@@ -1,5 +1,6 @@
 import { type Env } from '../../../src/lib/types';
 import { checkAdminAuth } from '../../../src/lib/admin-auth';
+import { normalizePhone } from '../../../src/lib/phone';
 
 // GET /api/admin/pilots
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
@@ -22,12 +23,55 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
   const body = (await ctx.request.json()) as {
     action: string;
-    pilot_id: string;
+    pilot_id?: string;
     minutes?: number;
     reason?: string;
+    phone?: string;
+    name?: string;
+    email?: string;
+    license_type?: string;
+    license_number?: string;
+    balance_minutes?: number;
   };
 
   switch (body.action) {
+    case 'create': {
+      if (!body.phone) {
+        return Response.json({ error: 'Telefon jest wymagany' }, { status: 400 });
+      }
+      let phone: string;
+      try {
+        phone = normalizePhone(body.phone);
+      } catch {
+        return Response.json({ error: 'Nieprawidłowy numer telefonu' }, { status: 400 });
+      }
+      const existing = await ctx.env.DB.prepare(
+        'SELECT id FROM pilots WHERE phone = ?'
+      ).bind(phone).first();
+      if (existing) {
+        return Response.json({ error: 'Pilot z tym numerem już istnieje' }, { status: 409 });
+      }
+      const id = crypto.randomUUID();
+      const initialBalance = body.balance_minutes ?? 0;
+      await ctx.env.DB.prepare(
+        `INSERT INTO pilots (id, phone, name, email, license_type, license_number, balance_minutes, verified)
+         VALUES (?, ?, ?, ?, ?, ?, ?, 1)`
+      ).bind(
+        id, phone,
+        body.name || null,
+        body.email || null,
+        body.license_type || null,
+        body.license_number || null,
+        initialBalance,
+      ).run();
+      if (initialBalance > 0) {
+        await ctx.env.DB.prepare(
+          'INSERT INTO balance_log (id, pilot_id, change_minutes, reason, created_by) VALUES (?, ?, ?, ?, ?)'
+        ).bind(crypto.randomUUID(), id, initialBalance, 'Dodanie pilota ręcznie', 'admin').run();
+      }
+      return Response.json({ ok: true, id });
+    }
+
     case 'add_balance': {
       if (!body.pilot_id || !body.minutes || !body.reason) {
         return Response.json({ error: 'Podaj pilot_id, minutes i reason' }, { status: 400 });

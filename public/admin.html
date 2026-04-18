@@ -124,6 +124,7 @@
   <!-- PILOTS -->
   <div class="panel" id="panel-pilots">
     <div class="toolbar">
+      <button class="btn btn-blue" onclick="openModal('newPilot')">+ Dodaj pilota</button>
       <input type="text" id="searchPilots" placeholder="Szukaj pilota..." oninput="filterPilots()">
       <div class="stats" id="pilotStats"></div>
     </div>
@@ -271,6 +272,27 @@
     <div class="field"><label>Wazny do</label><input type="date" id="docTo"></div>
     <div class="field"><label>Uwagi</label><textarea id="docNotes"></textarea></div>
     <button class="btn btn-blue" onclick="addDocument()">Dodaj</button>
+  </div>
+
+  <!-- New Pilot -->
+  <div class="modal" id="modal-newPilot" style="display:none">
+    <h3>Dodaj pilota ręcznie</h3>
+    <div class="field"><label>Telefon *</label><input id="npPhone" placeholder="np. 535535221 lub +48535535221"></div>
+    <div class="field"><label>Imię i nazwisko</label><input id="npName"></div>
+    <div class="field"><label>Email</label><input id="npEmail" type="email"></div>
+    <div class="field"><label>Typ licencji</label>
+      <select id="npLicenseType">
+        <option value="">—</option>
+        <option value="PPL(A)">PPL(A)</option>
+        <option value="CPL(A)">CPL(A)</option>
+        <option value="ATPL(A)">ATPL(A)</option>
+        <option value="LAPL(A)">LAPL(A)</option>
+        <option value="other">Inny</option>
+      </select>
+    </div>
+    <div class="field"><label>Numer licencji</label><input id="npLicenseNumber"></div>
+    <div class="field"><label>Początkowe saldo (minuty)</label><input type="number" id="npBalance" value="0" min="0"></div>
+    <button class="btn btn-blue" onclick="createPilot()">Dodaj pilota</button>
   </div>
 
   <!-- Send SMS Blast -->
@@ -481,6 +503,29 @@ async function deductBalance() {
   });
   if (res.ok) { showMsg(`Saldo: ${Math.floor(res.balance_minutes/60)}h ${res.balance_minutes%60}min`,'ok'); closeModal(); loadPilots(); }
   else showMsg(res.error,'err');
+}
+async function createPilot() {
+  const phone = document.getElementById('npPhone').value.trim();
+  if (!phone) { showMsg('Podaj numer telefonu','err'); return; }
+  const res = await api('POST', '/api/admin/pilots', {
+    action:'create',
+    phone,
+    name: document.getElementById('npName').value.trim() || undefined,
+    email: document.getElementById('npEmail').value.trim() || undefined,
+    license_type: document.getElementById('npLicenseType').value || undefined,
+    license_number: document.getElementById('npLicenseNumber').value.trim() || undefined,
+    balance_minutes: parseInt(document.getElementById('npBalance').value) || 0,
+  });
+  if (res.ok) {
+    showMsg('Pilot dodany','ok');
+    ['npPhone','npName','npEmail','npLicenseNumber'].forEach(id => document.getElementById(id).value='');
+    document.getElementById('npLicenseType').value='';
+    document.getElementById('npBalance').value='0';
+    closeModal();
+    loadPilots();
+  } else {
+    showMsg(res.error||'Nie udało się dodać','err');
+  }
 }
 
 // ── COURSES ──
