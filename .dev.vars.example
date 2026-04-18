@@ -1,14 +1,46 @@
-# Stripe
+# Local dev secrets — copy to `.dev.vars` and fill in.
+# Production: `npx wrangler pages secret put NAME --project-name=akrobacja-top`
+
+# ── Core site ──
+SITE_URL=http://localhost:8788
+ADMIN_PASSWORD=change_me_to_long_random_string
+
+# ── Stripe (test keys for dev, live for prod) ──
 STRIPE_SECRET_KEY=sk_test_...
 STRIPE_WEBHOOK_SECRET=whsec_...
 
-# wFirma.pl (login + hasło do konta)
+# ── wFirma API v2 (invoicing) ──
+# Wystawianie faktury uruchamia się tylko gdy STRIPE_SECRET_KEY zawiera "_live_".
+WFIRMA_ACCESS_KEY=
+WFIRMA_SECRET_KEY=
+WFIRMA_APP_KEY=
 WFIRMA_LOGIN=pawel@mamcarz.com
-WFIRMA_PASSWORD=twoje_haslo
+WFIRMA_PASSWORD=
 WFIRMA_COMPANY_ID=26009
 
-# Resend (email)
+# ── Resend (email: vouchers, welcome sequence, abandoned cart, owner notifications) ──
 RESEND_API_KEY=re_...
 
-# Site
-SITE_URL=https://akrobacja-top.pages.dev
+# ── SMSAPI.pl (pilot OTP + marketing blast) ──
+SMSAPI_TOKEN=
+
+# ── Printful (merch fulfilment — currently dormant, mapping pusty) ──
+PRINTFUL_TOKEN=
+
+# ── Meta Pixel + Conversions API ──
+# Pixel fires client-side; CAPI server-side with hashed user data (dedup przez event_id).
+META_PIXEL_ID=
+META_CAPI_TOKEN=
+META_TEST_EVENT_CODE=   # opcjonalne — widoczne tylko w Events Manager → Test Events
+
+# ── Google Analytics 4 + Google Ads ──
+# Middleware wstrzykuje gtag.js z Consent Mode v2 (default denied, banner grants).
+GA_MEASUREMENT_ID=        # G-XXXXXXXXXX
+GOOGLE_ADS_ID=            # AW-XXXXXXXXXX
+GOOGLE_ADS_PURCHASE_LABEL=  # conversion label z Ads
+
+# ── Cloudflare Web Analytics ──
+CF_ANALYTICS_TOKEN=
+
+# ── Cron auth (TODO: wire up, obecnie crony są publiczne) ──
+# CRON_SECRET=
