@@ -1,20 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 110" fill="none" stroke="currentColor" aria-label="akrobacja.com — Extra 300L">
-  <!-- Plane icon (top view) -->
-  <g stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-    <line x1="55" y1="8" x2="55" y2="22"/>
-    <line x1="47" y1="12" x2="63" y2="15"/>
-    <line x1="63" y1="12" x2="47" y2="15"/>
-    <path d="M51 22 L55 17 L59 22 Z"/>
-    <path d="M50 22 Q55 18 60 22 L61 52 L61 72 L59 86 L55 90 L51 86 L49 72 L49 52 Z"/>
-    <ellipse cx="55" cy="42" rx="3.5" ry="9"/>
-    <path d="M7 46 L49 38 L49 56 L7 52 Z"/>
-    <path d="M103 46 L61 38 L61 56 L103 52 Z"/>
-    <path d="M28 78 L51 72 L51 82 L28 88 Z"/>
-    <path d="M82 78 L59 72 L59 82 L82 88 Z"/>
-    <line x1="55" y1="65" x2="55" y2="88"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" fill="currentColor" aria-label="akrobacja.com — Extra 300L">
+  <!-- Plane mark (scaled top view) -->
+  <g transform="translate(10 10) scale(0.86)">
+    <rect x="52" y="10" width="36" height="2.5" rx="1" opacity="0.35"/>
+    <path d="M66 14 L70 6 L74 14 Z"/>
+    <path d="M66 14 L64 24 L63 56 L63 84 L64 102 L66 116 L68 122 L70 126 L72 122 L74 116 L76 102 L77 84 L77 56 L76 24 L74 14 Z"/>
+    <path d="M62 48 L18 52 L6 55 L6 63 L18 66 L62 62 Z"/>
+    <path d="M78 48 L122 52 L134 55 L134 63 L122 66 L78 62 Z"/>
+    <ellipse cx="70" cy="48" rx="4" ry="11" fill="#0A1428" opacity="0.85"/>
+    <ellipse cx="70" cy="48" rx="2.5" ry="8" fill="white" opacity="0.25"/>
+    <path d="M64 104 L40 108 L32 112 L32 118 L40 120 L64 116 Z"/>
+    <path d="M76 104 L100 108 L108 112 L108 118 L100 120 L76 116 Z"/>
+    <rect x="68.5" y="90" width="3" height="34" rx="1.5"/>
   </g>
   <!-- Wordmark -->
-  <g fill="currentColor" stroke="none">
-    <text x="128" y="72" font-family="Montserrat, 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="52" letter-spacing="-1">akrobacja<tspan fill="currentColor" opacity="0.55">.com</tspan></text>
-  </g>
+  <text x="150" y="88" font-family="Montserrat, 'Helvetica Neue', Arial, sans-serif" font-weight="800" font-size="64" letter-spacing="-1.5">akrobacja<tspan opacity="0.5">.com</tspan></text>
+  <!-- Tagline -->
+  <text x="150" y="114" font-family="Inter, Arial, sans-serif" font-weight="500" font-size="14" letter-spacing="3" opacity="0.65">EXTRA 300L · SP-EKS · EPRP</text>
 </svg>

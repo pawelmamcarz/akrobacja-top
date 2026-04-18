@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" fill="currentColor" aria-label="Extra 300L vertical climb">
+  <!-- Aerobatic plane in a vertical climb, rotated 20° — iconic aerobatic pose.
+       Built as a 'top view' plane then rotated via transform. -->
+  <g transform="rotate(-20 70 70)">
+    <!-- Propeller disc -->
+    <rect x="52" y="8" width="36" height="2.5" rx="1" opacity="0.35"/>
+    <!-- Spinner -->
+    <path d="M66 12 L70 2 L74 12 Z"/>
+    <!-- Fuselage -->
+    <path d="
+      M66 12
+      L64 22
+      L63 52
+      L63 82
+      L64 100
+      L66 114
+      L70 122
+      L74 114
+      L76 100
+      L77 82
+      L77 52
+      L76 22
+      L74 12
+      Z
+    "/>
+    <!-- Left wing -->
+    <path d="M62 44 L18 48 L6 51 L6 59 L18 62 L62 58 Z"/>
+    <!-- Right wing -->
+    <path d="M78 44 L122 48 L134 51 L134 59 L122 62 L78 58 Z"/>
+    <!-- Canopy -->
+    <ellipse cx="70" cy="44" rx="4" ry="11" fill="#0A1428" opacity="0.85"/>
+    <ellipse cx="70" cy="44" rx="2.5" ry="8" fill="white" opacity="0.25"/>
+    <!-- Horizontal stabs -->
+    <path d="M64 100 L40 104 L32 108 L32 114 L40 116 L64 112 Z"/>
+    <path d="M76 100 L100 104 L108 108 L108 114 L100 116 L76 112 Z"/>
+    <!-- Vertical fin -->
+    <rect x="68.5" y="86" width="3" height="34" rx="1.5"/>
+  </g>
+  <!-- Smoke trail (akrobacja smoke) -->
+  <path d="M 42 134 Q 60 128 78 118" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+  <path d="M 50 138 Q 64 132 80 124" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.2"/>
+</svg>

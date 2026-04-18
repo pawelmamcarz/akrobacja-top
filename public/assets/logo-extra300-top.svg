@@ -1,25 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-label="Extra 300L">
-  <!-- Propeller -->
-  <line x1="60" y1="6" x2="60" y2="22"/>
-  <line x1="52" y1="10" x2="68" y2="14"/>
-  <line x1="68" y1="10" x2="52" y2="14"/>
-  <!-- Spinner cone -->
-  <path d="M56 22 L60 16 L64 22 Z"/>
-  <!-- Fuselage -->
-  <path d="M55 22 Q60 18 65 22 L66 56 L66 78 L64 92 L60 96 L56 92 L54 78 L54 56 Z"/>
-  <!-- Canopy (bubble) — indicates cockpit from top -->
-  <ellipse cx="60" cy="44" rx="4" ry="10"/>
-  <!-- Left wing -->
-  <path d="M9 48 L54 40 L54 58 L9 54 Z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" fill="currentColor" aria-label="Extra 300L top silhouette">
+  <!-- Propeller disc blur (horizontal line at nose) -->
+  <rect x="52" y="10" width="36" height="2.5" rx="1" opacity="0.35"/>
+  <!-- Spinner -->
+  <path d="M66 14 L70 6 L74 14 Z"/>
+  <!-- Fuselage (long, narrow, slight taper to tail) -->
+  <path d="
+    M66 14
+    L64 24
+    L63 56
+    L63 84
+    L64 102
+    L66 116
+    L68 122
+    L70 126
+    L72 122
+    L74 116
+    L76 102
+    L77 84
+    L77 56
+    L76 24
+    L74 14
+    Z
+  "/>
+  <!-- Left wing: rectangular, low-aspect aerobatic shape with slight taper outboard -->
+  <path d="
+    M62 48
+    L18 52
+    L6 55
+    L6 63
+    L18 66
+    L62 62
+    Z
+  "/>
   <!-- Right wing -->
-  <path d="M111 48 L66 40 L66 58 L111 54 Z"/>
-  <!-- Wing tips — aerobatic detail -->
-  <line x1="9" y1="48" x2="9" y2="54"/>
-  <line x1="111" y1="48" x2="111" y2="54"/>
-  <!-- Horizontal stabilizer left -->
-  <path d="M33 84 L56 78 L56 88 L33 94 Z"/>
-  <!-- Horizontal stabilizer right -->
-  <path d="M87 84 L64 78 L64 88 L87 94 Z"/>
-  <!-- Vertical fin ridge from top -->
-  <line x1="60" y1="70" x2="60" y2="94"/>
+  <path d="
+    M78 48
+    L122 52
+    L134 55
+    L134 63
+    L122 66
+    L78 62
+    Z
+  "/>
+  <!-- Canopy bubble (visible from top as oval) -->
+  <ellipse cx="70" cy="48" rx="4" ry="11" fill="#0A1428" opacity="0.85"/>
+  <ellipse cx="70" cy="48" rx="2.5" ry="8" fill="white" opacity="0.25"/>
+  <!-- Left horizontal stabilizer -->
+  <path d="
+    M64 104
+    L40 108
+    L32 112
+    L32 118
+    L40 120
+    L64 116
+    Z
+  "/>
+  <!-- Right horizontal stabilizer -->
+  <path d="
+    M76 104
+    L100 108
+    L108 112
+    L108 118
+    L100 120
+    L76 116
+    Z
+  "/>
+  <!-- Vertical fin (seen as narrow strip along spine) -->
+  <rect x="68.5" y="90" width="3" height="34" rx="1.5"/>
 </svg>
