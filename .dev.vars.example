@@ -42,5 +42,7 @@ GOOGLE_ADS_PURCHASE_LABEL=  # conversion label z Ads
 # ── Cloudflare Web Analytics ──
 CF_ANALYTICS_TOKEN=
 
-# ── Cron auth (TODO: wire up, obecnie crony są publiczne) ──
-# CRON_SECRET=
+# ── Cron auth — chroni /api/cron/* przed publicznym wywołaniem ──
+# Ustaw długi random string, np: openssl rand -hex 32
+# Zewnętrzny scheduler (GH Actions / cron-job.org) musi wysłać: Authorization: Bearer <CRON_SECRET>
+CRON_SECRET=

@@ -19,6 +19,7 @@ export interface Env {
   META_PIXEL_ID?: string;
   META_CAPI_TOKEN?: string;
   META_TEST_EVENT_CODE?: string;
+  CRON_SECRET?: string;
   AI: Ai;
 }
 

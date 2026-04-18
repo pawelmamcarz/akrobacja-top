@@ -112,6 +112,13 @@ interface AbandonedRow {
 }
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
+  if (ctx.env.CRON_SECRET) {
+    const auth = ctx.request.headers.get('Authorization') || '';
+    if (auth !== `Bearer ${ctx.env.CRON_SECRET}`) {
+      return Response.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+  }
+
   const results: Array<{ order: string; email: string; status: string }> = [];
 
   try {

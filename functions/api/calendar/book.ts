@@ -1,4 +1,5 @@
 import { type Env, PACKAGES, type PackageId } from '../../../src/lib/types';
+import { escapeHtml } from '../../../src/lib/email';
 
 interface BookingRequest {
   date: string;
@@ -91,6 +92,16 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       VALUES (?, ?, ?, ?, ?, ?, 'pending')
     `).bind(slotId, body.date, body.start_time, endTime, body.type, bookingId).run();
 
+    ctx.waitUntil(sendBookingEmails(ctx.env, {
+      bookingId,
+      date: body.date,
+      startTime: body.start_time,
+      type: body.type,
+      customerName: body.customer_name,
+      customerEmail: body.customer_email,
+      voucherCode: body.voucher_code,
+    }));
+
     return Response.json({
       ok: true,
       booking_id: bookingId,
@@ -100,6 +111,76 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     return Response.json({ error: err instanceof Error ? err.message : 'Unknown error' }, { status: 500 });
   }
 };
+
+async function sendBookingEmails(env: Env, o: {
+  bookingId: string;
+  date: string;
+  startTime: string;
+  type: string;
+  customerName: string;
+  customerEmail: string;
+  voucherCode?: string;
+}): Promise<void> {
+  const typeLabels: Record<string, string> = {
+    voucher: 'Lot akrobacyjny (voucher)',
+    proficiency: 'Lot sprawdzający',
+    training: 'Lot szkolny',
+    course: 'Kurs akrobacji',
+  };
+  const label = typeLabels[o.type] || o.type;
+  const adminUrl = 'https://akrobacja.com/admin';
+
+  const customerHtml = `
+    <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
+      <div style="background:#0A2F7C;padding:32px;text-align:center">
+        <h1 style="color:#fff;margin:0;font-size:24px">akrobacja.com</h1>
+      </div>
+      <div style="padding:32px">
+        <h2 style="color:#0A2F7C;margin:0 0 16px">Rezerwacja złożona!</h2>
+        <p style="color:#333;line-height:1.6;margin:0 0 24px">
+          Cześć ${escapeHtml(o.customerName)}! Twoja rezerwacja oczekuje na zatwierdzenie przez pilota.
+          Dostaniesz potwierdzenie emailem gdy zostanie zatwierdzona.
+        </p>
+        <table style="width:100%;border-collapse:collapse">
+          <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Typ</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(label)}</td></tr>
+          <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Data</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(o.date)}</td></tr>
+          <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Godzina</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(o.startTime)}</td></tr>
+          ${o.voucherCode ? `<tr><td style="padding:8px 0;color:#6B7A90">Voucher</td><td style="padding:8px 0;font-weight:600;font-family:monospace;text-align:right">${escapeHtml(o.voucherCode)}</td></tr>` : ''}
+        </table>
+        <p style="color:#6B7A90;font-size:13px;margin-top:24px">
+          Pytania? Zadzwoń: <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a>
+          lub napisz: <a href="mailto:dto@akrobacja.com" style="color:#0A2F7C">dto@akrobacja.com</a>
+        </p>
+      </div>
+    </div>`;
+
+  const adminHtml = `
+    <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto">
+      <h2 style="color:#0A2F7C;margin:0 0 16px">Nowa rezerwacja do zatwierdzenia</h2>
+      <table style="width:100%;border-collapse:collapse">
+        <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Typ</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(label)}</td></tr>
+        <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Data</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(o.date)}</td></tr>
+        <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Godzina</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(o.startTime)}</td></tr>
+        <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Klient</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(o.customerName)}</td></tr>
+        <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Email</td><td style="padding:8px 0;border-bottom:1px solid #eee;text-align:right"><a href="mailto:${encodeURIComponent(o.customerEmail)}">${escapeHtml(o.customerEmail)}</a></td></tr>
+        ${o.voucherCode ? `<tr><td style="padding:8px 0;color:#6B7A90">Voucher</td><td style="padding:8px 0;font-weight:600;font-family:monospace;text-align:right">${escapeHtml(o.voucherCode)}</td></tr>` : ''}
+      </table>
+      <p style="margin-top:16px"><a href="${adminUrl}" style="color:#0A2F7C;font-weight:600">Zatwierdź w panelu admina →</a></p>
+    </div>`;
+
+  const sendEmail = async (to: string, subject: string, html: string) => {
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${env.RESEND_API_KEY}` },
+      body: JSON.stringify({ from: 'akrobacja.com <dto@akrobacja.com>', to: [to], subject, html }),
+    });
+  };
+
+  await Promise.allSettled([
+    sendEmail(o.customerEmail, `Rezerwacja złożona — ${o.date} ${o.startTime}`, customerHtml),
+    sendEmail('dto@akrobacja.com', `✈️ Nowa rezerwacja: ${label} — ${o.date} ${o.startTime}`, adminHtml),
+  ]);
+}
 
 function addHour(time: string): string {
   const [h, m] = time.split(':').map(Number);

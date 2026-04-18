@@ -75,6 +75,10 @@
     if (code && /^AKR-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(code)) {
       document.getElementById('voucherCode').textContent = code;
       document.getElementById('downloadBtn').href = `/api/voucher/${code}`;
+    } else {
+      document.getElementById('voucherCode').textContent = '—';
+      document.getElementById('downloadBtn').style.display = 'none';
+      document.querySelector('.sub').textContent = 'Dziękujemy za zakup! Sprawdź skrzynkę email — voucher PDF jest w załączniku.';
     }
   </script>
 

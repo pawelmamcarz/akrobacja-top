@@ -20,9 +20,10 @@ const CANCEL_URLS: Record<string, string> = {
 };
 
 // Valid discount codes — simple registry to avoid D1 lookup on every checkout.
-// WRACAM5 = -5% recovery discount wysyłany z abandoned cart emaila.
-const DISCOUNTS: Record<string, { pct: number }> = {
+// WRACAM5 = -5% recovery (abandoned cart). PIERWSZY100 = -100 PLN (welcome sequence day 5).
+const DISCOUNTS: Record<string, { pct?: number; fixed?: number }> = {
   WRACAM5: { pct: 5 },
+  PIERWSZY100: { fixed: 10000 }, // 100 PLN in grosze
 };
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
@@ -46,10 +47,15 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     // Apply discount if valid
     const normalizedCode = body.discountCode?.trim().toUpperCase() || '';
-    const discount = normalizedCode && DISCOUNTS[normalizedCode];
-    const totalAmount = discount
-      ? Math.round(baseAmount * (100 - discount.pct) / 100)
-      : baseAmount;
+    const discount = normalizedCode ? DISCOUNTS[normalizedCode] : null;
+    let totalAmount: number;
+    if (discount?.fixed) {
+      totalAmount = Math.max(100, baseAmount - discount.fixed); // min 1 PLN
+    } else if (discount?.pct) {
+      totalAmount = Math.round(baseAmount * (100 - discount.pct) / 100);
+    } else {
+      totalAmount = baseAmount;
+    }
     const appliedDiscountCode = discount ? normalizedCode : null;
 
     // Create order in D1
@@ -73,7 +79,10 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       // Single line item with total after discount — simpler display, avoids negative line_items (unsupported).
       const parts = [`Voucher "${pkg.name}" — lot akrobacyjny Extra 300L`];
       if (body.videoAddon) parts.push('+ Video 360°');
-      parts.push(`(rabat ${discount.pct}% kod ${appliedDiscountCode})`);
+      const discountDesc = discount.fixed
+        ? `rabat ${discount.fixed / 100} PLN kod ${appliedDiscountCode}`
+        : `rabat ${discount.pct}% kod ${appliedDiscountCode}`;
+      parts.push(`(${discountDesc})`);
       lineItems.push({
         price_data: {
           currency: 'pln',
