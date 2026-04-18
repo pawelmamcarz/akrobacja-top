@@ -15,24 +15,36 @@ CREATE TABLE IF NOT EXISTS orders (
   invoice_id TEXT,
   created_at TEXT NOT NULL,
   paid_at TEXT,
-  expires_at TEXT
+  expires_at TEXT,
+  redeemed_at TEXT,
+  abandon_email_sent_at TEXT,
+  discount_code TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_orders_voucher_code ON orders(voucher_code);
 CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
 CREATE INDEX IF NOT EXISTS idx_orders_stripe_session ON orders(stripe_session_id);
+CREATE INDEX IF NOT EXISTS idx_orders_redeemed ON orders(redeemed_at);
+CREATE INDEX IF NOT EXISTS idx_orders_abandon ON orders(status, abandon_email_sent_at, created_at);
 
 -- Merch products
 CREATE TABLE IF NOT EXISTS products (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,
+  slug TEXT,
+  category TEXT,
   description TEXT,
   price INTEGER NOT NULL,
   image_url TEXT,
   variants TEXT DEFAULT '[]',
   active INTEGER NOT NULL DEFAULT 1,
+  sort_order INTEGER NOT NULL DEFAULT 100,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
+
+CREATE INDEX IF NOT EXISTS idx_products_slug ON products(slug);
+CREATE INDEX IF NOT EXISTS idx_products_category ON products(category);
+CREATE INDEX IF NOT EXISTS idx_products_sort ON products(sort_order);
 
 -- Merch orders
 CREATE TABLE IF NOT EXISTS merch_orders (
