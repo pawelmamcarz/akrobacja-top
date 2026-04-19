@@ -1,7 +1,7 @@
 {
   "name": "akrobacja.com — Loty akrobacyjne Extra 300L",
   "short_name": "akrobacja.com",
-  "description": "Loty akrobacyjne samolotem Extra 300L z Mistrzem Polski. Vouchery, kursy FCL.800, pokazy lotnicze.",
+  "description": "Loty akrobacyjne samolotem Extra 300L z Mistrzem Świata. Vouchery, kursy FCL.800, pokazy lotnicze.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a1628",
@@ -9,13 +9,19 @@
   "lang": "pl",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/favicon.ico",
-      "sizes": "32x32",
+      "sizes": "16x16 32x32 48x48",
       "type": "image/x-icon"
     }
   ]
