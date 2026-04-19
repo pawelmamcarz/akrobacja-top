@@ -803,5 +803,237 @@ Resend → Settings → **Webhooks** → URL: `https://akrobacja.com/api/webhook
 | 2026-04-16 | Abandoned cart recovery + WRACAM5 -5% | `8ece6b7` |
 | 2026-04-16 | Permanent fail handling + email regex validation | `51fb354` |
 | 2026-04-16 | Test produkt 1 zł `/test-konwersji` + cancel_url fix | `9526622` |
+| 2026-04-19 | Kody IG10, FB10, MAJOWKA (-10%) + eksponowanie PIERWSZY100 | (ta sesja) |
+
+---
+
+# 🚀 FIRST SALE PUSH, 48h kampania (gotowe do uruchomienia)
+
+## Co już jest na stronie (po tej sesji)
+
+- **Banner promocyjny** `PIERWSZY100` (-100 zł) widoczny na `/voucher-prezent` i home
+- **Kody** w backendzie i client-side: `PIERWSZY100` (-100 zł), `WRACAM5` (-5%), `IG10`, `FB10`, `MAJOWKA` (-10% każdy)
+- **Placeholder w polu kodu** w checkout modalu: "np. PIERWSZY100 (-100 zł)"
+
+## Krok 1, Instagram @bullet.aerobatics (8 786 obserwujących)
+
+**Post** (1 zdjęcie kokpitu/samolotu + caption):
+
+```
+Sezon 2026 otwarty. Pierwsze 10 lotów z kodem IG10 (-10%).
+
++6G / -2G / figury akrobacyjne na Extra 300L SP-EKS.
+Lotnisko Radom, 100 km od Warszawy.
+Voucher PDF natychmiast. Ważny 12 miesięcy.
+
+Kod IG10 w polu "kod rabatowy" przy zakupie.
+Link w bio.
+
+#akrobacjalotnicza #extra300l #aerobatics
+```
+
+**Link w bio**: `https://akrobacja.com/voucher-prezent?discount=IG10&utm_source=instagram&utm_medium=social&utm_campaign=ig10_first_sale`
+
+**Story**: ankieta „Kto marzy o akrobacji?" + swipe-up na ten sam link.
+
+## Krok 2, Facebook @bullet.aerobatics
+
+Ten sam post. Dodatkowo proś 5 znajomych o share. Tag żony / partnera / braci.
+
+## Krok 3, WhatsApp broadcast do 10-20 znajomych
+
+Osobista wiadomość:
+```
+Cześć, nie pytam czy kupisz, pytam czy znasz kogoś kto w tym roku ma okrągłe urodziny / rocznicę / kawalerski i marzy o adrenalinie. Jeśli tak, podrzuć mu link:
+https://akrobacja.com/voucher-prezent?discount=PIERWSZY100
+
+-100 zł na pierwszy voucher. Dzięki.
+```
+
+## Krok 4, Google Ads (30 PLN/dzień starter)
+
+### Struktura
+
+**1 kampania, 3 ad groups, 900 PLN/miesiąc startowo (30 zł × 30 dni)**
+
+Cel kampanii: `Conversions` (konwersja już zmapowana: AW-928813824 / `3g00CNLcnZwcElCm8roD`)
+Lokalizacja: Polska (Warszawa + 100 km promień priorytet)
+Urządzenia: mobile + desktop
+Harmonogram: 24/7, start dzisiaj
+Budżet: 30 zł/dzień
+Strategia: `Maximize conversions` (po 5-10 konwersjach przełącz na `Target CPA` = 100 zł)
+
+### Ad Group 1, "Prezent"
+
+**Keywords (phrase match):**
+```
+"lot akrobacyjny prezent"
+"voucher na lot akrobacyjny"
+"prezent dla chłopaka przygoda"
+"prezent dla mężczyzny lot"
+"prezent urodzinowy adrenalina"
+"prezent dzień ojca lot"
+"prezent kawalerski przygoda"
+"prezent rocznica ślubu lot"
+```
+
+**Negative keywords:**
+```
+-praca, -zatrudnienie, -zarobki
+-film, -gra, -symulator
+-szkolenie (tylko w kampanii szkoleniowej)
+-modelarstwo, -dron
+-balonowy, -paragliding
+```
+
+### Ad Group 2, "Lot akrobacyjny (intent)"
+
+**Keywords:**
+```
+[lot akrobacyjny]
+[lot akrobacyjny warszawa]
+"lot akrobacyjny radom"
+"akrobacja samolotowa"
+"extra 300l lot"
+"samolot akrobacyjny warszawa"
+"lot pętle beczki"
+"lot z pilotem akrobacja"
+```
+
+### Ad Group 3, "Retargeting (RLSA)"
+
+Audience: wszyscy odwiedzający `akrobacja.com` w ostatnich 30 dniach. Keywords: szerokie (brand + lot + prezent). Bid +50% vs zimne AG.
+
+### Ad copy (responsive search ad)
+
+**Headlines (15 pól, wybierz 10-12):**
+```
+Lot Akrobacyjny Extra 300L
+Z Mistrzem Świata Akrobacji
+Voucher PDF w 2 Minuty
+Od 1 999 zł, Kod -100 zł
+Prezent, Który Zapamiętają
+Radom, 100 km z Warszawy
+Mistrz Świata 2022 za Sterami
+Ważny 12 Miesięcy
++6G, -2G, Pełna Akrobacja
+Bezpłatne Przełożenie Terminu
+★ 5.0 / 8 Opinii
+3 Pakiety, od 1 999 zł
+Dokończ Zakup, Kod PIERWSZY100
+4 000+ h Nalotu Pilota
+Kup w 2 Minuty Online
+```
+
+**Descriptions (4 pola):**
+```
+1. Lot akrobacyjny z Mistrzem Świata 2022. Extra 300L, +6G, pętle, beczki. Voucher PDF natychmiast. Kod PIERWSZY100 = -100 zł.
+
+2. Najlepszy prezent 2026 dla poszukiwacza adrenaliny. 3 pakiety od 1 999 zł. PDF w mailu w 2 min. Ważny 12 miesięcy.
+
+3. Lotnisko Radom-Piastów (EPRP), 1h 15 min z Warszawy trasą S7. Pilot: 4 000+ h nalotu, 3× Mistrz Polski.
+
+4. 8 opinii 5/5. Bezpłatne przełożenie terminu. Faktura VAT. Zwrot 14 dni. Kup online, zapłać kartą, P24 lub BLIK.
+```
+
+**Final URL**: `https://akrobacja.com/voucher-prezent`
+**Display URL**: `akrobacja.com/voucher`
+**Tracking template**: `{lpurl}?utm_source=google&utm_medium=cpc&utm_campaign={campaignid}&utm_content={adgroupid}&utm_term={keyword}&gclid={gclid}`
+
+### Sitelinks (min. 4)
+
+| Text | URL |
+|------|-----|
+| Pakiety lotów | `https://akrobacja.com/#sklep` |
+| Poznaj pilota | `https://akrobacja.com/#pilot` |
+| Opinie klientów | `https://akrobacja.com/#opinie` |
+| Kalendarz | `https://akrobacja.com/kalendarz` |
+
+### Callouts (min. 6)
+
+```
+Voucher PDF natychmiast
+Ważny 12 miesięcy
+Mistrz Świata 2022
+Extra 300L SP-EKS
+Bezpłatne przełożenie
+Zwrot 14 dni
+Karta, P24, BLIK
+4 000+ h nalotu
+```
+
+### Structured snippets
+
+- Type: **Styles**
+- Values: `Pierwszy Lot, Adrenalina, Masterclass`
+
+### Phone extension
+
+`+48 535 535 221`
+
+### Promotion extension
+
+- Promotion type: `10% off`
+- Promo code: `IG10`
+- Occasion: Kampania sezonowa
+- Discount type: Percent discount
+- Discount: 10%
+- Date: od teraz do +30 dni
+
+## Krok 5, zimna lista firm eventowych (B2B partnership)
+
+**Cel**: 1 firma = 10-50 voucherów/rok.
+
+Lista (startowe 5):
+- GiftEvent.pl
+- Prezentmarzeń.pl
+- Pimp My Weekend
+- Imagine Eurasia
+- Atrakcja.pl / Prezent na Prezent
+
+**Template emaila**:
+```
+Tytuł: Partnerstwo, voucher akrobacyjny Extra 300L + 15% prowizji
+
+Dzień dobry,
+
+Nazywam się [imię], reprezentuję akrobacja.com, platformę lotów akrobacyjnych Extra 300L z Mistrzem Świata 2022 Maciejem Kulaszewskim.
+
+Proponuję włączenie naszych voucherów do Państwa oferty:
+- 3 pakiety: 1 999 zł / 2 999 zł / 4 999 zł
+- PDF voucher natychmiast po zakupie
+- 15% prowizji dla Państwa firmy
+- Ważność 12 miesięcy, realizacja Radom (1h z Warszawy)
+
+Państwa klienci dostaną unikalne doświadczenie (nie kolejny kupon na masaż), Państwo dostają marżę i nowy produkt premium w ofercie.
+
+Chętnie umówię 15-minutową rozmowę:
+https://wa.me/48535535221
+
+Pozdrawiam,
+Paweł Mamcarz
+akrobacja.com
+```
+
+## Weryfikacja konwersji (zanim puścisz budżet)
+
+1. Otwórz incognito `https://akrobacja.com/test-konwersji`
+2. Dokonaj zakupu 2 zł (`test_naklejka`)
+3. Sprawdź w Google Ads → Narzędzia → Konwersje → status „Aktualna" + "Ostatnia konwersja zarejestrowana"
+4. Jeśli OK, uruchom kampanię
+
+## Daily monitoring (pierwsze 7 dni)
+
+Rano, 5 minut:
+- Google Ads: impressions, CTR, cost, konwersje (cel CTR > 3%, CPA < 200 zł)
+- GA4 → Realtime: użytkownicy na stronie
+- Stripe Dashboard: płatności (cel: 1 sprzedaż do 48h)
+- Meta Ads Manager (jeśli też uruchomione)
+
+Jeśli po 7 dniach 0 sprzedaży:
+- Obniż cenę o -10% (użyj kodu MAJOWKA lub zmień pakiet)
+- Przerzuć budżet do najlepiej performującego AG
+- Dodaj lookalike audience w Meta Ads
+
 
 

@@ -228,6 +228,12 @@
   </a>
 </header>
 
+<!-- Promo bar -->
+<div style="position:fixed;top:54px;left:0;right:0;z-index:99;background:var(--red);color:#fff;padding:10px 16px;text-align:center;font-family:var(--font-h);font-size:13px;font-weight:700;letter-spacing:.02em;box-shadow:0 2px 8px rgba(0,0,0,.3)">
+  🎁 PIERWSZY RAZ? Kod <code style="background:rgba(0,0,0,.2);padding:2px 8px;letter-spacing:.1em">PIERWSZY100</code> = −100 zł na Twój pierwszy voucher
+</div>
+<style>body{padding-top:44px}section.hero{padding-top:100px}</style>
+
 <section class="hero">
   <div class="hero-inner">
     <div class="badge">Voucher PDF natychmiast w mailu</div>
@@ -452,7 +458,7 @@
       </label>
       <div class="modal-field" id="discountField" style="margin-top:4px">
         <label for="checkoutDiscount">Kod rabatowy (opcjonalnie)</label>
-        <input type="text" id="checkoutDiscount" placeholder="np. WRACAM5" autocomplete="off" style="text-transform:uppercase;letter-spacing:.08em">
+        <input type="text" id="checkoutDiscount" placeholder="np. PIERWSZY100 (-100 zł)" autocomplete="off" style="text-transform:uppercase;letter-spacing:.08em">
         <p id="discountStatus" style="font-size:11px;margin-top:6px;min-height:14px;font-family:var(--font-h);font-weight:700;letter-spacing:.05em"></p>
       </div>
       <button type="submit" class="modal-submit" id="checkoutSubmit">Przejdź do płatności →</button>
@@ -469,7 +475,7 @@ const PKGS = {
   masterclass:  { name: 'Masterclass',  sub: 'Voucher PDF, 2 loty, analiza z Mistrzem', price: 4999 },
 };
 
-const DISCOUNTS = { WRACAM5: { pct: 5 } };
+const DISCOUNTS = { WRACAM5: { pct: 5 }, PIERWSZY100: { fixed: 100 }, IG10: { pct: 10 }, FB10: { pct: 10 }, MAJOWKA: { pct: 10 } };
 
 const modal = document.getElementById('checkoutModal');
 const modalTitle = document.getElementById('modalTitle');
@@ -499,7 +505,9 @@ function openModal(packageId) {
 
 function getDiscount() {
   const code = (discountInput.value || '').trim().toUpperCase();
-  return DISCOUNTS[code] ? { code, pct: DISCOUNTS[code].pct } : null;
+  const d = DISCOUNTS[code];
+  if (!d) return null;
+  return { code, pct: d.pct, fixed: d.fixed };
 }
 
 function updatePrice() {
@@ -509,9 +517,17 @@ function updatePrice() {
   const base = pkg.price + video;
   const d = getDiscount();
   if (d) {
-    const total = Math.round(base * (100 - d.pct) / 100);
+    let total;
+    let label;
+    if (d.fixed) {
+      total = Math.max(1, base - d.fixed);
+      label = `✓ Kod ${d.code}, rabat ${d.fixed} zł (−${(base - total).toLocaleString('pl-PL')} zł)`;
+    } else {
+      total = Math.round(base * (100 - d.pct) / 100);
+      label = `✓ Kod ${d.code}, rabat ${d.pct}% (−${(base - total).toLocaleString('pl-PL')} zł)`;
+    }
     modalPrice.innerHTML = `<span style="text-decoration:line-through;color:#7A8FA6;font-size:18px;font-weight:600;margin-right:10px">${base.toLocaleString('pl-PL')} zł</span>${total.toLocaleString('pl-PL')} zł`;
-    discountStatus.textContent = `✓ Kod ${d.code}, rabat ${d.pct}% (−${(base - total).toLocaleString('pl-PL')} zł)`;
+    discountStatus.textContent = label;
     discountStatus.style.color = '#00E5FF';
   } else {
     modalPrice.textContent = base.toLocaleString('pl-PL') + ' zł';

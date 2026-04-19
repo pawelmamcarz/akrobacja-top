@@ -20,10 +20,14 @@ const CANCEL_URLS: Record<string, string> = {
 };
 
 // Valid discount codes, simple registry to avoid D1 lookup on every checkout.
-// WRACAM5 = -5% recovery (abandoned cart). PIERWSZY100 = -100 PLN (welcome sequence day 5).
+// WRACAM5 = -5% recovery (abandoned cart). PIERWSZY100 = -100 PLN (welcome / first-time).
+// IG10 = -10% instagram social (10 first redemptions per campaign).
 const DISCOUNTS: Record<string, { pct?: number; fixed?: number }> = {
   WRACAM5: { pct: 5 },
   PIERWSZY100: { fixed: 10000 }, // 100 PLN in grosze
+  IG10: { pct: 10 },
+  FB10: { pct: 10 },
+  MAJOWKA: { pct: 10 },
 };
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
