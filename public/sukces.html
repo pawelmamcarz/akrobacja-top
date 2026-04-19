@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zakup udany! — akrobacja.com</title>
+<title>Zakup udany! | akrobacja.com</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -61,7 +61,7 @@
     </div>
 
     <p class="info">
-      Umów lot: <strong>+48 535 535 221</strong> lub <strong>dto@akrobacja.com</strong> — podaj kod vouchera.<br>
+      Umów lot: <strong>+48 535 535 221</strong> lub <strong>dto@akrobacja.com</strong>, podaj kod vouchera.<br>
       Ważność: 12 miesięcy od zakupu.
     </p>
 
@@ -76,9 +76,9 @@
       document.getElementById('voucherCode').textContent = code;
       document.getElementById('downloadBtn').href = `/api/voucher/${code}`;
     } else {
-      document.getElementById('voucherCode').textContent = '—';
+      document.getElementById('voucherCode').textContent = '-';
       document.getElementById('downloadBtn').style.display = 'none';
-      document.querySelector('.sub').textContent = 'Dziękujemy za zakup! Sprawdź skrzynkę email — voucher PDF jest w załączniku.';
+      document.querySelector('.sub').textContent = 'Dziękujemy za zakup! Sprawdź skrzynkę email, voucher PDF jest w załączniku.';
     }
   </script>
 

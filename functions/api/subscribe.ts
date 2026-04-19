@@ -31,7 +31,7 @@ async function notifyOwner(env: Env, phone: string, name: string | null, source:
       }),
     });
   } catch {
-    // Non-critical — don't fail the subscription if notification fails
+    // Non-critical, don't fail the subscription if notification fails
   }
 }
 

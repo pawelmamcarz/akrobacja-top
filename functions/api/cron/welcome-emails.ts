@@ -55,7 +55,7 @@ function buildWelcomeEmail(name: string | null): string {
       <li>Otrzymasz specjalny kod rabatowy na pierwszy lot</li>
     </ul>
     <p style="color:#333;line-height:1.7;margin:0 0 24px;font-size:15px">
-      Tymczasem zerknij na naszą stronę — znajdziesz tam wszystkie pakiety lotów i odpowiedzi na najczęstsze pytania.
+      Tymczasem zerknij na naszą stronę, znajdziesz tam wszystkie pakiety lotów i odpowiedzi na najczęstsze pytania.
     </p>
     <p style="text-align:center;margin:0 0 24px">
       ${ctaButton('Zobacz pakiety lotów', 'https://akrobacja.com/#pakiety')}
@@ -88,7 +88,7 @@ function buildEducationalEmail(name: string | null): string {
     <div style="background:#f0f3f7;padding:20px;margin-bottom:20px;border-left:4px solid #E11E26">
       <p style="color:#E11E26;font-weight:700;margin:0 0 8px;font-size:14px">2. LOT AKROBACYJNY</p>
       <p style="color:#333;font-size:14px;line-height:1.6;margin:0">
-        Startujesz z lotniska Radom-Piastów w samolocie Extra 300L. Pętle, beczki, loty odwrócone — wszystko pod okiem Mistrza Polski w akrobacji.
+        Startujesz z lotniska Radom-Piastów w samolocie Extra 300L. Pętle, beczki, loty odwrócone, wszystko pod okiem Mistrza Polski w akrobacji.
       </p>
     </div>
 
@@ -137,7 +137,7 @@ function buildDiscountEmail(name: string | null): string {
 
     <p style="color:#333;line-height:1.7;margin:0 0 24px;font-size:15px">
       Podaj kod <strong>PIERWSZY100</strong> podczas rezerwacji lub wpisz go na stronie zamówienia.
-      Rabat działa na wszystkie pakiety — od Pierwszego Lotu po Masterclass.
+      Rabat działa na wszystkie pakiety, od Pierwszego Lotu po Masterclass.
     </p>
     <p style="text-align:center;margin:0 0 24px">
       ${ctaButton('Zarezerwuj lot ze zniżką', 'https://akrobacja.com/lot-akrobacyjny')}
@@ -200,7 +200,7 @@ async function ensureTable(db: D1Database): Promise<void> {
   `).run();
 }
 
-// Main handler — GET /api/cron/welcome-emails
+// Main handler, GET /api/cron/welcome-emails
 // Designed to be called by an external cron (e.g. Cloudflare Cron Trigger, or a simple HTTP cron)
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   if (ctx.env.CRON_SECRET) {

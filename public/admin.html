@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin — akrobacja.com</title>
+<title>Admin | akrobacja.com</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -85,7 +85,7 @@
 
 <div class="app" id="appView">
   <div class="topbar">
-    <h1>akrobacja.com — Panel Admina</h1>
+    <h1>akrobacja.com, Panel Admina</h1>
     <button class="logout" onclick="doLogout()">Wyloguj</button>
   </div>
 
@@ -289,7 +289,7 @@
     <div class="field"><label>Email</label><input id="npEmail" type="email"></div>
     <div class="field"><label>Typ licencji</label>
       <select id="npLicenseType">
-        <option value="">—</option>
+        <option value="">-</option>
         <option value="PPL(A)">PPL(A)</option>
         <option value="CPL(A)">CPL(A)</option>
         <option value="ATPL(A)">ATPL(A)</option>
@@ -316,7 +316,7 @@
     <h3>Wpisz pilota do polisy</h3>
     <div class="field"><label>Pilot</label>
       <select id="insPilotSelect">
-        <option value="">— wybierz —</option>
+        <option value="">- wybierz -</option>
       </select>
     </div>
     <p style="font-size:11px;color:#888;margin-bottom:12px">Pilot musi być wcześniej w bazie (zakładka Piloci).</p>
@@ -330,7 +330,7 @@
     <div class="field"><label>Slug (opcjonalny, generuje z nazwy)</label><input id="prodSlug" placeholder="t-shirt-akrobacja"></div>
     <div class="field"><label>Kategoria</label>
       <select id="prodCategory">
-        <option value="">—</option>
+        <option value="">-</option>
         <option value="clothing">Odzież</option>
         <option value="accessories">Akcesoria</option>
         <option value="stickers">Naklejki</option>
@@ -505,9 +505,9 @@ function renderPilots(pilots) {
     <tr><th>Telefon</th><th>Imie</th><th>Email</th><th>Licencja</th><th>Saldo</th><th>Ost. login</th><th>Akcje</th></tr>
     ${pilots.map(p => `<tr>
       <td>${p.phone}</td>
-      <td>${esc(p.name||'—')}</td>
-      <td>${esc(p.email||'—')}</td>
-      <td>${p.license_type||'—'} ${p.license_number||''}</td>
+      <td>${esc(p.name||'-')}</td>
+      <td>${esc(p.email||'-')}</td>
+      <td>${p.license_type||'-'} ${p.license_number||''}</td>
       <td class="amount">${Math.floor((p.balance_minutes||0)/60)}h ${(p.balance_minutes||0)%60}min</td>
       <td>${fmtDate(p.last_login)}</td>
       <td class="actions">
@@ -588,7 +588,7 @@ async function loadCourses() {
     <tr><th>Kursant</th><th>Email</th><th>Licencja</th><th>Postep</th><th>Kwota</th><th>Status</th><th>Akcje</th></tr>
     ${allCourses.map(c => `<tr>
       <td>${esc(c.customer_name)}</td><td>${esc(c.customer_email)}</td>
-      <td>${c.license_number||'—'}</td>
+      <td>${c.license_number||'-'}</td>
       <td class="amount">${c.completed_flights}/${c.total_flights} lotow</td>
       <td>${(c.amount/100).toLocaleString('pl-PL')} PLN</td>
       <td><span class="badge badge-${c.status}">${statusLabel(c.status)}</span></td>
@@ -719,7 +719,7 @@ async function loadAircraft() {
     </tr>`).join('')}
   </table>` : '<p style="padding:12px;color:#888">Brak pilotow w polisie</p>';
 
-  // Fill insurance pilot dropdown — pilots not already in active insurance
+  // Fill insurance pilot dropdown, pilots not already in active insurance
   const inInsurance = new Set(ins.filter(i => i.status === 'approved' || i.status === 'pending').map(i => i.pilot_id));
   if (!allPilots.length) {
     const pr = await api('GET', '/api/admin/pilots');
@@ -728,8 +728,8 @@ async function loadAircraft() {
   const available = allPilots.filter(p => !inInsurance.has(p.id));
   const select = document.getElementById('insPilotSelect');
   if (select) {
-    select.innerHTML = '<option value="">— wybierz —</option>' +
-      available.map(p => `<option value="${p.id}">${esc(p.name||'(bez imienia)')} — ${p.phone}</option>`).join('');
+    select.innerHTML = '<option value="">- wybierz -</option>' +
+      available.map(p => `<option value="${p.id}">${esc(p.name||'(bez imienia)')}, ${p.phone}</option>`).join('');
   }
 }
 
@@ -834,7 +834,7 @@ async function loadMerch() {
         <button class="btn btn-red" onclick="deleteProduct('${p.id}')">Usuń</button>
       </td>
     </tr>`).join('')}
-  </table>` : '<p style="padding:12px;color:#888">Brak produktów — dodaj pierwszy przyciskiem „+ Dodaj produkt"</p>';
+  </table>` : '<p style="padding:12px;color:#888">Brak produktów, dodaj pierwszy przyciskiem „+ Dodaj produkt"</p>';
 }
 
 async function toggleProduct(id) {

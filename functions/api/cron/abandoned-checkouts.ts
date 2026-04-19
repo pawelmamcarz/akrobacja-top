@@ -1,7 +1,7 @@
-// Abandoned checkout recovery — wysyła mail z kodem rabatowym do osób,
+// Abandoned checkout recovery, wysyła mail z kodem rabatowym do osób,
 // które rozpoczęły checkout >1h temu, <48h temu, nie zapłaciły i nie dostały jeszcze maila.
 //
-// Cron: wywoływać co 1-2 godziny (zewnętrzny scheduler — GH Actions, cron-job.org).
+// Cron: wywoływać co 1-2 godziny (zewnętrzny scheduler, GH Actions, cron-job.org).
 // Minimalne okno 1h od startu checkoutu daje użytkownikowi realistyczny czas
 // na dokończenie sam (ktoś mógł pójść po kartę). Max 48h bo dalej to zimny lead.
 
@@ -38,7 +38,7 @@ function buildRecoveryEmail(o: {
     <div style="padding:40px">
       <h2 style="color:#0A2F7C;margin:0 0 16px;font-size:22px">${greeting}</h2>
       <p style="color:#333;line-height:1.7;margin:0 0 20px;font-size:15px">
-        Widzimy, że zainteresował Cię voucher <strong>${escapeHtml(pkg.name)}</strong> — ale zakup nie doszedł do końca.
+        Widzimy, że zainteresował Cię voucher <strong>${escapeHtml(pkg.name)}</strong>, ale zakup nie doszedł do końca.
         Rozumiemy, że życie bywa szybkie, dlatego przygotowaliśmy dla Ciebie coś, co ułatwi decyzję:
       </p>
 
@@ -81,7 +81,7 @@ function buildRecoveryEmail(o: {
 </html>`;
 }
 
-// Returns { permanent: boolean } — permanent failures (invalid email, blocked) shouldn't retry
+// Returns { permanent: boolean }, permanent failures (invalid email, blocked) shouldn't retry
 async function sendEmail(env: Env, to: string, subject: string, html: string): Promise<void> {
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -155,7 +155,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
         await sendEmail(
           ctx.env,
           row.customer_email,
-          `${row.customer_name?.split(/\s+/)[0] || 'Cześć'} — dokończ zakup ze zniżką 5% (48h)`,
+          `${row.customer_name?.split(/\s+/)[0] || 'Cześć'}, dokończ zakup ze zniżką 5% (48h)`,
           html,
         );
 

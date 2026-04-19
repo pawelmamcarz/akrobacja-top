@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kalendarz lotów — akrobacja.com</title>
+<title>Kalendarz lotów | akrobacja.com</title>
 <meta name="description" content="Kalendarz lotów akrobacyjnych Extra 300L SP-EKS. Sprawdź dostępne terminy, zarezerwuj lot. Lotnisko Radom-Piastów (EPRP). akrobacja.com">
 
 <!-- Open Graph -->
@@ -133,7 +133,7 @@
   .hidden { display:none; }
   .loading { text-align:center; padding:40px; color:var(--chrome); }
 
-  /* ═══ RESPONSIVE — TABLET ═══ */
+  /* ═══ RESPONSIVE, TABLET ═══ */
   @media (max-width: 1024px) {
     .topbar { padding: 14px 24px; }
     .container { padding: 28px 20px 60px; }
@@ -142,7 +142,7 @@
     .form-row { grid-template-columns: 1fr; gap: 10px; }
   }
 
-  /* ═══ RESPONSIVE — MOBILE ═══ */
+  /* ═══ RESPONSIVE, MOBILE ═══ */
   @media (max-width: 768px) {
     .topbar { padding: 12px 20px; }
     .topbar a { font-size: 13px; }
@@ -171,7 +171,7 @@
     .btn { padding: 12px 20px; font-size: 11px; width: 100%; text-align: center; }
   }
 
-  /* ═══ RESPONSIVE — SMALL MOBILE ═══ */
+  /* ═══ RESPONSIVE, SMALL MOBILE ═══ */
   @media (max-width: 480px) {
     .topbar { padding: 10px 12px; }
     .container { padding: 20px 12px 40px; }
@@ -206,7 +206,7 @@
     <div class="legend-item"><div class="legend-dot free"></div> Wolne sloty</div>
     <div class="legend-item"><div class="legend-dot partial"></div> Ostatnie miejsca</div>
     <div class="legend-item"><div class="legend-dot full"></div> Brak miejsc</div>
-    <div class="legend-item"><div class="legend-dot weather"></div> &#9729; Pogoda — nie latamy</div>
+    <div class="legend-item"><div class="legend-dot weather"></div> &#9729; Pogoda, nie latamy</div>
     <div class="legend-item"><div class="legend-dot blocked"></div> Zablokowane</div>
   </div>
 
@@ -506,7 +506,7 @@ async function submitBooking() {
     document.getElementById('bookMsg').innerHTML = `
       <div class="msg msg-ok">
         <strong>Rezerwacja złożona!</strong> ${selectedDate} o ${selectedSlot}<br>
-        Oczekuje na zatwierdzenie — potwierdzenie na ${email}.<br>
+        Oczekuje na zatwierdzenie, potwierdzenie na ${email}.<br>
         ${pilot ? '<a href="/konto" style="color:#155724;font-weight:600">Zobacz na koncie →</a>' : '<a href="/konto" style="color:#155724;font-weight:600">Załóż konto pilota →</a>'}
       </div>`;
     document.getElementById('bookForm').classList.add('hidden');

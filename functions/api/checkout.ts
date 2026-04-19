@@ -11,7 +11,7 @@ interface CheckoutBody {
   source?: string;        // page slug from where checkout was initiated (for cancel_url)
 }
 
-// Map source slug → cancel URL — Stripe "Back" button vraca user tam skąd przyszedł
+// Map source slug → cancel URL, Stripe "Back" button vraca user tam skąd przyszedł
 const CANCEL_URLS: Record<string, string> = {
   'voucher-prezent': '/voucher-prezent',
   'lot-akrobacyjny': '/lot-akrobacyjny',
@@ -19,7 +19,7 @@ const CANCEL_URLS: Record<string, string> = {
   'index': '/',
 };
 
-// Valid discount codes — simple registry to avoid D1 lookup on every checkout.
+// Valid discount codes, simple registry to avoid D1 lookup on every checkout.
 // WRACAM5 = -5% recovery (abandoned cart). PIERWSZY100 = -100 PLN (welcome sequence day 5).
 const DISCOUNTS: Record<string, { pct?: number; fixed?: number }> = {
   WRACAM5: { pct: 5 },
@@ -37,7 +37,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!body.customerName || !body.customerEmail) {
       return Response.json({ error: 'Imię i email są wymagane' }, { status: 400 });
     }
-    // RFC-5322 lite — must have local@domain.tld with TLD >= 2 chars
+    // RFC-5322 lite, must have local@domain.tld with TLD >= 2 chars
     if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(body.customerEmail.trim())) {
       return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
     }
@@ -76,8 +76,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const lineItems: Array<Record<string, unknown>> = [];
 
     if (discount) {
-      // Single line item with total after discount — simpler display, avoids negative line_items (unsupported).
-      const parts = [`Voucher "${pkg.name}" — lot akrobacyjny Extra 300L`];
+      // Single line item with total after discount, simpler display, avoids negative line_items (unsupported).
+      const parts = [`Voucher "${pkg.name}", lot akrobacyjny Extra 300L`];
       if (body.videoAddon) parts.push('+ Video 360°');
       const discountDesc = discount.fixed
         ? `rabat ${discount.fixed / 100} PLN kod ${appliedDiscountCode}`
@@ -95,7 +95,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       lineItems.push({
         price_data: {
           currency: 'pln',
-          product_data: { name: `Voucher "${pkg.name}" — lot akrobacyjny Extra 300L` },
+          product_data: { name: `Voucher "${pkg.name}", lot akrobacyjny Extra 300L` },
           unit_amount: pkg.price,
         },
         quantity: 1,
