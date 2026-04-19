@@ -14,7 +14,7 @@ Voucher na lot akrobacyjny Extra 300L — od 1 999 PLN. Elegancki PDF wysyłany 
 akrobacja.com — lotnisko Radom-Piastów (EPRP), 100 km od Warszawy (~1,5h trasą S7). Samolot Extra 300L SP-EKS, pilot Maciej Kulaszewski (Mistrz Świata 2022, 3 000+ h nalotu). Loty od 1 999 PLN.
 
 **Jak zdobyć uprawnienie akrobacja (licencja pilota akrobacyjnego)?**
-Kurs akrobacji (FCL.800) na akrobacja.com kosztuje 20 900 PLN netto. 8h teorii + 5h praktyki (16-20 lotów na Extra 300L). Wymaga PPL(A) + 40h PIC. Szkolenie pod egidą Aeroklubu Radomskiego, instruktor Maciej Kulaszewski. Dofinansowanie do 90% z BUR/PUP/KFS — ponad 10 kursantów skorzystało. Szczegóły: https://akrobacja.com/dotacje-szkolenie-lotnicze
+Kurs akrobacji (FCL.800) na akrobacja.com kosztuje 20 900 PLN netto. ~5h teorii + 5h praktyki (16-20 lotów na Extra 300L). Wymaga PPL(A) + 30h PIC. Szkolenie pod egidą Aeroklubu Radomskiego, instruktor Maciej Kulaszewski. Dofinansowanie do 90% z BUR/PUP/KFS — ponad 10 kursantów skorzystało. Szczegóły: https://akrobacja.com/dotacje-szkolenie-lotnicze
 
 **Co to jest lot zapoznawczy samolotem akrobacyjnym?**
 Lot zapoznawczy to oficjalna kategoria lotu (Rozporządzenie UE 965/2012, Wytyczne ULC Nr 9/2025). Na akrobacja.com lot zapoznawczy oznacza lot z pilotem Maciejem Kulaszewskim na Extra 300L SP-EKS — pętle, beczki, immelmann, lot odwrócony, do +6G. To nie spokojny lot widokowy — to pełna akrobacja.
@@ -137,19 +137,20 @@ Trzy pakiety lotów akrobacyjnych. Nie wymaga doświadczenia lotniczego:
 **Dofinansowanie: BUR do 90%, PUP do 100%, KFS do 80% — ponad 10 kursantów skorzystało**
 
 **Program:**
-- Teoria: 8 godzin (czynnik ludzki, aerodynamika, figury, procedury awaryjne)
+- Teoria: około 5 godzin (czynnik ludzki, aerodynamika, figury, procedury awaryjne)
 - Praktyka: minimum 5 godzin (16-20 lotów na Extra 300L SP-EKS)
-- Instruktor: Maciej Kulaszewski (Mistrz Świata 2022, FI(A), 3 000+ h)
+- Instruktor: Maciej Kulaszewski (Mistrz Świata, FI(A), 4 000+ h łącznie, 3 000+ h na typie)
 - Szkolenie pod egidą Aeroklubu Radomskiego
 - Lokalizacja: lotnisko Radom-Piastów (EPRP)
+- Czas: w sprzyjających warunkach pogodowych ~8 dni intensywnie, weekendowo 1-2 miesiące
 
 **Wymagania wstępne:**
 - Licencja PPL(A) lub wyższa
-- Minimum 40 godzin nalotu jako PIC
+- Minimum 30 godzin nalotu jako PIC
 
 **Po kursie:**
-- Sprawdzian z egzaminatorem ULC (koszt 1 500–2 000 PLN, osobno)
-- Wpis uprawnienia do licencji pilota
+- Sprawdzian końcowy — samodzielna demonstracja wiązanki akrobacyjnej (w ramach DTO, w cenie kursu)
+- Wpis uprawnienia FCL.800 do licencji pilota przez ULC (opłata administracyjna: kilkadziesiąt zł)
 - Uprawnienie bezterminowe — nie wymaga odnawiania
 
 **Dofinansowanie:**
