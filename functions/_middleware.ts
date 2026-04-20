@@ -21,6 +21,20 @@ const LEGACY_REDIRECTS: Record<string, string> = {
   '/szkolenia/akrobacja/': '/blog/kurs-akrobacji-fcl800',
   '/szkolenia/uprt': '/blog/uprt-szkolenie-upset-recovery',
   '/szkolenia/uprt/': '/blog/uprt-szkolenie-upset-recovery',
+  '/szkolenia/faq': '/#faq',
+  '/szkolenia/faq/': '/#faq',
+  '/szkolenia/obozy-treningowo-szkoleniowe': '/camp-akrobacyjny',
+  '/szkolenia/obozy-treningowo-szkoleniowe/': '/camp-akrobacyjny',
+  '/kontakt': '/#kontakt',
+  '/kontakt/': '/#kontakt',
+  '/shop': '/sklep-merch',
+  '/shop/': '/sklep-merch',
+  '/samoloty-do-filmow-i-reklam': '/pokazy-lotnicze',
+  '/samoloty-do-filmow-i-reklam/': '/pokazy-lotnicze',
+  '/product/szkolenie-do-uprawnienia-akrobacja-samolotowa': '/blog/kurs-akrobacji-fcl800',
+  '/product/szkolenie-do-uprawnienia-akrobacja-samolotowa/': '/blog/kurs-akrobacji-fcl800',
+  '/uprawnienia-akrobacji-szkolenie-uprt-loty-zapoznawcze-z-akrobacja-pilotaz-akrobacyjny-bezpieczenstwo-lotow': '/blog/uprt-szkolenie-upset-recovery',
+  '/uprawnienia-akrobacji-szkolenie-uprt-loty-zapoznawcze-z-akrobacja-pilotaz-akrobacyjny-bezpieczenstwo-lotow/': '/blog/uprt-szkolenie-upset-recovery',
 };
 
 export const onRequest: PagesFunction = async (context) => {
