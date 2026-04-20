@@ -107,6 +107,15 @@ export const onRequest: PagesFunction = async (context) => {
             (adsId ? `gtag('config','${adsId}');` : '') +
             `</script>` +
             `<script async src="https://www.googletagmanager.com/gtag/js?id=${tagId}"></script>`;
+          // Restore saved consent synchronously — must run before any conversion events in <body>.
+          // consent-banner.js is deferred so without this the conversion event fires before
+          // consent is updated to 'granted', causing Consent Mode v2 to send a cookieless ping.
+          headInject +=
+            `<script>(function(){try{var r=localStorage.getItem('akro_consent_v2');` +
+            `if(r){var o=JSON.parse(r);if(o&&o.ts&&(Date.now()-o.ts)/864e5<180){` +
+            `var s=o.marketing?'granted':'denied';` +
+            `gtag('consent','update',{ad_storage:s,ad_user_data:s,ad_personalization:s,analytics_storage:s});` +
+            `}}}catch(e){}})();</script>`;
         }
 
         // Meta Pixel (Facebook/Instagram) — respects consent (denied by default, banner grants)
@@ -146,7 +155,7 @@ export const onRequest: PagesFunction = async (context) => {
           ) : '') +
           (metaPixelId ? (
             // Meta Pixel Purchase — eventID matches CAPI for dedup
-            `if(window.fbq){fbq('track','Purchase',{value:a,currency:'PLN',content_ids:[pk],content_type:'product',content_name:'Voucher '+pk,num_items:1},{eventID:'purchase_'+c});}`
+            `if(window.fbq){fbq('track','Purchase',{value:a,currency:'PLN',content_ids:[pk],content_type:'product',content_name:'Voucher '+pk,num_items:1},{eventID:'purchase_'+c});}` 
           ) : '') +
           `try{sessionStorage.removeItem('akro_checkout_info');}catch(e){}` +
           `})();</script>`,
