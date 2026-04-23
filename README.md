@@ -126,16 +126,24 @@ cp .dev.vars.example .dev.vars   # uzupełnij sekrety
 npm run dev                      # wrangler pages dev public --port 8788
 ```
 
-Tworzenie świeżej bazy lokalnie:
+### Schemat bazy — polityka
+
+- **`schema.sql` jest jedynym źródłem prawdy do bootstrapu.** Tu żyje pełny
+  opis wszystkich tabel, kolumn i indeksów. Świeża D1 (lokalnie, preview env,
+  branch deploy, disaster recovery) MUSI być tworzona z tego pliku.
+- **`migrations/NNN-*.sql` to tylko patche driftu** dla baz istniejących
+  w produkcji — dokładają kolumny/indeksy/tabele, których ad-hoc zmiany na
+  prod wyprzedziły commit. **Nie stanowią zamkniętego łańcucha od zera**
+  i bootstrap wyłącznie z migracji NIE jest wspierany — zawsze `schema.sql`.
+- Przy każdym dodaniu kolumny/tabeli/indeksu: 1) zaktualizuj `schema.sql`,
+  2) dopisz migrację `NNN-<nazwa>.sql` dla istniejącej prod DB.
 
 ```bash
+# Świeża baza (lokalna, preview, rebuild):
 npx wrangler d1 execute akrobacja-db --local --file=schema.sql
-```
 
-Migracja produkcyjnej bazy (po `git pull` z nowym plikiem w `migrations/`):
-
-```bash
-npx wrangler d1 execute akrobacja-db --file=migrations/NNN-<nazwa>.sql
+# Drift patch po git pull (produkcja):
+npx wrangler d1 execute akrobacja-db --remote --file=migrations/NNN-<nazwa>.sql
 ```
 
 ## Deploy

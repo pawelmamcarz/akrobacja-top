@@ -83,13 +83,29 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!valid) return Response.json({ error: 'Invalid signature' }, { status: 400 });
 
     const event = JSON.parse(rawBody) as { type: string; data: { object: Record<string, unknown> } };
+    const session = event.data.object;
+    const metadata = session.metadata as Record<string, string> | undefined;
+
+    // Terminal non-success eventy — flip ordera, żeby nie zostawał zombie 'pending'
+    // w abandoned-cart cronie. Tylko dla naszych orderów (matchujemy po metadata).
+    if (event.type === 'checkout.session.expired' || event.type === 'checkout.session.async_payment_failed') {
+      const newStatus = event.type === 'checkout.session.expired' ? 'expired' : 'failed';
+      if (metadata?.order_id) {
+        await ctx.env.DB.prepare(
+          "UPDATE orders SET status = ? WHERE id = ? AND status = 'pending'"
+        ).bind(newStatus, metadata.order_id).run();
+      }
+      if (metadata?.merch_order_id) {
+        await ctx.env.DB.prepare(
+          "UPDATE merch_orders SET status = ? WHERE id = ? AND status = 'pending'"
+        ).bind(newStatus, metadata.merch_order_id).run();
+      }
+      return Response.json({ ok: true, status_applied: newStatus });
+    }
 
     if (event.type !== 'checkout.session.completed') {
       return Response.json({ ok: true, skipped: event.type });
     }
-
-    const session = event.data.object;
-    const metadata = session.metadata as Record<string, string> | undefined;
 
     // Handle merch orders — atomic update prevents double-processing on webhook retry.
     if (metadata?.merch_order_id) {

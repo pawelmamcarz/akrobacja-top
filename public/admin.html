@@ -44,7 +44,7 @@
   .badge-paid,.badge-approved,.badge-active,.badge-completed { background:#d4edda; color:#155724; }
   .badge-pending { background:#fff3cd; color:#856404; }
   .badge-redeemed { background:#cce5ff; color:#004085; }
-  .badge-expired,.badge-rejected,.badge-cancelled { background:#f8d7da; color:#721c24; }
+  .badge-expired,.badge-rejected,.badge-cancelled,.badge-failed { background:#f8d7da; color:#721c24; }
 
   .btn { padding:5px 12px; font-size:10px; font-weight:600; border:none; cursor:pointer; text-transform:uppercase; letter-spacing:.04em; }
   .btn-blue { background:#1B4DB5; color:#fff; }
@@ -993,6 +993,9 @@ function getOrderStatus(o) {
     if (exp < new Date()) return { cls:'expired', label:'Wygasly' };
     return { cls:'paid', label:'Aktywny' };
   }
+  if (o.status==='failed')    return { cls:'failed',    label:'Nieudany' };
+  if (o.status==='expired')   return { cls:'expired',   label:'Sesja wygasla' };
+  if (o.status==='cancelled') return { cls:'cancelled', label:'Anulowany' };
   return { cls:'pending', label:'Oczekujacy' };
 }
 function typeLabel(t) { return {voucher:'Voucher',proficiency:'Doskonalacy',training:'Szkolenie',course:'Kurs'}[t]||t||'-'; }
