@@ -1,6 +1,9 @@
 import { type Env } from '../../../src/lib/types';
 import { normalizePhone } from '../../../src/lib/phone';
 
+const MAX_FAILURES = 10;       // w oknie
+const WINDOW_MINUTES = 10;     // minut
+
 // POST /api/auth/verify { phone, code }
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   try {
@@ -10,18 +13,40 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     const normalized = normalizePhone(phone);
+    const ip = ctx.request.headers.get('CF-Connecting-IP') || null;
 
-    // Find valid OTP
+    // Rate limit brute-force: licz nieudane próby per phone LUB per IP w oknie WINDOW_MINUTES.
+    const windowClause = `datetime('now', '-${WINDOW_MINUTES} minutes')`;
+    const failCount = await ctx.env.DB.prepare(
+      `SELECT COUNT(*) AS cnt FROM otp_attempts
+       WHERE success = 0 AND created_at > ${windowClause}
+         AND (phone = ? OR (ip IS NOT NULL AND ip = ?))`
+    ).bind(normalized, ip).first<{ cnt: number }>();
+
+    if (failCount && failCount.cnt >= MAX_FAILURES) {
+      return Response.json({ error: 'Zbyt wiele nieudanych prób. Spróbuj za kilka minut.' }, { status: 429 });
+    }
+
     const otp = await ctx.env.DB.prepare(
       "SELECT id FROM otp_codes WHERE phone = ? AND code = ? AND used = 0 AND expires_at > datetime('now') ORDER BY created_at DESC LIMIT 1"
     ).bind(normalized, code).first<{ id: string }>();
 
     if (!otp) {
+      await ctx.env.DB.prepare(
+        'INSERT INTO otp_attempts (id, phone, ip, success) VALUES (?, ?, ?, 0)'
+      ).bind(crypto.randomUUID(), normalized, ip).run();
       return Response.json({ error: 'Nieprawidłowy lub wygasły kod' }, { status: 400 });
     }
 
-    // Mark OTP as used
     await ctx.env.DB.prepare('UPDATE otp_codes SET used = 1 WHERE id = ?').bind(otp.id).run();
+
+    // Sukces — zaloguj i wyczyść nieudane próby dla tego numeru, żeby reset limitu po legalnym logowaniu.
+    await ctx.env.DB.prepare(
+      'INSERT INTO otp_attempts (id, phone, ip, success) VALUES (?, ?, ?, 1)'
+    ).bind(crypto.randomUUID(), normalized, ip).run();
+    await ctx.env.DB.prepare(
+      'DELETE FROM otp_attempts WHERE phone = ? AND success = 0'
+    ).bind(normalized).run();
 
     // Create or get pilot
     let pilot = await ctx.env.DB.prepare(

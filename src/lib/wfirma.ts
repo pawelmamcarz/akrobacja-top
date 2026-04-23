@@ -7,6 +7,8 @@ interface InvoiceParams {
   packageId: PackageId;
   videoAddon: boolean;
   voucherCode: string;
+  amount: number;               // faktycznie pobrana kwota (grosze) — po rabacie
+  discountCode?: string | null;
 }
 
 // wFirma API v2 — https://doc.wfirma.pl/
@@ -14,30 +16,47 @@ interface InvoiceParams {
 export async function createInvoice(env: Env, params: InvoiceParams): Promise<string> {
   const pkg = PACKAGES[params.packageId];
   const isCompany = !!params.customerNip;
-  const totalBrutto = (pkg.price + (params.videoAddon ? VIDEO_ADDON_PRICE : 0)) / 100;
+  const baseAmount = pkg.price + (params.videoAddon ? VIDEO_ADDON_PRICE : 0);
+  const hasDiscount = typeof params.amount === 'number' && params.amount !== baseAmount;
+  const totalBrutto = (hasDiscount ? params.amount : baseAmount) / 100;
 
-  const items: object[] = [
-    {
+  const items: object[] = [];
+
+  if (hasDiscount) {
+    // Jeden wiersz z kwotą po rabacie — inaczej suma linii rozjedzie się z alreadypaid.
+    const parts = [`Voucher akrobacyjny "${pkg.name}" — lot Extra 300L (${pkg.duration})`];
+    if (params.videoAddon) parts.push('+ Video 360°');
+    if (params.discountCode) parts.push(`(rabat: kod ${params.discountCode})`);
+    items.push({
+      invoicecontent: {
+        name: parts.join(' '),
+        unit: 'szt.',
+        count: 1,
+        price: totalBrutto,
+        vat: '23',
+      },
+    });
+  } else {
+    items.push({
       invoicecontent: {
         name: `Voucher akrobacyjny "${pkg.name}" — lot Extra 300L (${pkg.duration})`,
         unit: 'szt.',
         count: 1,
-        price: pkg.price / 100, // PLN
-        vat: '23',
-      },
-    },
-  ];
-
-  if (params.videoAddon) {
-    items.push({
-      invoicecontent: {
-        name: 'Video 360° z lotu akrobacyjnego (montaż + MP4)',
-        unit: 'szt.',
-        count: 1,
-        price: VIDEO_ADDON_PRICE / 100,
+        price: pkg.price / 100,
         vat: '23',
       },
     });
+    if (params.videoAddon) {
+      items.push({
+        invoicecontent: {
+          name: 'Video 360° z lotu akrobacyjnego (montaż + MP4)',
+          unit: 'szt.',
+          count: 1,
+          price: VIDEO_ADDON_PRICE / 100,
+          vat: '23',
+        },
+      });
+    }
   }
 
   const body = {

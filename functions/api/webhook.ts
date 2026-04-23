@@ -176,8 +176,16 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
           httpMetadata: { contentType: 'application/pdf' },
         }),
         isLive
-          ? createInvoice(ctx.env, { customerName, customerEmail, customerNip, packageId, videoAddon, voucherCode })
-              .catch(() => undefined)
+          ? createInvoice(ctx.env, {
+              customerName,
+              customerEmail,
+              customerNip,
+              packageId,
+              videoAddon,
+              voucherCode,
+              amount: order.amount as number,
+              discountCode: (order.discount_code as string | null) ?? null,
+            }).catch(() => undefined)
           : Promise.resolve(undefined),
         sendVoucherEmail(ctx.env, {
           to: customerEmail,

@@ -123,6 +123,17 @@ CREATE TABLE IF NOT EXISTS otp_codes (
 
 CREATE INDEX IF NOT EXISTS idx_otp_phone ON otp_codes(phone, created_at);
 
+CREATE TABLE IF NOT EXISTS otp_attempts (
+  id TEXT PRIMARY KEY,
+  phone TEXT NOT NULL,
+  ip TEXT,
+  success INTEGER NOT NULL DEFAULT 0,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_otp_attempts_phone ON otp_attempts(phone, created_at);
+CREATE INDEX IF NOT EXISTS idx_otp_attempts_ip    ON otp_attempts(ip, created_at);
+
 CREATE TABLE IF NOT EXISTS balance_log (
   id TEXT PRIMARY KEY,
   pilot_id TEXT NOT NULL,
@@ -162,6 +173,9 @@ CREATE TABLE IF NOT EXISTS slots (
 
 CREATE INDEX IF NOT EXISTS idx_slots_date ON slots(date, start_time);
 CREATE INDEX IF NOT EXISTS idx_slots_booking ON slots(booking_id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_slots_unique_active
+  ON slots(date, start_time)
+  WHERE status != 'available';
 
 CREATE TABLE IF NOT EXISTS bookings (
   id TEXT PRIMARY KEY,

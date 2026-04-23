@@ -29,6 +29,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       packageId: order.package_id as PackageId,
       videoAddon: order.video_addon === 1,
       voucherCode: body.voucher_code,
+      amount: order.amount as number,
+      discountCode: (order.discount_code as string | null) ?? null,
     });
 
     await ctx.env.DB.prepare(

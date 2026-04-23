@@ -135,7 +135,7 @@ npx wrangler d1 execute akrobacja-db --local --file=schema.sql
 Migracja produkcyjnej bazy (po `git pull` z nowym plikiem w `migrations/`):
 
 ```bash
-npx wrangler d1 execute akrobacja-db --file=migrations/004-<nazwa>.sql
+npx wrangler d1 execute akrobacja-db --file=migrations/NNN-<nazwa>.sql
 ```
 
 ## Deploy
@@ -187,13 +187,8 @@ Lista wymaganych — patrz `.dev.vars.example`.
 Zidentyfikowane podczas audytu kompleksowości (kwiecień 2026). Priorytety:
 
 ### P0 — blokery
-- Kolumna `orders.redeemed_at` używana w 4 endpointach, ale **nie ma jej
-  w schemacie** — łamie voucher redeem i widok voucherów pilota. Naprawione
-  w `migrations/004-schema-drift.sql`.
-- Kolumny `products.slug`, `products.category`, `products.sort_order` używane
-  w `/sklep-merch` i adminie, a nie ma ich w schemacie. Naprawione w `004`.
-- Brak seedu `products` — `/sklep-merch` wyświetla pustą listę nawet po
-  migracji. Dodać rekordy przez admina albo manualnie przez `wrangler d1 execute`.
+- Brak seedu `products` — `/sklep-merch` wyświetla pustą listę po świeżym
+  wdrożeniu. Dodać rekordy przez admina albo `wrangler d1 execute`.
 
 ### P1 — domknąć journey
 - `calendar/book` nie wysyła maila do klienta ani admina. Admin dowiaduje się

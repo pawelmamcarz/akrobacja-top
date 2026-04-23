@@ -1,5 +1,6 @@
 import { type Env, PACKAGES, type PackageId } from '../../../src/lib/types';
 import { escapeHtml } from '../../../src/lib/email';
+import { generateSlots } from '../../../src/lib/daylight';
 
 interface BookingRequest {
   date: string;
@@ -21,6 +22,16 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     // Validate
     if (!body.date || !body.start_time || !body.type || !body.customer_name || !body.customer_email) {
       return Response.json({ error: 'Brakuje wymaganych pól' }, { status: 400 });
+    }
+
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(body.date) || !/^\d{2}:\d{2}$/.test(body.start_time)) {
+      return Response.json({ error: 'Nieprawidłowy format daty lub godziny' }, { status: 400 });
+    }
+
+    // start_time musi być jednym ze slotów wygenerowanych dla danej daty (slot grid = 1h od sunrise+30 do sunset-30).
+    const validSlot = generateSlots(body.date).some(s => s.start === body.start_time);
+    if (!validSlot) {
+      return Response.json({ error: 'Nieprawidłowa godzina — godzina poza oknem dziennym' }, { status: 400 });
     }
 
     // For voucher bookings, verify the voucher
@@ -53,15 +64,6 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       if (course.completed_flights >= course.total_flights) return Response.json({ error: 'Kurs ukończony' }, { status: 400 });
     }
 
-    // Check if slot is available
-    const existingSlot = await ctx.env.DB.prepare(
-      "SELECT id FROM slots WHERE date = ? AND start_time = ? AND status != 'available'"
-    ).bind(body.date, body.start_time).first();
-
-    if (existingSlot) {
-      return Response.json({ error: 'Ten termin jest już zajęty' }, { status: 409 });
-    }
-
     // Check for blocks
     const block = await ctx.env.DB.prepare(
       'SELECT reason FROM availability_blocks WHERE date_from <= ? AND date_to >= ?'
@@ -71,26 +73,36 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ error: 'Ten dzień jest zablokowany' }, { status: 400 });
     }
 
-    // Create booking
+    // Atomowa rezerwacja slotu — partial UNIQUE(date, start_time) WHERE status != 'available'
+    // gwarantuje, że dwa równoległe POST-y nie przejdą oba. Zwracamy 409 dla przegranego.
     const bookingId = crypto.randomUUID();
     const slotId = crypto.randomUUID();
-
-    await ctx.env.DB.prepare(`
-      INSERT INTO bookings (id, slot_id, type, customer_name, customer_email, customer_phone, voucher_code, package_id, course_id, notes, status)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
-    `).bind(
-      bookingId, slotId, body.type,
-      body.customer_name, body.customer_email, body.customer_phone || null,
-      body.voucher_code || null, body.package_id || null, body.course_id || null,
-      body.notes || null,
-    ).run();
-
-    // Reserve the slot
     const endTime = addHour(body.start_time);
-    await ctx.env.DB.prepare(`
-      INSERT INTO slots (id, date, start_time, end_time, type, booking_id, status)
+
+    const slotInsert = await ctx.env.DB.prepare(`
+      INSERT OR IGNORE INTO slots (id, date, start_time, end_time, type, booking_id, status)
       VALUES (?, ?, ?, ?, ?, ?, 'pending')
     `).bind(slotId, body.date, body.start_time, endTime, body.type, bookingId).run();
+
+    if (slotInsert.meta.changes === 0) {
+      return Response.json({ error: 'Ten termin jest już zajęty' }, { status: 409 });
+    }
+
+    try {
+      await ctx.env.DB.prepare(`
+        INSERT INTO bookings (id, slot_id, type, customer_name, customer_email, customer_phone, voucher_code, package_id, course_id, notes, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
+      `).bind(
+        bookingId, slotId, body.type,
+        body.customer_name, body.customer_email, body.customer_phone || null,
+        body.voucher_code || null, body.package_id || null, body.course_id || null,
+        body.notes || null,
+      ).run();
+    } catch (err) {
+      // Booking INSERT padł — zwolnij slot, żeby inny klient mógł go zająć.
+      await ctx.env.DB.prepare('DELETE FROM slots WHERE id = ?').bind(slotId).run();
+      throw err;
+    }
 
     ctx.waitUntil(sendBookingEmails(ctx.env, {
       bookingId,

@@ -152,6 +152,10 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const session = (await stripeRes.json()) as { id?: string; url?: string; error?: { message?: string } };
 
     if (!stripeRes.ok || !session.url) {
+      // Oznacz order jako failed — inaczej zostaje 'pending' i łapie się do abandoned-cart.
+      await ctx.env.DB.prepare(
+        "UPDATE orders SET status = 'failed' WHERE id = ? AND status = 'pending'"
+      ).bind(orderId).run();
       return Response.json({ error: session.error?.message || 'Stripe error' }, { status: 500 });
     }
 
