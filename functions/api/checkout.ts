@@ -1,5 +1,6 @@
 import { type Env, PACKAGES, VIDEO_ADDON_PRICE, type PackageId } from '../../src/lib/types';
 import { generateVoucherCode } from '../../src/lib/voucher-code';
+import { isValidEmail } from '../../src/lib/validate';
 
 interface CheckoutBody {
   packageId: PackageId;
@@ -41,8 +42,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!body.customerName || !body.customerEmail) {
       return Response.json({ error: 'Imię i email są wymagane' }, { status: 400 });
     }
-    // RFC-5322 lite, must have local@domain.tld with TLD >= 2 chars
-    if (!/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(body.customerEmail.trim())) {
+    if (!isValidEmail(body.customerEmail)) {
       return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
     }
 

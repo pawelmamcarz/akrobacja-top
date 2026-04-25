@@ -1,6 +1,7 @@
 import { type Env } from '../../src/lib/types';
 import { normalizePhone } from '../../src/lib/phone';
 import { escapeHtml } from '../../src/lib/email';
+import { isValidEmail } from '../../src/lib/validate';
 
 // Notify owner about new subscriber via Resend
 async function notifyOwner(env: Env, phone: string, name: string | null, source: string): Promise<void> {
@@ -30,8 +31,9 @@ async function notifyOwner(env: Env, phone: string, name: string | null, source:
           </div>`,
       }),
     });
-  } catch {
-    // Non-critical, don't fail the subscription if notification fails
+  } catch (err) {
+    // Non-critical — subscribe leci dalej nawet bez notify, ale loguj.
+    console.error('subscribe notifyOwner failed:', err);
   }
 }
 
@@ -42,6 +44,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     if (!phone || phone.replace(/\D/g, '').length < 9) {
       return Response.json({ error: 'Podaj prawidłowy numer telefonu' }, { status: 400 });
+    }
+    if (email && !isValidEmail(email)) {
+      return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
     }
 
     const normalized = normalizePhone(phone);

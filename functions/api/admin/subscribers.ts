@@ -59,8 +59,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         try {
           await sendSms(ctx.env, sub.phone, body.message);
           sent++;
-        } catch {
+        } catch (err) {
           failed++;
+          console.error(`SMS blast fail to ${sub.phone}:`, err);
         }
       }
       return Response.json({ ok: true, sent, failed, total: results.length });

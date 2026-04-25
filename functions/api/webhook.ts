@@ -34,8 +34,9 @@ async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: P
           </div>`,
       }),
     });
-  } catch {
-    // Non-critical
+  } catch (err) {
+    // Non-critical — admin-notify nie blokuje sukcesu zamówienia, ale loguj do CF Logs.
+    console.error('notifyOwnerOrder failed:', err);
   }
 }
 
@@ -167,7 +168,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
           customerName,
           amountGrosze: order.amount as number,
           videoAddon: false,
-        }).catch(() => { /* non-critical */ }),
+        }).catch(err => console.error(`sendMetaPurchase (test) failed for ${voucherCode}:`, err)),
       );
 
       return Response.json({ ok: true, test: true });
@@ -201,7 +202,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
               voucherCode,
               amount: order.amount as number,
               discountCode: (order.discount_code as string | null) ?? null,
-            }).catch(() => undefined)
+            }).catch(err => { console.error(`createInvoice failed for ${voucherCode}:`, err); return undefined; })
           : Promise.resolve(undefined),
         sendVoucherEmail(ctx.env, {
           to: customerEmail,
@@ -210,7 +211,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
           packageId,
           pdfBytes,
           siteUrl: ctx.env.SITE_URL || 'https://akrobacja.com',
-        }).catch(() => undefined),
+        }).catch(err => { console.error(`sendVoucherEmail failed for ${voucherCode}:`, err); return undefined; }),
       ]);
       const invoiceId = invoiceResult;
 
@@ -231,7 +232,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
           customerName,
           amountGrosze: order.amount as number,
           videoAddon,
-        }).catch(() => { /* non-critical */ }),
+        }).catch(err => console.error(`sendMetaPurchase failed for ${voucherCode}:`, err)),
       );
 
       return Response.json({ ok: true });

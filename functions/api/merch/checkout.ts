@@ -1,4 +1,5 @@
 import { type Env } from '../../../src/lib/types';
+import { isValidEmail } from '../../../src/lib/validate';
 
 interface MerchCheckoutBody {
   items: Array<{ product_id: string; variant?: string; quantity: number }>;
@@ -15,7 +16,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const body = (await ctx.request.json()) as MerchCheckoutBody;
 
     if (!body.items?.length) return Response.json({ error: 'Koszyk jest pusty' }, { status: 400 });
-    if (!body.customer_name || !body.customer_email) return Response.json({ error: 'Imie i email wymagane' }, { status: 400 });
+    if (!body.customer_name || !body.customer_email) return Response.json({ error: 'Imię i email wymagane' }, { status: 400 });
+    if (!isValidEmail(body.customer_email)) return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
     if (!body.shipping_address || !body.shipping_city || !body.shipping_zip) return Response.json({ error: 'Adres dostawy wymagany' }, { status: 400 });
 
     // Fetch products and calculate total
