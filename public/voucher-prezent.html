@@ -55,7 +55,9 @@
     {"@type":"Question","name":"Czy mogę zwrócić voucher?","acceptedAnswer":{"@type":"Answer","text":"Tak, zgodnie z prawem konsumenckim masz 14 dni na zwrot od daty zakupu, jeżeli voucher nie został zrealizowany. Zwracamy 100% kwoty."}},
     {"@type":"Question","name":"Gdzie odbywa się lot?","acceptedAnswer":{"@type":"Answer","text":"Lotnisko Radom-Piastów (EPRP), ul. Lotników 1, 26-600 Radom. 1h 15 min jazdy z Warszawy trasą S7. Parking bezpłatny."}},
     {"@type":"Question","name":"Czy potrzebuję doświadczenia?","acceptedAnswer":{"@type":"Answer","text":"Nie. Lot odbywa się z doświadczonym pilotem akrobacyjnym. Wystarczy dobry stan zdrowia i chęć przeżycia przygody."}},
-    {"@type":"Question","name":"Czy mogę wybrać fakturę VAT?","acceptedAnswer":{"@type":"Answer","text":"Tak. Podczas zakupu możesz podać NIP, wystawimy fakturę VAT na firmę."}}
+    {"@type":"Question","name":"Czy mogę wybrać fakturę VAT?","acceptedAnswer":{"@type":"Answer","text":"Tak. Podczas zakupu możesz podać NIP, wystawimy fakturę VAT na firmę."}},
+    {"@type":"Question","name":"Co jeśli obdarowany w dniu lotu zrezygnuje?","acceptedAnswer":{"@type":"Answer","text":"Voucher pozostaje ważny 12 miesięcy od daty zakupu. Można umówić nowy termin za darmo — wystarczy mailowy lub telefoniczny kontakt."}},
+    {"@type":"Question","name":"Jak dojechać na lotnisko Radom-Piastów (EPRP)?","acceptedAnswer":{"@type":"Answer","text":"Lotnisko leży ok. 100 km od Warszawy, przejazd autem zajmuje ok. 1h 45 min trasą S7 + S12. Parking przy lotnisku jest gratis. Adres: Lotnisko Radom-Piastów (EPRP), ul. Lotników 1, 26-600 Radom."}}
   ]
 }
 </script>
@@ -204,6 +206,23 @@
   .modal-submit:disabled{opacity:.5;cursor:not-allowed}
   .modal-error{color:#ff6b6b;font-size:13px;margin-top:12px;display:none}
   .modal-secure{text-align:center;font-size:11px;color:var(--chrome);margin-top:14px;font-family:var(--font-h);letter-spacing:.05em}
+
+  /* Gift personalization section — collapsible */
+  .gift-block{margin:18px 0 8px;border:1px solid rgba(0,229,255,.18);background:linear-gradient(180deg,rgba(0,229,255,.04) 0%,rgba(255,255,255,.02) 100%)}
+  .gift-toggle{width:100%;background:none;border:none;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:var(--font-h);font-size:12px;font-weight:700;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase}
+  .gift-toggle::after{content:"+";font-size:20px;font-weight:300;transition:transform .2s}
+  .gift-block.open .gift-toggle::after{transform:rotate(45deg)}
+  .gift-content{padding:0 16px;max-height:0;overflow:hidden;transition:max-height .25s ease, padding .25s ease}
+  .gift-block.open .gift-content{padding:4px 16px 16px;max-height:680px}
+  .gift-content textarea{width:100%;padding:12px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#fff;font-family:var(--font-b);font-size:14px;outline:none;transition:border-color .2s;resize:vertical;min-height:70px}
+  .gift-content textarea:focus{border-color:var(--cyan)}
+  .gift-counter{display:block;text-align:right;font-size:10px;color:var(--chrome);margin-top:4px;font-family:var(--font-h);letter-spacing:.05em}
+  .gift-radio-group{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+  .gift-radio{position:relative;cursor:pointer}
+  .gift-radio input{position:absolute;opacity:0;pointer-events:none}
+  .gift-radio-label{display:block;padding:12px 10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.05em;text-align:center;color:rgba(255,255,255,.75);transition:all .2s}
+  .gift-radio input:checked + .gift-radio-label{background:rgba(0,229,255,.1);border-color:var(--cyan);color:var(--cyan)}
+  .gift-info{font-size:11px;color:rgba(255,255,255,.55);line-height:1.55;margin-top:14px;padding:10px 12px;background:rgba(255,255,255,.025);border-left:2px solid var(--cyan)}
 
   @media(max-width:768px){
     .trust-inner{grid-template-columns:repeat(2,1fr);gap:20px}
@@ -415,6 +434,8 @@
   <details class="faq-item"><summary class="faq-q">Czy potrzebuję doświadczenia?</summary><div class="faq-a">Nie. Lot odbywa się z doświadczonym pilotem akrobacyjnym, który prowadzi samolot. Wystarczy dobry stan zdrowia i chęć przeżycia przygody.</div></details>
   <details class="faq-item"><summary class="faq-q">Czy mogę dostać fakturę VAT?</summary><div class="faq-a">Tak. Podczas zakupu wystarczy wpisać NIP w formularzu, wystawimy fakturę VAT na firmę. Pakiety Adrenalina i Masterclass często kupowane są jako prezent firmowy dla kontrahentów lub pracowników.</div></details>
   <details class="faq-item"><summary class="faq-q">Jakie są ograniczenia zdrowotne?</summary><div class="faq-a">Wymagamy dobrego stanu zdrowia, brak poważnych problemów kardiologicznych, limit wagi 110 kg, wzrost do 195 cm. W razie wątpliwości skonsultuj się z lekarzem, możemy pomóc w doborze pakietu.</div></details>
+  <details class="faq-item"><summary class="faq-q">Co jeśli obdarowany w dniu lotu zrezygnuje?</summary><div class="faq-a">Bez stresu, voucher pozostaje ważny 12 miesięcy od daty zakupu. Można umówić nowy termin za darmo, wystarczy mailowy lub telefoniczny kontakt. Nikt nie traci ani złotówki.</div></details>
+  <details class="faq-item"><summary class="faq-q">Jak dojechać na lotnisko Radom-Piastów (EPRP)?</summary><div class="faq-a">Lotnisko leży ok. 100 km od Warszawy, przejazd autem zajmuje ok. 1h 45 min trasą S7 + S12. Parking przy lotnisku jest gratis. Adres: Lotnisko Radom-Piastów (EPRP), ul. Lotników 1, 26-600 Radom. Dla obdarowanego z innego miasta chętnie polecamy nocleg w okolicy.</div></details>
 </section>
 
 <section class="final">
@@ -456,6 +477,45 @@
         <input type="checkbox" id="checkoutVideo">
         + Video 360° z lotu (+299 zł)
       </label>
+
+      <!-- Personalizacja prezentu — collapsible -->
+      <div class="gift-block" id="giftBlock">
+        <button type="button" class="gift-toggle" id="giftToggle" aria-expanded="false" aria-controls="giftContent">
+          🎁 To prezent? (opcjonalnie)
+        </button>
+        <div class="gift-content" id="giftContent">
+          <div class="modal-field">
+            <label for="checkoutRecipient">Imię obdarowanego</label>
+            <input type="text" id="checkoutRecipient" maxlength="80" placeholder="np. Krzysiek" autocomplete="off">
+          </div>
+          <div class="modal-field">
+            <label for="checkoutDedication">Dedykacja na voucherze</label>
+            <textarea id="checkoutDedication" maxlength="200" placeholder="Najlepsze życzenia z okazji 50. urodzin!"></textarea>
+            <span class="gift-counter" id="dedicationCounter">0 / 200</span>
+          </div>
+          <div class="modal-field">
+            <label>Kiedy wysłać voucher na email?</label>
+            <div class="gift-radio-group">
+              <label class="gift-radio">
+                <input type="radio" name="sendMode" value="now" checked>
+                <span class="gift-radio-label">📧 Od razu</span>
+              </label>
+              <label class="gift-radio">
+                <input type="radio" name="sendMode" value="schedule">
+                <span class="gift-radio-label">📅 W dniu</span>
+              </label>
+            </div>
+          </div>
+          <div class="modal-field" id="sendDateField" style="display:none">
+            <label for="checkoutSendAt">Data wysyłki</label>
+            <input type="date" id="checkoutSendAt">
+          </div>
+          <p class="gift-info">
+            Voucher trafi na <strong>Twój email</strong>, więc możesz go wydrukować i wręczyć osobiście. Jeśli wolisz, by trafił prosto do obdarowanego, wpisz <strong>jego adres</strong> w polu Email powyżej.
+          </p>
+        </div>
+      </div>
+
       <div class="modal-field" id="discountField" style="margin-top:4px">
         <label for="checkoutDiscount">Kod rabatowy (opcjonalnie)</label>
         <input type="text" id="checkoutDiscount" placeholder="np. PIERWSZY100 (-100 zł)" autocomplete="off" style="text-transform:uppercase;letter-spacing:.08em">
@@ -544,6 +604,43 @@ function updatePrice() {
 videoCheck.addEventListener('change', updatePrice);
 discountInput.addEventListener('input', updatePrice);
 
+// === Gift personalization ===
+const giftBlock = document.getElementById('giftBlock');
+const giftToggle = document.getElementById('giftToggle');
+const recipientInput = document.getElementById('checkoutRecipient');
+const dedicationInput = document.getElementById('checkoutDedication');
+const dedicationCounter = document.getElementById('dedicationCounter');
+const sendDateField = document.getElementById('sendDateField');
+const sendAtInput = document.getElementById('checkoutSendAt');
+
+giftToggle.addEventListener('click', () => {
+  const open = giftBlock.classList.toggle('open');
+  giftToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+
+dedicationInput.addEventListener('input', () => {
+  dedicationCounter.textContent = `${dedicationInput.value.length} / 200`;
+});
+
+// Min = jutro, max = dziś + 365 dni
+const today = new Date();
+const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+const yearAhead = new Date(today.getTime() + 365 * 24 * 60 * 60 * 1000);
+const fmt = d => d.toISOString().slice(0, 10);
+sendAtInput.min = fmt(tomorrow);
+sendAtInput.max = fmt(yearAhead);
+
+document.querySelectorAll('input[name="sendMode"]').forEach(radio => {
+  radio.addEventListener('change', e => {
+    if (e.target.value === 'schedule') {
+      sendDateField.style.display = '';
+      if (!sendAtInput.value) sendAtInput.value = fmt(tomorrow);
+    } else {
+      sendDateField.style.display = 'none';
+    }
+  });
+});
+
 function closeModal() {
   modal.classList.remove('active');
   document.body.style.overflow = '';
@@ -573,6 +670,8 @@ form.addEventListener('submit', async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Przetwarzanie…';
   try {
+    const sendMode = (document.querySelector('input[name="sendMode"]:checked') || {}).value;
+    const sendAtVal = sendMode === 'schedule' ? sendAtInput.value : '';
     const res = await fetch('/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -584,6 +683,9 @@ form.addEventListener('submit', async (e) => {
         customerNip: document.getElementById('checkoutNip').value.trim() || undefined,
         discountCode: (discountInput.value || '').trim().toUpperCase() || undefined,
         source: 'voucher-prezent',
+        recipientName: recipientInput.value.trim() || undefined,
+        dedication: dedicationInput.value.trim() || undefined,
+        sendAt: sendAtVal || undefined,
       }),
     });
     const data = await res.json();

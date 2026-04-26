@@ -117,6 +117,20 @@ img { display: block; max-width: 100%; }
 }
 .nav-btn:hover { background: var(--red-dark); }
 
+/* Language switcher — subtle, premium, nie krzyczący */
+.nav-lang {
+  font-family: var(--font-h); font-size: 10px; font-weight: 600;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  border: 1px solid rgba(255,255,255,.18);
+  padding: 8px 12px; margin-right: 14px;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: color .2s, border-color .2s, background .2s;
+}
+.nav-lang:hover { color: var(--white); border-color: rgba(255,255,255,.45); background: rgba(255,255,255,.04); }
+.nav-lang-flag { font-size: 13px; line-height: 1; }
+@media (max-width: 1024px) { .nav-lang { display: none; } .nav-menu .nav-lang-mobile { display: inline-flex !important; } }
+
 /* Skip to content, accessibility */
 .skip-link {
   position: absolute; top: -100%; left: 16px;
@@ -1688,10 +1702,12 @@ footer {
     <li><a href="/blog">Blog</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
+    <li><a href="/en" class="nav-lang nav-lang-mobile" style="display:none" hreflang="en"><span class="nav-lang-flag">🇬🇧</span>EN</a></li>
   </ul>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Otwórz menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
+  <a href="/en" class="nav-lang" aria-label="English version" hreflang="en"><span class="nav-lang-flag">🇬🇧</span>EN</a>
   <a href="https://wa.me/48535535221" class="nav-btn">Napisz</a>
 </nav>
 

@@ -18,7 +18,11 @@ CREATE TABLE IF NOT EXISTS orders (
   expires_at TEXT,
   redeemed_at TEXT,
   abandon_email_sent_at TEXT,
-  discount_code TEXT
+  discount_code TEXT,
+  recipient_name TEXT,
+  dedication TEXT,
+  send_at TEXT,
+  email_sent_at TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_orders_voucher_code ON orders(voucher_code);
@@ -26,6 +30,7 @@ CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
 CREATE INDEX IF NOT EXISTS idx_orders_stripe_session ON orders(stripe_session_id);
 CREATE INDEX IF NOT EXISTS idx_orders_redeemed ON orders(redeemed_at);
 CREATE INDEX IF NOT EXISTS idx_orders_abandon ON orders(status, abandon_email_sent_at, created_at);
+CREATE INDEX IF NOT EXISTS idx_orders_send_at ON orders(status, send_at, email_sent_at);
 
 -- Merch products
 CREATE TABLE IF NOT EXISTS products (

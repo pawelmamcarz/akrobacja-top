@@ -1,6 +1,6 @@
 import { type Env, PACKAGES, VIDEO_ADDON_PRICE, type PackageId } from '../../src/lib/types';
 import { generateVoucherCode } from '../../src/lib/voucher-code';
-import { isValidEmail } from '../../src/lib/validate';
+import { isValidEmail, isValidSendAt } from '../../src/lib/validate';
 
 interface CheckoutBody {
   packageId: PackageId;
@@ -10,6 +10,10 @@ interface CheckoutBody {
   customerNip?: string;
   discountCode?: string;
   source?: string;        // page slug from where checkout was initiated (for cancel_url)
+  // Personalizacja vouchera (prezent) — wszystkie opcjonalne, default = obecne zachowanie.
+  recipientName?: string; // imię obdarowanego (max 80) — fallback do customerName
+  dedication?: string;    // dedykacja na PDF (max 200)
+  sendAt?: string;        // ISO date/datetime, planowana wysyłka maila (max +365 dni)
 }
 
 // Map source slug → cancel URL, Stripe "Back" button vraca user tam skąd przyszedł
@@ -46,6 +50,20 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
     }
 
+    // Personalizacja prezentu — sanityzacja długości, walidacja sendAt.
+    const recipientName = body.recipientName?.trim().slice(0, 80) || null;
+    const dedication = body.dedication?.trim().slice(0, 200) || null;
+    let sendAt: string | null = null;
+    if (body.sendAt && body.sendAt.trim()) {
+      sendAt = isValidSendAt(body.sendAt, 365);
+      if (!sendAt) {
+        return Response.json(
+          { error: 'Data planowanej wysyłki musi być w przyszłości i nie dalej niż 365 dni' },
+          { status: 400 },
+        );
+      }
+    }
+
     const voucherCode = generateVoucherCode();
     const baseAmount = pkg.price + (body.videoAddon ? VIDEO_ADDON_PRICE : 0);
 
@@ -67,13 +85,14 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const expiresAt = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
 
     await ctx.env.DB.prepare(`
-      INSERT INTO orders (id, voucher_code, package_id, video_addon, customer_name, customer_email, customer_nip, amount, status, created_at, expires_at, discount_code)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', datetime('now'), ?, ?)
+      INSERT INTO orders (id, voucher_code, package_id, video_addon, customer_name, customer_email, customer_nip, amount, status, created_at, expires_at, discount_code, recipient_name, dedication, send_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', datetime('now'), ?, ?, ?, ?, ?)
     `).bind(
       orderId, voucherCode, body.packageId,
       body.videoAddon ? 1 : 0,
       body.customerName, body.customerEmail, body.customerNip || null,
       totalAmount, expiresAt, appliedDiscountCode,
+      recipientName, dedication, sendAt,
     ).run();
 
     // Create Stripe Checkout session via fetch
