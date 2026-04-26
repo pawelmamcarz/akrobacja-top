@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://akrobacja.com/blog</loc><lastmod>2026-04-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://akrobacja.com/blog</loc><lastmod>2026-04-26</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- Relacje z pokazów 2026 -->
+  <url><loc>https://akrobacja.com/blog/pokazy-jedlinsky-2026</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
 
   <!-- Sprint 1-3: nowe wpisy 2026-04-07 -->
   <url><loc>https://akrobacja.com/blog/lot-akrobacyjny-cena-2026</loc><lastmod>2026-04-20</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
