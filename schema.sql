@@ -105,12 +105,26 @@ CREATE TABLE IF NOT EXISTS pilots (
   insurance_status TEXT NOT NULL DEFAULT 'none',
   verified INTEGER NOT NULL DEFAULT 0,
   session_token TEXT,
+  session_expires_at TEXT,
   last_login TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
 CREATE INDEX IF NOT EXISTS idx_pilots_phone ON pilots(phone);
 CREATE INDEX IF NOT EXISTS idx_pilots_session ON pilots(session_token);
+
+-- Audyt zdarzeń auth: login / login_new_ip / logout (per phone, z IP + UA)
+CREATE TABLE IF NOT EXISTS auth_events (
+  id TEXT PRIMARY KEY,
+  phone TEXT NOT NULL,
+  pilot_id TEXT,
+  event_type TEXT NOT NULL,
+  ip TEXT,
+  user_agent TEXT,
+  created_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_auth_events_phone ON auth_events(phone, created_at DESC);
 
 CREATE TABLE IF NOT EXISTS otp_codes (
   id TEXT PRIMARY KEY,

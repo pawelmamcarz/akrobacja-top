@@ -53,9 +53,14 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   switch (body.action) {
     case 'approve': {
       if (!body.booking_id) return Response.json({ error: 'Brak booking_id' }, { status: 400 });
-      await ctx.env.DB.prepare(
-        "UPDATE bookings SET status = 'approved', approved_at = datetime('now') WHERE id = ?"
+      // Idempotentny approve — tylko z 'pending'. Bez tego dwa równoległe
+      // klikniecia mogłyby wykonać UPDATE slots dwa razy / nadpisać status.
+      const r = await ctx.env.DB.prepare(
+        "UPDATE bookings SET status = 'approved', approved_at = datetime('now') WHERE id = ? AND status = 'pending'"
       ).bind(body.booking_id).run();
+      if (r.meta.changes === 0) {
+        return Response.json({ error: 'Rezerwacja już przetworzona lub nie istnieje' }, { status: 409 });
+      }
       await ctx.env.DB.prepare(
         "UPDATE slots SET status = 'booked' WHERE booking_id = ?"
       ).bind(body.booking_id).run();
@@ -64,9 +69,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     case 'reject': {
       if (!body.booking_id) return Response.json({ error: 'Brak booking_id' }, { status: 400 });
-      await ctx.env.DB.prepare(
-        "UPDATE bookings SET status = 'rejected', cancelled_at = datetime('now') WHERE id = ?"
+      const r = await ctx.env.DB.prepare(
+        "UPDATE bookings SET status = 'rejected', cancelled_at = datetime('now') WHERE id = ? AND status = 'pending'"
       ).bind(body.booking_id).run();
+      if (r.meta.changes === 0) {
+        return Response.json({ error: 'Rezerwacja już przetworzona lub nie istnieje' }, { status: 409 });
+      }
       await ctx.env.DB.prepare(
         "UPDATE slots SET status = 'available', booking_id = NULL WHERE booking_id = ?"
       ).bind(body.booking_id).run();

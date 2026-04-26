@@ -97,23 +97,33 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         return Response.json({ error: 'Podaj pilot_id, minutes i reason' }, { status: 400 });
       }
 
-      const pilot = await ctx.env.DB.prepare(
-        'SELECT balance_minutes FROM pilots WHERE id = ?'
-      ).bind(body.pilot_id).first<{ balance_minutes: number }>();
+      // Atomowy deduct: SELECT-then-UPDATE było race-prone — dwa równoległe
+      // requesty mogły zejść poniżej zera. Pojedynczy UPDATE z guardem
+      // (balance_minutes >= ?) eliminuje wyścig.
+      const res = await ctx.env.DB.prepare(
+        'UPDATE pilots SET balance_minutes = balance_minutes - ? WHERE id = ? AND balance_minutes >= ?'
+      ).bind(body.minutes, body.pilot_id, body.minutes).run();
 
-      if (!pilot || pilot.balance_minutes < body.minutes) {
-        return Response.json({ error: `Niewystarczające saldo (${pilot?.balance_minutes || 0} min)` }, { status: 400 });
+      if (res.meta.changes === 0) {
+        // Mogło być: pilot nie istnieje albo niewystarczające saldo. Sprawdź.
+        const pilot = await ctx.env.DB.prepare(
+          'SELECT balance_minutes FROM pilots WHERE id = ?'
+        ).bind(body.pilot_id).first<{ balance_minutes: number }>();
+        if (!pilot) {
+          return Response.json({ error: 'Pilot nie znaleziony' }, { status: 404 });
+        }
+        return Response.json({ error: `Niewystarczające saldo (${pilot.balance_minutes} min)` }, { status: 409 });
       }
-
-      await ctx.env.DB.prepare(
-        'UPDATE pilots SET balance_minutes = balance_minutes - ? WHERE id = ?'
-      ).bind(body.minutes, body.pilot_id).run();
 
       await ctx.env.DB.prepare(
         'INSERT INTO balance_log (id, pilot_id, change_minutes, reason, created_by) VALUES (?, ?, ?, ?, ?)'
       ).bind(crypto.randomUUID(), body.pilot_id, -body.minutes, body.reason, 'admin').run();
 
-      return Response.json({ ok: true, balance_minutes: pilot.balance_minutes - body.minutes });
+      const after = await ctx.env.DB.prepare(
+        'SELECT balance_minutes FROM pilots WHERE id = ?'
+      ).bind(body.pilot_id).first<{ balance_minutes: number }>();
+
+      return Response.json({ ok: true, balance_minutes: after?.balance_minutes ?? 0 });
     }
 
     case 'get_history': {

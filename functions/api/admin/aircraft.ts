@@ -1,6 +1,28 @@
 import { type Env } from '../../../src/lib/types';
 import { checkAdminAuth } from '../../../src/lib/admin-auth';
 
+// Konkretny typ body — zamiast Record<string, unknown> sprawdzamy typeof przed
+// bindem do D1, żeby nie przekazać np. obiektu/array tam gdzie ma być liczba.
+interface AircraftBody {
+  action?: string;
+  // maintenance
+  type?: string;
+  description?: string;
+  due_date?: string;
+  due_hours?: number;
+  current_hours?: number;
+  notes?: string;
+  // wspólne
+  id?: string;
+  // document
+  name?: string;
+  doc_type?: string;
+  valid_from?: string;
+  valid_to?: string;
+  // insurance
+  pilot_id?: string;
+}
+
 // GET /api/admin/aircraft — get maintenance, documents, insurance pilots
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   if (!checkAdminAuth(ctx.request, ctx.env)) {
@@ -32,19 +54,39 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const body = (await ctx.request.json()) as Record<string, unknown>;
+  const body = (await ctx.request.json()) as AircraftBody;
 
   switch (body.action) {
     // ── MAINTENANCE ──
     case 'add_maintenance': {
+      if (typeof body.type !== 'string' || !body.type) {
+        return Response.json({ error: 'Pole "type" wymagane' }, { status: 400 });
+      }
+      if (body.due_hours !== undefined && body.due_hours !== null && typeof body.due_hours !== 'number') {
+        return Response.json({ error: 'Pole "due_hours" musi być liczbą' }, { status: 400 });
+      }
+      if (body.current_hours !== undefined && body.current_hours !== null && typeof body.current_hours !== 'number') {
+        return Response.json({ error: 'Pole "current_hours" musi być liczbą' }, { status: 400 });
+      }
       const id = crypto.randomUUID();
       await ctx.env.DB.prepare(
         'INSERT INTO maintenance (id, type, description, due_date, due_hours, current_hours, notes) VALUES (?, ?, ?, ?, ?, ?, ?)'
-      ).bind(id, body.type, body.description || null, body.due_date || null, body.due_hours || null, body.current_hours || null, body.notes || null).run();
+      ).bind(
+        id,
+        body.type,
+        body.description || null,
+        body.due_date || null,
+        body.due_hours ?? null,
+        body.current_hours ?? null,
+        body.notes || null,
+      ).run();
       return Response.json({ ok: true, id });
     }
 
     case 'complete_maintenance': {
+      if (typeof body.id !== 'string' || !body.id) {
+        return Response.json({ error: 'Pole "id" wymagane' }, { status: 400 });
+      }
       await ctx.env.DB.prepare(
         "UPDATE maintenance SET status = 'completed', completed_at = datetime('now'), notes = COALESCE(?, notes) WHERE id = ?"
       ).bind(body.notes || null, body.id).run();
@@ -52,11 +94,20 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     case 'delete_maintenance': {
+      if (typeof body.id !== 'string' || !body.id) {
+        return Response.json({ error: 'Pole "id" wymagane' }, { status: 400 });
+      }
       await ctx.env.DB.prepare('DELETE FROM maintenance WHERE id = ?').bind(body.id).run();
       return Response.json({ ok: true });
     }
 
     case 'update_hours': {
+      if (typeof body.id !== 'string' || !body.id) {
+        return Response.json({ error: 'Pole "id" wymagane' }, { status: 400 });
+      }
+      if (typeof body.current_hours !== 'number') {
+        return Response.json({ error: 'Pole "current_hours" musi być liczbą' }, { status: 400 });
+      }
       await ctx.env.DB.prepare(
         'UPDATE maintenance SET current_hours = ? WHERE id = ?'
       ).bind(body.current_hours, body.id).run();
@@ -65,6 +116,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     // ── DOCUMENTS ──
     case 'add_document': {
+      if (typeof body.name !== 'string' || !body.name) {
+        return Response.json({ error: 'Pole "name" wymagane' }, { status: 400 });
+      }
+      if (typeof body.doc_type !== 'string' || !body.doc_type) {
+        return Response.json({ error: 'Pole "doc_type" wymagane' }, { status: 400 });
+      }
       const id = crypto.randomUUID();
       await ctx.env.DB.prepare(
         'INSERT INTO documents (id, name, type, valid_from, valid_to, notes) VALUES (?, ?, ?, ?, ?, ?)'
@@ -73,13 +130,18 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     case 'delete_document': {
+      if (typeof body.id !== 'string' || !body.id) {
+        return Response.json({ error: 'Pole "id" wymagane' }, { status: 400 });
+      }
       await ctx.env.DB.prepare('DELETE FROM documents WHERE id = ?').bind(body.id).run();
       return Response.json({ ok: true });
     }
 
     // ── INSURANCE PILOTS ──
     case 'add_insurance_pilot': {
-      if (!body.pilot_id) return Response.json({ error: 'Podaj pilot_id' }, { status: 400 });
+      if (typeof body.pilot_id !== 'string' || !body.pilot_id) {
+        return Response.json({ error: 'Podaj pilot_id' }, { status: 400 });
+      }
       const pilot = await ctx.env.DB.prepare('SELECT id FROM pilots WHERE id = ?').bind(body.pilot_id).first();
       if (!pilot) return Response.json({ error: 'Pilot nie znaleziony' }, { status: 404 });
       const active = await ctx.env.DB.prepare(
@@ -97,6 +159,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     case 'approve_insurance': {
+      if (typeof body.id !== 'string' || !body.id) {
+        return Response.json({ error: 'Pole "id" wymagane' }, { status: 400 });
+      }
       await ctx.env.DB.prepare(
         "UPDATE insurance_pilots SET status = 'approved', approved_at = datetime('now') WHERE id = ?"
       ).bind(body.id).run();
@@ -107,6 +172,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     case 'reject_insurance': {
+      if (typeof body.id !== 'string' || !body.id) {
+        return Response.json({ error: 'Pole "id" wymagane' }, { status: 400 });
+      }
       await ctx.env.DB.prepare(
         "UPDATE insurance_pilots SET status = 'rejected' WHERE id = ?"
       ).bind(body.id).run();
@@ -116,6 +184,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     case 'remove_insurance': {
+      if (typeof body.id !== 'string' || !body.id) {
+        return Response.json({ error: 'Pole "id" wymagane' }, { status: 400 });
+      }
       await ctx.env.DB.prepare(
         "UPDATE insurance_pilots SET status = 'removed', removed_at = datetime('now') WHERE id = ?"
       ).bind(body.id).run();

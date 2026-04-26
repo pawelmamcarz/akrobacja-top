@@ -319,6 +319,9 @@ let allProducts = [];
 let cart = JSON.parse(localStorage.getItem('merch_cart') || '[]');
 let selectedSizes = {};
 
+// HTML escape — zabezpiecza przed stored XSS gdy admin wstrzyknie HTML w name/category/description
+function esc(s) { const d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; }
+
 // Check success
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get('success') === '1') {
@@ -342,11 +345,11 @@ async function loadProducts() {
 function renderProducts(products) {
   const grid = document.getElementById('productsGrid');
   grid.innerHTML = products.map(p => {
-    return `<div class="p-card" data-cat="${p.category}" onclick="openPD('${p.id}')">
+    return `<div class="p-card" data-cat="${esc(p.category)}" onclick="openPD('${esc(p.id)}')">
       <div class="p-img">${productIcon(p.category)}</div>
       <div class="p-body">
-        <div class="p-category">${catLabel(p.category)}</div>
-        <div class="p-name">${p.name}</div>
+        <div class="p-category">${esc(catLabel(p.category))}</div>
+        <div class="p-name">${esc(p.name)}</div>
         <div class="p-price">${(p.price/100).toFixed(0)} PLN <span>brutto</span></div>
       </div>
     </div>`;
@@ -406,8 +409,8 @@ function updateCartUI() {
 
   itemsEl.innerHTML = cart.map((item, i) => `<div class="cart-item">
     <div class="cart-item-info">
-      <div class="cart-item-name">${item.name} ${item.quantity > 1 ? 'x' + item.quantity : ''}</div>
-      <div class="cart-item-variant">${item.variant || ''}</div>
+      <div class="cart-item-name">${esc(item.name)} ${item.quantity > 1 ? 'x' + item.quantity : ''}</div>
+      <div class="cart-item-variant">${esc(item.variant || '')}</div>
     </div>
     <div class="cart-item-price">${((item.price * item.quantity) / 100).toFixed(0)} PLN</div>
     <button class="cart-item-remove" onclick="removeFromCart(${i})">&times;</button>

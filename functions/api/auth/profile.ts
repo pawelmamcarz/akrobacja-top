@@ -1,24 +1,16 @@
 import { type Env } from '../../../src/lib/types';
-
-async function getPilot(request: Request, db: D1Database) {
-  const auth = request.headers.get('Authorization');
-  if (!auth?.startsWith('Bearer ')) return null;
-  const token = auth.slice(7);
-  return db.prepare(
-    'SELECT id, phone, name, email, license_type, license_number, balance_minutes, insurance_status, verified, created_at, last_login FROM pilots WHERE session_token = ?'
-  ).bind(token).first<Record<string, unknown>>();
-}
+import { getPilotFromToken } from '../../../src/lib/pilot-auth';
 
 // GET /api/auth/profile — get current pilot profile
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  const pilot = await getPilot(ctx.request, ctx.env.DB);
+  const pilot = await getPilotFromToken(ctx.request, ctx.env.DB);
   if (!pilot) return Response.json({ error: 'Nie zalogowany' }, { status: 401 });
   return Response.json({ pilot });
 };
 
 // POST /api/auth/profile — update profile
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  const pilot = await getPilot(ctx.request, ctx.env.DB);
+  const pilot = await getPilotFromToken(ctx.request, ctx.env.DB);
   if (!pilot) return Response.json({ error: 'Nie zalogowany' }, { status: 401 });
 
   const body = (await ctx.request.json()) as {

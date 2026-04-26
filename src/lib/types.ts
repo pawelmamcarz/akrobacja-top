@@ -82,3 +82,19 @@ export interface Order {
   paid_at?: string;
   expires_at?: string;
 }
+
+export interface Pilot {
+  id: string;
+  phone: string;
+  name?: string | null;
+  email?: string | null;
+  license_type?: string | null;
+  license_number?: string | null;
+  balance_minutes: number;
+  insurance_status: string;
+  verified: number;
+  session_token?: string | null;
+  session_expires_at?: string | null;
+  last_login?: string | null;
+  created_at: string;
+}

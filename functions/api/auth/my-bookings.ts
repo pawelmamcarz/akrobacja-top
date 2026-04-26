@@ -1,16 +1,9 @@
 import { type Env } from '../../../src/lib/types';
-
-async function getPilot(request: Request, db: D1Database) {
-  const auth = request.headers.get('Authorization');
-  if (!auth?.startsWith('Bearer ')) return null;
-  return db.prepare(
-    'SELECT id, phone, email FROM pilots WHERE session_token = ?'
-  ).bind(auth.slice(7)).first<{ id: string; phone: string; email: string | null }>();
-}
+import { getPilotFromToken } from '../../../src/lib/pilot-auth';
 
 // GET /api/auth/my-bookings — get pilot's bookings and courses
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  const pilot = await getPilot(ctx.request, ctx.env.DB);
+  const pilot = await getPilotFromToken(ctx.request, ctx.env.DB);
   if (!pilot) return Response.json({ error: 'Nie zalogowany' }, { status: 401 });
 
   // Bookings by email or phone
@@ -23,15 +16,20 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     LIMIT 50
   `).bind(pilot.email || '', pilot.phone).all();
 
-  // Courses by email
+  // Courses by email or phone
   const { results: courses } = await ctx.env.DB.prepare(
     'SELECT * FROM courses WHERE customer_email = ? OR customer_phone = ? ORDER BY created_at DESC'
   ).bind(pilot.email || '', pilot.phone).all();
 
-  // Vouchers by email
-  const { results: vouchers } = await ctx.env.DB.prepare(
-    "SELECT voucher_code, package_id, status, redeemed_at, expires_at FROM orders WHERE customer_email = ? AND status = 'paid' ORDER BY created_at DESC"
-  ).bind(pilot.email || '').all();
+  // Vouchers — tylko po email; pomiń query gdy email pusty (inaczej match
+  // wszystkich orderów z pustym emailem to byłby data leak).
+  let vouchers: Record<string, unknown>[] = [];
+  if (pilot.email) {
+    const res = await ctx.env.DB.prepare(
+      "SELECT voucher_code, package_id, status, redeemed_at, expires_at FROM orders WHERE customer_email = ? AND status = 'paid' ORDER BY created_at DESC"
+    ).bind(pilot.email).all();
+    vouchers = res.results as Record<string, unknown>[];
+  }
 
   return Response.json({ bookings, courses, vouchers });
 };
