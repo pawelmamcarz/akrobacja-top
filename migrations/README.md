@@ -30,6 +30,8 @@ w `migrations/`.
 - `004-slots-unique.sql` — partial `UNIQUE(date, start_time) WHERE status != 'available'`
   na slots (anti-race dla rezerwacji).
 - `005-otp-attempts.sql` — tabela `otp_attempts` dla rate-limitu na /api/auth/verify.
+- `007-voucher-personalization.sql` — kolumny `recipient_name`, `dedication`,
+  `send_at`, `email_sent_at` dla orders (voucher prezentowy z dedykacją + planowaną wysyłką).
 
 ## Uruchomienie
 

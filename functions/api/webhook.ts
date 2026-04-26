@@ -152,6 +152,13 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const customerNip = order.customer_nip as string | undefined;
     const videoAddon = order.video_addon === 1;
     const expiresAt = order.expires_at as string;
+    const recipientName = (order.recipient_name as string | null) ?? null;
+    const dedication = (order.dedication as string | null) ?? null;
+    const sendAt = (order.send_at as string | null) ?? null;
+    // Voucher zaplanowany na przyszłość — generuj PDF + wrzuć do R2, ale email
+    // wysyła cron scheduled-vouchers gdy nadejdzie send_at. Owner notify i Meta CAPI
+    // lecą normalnie (właściciel chce wiedzieć od razu, Pixel deduplikuje purchase).
+    const scheduleEmail = sendAt !== null && Date.parse(sendAt) > Date.now();
 
     // Test product — skip PDF/invoice/email; mark paid + fire Meta CAPI and return.
     if (packageId === 'test_naklejka') {
@@ -182,11 +189,15 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         customerName,
         videoAddon,
         expiresAt,
+        recipientName,
+        dedication,
       });
 
       // R2 upload, wFirma invoice, and customer email are independent — run in parallel.
       // Each settles individually: R2 failure is fatal (no PDF to serve), invoice/email are
       // non-critical (admin can reissue).
+      // Jeśli email zaplanowany (send_at w przyszłości) — pomijamy sendVoucherEmail tutaj,
+      // cron scheduled-vouchers wyśle PDF z R2 gdy nadejdzie data.
       const isLive = ctx.env.STRIPE_SECRET_KEY?.includes('_live_');
       const [, invoiceResult] = await Promise.all([
         ctx.env.VOUCHER_BUCKET.put(`vouchers/${voucherCode}.pdf`, pdfBytes, {
@@ -204,22 +215,26 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
               discountCode: (order.discount_code as string | null) ?? null,
             }).catch(err => { console.error(`createInvoice failed for ${voucherCode}:`, err); return undefined; })
           : Promise.resolve(undefined),
-        sendVoucherEmail(ctx.env, {
-          to: customerEmail,
-          customerName,
-          voucherCode,
-          packageId,
-          pdfBytes,
-          siteUrl: ctx.env.SITE_URL || 'https://akrobacja.com',
-        }).catch(err => { console.error(`sendVoucherEmail failed for ${voucherCode}:`, err); return undefined; }),
+        scheduleEmail
+          ? Promise.resolve(undefined)
+          : sendVoucherEmail(ctx.env, {
+              to: customerEmail,
+              customerName,
+              voucherCode,
+              packageId,
+              pdfBytes,
+              siteUrl: ctx.env.SITE_URL || 'https://akrobacja.com',
+            }).catch(err => { console.error(`sendVoucherEmail failed for ${voucherCode}:`, err); return undefined; }),
       ]);
       const invoiceId = invoiceResult;
 
       // Finalize — guard on status='processing' so we never overwrite a manual cancel.
+      // email_sent_at ustawiamy tylko jeśli faktycznie wysłaliśmy maila tu (nie scheduled).
       await ctx.env.DB.prepare(`
-        UPDATE orders SET status = 'paid', paid_at = datetime('now'), invoice_id = ?, stripe_session_id = ?
+        UPDATE orders SET status = 'paid', paid_at = datetime('now'), invoice_id = ?, stripe_session_id = ?,
+          email_sent_at = CASE WHEN ? = 1 THEN email_sent_at ELSE datetime('now') END
         WHERE id = ? AND status = 'processing'
-      `).bind(invoiceId || null, session.id as string, orderId).run();
+      `).bind(invoiceId || null, session.id as string, scheduleEmail ? 1 : 0, orderId).run();
 
       ctx.waitUntil(notifyOwnerOrder(ctx.env, { voucherCode, packageId, customerName, customerEmail, amount: order.amount as number, videoAddon }));
 

@@ -43,7 +43,7 @@ Produkcyjny URL: <https://akrobacja.com>
 │       ├── auth/                   # send-code, verify, profile, my-bookings, insurance
 │       ├── merch/                  # products, checkout
 │       ├── admin/                  # 9 endpointów (Bearer = ADMIN_PASSWORD)
-│       └── cron/                   # welcome-emails, abandoned-checkouts
+│       └── cron/                   # welcome-emails, abandoned-checkouts, scheduled-vouchers
 ├── src/lib/                # współdzielone moduły (pdf, email, wfirma, sms, ...)
 ├── migrations/             # 001-003.sql (uruchamiane przyrostowo)
 ├── schema.sql              # źródło prawdy dla świeżej bazy
@@ -118,6 +118,15 @@ dni). Kroki: day 0 (powitanie), day 2 (edukacyjny), day 5 (rabat -100 PLN
 `abandon_email_sent_at` ustawia jako "sent" nawet przy permanent-fail (422 —
 zły email), żeby nie retry'ować.
 
+## Scheduled voucher delivery (cron)
+
+`POST /api/cron/scheduled-vouchers` (rekomendowane co 1h) wysyła zaplanowane
+vouchery prezentowe — kupujący wskazał `send_at` (np. dzień urodzin
+obdarowanego), webhook po opłacie wrzucił PDF do R2 i pominął email.
+Cron filtruje `status='paid' AND send_at <= now AND email_sent_at IS NULL`,
+pobiera PDF z R2 (`vouchers/{code}.pdf`), wysyła `sendVoucherEmail`
+i ustawia `email_sent_at`. Limit 50 zamówień per-run.
+
 ## Lokalny dev
 
 ```bash
@@ -189,6 +198,7 @@ Lista wymaganych — patrz `.dev.vars.example`.
 ### Cron (publiczne — **trzeba dodać CRON_SECRET**)
 - `GET|POST /api/cron/welcome-emails`
 - `GET|POST /api/cron/abandoned-checkouts`
+- `GET|POST /api/cron/scheduled-vouchers` — voucher prezentowy z `send_at` (co 1h)
 
 ## Znane luki (backlog)
 

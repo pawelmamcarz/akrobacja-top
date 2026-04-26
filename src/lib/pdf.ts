@@ -17,6 +17,8 @@ export async function generateVoucherPdf(opts: {
   customerName: string;
   videoAddon: boolean;
   expiresAt: string;
+  recipientName?: string | null;  // jeśli podane, używamy w sekcji "Voucher dla:" zamiast customerName
+  dedication?: string | null;     // jeśli podane, render ramki z dedykacją pod tytułem vouchera
 }): Promise<Uint8Array> {
   const pkg = PACKAGES[opts.packageId];
   const doc = await PDFDocument.create();
@@ -24,6 +26,7 @@ export async function generateVoucherPdf(opts: {
 
   const helveticaBold = await doc.embedFont(StandardFonts.HelveticaBold);
   const helvetica = await doc.embedFont(StandardFonts.Helvetica);
+  const helveticaOblique = await doc.embedFont(StandardFonts.HelveticaOblique);
 
   const navy = rgb(10 / 255, 47 / 255, 124 / 255);
   const red = rgb(225 / 255, 30 / 255, 38 / 255);
@@ -73,6 +76,62 @@ export async function generateVoucherPdf(opts: {
   // Details section
   let y = codeBoxY - 40;
 
+  // Dedykacja (opcjonalna) — ramka z italikiem pod kodem vouchera, przed polami pakietu.
+  // pdf-lib nie wspiera polskich diakrytyków przy StandardFonts → ascii() jak reszta.
+  if (opts.dedication && opts.dedication.trim().length > 0) {
+    const dedText = ascii(opts.dedication.trim());
+    // Wrap tekstu do max ~60 znaków na linię, max 4 linie (limit 200 zn. na backendzie).
+    const words = dedText.split(/\s+/);
+    const lines: string[] = [];
+    let current = '';
+    for (const w of words) {
+      const next = current ? `${current} ${w}` : w;
+      if (next.length > 60 && current) {
+        lines.push(current);
+        current = w;
+      } else {
+        current = next;
+      }
+      if (lines.length >= 4) break;
+    }
+    if (current && lines.length < 4) lines.push(current);
+
+    const padX = 24;
+    const padY = 18;
+    const lineH = 16;
+    const titleH = 18;
+    const boxH = padY * 2 + titleH + lines.length * lineH;
+    const boxY = y - boxH + 10;
+
+    // Tło + lewa czerwona linia akcentu (spójne z hero stroną).
+    page.drawRectangle({
+      x: 50, y: boxY, width: W - 100, height: boxH,
+      color: rgb(0.985, 0.97, 0.97),
+    });
+    page.drawRectangle({
+      x: 50, y: boxY, width: 3, height: boxH, color: red,
+    });
+
+    // Tytuł sekcji
+    page.drawText('DEDYKACJA', {
+      x: 50 + padX, y: boxY + boxH - padY - 8, size: 8, font: helveticaBold, color: red,
+    });
+
+    // Tekst dedykacji — italic, navy, centered horyzontalnie w ramce.
+    const dedFontSize = 12;
+    let lineY = boxY + boxH - padY - titleH - 4;
+    for (const line of lines) {
+      const textWidth = helveticaOblique.widthOfTextAtSize(line, dedFontSize);
+      const textX = 50 + (W - 100) / 2 - textWidth / 2;
+      page.drawText(line, {
+        x: textX, y: lineY, size: dedFontSize, font: helveticaOblique, color: navy,
+      });
+      lineY -= lineH;
+    }
+
+    y = boxY - 30;
+  }
+
   const drawField = (label: string, value: string) => {
     page.drawText(ascii(label), { x: 50, y, size: 8, font: helveticaBold, color: grey });
     page.drawText(ascii(value), { x: 50, y: y - 16, size: 13, font: helvetica, color: navy });
@@ -81,7 +140,8 @@ export async function generateVoucherPdf(opts: {
 
   drawField('PAKIET', `${pkg.name} - ${pkg.subtitle}`);
   drawField('CZAS LOTU', pkg.duration);
-  drawField('DLA', opts.customerName);
+  // "DLA" — preferuj recipient_name (prezent), fallback na customer_name.
+  drawField('DLA', opts.recipientName?.trim() || opts.customerName);
   drawField('WAZNY DO', formatDate(opts.expiresAt));
 
   if (opts.videoAddon) {

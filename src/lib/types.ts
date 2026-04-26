@@ -81,4 +81,9 @@ export interface Order {
   created_at: string;
   paid_at?: string;
   expires_at?: string;
+  // Personalizacja vouchera (migration 007)
+  recipient_name?: string;   // imię obdarowanego, fallback do customer_name w PDF
+  dedication?: string;       // tekst dedykacji (max 200 znaków)
+  send_at?: string;          // ISO datetime — kiedy wysłać voucher email (cron)
+  email_sent_at?: string;    // kiedy faktycznie wysłaliśmy voucher email (idempotency)
 }
