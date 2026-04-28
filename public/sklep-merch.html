@@ -62,7 +62,8 @@
   .p-card { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); padding:0; transition:all .2s; cursor:pointer; position:relative; display:flex; flex-direction:column; }
   .p-card:hover { background:rgba(255,255,255,.06); transform:translateY(-2px); }
   .p-img { height:220px; background:linear-gradient(135deg, #0e1e38 0%, #162a42 100%); display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
-  .p-img img { max-width:80%; max-height:80%; object-fit:contain; }
+  .p-img img.product-photo { width:100%; height:100%; object-fit:cover; display:block; }
+  .p-img img.icon-fallback { max-width:80%; max-height:80%; object-fit:contain; }
   .p-img svg { width:80px; height:80px; opacity:.4; }
   .p-body { padding:20px; flex:1; display:flex; flex-direction:column; }
   .p-category { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:var(--cyan); margin-bottom:12px; font-family:var(--font-h); }
@@ -131,7 +132,8 @@
   .pd-modal { background:#0e1e38; border:1px solid rgba(255,255,255,.1); max-width:640px; width:100%; max-height:90vh; overflow-y:auto; position:relative; }
   .pd-close { position:absolute; top:16px; right:16px; background:none; border:none; color:var(--chrome); font-size:28px; cursor:pointer; z-index:5; }
   .pd-close:hover { color:#fff; }
-  .pd-img { height:300px; background:linear-gradient(135deg, #0e1e38 0%, #1a2e48 100%); display:flex; align-items:center; justify-content:center; }
+  .pd-img { height:300px; background:linear-gradient(135deg, #0e1e38 0%, #1a2e48 100%); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .pd-img img.product-photo { width:100%; height:100%; object-fit:cover; display:block; }
   .pd-img svg { width:120px; height:120px; opacity:.5; }
   .pd-body { padding:32px; }
   .pd-category { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.15em; color:var(--cyan); margin-bottom:8px; font-family:var(--font-h); }
@@ -346,7 +348,7 @@ function renderProducts(products) {
   const grid = document.getElementById('productsGrid');
   grid.innerHTML = products.map(p => {
     return `<div class="p-card" data-cat="${esc(p.category)}" onclick="openPD('${esc(p.id)}')">
-      <div class="p-img">${productIcon(p.category)}</div>
+      <div class="p-img">${p.image_url ? `<img class="product-photo" src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy">` : productIcon(p.category)}</div>
       <div class="p-body">
         <div class="p-category">${esc(catLabel(p.category))}</div>
         <div class="p-name">${esc(p.name)}</div>
@@ -498,7 +500,9 @@ function openPD(productId) {
   pdProduct = p;
   pdSize = null;
 
-  document.getElementById('pdImg').innerHTML = productIcon(p.category).replace('width:80px;height:80px', 'width:120px;height:120px');
+  document.getElementById('pdImg').innerHTML = p.image_url
+    ? `<img class="product-photo" src="${p.image_url}" alt="${p.name}">`
+    : productIcon(p.category).replace('width:80px;height:80px', 'width:120px;height:120px');
   document.getElementById('pdCategory').textContent = catLabel(p.category);
   document.getElementById('pdName').textContent = p.name;
   document.getElementById('pdDesc').textContent = p.description;
