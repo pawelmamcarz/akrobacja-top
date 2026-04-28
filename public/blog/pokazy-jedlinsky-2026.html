@@ -252,12 +252,21 @@ img { display: block; max-width: 100%; }
   gap: 12px;
   margin: 24px 0 8px;
 }
+.video-row figure { margin: 0; display: flex; flex-direction: column; gap: 6px; }
 .video-row video {
   width: 100%;
   aspect-ratio: 9 / 16;
   object-fit: cover;
   background: var(--black);
 }
+.video-credit {
+  font-size: 12px;
+  color: var(--muted, #888);
+  text-align: right;
+  letter-spacing: 0.02em;
+}
+.video-credit a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
+.video-credit a:hover { color: var(--text, #fff); }
 
 /* Lightbox */
 .lightbox {
@@ -466,7 +475,10 @@ footer {
   <div class="video-row">
     <video src="/gallery/jedlinsky-2026-01.mp4" controls preload="metadata" playsinline></video>
     <video src="/gallery/jedlinsky-2026-02.mp4" controls preload="metadata" playsinline></video>
-    <video src="/gallery/jedlinsky-2026-03.mp4" controls preload="metadata" playsinline></video>
+    <figure>
+      <video src="/gallery/jedlinsky-2026-03.mp4" controls preload="metadata" playsinline></video>
+      <figcaption class="video-credit">fot. <a href="https://www.instagram.com/avi_aga777/" target="_blank" rel="noopener noreferrer">@avi_aga777</a></figcaption>
+    </figure>
   </div>
 </section>
 
