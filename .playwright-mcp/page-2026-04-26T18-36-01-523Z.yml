@@ -1,0 +1,230 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - banner "Górne menu" [ref=e6]:
+      - status
+      - generic [ref=e7]:
+        - button "Zamknij" [ref=e8] [cursor=pointer]:
+          - img [ref=e11]: close
+        - heading "Google Ads – powrót na stronę początkową" [level=1] [ref=e13]:
+          - button "Google Ads – powrót na stronę początkową" [ref=e14]:
+            - img [ref=e16] [cursor=pointer]
+      - generic [ref=e25]:
+        - generic [ref=e27]:
+          - generic [ref=e33]:
+            - img [ref=e36]: search
+            - generic [ref=e37]:
+              - generic:
+                - generic: Wyszukaj stronę lub kampanię
+              - combobox "Wyszukaj stronę lub kampanię" [ref=e38]
+          - text: Szukaj
+        - generic [ref=e39]:
+          - button "Wygląd" [ref=e42] [cursor=pointer]:
+            - generic [ref=e44]:
+              - img [ref=e45]: responsive_layout
+              - text: Wygląd
+          - button "Otwórz panel szybkiej pomocy" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]:
+              - text: Pomoc
+              - generic [ref=e50]:
+                - img [ref=e51]: help_outline
+                - text: Pomoc
+          - button "Powiadomienia" [ref=e58] [cursor=pointer]:
+            - generic [ref=e60]:
+              - img [ref=e63]: notifications
+              - generic [ref=e65]: Powiadomienia
+      - button "Konto Google" [ref=e87] [cursor=pointer]:
+        - img "Konto Google (pawel@mamcarz.com)" [ref=e88]
+    - generic [ref=e509]:
+      - generic [ref=e510]:
+        - navigation [ref=e511]:
+          - list [ref=e514]:
+            - listitem [ref=e515]:
+              - link "Performance Max" [ref=e518] [cursor=pointer]:
+                - button "Performance Max" [ref=e519]:
+                  - img [ref=e520]: performance_max
+            - listitem [ref=e522]:
+              - generic [ref=e523]:
+                - link "Określanie stawek" [expanded] [ref=e525] [cursor=pointer]:
+                  - button "Określanie stawek" [ref=e526]:
+                    - img [ref=e527]: radio_button_unchecked
+                - list [ref=e528]:
+                  - listitem [ref=e529]:
+                    - link "Określanie stawek" [ref=e532] [cursor=pointer]
+                  - listitem [ref=e534]:
+                    - link "Pozyskiwanie klientów" [ref=e537] [cursor=pointer]
+            - listitem [ref=e539]:
+              - link "Ustawienia kampanii" [ref=e542] [cursor=pointer]:
+                - button "Ustawienia kampanii" [ref=e543]:
+                  - img [ref=e544]: radio_button_unchecked
+            - listitem [ref=e545]:
+              - link "Grupa plików" [ref=e548] [cursor=pointer]:
+                - button "Grupa plików" [ref=e549]:
+                  - img [ref=e550]: radio_button_unchecked
+            - listitem [ref=e551]:
+              - link "Budżet" [ref=e554] [cursor=pointer]:
+                - button "Budżet" [ref=e555]:
+                  - img [ref=e556]: radio_button_unchecked
+            - listitem [ref=e557]:
+              - link "Podsumowanie" [ref=e560] [cursor=pointer]:
+                - button "Podsumowanie" [ref=e561]:
+                  - img [ref=e562]: radio_button_unchecked
+        - main [ref=e565]:
+          - generic [ref=e566]:
+            - generic [ref=e573]:
+              - generic [ref=e575]:
+                - generic [ref=e579]: Określanie stawek
+                - generic [ref=e581]:
+                  - generic [ref=e587]:
+                    - heading "Określanie stawek" [level=2] [ref=e588]:
+                      - button "Określanie stawek" [expanded] [active] [ref=e589] [cursor=pointer]:
+                        - paragraph [ref=e591]: Określanie stawek
+                        - img [ref=e592]: expand_less
+                    - generic [ref=e608]:
+                      - generic [ref=e609]:
+                        - generic [ref=e610]:
+                          - generic [ref=e611]: Na czym chcesz się skupić?
+                          - button "Więcej informacji o wybieraniu danych służących do monitorowania kampanii" [ref=e612] [cursor=pointer]:
+                            - img [ref=e614]: help_outline
+                        - combobox "Na czym chcesz się skupić? Więcej informacji o wybieraniu danych służących do monitorowania kampanii Wartość konwersji" [ref=e618] [cursor=pointer]:
+                          - generic [ref=e619]: Wartość konwersji
+                          - img [ref=e621]: arrow_drop_down
+                      - checkbox "Ustaw docelowy zwrot z nakładów na reklamę (opcjonalnie)" [ref=e628] [cursor=pointer]:
+                        - img [ref=e631]: check_box_outline_blank
+                        - generic [ref=e633]: Ustaw docelowy zwrot z nakładów na reklamę (opcjonalnie)
+                  - generic [ref=e640]:
+                    - heading "Pozyskiwanie klientów" [level=2] [ref=e641]:
+                      - button "Pozyskiwanie klientów" [expanded] [ref=e642] [cursor=pointer]:
+                        - paragraph [ref=e644]: Pozyskiwanie klientów
+                        - img [ref=e645]: expand_less
+                    - generic [ref=e655]:
+                      - checkbox "Dostosuj stawki, aby pozyskiwać nowych klientów" [ref=e658] [cursor=pointer]:
+                        - img [ref=e661]: check_box_outline_blank
+                        - generic [ref=e663]: Dostosuj stawki, aby pozyskiwać nowych klientów
+                      - generic [ref=e668]:
+                        - text: Domyślnie Twoja kampania ustala równe stawki dla nowych i obecnych klientów. Możesz jednak skonfigurować ustawienia pozyskiwania klientów tak, aby optymalizować kampanię pod kątem pozyskiwania nowych klientów.
+                        - link "Więcej informacji o celu Pozyskiwanie nowych klientów" [ref=e669] [cursor=pointer]:
+                          - /url: https://support.google.com/google-ads/answer/12080169?hl=pl
+                          - text: Więcej informacji o pozyskiwaniu klientów
+              - generic [ref=e671]:
+                - button "Dalej" [ref=e675] [cursor=pointer]:
+                  - generic [ref=e677]: Dalej
+                - generic [ref=e682]:
+                  - text: © Google 2026.
+                  - button "Prześlij opinię" [ref=e683] [cursor=pointer]
+            - generic: close
+            - generic: info
+      - generic [ref=e689]:
+        - generic [ref=e691]:
+          - generic [ref=e693]:
+            - generic [ref=e694]: "--.-%"
+            - progressbar "aktywny postęp" [ref=e696]
+            - heading "Wynik optymalizacji kampaniiWięcej informacji o wyniku optymalizacji kampanii" [level=2] [ref=e699]:
+              - text: Wynik optymalizacji kampanii
+              - button "Więcej informacji o wyniku optymalizacji kampanii" [ref=e700] [cursor=pointer]:
+                - img [ref=e702]: help_outline
+            - generic [ref=e703]: Wynik zacznie się wyświetlać, gdy wprowadzisz w kampanii zmiany niezbędne do wyświetlania reklam.
+          - generic [ref=e708]:
+            - img [ref=e711]: show_chart
+            - heading "Szacowana wartość tygodniowa" [level=2] [ref=e712]
+            - generic [ref=e713]: Nie można teraz oszacować danych
+        - button "Ukryj oszacowania dotyczące ruchu" [ref=e716] [cursor=pointer]:
+          - img [ref=e718]: chevron_right
+  - generic:
+    - dialog:
+      - generic:
+        - generic:
+          - heading [level=1]: Turn off ad blockers
+          - paragraph: Google Ads can't work when you're using an ad blocker. To use Google Ads, please turn off any ad blockers for now.
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe":
+          - generic [ref=e734]: warning_amber
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - status [ref=e747]: "Pozostało znaków: 15. Maksymalna liczba: 15"

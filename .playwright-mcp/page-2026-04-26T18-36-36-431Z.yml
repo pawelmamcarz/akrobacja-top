@@ -1,0 +1,300 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - banner "Górne menu" [ref=e6]:
+      - status
+      - generic [ref=e7]:
+        - button "Zamknij" [ref=e8] [cursor=pointer]:
+          - img [ref=e11]: close
+        - heading "Google Ads – powrót na stronę początkową" [level=1] [ref=e13]:
+          - button "Google Ads – powrót na stronę początkową" [ref=e14]:
+            - img [ref=e16] [cursor=pointer]
+      - generic [ref=e25]:
+        - generic [ref=e27]:
+          - generic [ref=e33]:
+            - img [ref=e36]: search
+            - generic [ref=e37]:
+              - generic:
+                - generic: Wyszukaj stronę lub kampanię
+              - combobox "Wyszukaj stronę lub kampanię" [ref=e38]
+          - text: Szukaj
+        - generic [ref=e39]:
+          - button "Wygląd" [ref=e42] [cursor=pointer]:
+            - generic [ref=e44]:
+              - img [ref=e45]: responsive_layout
+              - text: Wygląd
+          - button "Otwórz panel szybkiej pomocy" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]:
+              - text: Pomoc
+              - generic [ref=e50]:
+                - img [ref=e51]: help_outline
+                - text: Pomoc
+          - button "Powiadomienia" [ref=e58] [cursor=pointer]:
+            - generic [ref=e60]:
+              - img [ref=e63]: notifications
+              - generic [ref=e65]: Powiadomienia
+      - button "Konto Google" [ref=e87] [cursor=pointer]:
+        - img "Konto Google (pawel@mamcarz.com)" [ref=e88]
+    - generic [ref=e509]:
+      - generic [ref=e510]:
+        - navigation [ref=e511]:
+          - generic [ref=e512]:
+            - list [ref=e514]:
+              - listitem [ref=e515]:
+                - link "Performance Max" [ref=e518] [cursor=pointer]:
+                  - button "Performance Max" [ref=e519]:
+                    - img [ref=e520]: performance_max
+              - listitem [ref=e522]:
+                - link "Określanie stawek" [ref=e525] [cursor=pointer]:
+                  - button "Określanie stawek" [ref=e526]:
+                    - img [ref=e527]: check_circle
+              - listitem [ref=e539]:
+                - generic [ref=e540]:
+                  - link "Ustawienia kampanii" [expanded] [ref=e542] [cursor=pointer]:
+                    - button "Ustawienia kampanii" [ref=e543]:
+                      - img [ref=e544]: radio_button_unchecked
+                  - list [ref=e756]:
+                    - listitem [ref=e757]:
+                      - link "Lokalizacje" [ref=e760] [cursor=pointer]
+                    - listitem [ref=e762]:
+                      - link "Języki" [ref=e765] [cursor=pointer]
+                    - listitem [ref=e767]:
+                      - link "Reklamy polityczne w UE" [ref=e770] [cursor=pointer]
+              - listitem [ref=e545]:
+                - link "Grupa plików" [ref=e548] [cursor=pointer]:
+                  - button "Grupa plików" [ref=e549]:
+                    - img [ref=e550]: radio_button_unchecked
+              - listitem [ref=e551]:
+                - link "Budżet" [ref=e554] [cursor=pointer]:
+                  - button "Budżet" [ref=e555]:
+                    - img [ref=e556]: radio_button_unchecked
+              - listitem [ref=e557]:
+                - link "Podsumowanie" [ref=e560] [cursor=pointer]:
+                  - button "Podsumowanie" [ref=e561]:
+                    - img [ref=e562]: radio_button_unchecked
+            - img [ref=e776]: cloud_done
+        - main [ref=e565]:
+          - generic [ref=e566]:
+            - generic [ref=e783]:
+              - generic [ref=e785]:
+                - generic [ref=e788]:
+                  - generic [ref=e789]: Ustawienia kampanii
+                  - generic [ref=e790]: Aby dotrzeć do właściwych osób, zacznij od wyboru kluczowych ustawień kampanii
+                - generic [ref=e792]:
+                  - generic [ref=e798]:
+                    - heading "Lokalizacje" [level=2] [ref=e799]:
+                      - button "Lokalizacje" [expanded] [ref=e800] [cursor=pointer]:
+                        - paragraph [ref=e802]: Lokalizacje
+                        - img [ref=e803]: expand_less
+                    - generic [ref=e809]:
+                      - group [ref=e811]:
+                        - generic [ref=e812]:
+                          - generic [ref=e813]: Wybierz lokalizacje na potrzeby tej kampanii
+                          - button "Więcej o kierowaniu na lokalizacje, w których chcesz wyświetlać reklamy" [ref=e814] [cursor=pointer]:
+                            - img [ref=e816]: help_outline
+                        - radiogroup [ref=e817]:
+                          - radio "Wszystkie kraje i terytoria" [ref=e819] [cursor=pointer]:
+                            - img [ref=e822]: radio_button_unchecked
+                            - generic [ref=e826]: Wszystkie kraje i terytoria
+                          - radio "Polska" [checked] [ref=e828] [cursor=pointer]:
+                            - img [ref=e831]: radio_button_checked
+                            - generic [ref=e835]: Polska
+                          - radio "Wpisz inną lokalizację" [ref=e837] [cursor=pointer]:
+                            - img [ref=e840]: radio_button_unchecked
+                            - generic [ref=e844]: Wpisz inną lokalizację
+                      - alert
+                      - group [ref=e845]:
+                        - heading "Opcje lokalizacji" [level=3] [ref=e846]:
+                          - button "Opcje lokalizacji" [ref=e847] [cursor=pointer]:
+                            - img [ref=e849]: expand_more
+                            - generic [ref=e850]: Opcje lokalizacji
+                  - generic [ref=e857]:
+                    - heading "Języki" [level=2] [ref=e858]:
+                      - button "Języki" [expanded] [ref=e859] [cursor=pointer]:
+                        - paragraph [ref=e861]: Języki
+                        - img [ref=e862]: expand_less
+                    - generic [ref=e870]:
+                      - generic [ref=e871]:
+                        - generic [ref=e872]:
+                          - text: Wybierz języki, którymi posługują się Twoi klienci.
+                          - button "Więcej informacji o wybieraniu języków, którymi mówią klienci" [ref=e873] [cursor=pointer]:
+                            - img [ref=e875]: help_outline
+                        - generic [ref=e877]:
+                          - generic [ref=e881]:
+                            - img [ref=e884]: search
+                            - generic [ref=e885]:
+                              - generic:
+                                - generic: Zacznij pisać lub wybierz język
+                              - combobox "Zacznij pisać lub wybierz język" [ref=e886]
+                          - generic "Wybrane języki" [ref=e889]:
+                            - generic [ref=e890]:
+                              - generic [ref=e892]: polski
+                              - button "polski – usuwanie polski" [ref=e894] [cursor=pointer]: close
+                      - region "Sugerowane języki" [ref=e1018]:
+                        - generic [ref=e1019]: "Na podstawie wybranych lokalizacji sugerujemy dodanie następujących języków:"
+                        - list [ref=e1021]:
+                          - listitem [ref=e1022]:
+                            - button "angielski" [ref=e1023] [cursor=pointer]:
+                              - generic [ref=e1025]: angielski
+                        - button "Dodaj wszystko" [ref=e1026] [cursor=pointer]:
+                          - generic [ref=e1027]: Dodaj wszystko
+                  - generic [ref=e901]:
+                    - heading "Reklamy polityczne w UE" [level=2] [ref=e902]:
+                      - button "Reklamy polityczne w UE" [expanded] [ref=e903] [cursor=pointer]:
+                        - paragraph [ref=e905]: Reklamy polityczne w UE
+                        - img [ref=e906]: expand_less
+                    - generic [ref=e915]:
+                      - generic [ref=e919]:
+                        - generic [ref=e921]: Czy Twoja kampania zawiera reklamy polityczne w Unii Europejskiej?
+                        - generic [ref=e922]: Wymagane
+                        - radiogroup "Czy Twoja kampania zawiera reklamy polityczne w Unii Europejskiej?" [ref=e923]:
+                          - generic [ref=e924] [cursor=pointer]:
+                            - radio "Tak, w tej kampanii znajdują się reklamy polityczne w UE" [ref=e926]
+                            - generic [ref=e929]: Tak, w tej kampanii znajdują się reklamy polityczne w UE
+                          - generic [ref=e930] [cursor=pointer]:
+                            - radio "Nie, ta kampania nie zawiera reklam politycznych w UE" [checked] [active] [ref=e932]
+                            - generic [ref=e935]: Nie, ta kampania nie zawiera reklam politycznych w UE
+                      - generic [ref=e936]:
+                        - generic [ref=e937]: Przepisy UE wymagają, aby firma Google zadała to pytanie
+                        - link "Dowiedz się, jak definiujemy reklamy polityczne w UE" [ref=e939] [cursor=pointer]:
+                          - /url: https://support.google.com/google-ads/answer/6014595?hl=pl
+                - button "Więcej ustawień" [ref=e947]:
+                  - img [ref=e951]: settings_filled
+                  - generic [ref=e952]: Więcej ustawień
+              - generic [ref=e954]:
+                - button "Dalej" [ref=e958] [cursor=pointer]:
+                  - generic [ref=e960]: Dalej
+                - generic [ref=e965]:
+                  - text: © Google 2026.
+                  - button "Prześlij opinię" [ref=e966] [cursor=pointer]
+            - generic: info
+      - generic [ref=e689]:
+        - generic [ref=e691]:
+          - generic [ref=e693]:
+            - generic [ref=e1029]: 95,7%
+            - progressbar "aktywny postęp" [ref=e1031]
+            - heading "Wynik optymalizacji kampaniiWięcej informacji o wyniku optymalizacji kampanii" [level=2] [ref=e699]:
+              - text: Wynik optymalizacji kampanii
+              - button "Więcej informacji o wyniku optymalizacji kampanii" [ref=e700] [cursor=pointer]:
+                - img [ref=e702]: help_outline
+          - generic [ref=e708]:
+            - img [ref=e711]: show_chart
+            - heading "Szacowana wartość tygodniowa" [level=2] [ref=e712]
+            - generic [ref=e713]: Na podstawie budżetu dziennego i ustawień stawek
+            - generic [ref=e977]:
+              - generic [ref=e1036]:
+                - link "Tygodniowa liczba konw." [ref=e1038] [cursor=pointer]
+                - generic [ref=e1044]: "9"
+              - generic [ref=e1046]:
+                - link "Tygodniowa wartość konwersji" [ref=e1048] [cursor=pointer]
+                - generic [ref=e1054]: 371,17 zł
+              - generic [ref=e1056]:
+                - link "Śr. wartość konwersji/koszt" [ref=e1058] [cursor=pointer]
+                - generic [ref=e1064]: 131,77%
+              - generic [ref=e1066]:
+                - link "Koszt tygodniowy" [ref=e1068] [cursor=pointer]
+                - generic [ref=e1074]: 281,68 zł
+        - button "Ukryj oszacowania dotyczące ruchu" [ref=e716] [cursor=pointer]:
+          - img [ref=e718]: chevron_right
+  - generic:
+    - dialog:
+      - generic:
+        - generic:
+          - heading [level=1]: Turn off ad blockers
+          - paragraph: Google Ads can't work when you're using an ad blocker. To use Google Ads, please turn off any ad blockers for now.
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe":
+          - generic [ref=e734]: warning_amber
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"

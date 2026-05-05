@@ -1,0 +1,477 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "Przejdź do treści" [ref=e3] [cursor=pointer]:
+      - /url: "#page-content"
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - link "Google Logo" [ref=e9] [cursor=pointer]:
+          - /url: https://business.google.com/pl/
+          - img "Google Logo" [ref=e11]
+        - navigation "Ogólna nawigacja" [ref=e13]:
+          - menubar [ref=e14]:
+            - menuitem "Od czego zacząć?" [ref=e15] [cursor=pointer]
+            - menuitem "Rozwiązania" [ref=e16] [cursor=pointer]
+            - menuitem "Nauka i statystyki" [ref=e17] [cursor=pointer]
+            - menuitem "Uzyskaj pomoc" [ref=e18] [cursor=pointer]
+        - 'button "Wybrane konto Google: Paweł Mamcarz (pawel@mamcarz.com)" [ref=e23] [cursor=pointer]':
+          - 'img "Wybrane konto Google: Paweł Mamcarz (pawel@mamcarz.com)" [ref=e24]'
+      - generic [ref=e27]:
+        - link "Google Ads" [ref=e28] [cursor=pointer]:
+          - /url: https://business.google.com/pl/google-ads/
+          - generic [ref=e29]: Google Ads
+        - navigation "Google Ads – nawigacja" [ref=e31]:
+          - list [ref=e32]:
+            - listitem [ref=e33]:
+              - link "Cele" [ref=e34] [cursor=pointer]:
+                - /url: https://business.google.com/pl/google-ads/campaign-goals/
+            - listitem [ref=e35]:
+              - link "Jak to działa" [ref=e36] [cursor=pointer]:
+                - /url: https://business.google.com/pl/google-ads/how-ads-work/
+            - listitem [ref=e37]:
+              - link "Koszt" [ref=e38] [cursor=pointer]:
+                - /url: https://business.google.com/pl/google-ads/campaign-budget/
+            - listitem [ref=e39]:
+              - link "Pomoc ekspertów" [ref=e40] [cursor=pointer]:
+                - /url: https://business.google.com/pl/support/ads-expert/
+        - generic [ref=e41]:
+          - link "Umów się na rozmowę" [ref=e43] [cursor=pointer]:
+            - /url: https://business.google.com/pl/support/schedule-appointment/
+            - generic [ref=e44]: Umów się na rozmowę
+          - link "Zaloguj się" [ref=e45] [cursor=pointer]:
+            - /url: https://ads.google.com/nav/login?subid=pl-pl-awhp-g-aw-c-home-signin-bgc!o2-|ib%3Anone|ib%3A6653296821|ib%3A9279461727|ib%3A7966379274|-ahpm-0000000200-0000000000&authuser=0
+          - link "Zacznij teraz" [ref=e46] [cursor=pointer]:
+            - /url: https://ads.google.com/signup?subid=pl-pl-awhp-g-aw-c-home-top-bgc!o2-|ib%3Anone|ib%3A6653296821|ib%3A9279461727|ib%3A7966379274|-ahpm-0000000200-0000000000&authuser=0
+  - main [ref=e47]:
+    - generic [ref=e48]:
+      - button "Wybierz teraz" [ref=e50] [cursor=pointer]:
+        - generic [ref=e51]:
+          - generic [ref=e55]: Zaczynasz korzystać z Google Ads? Wybierz ofertę, aby otrzymać nawet 3500 PLN na reklamę i zwiększyć zasięg swojej pierwszej kampanii.
+          - generic [ref=e56]:
+            - generic [ref=e57]: Wybierz teraz
+            - generic [ref=e58]:
+              - img
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - heading "Zwiększaj sprzedaż, Wyróżniaj się, Traf do ludzi, Promuj biznes, dzięki Google Ads" [level=1] [ref=e61]
+          - generic [ref=e62]:
+            - generic [ref=e63]:
+              - heading [level=2] [ref=e64]: Zwiększaj sprzedaż
+              - heading [level=2] [ref=e65]: Wyróżniaj się
+              - heading [level=2] [ref=e66]: Traf do ludzi
+              - heading [level=2] [ref=e67]: Promuj biznes
+            - generic [ref=e69]:
+              - paragraph [ref=e70]: dzięki Google Ads
+              - button "Wstrzymaj animację" [ref=e72] [cursor=pointer]
+          - img "Zwiększaj sprzedaż, Wyróżniaj się, Traf do ludzi, Promuj biznes, dzięki Google Ads" [ref=e75]:
+            - generic [ref=e76]:
+              - generic:
+                - img:
+                  - generic:
+                    - generic: Produktowa
+                    - generic: Wyprzedaż obuwia
+                    - generic: Przeglądaj kolekcje
+                    - generic: przykladowa-firma.pl
+            - generic [ref=e77]:
+              - generic:
+                - img:
+                  - generic:
+                    - generic: Wideo
+                    - generic: Safesure Bank
+                    - generic: przykladowa-firma.pl
+            - generic [ref=e78]:
+              - generic:
+                - img:
+                  - generic:
+                    - generic: W wyszukiw arce
+                    - generic: Reklama
+                    - generic: przykladowa-firma.pl
+                    - generic: Modern Design & Co
+            - generic [ref=e79]:
+              - generic:
+                - img:
+                  - generic:
+                    - generic: Displayowa
+                    - generic: Nowoczesne kanapy na zamówienie
+                    - generic: Najlepsze nowoczesne meble
+        - generic [ref=e80]:
+          - generic [ref=e81]: Ułatwiaj potencjalnym klientom znajdowanie Twojej firmy z Google Ads.
+          - link "Zwiększaj sprzedaż, Wyróżniaj się, Traf do ludzi, Promuj biznes, dzięki Google Ads" [ref=e84] [cursor=pointer]:
+            - /url: https://ads.google.com/signup?subid=pl-pl-awhp-g-aw-c-home-hero-bgc!o2-|ib%3Anone|ib%3A6653296821|ib%3A9279461727|ib%3A7966379274|-ahpm-0000000200-0000000000&authuser=0
+            - text: Zacznij teraz
+      - generic [ref=e86]:
+        - heading "Google Ads oferuje wiele sposobów zaprezentowania firmy" [level=2] [ref=e89]
+        - generic [ref=e93]:
+          - tablist [ref=e95]:
+            - tab "Reklamy w wyszukiwarce" [selected] [ref=e96] [cursor=pointer]:
+              - img [ref=e97]
+              - generic [ref=e99]: Reklamy w wyszukiwarce
+              - img
+            - tab "Reklamy displayowe" [ref=e100] [cursor=pointer]:
+              - img [ref=e101]
+              - generic [ref=e103]: Reklamy displayowe
+              - img
+            - tab "Reklamy produktowe" [ref=e104] [cursor=pointer]:
+              - img [ref=e105]
+              - generic [ref=e107]: Reklamy produktowe
+              - img
+            - tab "Reklamy wideo" [ref=e108] [cursor=pointer]:
+              - img [ref=e109]
+              - generic [ref=e111]: Reklamy wideo
+              - img
+            - tab "Reklamy aplikacji" [ref=e112] [cursor=pointer]:
+              - img [ref=e113]
+              - generic [ref=e115]: Reklamy aplikacji
+              - img
+          - tabpanel "Reklamy w wyszukiwarce" [ref=e117]:
+            - generic [ref=e119]:
+              - generic [ref=e120]:
+                - generic:
+                  - img "Grafika przedstawiająca wyszukiwanie w Google dekoracji do domu, w rezultacie wyświetla się odpowiednia reklama w wyszukiwarce.":
+                    - generic:
+                      - generic: Nowoczesne meble
+                      - generic: Reklama
+                      - generic: example-business.com
+                      - generic: Modern Design & Co.
+                      - generic: Najlepsze nowoczesne meble do Twojego domu.
+              - generic [ref=e121]:
+                - heading "Zacznij od sieci wyszukiwania" [level=3] [ref=e122]
+                - paragraph [ref=e123]: Pomagają zwiększać sprzedaż, generować kontakty do potencjalnych klientów lub natężenie ruchu w witrynie, prezentując Twoją firmę osobom, które aktywnie szukają w Google oferowanych przez Ciebie produktów lub usług.
+                - link "Poznaj reklamy w wyszukiwarce" [ref=e126] [cursor=pointer]:
+                  - /url: https://business.google.com/pl/ad-solutions/search/
+                  - img [ref=e128]
+                  - text: Poznaj reklamy w wyszukiwarce
+      - generic [ref=e136]:
+        - generic [ref=e137]:
+          - heading "Wybierz ofertę dla nowych reklamodawców, aby szybko uruchomić pierwszą kampanię" [level=2] [ref=e139]
+          - generic [ref=e140]:
+            - text: Wybierz ofertę dopasowaną do Twojego budżetu miesięcznego i zarejestruj się w Google Ads. Nowi reklamodawcy otrzymają środki na reklamę po osiągnięciu minimalnego progu wydatków określonego w wybranej ofercie.
+            - link "Obowiązują warunki oferty" [ref=e141] [cursor=pointer]:
+              - /url: https://ads.google.com/intl/pl_pl/home/terms-and-conditions/incentives/?bc=PL&bid=s500g500%7Cib%3A6653296821%7Cib%3A9279461727%7Cib%3A7966379274%7C%2Cs1500g1000%7Cib%3A9279461727%7Cib%3A6653296821%7Cib%3A7966379274%7C%2Cs3000g1500%7Cib%3A7966379274%7Cib%3A6653296821%7Cib%3A9279461727%7C
+        - radiogroup [ref=e142]:
+          - radio "OFERTA A 1200 PLN na reklamę Wydaj 1200 PLN w Google Ads w ciągu pierwszych 60 dni, aby otrzymać dodatkowe środki na reklamę." [ref=e144] [cursor=pointer]:
+            - generic [ref=e146]:
+              - img [ref=e148]
+              - generic [ref=e151]: OFERTA A
+              - generic [ref=e152]:
+                - heading "1200 PLN" [level=3] [ref=e153]
+                - generic [ref=e154]: na reklamę
+              - paragraph [ref=e155]: Wydaj 1200 PLN w Google Ads w ciągu pierwszych 60 dni, aby otrzymać dodatkowe środki na reklamę.
+          - radio "OFERTA B 2500 PLN na reklamę Wydaj 3500 PLN w Google Ads w ciągu pierwszych 60 dni, aby otrzymać dodatkowe środki na reklamę." [ref=e157] [cursor=pointer]:
+            - generic [ref=e159]:
+              - img [ref=e161]
+              - generic [ref=e164]: OFERTA B
+              - generic [ref=e165]:
+                - heading "2500 PLN" [level=3] [ref=e166]
+                - generic [ref=e167]: na reklamę
+              - paragraph [ref=e168]: Wydaj 3500 PLN w Google Ads w ciągu pierwszych 60 dni, aby otrzymać dodatkowe środki na reklamę.
+          - radio "OFERTA C 3500 PLN na reklamę Wydaj 7000 PLN w Google Ads w ciągu pierwszych 60 dni, aby otrzymać dodatkowe środki na reklamę." [ref=e170] [cursor=pointer]:
+            - generic [ref=e172]:
+              - img [ref=e174]
+              - generic [ref=e177]: OFERTA C
+              - generic [ref=e178]:
+                - heading "3500 PLN" [level=3] [ref=e179]
+                - generic [ref=e180]: na reklamę
+              - paragraph [ref=e181]: Wydaj 7000 PLN w Google Ads w ciągu pierwszych 60 dni, aby otrzymać dodatkowe środki na reklamę.
+        - generic:
+          - generic:
+            - heading "Wybierz ofertę, aby kontynuować" [level=4]
+          - link "Odbierz teraz" [disabled]:
+            - /url: https://ads.google.com/signup?subid=pl-pl-awhp-g-aw-c-home-cyo-mid-bgc!o2-|ib%3Anone|ib%3A6653296821|ib%3A9279461727|ib%3A7966379274|-ahpm-0000000200-0000000000&authuser=0
+      - generic [ref=e184]:
+        - generic [ref=e188]:
+          - heading "Osiągaj wszystkie cele w jednym miejscu" [level=2] [ref=e190]
+          - link "Visit the Google Ads goals page" [ref=e192] [cursor=pointer]:
+            - /url: https://business.google.com/pl/google-ads/campaign-goals/
+            - text: Więcej informacji
+        - generic [ref=e197]:
+          - generic [ref=e202]:
+            - generic [ref=e203]: Maksymalizuj liczbę potencjalnych klientów i konwersji
+            - paragraph [ref=e206]: Uzyskuj wyższej jakości kontakty do potencjalnych klientów i więcej wartościowych konwersji.
+          - generic [ref=e211]:
+            - generic [ref=e212]: Zwiększaj sprzedaż online
+            - paragraph [ref=e215]: Wyświetlaj reklamy tam, gdzie znajdują się Twoi klienci, zwiększaj ruch w witrynie i sprzedaż.
+          - generic [ref=e220]:
+            - generic [ref=e221]: Zwiększaj ruch w sklepie stacjonarnym
+            - paragraph [ref=e224]: Zachęcaj użytkowników do odwiedzenia Twojego sklepu i zwiększaj sprzedaż offline.
+          - generic [ref=e229]:
+            - generic [ref=e230]: Prezentuj swoją markę większej liczbie odbiorców
+            - paragraph [ref=e233]: Promuj swoją markę w internecie, aby zwiększać zasięg i zaangażowanie.
+          - generic [ref=e238]:
+            - generic [ref=e239]: Promuj aplikację wśród nowych użytkowników
+            - paragraph [ref=e242]: Prezentuj swoją aplikację odpowiednim użytkownikom, aby zwiększać liczbę pobrań i zaangażowanie.
+      - generic [ref=e245]:
+        - heading "Technologia Google dla Twojej firmy" [level=2] [ref=e249]:
+          - generic [ref=e250]:
+            - text: Technologia Google
+            - text: dla Twojej firmy
+        - list [ref=e252]:
+          - listitem [ref=e253]:
+            - generic [ref=e257]:
+              - heading "Docieraj do klientów w każdym miejscu" [level=3] [ref=e258]
+              - paragraph
+              - paragraph [ref=e259]: Wyświetlaj reklamy w odpowiednim miejscu i momencie przy pomocy rozległego ekosystemu Google Ads. Pozwól, aby sztuczna inteligencja Google określiła formaty reklam, które najskuteczniej zwiększą liczbę konwersji m.in. w YouTube i wyszukiwarce oraz na kartach Discover.
+              - paragraph
+          - listitem [ref=e261]:
+            - generic [ref=e263]:
+              - generic:
+                - img:
+                  - generic:
+                    - generic: Konwersje
+                    - generic: +100 tys.
+            - generic [ref=e264]:
+              - heading "Śledź, analizuj i optymalizuj pod kątem ROI" [level=3] [ref=e265]
+              - paragraph
+              - paragraph [ref=e266]: Śledź konwersje, aby uzyskiwać kompleksowe statystyki odbiorców. Rozwiązania Google do zautomatyzowanej optymalizacji budżetu pomagają wykorzystywać możliwości pozyskiwania nowych klientów przy najwyższym ROI.
+              - paragraph
+          - listitem [ref=e268]:
+            - generic [ref=e270]:
+              - generic:
+                - img:
+                  - generic:
+                    - generic: Miesięczny limit budżetu
+                    - generic: zł
+                    - generic: złzł
+            - generic [ref=e271]:
+              - heading "W pełni kontroluj swój budżet" [level=3] [ref=e272]
+              - paragraph
+              - paragraph [ref=e273]: Otrzymuj rekomendacje, określaj budżet miesięczny i wprowadzaj korekty w dowolnym momencie. Technologia Google ułatwia pomiar wyników i optymalne wykorzystanie wydatków na reklamę.
+              - paragraph
+          - listitem [ref=e275]:
+            - generic [ref=e277]:
+              - heading [level=3]
+              - paragraph
+      - generic [ref=e280]:
+        - heading "Tak wygląda droga do sukcesu" [level=2] [ref=e284]
+        - generic "Studium przypadku numer 1 / 1" [ref=e292]:
+          - generic [ref=e293]:
+            - generic [ref=e294]:
+              - img "Oskar Lipiński, współwłaściciel DAAG, stoi w magazynie firmy." [ref=e297]
+              - group "135% wzrost liczby konwersji" [ref=e298]:
+                - generic [ref=e299]: 135%
+                - generic [ref=e300]: wzrost liczby konwersji
+            - generic [ref=e305]:
+              - heading "“Platforma Google pozwala nam się skupić w jeszcze większym stopniu na budowaniu społeczności wokół naszych produktów”" [level=3] [ref=e306]
+              - paragraph [ref=e307]: – Oskar Lipiński, Dyrektor ds. e-Commerce, DAAG
+              - link "Przeczytaj ich historię" [ref=e310] [cursor=pointer]:
+                - /url: https://business.google.com/pl/resources/success-stories/daag/
+                - img [ref=e312]
+                - text: Przeczytaj ich historię
+      - generic [ref=e318]:
+        - generic [ref=e319]:
+          - heading "Chętnie Ci pomożemy." [level=2] [ref=e320]
+          - generic [ref=e321]: Skorzystaj z naszej bezpłatnej, spersonalizowanej pomocy, aby rozpocząć. Utwórz spersonalizowany plan reklamowy z pomocą eksperta Google Ads.
+        - link "Umów się na rozmowę" [ref=e323] [cursor=pointer]:
+          - /url: https://business.google.com/pl/support/schedule-appointment/
+          - img [ref=e324]
+          - text: Umów się na rozmowę
+      - generic [ref=e329]:
+        - heading "Najczęstsze pytania" [level=2] [ref=e331]
+        - generic [ref=e333]:
+          - button "Przełącz wszystkie panele grupowe" [ref=e335] [cursor=pointer]:
+            - generic [ref=e336]: Rozwiń wszystko
+            - generic [ref=e337]: expand_all
+          - generic [ref=e338]:
+            - generic [ref=e339]:
+              - heading "Jakie rodzaje kampanii Google Ads mogę prowadzić?" [level=3] [ref=e340]:
+                - button "Jakie rodzaje kampanii Google Ads mogę prowadzić?" [ref=e341] [cursor=pointer]:
+                  - generic [ref=e343]: Jakie rodzaje kampanii Google Ads mogę prowadzić?
+                  - generic [ref=e345]: add
+              - generic [ref=e346]:
+                - text: "Możesz wybrać spośród wielu typów kampanii Google Ads:"
+                - list [ref=e347]:
+                  - listitem [ref=e348]: reklamy w sieci wyszukiwania;
+                  - listitem [ref=e349]: kampanie Performance Max;
+                  - listitem [ref=e350]: reklamy displayowe;
+                  - listitem [ref=e351]: kampanie generujące popyt;
+                  - listitem [ref=e352]: reklamy produktowe;
+                  - listitem [ref=e353]: reklamy wideo;
+                  - listitem [ref=e354]: reklamy aplikacji.
+                - text: Typ kampanii, który wybierzesz, zależy od Twoich celów marketingowych, strategii marki i czasu, jaki możesz zainwestować. Dowiedz się, jak wybrać odpowiednią kampanię, odwiedzając stronę pomocy
+                - link [ref=e355] [cursor=pointer]:
+                  - /url: https://support.google.com/google-ads/answer/2567043
+                  - text: Wybór odpowiedniego typu kampanii.
+            - generic [ref=e356]:
+              - heading "Który typ kampanii Google Ads jest odpowiedni dla mojej firmy?" [level=3] [ref=e357]:
+                - button "Który typ kampanii Google Ads jest odpowiedni dla mojej firmy?" [ref=e358] [cursor=pointer]:
+                  - generic [ref=e360]: Który typ kampanii Google Ads jest odpowiedni dla mojej firmy?
+                  - generic [ref=e362]: add
+              - generic [ref=e363]:
+                - text: Najlepsza kampania reklamowa dla Twojej firmy zależy od Twoich celów. Typ kampanii, który wybierzesz, zależy od Twoich celów marketingowych, strategii marki i czasu, jaki możesz zainwestować. Dowiedz się, jak wybrać odpowiedni typ kampanii, odwiedzając stronę pomocy
+                - link [ref=e364] [cursor=pointer]:
+                  - /url: https://support.google.com/google-ads/answer/2567043
+                  - text: Wybór odpowiedniego typu kampanii.
+            - generic [ref=e365]:
+              - heading "Czy Google Ads wykorzystuje sztuczną inteligencję?" [level=3] [ref=e366]:
+                - button "Czy Google Ads wykorzystuje sztuczną inteligencję?" [ref=e367] [cursor=pointer]:
+                  - generic [ref=e369]: Czy Google Ads wykorzystuje sztuczną inteligencję?
+                  - generic [ref=e371]: add
+              - generic [ref=e372]:
+                - text: Tak, rozwiązania reklamowe Google oparte na sztucznej inteligencji wspierają rozwój marketingu, przyciągając nowych klientów, tworząc kreatywne rozwiązania, zwiększając wydajność i poprawiając wyniki biznesowe. Poznaj podstawy i dowiedz się, jak wzmocnić swój marketing za pomocą sztucznej inteligencji, odwiedzając stronę pomocy
+                - link [ref=e373] [cursor=pointer]:
+                  - /url: https://support.google.com/google-ads/answer/13580022?sjid=2416158513707060248-NA
+                  - text: Najważniejsze informacje o AI w Google Ads.
+            - generic [ref=e374]:
+              - heading "Jak mogę wykorzystać Google Ads, aby dotrzeć do potencjalnych klientów?" [level=3] [ref=e375]:
+                - button "Jak mogę wykorzystać Google Ads, aby dotrzeć do potencjalnych klientów?" [ref=e376] [cursor=pointer]:
+                  - generic [ref=e378]: Jak mogę wykorzystać Google Ads, aby dotrzeć do potencjalnych klientów?
+                  - generic [ref=e380]: add
+              - generic [ref=e381]:
+                - text: Google Ads może pomóc Ci znaleźć klientów zainteresowanych produktami lub markami takimi jak Twoje. Dzięki Google Ads Audiences możesz dotrzeć do właściwych osób na podstawie ich pasji lub tematów, które aktywnie badają. Tworząc niestandardowe grupy odbiorców na podstawie słów kluczowych i witryn, możesz dostarczać bardziej trafne reklamy, aby skuteczniej osiągać swoje cele. Dowiedz się, jak dotrzeć do większej liczby potencjalnych klientów, odwiedzając stronę pomocy
+                - link [ref=e382] [cursor=pointer]:
+                  - /url: https://support.google.com/google-ads/answer/10075331?sjid=2416158513707060248-NA
+                  - text: Docieranie do większej liczby idealnych klientów dzięki niestandardowym odbiorcom.
+  - contentinfo [ref=e383]:
+    - heading "Linki w stopce" [level=2] [ref=e384]
+    - generic [ref=e388]:
+      - paragraph [ref=e389]: Obserwuj nas
+      - list [ref=e390]:
+        - listitem [ref=e391]:
+          - link "Obserwuj Google Ads w serwisie X" [ref=e392] [cursor=pointer]:
+            - /url: https://x.com/googleads
+            - img
+        - listitem [ref=e393]:
+          - link "Obserwuj Google Ads na YouTube" [ref=e394] [cursor=pointer]:
+            - /url: https://www.youtube.com/googleads
+            - img
+        - listitem [ref=e395]:
+          - link "Obserwuj Google Ads na Facebooku" [ref=e396] [cursor=pointer]:
+            - /url: https://www.facebook.com/GoogleAds/
+            - img
+    - navigation "Linki w stopce" [ref=e397]:
+      - generic [ref=e398]:
+        - generic [ref=e399]:
+          - heading "Produkty" [level=3] [ref=e400]:
+            - generic [ref=e401]: Produkty
+          - list "Produkty" [ref=e403]:
+            - listitem [ref=e404]:
+              - link "Google Ads" [ref=e405] [cursor=pointer]:
+                - /url: https://business.google.com/pl/google-ads/
+            - listitem [ref=e406]:
+              - link "Reklamy w YouTube" [ref=e407] [cursor=pointer]:
+                - /url: https://business.google.com/pl/ad-solutions/youtube-ads/
+            - listitem [ref=e408]:
+              - link "Merchant Center" [ref=e409] [cursor=pointer]:
+                - /url: https://business.google.com/pl/merchant-center/
+            - listitem [ref=e410]:
+              - link "Profil Firmy" [ref=e411] [cursor=pointer]:
+                - /url: https://business.google.com/pl/business-profile/
+            - listitem [ref=e412]:
+              - link "Google Analytics" [ref=e413] [cursor=pointer]:
+                - /url: https://business.google.com/pl/google-analytics/
+            - listitem [ref=e414]:
+              - link "Manufacturer Center" [ref=e415] [cursor=pointer]:
+                - /url: https://business.google.com/pl/merchant-center/manufacturer-center/
+        - generic [ref=e416]:
+          - heading "Edukacja i pomoc" [level=3] [ref=e417]:
+            - generic [ref=e418]: Edukacja i pomoc
+          - list "Edukacja i pomoc" [ref=e420]:
+            - listitem [ref=e421]:
+              - link "Accelerate with Google" [ref=e422] [cursor=pointer]:
+                - /url: https://business.google.com/pl/accelerate/home/
+            - listitem [ref=e423]:
+              - link "Centrum pomocy Google Ads" [ref=e424] [cursor=pointer]:
+                - /url: https://support.google.com/google-ads/#topic=10286612&utm_source=smb_marketing&utm_medium=referral&utm_campaign=pl-pl-et-awhp-footer&utm_content=
+            - listitem [ref=e425]:
+              - link "Przewodnik po Merchant Center" [ref=e426] [cursor=pointer]:
+                - /url: https://support.google.com/merchants/answer/12159157
+            - listitem [ref=e427]:
+              - link "Przewodnik po Google Ads" [ref=e428] [cursor=pointer]:
+                - /url: https://support.google.com/google-ads/answer/6146252?utm_medium=et&utm_campaign=pl&utm_source=ww-ww-et-b2bfooter_adwords
+            - listitem [ref=e429]:
+              - link "Społeczność reklamodawców Google" [ref=e430] [cursor=pointer]:
+                - /url: https://support.google.com/google-ads/community?ctx=lithium
+        - generic [ref=e431]:
+          - heading "Dla partnerów i programistów" [level=3] [ref=e432]:
+            - generic [ref=e433]: Dla partnerów i programistów
+          - list "Dla partnerów i programistów" [ref=e435]:
+            - listitem [ref=e436]:
+              - link "Google Partners" [ref=e437] [cursor=pointer]:
+                - /url: https://partnersdirectory.withgoogle.com/?premier=true
+            - listitem [ref=e438]:
+              - link "Strona Google Developers" [ref=e439] [cursor=pointer]:
+                - /url: https://developers.google.com/
+            - listitem [ref=e440]:
+              - link "Skrypty Google Ads" [ref=e441] [cursor=pointer]:
+                - /url: https://developers.google.com/google-ads/scripts/docs/start
+            - listitem [ref=e442]:
+              - link "Tagi remarketingowe Google Ads" [ref=e443] [cursor=pointer]:
+                - /url: https://support.google.com/google-ads/answer/2476688
+            - listitem [ref=e444]:
+              - link "Interfejs Google Ads API" [ref=e445] [cursor=pointer]:
+                - /url: https://business.google.com/pl/ad-tools/google-ads-api/
+        - generic [ref=e446]:
+          - heading "Inne rozwiązania" [level=3] [ref=e447]:
+            - generic [ref=e448]: Inne rozwiązania
+          - list "Inne rozwiązania" [ref=e450]:
+            - listitem [ref=e451]:
+              - link "Workspace" [ref=e452] [cursor=pointer]:
+                - /url: https://workspace.google.com/
+            - listitem [ref=e453]:
+              - link "Chrome" [ref=e454] [cursor=pointer]:
+                - /url: https://www.google.com/chrome/
+            - listitem [ref=e455]:
+              - link "Google Cloud" [ref=e456] [cursor=pointer]:
+                - /url: https://cloud.google.com/
+            - listitem [ref=e457]:
+              - link "AdSense" [ref=e458] [cursor=pointer]:
+                - /url: https://adsense.google.com/start/
+            - listitem [ref=e459]:
+              - link "AdMob" [ref=e460] [cursor=pointer]:
+                - /url: https://admob.google.com/home/get-started/
+    - paragraph [ref=e462]: Rzeczywiste wyniki będą się różnić w zależności od reklamodawcy.
+    - generic [ref=e463]:
+      - link "Google" [ref=e465] [cursor=pointer]:
+        - /url: https://www.google.com
+        - img [ref=e466]
+      - list [ref=e468]:
+        - listitem [ref=e469]:
+          - link "Prywatność" [ref=e470] [cursor=pointer]:
+            - /url: https://policies.google.com/privacy?authuser=0
+        - listitem [ref=e471]:
+          - link "Warunki" [ref=e472] [cursor=pointer]:
+            - /url: https://policies.google.com/terms
+        - listitem [ref=e473]:
+          - link "Wszystko o Google" [ref=e474] [cursor=pointer]:
+            - /url: https://www.google.com/intl/pl/about
+        - listitem [ref=e475]:
+          - link "Nasze usługi Google" [ref=e476] [cursor=pointer]:
+            - /url: https://www.google.com/intl/pl/about/products
+      - list [ref=e477]:
+        - listitem [ref=e478]:
+          - link "Pomoc" [ref=e479] [cursor=pointer]:
+            - /url: https://support.google.com/google-ads/
+            - img [ref=e480]
+            - text: Pomoc
+        - listitem [ref=e482]:
+          - combobox "Zmień język lub region" [ref=e483]:
+            - option "Australia and New Zealand - English"
+            - option "Brasil - Português (Brasil)"
+            - option "Canada - English"
+            - option "Canada - Français"
+            - option "Česká Republika - Čeština"
+            - option "Deutschland - Deutsch"
+            - option "English (Global)"
+            - option "España - Español"
+            - option "Español (Latinoamérica)"
+            - option "France - Français"
+            - option "India - English"
+            - option "Indonesia - Bahasa Indonesia"
+            - option "Italia - Italiano"
+            - option "Nederland - Nederlands"
+            - option "Polska - Polski" [selected]
+            - option "Русский"
+            - option "România - Română"
+            - option "Sverige - Svenska"
+            - option "Türkiye - Türkçe"
+            - option "United Kingdom - English"
+            - option "United States - English"
+            - option "Việt Nam - Tiếng Việt"
+            - option "ישראל - עברית"
+            - option "العربية"
+            - option "简体中文"
+            - option "繁體中文"
+            - option "日本 - 日本語"
+            - option "대한민국 - 한국어"
+            - option "ไทย - ไทย"
+            - option "Україна - Українська"
+        - listitem

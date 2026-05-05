@@ -1,0 +1,539 @@
+- generic [ref=e1]:
+  - generic [ref=e4]:
+    - banner "Górne menu" [ref=e6]:
+      - status
+      - generic [ref=e7]:
+        - button [expanded] [ref=e8] [cursor=pointer]:
+          - img [ref=e11]: menu
+        - heading "Google Ads – powrót na stronę początkową" [level=1] [ref=e13]:
+          - button "Google Ads – powrót na stronę początkową" [ref=e14]:
+            - img [ref=e16] [cursor=pointer]
+      - generic [ref=e25]:
+        - generic [ref=e27]:
+          - generic [ref=e33]:
+            - img [ref=e36]: search
+            - generic [ref=e37]:
+              - generic:
+                - generic: Wyszukaj stronę lub kampanię
+              - combobox "Wyszukaj stronę lub kampanię" [ref=e38]
+          - text: Szukaj
+        - generic [ref=e39]:
+          - button "Wygląd" [ref=e42] [cursor=pointer]:
+            - generic [ref=e44]:
+              - img [ref=e45]: responsive_layout
+              - text: Wygląd
+          - button "Odśwież" [ref=e49] [cursor=pointer]:
+            - generic [ref=e51]:
+              - img [ref=e52]: refresh
+              - text: Odśwież
+          - button "Otwórz panel szybkiej pomocy" [ref=e55] [cursor=pointer]:
+            - generic [ref=e56]:
+              - text: Pomoc
+              - generic [ref=e57]:
+                - img [ref=e58]: help_outline
+                - text: Pomoc
+          - generic [ref=e62]:
+            - button "Powiadomienia" [ref=e65] [cursor=pointer]:
+              - generic [ref=e67]:
+                - img [ref=e70]: notifications
+                - generic [ref=e72]: Powiadomienia
+            - dialog "Powiadomienia" [ref=e74]:
+              - generic [ref=e78]:
+                - generic [ref=e79]:
+                  - img "Ikona powiadomienia będącego sugestią" [ref=e81]: lightbulb_outline
+                  - button "Skonfiguruj śledzenie konwersji Wyświetl" [ref=e82] [cursor=pointer]:
+                    - text: Skonfiguruj śledzenie konwersji
+                    - generic [ref=e83]: Wyświetl
+                - button "Zamknij powiadomienia" [ref=e84] [cursor=pointer]:
+                  - img [ref=e87]: clear
+      - button "Konto Google" [ref=e94] [cursor=pointer]:
+        - img "Konto Google (pawel@mamcarz.com)" [ref=e95]
+    - generic [ref=e98]:
+      - generic [ref=e100]:
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - button "Utwórz" [ref=e104] [cursor=pointer]:
+              - img [ref=e107]
+            - generic [ref=e109]: Utwórz
+          - menu [ref=e110]:
+            - menu [ref=e111]:
+              - menuitem "Kampanie" [ref=e114] [cursor=pointer]:
+                - generic [ref=e115]:
+                  - img [ref=e117]: campaign
+                  - generic [ref=e118]: Kampanie
+              - menuitem "Cele" [ref=e121] [cursor=pointer]:
+                - generic [ref=e122]:
+                  - img [ref=e124]: rewarded_ads
+                  - generic [ref=e125]: Cele
+              - menuitem "Narzędzia" [ref=e128] [cursor=pointer]:
+                - generic [ref=e129]:
+                  - img [ref=e131]: construction
+                  - generic [ref=e132]: Narzędzia
+              - menuitem "Płatności" [ref=e135] [cursor=pointer]:
+                - generic [ref=e136]:
+                  - img [ref=e138]: credit_card
+                  - generic [ref=e139]: Płatności
+              - menuitem "Administrator" [ref=e142] [cursor=pointer]:
+                - generic [ref=e143]:
+                  - img [ref=e145]: settings
+                  - generic [ref=e146]: Administrator
+        - navigation [ref=e147]:
+          - menu [ref=e148]:
+            - generic [ref=e149]:
+              - menuitem "Przegląd" [ref=e152] [cursor=pointer]:
+                - generic [ref=e154]: Przegląd
+              - menuitem "Rekomendacje" [ref=e158] [cursor=pointer]:
+                - generic [ref=e160]: Rekomendacje
+              - menuitem "Statystyki i raporty" [ref=e165] [cursor=pointer]:
+                - generic [ref=e166]:
+                  - generic [ref=e167]: Statystyki i raporty
+                  - img [ref=e170]: expand_more
+              - menuitem "Kampanie" [ref=e173] [cursor=pointer]:
+                - generic [ref=e174]:
+                  - generic [ref=e175]: Kampanie
+                  - img [ref=e178]: expand_more
+              - menuitem "Komponenty" [ref=e181] [cursor=pointer]:
+                - generic [ref=e182]:
+                  - generic [ref=e183]: Komponenty
+                  - img [ref=e186]: expand_more
+              - menuitem "Produkty" [ref=e189] [cursor=pointer]:
+                - generic [ref=e190]:
+                  - generic [ref=e191]: Produkty
+                  - img [ref=e194]: expand_more
+              - menuitem "Listy odbiorców, słowa kluczowe i treść" [ref=e197] [cursor=pointer]:
+                - generic [ref=e198]:
+                  - generic [ref=e199]: Listy odbiorców, słowa kluczowe i treść
+                  - img [ref=e202]: expand_more
+              - menuitem "Historia zmian" [ref=e205] [cursor=pointer]:
+                - generic [ref=e207]: Historia zmian
+          - group [ref=e211]:
+            - generic [ref=e212]:
+              - generic [ref=e213]:
+                - generic "Pobierz aplikację Google Ads" [ref=e214]:
+                  - img [ref=e216]: app_promo
+                  - generic [ref=e217]: Pobierz aplikację Google Ads
+                - button "Pobierz aplikację Google Ads – zamknij okno" [ref=e218] [cursor=pointer]:
+                  - img [ref=e221]: close
+              - generic [ref=e223]:
+                - img "QR Code for Ads Mobile" [ref=e224]
+                - generic "Zeskanuj kod, aby pobrać aplikację mobilną i otrzymywać aktualizacje kampanii, gdziekolwiek jesteś" [ref=e225]
+      - generic [ref=e226]:
+        - generic [ref=e229]:
+          - button "Widok (2 filtry) Wszystkie kampanie" [ref=e234] [cursor=pointer]:
+            - generic [ref=e235]:
+              - generic [ref=e236]: Widok (2 filtry)
+              - generic [ref=e237]:
+                - img [ref=e240]: home
+                - button "Wszystkie kampanie" [ref=e241]
+            - img [ref=e243]: arrow_drop_down
+          - button "Kampanie (1) Wybierz kampanię" [ref=e248] [cursor=pointer]:
+            - generic [ref=e249]:
+              - generic [ref=e250]: Kampanie (1)
+              - generic [ref=e251]: Wybierz kampanię
+            - img [ref=e253]: arrow_drop_down
+        - group [ref=e257]:
+          - generic [ref=e258]:
+            - generic [ref=e259] [cursor=pointer]:
+              - generic: Filtry
+            - generic: "Zastosowane filtry:"
+            - grid "Zastosowane filtry:" [ref=e260]:
+              - 'row "Stan kampanii: Włączone, Wstrzymane" [ref=e262] [cursor=pointer]':
+                - 'gridcell "Stan kampanii: Włączone, Wstrzymane" [ref=e263]':
+                  - 'button "Stan kampanii: Włączone, Wstrzymane" [ref=e264]': "Stan kampanii: Włączone, Wstrzymane"
+              - 'row "Stan grupy reklam: Włączone, Wstrzymane" [ref=e266] [cursor=pointer]':
+                - 'gridcell "Stan grupy reklam: Włączone, Wstrzymane" [ref=e267]':
+                  - 'button "Stan grupy reklam: Włączone, Wstrzymane" [ref=e268]': "Stan grupy reklam: Włączone, Wstrzymane"
+              - row [ref=e269]:
+                - gridcell [ref=e270]:
+                  - combobox "Dodaj filtr" [ref=e271]
+                  - status [ref=e272]
+            - button "Zapisz" [ref=e275] [cursor=pointer]:
+              - generic [ref=e276]:
+                - img [ref=e278]: save
+                - generic [ref=e279]: Zapisz
+        - generic [ref=e282]:
+          - generic [ref=e284]:
+            - heading "Przegląd" [level=2] [ref=e287]
+            - generic [ref=e290]:
+              - generic [ref=e292] [cursor=pointer]:
+                - generic [ref=e293]: Niestandardowy zakres dat
+                - generic [ref=e295]:
+                  - button "18 mar – 14 kwi 2026 Nie dotyczy" [ref=e297]:
+                    - generic [ref=e298]: 18 mar – 14 kwi 2026
+                    - img [ref=e300]: arrow_drop_down
+                  - generic [ref=e301]:
+                    - button "Wstecz" [ref=e302]:
+                      - img [ref=e305]: chevron_left
+                    - button "Dalej" [ref=e307]:
+                      - img [ref=e310]: chevron_right
+              - button "Wyświetl ostatnie 30 dni" [ref=e312] [cursor=pointer]:
+                - generic [ref=e313]: Wyświetl ostatnie 30 dni
+          - main [ref=e319]:
+            - generic [ref=e321]:
+              - application [ref=e324]:
+                - application [ref=e326]:
+                  - generic [ref=e327]:
+                    - button "Nowa kampania" [ref=e331] [cursor=pointer]:
+                      - img [ref=e333]: add
+                      - generic [ref=e334]: Nowa kampania
+                    - generic [ref=e335]:
+                      - button "Przycisk do pobrania treści z kart na stronie Przegląd w wybranym formacie." [ref=e338] [cursor=pointer]:
+                        - generic [ref=e340]:
+                          - img [ref=e341]: file_download
+                          - text: Pobierz
+                      - button "Przycisk do przesyłania opinii o stronie Przegląd." [ref=e345] [cursor=pointer]:
+                        - generic [ref=e347]:
+                          - img [ref=e348]: feedback
+                          - text: Opinia
+                  - list [ref=e350]:
+                    - generic [ref=e351]:
+                      - listitem "Karta 1 z 0. Użyj strzałek, by przejść do innej karty, i tabulatora, by wpisać treść karty." [ref=e352]:
+                        - generic [ref=e354]:
+                          - heading "Seria czasowa" [level=1]
+                          - generic [ref=e357]:
+                            - generic [ref=e358]:
+                              - generic [ref=e363]:
+                                - generic [ref=e365]:
+                                  - 'button "Wybierz 1 z 4 wskaźników do przedstawienia na karcie Wykres z serią czasową. Obecnie wybrany wskaźnik: Kliknięcia" [ref=e370] [cursor=pointer]':
+                                    - generic [ref=e371]:
+                                      - img [ref=e373]: arrow_drop_down
+                                      - generic [ref=e374]: Kliknięcia
+                                  - generic [ref=e376]: "0"
+                                  - 'button ": 0 w tym okresie. Ukryj te dane na wykresie. Tutaj zliczane są wszystkie kliknięcia Twojej reklamy. Sposób gromadzenia tych danych w sieci wyszukiwania i reklamowej na komputerach oraz urządzeniach mobilnych jest akredytowany przez radę Media Rating Council (MRC).. . ." [ref=e377] [cursor=pointer]'
+                                - generic [ref=e379]:
+                                  - 'button "Wybierz 2 z 4 wskaźników do przedstawienia na karcie Wykres z serią czasową. Obecnie wybrany wskaźnik: Wyświetlenia" [ref=e384] [cursor=pointer]':
+                                    - generic [ref=e385]:
+                                      - img [ref=e387]: arrow_drop_down
+                                      - generic [ref=e388]: Wyświetlenia
+                                  - generic [ref=e390]: "0"
+                                  - 'button ": 0 w tym okresie. Ukryj te dane na wykresie. Wyświetlenie jest naliczane za każdym razem, kiedy Twoja reklama pojawi się w sieciach reklamowych Google, np. w wyszukiwarce Google, YouTube lub aplikacjach i witrynach innych wydawców. Wyświetlenia wskazują, jak często użytkownicy widzą Twoją reklamę.. . ." [ref=e391] [cursor=pointer]'
+                                - generic [ref=e393]:
+                                  - 'button "Wybierz 3 z 4 wskaźników do przedstawienia na karcie Wykres z serią czasową. Obecnie wybrany wskaźnik: Śr. CPC" [ref=e398] [cursor=pointer]':
+                                    - generic [ref=e399]:
+                                      - img [ref=e401]: arrow_drop_down
+                                      - generic [ref=e402]: Śr. CPC
+                                  - generic [ref=e404]: 0,00 zł
+                                  - 'button ": 0,00 zł. Pokaż te dane na wykresie. Średni koszt kliknięcia (CPC) to kwota, jaką płacisz za reklamę, podzielona przez łączną liczbę kliknięć tej reklamy. Jeśli użytkownicy kliknęli reklamę dwa razy, przy czym jedno kliknięcie kosztowało 0,80 zł, a drugie 1,60 zł, to średni CPC tych kliknięć wynosi 1,20 zł.. . ." [ref=e405] [cursor=pointer]'
+                                - generic [ref=e407]:
+                                  - 'button "Wybierz 4 z 4 wskaźników do przedstawienia na karcie Wykres z serią czasową. Obecnie wybrany wskaźnik: Koszt" [ref=e412] [cursor=pointer]':
+                                    - generic [ref=e413]:
+                                      - img [ref=e415]: arrow_drop_down
+                                      - generic [ref=e416]: Koszt
+                                  - generic [ref=e418]: 0,00 zł
+                                  - 'button ": 0,00 zł. Pokaż te dane na wykresie. Koszt jest sumą Twoich wydatków w tym okresie. . ." [ref=e419] [cursor=pointer]'
+                              - generic [ref=e421]:
+                                - button "Dane" [ref=e422] [cursor=pointer]:
+                                  - generic [ref=e424]:
+                                    - img [ref=e426]: add_chart
+                                    - generic [ref=e427]: Dane
+                                - button "Dostosuj" [ref=e431] [cursor=pointer]:
+                                  - generic [ref=e433]:
+                                    - img [ref=e435]: tune
+                                    - generic [ref=e436]: Dostosuj
+                                - button "Menu z dodatkowymi opcjami karty. Aby je otworzyć, naciśnij Enter." [ref=e439] [cursor=pointer]:
+                                  - img [ref=e442]: more_vert
+                            - application [ref=e446]:
+                              - generic [ref=e448]: "Wykres z serią czasową: Kliknięcia i Wyświetlenia w okresie Od śr., 18 mar 2026 do wt., 14 kwi 2026. Do nawigacji użyj klawiszy strzałek."
+                      - listitem "Karta 1 z 0. Użyj strzałek, by przejść do innej karty, i tabulatora, by wpisać treść karty." [ref=e449]:
+                        - generic [ref=e451]:
+                          - generic [ref=e452]:
+                            - generic [ref=e453]:
+                              - img [ref=e455]: troubleshoot
+                              - heading "Diagnostyka konta" [level=1] [ref=e456]
+                            - button "Menu z dodatkowymi opcjami karty. Aby je otworzyć, naciśnij Enter." [ref=e460] [cursor=pointer]:
+                              - img [ref=e463]: more_vert
+                          - button "W ubiegłym tygodniu kampania nie wyświetlała reklam Mogą występować niewymienione tu problemy, które uniemożliwiają wyświetlanie reklam. Więcej informacji o rozwiązywaniu problemów z wyświetlaniem reklam przez kampanię" [ref=e472] [cursor=pointer]:
+                            - generic [ref=e473]:
+                              - generic [ref=e474]:
+                                - generic [ref=e476]: W ubiegłym tygodniu kampania nie wyświetlała reklam
+                                - generic [ref=e477]:
+                                  - text: Mogą występować niewymienione tu problemy, które uniemożliwiają wyświetlanie reklam.
+                                  - link "Więcej informacji o rozwiązywaniu problemów z wyświetlaniem reklam przez kampanię" [ref=e479]:
+                                    - /url: https://support.google.com/google-ads/?p=help_9208915&hl=pl
+                              - paragraph
+                            - img [ref=e480]: expand_less
+                    - generic [ref=e483]:
+                      - listitem "Karta 1 z 0. Użyj strzałek, by przejść do innej karty, i tabulatora, by wpisać treść karty." [ref=e484]:
+                        - generic [ref=e486]:
+                          - generic [ref=e487]:
+                            - generic [ref=e488]:
+                              - img [ref=e490]: lightbulb
+                              - heading "Rekomendacja" [level=1] [ref=e491]
+                            - button "Menu z dodatkowymi opcjami karty. Aby je otworzyć, naciśnij Enter." [ref=e495] [cursor=pointer]:
+                              - img [ref=e498]: more_vert
+                          - generic [ref=e502]:
+                            - generic [ref=e506]: Skonfiguruj śledzenie konwersji
+                            - generic [ref=e507]:
+                              - generic [ref=e508]: Zobacz, które kliknięcia pozwoliły Ci zdobyć nowych klientów
+                              - generic [ref=e509]:
+                                - text: Polecane, ponieważ śledzenie konwersji zapewnia dostęp do funkcji, które usprawniają realizację celów biznesowych
+                                - button "Więcej informacji" [ref=e510] [cursor=pointer]:
+                                  - img [ref=e512]: help_outline
+                            - button "Wyświetl" [ref=e516] [cursor=pointer]:
+                              - generic [ref=e517]: Wyświetl
+                      - listitem "Karta 1 z 0. Użyj strzałek, by przejść do innej karty, i tabulatora, by wpisać treść karty." [ref=e519]:
+                        - generic [ref=e521]:
+                          - generic [ref=e522]:
+                            - generic [ref=e523]:
+                              - img [ref=e525]: bar_chart
+                              - heading "Kampanie" [level=1] [ref=e526]
+                            - button "Menu z dodatkowymi opcjami karty. Aby je otworzyć, naciśnij Enter." [ref=e530] [cursor=pointer]:
+                              - img [ref=e533]: more_vert
+                          - region "Kampanie posortowane według Koszt, od największej wartości. Do wybierania pozycji służą klawisze strzałek, edytowanie budżetu włącza się klawiszem E, a stronę z ogólnymi informacjami o danej kampanii można wyświetlić klawiszem Enter" [ref=e536]:
+                            - generic [ref=e537]: Podsumowanie skuteczności kampanii
+                            - generic:
+                              - generic: Kampanie posortowane według Koszt, od największej wartości. Do wybierania pozycji służą klawisze strzałek, edytowanie budżetu włącza się klawiszem E, a stronę z ogólnymi informacjami o danej kampanii można wyświetlić klawiszem Enter
+                            - generic [ref=e539]:
+                              - generic [ref=e550] [cursor=pointer]:
+                                - img [ref=e552]: circle
+                                - generic [ref=e553]: "Campaign #1"
+                              - generic [ref=e554]:
+                                - 'button "Wybierz wskaźnik 1 z 3 wskaźników do przedstawienia na karcie Kampanie. Obecnie wybrany wskaźnik: Koszt" [ref=e556]':
+                                  - 'generic "Wybierz wskaźnik 1 z 3 wskaźników do przedstawienia na karcie Kampanie. Obecnie wybrany wskaźnik: Koszt" [ref=e557] [cursor=pointer]':
+                                    - generic [ref=e558]: Koszt
+                                    - text: arrow_drop_down
+                                - generic [ref=e565]: 0,00 zł
+                              - generic [ref=e566]:
+                                - 'button "Wybierz wskaźnik 2 z 3 wskaźników do przedstawienia na karcie Kampanie. Obecnie wybrany wskaźnik: Kliknięcia" [ref=e568]':
+                                  - 'generic "Wybierz wskaźnik 2 z 3 wskaźników do przedstawienia na karcie Kampanie. Obecnie wybrany wskaźnik: Kliknięcia" [ref=e569] [cursor=pointer]':
+                                    - generic [ref=e570]: Kliknięcia
+                                    - text: arrow_drop_down
+                                - generic [ref=e577]: "0"
+                              - generic [ref=e578]:
+                                - 'button "Wybierz wskaźnik 3 z 3 wskaźników do przedstawienia na karcie Kampanie. Obecnie wybrany wskaźnik: CTR" [ref=e580]':
+                                  - 'generic "Wybierz wskaźnik 3 z 3 wskaźników do przedstawienia na karcie Kampanie. Obecnie wybrany wskaźnik: CTR" [ref=e581] [cursor=pointer]':
+                                    - generic [ref=e582]: CTR
+                                    - text: arrow_drop_down
+                                - generic [ref=e589]: 0,00%
+                          - generic [ref=e590]:
+                            - button "Otwórz tabelę kampanii" [ref=e592] [cursor=pointer]:
+                              - generic [ref=e593]: Wszystkie kampanie
+                            - generic [ref=e595]:
+                              - generic:
+                                - img: keyboard_arrow_left
+                              - generic [ref=e596]: 1 / 1
+                              - generic:
+                                - img: keyboard_arrow_right
+                      - listitem "Karta 1 z 0. Użyj strzałek, by przejść do innej karty, i tabulatora, by wpisać treść karty." [ref=e597]:
+                        - generic [ref=e599]:
+                          - generic [ref=e600]:
+                            - generic [ref=e601]:
+                              - img [ref=e603]: add_ad
+                              - heading "Reklamy" [level=1] [ref=e604]
+                            - button "Menu z dodatkowymi opcjami karty. Aby je otworzyć, naciśnij Enter." [ref=e608] [cursor=pointer]:
+                              - img [ref=e611]: more_vert
+                          - list "Klawisze strzałek w lewo i w prawo służą do przechodzenia między reklamami, klawisz E – do edycji, klawisz C – do kopiowania, a klawisz Enter umożliwia przejście do adresu URL reklamy." [ref=e614]:
+                            - listitem [ref=e615]:
+                              - generic [ref=e616]:
+                                - 'link "Miejsce znalezienia: campaign o nazwie Campaign #1 i stanie aktywna" [ref=e617] [cursor=pointer]':
+                                  - generic [ref=e620]: "Campaign #1"
+                                - generic [ref=e621]: ›
+                                - 'link "ad group o nazwie AdGroup ID: 28273584496 Created at 2016-02-21T23:03:42.879-08:00 i stanie aktywna" [ref=e622] [cursor=pointer]':
+                                  - generic [ref=e625]: "AdGroup ID: 28273584496 Created at 2016-02-21T23:03:42.879-08:00"
+                            - listitem [ref=e626]:
+                              - generic [ref=e630]:
+                                - generic [ref=e632]:
+                                  - generic [ref=e633]:
+                                    - generic [ref=e634]: Wiadomosci SMS MMS Głos
+                                    - generic [ref=e636]: "-"
+                                    - generic [ref=e638]: przypominamy.com
+                                  - generic [ref=e640]:
+                                    - generic [ref=e641]: Reklama
+                                    - text: www.przypominamy.com
+                                - generic [ref=e644]:
+                                  - generic [ref=e645]: Wysylaj SMS, MMS, IVR, VMS
+                                  - generic [ref=e647]: wiadomości głosowe, drzewo IVR
+                            - generic [ref=e648]:
+                              - generic [ref=e649]: Reklama
+                              - generic [ref=e651]:
+                                - img [ref=e653]: circle
+                                - generic [ref=e654]: Aktywna
+                            - listitem [ref=e655]:
+                              - generic [ref=e656]: Stan
+                              - generic [ref=e657]: Odpowiednia
+                            - generic [ref=e658]:
+                              - generic [ref=e659]: Wyświetlenia
+                              - generic [ref=e660]: "0"
+                            - 'listitem "Wybierz wskaźnik 1 z 2 wskaźników do przedstawienia na karcie Reklamy. Obecnie wybrany wskaźnik: Kliknięcia" [ref=e663]':
+                              - 'generic "Wybierz wskaźnik 1 z 2 wskaźników do przedstawienia na karcie Reklamy. Obecnie wybrany wskaźnik: Kliknięcia" [ref=e664] [cursor=pointer]':
+                                - generic [ref=e665]: Kliknięcia
+                                - text: arrow_drop_down
+                            - generic [ref=e666]: "0"
+                            - 'listitem "Wybierz wskaźnik 2 z 2 wskaźników do przedstawienia na karcie Reklamy. Obecnie wybrany wskaźnik: CTR" [ref=e669]':
+                              - 'generic "Wybierz wskaźnik 2 z 2 wskaźników do przedstawienia na karcie Reklamy. Obecnie wybrany wskaźnik: CTR" [ref=e670] [cursor=pointer]':
+                                - generic [ref=e671]: CTR
+                                - text: arrow_drop_down
+                            - generic [ref=e672]: 0,00%
+                            - generic [ref=e673]: Wiadomosci SMS MMS Głos - przypominamy.com
+                          - generic [ref=e674]:
+                            - generic [ref=e675]:
+                              - button "Otwórz tabelę reklam" [ref=e676] [cursor=pointer]:
+                                - generic [ref=e677]: Wszystkie reklamy
+                              - button "Otwórz tabelę komponentów" [ref=e679] [cursor=pointer]:
+                                - generic [ref=e680]: Wszystkie komponenty
+                            - generic [ref=e682]:
+                              - generic:
+                                - img: keyboard_arrow_left
+                              - generic [ref=e683]: 1 / 1
+                              - generic:
+                                - img: keyboard_arrow_right
+                      - listitem "Karta 1 z 0. Użyj strzałek, by przejść do innej karty, i tabulatora, by wpisać treść karty." [ref=e684]:
+                        - generic [ref=e686]:
+                          - generic [ref=e687]:
+                            - generic [ref=e688]:
+                              - img [ref=e690]: query_stats
+                              - heading "Słowa kluczowe" [level=1] [ref=e691]
+                            - generic [ref=e693]:
+                              - link "Dodaj słowo kluczowe" [ref=e694] [cursor=pointer]:
+                                - generic [ref=e695]:
+                                  - img [ref=e697]: add
+                                  - text: Dodaj słowo kluczowe
+                              - button "Menu z dodatkowymi opcjami karty. Aby je otworzyć, naciśnij Enter." [ref=e700] [cursor=pointer]:
+                                - img [ref=e703]: more_vert
+                          - generic "Słowa kluczowe posortowane według Koszt, od największej wartości. Do wybierania pozycji służą klawisze strzałek, edytowanie budżetu włącza się klawiszem E, a stronę z ogólnymi informacjami o danym słowie kluczowym można wyświetlić klawiszem Enter" [ref=e706]:
+                            - generic [ref=e707]: Podsumowanie skuteczności słów kluczowych
+                            - generic:
+                              - generic: Słowa kluczowe posortowane według Koszt, od największej wartości. Do wybierania pozycji służą klawisze strzałek, edytowanie budżetu włącza się klawiszem E, a stronę z ogólnymi informacjami o danym słowie kluczowym można wyświetlić klawiszem Enter
+                            - generic [ref=e709]:
+                              - generic [ref=e713]:
+                                - generic [ref=e720] [cursor=pointer]:
+                                  - img [ref=e722]: circle
+                                  - generic [ref=e723]: sms
+                                - generic [ref=e730] [cursor=pointer]:
+                                  - img [ref=e732]: circle
+                                  - generic [ref=e733]: api
+                                - generic [ref=e740] [cursor=pointer]:
+                                  - img [ref=e742]: circle
+                                  - generic [ref=e743]: mms
+                                - generic [ref=e750] [cursor=pointer]:
+                                  - img [ref=e752]: circle
+                                  - generic [ref=e753]: free mms
+                                - generic [ref=e760] [cursor=pointer]:
+                                  - img [ref=e762]: circle
+                                  - generic [ref=e763]: send free mms
+                              - generic [ref=e765]:
+                                - 'button "Wybierz wskaźnik 1 z 3 wskaźników do przedstawienia na karcie Słowa kluczowe. Obecnie wybrany wskaźnik: Koszt" [ref=e767]':
+                                  - 'generic "Wybierz wskaźnik 1 z 3 wskaźników do przedstawienia na karcie Słowa kluczowe. Obecnie wybrany wskaźnik: Koszt" [ref=e768] [cursor=pointer]':
+                                    - generic [ref=e769]: Koszt
+                                    - text: arrow_drop_down
+                                - generic [ref=e771]:
+                                  - generic [ref=e776]: 0,00 zł
+                                  - generic [ref=e781]: 0,00 zł
+                                  - generic [ref=e786]: 0,00 zł
+                                  - generic [ref=e791]: 0,00 zł
+                                  - generic [ref=e796]: 0,00 zł
+                              - generic [ref=e798]:
+                                - 'button "Wybierz wskaźnik 2 z 3 wskaźników do przedstawienia na karcie Słowa kluczowe. Obecnie wybrany wskaźnik: Kliknięcia" [ref=e800]':
+                                  - 'generic "Wybierz wskaźnik 2 z 3 wskaźników do przedstawienia na karcie Słowa kluczowe. Obecnie wybrany wskaźnik: Kliknięcia" [ref=e801] [cursor=pointer]':
+                                    - generic [ref=e802]: Kliknięcia
+                                    - text: arrow_drop_down
+                                - generic [ref=e804]:
+                                  - generic [ref=e809]: "0"
+                                  - generic [ref=e814]: "0"
+                                  - generic [ref=e819]: "0"
+                                  - generic [ref=e824]: "0"
+                                  - generic [ref=e829]: "0"
+                              - generic [ref=e831]:
+                                - 'button "Wybierz wskaźnik 3 z 3 wskaźników do przedstawienia na karcie Słowa kluczowe. Obecnie wybrany wskaźnik: CTR" [ref=e833]':
+                                  - 'generic "Wybierz wskaźnik 3 z 3 wskaźników do przedstawienia na karcie Słowa kluczowe. Obecnie wybrany wskaźnik: CTR" [ref=e834] [cursor=pointer]':
+                                    - generic [ref=e835]: CTR
+                                    - text: arrow_drop_down
+                                - generic [ref=e837]:
+                                  - generic [ref=e842]: 0,00%
+                                  - generic [ref=e847]: 0,00%
+                                  - generic [ref=e852]: 0,00%
+                                  - generic [ref=e857]: 0,00%
+                                  - generic [ref=e862]: 0,00%
+                          - generic [ref=e864]:
+                            - generic [ref=e865]:
+                              - button "Otwórz tabelę słów kluczowych" [ref=e866] [cursor=pointer]:
+                                - generic [ref=e867]: Słowa kluczowe
+                              - button "Wyświetl tabelę wykluczających słów kluczowych" [ref=e869] [cursor=pointer]:
+                                - generic [ref=e870]: Wykluczające słowa kluczowe
+                            - generic [ref=e872]:
+                              - generic:
+                                - img: keyboard_arrow_left
+                              - generic [ref=e873]: 1 / 3
+                              - img [ref=e875] [cursor=pointer]: keyboard_arrow_right
+                      - listitem "Karta 1 z 0. Użyj strzałek, by przejść do innej karty, i tabulatora, by wpisać treść karty." [ref=e876]:
+                        - generic [ref=e878]:
+                          - generic [ref=e879]:
+                            - generic [ref=e880]:
+                              - img [ref=e882]: payments
+                              - heading "Płatności" [level=1] [ref=e883]
+                            - button "Menu z dodatkowymi opcjami karty. Aby je otworzyć, naciśnij Enter." [ref=e887] [cursor=pointer]:
+                              - img [ref=e890]: more_vert
+                          - generic [ref=e894]:
+                            - generic [ref=e895]:
+                              - generic [ref=e896]:
+                                - generic [ref=e897]: Dostępne środki na dzień 26 kwi 2026
+                                - generic [ref=e898]: 0,00 zł
+                              - button "Dodaj środki" [ref=e900] [cursor=pointer]:
+                                - generic [ref=e902]: Dodaj środki
+                            - generic [ref=e906]:
+                              - generic [ref=e907]: Ostatnia płatność
+                              - generic [ref=e908]:
+                                - generic [ref=e909]: 60,00 zł
+                                - generic [ref=e910]: 10 lis 2016
+                                - generic [ref=e911]: "Płatność: Mastercard •••• 2657"
+                          - generic [ref=e913]:
+                            - button "Wyświetl płatności" [ref=e914] [cursor=pointer]:
+                              - generic [ref=e915]: Wyświetl płatności
+                            - button "Wyświetl wyciągi z konta i dokumenty podatkowe" [ref=e917] [cursor=pointer]:
+                              - generic [ref=e918]: Wyświetl wyciągi z konta i dokumenty podatkowe
+                      - listitem "Karta 1 z 0. Użyj strzałek, by przejść do innej karty, i tabulatora, by wpisać treść karty." [ref=e920]:
+                        - generic [ref=e922]:
+                          - generic [ref=e923]:
+                            - generic [ref=e924]:
+                              - img [ref=e926]: bar_chart
+                              - heading "Mierz liczbę konwersji" [level=1] [ref=e927]
+                            - button "Menu z dodatkowymi opcjami karty. Aby je otworzyć, naciśnij Enter." [ref=e931] [cursor=pointer]:
+                              - img [ref=e934]: more_vert
+                          - generic [ref=e943]:
+                            - generic [ref=e945]:
+                              - img [ref=e948]: check
+                              - generic [ref=e949]:
+                                - text: "Utworzono działanie powodujące konwersję, ale tag nie został jeszcze zweryfikowany dla:"
+                                - button "Aby uzyskać więcej informacji, najedź kursorem myszy na ikonę lub po najechaniu na nią naciśnij Enter." [ref=e950] [cursor=pointer]: Zakup Vouchera
+                            - generic [ref=e952]:
+                              - generic [ref=e953]:
+                                - generic [ref=e954]: "2"
+                                - text: Dodaj kod śledzenia do swojej witryny
+                              - generic [ref=e955]:
+                                - generic [ref=e956]: Aby dokończyć konfigurację, musisz dodać do witryny kod śledzenia
+                                - generic [ref=e958]:
+                                  - button "Tag e-maila" [ref=e961] [cursor=pointer]:
+                                    - generic [ref=e962]: Tag e-maila
+                                  - button "Zainstaluj tag samodzielnie" [disabled] [ref=e966]:
+                                    - generic: Zainstaluj tag samodzielnie
+                          - button "Przejdź do tabeli konwersji" [ref=e969] [cursor=pointer]:
+                            - generic [ref=e970]: Zarządzaj konwersjami
+              - generic [ref=e973]:
+                - generic [ref=e974]:
+                  - link "Raporty nie są generowane w czasie rzeczywistym." [ref=e976] [cursor=pointer]:
+                    - /url: https://support.google.com/google-ads/?p=help_2544985&hl=pl
+                  - text: "Strefa czasowa dla wszystkich dat i godzin: (GMT+02:00) czas środkowoeuropejski."
+                  - link "Więcej informacji o zmianie ustawień konta Google Ads" [ref=e978] [cursor=pointer]:
+                    - /url: https://support.google.com/google-ads/?p=help_9842104&hl=pl
+                    - text: Więcej informacji
+                  - generic [ref=e979]: Dostawcami niektórych zasobów reklamowych mogą być zewnętrzne firmy pośredniczące.
+                  - generic [ref=e980]: Po najechaniu kursorem na nagłówek kolumny dotyczącej akredytowanych danych wyświetli się informacja o akredytacji przez radę Media Rating Council (MRC).
+                - generic [ref=e981]: © Google 2026.
+  - generic:
+    - dialog:
+      - generic:
+        - generic:
+          - heading [level=1]: Turn off ad blockers
+          - paragraph: Google Ads can't work when you're using an ad blocker. To use Google Ads, please turn off any ad blockers for now.
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"

@@ -1,0 +1,160 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "akrobacja.com" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e4]:
+      - link "Maszyna" [ref=e5] [cursor=pointer]:
+        - /url: /#maszyna
+      - link "Pilot" [ref=e6] [cursor=pointer]:
+        - /url: /#pilot
+      - link "Loty" [ref=e7] [cursor=pointer]:
+        - /url: /#sklep
+      - link "Pokazy" [ref=e8] [cursor=pointer]:
+        - /url: /pokazy-lotnicze
+      - link "Sponsoring" [ref=e9] [cursor=pointer]:
+        - /url: /sponsoring
+      - link "Kalendarz" [ref=e10] [cursor=pointer]:
+        - /url: /kalendarz
+      - link "FAQ" [ref=e11] [cursor=pointer]:
+        - /url: /#faq
+    - button "Koszyk 0" [ref=e12] [cursor=pointer]:
+      - text: Koszyk
+      - generic [ref=e13]: "0"
+  - generic [ref=e14]:
+    - img "akrobacja.com merchandise" [ref=e15]
+    - generic [ref=e16]:
+      - heading "AKROBACJA.COM" [level=1] [ref=e17]
+      - paragraph [ref=e18]: Oficjalny Merchandise, Extra 300L SP-EKS
+      - generic [ref=e19]: Made to Order, produkcja pod zamówienie
+  - generic [ref=e20]:
+    - generic [ref=e21] [cursor=pointer]: Wszystko
+    - generic [ref=e22] [cursor=pointer]: Polo
+    - generic [ref=e23] [cursor=pointer]: T-Shirt
+    - generic [ref=e24] [cursor=pointer]: Bluzy
+    - generic [ref=e25] [cursor=pointer]: Kurtki
+    - generic [ref=e26] [cursor=pointer]: Czapki
+    - generic [ref=e27] [cursor=pointer]: Breloki
+    - generic [ref=e28] [cursor=pointer]: Naklejki
+  - generic [ref=e29]:
+    - generic [ref=e30] [cursor=pointer]:
+      - img [ref=e32]
+      - generic [ref=e35]:
+        - generic [ref=e36]: Polo
+        - generic [ref=e37]: Technical Performance Polo
+        - generic [ref=e38]: 199 PLN brutto
+    - generic [ref=e39] [cursor=pointer]:
+      - img [ref=e41]
+      - generic [ref=e44]:
+        - generic [ref=e45]: odzież
+        - generic [ref=e46]: Koszulka akrobacja.com
+        - generic [ref=e47]: 149 PLN brutto
+    - generic [ref=e48] [cursor=pointer]:
+      - img [ref=e50]
+      - generic [ref=e53]:
+        - generic [ref=e54]: T-Shirt
+        - generic [ref=e55]: Technical T-Shirt Cyan
+        - generic [ref=e56]: 149 PLN brutto
+    - generic [ref=e57] [cursor=pointer]:
+      - img [ref=e59]
+      - generic [ref=e62]:
+        - generic [ref=e63]: akcesoria
+        - generic [ref=e64]: Czapka Pilot
+        - generic [ref=e65]: 79 PLN brutto
+    - generic [ref=e66] [cursor=pointer]:
+      - img [ref=e68]
+      - generic [ref=e71]:
+        - generic [ref=e72]: T-Shirt
+        - generic [ref=e73]: Technical T-Shirt Navy
+        - generic [ref=e74]: 149 PLN brutto
+    - generic [ref=e75] [cursor=pointer]:
+      - img [ref=e77]
+      - generic [ref=e80]:
+        - generic [ref=e81]: odzież
+        - generic [ref=e82]: Bluza Softshell
+        - generic [ref=e83]: 379 PLN brutto
+    - generic [ref=e84] [cursor=pointer]:
+      - img [ref=e86]
+      - generic [ref=e89]:
+        - generic [ref=e90]: Kurtka
+        - generic [ref=e91]: Pilot Softshell Jacket
+        - generic [ref=e92]: 349 PLN brutto
+    - generic [ref=e93] [cursor=pointer]:
+      - img [ref=e95]
+      - generic [ref=e98]:
+        - generic [ref=e99]: akcesoria
+        - generic [ref=e100]: Zawieszka Remove Before Aerobatic
+        - generic [ref=e101]: 39 PLN brutto
+    - generic [ref=e102] [cursor=pointer]:
+      - img [ref=e104]
+      - generic [ref=e108]:
+        - generic [ref=e109]: Bluza
+        - generic [ref=e110]: Hoodie Akrobacja Navy
+        - generic [ref=e111]: 249 PLN brutto
+    - generic [ref=e112] [cursor=pointer]:
+      - img [ref=e114]
+      - generic [ref=e118]:
+        - generic [ref=e119]: Bluza
+        - generic [ref=e120]: Hoodie Akrobacja Cyan
+        - generic [ref=e121]: 249 PLN brutto
+    - generic [ref=e122] [cursor=pointer]:
+      - img [ref=e124]
+      - generic [ref=e128]:
+        - generic [ref=e129]: Czapka
+        - generic [ref=e130]: Premium Snapback Cap
+        - generic [ref=e131]: 89 PLN brutto
+    - generic [ref=e132] [cursor=pointer]:
+      - img [ref=e134]
+      - generic [ref=e139]:
+        - generic [ref=e140]: Brelok
+        - generic [ref=e141]: Laser-Engraved Aluchain
+        - generic [ref=e142]: 49 PLN brutto
+    - generic [ref=e143] [cursor=pointer]:
+      - img [ref=e145]
+      - generic [ref=e149]:
+        - generic [ref=e150]: Naklejki
+        - generic [ref=e151]: Extra 300 Sticker Pack
+        - generic [ref=e152]: 29 PLN brutto
+  - generic [ref=e153]:
+    - generic [ref=e154]:
+      - heading "Koszyk" [level=2] [ref=e155]
+      - button "×" [ref=e156] [cursor=pointer]
+    - generic [ref=e158]: Koszyk jest pusty
+    - generic [ref=e160]:
+      - generic [ref=e161]: Razem
+      - generic [ref=e162]: 0 PLN
+  - contentinfo [ref=e163]:
+    - generic [ref=e164]:
+      - generic [ref=e165]:
+        - text: akrobacja.com
+        - generic [ref=e166]: Extra 300L SP-EKS · Lotnisko Radom-Piastów (EPRP)
+      - generic [ref=e167]:
+        - link "Strona główna" [ref=e168] [cursor=pointer]:
+          - /url: /
+        - link "Lot akrobacyjny" [ref=e169] [cursor=pointer]:
+          - /url: /lot-akrobacyjny
+        - link "Kalendarz" [ref=e170] [cursor=pointer]:
+          - /url: /kalendarz
+        - link "Blog" [ref=e171] [cursor=pointer]:
+          - /url: /blog
+        - link "Sklep" [ref=e172] [cursor=pointer]:
+          - /url: /sklep-merch
+        - link "Regulamin" [ref=e173] [cursor=pointer]:
+          - /url: /regulamin
+        - link "Prywatność" [ref=e174] [cursor=pointer]:
+          - /url: /polityka-prywatnosci
+        - link "Kontakt" [ref=e175] [cursor=pointer]:
+          - /url: https://wa.me/48535535221
+      - generic [ref=e176]: © 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP
+  - button "Otwórz czat" [ref=e177] [cursor=pointer]:
+    - img [ref=e178]
+  - dialog "Ustawienia cookies" [ref=e180]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e181]
+    - paragraph [ref=e182]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e183] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e184]:
+      - button "Zgoda na wszystkie" [ref=e185] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e186] [cursor=pointer]
+      - button "Ustawienia" [ref=e187] [cursor=pointer]

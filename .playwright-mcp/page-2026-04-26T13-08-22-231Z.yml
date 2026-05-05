@@ -1,0 +1,170 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "akrobacja.com - strona główna" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "akrobacja.com" [ref=e4]
+    - link "Napisz" [ref=e5] [cursor=pointer]:
+      - /url: https://wa.me/48535535221
+  - generic [ref=e6]:
+    - link "Strona główna" [ref=e7] [cursor=pointer]:
+      - /url: /
+    - text: /
+    - link "Blog" [ref=e8] [cursor=pointer]:
+      - /url: /blog
+    - text: / JedlinSky 2026 - relacja
+  - generic [ref=e9]:
+    - generic [ref=e10]: Relacja
+    - generic [ref=e11]: JedlinSky 2026
+    - generic [ref=e12]: Jedlińsk · 25.04.2026
+  - img "Extra 300L SP-EKS w pokazie nad Jedlińskiem, JedlinSky 2026" [ref=e14]
+  - article [ref=e15]:
+    - paragraph [ref=e16]: "26 kwietnia 2026 · Czas czytania: 4 min · Maciej Kulaszewski, Paweł Mamcarz"
+    - heading "JedlinSky 2026 - relacja z pokazu Extra 300L" [level=1] [ref=e17]
+    - paragraph [ref=e18]:
+      - text: W sobotę
+      - strong [ref=e19]: 25 kwietnia 2026
+      - text: wylądowaliśmy nad Jedlińskiem na pokazie
+      - strong [ref=e20]: JedlinSky 2026
+      - text: . Extra 300L SP-EKS, pełen program akrobacyjny, tłum widzów na ziemi i niebo, które dało nam idealne warunki - lekki wiatr z południa, bezchmurnie, widzialność bez ograniczeń. Poniżej krótka relacja i pełna galeria zdjęć z pokazu.
+    - generic [ref=e21]:
+      - strong [ref=e22]: "Pilot:"
+      - text: Maciej Kulaszewski (Mistrz Świata, kategoria Unlimited).
+      - strong [ref=e23]: "Samolot:"
+      - text: Extra 300L SP-EKS, baza
+      - link "Radom-Piastów EPRP" [ref=e24] [cursor=pointer]:
+        - /url: /blog/lot-akrobacyjny-radom
+      - text: .
+      - strong [ref=e25]: "Lokalizacja:"
+      - text: Jedlińsk (woj. mazowieckie), ok. 20 km na północ od Radomia.
+    - heading "Program pokazu" [level=2] [ref=e26]
+    - paragraph [ref=e27]: "Wlot na maksymalnej dozwolonej prędkości, otwarcie pętlą Cuban-eight, dynamiczna seria figur dolnych - hammerhead, knife-edge pass, beczki sterowane, pętla z przewrotem. W drugiej połowie programu Maciej zrobił sekwencję figur pionowych z dymem - tumbling i lomcevak na centralnej osi, prosto nad sceną. Finał: niski przelot z kołysaniem skrzydeł, na pożegnanie z publicznością."
+    - paragraph [ref=e28]: Cały program zajął niespełna 10 minut, ale jak to zwykle bywa przy pokazach akrobacji - czas się zatrzymuje, kiedy nad głową przelatuje 300 KM silnika Lycoming AEIO-540 i 5G nad horyzontem.
+    - heading "Galeria zdjęć" [level=2] [ref=e29]
+  - generic [ref=e31]:
+    - img "Extra 300L SP-EKS w pokazie, JedlinSky 2026 - kadr 1" [ref=e33]
+    - img "Extra 300L SP-EKS w pokazie, JedlinSky 2026 - kadr 2" [ref=e35]
+    - img "Extra 300L SP-EKS w pokazie, JedlinSky 2026 - kadr 3" [ref=e37]
+    - img "Extra 300L SP-EKS w pokazie, JedlinSky 2026 - kadr 4" [ref=e39]
+    - img "Extra 300L SP-EKS w pokazie, JedlinSky 2026 - kadr 5" [ref=e41]
+    - img "Extra 300L SP-EKS w pokazie, JedlinSky 2026 - kadr 6" [ref=e43]
+    - img "Extra 300L SP-EKS w pokazie, JedlinSky 2026 - kadr 7" [ref=e45]
+    - img "Extra 300L SP-EKS w pokazie, JedlinSky 2026 - kadr 8" [ref=e47]
+    - img "Extra 300L SP-EKS w pokazie, JedlinSky 2026 - kadr 9" [ref=e49]
+    - img "Extra 300L SP-EKS w pokazie, JedlinSky 2026 - kadr 10" [ref=e51]
+  - article [ref=e55]:
+    - heading "Podziękowania" [level=2] [ref=e56]
+    - paragraph [ref=e57]:
+      - text: Dziękujemy organizatorom
+      - strong [ref=e58]: JedlinSky 2026
+      - text: za zaproszenie i sprawne przygotowanie strefy pokazowej, służbom ratowniczym i policji za zabezpieczenie eventu, a Polskiej Agencji Żeglugi Powietrznej za szybkie ustanowienie tymczasowej strefy powietrznej. Ale przede wszystkim - dziękujemy publiczności, która została z nami od pierwszej pętli do ostatniego przelotu.
+    - heading "Chcesz zobaczyć Extra 300L u siebie?" [level=2] [ref=e59]
+    - paragraph [ref=e60]:
+      - text: Organizujemy
+      - strong [ref=e61]: pokazy akrobacyjne
+      - text: "na terenie całej Polski - eventy firmowe, dni miasta, festiwale, zawody sportowe, imprezy prywatne. Trzy pakiety: Solo (14 990 PLN), Event (24 990 PLN) i Premium (wycena indywidualna). Wszystko w cenie - ubezpieczenie OC, koordynacja z PAŻP, briefing organizacyjny. Szczegóły na stronie"
+      - link "pokazy lotnicze na event" [ref=e62] [cursor=pointer]:
+        - /url: /pokazy-lotnicze
+      - text: .
+    - paragraph [ref=e63]:
+      - text: A jeśli chcesz
+      - strong [ref=e64]: polecieć
+      - text: tym samym Extra 300L - sprawdź dostępne terminy w
+      - link "kalendarzu" [ref=e65] [cursor=pointer]:
+        - /url: /kalendarz
+      - text: ", a vouchery prezentowe znajdziesz na stronie"
+      - link "voucher na lot akrobacyjny" [ref=e66] [cursor=pointer]:
+        - /url: /voucher-prezent
+      - text: . Loty akrobacyjne realizujemy na lotnisku
+      - link "Radom-Piastów (EPRP)" [ref=e67] [cursor=pointer]:
+        - /url: /blog/lot-akrobacyjny-radom
+      - text: ", godzina jazdy z Warszawy."
+    - generic [ref=e68]:
+      - generic [ref=e69]: Sezon pokazowy 2026 trwa
+      - heading "Chcesz Extra 300L na swoim evencie?" [level=3] [ref=e70]
+      - paragraph [ref=e71]: Napisz, dobierzemy pakiet i termin. Odpowiadamy w ciągu godziny.
+      - link "NAPISZ NA WHATSAPP" [ref=e72] [cursor=pointer]:
+        - /url: https://wa.me/48535535221
+      - paragraph [ref=e73]:
+        - text: lub
+        - link "zobacz pełną ofertę pokazów" [ref=e74] [cursor=pointer]:
+          - /url: /pokazy-lotnicze
+  - contentinfo [ref=e75]:
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - img "akrobacja.com" [ref=e78]
+        - paragraph [ref=e79]:
+          - text: Extra 300L SP-EKS
+          - text: Radom-Piastów EPRP
+          - generic [ref=e80]:
+            - text: Doradztwo Paweł Mamcarz
+            - text: "Pilot:"
+            - strong [ref=e81]: Maciej Kulaszewski
+      - generic [ref=e82]:
+        - paragraph [ref=e83]: Nawigacja
+        - list [ref=e84]:
+          - listitem [ref=e85]:
+            - link "Strona główna" [ref=e86] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e87]:
+            - link "Lot akrobacyjny" [ref=e88] [cursor=pointer]:
+              - /url: /lot-akrobacyjny
+          - listitem [ref=e89]:
+            - link "Sklep Merch" [ref=e90] [cursor=pointer]:
+              - /url: /sklep-merch
+          - listitem [ref=e91]:
+            - link "Pokazy na Event" [ref=e92] [cursor=pointer]:
+              - /url: /pokazy-lotnicze
+          - listitem [ref=e93]:
+            - link "Kalendarz" [ref=e94] [cursor=pointer]:
+              - /url: /kalendarz
+          - listitem [ref=e95]:
+            - link "Regulamin" [ref=e96] [cursor=pointer]:
+              - /url: /regulamin
+      - generic [ref=e97]:
+        - paragraph [ref=e98]: Kontakt
+        - list [ref=e99]:
+          - listitem [ref=e100]:
+            - link "+48 535 535 221" [ref=e101] [cursor=pointer]:
+              - /url: https://wa.me/48535535221
+          - listitem [ref=e102]:
+            - link "dto@akrobacja.com" [ref=e103] [cursor=pointer]:
+              - /url: mailto:dto@akrobacja.com
+          - listitem [ref=e104]:
+            - link "Lotnisko Radom-Piastów (EPRP)" [ref=e105] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/radom-piastow-eprp
+      - generic [ref=e106]:
+        - paragraph [ref=e107]: Informacje
+        - list [ref=e108]:
+          - listitem [ref=e109]:
+            - link "Regulamin" [ref=e110] [cursor=pointer]:
+              - /url: /regulamin
+          - listitem [ref=e111]:
+            - link "Polityka Prywatności" [ref=e112] [cursor=pointer]:
+              - /url: /polityka-prywatnosci
+          - listitem [ref=e113]:
+            - link "FAQ" [ref=e114] [cursor=pointer]:
+              - /url: /lot-akrobacyjny#faq
+    - generic [ref=e115]:
+      - paragraph [ref=e116]: © 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP
+      - generic [ref=e117]:
+        - link "Facebook" [ref=e118] [cursor=pointer]:
+          - /url: https://www.facebook.com/bullet.aerobatics/
+        - link "WhatsApp" [ref=e119] [cursor=pointer]:
+          - /url: https://wa.me/48535535221
+  - button "Otwórz czat" [ref=e120] [cursor=pointer]:
+    - img [ref=e121]
+  - link "✈️ Zarezerwuj lot — od 1 999 zł" [ref=e123] [cursor=pointer]:
+    - /url: /kalendarz
+    - text: ✈️ Zarezerwuj lot
+    - generic [ref=e124]: — od 1 999 zł
+  - dialog "Ustawienia cookies" [ref=e125]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e126]
+    - paragraph [ref=e127]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e128] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e129]:
+      - button "Zgoda na wszystkie" [ref=e130] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e131] [cursor=pointer]
+      - button "Ustawienia" [ref=e132] [cursor=pointer]

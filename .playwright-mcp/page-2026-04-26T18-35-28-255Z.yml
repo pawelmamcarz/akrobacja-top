@@ -1,0 +1,275 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - banner "Górne menu" [ref=e6]:
+      - status
+      - generic [ref=e7]:
+        - button "Zamknij" [ref=e8] [cursor=pointer]:
+          - img [ref=e11]: close
+        - heading "Google Ads – powrót na stronę początkową" [level=1] [ref=e13]:
+          - button "Google Ads – powrót na stronę początkową" [ref=e14]:
+            - img [ref=e16] [cursor=pointer]
+      - generic [ref=e25]:
+        - generic [ref=e27]:
+          - generic [ref=e33]:
+            - img [ref=e36]: search
+            - generic [ref=e37]:
+              - generic:
+                - generic: Wyszukaj stronę lub kampanię
+              - combobox "Wyszukaj stronę lub kampanię" [ref=e38]
+          - text: Szukaj
+        - generic [ref=e39]:
+          - button "Wygląd" [ref=e42] [cursor=pointer]:
+            - generic [ref=e44]:
+              - img [ref=e45]: responsive_layout
+              - text: Wygląd
+          - button "Otwórz panel szybkiej pomocy" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]:
+              - text: Pomoc
+              - generic [ref=e50]:
+                - img [ref=e51]: help_outline
+                - text: Pomoc
+          - generic [ref=e55]:
+            - button "Powiadomienia" [ref=e58] [cursor=pointer]:
+              - generic [ref=e60]:
+                - img [ref=e63]: notifications
+                - generic [ref=e65]: Powiadomienia
+            - dialog "Powiadomienia" [ref=e67]:
+              - generic [ref=e71]:
+                - generic [ref=e72]:
+                  - img "Ikona powiadomienia będącego sugestią" [ref=e74]: lightbulb_outline
+                  - button "Skonfiguruj śledzenie konwersji Wyświetl" [ref=e75] [cursor=pointer]:
+                    - text: Skonfiguruj śledzenie konwersji
+                    - generic [ref=e76]: Wyświetl
+                - button "Zamknij powiadomienia" [ref=e77] [cursor=pointer]:
+                  - img [ref=e80]: clear
+      - button "Konto Google" [ref=e87] [cursor=pointer]:
+        - img "Konto Google (pawel@mamcarz.com)" [ref=e88]
+    - main [ref=e100]:
+      - generic [ref=e102]:
+        - generic [ref=e107]:
+          - generic [ref=e109]: Jaki jest cel Twojej kampanii?
+          - generic [ref=e111]:
+            - heading "Wybierz cel" [level=2] [ref=e113]
+            - generic [ref=e114]:
+              - generic [ref=e115]: Wybierz cel, by dostosować wygląd i działanie reklamy do celów i ustawień, które sprawdzą się najlepiej w przypadku Twojej kampanii
+              - group "Wybierz cel, którego osiągnięcie będzie oznaczało sukces kampanii" [ref=e116]:
+                - generic [ref=e117]: Wybierz cel, którego osiągnięcie będzie oznaczało sukces kampanii
+                - tablist [ref=e119]:
+                  - tab "Sprzedaż Zwiększ sprzedaż online, w aplikacji, przez telefon lub w sklepie tradycyjnym Sprzedaż Zwiększ sprzedaż online, w aplikacji, przez telefon lub w sklepie tradycyjnym" [selected] [ref=e120] [cursor=pointer]:
+                    - generic [ref=e124]:
+                      - generic [ref=e126]:
+                        - img [ref=e128]: local_offer
+                        - heading "Sprzedaż" [level=1] [ref=e129]
+                        - generic [ref=e130]: Zwiększ sprzedaż online, w aplikacji, przez telefon lub w sklepie tradycyjnym
+                      - generic [ref=e132]:
+                        - img [ref=e134]: local_offer
+                        - heading "Sprzedaż" [level=1] [ref=e135]
+                        - generic [ref=e136]: Zwiększ sprzedaż online, w aplikacji, przez telefon lub w sklepie tradycyjnym
+                      - generic:
+                        - img: check_circle
+                  - tab "Potencjalni klienci Pozyskuj kontakty do potencjalnych klientów i inne konwersje, zachęcając użytkowników do podjęcia działania Potencjalni klienci Pozyskuj kontakty do potencjalnych klientów i inne konwersje, zachęcając użytkowników do podjęcia działania" [ref=e137] [cursor=pointer]:
+                    - generic [ref=e141]:
+                      - generic [ref=e143]:
+                        - img [ref=e145]: people
+                        - heading "Potencjalni klienci" [level=1] [ref=e146]
+                        - generic [ref=e147]: Pozyskuj kontakty do potencjalnych klientów i inne konwersje, zachęcając użytkowników do podjęcia działania
+                      - generic [ref=e149]:
+                        - img [ref=e151]: people
+                        - heading "Potencjalni klienci" [level=1] [ref=e152]
+                        - generic [ref=e153]: Pozyskuj kontakty do potencjalnych klientów i inne konwersje, zachęcając użytkowników do podjęcia działania
+                      - generic:
+                        - img: check_circle
+                  - tab "Ruch w witrynie Spraw, by Twoją witrynę odwiedzały odpowiednie osoby Ruch w witrynie Spraw, by Twoją witrynę odwiedzały odpowiednie osoby" [ref=e154] [cursor=pointer]:
+                    - generic [ref=e158]:
+                      - generic [ref=e160]:
+                        - img [ref=e162]: web_traffic
+                        - heading "Ruch w witrynie" [level=1] [ref=e163]
+                        - generic [ref=e164]: Spraw, by Twoją witrynę odwiedzały odpowiednie osoby
+                      - generic [ref=e166]:
+                        - img [ref=e168]: web_traffic
+                        - heading "Ruch w witrynie" [level=1] [ref=e169]
+                        - generic [ref=e170]: Spraw, by Twoją witrynę odwiedzały odpowiednie osoby
+                      - generic:
+                        - img: check_circle
+                  - tab "Promowanie aplikacji Zwiększ liczbę instalacji Twojej aplikacji, zaangażowań i wcześniejszych rejestracji Promowanie aplikacji Zwiększ liczbę instalacji Twojej aplikacji, zaangażowań i wcześniejszych rejestracji" [ref=e171] [cursor=pointer]:
+                    - generic [ref=e175]:
+                      - generic [ref=e177]:
+                        - img [ref=e179]: app_promo
+                        - heading "Promowanie aplikacji" [level=1] [ref=e180]
+                        - generic [ref=e181]: Zwiększ liczbę instalacji Twojej aplikacji, zaangażowań i wcześniejszych rejestracji
+                      - generic [ref=e183]:
+                        - img [ref=e185]: app_promo
+                        - heading "Promowanie aplikacji" [level=1] [ref=e186]
+                        - generic [ref=e187]: Zwiększ liczbę instalacji Twojej aplikacji, zaangażowań i wcześniejszych rejestracji
+                      - generic:
+                        - img: check_circle
+                  - 'tab "Zasięg, wyświetlenia i interakcje w YouTube Zwiększaj świadomość i zachęcaj do rozważenia zakupu Twojego produktu lub marki Wcześniej: „Zwiększenie świadomości marki i szansy na rozważenie zakupu” Zasięg, wyświetlenia i interakcje w YouTube Zwiększaj świadomość i zachęcaj do rozważenia zakupu Twojego produktu lub marki Wcześniej: „Zwiększenie świadomości marki i szansy na rozważenie zakupu”" [ref=e188] [cursor=pointer]':
+                    - generic [ref=e192]:
+                      - generic [ref=e194]:
+                        - img [ref=e196]: brand_awareness
+                        - heading "Zasięg, wyświetlenia i interakcje w YouTube" [level=1] [ref=e197]
+                        - generic [ref=e198]: Zwiększaj świadomość i zachęcaj do rozważenia zakupu Twojego produktu lub marki
+                        - generic [ref=e199]: "Wcześniej: „Zwiększenie świadomości marki i szansy na rozważenie zakupu”"
+                      - generic [ref=e201]:
+                        - img [ref=e203]: brand_awareness
+                        - heading "Zasięg, wyświetlenia i interakcje w YouTube" [level=1] [ref=e204]
+                        - generic [ref=e205]: Zwiększaj świadomość i zachęcaj do rozważenia zakupu Twojego produktu lub marki
+                        - generic [ref=e206]: "Wcześniej: „Zwiększenie świadomości marki i szansy na rozważenie zakupu”"
+                      - generic:
+                        - img: check_circle
+                  - tab "Wizyty w lokalnym sklepie stacjonarnym i promocje Zwiększ liczbę wizyt w lokalnych sklepach, restauracjach i punktach partnerskich Wizyty w lokalnym sklepie stacjonarnym i promocje Zwiększ liczbę wizyt w lokalnych sklepach, restauracjach i punktach partnerskich" [ref=e207] [cursor=pointer]:
+                    - generic [ref=e211]:
+                      - generic [ref=e213]:
+                        - img [ref=e215]: room
+                        - heading "Wizyty w lokalnym sklepie stacjonarnym i promocje" [level=1] [ref=e216]
+                        - generic [ref=e217]: Zwiększ liczbę wizyt w lokalnych sklepach, restauracjach i punktach partnerskich
+                      - generic [ref=e219]:
+                        - img [ref=e221]: room
+                        - heading "Wizyty w lokalnym sklepie stacjonarnym i promocje" [level=1] [ref=e222]
+                        - generic [ref=e223]: Zwiększ liczbę wizyt w lokalnych sklepach, restauracjach i punktach partnerskich
+                      - generic:
+                        - img: check_circle
+                  - tab "Utwórz kampanię bez podpowiedzi W następnym kroku wybierzesz kampanię Utwórz kampanię bez podpowiedzi W następnym kroku wybierzesz kampanię" [ref=e224] [cursor=pointer]:
+                    - generic [ref=e228]:
+                      - generic [ref=e230]:
+                        - img [ref=e232]: settings
+                        - heading "Utwórz kampanię bez podpowiedzi" [level=1] [ref=e233]
+                        - generic [ref=e234]: W następnym kroku wybierzesz kampanię
+                      - generic [ref=e236]:
+                        - img [ref=e238]: settings
+                        - heading "Utwórz kampanię bez podpowiedzi" [level=1] [ref=e239]
+                        - generic [ref=e240]: W następnym kroku wybierzesz kampanię
+                      - generic:
+                        - img: check_circle
+          - generic [ref=e255]:
+            - heading "Użyj tych celów konwersji, aby polepszyć ten obszar działalności (Sprzedaż)" [level=2] [ref=e257]
+            - generic [ref=e258]:
+              - generic [ref=e260]: Cele konwersji oznaczone na Twoim koncie jako domyślne będą wykorzystywały dane z Twoich wszystkich kampanii, aby polepszyć strategię ustalania stawek i skuteczność kampanii, nawet jeśli nie zdają się być bezpośrednio powiązane z tym obszarem działalności (Sprzedaż).
+              - group "Użyj tych celów konwersji, aby polepszyć ten obszar działalności (Sprzedaż)" [ref=e261]:
+                - generic [ref=e262]: Użyj tych celów konwersji, aby polepszyć ten obszar działalności (Sprzedaż)
+                - table [ref=e264]:
+                  - row "Cele konwersji Źródło konwersji Działania powodujące konwersję Wartość Więcej działań" [ref=e265]:
+                    - columnheader "Cele konwersji" [ref=e266]:
+                      - generic [ref=e267]: Cele konwersji
+                    - columnheader "Źródło konwersji" [ref=e268]:
+                      - generic [ref=e269]: Źródło konwersji
+                    - columnheader "Działania powodujące konwersję" [ref=e270]:
+                      - generic [ref=e271]: Działania powodujące konwersję
+                    - columnheader "Wartość" [ref=e272]:
+                      - generic [ref=e273]: Wartość
+                    - columnheader "Więcej działań" [ref=e274]:
+                      - generic [ref=e275]: Więcej działań
+                  - rowgroup [ref=e276]:
+                    - row "Zakupy (domyślne źródło na koncie) Witryna ostrzeżenie 1 działanie Dynamiczna (Średnio 1 999,00 zł) Wyświetl opcje celu" [ref=e277]:
+                      - cell "Zakupy (domyślne źródło na koncie)" [ref=e278]:
+                        - generic [ref=e279]:
+                          - img [ref=e281]: credit_card
+                          - text: Zakupy (domyślne źródło na koncie)
+                      - cell "Witryna ostrzeżenie 1 działanie Dynamiczna (Średnio 1 999,00 zł)" [ref=e282]:
+                        - generic [ref=e284]:
+                          - generic [ref=e286] [cursor=pointer]: Witryna
+                          - generic [ref=e287]:
+                            - generic "ostrzeżenie" [ref=e289]:
+                              - img [ref=e290]: warning
+                            - button "1 działanie" [ref=e291] [cursor=pointer]
+                          - generic [ref=e293]: Dynamiczna (Średnio 1 999,00 zł)
+                      - cell "Wyświetl opcje celu" [ref=e294]:
+                        - button "Wyświetl opcje celu" [ref=e296] [cursor=pointer]:
+                          - img [ref=e299]: more_vert
+          - generic [ref=e310]:
+            - heading "Wybierz typ kampanii" [level=2] [ref=e312]
+            - group "Wybierz typ kampanii" [ref=e314]:
+              - generic [ref=e315]: Wybierz typ kampanii
+              - tablist [ref=e317]:
+                - tab "Performance Max" [ref=e318] [cursor=pointer]:
+                  - generic "Performance Max" [ref=e320]:
+                    - generic [ref=e322]:
+                      - generic [ref=e324]:
+                        - generic [ref=e327]: Performance Max
+                        - generic [ref=e328]:
+                          - text: Zwiększaj sprzedaż, docierając do odpowiednich osób w każdym miejscu za pomocą reklam w wyszukiwarce Google, YouTube, sieci reklamowej i innych usługach
+                          - button "Jak to działa" [ref=e330]
+                      - generic [ref=e332]:
+                        - generic [ref=e335]: Performance Max
+                        - generic [ref=e336]:
+                          - text: Zwiększaj sprzedaż, docierając do odpowiednich osób w każdym miejscu za pomocą reklam w wyszukiwarce Google, YouTube, sieci reklamowej i innych usługach
+                          - button "Jak to działa" [ref=e338]
+                      - generic:
+                        - img: check_circle
+                - tab "Produktowa" [ref=e339] [cursor=pointer]:
+                  - generic "Produktowa" [ref=e341]:
+                    - generic [ref=e343]:
+                      - generic [ref=e345]:
+                        - generic [ref=e348]: Produktowa
+                        - generic [ref=e349]: Promuj swoje produkty z Merchant Center w wyszukiwarce Google za pomocą reklam produktowych
+                      - generic [ref=e351]:
+                        - generic [ref=e354]: Produktowa
+                        - generic [ref=e355]: Promuj swoje produkty z Merchant Center w wyszukiwarce Google za pomocą reklam produktowych
+                      - generic:
+                        - img: check_circle
+                - tab "Generowanie popytu" [ref=e356] [cursor=pointer]:
+                  - generic "Generowanie popytu" [ref=e358]:
+                    - generic [ref=e360]:
+                      - generic [ref=e362]:
+                        - generic [ref=e365]: Generowanie popytu
+                        - generic [ref=e366]: Zwiększaj popyt i liczbę konwersji na YouTube, w sieci reklamowej Google i innych miejscach za pomocą reklam graficznych i wideo
+                      - generic [ref=e368]:
+                        - generic [ref=e371]: Generowanie popytu
+                        - generic [ref=e372]: Zwiększaj popyt i liczbę konwersji na YouTube, w sieci reklamowej Google i innych miejscach za pomocą reklam graficznych i wideo
+                      - generic:
+                        - img: check_circle
+                - tab "W sieci wyszukiwania" [ref=e373] [cursor=pointer]:
+                  - generic "W sieci wyszukiwania" [ref=e375]:
+                    - generic [ref=e377]:
+                      - generic [ref=e379]:
+                        - generic [ref=e382]: W sieci wyszukiwania
+                        - generic [ref=e383]: Zwiększaj sprzedaż w wyszukiwarce Google za pomocą reklam tekstowych
+                      - generic [ref=e385]:
+                        - generic [ref=e388]: W sieci wyszukiwania
+                        - generic [ref=e389]: Zwiększaj sprzedaż w wyszukiwarce Google za pomocą reklam tekstowych
+                      - generic:
+                        - img: check_circle
+                - tab "Wideo" [ref=e390] [cursor=pointer]:
+                  - generic "Wideo" [ref=e392]:
+                    - generic [ref=e394]:
+                      - generic [ref=e396]:
+                        - generic [ref=e399]: Wideo
+                        - generic [ref=e400]: Zwiększaj sprzedaż w YouTube za pomocą reklam wideo
+                      - generic [ref=e402]:
+                        - generic [ref=e405]: Wideo
+                        - generic [ref=e406]: Zwiększaj sprzedaż w YouTube za pomocą reklam wideo
+                      - generic:
+                        - img: check_circle
+                - tab "Sieć reklamowa" [ref=e407] [cursor=pointer]:
+                  - generic "Sieć reklamowa" [ref=e409]:
+                    - generic [ref=e411]:
+                      - generic [ref=e413]:
+                        - generic [ref=e416]: Sieć reklamowa
+                        - generic [ref=e417]: Docieraj ze swoją kreacją do potencjalnych klientów w ponad 3 mln witryn i aplikacji
+                      - generic [ref=e419]:
+                        - generic [ref=e422]: Sieć reklamowa
+                        - generic [ref=e423]: Docieraj ze swoją kreacją do potencjalnych klientów w ponad 3 mln witryn i aplikacji
+                      - generic:
+                        - img: check_circle
+          - generic [ref=e425]:
+            - button "Przejdź do następnego kroku" [ref=e426]: Dalej
+            - button "Anuluj tworzenie nowej kampanii" [ref=e429]: Anuluj
+        - generic [ref=e250]: © Google 2026.
+  - generic:
+    - dialog:
+      - generic:
+        - generic:
+          - heading [level=1]: Turn off ad blockers
+          - paragraph: Google Ads can't work when you're using an ad blocker. To use Google Ads, please turn off any ad blockers for now.
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"

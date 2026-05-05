@@ -1,0 +1,89 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "akrobacja.com" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e4]:
+      - link "Maszyna" [ref=e5] [cursor=pointer]:
+        - /url: /#maszyna
+      - link "Pilot" [ref=e6] [cursor=pointer]:
+        - /url: /#pilot
+      - link "Loty" [ref=e7] [cursor=pointer]:
+        - /url: /#sklep
+      - link "Pokazy" [ref=e8] [cursor=pointer]:
+        - /url: /pokazy-lotnicze
+      - link "Sponsoring" [ref=e9] [cursor=pointer]:
+        - /url: /sponsoring
+      - link "Kalendarz" [ref=e10] [cursor=pointer]:
+        - /url: /kalendarz
+      - link "FAQ" [ref=e11] [cursor=pointer]:
+        - /url: /#faq
+    - button "Koszyk 1" [ref=e12] [cursor=pointer]:
+      - text: Koszyk
+      - generic [ref=e13]: "1"
+  - generic [ref=e14]:
+    - img "akrobacja.com merchandise" [ref=e15]
+    - generic [ref=e16]:
+      - heading "AKROBACJA.COM" [level=1] [ref=e17]
+      - paragraph [ref=e18]: Oficjalny Merchandise, Extra 300L SP-EKS
+      - generic [ref=e19]: Made to Order, produkcja pod zamówienie
+  - generic [ref=e20]:
+    - generic [ref=e21] [cursor=pointer]: Wszystko
+    - generic [ref=e22] [cursor=pointer]: Polo
+    - generic [ref=e23] [cursor=pointer]: T-Shirt
+    - generic [ref=e24] [cursor=pointer]: Bluzy
+    - generic [ref=e25] [cursor=pointer]: Kurtki
+    - generic [ref=e26] [cursor=pointer]: Czapki
+    - generic [ref=e27] [cursor=pointer]: Breloki
+    - generic [ref=e28] [cursor=pointer]: Naklejki
+  - generic [ref=e30]:
+    - generic [ref=e31]:
+      - heading "Koszyk" [level=2] [ref=e32]
+      - button "×" [ref=e33] [cursor=pointer]
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]: Technical Performance Polo
+        - generic [ref=e38]: S
+      - generic [ref=e39]: 199 PLN
+      - button "×" [ref=e40] [cursor=pointer]
+    - generic [ref=e41]:
+      - generic [ref=e42]: "Dostawa: 15 PLN (darmowa od 200 PLN)"
+      - generic [ref=e43]:
+        - generic [ref=e44]: Razem
+        - generic [ref=e45]: 214 PLN
+      - button "Dane dostawy →" [ref=e46] [cursor=pointer]
+  - contentinfo [ref=e47]:
+    - generic [ref=e48]:
+      - generic [ref=e49]:
+        - text: akrobacja.com
+        - generic [ref=e50]: Extra 300L SP-EKS · Lotnisko Radom-Piastów (EPRP)
+      - generic [ref=e51]:
+        - link "Strona główna" [ref=e52] [cursor=pointer]:
+          - /url: /
+        - link "Lot akrobacyjny" [ref=e53] [cursor=pointer]:
+          - /url: /lot-akrobacyjny
+        - link "Kalendarz" [ref=e54] [cursor=pointer]:
+          - /url: /kalendarz
+        - link "Blog" [ref=e55] [cursor=pointer]:
+          - /url: /blog
+        - link "Sklep" [ref=e56] [cursor=pointer]:
+          - /url: /sklep-merch
+        - link "Regulamin" [ref=e57] [cursor=pointer]:
+          - /url: /regulamin
+        - link "Prywatność" [ref=e58] [cursor=pointer]:
+          - /url: /polityka-prywatnosci
+        - link "Kontakt" [ref=e59] [cursor=pointer]:
+          - /url: https://wa.me/48535535221
+      - generic [ref=e60]: © 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP
+  - button "Otwórz czat" [ref=e61] [cursor=pointer]:
+    - img [ref=e62]
+  - dialog "Ustawienia cookies" [ref=e64]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e65]
+    - paragraph [ref=e66]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e67] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e68]:
+      - button "Zgoda na wszystkie" [ref=e69] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e70] [cursor=pointer]
+      - button "Ustawienia" [ref=e71] [cursor=pointer]

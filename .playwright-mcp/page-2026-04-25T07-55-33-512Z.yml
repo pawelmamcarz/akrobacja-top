@@ -1,0 +1,131 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - button "Przejdź do głównej treści" [ref=e7]:
+      - generic [ref=e10]: Przejdź do głównej treści
+    - generic [ref=e11]:
+      - button "Zamknij" [ref=e554] [cursor=pointer]:
+        - img [ref=e558]: close
+      - heading "Dodaj źródło produktów" [level=1] [ref=e559]
+      - button "Pomoc" [ref=e27] [cursor=pointer]:
+        - img [ref=e30]: help_outline
+      - 'button "Konto Merchant Center: akrobacja.com, 5765263858" [ref=e36] [cursor=pointer]':
+        - generic [ref=e37]:
+          - generic [ref=e38]: akrobacja.com
+          - generic [ref=e39]: "5765263858"
+        - img [ref=e41]: arrow_drop_down
+      - generic [ref=e47]:
+        - button "Aplikacje Google" [ref=e51] [cursor=pointer]:
+          - img [ref=e52]
+        - 'button "Konto Google: Paweł Mamcarz (pawel@mamcarz.com)" [ref=e57] [cursor=pointer]':
+          - img [ref=e59]
+  - main [ref=e564]:
+    - main [ref=e566]:
+      - generic [ref=e569]:
+        - generic [ref=e571]:
+          - heading "Wybierz sposób dodawania produktów" [level=2] [ref=e572]
+          - radiogroup "Wybierz sposób dodawania produktów" [disabled] [ref=e573]:
+            - generic [ref=e576]:
+              - generic [ref=e577]:
+                - radio "Użyj AI, aby dodać produkty Beta" [ref=e579] [cursor=pointer]:
+                  - generic [ref=e580]:
+                    - heading "Użyj AI, aby dodać produkty Beta" [level=2] [ref=e582]:
+                      - text: Użyj AI, aby dodać produkty
+                      - generic [ref=e583]: Beta
+                    - paragraph [ref=e584]: Korzystaj z AI od Google, aby automatycznie skanować witrynę i dodawać produkty. To najprostszy sposób na rozpoczęcie korzystania, który pomaga zmniejszyć liczbę błędów wynikających z ręcznego wprowadzania danych.
+                  - paragraph [ref=e587]: Skanowanie jednorazowe
+                  - img [ref=e589]: check_circle_outline
+                - radio "Dodaj produkty z pliku" [checked] [ref=e591] [cursor=pointer]:
+                  - generic [ref=e592]:
+                    - heading "Dodaj produkty z pliku" [level=2] [ref=e594]
+                    - paragraph [ref=e595]: Utwórz plik zawierający wszystkie Twoje szczegóły produktu (tytuł, opis, cenę i inne informacje). Ta metoda może wymagać specjalistycznej wiedzy.
+                  - generic [ref=e597]:
+                    - img [ref=e599]: published_with_changes
+                    - paragraph [ref=e600]: Automatyczne aktualizacje
+                  - img [ref=e602]: check_circle_outline
+                - radio "Użyj Arkuszy Google" [ref=e604] [cursor=pointer]:
+                  - generic [ref=e605]:
+                    - heading "Użyj Arkuszy Google" [level=2] [ref=e607]
+                    - paragraph [ref=e608]: Dodaj szczegóły produktu (tytuł, opis, cenę i inne informacje) za pomocą arkusza kalkulacyjnego Arkuszy Google.
+                  - generic [ref=e610]:
+                    - img [ref=e612]: published_with_changes
+                    - paragraph [ref=e613]: Automatyczne aktualizacje
+                  - img [ref=e615]: check_circle_outline
+                - radio "Dodaj produkty pojedynczo" [ref=e617] [cursor=pointer]:
+                  - generic [ref=e618]:
+                    - heading "Dodaj produkty pojedynczo" [level=2] [ref=e620]
+                    - paragraph [ref=e621]: Użyj tej opcji, jeśli chcesz dodać jeden lub kilka produktów. Wypełnij formularz, podając szczegóły swojego produktu. Po dodaniu produktów możesz je edytować, usunąć lub dodać kolejne w dowolnym momencie.
+                  - paragraph [ref=e624]: Wymaga ręcznych aktualizacji
+                  - img [ref=e626]: check_circle_outline
+                - radio "Dodaj produkty za pomocą interfejsu API" [ref=e628] [cursor=pointer]:
+                  - generic [ref=e629]:
+                    - heading "Dodaj produkty za pomocą interfejsu API" [level=2] [ref=e631]
+                    - paragraph [ref=e632]: Użyj interfejsu API sprzedawcy, jeśli chcesz przesyłać dużą liczbę produktów lub planujesz często wprowadzać zmiany w szczegółach produktów. Ta metoda wymaga wiedzy technicznej.
+                  - generic [ref=e634]:
+                    - img [ref=e636]: published_with_changes
+                    - paragraph [ref=e637]: Zaplanowane aktualizacje
+                  - img [ref=e639]: check_circle_outline
+              - button [ref=e640] [cursor=pointer]:
+                - img [ref=e643]: chevron_right
+        - radiogroup [ref=e699]:
+          - generic [ref=e700] [cursor=pointer]:
+            - radio "Podaj link do pliku" [checked] [ref=e702]
+            - generic [ref=e706]:
+              - text: Podaj link do pliku
+              - generic [ref=e707]:
+                - text: Wystarczy skonfigurować to raz. Produkty w Merchant Center zostaną automatycznie zaktualizowane za pomocą pliku.
+                - link "Jak utworzyć plik, Otwiera się w nowej karcie" [ref=e709]:
+                  - /url: https://support.google.com/merchants/answer/12631822?hl=pl
+                  - text: Jak utworzyć plik
+                  - generic [ref=e710]:
+                    - text: ⁠
+                    - img [ref=e712]: open_in_new
+                    - text: ‎
+          - generic [ref=e713]:
+            - generic [ref=e717]:
+              - generic:
+                - generic: Podaj link do pliku*
+              - textbox "Podaj link do pliku*" [ref=e718]
+            - generic [ref=e723]:
+              - generic [ref=e724]: Edytuj harmonogram
+              - text: Automatycznie aktualizuje się co 24 godziny o 00:00
+              - button "Edytuj harmonogram" [ref=e725] [cursor=pointer]:
+                - img [ref=e729]: edit
+            - generic [ref=e732]:
+              - generic [ref=e733]: Dodaj dane uwierzytelniające
+              - text: Brak nazwy użytkownika i hasła
+              - button "Dodaj dane uwierzytelniające" [ref=e734] [cursor=pointer]:
+                - img [ref=e738]: edit
+          - generic [ref=e739] [cursor=pointer]:
+            - radio "Dodaj plik za pomocą SFTP lub Google Cloud Storage" [ref=e741]
+            - generic [ref=e744]:
+              - text: Dodaj plik za pomocą SFTP lub Google Cloud Storage
+              - generic [ref=e745]: Rozmiar pliku nie może przekraczać 4 GB
+          - text: "*"
+          - generic [ref=e746] [cursor=pointer]:
+            - radio "Prześlij plik ze swojego komputera" [ref=e748]
+            - generic [ref=e751]:
+              - text: Prześlij plik ze swojego komputera
+              - generic [ref=e752]: Twoje produkty nie będą automatycznie aktualizowane w Merchant Center
+          - text: info
+        - generic [ref=e650]:
+          - text: "Twoje produkty będą wyświetlać się w tych krajach:"
+          - link "Czechy, Niemcy, Polska, i jeszcze 1, edytuj kraje" [ref=e652]:
+            - generic [ref=e655]: Czechy, Niemcy, Polska, i jeszcze 1
+            - img [ref=e658]: edit
+          - text: "w języku:"
+          - link "Polski, zmień język" [ref=e660]:
+            - generic [ref=e663]: Polski
+            - img [ref=e666]: arrow_drop_down
+          - text: "dla:"
+          - button "wszystkie metody marketingowe, edytuj metody marketingowe" [ref=e669]:
+            - generic [ref=e672]: wszystkie metody marketingowe
+            - img [ref=e675]: edit
+          - text: z etykietą pliku danych
+          - button "VOUCHERY_LOTY" [active] [ref=e791]:
+            - generic [ref=e680]: VOUCHERY_LOTY
+            - img [ref=e683]: edit
+      - generic [ref=e688]:
+        - button "Anuluj" [ref=e689]:
+          - generic [ref=e692]: Anuluj
+        - button "Dalej" [disabled] [ref=e693]:
+          - generic [ref=e696]: Dalej

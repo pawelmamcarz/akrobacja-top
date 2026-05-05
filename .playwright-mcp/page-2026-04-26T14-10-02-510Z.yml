@@ -1,0 +1,340 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - button "Przejdź do głównej treści" [ref=e7]:
+      - generic [ref=e10]: Przejdź do głównej treści
+    - generic [ref=e11]:
+      - button "Menu nawigacyjne" [expanded] [ref=e12] [cursor=pointer]:
+        - img [ref=e16]: menu
+      - link "Merchant Center – strona główna" [ref=e17] [cursor=pointer]:
+        - /url: /mc/overview?a=5765263858
+        - img "Merchant Center – strona główna" [ref=e18]
+      - button "Szukaj" [ref=e21] [cursor=pointer]:
+        - img [ref=e25]: search
+      - button "Pomoc" [ref=e27] [cursor=pointer]:
+        - img [ref=e30]: help_outline
+      - 'button "Konto Merchant Center: akrobacja.com, 5765263858" [ref=e36] [cursor=pointer]':
+        - generic [ref=e37]:
+          - generic [ref=e38]: akrobacja.com
+          - generic [ref=e39]: "5765263858"
+        - img [ref=e41]: arrow_drop_down
+      - generic [ref=e47]:
+        - button "Aplikacje Google" [ref=e51] [cursor=pointer]:
+          - img [ref=e52]
+        - 'button "Konto Google: Paweł Mamcarz (pawel@mamcarz.com)" [ref=e57] [cursor=pointer]':
+          - img [ref=e59]
+  - generic [ref=e60]:
+    - navigation [ref=e61]:
+      - tree "Nawigacja" [ref=e64]:
+        - treeitem "Przegląd" [level=1] [ref=e65] [cursor=pointer]:
+          - img [ref=e68]: dashboard
+          - generic [ref=e70]: Przegląd
+        - treeitem "Powiadomienia" [level=1] [ref=e71] [cursor=pointer]:
+          - img [ref=e74]: notifications
+          - generic [ref=e76]: Powiadomienia
+        - treeitem "Produkty i sklep" [expanded] [level=1] [ref=e78] [cursor=pointer]:
+          - img [ref=e81]: inventory_2
+          - generic [ref=e82]:
+            - generic [ref=e83]: Produkty i sklep
+            - img [ref=e86]: arrow_drop_down
+          - group [ref=e88]:
+            - treeitem "Produkty" [level=2] [ref=e89]:
+              - generic [ref=e92]: Produkty
+            - treeitem "Dostawa i zwroty" [level=2] [ref=e93]:
+              - generic [ref=e96]: Dostawa i zwroty
+            - treeitem "Jakość sklepu" [level=2] [ref=e97]:
+              - generic [ref=e100]: Jakość sklepu
+        - treeitem "Treść kreacji" [level=1] [ref=e102] [cursor=pointer]:
+          - img [ref=e105]: brush_spark
+          - generic [ref=e106]:
+            - generic [ref=e107]: Treść kreacji
+            - img [ref=e110]: arrow_drop_down
+          - group [ref=e112]:
+            - treeitem [disabled] [level=2] [ref=e113]:
+              - generic [ref=e115]: Product Studio
+            - treeitem [disabled] [level=2] [ref=e116]:
+              - generic [ref=e118]: Komponenty wideo
+        - treeitem "Marketing" [level=1] [ref=e119] [cursor=pointer]:
+          - img [ref=e122]: campaign
+          - generic [ref=e123]:
+            - generic [ref=e124]: Marketing
+            - img [ref=e127]: arrow_drop_down
+          - group [ref=e129]:
+            - treeitem [disabled] [level=2] [ref=e130]:
+              - generic [ref=e132]: Kampanie reklamowe
+            - treeitem [disabled] [level=2] [ref=e133]:
+              - generic [ref=e135]: Metody marketingowe
+        - treeitem "Analytics" [level=1] [ref=e136] [cursor=pointer]:
+          - img [ref=e139]: timeline
+          - generic [ref=e140]:
+            - generic [ref=e141]: Analytics
+            - img [ref=e144]: arrow_drop_down
+          - group [ref=e146]:
+            - treeitem [disabled] [level=2] [ref=e147]:
+              - generic [ref=e149]: Podsumowanie
+            - treeitem [disabled] [level=2] [ref=e150]:
+              - generic [ref=e152]: Produkty
+            - treeitem [disabled] [level=2] [ref=e153]:
+              - generic [ref=e155]: Ceny
+            - treeitem [disabled] [level=2] [ref=e156]:
+              - generic [ref=e158]: Sklep online
+        - treeitem "Ustawienia" [level=1] [ref=e160] [cursor=pointer]:
+          - img [ref=e163]: settings
+          - generic [ref=e164]:
+            - generic [ref=e165]: Ustawienia
+            - img [ref=e168]: arrow_drop_down
+          - group [ref=e170]:
+            - treeitem [disabled] [level=2] [ref=e171]:
+              - generic [ref=e173]: Ogólne
+            - treeitem [disabled] [level=2] [ref=e174]:
+              - generic [ref=e176]: Informacje o firmie
+            - treeitem [disabled] [level=2] [ref=e177]:
+              - generic [ref=e179]: Źródła danych
+            - treeitem [disabled] [level=2] [ref=e180]:
+              - generic [ref=e182]: Dodatki
+            - treeitem [disabled] [level=2] [ref=e183]:
+              - generic [ref=e185]: Dostęp i usługi
+    - generic [ref=e188]:
+      - generic [ref=e190]:
+        - heading "Produkty" [level=1] [ref=e193]
+        - tablist [ref=e198]:
+          - tab "Wszystkie produkty" [active] [selected] [ref=e199] [cursor=pointer]:
+            - generic [ref=e202]: Wszystkie produkty
+          - tab "Wymaga uwagi" [ref=e204] [cursor=pointer]:
+            - generic [ref=e207]: Wymaga uwagi
+          - tab "Automatyzacja" [ref=e209] [cursor=pointer]:
+            - generic [ref=e212]: Automatyzacja
+      - generic [ref=e259]:
+        - main [ref=e260]:
+          - generic [ref=e261]:
+            - generic [ref=e263]:
+              - button "Informacje o zmianach stanu produktu" [expanded] [ref=e265] [cursor=pointer]:
+                - generic [ref=e267]: Informacje o zmianach stanu produktu
+                - img [ref=e268]: expand_less
+              - region "Informacje o zmianach stanu produktu" [ref=e269]:
+                - generic [ref=e274]:
+                  - generic [ref=e275]: Wyświetla historię stanu produktu w różnych metodach marketingowych. Możesz skorzystać z filtrów, aby wyświetlić stan produktu w przypadku konkretnej metody marketingowej.
+                  - group [ref=e278]:
+                    - generic [ref=e279]:
+                      - generic [ref=e280]:
+                        - generic:
+                          - img: filter_alt
+                      - generic: "Zastosowane filtry:"
+                      - grid "Zastosowane filtry:" [ref=e281]:
+                        - 'row "Przedział czasu: Ostatnie 28 dni" [ref=e283] [cursor=pointer]':
+                          - 'gridcell "Przedział czasu: Ostatnie 28 dni" [ref=e284]':
+                            - 'button "Przedział czasu: Ostatnie 28 dni" [ref=e285]': "Przedział czasu: Ostatnie 28 dni"
+                        - 'row "Kraje: Wszystkie" [ref=e287] [cursor=pointer]':
+                          - 'gridcell "Kraje: Wszystkie" [ref=e288]':
+                            - 'button "Kraje: Wszystkie" [ref=e289]': "Kraje: Wszystkie"
+                        - 'row "Metody marketingowe: Wszystko dla sklepu internetowego" [ref=e291] [cursor=pointer]':
+                          - 'gridcell "Metody marketingowe: Wszystko dla sklepu internetowego" [ref=e292]':
+                            - 'button "Metody marketingowe: Wszystko dla sklepu internetowego" [ref=e293]': "Metody marketingowe: Wszystko dla sklepu internetowego"
+                  - generic [ref=e303]:
+                    - table [ref=e305]:
+                      - rowgroup [ref=e306]:
+                        - row "Zatwierdzone Z ograniczeniami Niezatwierdzone W trakcie sprawdzania" [ref=e307]:
+                          - checkbox "Zatwierdzone" [checked] [ref=e308]:
+                            - generic [ref=e309] [cursor=pointer]:
+                              - generic:
+                                - generic:
+                                  - checkbox [checked]
+                                  - generic:
+                                    - img
+                            - generic [ref=e312] [cursor=pointer]: Zatwierdzone
+                          - checkbox "Z ograniczeniami" [checked] [ref=e313]:
+                            - generic [ref=e314] [cursor=pointer]:
+                              - generic:
+                                - generic:
+                                  - checkbox [checked]
+                                  - generic:
+                                    - img
+                            - generic [ref=e317] [cursor=pointer]: Z ograniczeniami
+                          - checkbox "Niezatwierdzone" [checked] [ref=e318]:
+                            - generic [ref=e319] [cursor=pointer]:
+                              - generic:
+                                - generic:
+                                  - checkbox [checked]
+                                  - generic:
+                                    - img
+                            - generic [ref=e322] [cursor=pointer]: Niezatwierdzone
+                          - checkbox "W trakcie sprawdzania" [checked] [ref=e323]:
+                            - generic [ref=e324] [cursor=pointer]:
+                              - generic:
+                                - generic:
+                                  - checkbox [checked]
+                                  - generic:
+                                    - img
+                            - generic [ref=e327] [cursor=pointer]: W trakcie sprawdzania
+                    - generic [ref=e328]: Skumulowany wykres warstwowy. Do poruszania się po wykresie używaj klawiszy strzałek.
+            - generic [ref=e331]:
+              - tablist [ref=e351]:
+                - generic "Łączna liczba produktów 3" [ref=e352] [cursor=pointer]:
+                  - generic [ref=e353]:
+                    - generic [ref=e355]:
+                      - generic [ref=e356]: Łączna liczba produktów
+                      - generic [ref=e357]:
+                        - button "Więcej informacji o wskaźniku Łączna liczba produktów":
+                          - img "Więcej informacji o wskaźniku Łączna liczba produktów": help_outline
+                    - 'tab "Wartość: 3 Zaktualizuj raporty do wyświetlenia: Łączna liczba produktów" [selected] [ref=e360]': "3"
+              - generic [ref=e362]:
+                - generic [ref=e365]:
+                  - generic [ref=e366]:
+                    - button "Przycisk wyskakującego okienka menu z możliwością dodania produktów" [ref=e371]:
+                      - generic [ref=e374]: Dodaj produkty
+                      - img [ref=e377]: arrow_drop_down
+                    - generic [ref=e383]: "Ostatnia aktualizacja: 00:00 26 kwi 2026."
+                  - button "Wyszukaj produkty" [ref=e385] [cursor=pointer]:
+                    - img [ref=e389]: search
+                  - generic [ref=e390]:
+                    - button "Pokaż opcje filtrowania" [ref=e395] [cursor=pointer]:
+                      - img [ref=e399]: filter_alt
+                    - button "Opcja „Kolumny” pozwala modyfikować kolumny w tabeli. Kliknij ikonę i wybierz „Modyfikuj kolumny”." [ref=e403] [cursor=pointer]:
+                      - img [ref=e406]: view_column
+                    - button "Pobieranie produktów" [ref=e412] [cursor=pointer]:
+                      - img [ref=e416]: file_download
+                    - button "Więcej czynności" [ref=e421] [cursor=pointer]:
+                      - img [ref=e425]: more_vert
+                - grid "Lista produktów" [ref=e429]:
+                  - row "Zaznacz wszystkie wiersze Widoczność Stan Zdjęcie Tytuł Identyfikator produktu Cena Sugerowana cena promocyjna Dostępność Źródło danych Ostatnia aktualizacja Kliknięcia Potencjał kliknięcia Edytuj" [ref=e430]:
+                    - gridcell "Zaznacz wszystkie wiersze" [ref=e431]:
+                      - checkbox "Zaznacz wszystkie wiersze" [ref=e433] [cursor=pointer]:
+                        - img [ref=e435]
+                    - columnheader "Widoczność" [ref=e436] [cursor=pointer]
+                    - columnheader "Stan" [ref=e437] [cursor=pointer]
+                    - columnheader "Zdjęcie" [ref=e438]
+                    - columnheader "Tytuł" [ref=e439] [cursor=pointer]
+                    - columnheader "Identyfikator produktu" [ref=e440] [cursor=pointer]
+                    - columnheader "Cena" [ref=e441] [cursor=pointer]
+                    - columnheader "Sugerowana cena promocyjna" [ref=e442] [cursor=pointer]:
+                      - text: Sugerowana cena promocyjna
+                      - img [ref=e444]: help_outline
+                    - columnheader "Dostępność" [ref=e445]
+                    - columnheader "Źródło danych" [ref=e446] [cursor=pointer]
+                    - columnheader "Ostatnia aktualizacja" [ref=e447] [cursor=pointer]
+                    - columnheader "Kliknięcia" [ref=e448] [cursor=pointer]:
+                      - text: Kliknięcia
+                      - img [ref=e450]: help_outline
+                    - columnheader "Potencjał kliknięcia" [ref=e451] [cursor=pointer]:
+                      - text: Potencjał kliknięcia
+                      - img [ref=e453]: help_outline
+                    - columnheader "Edytuj" [ref=e454]
+                  - 'row "Wybierz wiersz Zatwierdzone Edytuj kolumnę Widoczność, obecna wartość: VISIBLE Zatwierdzone Miniaturka: Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min) Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min) Edytuj kolumnę Tytuł, obecna wartość: Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min) AKRO-V-PIERWSZY Cena: 1999,00 zł - W magazynie PRODUCTS SOURCE 1 26 kwi 2026 00:00:00 0 Dostępne wkrótce Edytuj produkt: Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min)" [ref=e455]':
+                    - gridcell "Wybierz wiersz" [ref=e456]:
+                      - checkbox "Wybierz wiersz" [ref=e458] [cursor=pointer]:
+                        - img [ref=e460]
+                    - 'gridcell "Zatwierdzone Edytuj kolumnę Widoczność, obecna wartość: VISIBLE" [ref=e461] [cursor=pointer]':
+                      - img "Zatwierdzone" [ref=e465]: check_circle_filled
+                      - 'button "Edytuj kolumnę Widoczność, obecna wartość: VISIBLE" [ref=e466]'
+                    - gridcell "Zatwierdzone" [ref=e467]:
+                      - generic [ref=e469]: Zatwierdzone
+                    - 'gridcell "Miniaturka: Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min)" [ref=e470]':
+                      - 'img "Miniaturka: Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min)" [ref=e472]'
+                    - 'gridcell "Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min) Edytuj kolumnę Tytuł, obecna wartość: Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min)" [ref=e473]':
+                      - link "Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min)" [ref=e475] [cursor=pointer]:
+                        - /url: /mc/items/details?a=5765263858&offerId=AKRO-V-PIERWSZY&language=pl&channel=0&feedLabel=VOUCHERY_LOTY
+                      - 'button "Edytuj kolumnę Tytuł, obecna wartość: Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min)" [ref=e476] [cursor=pointer]'
+                    - gridcell "AKRO-V-PIERWSZY" [ref=e477]:
+                      - generic [ref=e478]: AKRO-V-PIERWSZY
+                    - 'gridcell "Cena: 1999,00 zł" [ref=e479]':
+                      - 'group "Cena: 1999,00 zł" [ref=e481]':
+                        - generic [ref=e482]: 1999,00 zł
+                    - gridcell "-" [ref=e483]:
+                      - generic [ref=e484]: "-"
+                    - gridcell "W magazynie" [ref=e485]:
+                      - generic [ref=e488]: W magazynie
+                    - gridcell "PRODUCTS SOURCE 1" [ref=e489]:
+                      - link "PRODUCTS SOURCE 1" [ref=e491] [cursor=pointer]:
+                        - /url: /mc/products/sources/detail?a=5765263858&afmDataSourceId=10642858000&tab=processing
+                    - gridcell "26 kwi 2026 00:00:00" [ref=e492]:
+                      - generic [ref=e493]: 26 kwi 2026 00:00:00
+                    - gridcell "0" [ref=e494]:
+                      - generic [ref=e495]: "0"
+                    - gridcell "Dostępne wkrótce" [ref=e496]:
+                      - generic [ref=e498]: Dostępne wkrótce
+                    - 'gridcell "Edytuj produkt: Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min)" [ref=e499]':
+                      - 'link "Edytuj produkt: Voucher — Pierwszy Lot Akrobacyjny Extra 300L (15 min)" [ref=e501] [cursor=pointer]':
+                        - /url: /mc/directoffers/edit?a=5765263858&language=pl&offerId=AKRO-V-PIERWSZY&channel=0&feedLabel=VOUCHERY_LOTY
+                        - img [ref=e505]: edit
+                  - 'row "Wybierz wiersz Ograniczone Edytuj kolumnę Widoczność, obecna wartość: LIMITED Ograniczone Miniaturka: Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty) Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty) Edytuj kolumnę Tytuł, obecna wartość: Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty) AKRO-V-MASTERCLASS Cena: 4999,00 zł - W magazynie PRODUCTS SOURCE 1 26 kwi 2026 00:00:00 0 Dostępne wkrótce Edytuj produkt: Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)" [ref=e506]':
+                    - gridcell "Wybierz wiersz" [ref=e507]:
+                      - checkbox "Wybierz wiersz" [ref=e509] [cursor=pointer]:
+                        - img [ref=e511]
+                    - 'gridcell "Ograniczone Edytuj kolumnę Widoczność, obecna wartość: LIMITED" [ref=e512] [cursor=pointer]':
+                      - img "Ograniczone" [ref=e516]: check_circle_filled
+                      - 'button "Edytuj kolumnę Widoczność, obecna wartość: LIMITED" [ref=e517]'
+                    - gridcell "Ograniczone" [ref=e518]:
+                      - generic [ref=e520]: Ograniczone
+                    - 'gridcell "Miniaturka: Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)" [ref=e521]':
+                      - 'img "Miniaturka: Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)" [ref=e523]'
+                    - 'gridcell "Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty) Edytuj kolumnę Tytuł, obecna wartość: Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)" [ref=e524]':
+                      - link "Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)" [ref=e526] [cursor=pointer]:
+                        - /url: /mc/items/details?a=5765263858&offerId=AKRO-V-MASTERCLASS&language=pl&channel=0&feedLabel=VOUCHERY_LOTY
+                      - 'button "Edytuj kolumnę Tytuł, obecna wartość: Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)" [ref=e527] [cursor=pointer]'
+                    - gridcell "AKRO-V-MASTERCLASS" [ref=e528]:
+                      - generic [ref=e529]: AKRO-V-MASTERCLASS
+                    - 'gridcell "Cena: 4999,00 zł" [ref=e530]':
+                      - 'group "Cena: 4999,00 zł" [ref=e532]':
+                        - generic [ref=e533]: 4999,00 zł
+                    - gridcell "-" [ref=e534]:
+                      - generic [ref=e535]: "-"
+                    - gridcell "W magazynie" [ref=e536]:
+                      - generic [ref=e539]: W magazynie
+                    - gridcell "PRODUCTS SOURCE 1" [ref=e540]:
+                      - link "PRODUCTS SOURCE 1" [ref=e542] [cursor=pointer]:
+                        - /url: /mc/products/sources/detail?a=5765263858&afmDataSourceId=10642858000&tab=processing
+                    - gridcell "26 kwi 2026 00:00:00" [ref=e543]:
+                      - generic [ref=e544]: 26 kwi 2026 00:00:00
+                    - gridcell "0" [ref=e545]:
+                      - generic [ref=e546]: "0"
+                    - gridcell "Dostępne wkrótce" [ref=e547]:
+                      - generic [ref=e549]: Dostępne wkrótce
+                    - 'gridcell "Edytuj produkt: Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)" [ref=e550]':
+                      - 'link "Edytuj produkt: Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)" [ref=e552] [cursor=pointer]':
+                        - /url: /mc/directoffers/edit?a=5765263858&language=pl&offerId=AKRO-V-MASTERCLASS&channel=0&feedLabel=VOUCHERY_LOTY
+                        - img [ref=e556]: edit
+                  - 'row "Wybierz wiersz Zatwierdzone Edytuj kolumnę Widoczność, obecna wartość: VISIBLE Zatwierdzone Miniaturka: Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G) Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G) Edytuj kolumnę Tytuł, obecna wartość: Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G) AKRO-V-ADRENALINA Cena: 2999,00 zł - W magazynie PRODUCTS SOURCE 1 26 kwi 2026 00:00:00 0 Dostępne wkrótce Edytuj produkt: Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G)" [ref=e557]':
+                    - gridcell "Wybierz wiersz" [ref=e558]:
+                      - checkbox "Wybierz wiersz" [ref=e560] [cursor=pointer]:
+                        - img [ref=e562]
+                    - 'gridcell "Zatwierdzone Edytuj kolumnę Widoczność, obecna wartość: VISIBLE" [ref=e563] [cursor=pointer]':
+                      - img "Zatwierdzone" [ref=e567]: check_circle_filled
+                      - 'button "Edytuj kolumnę Widoczność, obecna wartość: VISIBLE" [ref=e568]'
+                    - gridcell "Zatwierdzone" [ref=e569]:
+                      - generic [ref=e571]: Zatwierdzone
+                    - 'gridcell "Miniaturka: Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G)" [ref=e572]':
+                      - 'img "Miniaturka: Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G)" [ref=e574]'
+                    - 'gridcell "Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G) Edytuj kolumnę Tytuł, obecna wartość: Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G)" [ref=e575]':
+                      - link "Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G)" [ref=e577] [cursor=pointer]:
+                        - /url: /mc/items/details?a=5765263858&offerId=AKRO-V-ADRENALINA&language=pl&channel=0&feedLabel=VOUCHERY_LOTY
+                      - 'button "Edytuj kolumnę Tytuł, obecna wartość: Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G)" [ref=e578] [cursor=pointer]'
+                    - gridcell "AKRO-V-ADRENALINA" [ref=e579]:
+                      - generic [ref=e580]: AKRO-V-ADRENALINA
+                    - 'gridcell "Cena: 2999,00 zł" [ref=e581]':
+                      - 'group "Cena: 2999,00 zł" [ref=e583]':
+                        - generic [ref=e584]: 2999,00 zł
+                    - gridcell "-" [ref=e585]:
+                      - generic [ref=e586]: "-"
+                    - gridcell "W magazynie" [ref=e587]:
+                      - generic [ref=e590]: W magazynie
+                    - gridcell "PRODUCTS SOURCE 1" [ref=e591]:
+                      - link "PRODUCTS SOURCE 1" [ref=e593] [cursor=pointer]:
+                        - /url: /mc/products/sources/detail?a=5765263858&afmDataSourceId=10642858000&tab=processing
+                    - gridcell "26 kwi 2026 00:00:00" [ref=e594]:
+                      - generic [ref=e595]: 26 kwi 2026 00:00:00
+                    - gridcell "0" [ref=e596]:
+                      - generic [ref=e597]: "0"
+                    - gridcell "Dostępne wkrótce" [ref=e598]:
+                      - generic [ref=e600]: Dostępne wkrótce
+                    - 'gridcell "Edytuj produkt: Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G)" [ref=e601]':
+                      - 'link "Edytuj produkt: Voucher — Lot Akrobacyjny Adrenalina Extra 300L (20 min, +6G)" [ref=e603] [cursor=pointer]':
+                        - /url: /mc/directoffers/edit?a=5765263858&language=pl&offerId=AKRO-V-ADRENALINA&channel=0&feedLabel=VOUCHERY_LOTY
+                        - img [ref=e607]: edit
+        - contentinfo [ref=e341]:
+          - link "Polityka prywatności" [ref=e342] [cursor=pointer]:
+            - /url: http://www.google.com/policies/privacy/
+          - generic [ref=e343]: ·
+          - link "Warunki korzystania z usługi" [ref=e344] [cursor=pointer]:
+            - /url: https://support.google.com/merchants/answer/160173?hl=pl
+          - generic [ref=e345]: ·
+          - link "Zasady programu" [ref=e346] [cursor=pointer]:
+            - /url: https://support.google.com/merchants/topic/7286989?hl=pl

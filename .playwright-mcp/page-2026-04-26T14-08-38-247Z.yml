@@ -1,0 +1,37 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - progressbar [ref=e6]
+      - main [ref=e79]:
+        - generic [ref=e80]:
+          - img [ref=e83]
+          - generic [ref=e88]:
+            - heading "Paweł Mamcarz" [level=1] [ref=e89]
+            - 'link "Wybrane konto: pawel@mamcarz.com. Przełącz konto" [ref=e91] [cursor=pointer]':
+              - generic [ref=e94]: pawel@mamcarz.com
+              - img [ref=e96]
+        - generic [ref=e103]:
+          - heading "Weryfikuję Twoją tożsamość…" [level=2] [ref=e105]:
+            - generic [ref=e106]: Weryfikuję Twoją tożsamość…
+          - generic [ref=e109]: Dokończ logowanie, używając klucza
+        - button "Wypróbuj inny sposób" [ref=e115]:
+          - generic [ref=e118]: Wypróbuj inny sposób
+    - contentinfo [ref=e64]:
+      - combobox "Zmień język polski" [ref=e68] [cursor=pointer]:
+        - generic:
+          - generic: polski
+        - generic:
+          - img
+      - list [ref=e70]:
+        - listitem [ref=e71]:
+          - link "Pomoc" [ref=e72] [cursor=pointer]:
+            - /url: https://support.google.com/accounts?hl=pl&p=account_iph
+        - listitem [ref=e73]:
+          - link "Prywatność" [ref=e74] [cursor=pointer]:
+            - /url: https://accounts.google.com/TOS?loc=PL&hl=pl&privacy=true
+        - listitem [ref=e75]:
+          - link "Warunki" [ref=e76] [cursor=pointer]:
+            - /url: https://accounts.google.com/TOS?loc=PL&hl=pl
+  - iframe [ref=e77]:
+    
+  - generic [ref=e121]: Paweł Mamcarz

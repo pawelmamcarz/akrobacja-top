@@ -1,0 +1,232 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - button "Przejdź do głównej treści" [ref=e7]:
+      - generic [ref=e10]: Przejdź do głównej treści
+    - generic [ref=e11]:
+      - button "Menu nawigacyjne" [expanded] [ref=e12] [cursor=pointer]:
+        - img [ref=e16]: menu
+      - link "Merchant Center – strona główna" [ref=e17] [cursor=pointer]:
+        - /url: /mc/overview?a=5765263858
+        - img "Merchant Center – strona główna" [ref=e18]
+      - button "Szukaj" [ref=e21] [cursor=pointer]:
+        - img [ref=e25]: search
+      - button "Pomoc" [ref=e27] [cursor=pointer]:
+        - img [ref=e30]: help_outline
+      - 'button "Konto Merchant Center: akrobacja.com, 5765263858" [ref=e36] [cursor=pointer]':
+        - generic [ref=e37]:
+          - generic [ref=e38]: akrobacja.com
+          - generic [ref=e39]: "5765263858"
+        - img [ref=e41]: arrow_drop_down
+      - generic [ref=e47]:
+        - button "Aplikacje Google" [ref=e51] [cursor=pointer]:
+          - img [ref=e52]
+        - 'button "Konto Google: Paweł Mamcarz (pawel@mamcarz.com)" [ref=e57] [cursor=pointer]':
+          - img [ref=e59]
+  - generic [ref=e66]:
+    - navigation [ref=e67]:
+      - tree "Nawigacja" [ref=e70]:
+        - treeitem "Przegląd" [level=1] [ref=e71] [cursor=pointer]:
+          - img [ref=e74]: dashboard
+          - generic [ref=e76]: Przegląd
+        - treeitem "Powiadomienia" [level=1] [ref=e77] [cursor=pointer]:
+          - img [ref=e80]: notifications
+          - generic [ref=e82]: Powiadomienia
+        - treeitem "Produkty i sklep" [expanded] [level=1] [ref=e84] [cursor=pointer]:
+          - img [ref=e87]: inventory_2
+          - generic [ref=e88]:
+            - generic [ref=e89]: Produkty i sklep
+            - img [ref=e92]: arrow_drop_down
+          - group [ref=e94]:
+            - treeitem "Produkty" [level=2] [ref=e95]:
+              - generic [ref=e98]: Produkty
+            - treeitem "Dostawa i zwroty" [level=2] [ref=e99]:
+              - generic [ref=e102]: Dostawa i zwroty
+            - treeitem "Jakość sklepu" [level=2] [ref=e103]:
+              - generic [ref=e106]: Jakość sklepu
+        - treeitem "Treść kreacji" [level=1] [ref=e108] [cursor=pointer]:
+          - img [ref=e111]: brush_spark
+          - generic [ref=e112]:
+            - generic [ref=e113]: Treść kreacji
+            - img [ref=e116]: arrow_drop_down
+          - group [ref=e118]:
+            - treeitem [disabled] [level=2] [ref=e119]:
+              - generic [ref=e121]: Product Studio
+            - treeitem [disabled] [level=2] [ref=e122]:
+              - generic [ref=e124]: Komponenty wideo
+        - treeitem "Marketing" [level=1] [ref=e125] [cursor=pointer]:
+          - img [ref=e128]: campaign
+          - generic [ref=e129]:
+            - generic [ref=e130]: Marketing
+            - img [ref=e133]: arrow_drop_down
+          - group [ref=e135]:
+            - treeitem [disabled] [level=2] [ref=e136]:
+              - generic [ref=e138]: Kampanie reklamowe
+            - treeitem [disabled] [level=2] [ref=e139]:
+              - generic [ref=e141]: Metody marketingowe
+        - treeitem "Analytics" [level=1] [ref=e142] [cursor=pointer]:
+          - img [ref=e145]: timeline
+          - generic [ref=e146]:
+            - generic [ref=e147]: Analytics
+            - img [ref=e150]: arrow_drop_down
+          - group [ref=e152]:
+            - treeitem [disabled] [level=2] [ref=e153]:
+              - generic [ref=e155]: Podsumowanie
+            - treeitem [disabled] [level=2] [ref=e156]:
+              - generic [ref=e158]: Produkty
+            - treeitem [disabled] [level=2] [ref=e159]:
+              - generic [ref=e161]: Ceny
+            - treeitem [disabled] [level=2] [ref=e162]:
+              - generic [ref=e164]: Sklep online
+        - treeitem "Ustawienia" [level=1] [ref=e166] [cursor=pointer]:
+          - img [ref=e169]: settings
+          - generic [ref=e170]:
+            - generic [ref=e171]: Ustawienia
+            - img [ref=e174]: arrow_drop_down
+          - group [ref=e176]:
+            - treeitem [disabled] [level=2] [ref=e177]:
+              - generic [ref=e179]: Ogólne
+            - treeitem [disabled] [level=2] [ref=e180]:
+              - generic [ref=e182]: Informacje o firmie
+            - treeitem [disabled] [level=2] [ref=e183]:
+              - generic [ref=e185]: Źródła danych
+            - treeitem [disabled] [level=2] [ref=e186]:
+              - generic [ref=e188]: Dodatki
+            - treeitem [disabled] [level=2] [ref=e189]:
+              - generic [ref=e191]: Dostęp i usługi
+    - generic [ref=e194]:
+      - generic [ref=e198]:
+        - button "Wstecz" [ref=e199] [cursor=pointer]:
+          - img [ref=e203]: arrow_back
+        - heading "Szczegóły produktu" [level=1] [ref=e204]
+      - main [ref=e211]:
+        - generic [ref=e215]:
+          - heading [level=2] [ref=e216]:
+            - tablist [ref=e220]:
+              - tab "Szczegóły produktu" [active] [selected] [ref=e221] [cursor=pointer]:
+                - generic [ref=e222]: Szczegóły produktu
+              - tab "Wymaga uwagi (0)" [ref=e224] [cursor=pointer]:
+                - generic [ref=e225]: Wymaga uwagi (0)
+              - tab "Kalkulator dostawy" [ref=e227] [cursor=pointer]:
+                - generic [ref=e228]: Kalkulator dostawy
+              - tab "Ruch" [ref=e230] [cursor=pointer]:
+                - generic [ref=e231]: Ruch
+          - generic [ref=e251]:
+            - generic [ref=e255]:
+              - generic [ref=e260]:
+                - generic [ref=e262]:
+                  - heading "Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)" [level=2] [ref=e265]
+                  - button "Edytuj produkt" [ref=e268]:
+                    - img [ref=e273]: edit
+                    - generic [ref=e274]: Edytuj produkt
+                - generic [ref=e275]:
+                  - generic [ref=e276]:
+                    - generic [ref=e278]:
+                      - generic [ref=e279]:
+                        - 'button "Wybrany obraz: samolot-top-web.jpg" [ref=e282] [cursor=pointer]':
+                          - 'img "Wybrany obraz: samolot-top-web.jpg" [ref=e283]'
+                        - list [ref=e285]:
+                          - listitem [ref=e286]:
+                            - button "Edytuj obraz cockpit-closeup.jpg" [ref=e287] [cursor=pointer]:
+                              - 'img "Miniatura: cockpit-closeup.jpg" [ref=e289]'
+                          - listitem [ref=e290]:
+                            - button "Edytuj obraz pilot-cockpit.jpg" [ref=e291] [cursor=pointer]:
+                              - 'img "Miniatura: pilot-cockpit.jpg" [ref=e293]'
+                          - listitem [ref=e294]:
+                            - button "Dodaj zdjęcie produktu" [ref=e295] [cursor=pointer]:
+                              - img [ref=e297]: add_a_photo
+                      - button "Zarządzaj obrazami" [ref=e299]:
+                        - img [ref=e304]: photo_library
+                        - generic [ref=e305]: Zarządzaj obrazami
+                    - generic [ref=e306]:
+                      - generic [ref=e308]:
+                        - generic [ref=e309]: Strona produktu w Twojej witrynie
+                        - link "https://akrobacja.com/voucher-prezent?pkg=masterclass" [ref=e312] [cursor=pointer]:
+                          - /url: https://akrobacja.com/voucher-prezent?pkg=masterclass
+                          - generic [ref=e313]: https://akrobacja.com/voucher-prezent?pkg=masterclass
+                      - generic [ref=e315]:
+                        - generic [ref=e316]:
+                          - generic [ref=e317]: Cena
+                          - generic [ref=e319]: 4 999,00 zł
+                        - generic [ref=e321]:
+                          - generic [ref=e322]: Dostępność
+                          - generic [ref=e324]: W magazynie
+                      - generic [ref=e326]:
+                        - generic [ref=e327]:
+                          - generic [ref=e328]: Marka
+                          - generic [ref=e330]: akrobacja.com
+                        - generic [ref=e332]:
+                          - generic [ref=e333]: Identyfikator produktu
+                          - generic [ref=e335]: AKRO-V-MASTERCLASS
+                      - generic [ref=e338]:
+                        - generic [ref=e339]: Stan
+                        - generic [ref=e341]: Nowy
+                      - generic [ref=e344]:
+                        - generic [ref=e345]: Etykiety
+                        - generic [ref=e348]:
+                          - 'generic "Etykieta własna 0: masterclass" [ref=e350] [cursor=pointer]': masterclass
+                          - 'generic "Etykieta własna 1: premium" [ref=e352] [cursor=pointer]': premium
+                          - 'generic "Etykieta własna 2: pilot" [ref=e354] [cursor=pointer]': pilot
+                    - generic [ref=e356]:
+                      - generic [ref=e357]: Opis
+                      - generic [ref=e361]: Voucher PDF na Masterclass — sesja szkoleniowa z Mistrzem Świata akrobacji. Do 50 minut w powietrzu (2 loty), figury zaawansowane, pełny debriefing z analizą lotu. Samolot Extra 300L SP-EKS. Lotnisko Radom-Piastów. Voucher ważny 12 miesięcy.
+                  - button "Dodatkowe informacje" [ref=e367] [cursor=pointer]:
+                    - paragraph [ref=e369]: Dodatkowe informacje
+                    - img [ref=e370]: expand_less
+              - generic [ref=e375]:
+                - generic [ref=e377]:
+                  - heading "Stan" [level=2] [ref=e380]
+                  - generic [ref=e383]: Zatwierdzone
+                - generic [ref=e385]:
+                  - generic [ref=e386]:
+                    - img "Zatwierdzone" [ref=e389]: check_circle_filled
+                    - generic [ref=e390]: Ten produkt wyświetla się w Google
+                  - generic [ref=e391]:
+                    - generic [ref=e392]: Ustawienie widoczności
+                    - generic [ref=e393]:
+                      - generic [ref=e395] [cursor=pointer]:
+                        - generic [ref=e396]:
+                          - checkbox "Pokaż w Google" [checked] [ref=e397]
+                          - generic:
+                            - img
+                        - generic [ref=e398]: Pokaż w Google
+                      - generic [ref=e401] [cursor=pointer]:
+                        - generic [ref=e402]:
+                          - checkbox "Pokaż w reklamach" [checked] [ref=e403]
+                          - generic:
+                            - img
+                        - generic [ref=e404]: Pokaż w reklamach
+                  - generic [ref=e406]:
+                    - img "Produkt Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)" [ref=e407]
+                    - generic [ref=e408]:
+                      - generic [ref=e410]: Voucher — Lot Akrobacyjny Masterclass Extra 300L (do 50 min, 2 loty)
+                      - paragraph [ref=e411]:
+                        - generic [ref=e412]: akrobacja.com
+                      - generic "Poprzednia cena to 4 999,00 zł" [ref=e414]:
+                        - generic [ref=e415]: 4 999,00 zł
+                      - generic [ref=e418]: W magazynie
+                  - generic [ref=e419]:
+                    - generic [ref=e420]: Metody marketingowe
+                    - generic [ref=e424]: Bezpłatne informacje, Reklamy produktowe
+                  - generic [ref=e425]:
+                    - generic [ref=e426]: Kraje
+                    - generic [ref=e428]: Polska
+                  - generic [ref=e429]:
+                    - generic [ref=e430]: Ostatnia aktualizacja
+                    - generic [ref=e431]: 20 godzin temu
+                  - generic [ref=e432]:
+                    - generic [ref=e433]: Źródło
+                    - generic [ref=e435]: Plik
+                  - generic [ref=e436]:
+                    - text: Nie możesz usunąć tego produktu z Merchant Center
+                    - generic "Więcej informacji o usuwaniu produktów" [ref=e437]:
+                      - button "Więcej informacji" [ref=e438] [cursor=pointer]:
+                        - img "Więcej informacji" [ref=e439]: info
+            - contentinfo [ref=e441]:
+              - link "Polityka prywatności" [ref=e442] [cursor=pointer]:
+                - /url: http://www.google.com/policies/privacy/
+              - generic [ref=e443]: ·
+              - link "Warunki korzystania z usługi" [ref=e444] [cursor=pointer]:
+                - /url: https://support.google.com/merchants/answer/160173?hl=pl
+              - generic [ref=e445]: ·
+              - link "Zasady programu" [ref=e446] [cursor=pointer]:
+                - /url: https://support.google.com/merchants/topic/7286989?hl=pl

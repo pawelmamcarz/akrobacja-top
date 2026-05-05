@@ -1,0 +1,162 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - button "Przejdź do głównej treści" [ref=e7]:
+        - generic [ref=e10]: Przejdź do głównej treści
+      - generic [ref=e11]:
+        - button "Menu nawigacyjne" [expanded] [ref=e1880] [cursor=pointer]:
+          - img [ref=e1884]: menu
+        - link "Merchant Center – strona główna" [ref=e1885] [cursor=pointer]:
+          - /url: /mc/overview?a=5765263858&hl=pl
+          - img "Merchant Center – strona główna" [ref=e1886]
+        - button "Szukaj" [ref=e1888] [cursor=pointer]:
+          - img [ref=e1892]: search
+        - button "Pomoc" [ref=e27] [cursor=pointer]:
+          - img [ref=e30]: help_outline
+        - 'button "Konto Merchant Center: akrobacja.com, 5765263858" [ref=e36] [cursor=pointer]':
+          - generic [ref=e37]:
+            - generic [ref=e38]: akrobacja.com
+            - generic [ref=e39]: "5765263858"
+          - img [ref=e41]: arrow_drop_down
+        - generic [ref=e47]:
+          - button "Aplikacje Google" [ref=e51] [cursor=pointer]:
+            - img [ref=e52]
+          - 'button "Konto Google: Paweł Mamcarz (pawel@mamcarz.com)" [ref=e57] [cursor=pointer]':
+            - img [ref=e59]
+    - generic [ref=e60]:
+      - navigation [ref=e1899]:
+        - tree "Nawigacja" [ref=e1902]:
+          - treeitem "Przegląd" [level=1] [ref=e1903] [cursor=pointer]:
+            - img [ref=e1906]: dashboard
+            - generic [ref=e1908]: Przegląd
+          - treeitem "Powiadomienia" [level=1] [ref=e1909] [cursor=pointer]:
+            - img [ref=e1912]: notifications
+            - generic [ref=e1914]: Powiadomienia
+          - treeitem "Produkty i sklep" [level=1] [ref=e1916] [cursor=pointer]:
+            - img [ref=e1919]: inventory_2
+            - generic [ref=e1920]:
+              - generic [ref=e1921]: Produkty i sklep
+              - img [ref=e1924]: arrow_drop_down
+            - group [ref=e1926]:
+              - treeitem [disabled] [level=2] [ref=e1927]:
+                - generic [ref=e1929]: Produkty
+              - treeitem [disabled] [level=2] [ref=e1930]:
+                - generic [ref=e1932]: Dostawa i zwroty
+              - treeitem [disabled] [level=2] [ref=e1933]:
+                - generic [ref=e1935]: Jakość sklepu
+          - treeitem "Treść kreacji" [level=1] [ref=e1936] [cursor=pointer]:
+            - img [ref=e1939]: brush_spark
+            - generic [ref=e1940]:
+              - generic [ref=e1941]: Treść kreacji
+              - img [ref=e1944]: arrow_drop_down
+            - group [ref=e1946]:
+              - treeitem [disabled] [level=2] [ref=e1947]:
+                - generic [ref=e1949]: Product Studio
+              - treeitem [disabled] [level=2] [ref=e1950]:
+                - generic [ref=e1952]: Komponenty wideo
+          - treeitem "Marketing" [level=1] [ref=e1953] [cursor=pointer]:
+            - img [ref=e1956]: campaign
+            - generic [ref=e1957]:
+              - generic [ref=e1958]: Marketing
+              - img [ref=e1961]: arrow_drop_down
+            - group [ref=e1963]:
+              - treeitem [disabled] [level=2] [ref=e1964]:
+                - generic [ref=e1966]: Kampanie reklamowe
+              - treeitem [disabled] [level=2] [ref=e1967]:
+                - generic [ref=e1969]: Metody marketingowe
+          - treeitem "Analytics" [level=1] [ref=e1970] [cursor=pointer]:
+            - img [ref=e1973]: timeline
+            - generic [ref=e1974]:
+              - generic [ref=e1975]: Analytics
+              - img [ref=e1978]: arrow_drop_down
+            - group [ref=e1980]:
+              - treeitem [disabled] [level=2] [ref=e1981]:
+                - generic [ref=e1983]: Podsumowanie
+              - treeitem [disabled] [level=2] [ref=e1984]:
+                - generic [ref=e1986]: Produkty
+              - treeitem [disabled] [level=2] [ref=e1987]:
+                - generic [ref=e1989]: Sklep online
+          - treeitem "Ustawienia" [expanded] [level=1] [ref=e1991] [cursor=pointer]:
+            - img [ref=e1994]: settings
+            - generic [ref=e1995]:
+              - generic [ref=e1996]: Ustawienia
+              - img [ref=e1999]: arrow_drop_down
+            - group [ref=e2001]:
+              - treeitem "Ogólne" [level=2] [ref=e2002]:
+                - generic [ref=e2005]: Ogólne
+              - treeitem "Informacje o firmie" [level=2] [ref=e2006]:
+                - generic [ref=e2009]: Informacje o firmie
+              - treeitem "Źródła danych" [level=2] [ref=e2010]:
+                - generic [ref=e2013]: Źródła danych
+              - treeitem "Dodatki" [level=2] [ref=e2014]:
+                - generic [ref=e2017]: Dodatki
+              - treeitem "Dostęp i usługi" [level=2] [ref=e2018]:
+                - generic [ref=e2021]: Dostęp i usługi
+      - generic [ref=e181]:
+        - generic [ref=e2026]:
+          - button "Wstecz" [ref=e2027] [cursor=pointer]:
+            - img [ref=e2031]: arrow_back
+          - heading "PRODUCTS SOURCE 1 – szczegóły" [level=1] [ref=e2042]
+        - generic [ref=e2041]:
+          - generic [ref=e2044]:
+            - generic [ref=e2045]:
+              - heading "Szczegóły źródła" [level=2] [ref=e2050]
+              - generic [ref=e2053]:
+                - generic [ref=e2054]:
+                  - generic [ref=e2055]: Typ
+                  - generic [ref=e2056]: Plik (URL)
+                - generic [ref=e2057]:
+                  - generic [ref=e2058]: Treść
+                  - generic [ref=e2059]: Produkty
+                - generic [ref=e2061]: Produkty
+                - generic [ref=e2068]:
+                  - generic [ref=e2069]: Ostatnia aktualizacja
+                  - generic [ref=e2070]: 25 kwietnia 2026 09:56
+            - generic [ref=e2071]:
+              - button "Wyświetl historię aktualizacji" [ref=e2072]:
+                - generic [ref=e2075]: Wyświetl historię aktualizacji
+              - button "Aktualizuj za pomocą SFTP" [ref=e2076]:
+                - generic [ref=e2079]: Aktualizuj za pomocą SFTP
+              - button "Aktualizowanie produktów w Merchant Center" [ref=e2080]:
+                - img [ref=e2085]: refresh
+                - generic [ref=e2086]: Zaktualizuj
+          - generic [ref=e2089]:
+            - tablist [ref=e2094]:
+              - tab "Najnowsza aktualizacja" [selected] [ref=e2095] [cursor=pointer]:
+                - generic [ref=e2096]: Najnowsza aktualizacja
+              - tab "Konfiguracja źródła danych" [ref=e2098] [cursor=pointer]:
+                - generic [ref=e2099]: Konfiguracja źródła danych
+            - main [ref=e2105]:
+              - generic [ref=e2106]:
+                - generic [ref=e2110]:
+                  - heading "Zaktualizowano produkty" [level=2] [ref=e2111]
+                  - generic [ref=e2113]:
+                    - text: Produkty w pliku są aktualne. Na tej stronie znajdziesz informacje o wszystkich podstawowych problemach. Wszystkie produkty, które musisz poprawić, znajdziesz na stronie
+                    - link "Wymaga uwagi" [ref=e2114] [cursor=pointer]:
+                      - /url: /mc/products/diagnostics?a=5765263858&hl=pl
+                    - text: .
+                    - text: Jeśli do pliku zostały dodane nowe produkty i chcesz zainicjować aktualizację, w celu dodania ich do Merchant Center, kliknij „Aktualizuj” w nagłówku powyżej, aby rozpocząć proces.
+                - generic [ref=e2116]:
+                  - generic [ref=e2119]:
+                    - generic [ref=e2148]:
+                      - term [ref=e2149]: Łączna liczba zaktualizowanych produktów
+                      - definition [ref=e2150]: "0"
+                    - generic [ref=e2151]:
+                      - term [ref=e2152]: Dodano nowe produkty
+                      - definition [ref=e2153]: "0"
+                  - generic [ref=e2131]:
+                    - heading "Twój plik z produktami" [level=2] [ref=e2134]
+                    - generic [ref=e2138]:
+                      - img [ref=e2140]: check_circle
+                      - generic [ref=e2141]: Nie znaleziono problemów
+          - contentinfo [ref=e2142]:
+            - link "Polityka prywatności" [ref=e2143] [cursor=pointer]:
+              - /url: http://www.google.com/policies/privacy/
+            - generic [ref=e2144]: ·
+            - link "Warunki korzystania z usługi" [ref=e2145] [cursor=pointer]:
+              - /url: https://support.google.com/merchants/answer/160173?hl=pl
+            - generic [ref=e2146]: ·
+            - link "Zasady programu" [ref=e2147] [cursor=pointer]:
+              - /url: https://support.google.com/merchants/topic/7286989?hl=pl
+  - generic: info
+  - status [ref=e2154]

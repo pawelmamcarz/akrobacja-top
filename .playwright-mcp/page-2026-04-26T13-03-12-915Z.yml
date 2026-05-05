@@ -1,0 +1,16 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - heading "akrobacja.com Admin" [level=1] [ref=e4]
+    - textbox "Haslo admina" [active] [ref=e5]
+    - button "Zaloguj" [ref=e6] [cursor=pointer]
+  - dialog "Ustawienia cookies" [ref=e7]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e8]
+    - paragraph [ref=e9]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e10] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e11]:
+      - button "Zgoda na wszystkie" [ref=e12] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e13] [cursor=pointer]
+      - button "Ustawienia" [ref=e14] [cursor=pointer]

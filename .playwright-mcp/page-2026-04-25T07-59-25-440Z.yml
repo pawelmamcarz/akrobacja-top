@@ -1,0 +1,104 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - button "Przejdź do głównej treści" [ref=e7]:
+        - generic [ref=e10]: Przejdź do głównej treści
+      - generic [ref=e11]:
+        - button "Menu nawigacyjne" [expanded] [ref=e12] [cursor=pointer]:
+          - img [ref=e16]: menu
+        - link "Merchant Center – strona główna" [ref=e17] [cursor=pointer]:
+          - /url: /mc/overview?a=5765263858&hl=pl
+          - img "Merchant Center – strona główna" [ref=e18]
+        - button "Szukaj" [ref=e21] [cursor=pointer]:
+          - img [ref=e25]: search
+        - button "Pomoc" [ref=e27] [cursor=pointer]:
+          - img [ref=e30]: help_outline
+        - 'button "Konto Merchant Center: akrobacja.com, 5765263858" [ref=e36] [cursor=pointer]':
+          - generic [ref=e37]:
+            - generic [ref=e38]: akrobacja.com
+            - generic [ref=e39]: "5765263858"
+          - img [ref=e41]: arrow_drop_down
+        - generic [ref=e47]:
+          - button "Aplikacje Google" [ref=e51] [cursor=pointer]:
+            - img [ref=e52]
+          - 'button "Konto Google: Paweł Mamcarz (pawel@mamcarz.com)" [ref=e57] [cursor=pointer]':
+            - img [ref=e59]
+    - generic [ref=e60]:
+      - navigation [ref=e61]:
+        - tree "Nawigacja" [ref=e64]:
+          - treeitem "Przegląd" [level=1] [ref=e65] [cursor=pointer]:
+            - img [ref=e68]: dashboard
+            - generic [ref=e70]: Przegląd
+          - treeitem "Powiadomienia" [level=1] [ref=e71] [cursor=pointer]:
+            - img [ref=e74]: notifications
+            - generic [ref=e76]: Powiadomienia
+          - treeitem "Produkty i sklep" [expanded] [level=1] [ref=e78] [cursor=pointer]:
+            - img [ref=e81]: inventory_2
+            - generic [ref=e82]:
+              - generic [ref=e83]: Produkty i sklep
+              - img [ref=e86]: arrow_drop_down
+            - group [ref=e88]:
+              - treeitem "Produkty" [level=2] [ref=e89]:
+                - generic [ref=e92]: Produkty
+              - treeitem "Dostawa i zwroty" [level=2] [ref=e93]:
+                - generic [ref=e96]: Dostawa i zwroty
+              - treeitem "Jakość sklepu" [level=2] [ref=e97]:
+                - generic [ref=e100]: Jakość sklepu
+          - treeitem "Treść kreacji" [level=1] [ref=e102] [cursor=pointer]:
+            - img [ref=e105]: brush_spark
+            - generic [ref=e106]:
+              - generic [ref=e107]: Treść kreacji
+              - img [ref=e110]: arrow_drop_down
+            - group [ref=e112]:
+              - treeitem [disabled] [level=2] [ref=e113]:
+                - generic [ref=e115]: Product Studio
+              - treeitem [disabled] [level=2] [ref=e116]:
+                - generic [ref=e118]: Komponenty wideo
+          - treeitem "Marketing" [level=1] [ref=e119] [cursor=pointer]:
+            - img [ref=e122]: campaign
+            - generic [ref=e123]:
+              - generic [ref=e124]: Marketing
+              - img [ref=e127]: arrow_drop_down
+            - group [ref=e129]:
+              - treeitem [disabled] [level=2] [ref=e130]:
+                - generic [ref=e132]: Kampanie reklamowe
+              - treeitem [disabled] [level=2] [ref=e133]:
+                - generic [ref=e135]: Metody marketingowe
+          - treeitem "Analytics" [level=1] [ref=e136] [cursor=pointer]:
+            - img [ref=e139]: timeline
+            - generic [ref=e140]:
+              - generic [ref=e141]: Analytics
+              - img [ref=e144]: arrow_drop_down
+            - group [ref=e146]:
+              - treeitem [disabled] [level=2] [ref=e147]:
+                - generic [ref=e149]: Podsumowanie
+              - treeitem [disabled] [level=2] [ref=e150]:
+                - generic [ref=e152]: Produkty
+              - treeitem [disabled] [level=2] [ref=e153]:
+                - generic [ref=e155]: Sklep online
+          - treeitem "Ustawienia" [level=1] [ref=e157] [cursor=pointer]:
+            - img [ref=e160]: settings
+            - generic [ref=e161]:
+              - generic [ref=e162]: Ustawienia
+              - img [ref=e165]: arrow_drop_down
+            - group [ref=e167]:
+              - treeitem [disabled] [level=2] [ref=e168]:
+                - generic [ref=e170]: Ogólne
+              - treeitem [disabled] [level=2] [ref=e171]:
+                - generic [ref=e173]: Informacje o firmie
+              - treeitem [disabled] [level=2] [ref=e174]:
+                - generic [ref=e176]: Źródła danych
+              - treeitem [disabled] [level=2] [ref=e177]:
+                - generic [ref=e179]: Dodatki
+              - treeitem [disabled] [level=2] [ref=e180]:
+                - generic [ref=e182]: Dostęp i usługi
+      - generic [ref=e187]:
+        - heading "Produkty" [level=1] [ref=e190]
+        - tablist [ref=e195]:
+          - tab "Wszystkie produkty" [ref=e196] [cursor=pointer]:
+            - generic [ref=e199]: Wszystkie produkty
+          - tab "Wymaga uwagi" [selected] [ref=e201] [cursor=pointer]:
+            - generic [ref=e204]: Wymaga uwagi
+          - tab "Automatyzacja" [ref=e206] [cursor=pointer]:
+            - generic [ref=e209]: Automatyzacja
+  - status [ref=e223]: Wymaga uwagi–Merchant Center

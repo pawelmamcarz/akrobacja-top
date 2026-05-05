@@ -1,0 +1,348 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "akrobacja.com" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e4]:
+      - link "Loty" [ref=e5] [cursor=pointer]:
+        - /url: /lot-akrobacyjny
+      - link "Pokazy" [ref=e6] [cursor=pointer]:
+        - /url: /pokazy-lotnicze
+      - link "Sklep" [ref=e7] [cursor=pointer]:
+        - /url: /sklep-merch
+      - link "Kalendarz" [ref=e8] [cursor=pointer]:
+        - /url: /kalendarz
+      - link "Kontakt" [ref=e9] [cursor=pointer]:
+        - /url: /#kontakt
+  - generic [ref=e10]:
+    - heading "Blog" [level=1] [ref=e11]
+    - paragraph [ref=e12]: Wiedza o akrobacji lotniczej prosto z kokpitu Extra 300L
+  - generic [ref=e13]:
+    - img "Paweł Mamcarz" [ref=e14]
+    - generic [ref=e15]:
+      - link "Paweł Mamcarz" [ref=e17] [cursor=pointer]:
+        - /url: https://mamcarz.com
+      - generic [ref=e18]:
+        - text: Pilot z 26-letnim doświadczeniem, właściciel Extra 300L SP-EKS, autor artykułów ·
+        - link "mamcarz.com" [ref=e19] [cursor=pointer]:
+          - /url: https://mamcarz.com
+  - generic [ref=e20]:
+    - generic [ref=e22]:
+      - generic [ref=e23]: Relacja · Nowość
+      - heading "JedlinSky 2026 - relacja z pokazu Extra 300L" [level=2] [ref=e24]:
+        - link "JedlinSky 2026 - relacja z pokazu Extra 300L" [ref=e25] [cursor=pointer]:
+          - /url: /blog/pokazy-jedlinsky-2026
+      - paragraph [ref=e26]: 25 kwietnia 2026, Jedlińsk. Pełen program akrobacyjny z Extra 300L SP-EKS. Galeria zdjęć i video z pokazu Macieja Kulaszewskiego.
+      - link "Czytaj →" [ref=e27] [cursor=pointer]:
+        - /url: /blog/pokazy-jedlinsky-2026
+    - generic [ref=e29]:
+      - generic [ref=e30]: Ceny
+      - heading "Ile kosztuje lot akrobacyjny w 2026?" [level=2] [ref=e31]:
+        - link "Ile kosztuje lot akrobacyjny w 2026?" [ref=e32] [cursor=pointer]:
+          - /url: /blog/ile-kosztuje-lot-akrobacyjny
+      - paragraph [ref=e33]: Porównanie pakietów od 1999 do 4 999 PLN. Co wpływa na cenę, ukryte koszty, jak kupić voucher.
+      - link "Czytaj →" [ref=e34] [cursor=pointer]:
+        - /url: /blog/ile-kosztuje-lot-akrobacyjny
+    - generic [ref=e36]:
+      - generic [ref=e37]: Prezent
+      - heading "Lot akrobacyjny jako prezent" [level=2] [ref=e38]:
+        - link "Lot akrobacyjny jako prezent" [ref=e39] [cursor=pointer]:
+          - /url: /blog/lot-akrobacyjny-prezent
+      - paragraph [ref=e40]: Dlaczego voucher na lot to najlepszy prezent. Dla kogo, jak wręczyć, który pakiet wybrać.
+      - link "Czytaj →" [ref=e41] [cursor=pointer]:
+        - /url: /blog/lot-akrobacyjny-prezent
+    - generic [ref=e43]:
+      - generic [ref=e44]: Wrażenia
+      - heading "Co czujesz podczas lotu akrobacyjnego?" [level=2] [ref=e45]:
+        - link "Co czujesz podczas lotu akrobacyjnego?" [ref=e46] [cursor=pointer]:
+          - /url: /blog/co-czujesz-podczas-lotu-akrobacyjnego
+      - paragraph [ref=e47]: Relacja z kokpitu Extra 300L. Od stresu przed lotem do euforii po lądowaniu. Pętle, beczki, +6G.
+      - link "Czytaj →" [ref=e48] [cursor=pointer]:
+        - /url: /blog/co-czujesz-podczas-lotu-akrobacyjnego
+    - generic [ref=e50]:
+      - generic [ref=e51]: Samolot
+      - heading "Extra 300L - najlepszy samolot akrobacyjny" [level=2] [ref=e52]:
+        - link "Extra 300L - najlepszy samolot akrobacyjny" [ref=e53] [cursor=pointer]:
+          - /url: /blog/extra-300l-samolot-akrobacyjny
+      - paragraph [ref=e54]: Historia, specyfikacja, dlaczego Extra 300L to ikona akrobacji. Plus nowa wersja Extra NG.
+      - link "Czytaj →" [ref=e55] [cursor=pointer]:
+        - /url: /blog/extra-300l-samolot-akrobacyjny
+    - generic [ref=e57]:
+      - generic [ref=e58]: Lokalizacja
+      - heading "Lot akrobacyjny Radom - praktycznie Warszawa" [level=2] [ref=e59]:
+        - link "Lot akrobacyjny Radom - praktycznie Warszawa" [ref=e60] [cursor=pointer]:
+          - /url: /blog/lot-akrobacyjny-radom
+      - paragraph [ref=e61]: Dlaczego lotnisko Radom-Piastów EPRP to idealna lokalizacja. 1h od Warszawy, super dojazd S7.
+      - link "Czytaj →" [ref=e62] [cursor=pointer]:
+        - /url: /blog/lot-akrobacyjny-radom
+    - generic [ref=e64]:
+      - generic [ref=e65]: Szkolenie
+      - heading "Kurs akrobacji FCL.800 - jak zostać pilotem akrobacyjnym" [level=2] [ref=e66]:
+        - link "Kurs akrobacji FCL.800 - jak zostać pilotem akrobacyjnym" [ref=e67] [cursor=pointer]:
+          - /url: /blog/kurs-akrobacji-fcl800
+      - paragraph [ref=e68]: Program szkolenia, wymagania, cena 20 900 PLN netto, 16-20 lotów na Extra 300L z instruktorem.
+      - link "Czytaj →" [ref=e69] [cursor=pointer]:
+        - /url: /blog/kurs-akrobacji-fcl800
+    - generic [ref=e71]:
+      - generic [ref=e72]: Eventy
+      - heading "Pokazy lotnicze na event firmowy" [level=2] [ref=e73]:
+        - link "Pokazy lotnicze na event firmowy" [ref=e74] [cursor=pointer]:
+          - /url: /blog/pokazy-lotnicze-na-event
+      - paragraph [ref=e75]: Pakiety od 14 990 PLN. Dlaczego pokaz akrobacyjny to najlepsza atrakcja eventowa.
+      - link "Czytaj →" [ref=e76] [cursor=pointer]:
+        - /url: /blog/pokazy-lotnicze-na-event
+    - generic [ref=e78]:
+      - generic [ref=e79]: Kawalerski
+      - heading "Lot akrobacyjny na kawalerski" [level=2] [ref=e80]:
+        - link "Lot akrobacyjny na kawalerski" [ref=e81] [cursor=pointer]:
+          - /url: /blog/lot-akrobacyjny-kawalerski
+      - paragraph [ref=e82]: Pan młody w kokpicie na +6G. Najlepsza atrakcja na kawalerski i wieczór panieński.
+      - link "Czytaj →" [ref=e83] [cursor=pointer]:
+        - /url: /blog/lot-akrobacyjny-kawalerski
+    - generic [ref=e85]:
+      - generic [ref=e86]: Fizyka
+      - heading "Przeciążenia w locie - co to jest G-force?" [level=2] [ref=e87]:
+        - link "Przeciążenia w locie - co to jest G-force?" [ref=e88] [cursor=pointer]:
+          - /url: /blog/przeciazenia-g-force-lot
+      - paragraph [ref=e89]: Jak działają przeciążenia na ciało. Grey-out, blackout, AGSM. Fizyka akrobacji lotniczej.
+      - link "Czytaj →" [ref=e90] [cursor=pointer]:
+        - /url: /blog/przeciazenia-g-force-lot
+    - generic [ref=e92]:
+      - generic [ref=e93]: Poradnik
+      - heading "10 rzeczy które musisz wiedzieć przed lotem" [level=2] [ref=e94]:
+        - link "10 rzeczy które musisz wiedzieć przed lotem" [ref=e95] [cursor=pointer]:
+          - /url: /blog/10-rzeczy-przed-lotem-akrobacyjnym
+      - paragraph [ref=e96]: "Praktyczne porady: co jeść, co ubrać, czego się spodziewać. Kompletny poradnik."
+      - link "Czytaj →" [ref=e97] [cursor=pointer]:
+        - /url: /blog/10-rzeczy-przed-lotem-akrobacyjnym
+    - generic [ref=e99]:
+      - generic [ref=e100]: Sport
+      - heading "Zawody w akrobacji lotniczej" [level=2] [ref=e101]:
+        - link "Zawody w akrobacji lotniczej" [ref=e102] [cursor=pointer]:
+          - /url: /blog/zawody-akrobacja-lotnicza
+      - paragraph [ref=e103]: Kategorie Intermediate, Advanced, Unlimited. System Aresti. Jak wyglądają zawody FAI.
+      - link "Czytaj →" [ref=e104] [cursor=pointer]:
+        - /url: /blog/zawody-akrobacja-lotnicza
+    - generic [ref=e106]:
+      - generic [ref=e107]: Kulaszewski
+      - heading "Jak przygotować się do zawodów akrobacyjnych" [level=2] [ref=e108]:
+        - link "Jak przygotować się do zawodów akrobacyjnych" [ref=e109] [cursor=pointer]:
+          - /url: /blog/jak-przygotowac-sie-do-zawodow-akrobacji
+      - paragraph [ref=e110]: "Maciej Kulaszewski, Mistrz Świata, o przygotowaniu do zawodów: fizyka, mental, rutyna startu, błędy debiutantów."
+      - link "Czytaj →" [ref=e111] [cursor=pointer]:
+        - /url: /blog/jak-przygotowac-sie-do-zawodow-akrobacji
+    - generic [ref=e113]:
+      - generic [ref=e114]: Kulaszewski
+      - heading "Tajemnica zapamiętywania wiązanki akrobacyjnej" [level=2] [ref=e115]:
+        - link "Tajemnica zapamiętywania wiązanki akrobacyjnej" [ref=e116] [cursor=pointer]:
+          - /url: /blog/tajemnica-zapamietywania-wiazanki-akrobacyjnej
+      - paragraph [ref=e117]: 5 metod Mistrza Świata na zapamiętanie sekwencji figur przed zawodami. Chair-flying, chunking, wizualizacja.
+      - link "Czytaj →" [ref=e118] [cursor=pointer]:
+        - /url: /blog/tajemnica-zapamietywania-wiazanki-akrobacyjnej
+    - generic [ref=e120]:
+      - generic [ref=e121]: Kulaszewski
+      - heading "Moja droga do akrobacji, od Dęblina do Mistrzostwa Świata" [level=2] [ref=e122]:
+        - link "Moja droga do akrobacji, od Dęblina do Mistrzostwa Świata" [ref=e123] [cursor=pointer]:
+          - /url: /blog/moja-droga-do-akrobacji-od-deblina-do-mistrzostwa-swiata
+      - paragraph [ref=e124]: "Osobista historia: Szkoła Orląt 2008, szybowce, UK w 2016, pierwsze zwycięstwa 2017, kadra narodowa, Mistrzostwo Świata."
+      - link "Czytaj →" [ref=e125] [cursor=pointer]:
+        - /url: /blog/moja-droga-do-akrobacji-od-deblina-do-mistrzostwa-swiata
+    - generic [ref=e127]:
+      - generic [ref=e128]: Kulaszewski
+      - heading "Dlaczego latam z godłem Dywizjonu 303" [level=2] [ref=e129]:
+        - link "Dlaczego latam z godłem Dywizjonu 303" [ref=e130] [cursor=pointer]:
+          - /url: /blog/dlaczego-latam-z-godlem-dywizjonu-303
+      - paragraph [ref=e131]: Historia 303 Squadron, Bitwa o Anglię, tradycja kościuszkowska. Dlaczego polski pilot sportowy nosi ten znak.
+      - link "Czytaj →" [ref=e132] [cursor=pointer]:
+        - /url: /blog/dlaczego-latam-z-godlem-dywizjonu-303
+    - generic [ref=e134]:
+      - generic [ref=e135]: Kulaszewski
+      - heading "Kto ze mną lata, od fotografów po kandydatów na astronautów" [level=2] [ref=e136]:
+        - link "Kto ze mną lata, od fotografów po kandydatów na astronautów" [ref=e137] [cursor=pointer]:
+          - /url: /blog/kto-ze-mna-lata-od-fotografow-po-kandydatow-na-astronautow
+      - paragraph [ref=e138]: "Pasażerowie i uczniowie Extra 300L: pasjonaci, fotografowie, piloci sportowi, osoby z programów przygotowania do lotów kosmicznych."
+      - link "Czytaj →" [ref=e139] [cursor=pointer]:
+        - /url: /blog/kto-ze-mna-lata-od-fotografow-po-kandydatow-na-astronautow
+    - generic [ref=e141]:
+      - generic [ref=e142]: Kulaszewski
+      - heading "5G dodatnie, 2G ujemne, co czuje pasażer" [level=2] [ref=e143]:
+        - link "5G dodatnie, 2G ujemne, co czuje pasażer" [ref=e144] [cursor=pointer]:
+          - /url: /blog/piec-g-dodatnie-dwa-g-ujemne-pierwszy-lot-akrobacyjny
+      - paragraph [ref=e145]: "Kulaszewski o fizjologii pierwszego lotu akrobacyjnego: wzrok, oddech, żołądek. Praktyczne porady jak się przygotować."
+      - link "Czytaj →" [ref=e146] [cursor=pointer]:
+        - /url: /blog/piec-g-dodatnie-dwa-g-ujemne-pierwszy-lot-akrobacyjny
+    - generic [ref=e148]:
+      - generic [ref=e149]: Kulaszewski
+      - heading "Zasłużony Działacz Lotnictwa Sportowego, dziękuję" [level=2] [ref=e150]:
+        - link "Zasłużony Działacz Lotnictwa Sportowego, dziękuję" [ref=e151] [cursor=pointer]:
+          - /url: /blog/zasluzony-dzialacz-lotnictwa-sportowego
+      - paragraph [ref=e152]: Odznaka Aeroklubu Polskiego, 21 marca 2026, podczas 80-lecia Aeroklubu Radomskiego. Kulaszewski o tym, co dla niego znaczy.
+      - link "Czytaj →" [ref=e153] [cursor=pointer]:
+        - /url: /blog/zasluzony-dzialacz-lotnictwa-sportowego
+    - generic [ref=e155]:
+      - generic [ref=e156]: Historia
+      - heading "Historia akrobacji lotniczej - od Kunstflug do Extra 300L" [level=2] [ref=e157]:
+        - link "Historia akrobacji lotniczej - od Kunstflug do Extra 300L" [ref=e158] [cursor=pointer]:
+          - /url: /blog/historia-akrobacji-lotniczej
+      - paragraph [ref=e159]: Od pierwszych Kunstflug w 1913, przez pokazy międzywojenne, do współczesnych zawodów Unlimited.
+      - link "Czytaj →" [ref=e160] [cursor=pointer]:
+        - /url: /blog/historia-akrobacji-lotniczej
+    - generic [ref=e162]:
+      - generic [ref=e163]: Bezpieczeństwo
+      - heading "UPRT - szkolenie Upset Recovery" [level=2] [ref=e164]:
+        - link "UPRT - szkolenie Upset Recovery" [ref=e165] [cursor=pointer]:
+          - /url: /blog/uprt-szkolenie-upset-recovery
+      - paragraph [ref=e166]: Co to UPRT, dlaczego wymog EASA, dla kogo. Szkolenie na Extra 300L w akrobacja.com.
+      - link "Czytaj →" [ref=e167] [cursor=pointer]:
+        - /url: /blog/uprt-szkolenie-upset-recovery
+    - generic [ref=e169]:
+      - generic [ref=e170]: Technika
+      - heading "Czy każdy samolot może kręcić akrobacje?" [level=2] [ref=e171]:
+        - link "Czy każdy samolot może kręcić akrobacje?" [ref=e172] [cursor=pointer]:
+          - /url: /blog/czy-kazdy-samolot-kreci-akrobacje
+      - paragraph [ref=e173]: Normal, Utility, Aerobatic - kategorie certyfikacji. Dlaczego Extra 300L to szczyt.
+      - link "Czytaj →" [ref=e174] [cursor=pointer]:
+        - /url: /blog/czy-kazdy-samolot-kreci-akrobacje
+    - generic [ref=e176]:
+      - generic [ref=e177]: Fabryka
+      - heading "Extra Flugzeugbau - fabryka samolotów akrobacyjnych" [level=2] [ref=e178]:
+        - link "Extra Flugzeugbau - fabryka samolotów akrobacyjnych" [ref=e179] [cursor=pointer]:
+          - /url: /blog/extra-flugzeugbau-fabryka
+      - paragraph [ref=e180]: Walter Extra, Dinslaken, modele od Extra 200 do 330SC i NG. Skąd pochodzi nasz SP-EKS.
+      - link "Czytaj →" [ref=e181] [cursor=pointer]:
+        - /url: /blog/extra-flugzeugbau-fabryka
+    - generic [ref=e183]:
+      - generic [ref=e184]: Porównanie
+      - heading "Samoloty akrobacyjne, porównanie" [level=2] [ref=e185]:
+        - link "Samoloty akrobacyjne, porównanie" [ref=e186] [cursor=pointer]:
+          - /url: /blog/samoloty-akrobacyjne-porownanie
+      - paragraph [ref=e187]: Extra 300L vs Zlin vs CAP vs Sukhoi. Który samolot akrobacyjny jest najlepszy i dlaczego.
+      - link "Czytaj →" [ref=e188] [cursor=pointer]:
+        - /url: /blog/samoloty-akrobacyjne-porownanie
+    - generic [ref=e190]:
+      - generic [ref=e191]: Warszawa
+      - heading "Lot akrobacyjny Warszawa i okolice" [level=2] [ref=e192]:
+        - link "Lot akrobacyjny Warszawa i okolice" [ref=e193] [cursor=pointer]:
+          - /url: /blog/lot-akrobacyjny-warszawa
+      - paragraph [ref=e194]: Gdzie polecieć akrobacyjnie w okolicach Warszawy. Radom-Piastów, 100 km, 1h jazdy.
+      - link "Czytaj →" [ref=e195] [cursor=pointer]:
+        - /url: /blog/lot-akrobacyjny-warszawa
+    - generic [ref=e197]:
+      - generic [ref=e198]: Prezent
+      - heading "Prezent dla chłopaka, lot akrobacyjny" [level=2] [ref=e199]:
+        - link "Prezent dla chłopaka, lot akrobacyjny" [ref=e200] [cursor=pointer]:
+          - /url: /blog/prezent-dla-chlopaka-lot-akrobacyjny
+      - paragraph [ref=e201]: Szukasz prezentu dla chłopaka? Voucher na lot akrobacyjny Extra 300L, adrenalina, +6G, video z kokpitu.
+      - link "Czytaj →" [ref=e202] [cursor=pointer]:
+        - /url: /blog/prezent-dla-chlopaka-lot-akrobacyjny
+    - generic [ref=e204]:
+      - generic [ref=e205]: Prezent
+      - heading "Prezent dla mężczyzny, lot akrobacyjny" [level=2] [ref=e206]:
+        - link "Prezent dla mężczyzny, lot akrobacyjny" [ref=e207] [cursor=pointer]:
+          - /url: /blog/prezent-dla-mezczyzny-lot-akrobacyjny
+      - paragraph [ref=e208]: Szukasz prezentu, który zapamięta na lata? Lot akrobacyjny Extra 300L to coś wyjątkowego.
+      - link "Czytaj →" [ref=e209] [cursor=pointer]:
+        - /url: /blog/prezent-dla-mezczyzny-lot-akrobacyjny
+    - generic [ref=e211]:
+      - generic [ref=e212]: Camp
+      - heading "Camp akrobacyjny 2026" [level=2] [ref=e213]:
+        - link "Camp akrobacyjny 2026" [ref=e214] [cursor=pointer]:
+          - /url: /blog/camp-akrobacyjny-2026
+      - paragraph [ref=e215]: 2-dniowy camp akrobacyjny z Mistrzem Świata. 6 lotów, teoria, debriefing. 17-18 maja 2026.
+      - link "Czytaj →" [ref=e216] [cursor=pointer]:
+        - /url: /blog/camp-akrobacyjny-2026
+    - generic [ref=e218]:
+      - generic [ref=e219]: Prezent
+      - heading "Prezent na Dzień Ojca, lot akrobacyjny" [level=2] [ref=e220]:
+        - link "Prezent na Dzień Ojca, lot akrobacyjny" [ref=e221] [cursor=pointer]:
+          - /url: /blog/prezent-dzien-ojca-lot-akrobacyjny
+      - paragraph [ref=e222]: Lot akrobacyjny to idealny prezent na Dzień Ojca. Voucher, realizacja, jak wręczyć.
+      - link "Czytaj →" [ref=e223] [cursor=pointer]:
+        - /url: /blog/prezent-dzien-ojca-lot-akrobacyjny
+    - generic [ref=e225]:
+      - generic [ref=e226]: Kariera
+      - heading "Jak zostać pilotem akrobacyjnym?" [level=2] [ref=e227]:
+        - link "Jak zostać pilotem akrobacyjnym?" [ref=e228] [cursor=pointer]:
+          - /url: /blog/jak-zostac-pilotem-akrobacyjnym
+      - paragraph [ref=e229]: Od PPL(A) przez FCL.800 do zawodów. Ścieżka kariery pilota akrobacyjnego w Polsce.
+      - link "Czytaj →" [ref=e230] [cursor=pointer]:
+        - /url: /blog/jak-zostac-pilotem-akrobacyjnym
+    - generic [ref=e232]:
+      - generic [ref=e233]: Figury
+      - heading "Figury akrobacyjne, pętla, beczka, immelmann" [level=2] [ref=e234]:
+        - link "Figury akrobacyjne, pętla, beczka, immelmann" [ref=e235] [cursor=pointer]:
+          - /url: /blog/figury-akrobacyjne
+      - paragraph [ref=e236]: Przewodnik po figurach akrobacji lotniczej. System Aresti, kategorie trudności, jak to wygląda z kokpitu.
+      - link "Czytaj →" [ref=e237] [cursor=pointer]:
+        - /url: /blog/figury-akrobacyjne
+    - generic [ref=e239]:
+      - generic [ref=e240]: Lot zapoznawczy
+      - heading "Lot zapoznawczy samolotem" [level=2] [ref=e241]:
+        - link "Lot zapoznawczy samolotem" [ref=e242] [cursor=pointer]:
+          - /url: /blog/lot-zapoznawczy-samolotem
+      - paragraph [ref=e243]: Czym jest lot zapoznawczy, ile kosztuje, czym różni się od lotu akrobacyjnego. Pierwszy kontakt z lotnictwem.
+      - link "Czytaj →" [ref=e244] [cursor=pointer]:
+        - /url: /blog/lot-zapoznawczy-samolotem
+    - generic [ref=e246]:
+      - generic [ref=e247]: Dofinansowanie
+      - heading "Dofinansowanie kursu akrobacji FCL.800" [level=2] [ref=e248]:
+        - link "Dofinansowanie kursu akrobacji FCL.800" [ref=e249] [cursor=pointer]:
+          - /url: /blog/dofinansowanie-kurs-akrobacji
+      - paragraph [ref=e250]: Jak uzyskać dofinansowanie do 90% na kurs akrobacji lotniczej. Fundusze UE, baza usług, krok po kroku.
+      - link "Czytaj →" [ref=e251] [cursor=pointer]:
+        - /url: /blog/dofinansowanie-kurs-akrobacji
+    - generic [ref=e253]:
+      - generic [ref=e254]: Nowy
+      - heading "Atrakcje w okolicach Warszawy, lot akrobacyjny i nie tylko" [level=2] [ref=e255]:
+        - link "Atrakcje w okolicach Warszawy, lot akrobacyjny i nie tylko" [ref=e256] [cursor=pointer]:
+          - /url: /blog/atrakcje-okolice-warszawy
+      - paragraph [ref=e257]: 7 niezwykłych atrakcji w promieniu 1-2h od Warszawy. Lot akrobacyjny Extra 300L, Kazimierz Dolny, Kozienice i więcej.
+      - link "Czytaj →" [ref=e258] [cursor=pointer]:
+        - /url: /blog/atrakcje-okolice-warszawy
+    - generic [ref=e260]:
+      - generic [ref=e261]: Trening
+      - heading "Trening akrobacji lotniczej, jak ćwiczyć między lotami" [level=2] [ref=e262]:
+        - link "Trening akrobacji lotniczej, jak ćwiczyć między lotami" [ref=e263] [cursor=pointer]:
+          - /url: /blog/trening-akrobacji-lotniczej
+      - paragraph [ref=e264]: Chair flying, AGSM, trening fizyczny, analiza wideo. Kompletny przewodnik po treningu pilota akrobacyjnego na ziemi i w powietrzu.
+      - link "Czytaj →" [ref=e265] [cursor=pointer]:
+        - /url: /blog/trening-akrobacji-lotniczej
+    - generic [ref=e267]:
+      - generic [ref=e268]: Zdrowie
+      - heading "Akrobacja lotnicza a zdrowie, kto może polecieć?" [level=2] [ref=e269]:
+        - link "Akrobacja lotnicza a zdrowie, kto może polecieć?" [ref=e270] [cursor=pointer]:
+          - /url: /blog/akrobacja-lotnicza-zdrowie
+      - paragraph [ref=e271]: Przeciwwskazania, przeciążenia G, przygotowanie zdrowotne. Kto może lecieć akrobacyjnie, a kto powinien się powstrzymać.
+      - link "Czytaj →" [ref=e272] [cursor=pointer]:
+        - /url: /blog/akrobacja-lotnicza-zdrowie
+  - generic [ref=e273]:
+    - generic [ref=e274]:
+      - link "Strona główna" [ref=e275] [cursor=pointer]:
+        - /url: /
+      - link "Lot akrobacyjny" [ref=e276] [cursor=pointer]:
+        - /url: /lot-akrobacyjny
+      - link "Kalendarz" [ref=e277] [cursor=pointer]:
+        - /url: /kalendarz
+      - link "Blog" [ref=e278] [cursor=pointer]:
+        - /url: /blog
+      - link "Sklep" [ref=e279] [cursor=pointer]:
+        - /url: /sklep-merch
+      - link "Regulamin" [ref=e280] [cursor=pointer]:
+        - /url: /regulamin
+      - link "Prywatność" [ref=e281] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - link "Kontakt" [ref=e282] [cursor=pointer]:
+        - /url: https://wa.me/48535535221
+    - generic [ref=e283]: © 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP
+  - button "Otwórz czat" [ref=e284] [cursor=pointer]:
+    - img [ref=e285]
+  - dialog "Ustawienia cookies" [ref=e287]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e288]
+    - paragraph [ref=e289]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e290] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e291]:
+      - button "Zgoda na wszystkie" [ref=e292] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e293] [cursor=pointer]
+      - button "Ustawienia" [ref=e294] [cursor=pointer]

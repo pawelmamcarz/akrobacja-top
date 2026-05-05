@@ -1,0 +1,624 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - button "Przejdź do głównej treści" [ref=e7]:
+        - generic [ref=e10]: Przejdź do głównej treści
+      - generic [ref=e11]:
+        - button "Zamknij" [ref=e554] [cursor=pointer]:
+          - img [ref=e558]: close
+        - heading "Dodaj źródło produktów" [level=1] [ref=e559]
+        - button "Pomoc" [ref=e27] [cursor=pointer]:
+          - img [ref=e30]: help_outline
+        - 'button "Konto Merchant Center: akrobacja.com, 5765263858" [ref=e36] [cursor=pointer]':
+          - generic [ref=e37]:
+            - generic [ref=e38]: akrobacja.com
+            - generic [ref=e39]: "5765263858"
+          - img [ref=e41]: arrow_drop_down
+        - generic [ref=e47]:
+          - button "Aplikacje Google" [ref=e51] [cursor=pointer]:
+            - img [ref=e52]
+          - 'button "Konto Google: Paweł Mamcarz (pawel@mamcarz.com)" [ref=e57] [cursor=pointer]':
+            - img [ref=e59]
+    - main [ref=e564]:
+      - main [ref=e566]:
+        - generic [ref=e569]:
+          - generic [ref=e571]:
+            - heading "Wybierz sposób dodawania produktów" [level=2] [ref=e572]
+            - radiogroup "Wybierz sposób dodawania produktów" [disabled] [ref=e573]:
+              - generic [ref=e576]:
+                - generic [ref=e577]:
+                  - radio "Użyj AI, aby dodać produkty Beta" [ref=e579] [cursor=pointer]:
+                    - generic [ref=e580]:
+                      - heading "Użyj AI, aby dodać produkty Beta" [level=2] [ref=e582]:
+                        - text: Użyj AI, aby dodać produkty
+                        - generic [ref=e583]: Beta
+                      - paragraph [ref=e584]: Korzystaj z AI od Google, aby automatycznie skanować witrynę i dodawać produkty. To najprostszy sposób na rozpoczęcie korzystania, który pomaga zmniejszyć liczbę błędów wynikających z ręcznego wprowadzania danych.
+                    - paragraph [ref=e587]: Skanowanie jednorazowe
+                    - img [ref=e589]: check_circle_outline
+                  - radio "Dodaj produkty z pliku" [checked] [ref=e591] [cursor=pointer]:
+                    - generic [ref=e592]:
+                      - heading "Dodaj produkty z pliku" [level=2] [ref=e594]
+                      - paragraph [ref=e595]: Utwórz plik zawierający wszystkie Twoje szczegóły produktu (tytuł, opis, cenę i inne informacje). Ta metoda może wymagać specjalistycznej wiedzy.
+                    - generic [ref=e597]:
+                      - img [ref=e599]: published_with_changes
+                      - paragraph [ref=e600]: Automatyczne aktualizacje
+                    - img [ref=e602]: check_circle_outline
+                  - radio "Użyj Arkuszy Google" [ref=e604] [cursor=pointer]:
+                    - generic [ref=e605]:
+                      - heading "Użyj Arkuszy Google" [level=2] [ref=e607]
+                      - paragraph [ref=e608]: Dodaj szczegóły produktu (tytuł, opis, cenę i inne informacje) za pomocą arkusza kalkulacyjnego Arkuszy Google.
+                    - generic [ref=e610]:
+                      - img [ref=e612]: published_with_changes
+                      - paragraph [ref=e613]: Automatyczne aktualizacje
+                    - img [ref=e615]: check_circle_outline
+                  - radio "Dodaj produkty pojedynczo" [ref=e617] [cursor=pointer]:
+                    - generic [ref=e618]:
+                      - heading "Dodaj produkty pojedynczo" [level=2] [ref=e620]
+                      - paragraph [ref=e621]: Użyj tej opcji, jeśli chcesz dodać jeden lub kilka produktów. Wypełnij formularz, podając szczegóły swojego produktu. Po dodaniu produktów możesz je edytować, usunąć lub dodać kolejne w dowolnym momencie.
+                    - paragraph [ref=e624]: Wymaga ręcznych aktualizacji
+                    - img [ref=e626]: check_circle_outline
+                  - radio "Dodaj produkty za pomocą interfejsu API" [ref=e628] [cursor=pointer]:
+                    - generic [ref=e629]:
+                      - heading "Dodaj produkty za pomocą interfejsu API" [level=2] [ref=e631]
+                      - paragraph [ref=e632]: Użyj interfejsu API sprzedawcy, jeśli chcesz przesyłać dużą liczbę produktów lub planujesz często wprowadzać zmiany w szczegółach produktów. Ta metoda wymaga wiedzy technicznej.
+                    - generic [ref=e634]:
+                      - img [ref=e636]: published_with_changes
+                      - paragraph [ref=e637]: Zaplanowane aktualizacje
+                    - img [ref=e639]: check_circle_outline
+                - button [ref=e640] [cursor=pointer]:
+                  - img [ref=e643]: chevron_right
+          - radiogroup [ref=e699]:
+            - generic [ref=e700] [cursor=pointer]:
+              - radio "Podaj link do pliku" [checked] [ref=e702]
+              - generic [ref=e706]:
+                - text: Podaj link do pliku
+                - generic [ref=e707]:
+                  - text: Wystarczy skonfigurować to raz. Produkty w Merchant Center zostaną automatycznie zaktualizowane za pomocą pliku.
+                  - link "Jak utworzyć plik, Otwiera się w nowej karcie" [ref=e709]:
+                    - /url: https://support.google.com/merchants/answer/12631822?hl=pl
+                    - text: Jak utworzyć plik
+                    - generic [ref=e710]:
+                      - text: ⁠
+                      - img [ref=e712]: open_in_new
+                      - text: ‎
+            - generic [ref=e713]:
+              - generic [ref=e717]:
+                - generic:
+                  - generic: Podaj link do pliku*
+                - textbox "Podaj link do pliku*" [ref=e718]: https://akrobacja.com/merchant-feed.xml
+              - generic [ref=e723]:
+                - generic [ref=e724]: Edytuj harmonogram
+                - text: Automatycznie aktualizuje się co 24 godziny o 00:00
+                - button "Edytuj harmonogram" [ref=e725] [cursor=pointer]:
+                  - img [ref=e729]: edit
+              - generic [ref=e732]:
+                - generic [ref=e733]: Dodaj dane uwierzytelniające
+                - text: Brak nazwy użytkownika i hasła
+                - button "Dodaj dane uwierzytelniające" [ref=e734] [cursor=pointer]:
+                  - img [ref=e738]: edit
+            - generic [ref=e739] [cursor=pointer]:
+              - radio "Dodaj plik za pomocą SFTP lub Google Cloud Storage" [ref=e741]
+              - generic [ref=e744]:
+                - text: Dodaj plik za pomocą SFTP lub Google Cloud Storage
+                - generic [ref=e745]: Rozmiar pliku nie może przekraczać 4 GB
+            - text: "*"
+            - generic [ref=e746] [cursor=pointer]:
+              - radio "Prześlij plik ze swojego komputera" [ref=e748]
+              - generic [ref=e751]:
+                - text: Prześlij plik ze swojego komputera
+                - generic [ref=e752]: Twoje produkty nie będą automatycznie aktualizowane w Merchant Center
+            - text: info
+          - generic [ref=e650]:
+            - text: "Twoje produkty będą wyświetlać się w tych krajach:"
+            - link "Czechy, Niemcy, Polska, i jeszcze 1, edytuj kraje" [ref=e652]:
+              - generic [ref=e655]: Czechy, Niemcy, Polska, i jeszcze 1
+              - img [ref=e658]: edit
+            - text: "w języku:"
+            - link "Polski, zmień język" [ref=e660]:
+              - generic [ref=e663]: Polski
+              - img [ref=e666]: arrow_drop_down
+            - text: "dla:"
+            - button "wszystkie metody marketingowe, edytuj metody marketingowe" [ref=e669]:
+              - generic [ref=e672]: wszystkie metody marketingowe
+              - img [ref=e675]: edit
+            - text: z etykietą pliku danych
+            - button "VOUCHERY_LOTY" [ref=e791]:
+              - generic [ref=e680]: VOUCHERY_LOTY
+              - img [ref=e683]: edit
+        - generic [ref=e688]:
+          - button "Anuluj" [ref=e689]:
+            - generic [ref=e692]: Anuluj
+          - button "Dalej" [ref=e693]:
+            - generic [ref=e696]: Dalej
+  - dialog "Wybierz kraje" [ref=e799]:
+    - heading "Wybierz kraje" [level=1] [ref=e802]
+    - generic [ref=e808]:
+      - generic [ref=e810]:
+        - generic [ref=e814]:
+          - generic:
+            - generic: Szukaj
+          - textbox "Szukaj" [ref=e815]
+        - button [ref=e816] [cursor=pointer]:
+          - img [ref=e817]: search
+      - generic [ref=e820]:
+        - generic [ref=e821]:
+          - checkbox "Wszystkie kraje" [checked=mixed] [ref=e822] [cursor=pointer]:
+            - img [ref=e825]: indeterminate_check_box
+          - generic [ref=e828]: Wszystkie kraje
+        - status "94 wyniki"
+        - listbox "Lista krajów" [ref=e833]:
+          - option "Algieria" [ref=e834] [cursor=pointer]:
+            - generic [ref=e835]:
+              - checkbox "Algieria" [ref=e836]:
+                - img [ref=e839]: check_box_outline_blank
+              - generic [ref=e844]: Algieria
+          - option "Angola" [ref=e845] [cursor=pointer]:
+            - generic [ref=e846]:
+              - checkbox "Angola" [ref=e847]:
+                - img [ref=e850]: check_box_outline_blank
+              - generic [ref=e855]: Angola
+          - option "Arabia Saudyjska" [ref=e856] [cursor=pointer]:
+            - generic [ref=e857]:
+              - checkbox "Arabia Saudyjska" [ref=e858]:
+                - img [ref=e861]: check_box_outline_blank
+              - generic [ref=e866]: Arabia Saudyjska
+          - option "Argentyna" [ref=e867] [cursor=pointer]:
+            - generic [ref=e868]:
+              - checkbox "Argentyna" [ref=e869]:
+                - img [ref=e872]: check_box_outline_blank
+              - generic [ref=e877]: Argentyna
+          - option "Australia" [ref=e878] [cursor=pointer]:
+            - generic [ref=e879]:
+              - checkbox "Australia" [ref=e880]:
+                - img [ref=e883]: check_box_outline_blank
+              - generic [ref=e888]: Australia
+          - option "Austria" [ref=e889] [cursor=pointer]:
+            - generic [ref=e890]:
+              - checkbox "Austria" [ref=e891]:
+                - img [ref=e894]: check_box_outline_blank
+              - generic [ref=e899]: Austria
+          - option "Bahrajn" [ref=e900] [cursor=pointer]:
+            - generic [ref=e901]:
+              - checkbox "Bahrajn" [ref=e902]:
+                - img [ref=e905]: check_box_outline_blank
+              - generic [ref=e910]: Bahrajn
+          - option "Bangladesz" [ref=e911] [cursor=pointer]:
+            - generic [ref=e912]:
+              - checkbox "Bangladesz" [ref=e913]:
+                - img [ref=e916]: check_box_outline_blank
+              - generic [ref=e921]: Bangladesz
+          - option "Belgia" [ref=e922] [cursor=pointer]:
+            - generic [ref=e923]:
+              - checkbox "Belgia" [ref=e924]:
+                - img [ref=e927]: check_box_outline_blank
+              - generic [ref=e932]: Belgia
+          - option "Białoruś" [ref=e933] [cursor=pointer]:
+            - generic [ref=e934]:
+              - checkbox "Białoruś" [ref=e935]:
+                - img [ref=e938]: check_box_outline_blank
+              - generic [ref=e943]: Białoruś
+          - option "Brazylia" [ref=e944] [cursor=pointer]:
+            - generic [ref=e945]:
+              - checkbox "Brazylia" [ref=e946]:
+                - img [ref=e949]: check_box_outline_blank
+              - generic [ref=e954]: Brazylia
+          - option "Chile" [ref=e955] [cursor=pointer]:
+            - generic [ref=e956]:
+              - checkbox "Chile" [ref=e957]:
+                - img [ref=e960]: check_box_outline_blank
+              - generic [ref=e965]: Chile
+          - option "Côte d’Ivoire" [ref=e966] [cursor=pointer]:
+            - generic [ref=e967]:
+              - checkbox "Côte d’Ivoire" [ref=e968]:
+                - img [ref=e971]: check_box_outline_blank
+              - generic [ref=e976]: Côte d’Ivoire
+          - option "Czechy" [ref=e977] [cursor=pointer]:
+            - generic [ref=e978]:
+              - checkbox "Czechy" [ref=e979]:
+                - img [ref=e982]: check_box_outline_blank
+              - generic [ref=e987]: Czechy
+          - option "Dania" [ref=e988] [cursor=pointer]:
+            - generic [ref=e989]:
+              - checkbox "Dania" [ref=e990]:
+                - img [ref=e993]: check_box_outline_blank
+              - generic [ref=e998]: Dania
+          - option "Dominikana" [ref=e999] [cursor=pointer]:
+            - generic [ref=e1000]:
+              - checkbox "Dominikana" [ref=e1001]:
+                - img [ref=e1004]: check_box_outline_blank
+              - generic [ref=e1009]: Dominikana
+          - option "Egipt" [ref=e1010] [cursor=pointer]:
+            - generic [ref=e1011]:
+              - checkbox "Egipt" [ref=e1012]:
+                - img [ref=e1015]: check_box_outline_blank
+              - generic [ref=e1020]: Egipt
+          - option "Ekwador" [ref=e1021] [cursor=pointer]:
+            - generic [ref=e1022]:
+              - checkbox "Ekwador" [ref=e1023]:
+                - img [ref=e1026]: check_box_outline_blank
+              - generic [ref=e1031]: Ekwador
+          - option "Etiopia" [ref=e1032] [cursor=pointer]:
+            - generic [ref=e1033]:
+              - checkbox "Etiopia" [ref=e1034]:
+                - img [ref=e1037]: check_box_outline_blank
+              - generic [ref=e1042]: Etiopia
+          - option "Filipiny" [ref=e1043] [cursor=pointer]:
+            - generic [ref=e1044]:
+              - checkbox "Filipiny" [ref=e1045]:
+                - img [ref=e1048]: check_box_outline_blank
+              - generic [ref=e1053]: Filipiny
+          - option "Finlandia" [ref=e1054] [cursor=pointer]:
+            - generic [ref=e1055]:
+              - checkbox "Finlandia" [ref=e1056]:
+                - img [ref=e1059]: check_box_outline_blank
+              - generic [ref=e1064]: Finlandia
+          - option "Francja" [ref=e1065] [cursor=pointer]:
+            - generic [ref=e1066]:
+              - checkbox "Francja" [ref=e1067]:
+                - img [ref=e1070]: check_box_outline_blank
+              - generic [ref=e1075]: Francja
+          - option "Ghana" [ref=e1076] [cursor=pointer]:
+            - generic [ref=e1077]:
+              - checkbox "Ghana" [ref=e1078]:
+                - img [ref=e1081]: check_box_outline_blank
+              - generic [ref=e1086]: Ghana
+          - option "Grecja" [ref=e1087] [cursor=pointer]:
+            - generic [ref=e1088]:
+              - checkbox "Grecja" [ref=e1089]:
+                - img [ref=e1092]: check_box_outline_blank
+              - generic [ref=e1097]: Grecja
+          - option "Gruzja" [ref=e1098] [cursor=pointer]:
+            - generic [ref=e1099]:
+              - checkbox "Gruzja" [ref=e1100]:
+                - img [ref=e1103]: check_box_outline_blank
+              - generic [ref=e1108]: Gruzja
+          - option "Gwatemala" [ref=e1109] [cursor=pointer]:
+            - generic [ref=e1110]:
+              - checkbox "Gwatemala" [ref=e1111]:
+                - img [ref=e1114]: check_box_outline_blank
+              - generic [ref=e1119]: Gwatemala
+          - option "Hiszpania" [ref=e1120] [cursor=pointer]:
+            - generic [ref=e1121]:
+              - checkbox "Hiszpania" [ref=e1122]:
+                - img [ref=e1125]: check_box_outline_blank
+              - generic [ref=e1130]: Hiszpania
+          - option "Holandia" [ref=e1131] [cursor=pointer]:
+            - generic [ref=e1132]:
+              - checkbox "Holandia" [ref=e1133]:
+                - img [ref=e1136]: check_box_outline_blank
+              - generic [ref=e1141]: Holandia
+          - option "Hongkong" [ref=e1142] [cursor=pointer]:
+            - generic [ref=e1143]:
+              - checkbox "Hongkong" [ref=e1144]:
+                - img [ref=e1147]: check_box_outline_blank
+              - generic [ref=e1152]: Hongkong
+          - option "Indie" [ref=e1153] [cursor=pointer]:
+            - generic [ref=e1154]:
+              - checkbox "Indie" [ref=e1155]:
+                - img [ref=e1158]: check_box_outline_blank
+              - generic [ref=e1163]: Indie
+          - option "Indonezja" [ref=e1164] [cursor=pointer]:
+            - generic [ref=e1165]:
+              - checkbox "Indonezja" [ref=e1166]:
+                - img [ref=e1169]: check_box_outline_blank
+              - generic [ref=e1174]: Indonezja
+          - option "Irlandia" [ref=e1175] [cursor=pointer]:
+            - generic [ref=e1176]:
+              - checkbox "Irlandia" [ref=e1177]:
+                - img [ref=e1180]: check_box_outline_blank
+              - generic [ref=e1185]: Irlandia
+          - option "Izrael" [ref=e1186] [cursor=pointer]:
+            - generic [ref=e1187]:
+              - checkbox "Izrael" [ref=e1188]:
+                - img [ref=e1191]: check_box_outline_blank
+              - generic [ref=e1196]: Izrael
+          - option "Japonia" [ref=e1197] [cursor=pointer]:
+            - generic [ref=e1198]:
+              - checkbox "Japonia" [ref=e1199]:
+                - img [ref=e1202]: check_box_outline_blank
+              - generic [ref=e1207]: Japonia
+          - option "Jordania" [ref=e1208] [cursor=pointer]:
+            - generic [ref=e1209]:
+              - checkbox "Jordania" [ref=e1210]:
+                - img [ref=e1213]: check_box_outline_blank
+              - generic [ref=e1218]: Jordania
+          - option "Kambodża" [ref=e1219] [cursor=pointer]:
+            - generic [ref=e1220]:
+              - checkbox "Kambodża" [ref=e1221]:
+                - img [ref=e1224]: check_box_outline_blank
+              - generic [ref=e1229]: Kambodża
+          - option "Kamerun" [ref=e1230] [cursor=pointer]:
+            - generic [ref=e1231]:
+              - checkbox "Kamerun" [ref=e1232]:
+                - img [ref=e1235]: check_box_outline_blank
+              - generic [ref=e1240]: Kamerun
+          - option "Kanada" [ref=e1241] [cursor=pointer]:
+            - generic [ref=e1242]:
+              - checkbox "Kanada" [ref=e1243]:
+                - img [ref=e1246]: check_box_outline_blank
+              - generic [ref=e1251]: Kanada
+          - option "Kazachstan" [ref=e1252] [cursor=pointer]:
+            - generic [ref=e1253]:
+              - checkbox "Kazachstan" [ref=e1254]:
+                - img [ref=e1257]: check_box_outline_blank
+              - generic [ref=e1262]: Kazachstan
+          - option "Kenia" [ref=e1263] [cursor=pointer]:
+            - generic [ref=e1264]:
+              - checkbox "Kenia" [ref=e1265]:
+                - img [ref=e1268]: check_box_outline_blank
+              - generic [ref=e1273]: Kenia
+          - option "Kolumbia" [ref=e1274] [cursor=pointer]:
+            - generic [ref=e1275]:
+              - checkbox "Kolumbia" [ref=e1276]:
+                - img [ref=e1279]: check_box_outline_blank
+              - generic [ref=e1284]: Kolumbia
+          - option "Korea Południowa" [ref=e1285] [cursor=pointer]:
+            - generic [ref=e1286]:
+              - checkbox "Korea Południowa" [ref=e1287]:
+                - img [ref=e1290]: check_box_outline_blank
+              - generic [ref=e1295]: Korea Południowa
+          - option "Kostaryka" [ref=e1296] [cursor=pointer]:
+            - generic [ref=e1297]:
+              - checkbox "Kostaryka" [ref=e1298]:
+                - img [ref=e1301]: check_box_outline_blank
+              - generic [ref=e1306]: Kostaryka
+          - option "Kuwejt" [ref=e1307] [cursor=pointer]:
+            - generic [ref=e1308]:
+              - checkbox "Kuwejt" [ref=e1309]:
+                - img [ref=e1312]: check_box_outline_blank
+              - generic [ref=e1317]: Kuwejt
+          - option "Liban" [ref=e1318] [cursor=pointer]:
+            - generic [ref=e1319]:
+              - checkbox "Liban" [ref=e1320]:
+                - img [ref=e1323]: check_box_outline_blank
+              - generic [ref=e1328]: Liban
+          - option "Madagaskar" [ref=e1329] [cursor=pointer]:
+            - generic [ref=e1330]:
+              - checkbox "Madagaskar" [ref=e1331]:
+                - img [ref=e1334]: check_box_outline_blank
+              - generic [ref=e1339]: Madagaskar
+          - option "Malezja" [ref=e1340] [cursor=pointer]:
+            - generic [ref=e1341]:
+              - checkbox "Malezja" [ref=e1342]:
+                - img [ref=e1345]: check_box_outline_blank
+              - generic [ref=e1350]: Malezja
+          - option "Maroko" [ref=e1351] [cursor=pointer]:
+            - generic [ref=e1352]:
+              - checkbox "Maroko" [ref=e1353]:
+                - img [ref=e1356]: check_box_outline_blank
+              - generic [ref=e1361]: Maroko
+          - option "Mauritius" [ref=e1362] [cursor=pointer]:
+            - generic [ref=e1363]:
+              - checkbox "Mauritius" [ref=e1364]:
+                - img [ref=e1367]: check_box_outline_blank
+              - generic [ref=e1372]: Mauritius
+          - option "Meksyk" [ref=e1373] [cursor=pointer]:
+            - generic [ref=e1374]:
+              - checkbox "Meksyk" [ref=e1375]:
+                - img [ref=e1378]: check_box_outline_blank
+              - generic [ref=e1383]: Meksyk
+          - option "Mjanma (Birma)" [ref=e1384] [cursor=pointer]:
+            - generic [ref=e1385]:
+              - checkbox "Mjanma (Birma)" [ref=e1386]:
+                - img [ref=e1389]: check_box_outline_blank
+              - generic [ref=e1394]: Mjanma (Birma)
+          - option "Mozambik" [ref=e1395] [cursor=pointer]:
+            - generic [ref=e1396]:
+              - checkbox "Mozambik" [ref=e1397]:
+                - img [ref=e1400]: check_box_outline_blank
+              - generic [ref=e1405]: Mozambik
+          - option "Nepal" [ref=e1406] [cursor=pointer]:
+            - generic [ref=e1407]:
+              - checkbox "Nepal" [ref=e1408]:
+                - img [ref=e1411]: check_box_outline_blank
+              - generic [ref=e1416]: Nepal
+          - option "Niemcy" [ref=e1417] [cursor=pointer]:
+            - generic [ref=e1418]:
+              - checkbox "Niemcy" [active] [ref=e1419]:
+                - img [ref=e1422]: check_box_outline_blank
+              - generic [ref=e1427]: Niemcy
+          - option "Nigeria" [ref=e1428] [cursor=pointer]:
+            - generic [ref=e1429]:
+              - checkbox "Nigeria" [ref=e1430]:
+                - img [ref=e1433]: check_box_outline_blank
+              - generic [ref=e1438]: Nigeria
+          - option "Nikaragua" [ref=e1439] [cursor=pointer]:
+            - generic [ref=e1440]:
+              - checkbox "Nikaragua" [ref=e1441]:
+                - img [ref=e1444]: check_box_outline_blank
+              - generic [ref=e1449]: Nikaragua
+          - option "Norwegia" [ref=e1450] [cursor=pointer]:
+            - generic [ref=e1451]:
+              - checkbox "Norwegia" [ref=e1452]:
+                - img [ref=e1455]: check_box_outline_blank
+              - generic [ref=e1460]: Norwegia
+          - option "Nowa Zelandia" [ref=e1461] [cursor=pointer]:
+            - generic [ref=e1462]:
+              - checkbox "Nowa Zelandia" [ref=e1463]:
+                - img [ref=e1466]: check_box_outline_blank
+              - generic [ref=e1471]: Nowa Zelandia
+          - option "Oman" [ref=e1472] [cursor=pointer]:
+            - generic [ref=e1473]:
+              - checkbox "Oman" [ref=e1474]:
+                - img [ref=e1477]: check_box_outline_blank
+              - generic [ref=e1482]: Oman
+          - option "Pakistan" [ref=e1483] [cursor=pointer]:
+            - generic [ref=e1484]:
+              - checkbox "Pakistan" [ref=e1485]:
+                - img [ref=e1488]: check_box_outline_blank
+              - generic [ref=e1493]: Pakistan
+          - option "Panama" [ref=e1494] [cursor=pointer]:
+            - generic [ref=e1495]:
+              - checkbox "Panama" [ref=e1496]:
+                - img [ref=e1499]: check_box_outline_blank
+              - generic [ref=e1504]: Panama
+          - option "Paragwaj" [ref=e1505] [cursor=pointer]:
+            - generic [ref=e1506]:
+              - checkbox "Paragwaj" [ref=e1507]:
+                - img [ref=e1510]: check_box_outline_blank
+              - generic [ref=e1515]: Paragwaj
+          - option "Peru" [ref=e1516] [cursor=pointer]:
+            - generic [ref=e1517]:
+              - checkbox "Peru" [ref=e1518]:
+                - img [ref=e1521]: check_box_outline_blank
+              - generic [ref=e1526]: Peru
+          - option "Polska" [selected] [ref=e1527] [cursor=pointer]:
+            - generic [ref=e1528]:
+              - checkbox "Polska" [checked] [ref=e1529]:
+                - img [ref=e1532]: check_box
+              - generic [ref=e1537]: Polska
+          - option "Portoryko" [ref=e1538] [cursor=pointer]:
+            - generic [ref=e1539]:
+              - checkbox "Portoryko" [ref=e1540]:
+                - img [ref=e1543]: check_box_outline_blank
+              - generic [ref=e1548]: Portoryko
+          - option "Portugalia" [ref=e1549] [cursor=pointer]:
+            - generic [ref=e1550]:
+              - checkbox "Portugalia" [ref=e1551]:
+                - img [ref=e1554]: check_box_outline_blank
+              - generic [ref=e1559]: Portugalia
+          - option "Republika Południowej Afryki" [ref=e1560] [cursor=pointer]:
+            - generic [ref=e1561]:
+              - checkbox "Republika Południowej Afryki" [ref=e1562]:
+                - img [ref=e1565]: check_box_outline_blank
+              - generic [ref=e1570]: Republika Południowej Afryki
+          - option "Rosja" [ref=e1571] [cursor=pointer]:
+            - generic [ref=e1572]:
+              - checkbox "Rosja" [ref=e1573]:
+                - img [ref=e1576]: check_box_outline_blank
+              - generic [ref=e1581]: Rosja
+          - option "Rumunia" [ref=e1582] [cursor=pointer]:
+            - generic [ref=e1583]:
+              - checkbox "Rumunia" [ref=e1584]:
+                - img [ref=e1587]: check_box_outline_blank
+              - generic [ref=e1592]: Rumunia
+          - option "Salwador" [ref=e1593] [cursor=pointer]:
+            - generic [ref=e1594]:
+              - checkbox "Salwador" [ref=e1595]:
+                - img [ref=e1598]: check_box_outline_blank
+              - generic [ref=e1603]: Salwador
+          - option "Senegal" [ref=e1604] [cursor=pointer]:
+            - generic [ref=e1605]:
+              - checkbox "Senegal" [ref=e1606]:
+                - img [ref=e1609]: check_box_outline_blank
+              - generic [ref=e1614]: Senegal
+          - option "Singapur" [ref=e1615] [cursor=pointer]:
+            - generic [ref=e1616]:
+              - checkbox "Singapur" [ref=e1617]:
+                - img [ref=e1620]: check_box_outline_blank
+              - generic [ref=e1625]: Singapur
+          - option "Słowacja" [selected] [ref=e1626] [cursor=pointer]:
+            - generic [ref=e1627]:
+              - checkbox "Słowacja" [checked] [ref=e1628]:
+                - img [ref=e1631]: check_box
+              - generic [ref=e1636]: Słowacja
+          - option "Sri Lanka" [ref=e1637] [cursor=pointer]:
+            - generic [ref=e1638]:
+              - checkbox "Sri Lanka" [ref=e1639]:
+                - img [ref=e1642]: check_box_outline_blank
+              - generic [ref=e1647]: Sri Lanka
+          - option "Stany Zjednoczone" [ref=e1648] [cursor=pointer]:
+            - generic [ref=e1649]:
+              - checkbox "Stany Zjednoczone" [ref=e1650]:
+                - img [ref=e1653]: check_box_outline_blank
+              - generic [ref=e1658]: Stany Zjednoczone
+          - option "Szwajcaria" [ref=e1659] [cursor=pointer]:
+            - generic [ref=e1660]:
+              - checkbox "Szwajcaria" [ref=e1661]:
+                - img [ref=e1664]: check_box_outline_blank
+              - generic [ref=e1669]: Szwajcaria
+          - option "Szwecja" [ref=e1670] [cursor=pointer]:
+            - generic [ref=e1671]:
+              - checkbox "Szwecja" [ref=e1672]:
+                - img [ref=e1675]: check_box_outline_blank
+              - generic [ref=e1680]: Szwecja
+          - option "Tajlandia" [ref=e1681] [cursor=pointer]:
+            - generic [ref=e1682]:
+              - checkbox "Tajlandia" [ref=e1683]:
+                - img [ref=e1686]: check_box_outline_blank
+              - generic [ref=e1691]: Tajlandia
+          - option "Tajwan" [ref=e1692] [cursor=pointer]:
+            - generic [ref=e1693]:
+              - checkbox "Tajwan" [ref=e1694]:
+                - img [ref=e1697]: check_box_outline_blank
+              - generic [ref=e1702]: Tajwan
+          - option "Tanzania" [ref=e1703] [cursor=pointer]:
+            - generic [ref=e1704]:
+              - checkbox "Tanzania" [ref=e1705]:
+                - img [ref=e1708]: check_box_outline_blank
+              - generic [ref=e1713]: Tanzania
+          - option "Tunezja" [ref=e1714] [cursor=pointer]:
+            - generic [ref=e1715]:
+              - checkbox "Tunezja" [ref=e1716]:
+                - img [ref=e1719]: check_box_outline_blank
+              - generic [ref=e1724]: Tunezja
+          - option "Turcja" [ref=e1725] [cursor=pointer]:
+            - generic [ref=e1726]:
+              - checkbox "Turcja" [ref=e1727]:
+                - img [ref=e1730]: check_box_outline_blank
+              - generic [ref=e1735]: Turcja
+          - option "Uganda" [ref=e1736] [cursor=pointer]:
+            - generic [ref=e1737]:
+              - checkbox "Uganda" [ref=e1738]:
+                - img [ref=e1741]: check_box_outline_blank
+              - generic [ref=e1746]: Uganda
+          - option "Ukraina" [ref=e1747] [cursor=pointer]:
+            - generic [ref=e1748]:
+              - checkbox "Ukraina" [ref=e1749]:
+                - img [ref=e1752]: check_box_outline_blank
+              - generic [ref=e1757]: Ukraina
+          - option "Urugwaj" [ref=e1758] [cursor=pointer]:
+            - generic [ref=e1759]:
+              - checkbox "Urugwaj" [ref=e1760]:
+                - img [ref=e1763]: check_box_outline_blank
+              - generic [ref=e1768]: Urugwaj
+          - option "Uzbekistan" [ref=e1769] [cursor=pointer]:
+            - generic [ref=e1770]:
+              - checkbox "Uzbekistan" [ref=e1771]:
+                - img [ref=e1774]: check_box_outline_blank
+              - generic [ref=e1779]: Uzbekistan
+          - option "Wenezuela" [ref=e1780] [cursor=pointer]:
+            - generic [ref=e1781]:
+              - checkbox "Wenezuela" [ref=e1782]:
+                - img [ref=e1785]: check_box_outline_blank
+              - generic [ref=e1790]: Wenezuela
+          - option "Węgry" [ref=e1791] [cursor=pointer]:
+            - generic [ref=e1792]:
+              - checkbox "Węgry" [ref=e1793]:
+                - img [ref=e1796]: check_box_outline_blank
+              - generic [ref=e1801]: Węgry
+          - option "Wielka Brytania" [ref=e1802] [cursor=pointer]:
+            - generic [ref=e1803]:
+              - checkbox "Wielka Brytania" [ref=e1804]:
+                - img [ref=e1807]: check_box_outline_blank
+              - generic [ref=e1812]: Wielka Brytania
+          - option "Wietnam" [ref=e1813] [cursor=pointer]:
+            - generic [ref=e1814]:
+              - checkbox "Wietnam" [ref=e1815]:
+                - img [ref=e1818]: check_box_outline_blank
+              - generic [ref=e1823]: Wietnam
+          - option "Włochy" [ref=e1824] [cursor=pointer]:
+            - generic [ref=e1825]:
+              - checkbox "Włochy" [ref=e1826]:
+                - img [ref=e1829]: check_box_outline_blank
+              - generic [ref=e1834]: Włochy
+          - option "Zambia" [ref=e1835] [cursor=pointer]:
+            - generic [ref=e1836]:
+              - checkbox "Zambia" [ref=e1837]:
+                - img [ref=e1840]: check_box_outline_blank
+              - generic [ref=e1845]: Zambia
+          - option "Zimbabwe" [ref=e1846] [cursor=pointer]:
+            - generic [ref=e1847]:
+              - checkbox "Zimbabwe" [ref=e1848]:
+                - img [ref=e1851]: check_box_outline_blank
+              - generic [ref=e1856]: Zimbabwe
+          - option "Zjednoczone Emiraty Arabskie" [ref=e1857] [cursor=pointer]:
+            - generic [ref=e1858]:
+              - checkbox "Zjednoczone Emiraty Arabskie" [ref=e1859]:
+                - img [ref=e1862]: check_box_outline_blank
+              - generic [ref=e1867]: Zjednoczone Emiraty Arabskie
+    - generic [ref=e1870]:
+      - button "Anuluj" [ref=e1871]:
+        - generic [ref=e1874]: Anuluj
+      - button "Zapisz" [ref=e1875]:
+        - generic [ref=e1878]: Zapisz

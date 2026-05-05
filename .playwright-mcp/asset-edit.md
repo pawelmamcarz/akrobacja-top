@@ -1,0 +1,691 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - banner "Górne menu" [ref=e6]:
+      - status
+      - generic [ref=e7]:
+        - button "Zamknij" [ref=e5164] [cursor=pointer]:
+          - img [ref=e5167]: close
+        - heading "Google Ads – powrót na stronę początkową" [level=1] [ref=e13]:
+          - button "Google Ads – powrót na stronę początkową" [ref=e14]:
+            - generic [ref=e15] [cursor=pointer]:
+              - img [ref=e16]
+              - img [ref=e2850]
+              - generic [ref=e2852]: Ads
+        - button "Edytuj pliki" [ref=e5181]:
+          - heading "Edytuj pliki" [level=1] [ref=e5184]:
+            - button "Edytuj pliki" [ref=e5185]
+      - generic [ref=e25]:
+        - generic [ref=e27]:
+          - generic [ref=e33]:
+            - img [ref=e36]: search
+            - generic [ref=e37]:
+              - generic:
+                - generic: Wyszukaj stronę lub kampanię
+              - combobox "Wyszukaj stronę lub kampanię" [ref=e38]
+          - text: Szukaj
+        - generic [ref=e39]:
+          - button "Wygląd" [ref=e42] [cursor=pointer]:
+            - generic [ref=e44]:
+              - img [ref=e45]: responsive_layout
+              - text: Wygląd
+          - button "Otwórz panel szybkiej pomocy" [ref=e48] [cursor=pointer]:
+            - generic [ref=e49]:
+              - text: Pomoc
+              - generic [ref=e50]:
+                - img [ref=e51]: help_outline
+                - text: Pomoc
+          - button "Powiadomienia" [ref=e58] [cursor=pointer]:
+            - generic [ref=e60]:
+              - img [ref=e63]: notifications
+              - generic [ref=e65]: Powiadomienia
+      - generic [ref=e2860]:
+        - generic "346-691-0512 akrobacja.com" [ref=e2861]
+        - generic [ref=e2862]: pawel@mamcarz.com
+      - button "Konto Google" [ref=e87] [cursor=pointer]:
+        - img "Konto Google (pawel@mamcarz.com)" [ref=e88]
+    - main [ref=e5171]:
+      - generic [ref=e5173]:
+        - generic [ref=e5187]:
+          - region [ref=e5191]:
+            - generic [ref=e5195]:
+              - generic [ref=e5196]:
+                - generic [ref=e5197]:
+                  - generic [ref=e5198]: "Kampania:"
+                  - generic [ref=e5199]: PMax — Vouchery Loty Akrobacyjne
+                - generic [ref=e5200]:
+                  - generic [ref=e5201]: "Grupa plików:"
+                  - generic [ref=e5202]: Grupa plików 1
+              - generic [ref=e5203]:
+                - generic [ref=e5204]: "Odbiorcy:"
+                - generic [ref=e5205]: Nie podano sygnałów.
+          - generic [ref=e5208]:
+            - heading "Grupy informacji o produktach" [level=2] [ref=e5209]:
+              - button "Grupy informacji o produktach" [expanded] [ref=e5210] [cursor=pointer]:
+                - paragraph [ref=e5212]: Grupy informacji o produktach
+                - img [ref=e5213]: expand_less
+            - generic [ref=e5218]:
+              - generic [ref=e5221]: "Konto Merchant Center: 5765263858 – akrobacja.com"
+              - generic [ref=e5222]: Wybierz produkty do pokazania w reklamach. Niektóre reklamy będą zawierać obrazy, nagłówki i teksty reklam z Merchant Center.
+              - generic [ref=e5223]:
+                - generic [ref=e5224]: Wszystkie produkty
+                - link "Otwórz grupy informacji o produktach" [ref=e5225] [cursor=pointer]:
+                  - /url: /aw/listinggroups?campaignId=23799455881&channel=13&ocid=146439136&assetGroupId=6706315988&authuser=0&__u=4328211264&__c=5695306464
+          - button "Wskazówki dotyczące marki 5 obrazów logo Edytuj wskazówki dotyczące marki" [disabled] [ref=e5230]:
+            - generic [ref=e5232]:
+              - generic [ref=e5233]: Wskazówki dotyczące marki
+              - generic [ref=e5234]: 5 obrazów logo
+              - button [ref=e5235] [cursor=pointer]:
+                - img [ref=e5238]: edit
+          - generic [ref=e5241]:
+            - button "Komponenty" [expanded] [ref=e5243] [cursor=pointer]:
+              - paragraph [ref=e5245]: Komponenty
+              - img [ref=e5246]: expand_less
+            - region "Komponenty" [ref=e5247]:
+              - generic [ref=e5256]:
+                - generic [ref=e5260]:
+                  - generic [ref=e5264]:
+                    - img "Informacje" [ref=e5266]: info
+                    - generic [ref=e5268]: Reklamodawcy, którzy osiągają skuteczność reklam na poziomie „Świetna”, uzyskują średnio o 6% więcej konwersji.
+                  - generic [ref=e5270]:
+                    - 'progressbar "Ogólny wynik skuteczności reklamy: Niska" [ref=e5272]'
+                    - generic [ref=e5279]:
+                      - generic [ref=e5280]:
+                        - generic [ref=e5281]: Skuteczność reklamy
+                        - button "Więcej informacji" [ref=e5282] [cursor=pointer]:
+                          - img [ref=e5284]: help_outline
+                      - 'generic "Ogólny wynik skuteczności reklamy: Niska" [ref=e5285]': Niska
+                  - generic [ref=e5287]:
+                    - 'note "Wynik kategorii: niski, kategoria: Obrazy" [ref=e5295]': Obrazy
+                    - 'note "Wynik kategorii: niski, kategoria: Filmy" [ref=e5303]': Filmy
+                    - 'note "Wynik kategorii: niski, kategoria: Nagłówki" [ref=e5311]': Nagłówki
+                    - 'note "Wynik kategorii: niski, kategoria: Teksty reklamy" [ref=e5319]': Teksty reklamy
+                    - generic [ref=e5321]:
+                      - img [ref=e5328]: done
+                      - 'note "Wynik kategorii: wysoki, kategoria: Produkty" [ref=e5329]': Produkty
+                    - 'note "Wynik kategorii: niski, kategoria: Linki do podstron" [ref=e5337]': Linki do podstron
+                - generic [ref=e5338]:
+                  - generic [ref=e5340]:
+                    - generic [ref=e5341]:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - button:
+                                  - generic:
+                                    - generic:
+                                      - img: close
+                    - generic [ref=e5344]:
+                      - button "done Końcowy URL Więcej informacji https://www.akrobacja.com" [expanded] [ref=e5346] [cursor=pointer]:
+                        - generic [ref=e5348]:
+                          - generic [ref=e5349]:
+                            - img [ref=e5356]: done
+                            - generic [ref=e5357]: Końcowy URL
+                            - button [ref=e5358]:
+                              - img [ref=e5360]: help_outline
+                          - generic [ref=e5362]: https://www.akrobacja.com
+                        - img [ref=e5363]: expand_less
+                      - region "done Końcowy URL Więcej informacji https://www.akrobacja.com" [ref=e5364]:
+                        - generic [ref=e5373]:
+                          - generic:
+                            - generic: Końcowy URL
+                          - textbox "Końcowy URL" [ref=e5374]: https://www.akrobacja.com
+                    - generic [ref=e5380]:
+                      - button "done Nagłówek ‪(0)‬ Więcej informacji" [expanded] [ref=e5382] [cursor=pointer]:
+                        - generic [ref=e5385]:
+                          - generic [ref=e5391]: Nagłówek ‪(0)‬
+                          - button [ref=e5392]:
+                            - img [ref=e5394]: help_outline
+                        - img [ref=e5395]: expand_less
+                      - region "done Nagłówek ‪(0)‬ Więcej informacji" [ref=e5396]:
+                        - generic [ref=e5402]:
+                          - list [ref=e5403]:
+                            - listitem [ref=e5404]:
+                              - generic [ref=e5405]:
+                                - generic [ref=e5406]:
+                                  - generic [ref=e5409]:
+                                    - generic:
+                                      - generic: Nagłówek
+                                    - textbox "Nagłówek 1 z 15" [ref=e5410]
+                                  - generic [ref=e5413]:
+                                    - generic [ref=e5414]: 0/30
+                                    - generic [ref=e5415]: Tekst ma 0 znaków z 30
+                                - listbox "Lista sugestii"
+                            - listitem [ref=e5416]:
+                              - generic [ref=e5417]:
+                                - generic [ref=e5418]:
+                                  - generic [ref=e5421]:
+                                    - generic:
+                                      - generic: Nagłówek
+                                    - textbox "Nagłówek 2 z 15" [ref=e5422]
+                                  - generic [ref=e5425]:
+                                    - generic [ref=e5426]: 0/30
+                                    - generic [ref=e5427]: Tekst ma 0 znaków z 30
+                                - listbox "Lista sugestii"
+                            - listitem [ref=e5428]:
+                              - generic [ref=e5429]:
+                                - generic [ref=e5430]:
+                                  - generic [ref=e5433]:
+                                    - generic:
+                                      - generic: Nagłówek
+                                    - textbox "Nagłówek 3 z 15" [ref=e5434]
+                                  - generic [ref=e5437]:
+                                    - generic [ref=e5438]: 0/30
+                                    - generic [ref=e5439]: Tekst ma 0 znaków z 30
+                                - listbox "Lista sugestii"
+                          - generic [ref=e5440]:
+                            - button "Dodaj Nagłówek" [ref=e5441] [cursor=pointer]:
+                              - generic [ref=e5442]:
+                                - img [ref=e5444]: add
+                                - text: Nagłówek
+                            - button "Wyświetl sugestie" [ref=e5447] [cursor=pointer]:
+                              - generic [ref=e5448]:
+                                - img [ref=e5450]: notes
+                                - text: Wyświetl sugestie
+                    - generic [ref=e5455]:
+                      - button "done Długie nagłówki ‪(0)‬ Więcej informacji" [expanded] [ref=e5457] [cursor=pointer]:
+                        - generic [ref=e5460]:
+                          - generic [ref=e5466]: Długie nagłówki ‪(0)‬
+                          - button [ref=e5467]:
+                            - img [ref=e5469]: help_outline
+                        - img [ref=e5470]: expand_less
+                      - region "done Długie nagłówki ‪(0)‬ Więcej informacji" [ref=e5471]:
+                        - generic [ref=e5477]:
+                          - list [ref=e5478]:
+                            - listitem [ref=e5479]:
+                              - generic [ref=e5480]:
+                                - generic [ref=e5481]:
+                                  - generic [ref=e5484]:
+                                    - generic:
+                                      - generic: Długi nagłówek
+                                    - textbox "Długi nagłówek 1 z 5" [ref=e5485]
+                                  - generic [ref=e5488]:
+                                    - generic [ref=e5489]: 0/90
+                                    - generic [ref=e5490]: Tekst ma 0 znaków z 90
+                                - listbox "Lista sugestii"
+                          - generic [ref=e5491]:
+                            - button "Dodaj Długi nagłówek" [ref=e5492] [cursor=pointer]:
+                              - generic [ref=e5493]:
+                                - img [ref=e5495]: add
+                                - text: Długi nagłówek
+                            - button "Wyświetl sugestie" [ref=e5498] [cursor=pointer]:
+                              - generic [ref=e5499]:
+                                - img [ref=e5501]: notes
+                                - text: Wyświetl sugestie
+                    - generic [ref=e5506]:
+                      - button "done Teksty reklam ‪(0)‬ Więcej informacji" [expanded] [ref=e5508] [cursor=pointer]:
+                        - generic [ref=e5511]:
+                          - generic [ref=e5517]: Teksty reklam ‪(0)‬
+                          - button [ref=e5518]:
+                            - img [ref=e5520]: help_outline
+                        - img [ref=e5521]: expand_less
+                      - region "done Teksty reklam ‪(0)‬ Więcej informacji" [ref=e5522]:
+                        - generic [ref=e5528]:
+                          - list [ref=e5529]:
+                            - listitem [ref=e5530]:
+                              - generic [ref=e5531]:
+                                - generic [ref=e5532]:
+                                  - generic [ref=e5535]:
+                                    - generic:
+                                      - generic: Tekst reklamy
+                                    - textbox "Tekst reklamy 1 z 5" [ref=e5536]
+                                  - generic [ref=e5539]:
+                                    - generic [ref=e5540]: 0/90
+                                    - generic [ref=e5541]: Tekst ma 0 znaków z 90
+                                - listbox "Lista sugestii"
+                            - listitem [ref=e5542]:
+                              - generic [ref=e5543]:
+                                - generic [ref=e5544]:
+                                  - generic [ref=e5547]:
+                                    - generic:
+                                      - generic: Tekst reklamy
+                                    - textbox "Tekst reklamy 2 z 5" [ref=e5548]
+                                  - generic [ref=e5551]:
+                                    - generic [ref=e5552]: 0/90
+                                    - generic [ref=e5553]: Tekst ma 0 znaków z 90
+                                - listbox "Lista sugestii"
+                          - generic [ref=e5554]:
+                            - button "Dodaj Tekst reklamy" [ref=e5555] [cursor=pointer]:
+                              - generic [ref=e5556]:
+                                - img [ref=e5558]: add
+                                - text: Tekst reklamy
+                            - button "Wyświetl sugestie" [ref=e5561] [cursor=pointer]:
+                              - generic [ref=e5562]:
+                                - img [ref=e5564]: notes
+                                - text: Wyświetl sugestie
+                    - generic [ref=e5569]:
+                      - button "done Obrazy ‪(0)‬ Więcej informacji" [expanded] [ref=e5571] [cursor=pointer]:
+                        - generic [ref=e5574]:
+                          - generic [ref=e5580]: Obrazy ‪(0)‬
+                          - button [ref=e5581]:
+                            - img [ref=e5583]: help_outline
+                        - img [ref=e5584]: expand_less
+                      - region "done Obrazy ‪(0)‬ Więcej informacji" [ref=e5585]:
+                        - generic [ref=e5590]:
+                          - button "Dodaj obrazy" [ref=e5593] [cursor=pointer]:
+                            - generic [ref=e5594]:
+                              - img [ref=e5596]: add
+                              - text: Obrazy
+                          - generic [ref=e5600]:
+                            - generic [ref=e5601]:
+                              - generic [ref=e5602]:
+                                - generic [ref=e5603]: Sugerowane obrazy
+                                - button "Więcej informacji" [ref=e5606] [cursor=pointer]:
+                                  - img "Więcej informacji" [ref=e5607]: help_outline
+                              - generic [ref=e5608]:
+                                - button "Zaznacz wszystko" [ref=e5609] [cursor=pointer]:
+                                  - generic [ref=e5610]: Zaznacz wszystko
+                                - button "Więcej działań" [ref=e5613] [cursor=pointer]:
+                                  - img [ref=e5616]: more_vert
+                            - list "Sugerowane obrazy" [ref=e5619]:
+                              - 'option "Karta podglądu komponentu: Plik graficzny (Ostatnio używane)." [ref=e5620]':
+                                - generic [ref=e5621]:
+                                  - generic [ref=e5623]:
+                                    - 'grid "Karta podglądu komponentu: Plik graficzny (Ostatnio używane)." [ref=e5624]':
+                                      - row [ref=e5625]:
+                                        - gridcell [ref=e5626]
+                                    - generic [ref=e5629]:
+                                      - img [ref=e5631]: history
+                                      - generic [ref=e5632]: Ostatnio używane
+                                  - 'grid "Karta podglądu komponentu: Plik graficzny (Ostatnio używane)." [ref=e5636]':
+                                    - row [ref=e5637]:
+                                      - gridcell [ref=e5638]
+                              - 'option "Karta podglądu komponentu: Plik graficzny (Zdjęcie produktu)." [ref=e5639]':
+                                - generic [ref=e5640]:
+                                  - generic [ref=e5642]:
+                                    - 'grid "Karta podglądu komponentu: Plik graficzny (Zdjęcie produktu)." [ref=e5643]':
+                                      - row [ref=e5644]:
+                                        - gridcell [ref=e5645]
+                                    - generic [ref=e5649]: Zdjęcie produktu
+                                  - 'grid "Karta podglądu komponentu: Plik graficzny (Zdjęcie produktu)." [ref=e5653]':
+                                    - row [ref=e5654]:
+                                      - gridcell [ref=e5655]
+                              - 'option "Karta podglądu komponentu: Plik graficzny (Ostatnio używane)." [ref=e5656]':
+                                - generic [ref=e5659]:
+                                  - 'grid "Karta podglądu komponentu: Plik graficzny (Ostatnio używane)." [ref=e5660]':
+                                    - row [ref=e5661]:
+                                      - gridcell [ref=e5662]
+                                  - generic [ref=e5665]:
+                                    - img [ref=e5667]: history
+                                    - generic [ref=e5668]: Ostatnio używane
+                              - 'option "Karta podglądu komponentu: Plik graficzny (Zdjęcie produktu)." [ref=e5669]':
+                                - generic [ref=e5672]:
+                                  - 'grid "Karta podglądu komponentu: Plik graficzny (Zdjęcie produktu)." [ref=e5673]':
+                                    - row [ref=e5674]:
+                                      - gridcell [ref=e5675]
+                                  - generic [ref=e5679]: Zdjęcie produktu
+                              - 'option "Karta podglądu komponentu: Plik graficzny (Ostatnio używane)." [ref=e5680]':
+                                - generic [ref=e5683]:
+                                  - 'grid "Karta podglądu komponentu: Plik graficzny (Ostatnio używane)." [ref=e5684]':
+                                    - row [ref=e5685]:
+                                      - gridcell [ref=e5686]
+                                  - generic [ref=e5689]:
+                                    - img [ref=e5691]: history
+                                    - generic [ref=e5692]: Ostatnio używane
+                              - 'option "Karta podglądu komponentu: Plik graficzny (Zdjęcie produktu)." [ref=e5693]':
+                                - generic [ref=e5696]:
+                                  - 'grid "Karta podglądu komponentu: Plik graficzny (Zdjęcie produktu)." [ref=e5697]':
+                                    - row [ref=e5698]:
+                                      - gridcell [ref=e5699]
+                                  - generic [ref=e5703]: Zdjęcie produktu
+                              - 'option "Karta podglądu komponentu: Plik graficzny (Zdjęcie produktu)." [ref=e5704]':
+                                - generic [ref=e5707]:
+                                  - 'grid "Karta podglądu komponentu: Plik graficzny (Zdjęcie produktu)." [ref=e5708]':
+                                    - row [ref=e5709]:
+                                      - gridcell [ref=e5710]
+                                  - generic [ref=e5714]: Zdjęcie produktu
+                    - generic [ref=e5718]:
+                      - button "done Wideo ‪(0)‬ Więcej informacji" [expanded] [ref=e5720] [cursor=pointer]:
+                        - generic [ref=e5723]:
+                          - generic [ref=e5729]: Wideo ‪(0)‬
+                          - button [ref=e5730]:
+                            - img [ref=e5732]: help_outline
+                        - img [ref=e5733]: expand_less
+                      - region "done Wideo ‪(0)‬ Więcej informacji" [ref=e5734]:
+                        - generic [ref=e5739]:
+                          - generic [ref=e5741]:
+                            - button "Dodaj filmy" [ref=e5742] [cursor=pointer]:
+                              - generic [ref=e5743]:
+                                - img [ref=e5745]: add
+                                - text: Wideo
+                            - button "Generuj filmy" [ref=e5747] [cursor=pointer]:
+                              - generic [ref=e5748]:
+                                - img [ref=e5750]: video_spark
+                                - text: Generuj filmy
+                          - generic [ref=e5755]:
+                            - generic [ref=e5757]: Nie udało się znaleźć żadnych filmów do zaproponowania
+                            - button "Zamknij" [ref=e5759]:
+                              - generic [ref=e5762]: Zamknij
+                    - generic [ref=e5767]:
+                      - button "Linki do podstron Przycisk etykietki Centrum pomocy dotyczącej linków do podstron" [expanded] [ref=e5769] [cursor=pointer]:
+                        - generic [ref=e5770]:
+                          - generic [ref=e5773]:
+                            - generic [ref=e5779]: Linki do podstron
+                            - button "Przycisk etykietki Centrum pomocy dotyczącej linków do podstron" [ref=e5780]:
+                              - img [ref=e5782]: help_outline
+                          - paragraph
+                        - img [ref=e5783]: expand_less
+                      - region "Linki do podstron Przycisk etykietki Centrum pomocy dotyczącej linków do podstron" [ref=e5784]:
+                        - generic [ref=e5787]:
+                          - generic "Dodaj" [ref=e5789]:
+                            - generic "Element komponentu" [ref=e5790]:
+                              - generic [ref=e5792]:
+                                - generic [ref=e5795]:
+                                  - generic [ref=e5796]: Link do podstrony 1
+                                  - generic [ref=e5797]: Zalecane
+                                - button "Dodaj" [ref=e5799] [cursor=pointer]:
+                                  - img [ref=e5802]: add
+                            - generic "Element komponentu" [ref=e5804]:
+                              - generic [ref=e5806]:
+                                - generic [ref=e5809]:
+                                  - generic [ref=e5810]: Link do podstrony 2
+                                  - generic [ref=e5811]: Zalecane
+                                - button "Dodaj" [ref=e5813] [cursor=pointer]:
+                                  - img [ref=e5816]: add
+                            - generic "Element komponentu" [ref=e5818]:
+                              - generic [ref=e5820]:
+                                - generic [ref=e5823]:
+                                  - generic [ref=e5824]: Link do podstrony 3
+                                  - generic [ref=e5825]: Zalecane
+                                - button "Dodaj" [ref=e5827] [cursor=pointer]:
+                                  - img [ref=e5830]: add
+                            - generic "Element komponentu" [ref=e5832]:
+                              - generic [ref=e5834]:
+                                - generic [ref=e5837]:
+                                  - generic [ref=e5838]: Link do podstrony 4
+                                  - generic [ref=e5839]: Zalecane
+                                - button "Dodaj" [ref=e5841] [cursor=pointer]:
+                                  - img [ref=e5844]: add
+                            - generic "Element komponentu" [ref=e5846]:
+                              - generic [ref=e5848]:
+                                - generic [ref=e5851]:
+                                  - generic [ref=e5852]: Link do podstrony 5
+                                  - generic [ref=e5853]: Zalecane
+                                - button "Dodaj" [ref=e5855] [cursor=pointer]:
+                                  - img [ref=e5858]: add
+                            - generic "Element komponentu" [ref=e5860]:
+                              - generic [ref=e5862]:
+                                - generic [ref=e5865]:
+                                  - generic [ref=e5866]: Link do podstrony 6
+                                  - generic [ref=e5867]: Zalecane
+                                - button "Dodaj" [ref=e5869] [cursor=pointer]:
+                                  - img [ref=e5872]: add
+                          - button "Dodaj" [ref=e5875] [cursor=pointer]:
+                            - generic [ref=e5876]:
+                              - img [ref=e5878]: add
+                              - text: Linki do podstron
+                    - generic [ref=e5883]:
+                      - button "done Wezwanie do działania Więcej informacji" [expanded] [ref=e5885] [cursor=pointer]:
+                        - generic [ref=e5888]:
+                          - img [ref=e5895]: done
+                          - generic [ref=e5896]: Wezwanie do działania
+                          - button [ref=e5897]:
+                            - img [ref=e5899]: help_outline
+                        - img [ref=e5900]: expand_less
+                      - region "done Wezwanie do działania Więcej informacji" [ref=e5901]:
+                        - button "Dodaj tekst wezwania do działania" [ref=e5908] [cursor=pointer]:
+                          - generic [ref=e5909]: Automatycznie
+                          - img [ref=e5911]: arrow_drop_down
+                    - group [ref=e5913]:
+                      - heading "Więcej typów komponentów (0/6) Dodaj więcej informacji o swojej firmie i witrynie, aby zwiększyć skuteczność i dać użytkownikom więcej opcji interakcji z reklamą" [level=2] [ref=e5914]:
+                        - button "Więcej typów komponentów (0/6)" [ref=e5915] [cursor=pointer]:
+                          - img [ref=e5917]: expand_more
+                          - generic [ref=e5918]: Więcej typów komponentów (0/6)
+                        - generic [ref=e5921]: Dodaj więcej informacji o swojej firmie i witrynie, aby zwiększyć skuteczność i dać użytkownikom więcej opcji interakcji z reklamą
+                    - group [ref=e5923]:
+                      - heading "Więcej opcji" [level=2] [ref=e5924]:
+                        - button "Więcej opcji" [expanded] [ref=e5925] [cursor=pointer]:
+                          - img [ref=e5927]: expand_more
+                          - generic [ref=e5928]: Więcej opcji
+                      - generic [ref=e6059]:
+                        - generic [ref=e6062]:
+                          - button "HTML5 Reklamy HTML5 to zaawansowane reklamy interaktywne, które dają Ci większą kontrolę nad kreacjami." [expanded] [ref=e6064] [cursor=pointer]:
+                            - generic [ref=e6066]:
+                              - generic [ref=e6068]: HTML5
+                              - generic [ref=e6070]: Reklamy HTML5 to zaawansowane reklamy interaktywne, które dają Ci większą kontrolę nad kreacjami.
+                            - img [ref=e6071]: expand_less
+                          - region "HTML5 Reklamy HTML5 to zaawansowane reklamy interaktywne, które dają Ci większą kontrolę nad kreacjami." [ref=e6072]:
+                            - generic [ref=e6075]:
+                              - generic [ref=e6078]: Dodaj maksymalnie 1 plik HTML5
+                              - button "Dodaj pakiet HTML5" [ref=e6083] [cursor=pointer]:
+                                - generic [ref=e6084]:
+                                  - img [ref=e6086]: add
+                                  - text: HTML5
+                        - generic [ref=e6091]:
+                          - button "Ścieżka wyświetlania" [expanded] [ref=e6093] [cursor=pointer]:
+                            - generic [ref=e6097]: Ścieżka wyświetlania
+                            - img [ref=e6098]: expand_less
+                          - region "Ścieżka wyświetlania" [ref=e6099]:
+                            - generic [ref=e6104]:
+                              - generic [ref=e6105]: www.akrobacja.com
+                              - generic [ref=e6106]:
+                                - generic [ref=e6107]: /
+                                - generic [ref=e6109]:
+                                  - textbox "Ścieżka 1" [ref=e6113]
+                                  - generic [ref=e6116]:
+                                    - generic [ref=e6117]: 0/15
+                                    - generic [ref=e6118]: Tekst ma 0 znaków z 15
+                                - generic [ref=e6119]: /
+                                - generic [ref=e6121]:
+                                  - textbox "Ścieżka 2" [ref=e6125]
+                                  - generic [ref=e6128]:
+                                    - generic [ref=e6129]: 0/15
+                                    - generic [ref=e6130]: Tekst ma 0 znaków z 15
+                        - generic [ref=e6134]:
+                          - button "Końcowy adres URL dla urządzeń mobilnych" [expanded] [ref=e6136] [cursor=pointer]:
+                            - generic [ref=e6140]: Końcowy adres URL dla urządzeń mobilnych
+                            - img [ref=e6141]: expand_less
+                          - region "Końcowy adres URL dla urządzeń mobilnych" [ref=e6142]:
+                            - generic [ref=e6146]:
+                              - checkbox "Określ inny końcowy URL dla urządzeń mobilnych" [ref=e6147] [cursor=pointer]:
+                                - img [ref=e6150]: check_box_outline_blank
+                                - generic [ref=e6152]: Określ inny końcowy URL dla urządzeń mobilnych
+                              - generic [ref=e6156]:
+                                - generic:
+                                  - generic: Końcowy adres URL dla urządzeń mobilnych
+                                - textbox "Końcowy adres URL dla urządzeń mobilnych" [ref=e6157]
+                        - generic [ref=e6163]:
+                          - button "Opcje adresu URL grupy plików" [expanded] [ref=e6165] [cursor=pointer]:
+                            - generic [ref=e6169]: Opcje adresu URL grupy plików
+                            - img [ref=e6170]: expand_less
+                          - region "Opcje adresu URL grupy plików" [ref=e6171]:
+                            - generic [ref=e6175]:
+                              - generic [ref=e6177]:
+                                - heading "Szablon śledzenia" [level=3] [ref=e6178]
+                                - button "Więcej informacji o szablonie śledzenia" [ref=e6179] [cursor=pointer]:
+                                  - img [ref=e6181]: help_outline
+                              - generic [ref=e6182]:
+                                - generic [ref=e6188]:
+                                  - generic:
+                                    - generic: Szablon śledzenia
+                                  - textbox "Szablon śledzenia" [ref=e6189]
+                                - text: "Przykład: https://www.trackingtemplate.foo/?url={lpurl}&id=5"
+                              - generic [ref=e6191]:
+                                - heading "Sufiks końcowego adresu URL" [level=3] [ref=e6192]
+                                - button "Więcej informacji o sufiksie końcowego adresu URL" [ref=e6193] [cursor=pointer]:
+                                  - img [ref=e6195]: help_outline
+                              - generic [ref=e6196]:
+                                - generic [ref=e6202]:
+                                  - generic:
+                                    - generic: Sufiks końcowego adresu URL
+                                  - textbox "Sufiks końcowego adresu URL" [ref=e6203]
+                                - text: "Przykład: param1=value1&param2=value2"
+                              - generic [ref=e6205]:
+                                - heading "Parametry niestandardowe" [level=3] [ref=e6206]
+                                - button "Więcej informacji o parametrach niestandardowych" [ref=e6207] [cursor=pointer]:
+                                  - img [ref=e6209]: help_outline
+                              - generic [ref=e6211]:
+                                - generic [ref=e6213]:
+                                  - generic [ref=e6216]:
+                                    - generic [ref=e6217]: "{_"
+                                    - generic [ref=e6218]:
+                                      - generic:
+                                        - generic: Nazwa
+                                      - textbox "Pierwsza nazwa parametru niestandardowego." [ref=e6219]
+                                    - generic [ref=e6220]: "}"
+                                  - generic [ref=e6223]: =
+                                  - generic [ref=e6227]:
+                                    - generic:
+                                      - generic: Wartość
+                                    - textbox "Pierwsza wartość parametru niestandardowego." [ref=e6228]
+                                - button "Dodaj parametr niestandardowy" [ref=e6232] [cursor=pointer]:
+                                  - img [ref=e6235]: add
+                        - generic [ref=e6240]:
+                          - button "Reguły adresów URL Wskaż strony, których adresy URL zawierają określony fragment tekstu" [expanded] [ref=e6242] [cursor=pointer]:
+                            - generic [ref=e6244]:
+                              - generic [ref=e6246]: Reguły adresów URL
+                              - generic [ref=e6248]: Wskaż strony, których adresy URL zawierają określony fragment tekstu
+                            - img [ref=e6249]: expand_less
+                          - region "Reguły adresów URL Wskaż strony, których adresy URL zawierają określony fragment tekstu" [ref=e6250]:
+                            - button "Reguły adresów URL" [ref=e6255] [cursor=pointer]:
+                              - generic [ref=e6256]:
+                                - img [ref=e6258]: add
+                                - text: Reguły adresów URL
+                  - generic [ref=e5932]:
+                    - generic [ref=e5933]:
+                      - generic [ref=e5934]:
+                        - heading "Podgląd" [level=2] [ref=e5935]
+                        - generic [ref=e5936]:
+                          - button "Urządzenie" [ref=e5940] [cursor=pointer]:
+                            - generic [ref=e5942]:
+                              - img [ref=e5944]: phone_android
+                              - generic [ref=e5945]: Urządzenia mobilne
+                              - img [ref=e5947]: arrow_drop_down
+                          - button "Udostępnij" [ref=e5951]:
+                            - generic [ref=e5954]: Udostępnij
+                          - button "Wyświetl więcej" [ref=e5956]:
+                            - generic [ref=e5959]: Wyświetl więcej
+                      - tablist [ref=e5964]:
+                        - tab "searchNetwork" [ref=e5965] [cursor=pointer]:
+                          - generic [ref=e5968]:
+                            - img "Wyszukiwarka" [ref=e5969]
+                            - paragraph [ref=e5970]: Wyszukiwarka
+                        - tab "displayNetwork" [ref=e5972] [cursor=pointer]:
+                          - generic [ref=e5975]:
+                            - img "Sieć reklamowa" [ref=e5976]
+                            - paragraph [ref=e5977]: Sieć reklamowa
+                        - tab "youtube" [selected] [ref=e5979] [cursor=pointer]:
+                          - generic [ref=e5982]:
+                            - img "YouTube" [ref=e5983]
+                            - paragraph [ref=e5984]: YouTube
+                        - tab "discover" [ref=e5986] [cursor=pointer]:
+                          - generic [ref=e5989]:
+                            - img "Discover" [ref=e5990]
+                            - paragraph [ref=e5991]: Discover
+                        - tab "gmail" [ref=e5993] [cursor=pointer]:
+                          - generic [ref=e5996]:
+                            - img "Gmail" [ref=e5997]
+                            - paragraph [ref=e5998]: Gmail
+                    - generic [ref=e6003]:
+                      - button "Poprzedni podgląd" [ref=e6004] [cursor=pointer]:
+                        - img [ref=e6263]: chevron_left
+                      - generic [ref=e6267]:
+                        - generic [ref=e6270]: Reklama na stronie odtwarzania YouTube
+                        - region [ref=e6277]:
+                          - generic [ref=e6278]:
+                            - img [ref=e6284]: video_youtube
+                            - region "sekcja reklam wideo typu Out-Stream" [ref=e6285]:
+                              - img [ref=e6306]: video_youtube
+                      - button "Następny podgląd" [ref=e6017] [cursor=pointer]:
+                        - img [ref=e6020]: chevron_right
+                    - paragraph [ref=e6027]: Wyświetlony podgląd jest przykładowy i nie zawiera wszystkich możliwych formatów. To Ty odpowiadasz za treść swoich reklam. Sprawdź, czy przesłane komponenty nie naruszają żadnych zasad Google ani obowiązujących przepisów – osobno lub w połączeniu z innymi komponentami.
+          - generic [ref=e6028]:
+            - button "Zapisz tę reklamę" [ref=e6029] [cursor=pointer]:
+              - generic [ref=e6030]: Zapisz
+            - button "Anuluj tę reklamę" [ref=e6032] [cursor=pointer]:
+              - generic [ref=e6033]: Anuluj
+        - generic [ref=e5177]: © Google 2026.
+  - generic:
+    - dialog:
+      - generic:
+        - generic:
+          - heading [level=1]: Turn off ad blockers
+          - paragraph: Google Ads can't work when you're using an ad blocker. To use Google Ads, please turn off any ad blockers for now.
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe":
+          - generic [ref=e6038]: · · · · · ·
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe":
+          - generic [ref=e6042]: warning_amber
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - status [ref=e2425]
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"
+  - generic:
+    - generic:
+      - generic:
+        - dialog "okno dialogowe"

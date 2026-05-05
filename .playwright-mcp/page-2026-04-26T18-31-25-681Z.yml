@@ -1,0 +1,123 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - button "Przejdź do głównej treści" [ref=e7]:
+      - generic [ref=e10]: Przejdź do głównej treści
+    - generic [ref=e11]:
+      - button "Menu nawigacyjne" [expanded] [ref=e12] [cursor=pointer]:
+        - img [ref=e16]: menu
+      - link "Merchant Center – strona główna" [ref=e17] [cursor=pointer]:
+        - /url: /mc/overview?a=5765263858
+        - img "Merchant Center – strona główna" [ref=e18]
+      - button "Szukaj" [ref=e21] [cursor=pointer]:
+        - img [ref=e25]: search
+      - button "Pomoc" [ref=e27] [cursor=pointer]:
+        - img [ref=e30]: help_outline
+      - 'button "Konto Merchant Center: akrobacja.com, 5765263858" [ref=e36] [cursor=pointer]':
+        - generic [ref=e37]:
+          - generic [ref=e38]: akrobacja.com
+          - generic [ref=e39]: "5765263858"
+        - img [ref=e41]: arrow_drop_down
+      - generic [ref=e47]:
+        - button "Aplikacje Google" [ref=e51] [cursor=pointer]:
+          - img [ref=e52]
+        - 'button "Konto Google: Paweł Mamcarz (pawel@mamcarz.com)" [ref=e57] [cursor=pointer]':
+          - img [ref=e59]
+  - generic [ref=e66]:
+    - navigation [ref=e67]:
+      - tree "Nawigacja" [ref=e70]:
+        - treeitem "Przegląd" [level=1] [ref=e71] [cursor=pointer]:
+          - img [ref=e74]: dashboard
+          - generic [ref=e76]: Przegląd
+        - treeitem "Powiadomienia" [level=1] [ref=e77] [cursor=pointer]:
+          - img [ref=e80]: notifications
+          - generic [ref=e82]: Powiadomienia
+        - treeitem "Produkty i sklep" [expanded] [level=1] [ref=e84] [cursor=pointer]:
+          - img [ref=e87]: inventory_2
+          - generic [ref=e88]:
+            - generic [ref=e89]: Produkty i sklep
+            - img [ref=e92]: arrow_drop_down
+          - group [ref=e94]:
+            - treeitem "Produkty" [level=2] [ref=e95]:
+              - generic [ref=e98]: Produkty
+            - treeitem "Dostawa i zwroty" [level=2] [ref=e99]:
+              - generic [ref=e102]: Dostawa i zwroty
+            - treeitem "Jakość sklepu" [level=2] [ref=e103]:
+              - generic [ref=e106]: Jakość sklepu
+        - treeitem "Treść kreacji" [level=1] [ref=e108] [cursor=pointer]:
+          - img [ref=e111]: brush_spark
+          - generic [ref=e112]:
+            - generic [ref=e113]: Treść kreacji
+            - img [ref=e116]: arrow_drop_down
+          - group [ref=e118]:
+            - treeitem [disabled] [level=2] [ref=e119]:
+              - generic [ref=e121]: Product Studio
+            - treeitem [disabled] [level=2] [ref=e122]:
+              - generic [ref=e124]: Komponenty wideo
+        - treeitem "Marketing" [level=1] [ref=e125] [cursor=pointer]:
+          - img [ref=e128]: campaign
+          - generic [ref=e129]:
+            - generic [ref=e130]: Marketing
+            - img [ref=e133]: arrow_drop_down
+          - group [ref=e135]:
+            - treeitem [disabled] [level=2] [ref=e136]:
+              - generic [ref=e138]: Kampanie reklamowe
+            - treeitem [disabled] [level=2] [ref=e139]:
+              - generic [ref=e141]: Metody marketingowe
+        - treeitem "Analytics" [level=1] [ref=e142] [cursor=pointer]:
+          - img [ref=e145]: timeline
+          - generic [ref=e146]:
+            - generic [ref=e147]: Analytics
+            - img [ref=e150]: arrow_drop_down
+          - group [ref=e152]:
+            - treeitem [disabled] [level=2] [ref=e153]:
+              - generic [ref=e155]: Podsumowanie
+            - treeitem [disabled] [level=2] [ref=e156]:
+              - generic [ref=e158]: Produkty
+            - treeitem [disabled] [level=2] [ref=e159]:
+              - generic [ref=e161]: Ceny
+            - treeitem [disabled] [level=2] [ref=e162]:
+              - generic [ref=e164]: Sklep online
+        - treeitem "Ustawienia" [level=1] [ref=e166] [cursor=pointer]:
+          - img [ref=e169]: settings
+          - generic [ref=e170]:
+            - generic [ref=e171]: Ustawienia
+            - img [ref=e174]: arrow_drop_down
+          - group [ref=e176]:
+            - treeitem [disabled] [level=2] [ref=e177]:
+              - generic [ref=e179]: Ogólne
+            - treeitem [disabled] [level=2] [ref=e180]:
+              - generic [ref=e182]: Informacje o firmie
+            - treeitem [disabled] [level=2] [ref=e183]:
+              - generic [ref=e185]: Źródła danych
+            - treeitem [disabled] [level=2] [ref=e186]:
+              - generic [ref=e188]: Dodatki
+            - treeitem [disabled] [level=2] [ref=e189]:
+              - generic [ref=e191]: Dostęp i usługi
+    - generic [ref=e194]:
+      - generic [ref=e198]:
+        - button "Wstecz" [ref=e199] [cursor=pointer]:
+          - img [ref=e203]: arrow_back
+        - heading "Szczegóły produktu" [level=1] [ref=e204]
+      - main [ref=e211]:
+        - generic [ref=e215]:
+          - heading [level=2] [ref=e216]:
+            - tablist [ref=e220]:
+              - tab "Szczegóły produktu" [ref=e221] [cursor=pointer]:
+                - generic [ref=e222]: Szczegóły produktu
+              - tab "Wymaga uwagi (0)" [selected] [ref=e224] [cursor=pointer]:
+                - generic [ref=e225]: Wymaga uwagi (0)
+              - tab "Kalkulator dostawy" [ref=e227] [cursor=pointer]:
+                - generic [ref=e228]: Kalkulator dostawy
+              - tab "Ruch" [ref=e230] [cursor=pointer]:
+                - generic [ref=e231]: Ruch
+          - generic [ref=e235]:
+            - heading "Nie występują problemy z tym produktem" [level=2] [ref=e242]
+            - contentinfo [ref=e244]:
+              - link "Polityka prywatności" [ref=e245] [cursor=pointer]:
+                - /url: http://www.google.com/policies/privacy/
+              - generic [ref=e246]: ·
+              - link "Warunki korzystania z usługi" [ref=e247] [cursor=pointer]:
+                - /url: https://support.google.com/merchants/answer/160173?hl=pl
+              - generic [ref=e248]: ·
+              - link "Zasady programu" [ref=e249] [cursor=pointer]:
+                - /url: https://support.google.com/merchants/topic/7286989?hl=pl

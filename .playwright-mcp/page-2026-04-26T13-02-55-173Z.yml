@@ -1,0 +1,780 @@
+- generic [active] [ref=e1]:
+  - img:
+    - generic:
+      - generic:
+        - generic: akrobacja.top
+      - generic:
+        - generic: akrobacja.top
+  - link "Skip to content" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation [ref=e3]:
+    - link "akrobacja.com — homepage" [ref=e4] [cursor=pointer]:
+      - /url: "#hero"
+      - img "akrobacja.com" [ref=e5]
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Flights" [ref=e8] [cursor=pointer]:
+          - /url: /lot-akrobacyjny
+      - listitem [ref=e9]:
+        - link "Pilot" [ref=e10] [cursor=pointer]:
+          - /url: "#pilot"
+      - listitem [ref=e11]:
+        - link "Airshows" [ref=e12] [cursor=pointer]:
+          - /url: /pokazy-lotnicze
+      - listitem [ref=e13]:
+        - link "Training" [ref=e14] [cursor=pointer]:
+          - /url: /blog/kurs-akrobacji-fcl800
+      - listitem [ref=e15]:
+        - link "Shop" [ref=e16] [cursor=pointer]:
+          - /url: /sklep-merch
+      - listitem [ref=e17]:
+        - link "Blog" [ref=e18] [cursor=pointer]:
+          - /url: /blog
+      - listitem [ref=e19]:
+        - link "FAQ" [ref=e20] [cursor=pointer]:
+          - /url: "#faq"
+      - listitem [ref=e21]:
+        - link "Contact" [ref=e22] [cursor=pointer]:
+          - /url: "#kontakt"
+    - link "Message us" [ref=e23] [cursor=pointer]:
+      - /url: https://wa.me/48535535221
+  - main [ref=e24]:
+    - generic [ref=e25]:
+      - generic:
+        - img
+      - generic [ref=e29]:
+        - paragraph [ref=e30]: Extra 300L SP-EKS · Radom-Piastow Airport EPRP
+        - heading "FEEL AEROBATICS FOR REAL" [level=1] [ref=e31]:
+          - generic [ref=e32]: FEEL
+          - generic [ref=e33]: AEROBATICS
+          - generic [ref=e34]: FOR REAL
+        - paragraph [ref=e35]: Aerobatic flight on Extra 300L with multiple Champion of Poland, Germany & UK
+        - paragraph [ref=e36]: The perfect gift — voucher PDF ready to give
+        - generic [ref=e37]:
+          - link "Buy Voucher — from PLN 1,999 →" [ref=e38] [cursor=pointer]:
+            - /url: "#sklep"
+          - link "Meet the pilot" [ref=e39] [cursor=pointer]:
+            - /url: "#pilot"
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - text: "3000"
+              - emphasis [ref=e43]: h+
+            - generic [ref=e44]: Flight hours on Extra 300L
+          - generic [ref=e45]:
+            - generic [ref=e46]:
+              - emphasis [ref=e47]: ×
+              - text: PL
+            - generic [ref=e48]: Multiple Polish Champion
+          - generic [ref=e49]:
+            - generic [ref=e50]:
+              - emphasis [ref=e51]: ×
+              - text: DE
+            - generic [ref=e52]: Multiple German Champion
+          - generic [ref=e53]:
+            - generic [ref=e54]:
+              - text: "+6"
+              - emphasis [ref=e55]: G
+            - generic [ref=e56]: G-force in flight
+    - generic [ref=e57]:
+      - generic [ref=e58]: World Champion at the controls
+      - generic [ref=e60]: Voucher valid 12 months
+      - generic [ref=e62]: Free rescheduling
+      - generic [ref=e64]: PDF to your email in 60 seconds
+    - region "This is what an Extra 300L aerobatic flight looks like" [ref=e66]:
+      - generic [ref=e67]:
+        - paragraph [ref=e68]: See it live
+        - heading "This is what an Extra 300L aerobatic flight looks like" [level=2] [ref=e69]:
+          - text: This is what an
+          - text: Extra 300L aerobatic flight looks like
+        - button "Play video — Extra 300L aerobatic flight" [ref=e71] [cursor=pointer]:
+          - img "Extra 300L aerobatic flight — video thumbnail" [ref=e72]
+          - img [ref=e74]
+        - paragraph [ref=e77]: Extra 300L SP-EKS · Radom-Piastów EPRP
+    - generic [ref=e78]:
+      - generic [ref=e79]:
+        - generic [ref=e80]:
+          - paragraph [ref=e81]: Vouchers · Aerobatic Flights
+          - heading "Choose your adrenaline level" [level=2] [ref=e82]:
+            - text: Choose your
+            - text: adrenaline level
+        - paragraph [ref=e84]: Voucher valid for 12 months. Bad weather = free rescheduling.
+      - generic [ref=e85]:
+        - generic [ref=e86]: Season April–October
+        - generic [ref=e87]: Book your flight — calendar fills up fast
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - generic [ref=e90]: "04"
+            - generic [ref=e91]: Days
+          - generic [ref=e92]:
+            - generic [ref=e93]: "08"
+            - generic [ref=e94]: Hrs
+          - generic [ref=e95]:
+            - generic [ref=e96]: "57"
+            - generic [ref=e97]: Min
+          - generic [ref=e98]:
+            - generic [ref=e99]: "04"
+            - generic [ref=e100]: Sec
+      - generic [ref=e101]:
+        - generic [ref=e102]:
+          - generic [ref=e103]: First time
+          - heading "First Flight" [level=3] [ref=e104]
+          - paragraph [ref=e105]: Your first taste of aerobatics
+          - generic [ref=e106]: "-20% until end of month"
+          - generic [ref=e107]: PLN 2 499
+          - generic [ref=e108]: PLN1999 / person
+          - list [ref=e110]:
+            - listitem [ref=e111]: Up to 15 min airborne
+            - listitem [ref=e112]: Ground briefing (20 min)
+            - listitem [ref=e113]: Up to +4G / −2G
+            - listitem [ref=e114]: Basic aerobatic manoeuvres
+            - listitem [ref=e115]: No flight experience required
+          - button "Buy voucher — 1,999 PLN" [ref=e116] [cursor=pointer]
+          - checkbox "+ 360° Flight Video 90 sec edit · MP4 in 48h · +299 PLN" [ref=e117] [cursor=pointer]:
+            - generic [ref=e118]:
+              - generic [ref=e119]: + 360° Flight Video
+              - generic [ref=e120]: 90 sec edit · MP4 in 48h · +299 PLN
+        - generic [ref=e122]:
+          - generic [ref=e123]: Bestseller
+          - heading "Adrenaline" [level=3] [ref=e124]
+          - paragraph [ref=e125]: Full aerobatic programme with the Champion
+          - generic [ref=e126]: "-40% until end of month"
+          - generic [ref=e127]: PLN 4 999
+          - generic [ref=e128]: PLN2999 / person
+          - list [ref=e130]:
+            - listitem [ref=e131]: 20 min airborne
+            - listitem [ref=e132]: Briefing (40 min) + debriefing (15 min)
+            - listitem [ref=e133]: Up to +6G / −4G
+            - listitem [ref=e134]: Loops, rolls, inverted flight
+            - listitem [ref=e135]: No flight experience required
+          - button "Buy voucher — 2,999 PLN" [ref=e136] [cursor=pointer]
+          - checkbox "+ 360° Flight Video 90 sec edit · MP4 in 48h · +299 PLN" [ref=e137] [cursor=pointer]:
+            - generic [ref=e138]:
+              - generic [ref=e139]: + 360° Flight Video
+              - generic [ref=e140]: 90 sec edit · MP4 in 48h · +299 PLN
+        - generic [ref=e142]:
+          - generic [ref=e143]: For PPL pilots
+          - heading "Masterclass" [level=3] [ref=e144]
+          - paragraph [ref=e145]: Aerobatic training with the Champion
+          - generic [ref=e146]: PLN4999 / person
+          - list [ref=e148]:
+            - listitem [ref=e149]: Up to 50 min airborne (1 day)
+            - listitem [ref=e150]: Briefing + debriefing with figure analysis
+            - listitem [ref=e151]: Spins, advanced manoeuvres
+            - listitem [ref=e152]: Valid PPL(A)+ licence required
+            - listitem [ref=e153]: Limited availability
+          - button "Buy voucher — 4,999 PLN" [ref=e154] [cursor=pointer]
+          - checkbox "+ 360° Flight Video 90 sec edit · cockpit + external camera · +299 PLN" [ref=e155] [cursor=pointer]:
+            - generic [ref=e156]:
+              - generic [ref=e157]: + 360° Flight Video
+              - generic [ref=e158]: 90 sec edit · cockpit + external camera · +299 PLN
+        - generic [ref=e160]:
+          - generic [ref=e161]: Aerobatic rating
+          - heading "FCL.800 Course" [level=3] [ref=e162]
+          - paragraph [ref=e163]: Licence endorsement
+          - generic [ref=e164]: Up to 90% subsidised
+          - generic [ref=e165]: PLN20 900 net
+          - list [ref=e167]:
+            - listitem [ref=e168]: 16-20 flights on Extra 300L (5h)
+            - listitem [ref=e169]: ~5h aerobatic theory
+            - listitem [ref=e170]: FCL.800 rating entered in licence
+            - listitem [ref=e171]: Under the auspices of Radom Aeroclub
+            - listitem [ref=e172]: Requires PPL(A) + 30h PIC
+          - link "Course details →" [ref=e173] [cursor=pointer]:
+            - /url: /blog/kurs-akrobacji-fcl800
+          - generic [ref=e174]:
+            - strong [ref=e175]: "Masterclass + Course bundle:"
+            - text: 4,999 + 18,888 =
+            - strong [ref=e176]: 23,887 PLN gross
+            - text: (19,420 net)
+            - link "Check subsidies →" [ref=e177] [cursor=pointer]:
+              - /url: /dotacje-szkolenie-lotnicze
+      - generic [ref=e178]:
+        - generic [ref=e179]:
+          - generic [ref=e180]: Corporate Experience
+          - generic [ref=e181]: Group package from 5 people. VAT invoice. Team building, rewards, corporate events.
+        - link "Ask about Group Offer →" [ref=e182] [cursor=pointer]:
+          - /url: https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20Corporate%20Experience
+      - paragraph [ref=e183]: The perfect birthday, anniversary, bachelor party gift — or simply because you deserve it
+      - generic [ref=e184]:
+        - generic [ref=e185]:
+          - generic [ref=e186]: 🔒
+          - text: Secure SSL payment
+        - generic [ref=e187]:
+          - generic [ref=e188]: 📄
+          - text: PDF voucher in 60 seconds
+        - generic [ref=e189]:
+          - generic [ref=e190]: ✈️
+          - text: Insurance included
+        - generic [ref=e191]:
+          - generic [ref=e192]: 🌦️
+          - text: Free rescheduling in bad weather
+        - generic [ref=e193]:
+          - generic [ref=e194]: 📅
+          - text: "Voucher validity: 12 months"
+      - paragraph [ref=e196]:
+        - strong [ref=e197]: "PPL(A) pilots:"
+        - text: FCL.800 aerobatic rating course with up to 90% subsidy.
+        - link "Check subsidies →" [ref=e198] [cursor=pointer]:
+          - /url: /dotacje-szkolenie-lotnicze
+    - generic [ref=e199]:
+      - generic [ref=e200]:
+        - generic [ref=e201]: 200+
+        - generic [ref=e202]: Flights per season
+      - generic [ref=e203]:
+        - generic [ref=e204]: 3 000+
+        - generic [ref=e205]: Pilot flight hours
+      - generic [ref=e206]:
+        - generic [ref=e207]: 10+
+        - generic [ref=e208]: Shows & competitions per year
+      - generic [ref=e209]:
+        - generic [ref=e210]: "5.0"
+        - generic [ref=e211]: Google Reviews
+    - generic [ref=e212]:
+      - generic [ref=e213]:
+        - generic [ref=e214]:
+          - generic [ref=e215]: "5.0"
+          - generic [ref=e216]:
+            - generic "5 out of 5 stars" [ref=e217]: ★★★★★
+            - generic [ref=e218]: 6 reviews · Google Reviews
+        - paragraph [ref=e219]: What our clients say
+        - heading "Don't take our word for it. Hear it from them" [level=2] [ref=e220]:
+          - text: Don't take our word for it.
+          - text: Hear it from them
+      - generic [ref=e222]:
+        - generic [ref=e223]:
+          - generic "5 out of 5 stars" [ref=e224]: ★★★★★
+          - generic [ref=e225]: "\"Aerobatic flight? Absolutely incredible! Even for a complete beginner, the sensations after the first stall turn and barrel roll are unforgettable. The pilot is pure professionalism, the briefing was thorough, and the whole operation ran like a pre-flight checklist. Equipment in top shape.\""
+          - generic [ref=e226]: Mark K.
+          - generic [ref=e227]: Local Guide · Google Reviews
+        - generic [ref=e228]:
+          - generic "5 out of 5 stars" [ref=e229]: ★★★★★
+          - generic [ref=e230]: "\"Out-of-this-world experience! A perfect gift for adrenaline junkies!\""
+          - generic [ref=e231]: Anna W.
+          - generic [ref=e232]: Local Guide · Google Reviews
+        - generic [ref=e233]:
+          - generic "5 out of 5 stars" [ref=e234]: ★★★★★
+          - generic [ref=e235]: "\"Excellent training facilities and a beautifully maintained aircraft. Aerobatics teaches humility and precise stick-and-rudder skills, and this is the best place to learn. The instructor doesn't let up until every figure is flown to perfection. This is where real airmanship is built.\""
+          - generic [ref=e236]: Tom R.
+          - generic [ref=e237]: Google Reviews
+        - generic [ref=e238]:
+          - generic "5 out of 5 stars" [ref=e239]: ★★★★★
+          - generic [ref=e240]: "\"I got the flight as a gift from my wife. An absolutely amazing experience!!! I recommend it to everyone.\""
+          - generic [ref=e241]: Chris M.
+          - generic [ref=e242]: Google Reviews
+        - generic [ref=e243]:
+          - generic "5 out of 5 stars" [ref=e244]: ★★★★★
+          - generic [ref=e245]: "\"Highly recommend! Super fun! Incredible adrenaline rush ;)\""
+          - generic [ref=e246]: Robert D.
+          - generic [ref=e247]: Google Reviews
+        - generic [ref=e248]:
+          - generic "5 out of 5 stars" [ref=e249]: ★★★★★
+          - generic [ref=e250]: "\"★★★★★\""
+          - generic [ref=e251]: FilmoLot
+          - generic [ref=e252]: Local Guide · Google Reviews
+      - generic [ref=e253]:
+        - text: "More reviews and flight footage:"
+        - link "Instagram" [ref=e254] [cursor=pointer]:
+          - /url: https://www.instagram.com/warsawflightsafety
+        - text: ·
+        - link "Facebook" [ref=e255] [cursor=pointer]:
+          - /url: https://www.facebook.com/warsawflightsafety
+      - link "Join them — buy a voucher →" [ref=e257] [cursor=pointer]:
+        - /url: "#sklep"
+    - generic [ref=e258]:
+      - generic [ref=e259]:
+        - paragraph [ref=e260]: How it works
+        - heading "4 steps to your flight" [level=2] [ref=e261]
+      - generic [ref=e263]:
+        - generic [ref=e264]:
+          - generic [ref=e265]: "01"
+          - generic [ref=e266]: Buy a voucher
+          - generic [ref=e267]: Choose a package and buy online. You'll receive a PDF voucher by email within 60 seconds.
+          - generic [ref=e268]: →
+        - generic [ref=e269]:
+          - generic [ref=e270]: "02"
+          - generic [ref=e271]: Book a date
+          - generic [ref=e272]: "Pick a date in the online calendar or message us on WhatsApp. Season: April–October."
+          - generic [ref=e273]: →
+        - generic [ref=e274]:
+          - generic [ref=e275]: "03"
+          - generic [ref=e276]: Briefing at the airport
+          - generic [ref=e277]: Maciej will walk you through procedures, figures and breathing technique. ~20 minutes.
+          - generic [ref=e278]: →
+        - generic [ref=e279]:
+          - generic [ref=e280]: "04"
+          - generic [ref=e281]: Fly!
+          - generic [ref=e282]: You climb into the Extra 300L cockpit and experience a flight you'll remember for the rest of your life.
+      - generic [ref=e283]:
+        - generic [ref=e284]: 🛡️
+        - generic [ref=e285]:
+          - strong [ref=e286]: Satisfaction guarantee.
+          - text: If the weather prevents your flight, we reschedule free of charge with no limit. Voucher valid for 12 months. You can change your package or transfer the voucher to someone else.
+    - generic [ref=e287]:
+      - generic [ref=e288]:
+        - text: "3000"
+        - img "Maciej Kulaszewski — aerobatic pilot Extra 300L in cockpit" [ref=e289]
+        - generic [ref=e290]: World Champion · Polish Champion · German Champion · UK Champion
+      - generic [ref=e291]:
+        - generic [ref=e292]:
+          - generic [ref=e293]:
+            - generic [ref=e294]:
+              - text: "3000"
+              - emphasis [ref=e295]: h+
+            - generic [ref=e296]: Flight hours on Extra 300L
+          - generic [ref=e297]:
+            - generic [ref=e298]: WC
+            - generic [ref=e299]: World Champion
+          - generic [ref=e300]:
+            - generic [ref=e301]: PL·DE·UK
+            - generic [ref=e302]: National Champion
+        - paragraph [ref=e303]: Aerobatic pilot · World Champion · FI(A)
+        - heading "Maciej Kulaszewski" [level=2] [ref=e304]:
+          - text: Maciej
+          - text: Kulaszewski
+        - paragraph [ref=e306]:
+          - strong [ref=e307]: World Champion in aerobatic flying.
+          - text: 3,000+ flight hours, including thousands on the Extra 300L — one of the highest individual type experiences in Europe. Champion of Poland, Germany and the United Kingdom. European Championship medalist. FI(A) certified instructor. Zero simulators, zero shortcuts. Every flight flown personally.
+        - list [ref=e308]:
+          - listitem [ref=e309]:
+            - strong [ref=e310]: World Champion
+            - text: — aerobatic flying
+          - listitem [ref=e311]:
+            - strong [ref=e312]: Champion of Poland, Germany and the UK
+          - listitem [ref=e313]:
+            - strong [ref=e314]: European Championship medalist
+          - listitem [ref=e315]:
+            - strong [ref=e316]: FI(A)
+            - text: — certified flight instructor
+          - listitem [ref=e317]:
+            - strong [ref=e318]: 3,000+ hours
+            - text: flight time
+          - listitem [ref=e319]:
+            - text: "Base:"
+            - strong [ref=e320]: Radom-Piastow (EPRP)
+          - listitem [ref=e321]:
+            - link "mkaeros.com" [ref=e322] [cursor=pointer]:
+              - /url: https://mkaeros.com/en
+        - blockquote [ref=e323]:
+          - text: "\"Every passenger of mine lands with a smile and one question:"
+          - strong [ref=e324]: when can I go again?
+          - text: "\""
+          - generic [ref=e325]: — Maciej Kulaszewski
+        - generic [ref=e326]:
+          - link "Book a date →" [ref=e327] [cursor=pointer]:
+            - /url: /kalendarz
+          - link "Maciej's Facebook →" [ref=e328] [cursor=pointer]:
+            - /url: https://www.facebook.com/bullet.aerobatics/
+    - generic [ref=e329]:
+      - text: SP-EKS
+      - generic [ref=e330]:
+        - paragraph [ref=e331]: Extra 300L · SP-EKS
+        - heading "The Machine" [level=2] [ref=e332]
+      - generic [ref=e334]:
+        - generic [ref=e335]:
+          - generic [ref=e336]: Extra 300L SP-EKS — top view
+          - img "Extra 300L SP-EKS — top view" [ref=e337]
+          - button "1 Engine 300 HP Lycoming AEIO-580 · 224 kW · direct drive MTV propeller" [ref=e338] [cursor=pointer]:
+            - generic [ref=e340]: "1"
+            - generic:
+              - generic: Engine
+              - generic: 300 HP
+              - generic: Lycoming AEIO-580 · 224 kW · direct drive MTV propeller
+          - button "2 G-limits +10G / −10G FAA/EASA certified. Safety margins always on your side." [ref=e341] [cursor=pointer]:
+            - generic [ref=e343]: "2"
+            - generic:
+              - generic: G-limits
+              - generic: +10G / −10G
+              - generic: FAA/EASA certified. Safety margins always on your side.
+          - button "3 Roll Rate 420°/s Wingspan 8.0 m · composite construction · full roll deflection" [ref=e344] [cursor=pointer]:
+            - generic [ref=e346]: "3"
+            - generic:
+              - generic: Roll Rate
+              - generic: 420°/s
+              - generic: Wingspan 8.0 m · composite construction · full roll deflection
+          - button "4 Tail Conventional Symmetrical airfoil profile · full positive and negative aerobatics" [ref=e347] [cursor=pointer]:
+            - generic [ref=e349]: "4"
+            - generic:
+              - generic: Tail
+              - generic: Conventional
+              - generic: Symmetrical airfoil profile · full positive and negative aerobatics
+          - button "5 Max Speed 220 kt VNE 220 kt (407 km/h) · MTOW 950 kg" [ref=e350] [cursor=pointer]:
+            - generic [ref=e352]: "5"
+            - generic:
+              - generic: Max Speed
+              - generic: 220 kt
+              - generic:
+                - text: V
+                - subscript: NE
+                - text: 220 kt (407 km/h) · MTOW 950 kg
+        - generic [ref=e353]:
+          - paragraph [ref=e354]: Technical specifications
+          - generic [ref=e355]:
+            - generic [ref=e356]:
+              - generic [ref=e357]: Type
+              - generic [ref=e358]: Extra 300L
+            - generic [ref=e359]:
+              - generic [ref=e360]: Registration
+              - generic [ref=e361]: SP-EKS
+            - generic [ref=e362]:
+              - generic [ref=e363]: Engine
+              - generic [ref=e364]: 300 HP
+            - generic [ref=e365]:
+              - generic [ref=e366]: Max +G
+              - generic [ref=e367]: +10G
+            - generic [ref=e368]:
+              - generic [ref=e369]: Max −G
+              - generic [ref=e370]: −10G
+            - generic [ref=e371]:
+              - generic [ref=e372]: Roll
+              - generic [ref=e373]: 420°/s
+            - generic [ref=e374]:
+              - generic [ref=e375]: V(NE)
+              - generic [ref=e376]: 220 kt
+            - generic [ref=e377]:
+              - generic [ref=e378]: MTOW
+              - generic [ref=e379]: 950 kg
+            - generic [ref=e380]:
+              - generic [ref=e381]: Cockpit
+              - generic [ref=e382]: 2 tandem
+            - generic [ref=e383]:
+              - generic [ref=e384]: Certification
+              - generic [ref=e385]: FAA / EASA
+            - generic [ref=e386]:
+              - generic [ref=e387]: Base
+              - generic [ref=e388]: EPRP Radom
+          - paragraph [ref=e390]:
+            - text: Every passenger flight is flown by
+            - strong [ref=e391]: Maciej Kulaszewski personally
+            - text: — no substitutes, no exceptions.
+    - generic [ref=e392]:
+      - paragraph [ref=e393]: Gift
+      - heading "Looking for a gift they'll remember forever?" [level=2] [ref=e394]:
+        - text: Looking for a gift they'll
+        - text: remember forever?
+      - paragraph [ref=e396]: An aerobatic flight voucher — elegant PDF ready to give in 60 seconds. The recipient picks their own flight date in the online calendar.
+      - generic [ref=e397]:
+        - generic [ref=e398]:
+          - generic [ref=e399]: Birthday
+          - generic [ref=e400]: A gift they'll talk about for years. An unforgettable day full of adrenaline.
+        - generic [ref=e401]:
+          - generic [ref=e402]: Bachelor Party
+          - generic [ref=e403]: +6G instead of another party. A flight with the World Champion takes it to the next level.
+        - generic [ref=e404]:
+          - generic [ref=e405]: Corporate Bonus
+          - generic [ref=e406]: A reward for the best. VAT invoice. Group packages from 5 people.
+      - link "Buy a gift voucher →" [ref=e407] [cursor=pointer]:
+        - /url: "#sklep"
+    - generic [ref=e408]:
+      - generic [ref=e409]:
+        - paragraph [ref=e410]: Questions & Answers
+        - heading "Got questions? We have 3,000 hours of answers" [level=2] [ref=e411]:
+          - text: Got questions?
+          - text: We have 3,000 hours of answers
+      - generic [ref=e413]:
+        - generic [ref=e414]:
+          - button "Do I need any flying experience? +" [ref=e415] [cursor=pointer]
+          - paragraph [ref=e416]: No. We conduct a full briefing before every flight. The pilot ensures your safety at all times.
+        - generic [ref=e417]:
+          - button "Are there any health restrictions? +" [ref=e418] [cursor=pointer]
+          - paragraph [ref=e419]: Generally good health is required. Contraindications include heart conditions, epilepsy, pregnancy and recent surgery. If in doubt, consult your doctor.
+        - generic [ref=e420]:
+          - button "What if the weather doesn't allow the flight? +" [ref=e421] [cursor=pointer]
+          - paragraph [ref=e422]: We reschedule free of charge. The voucher is valid for 12 months.
+        - generic [ref=e423]:
+          - button "How long is the voucher valid? +" [ref=e424] [cursor=pointer]
+          - paragraph [ref=e425]: 12 months from the date of purchase. You choose your flight date individually.
+        - generic [ref=e426]:
+          - button "Where do the flights take place? +" [ref=e427] [cursor=pointer]
+          - paragraph [ref=e428]: Radom-Piastow Airport (EPRP), Poland. Free parking on site. Directions sent by email after booking.
+        - generic [ref=e429]:
+          - button "Can I buy a voucher as a gift? +" [ref=e430] [cursor=pointer]
+          - paragraph [ref=e431]: Yes. You'll receive an elegant PDF ready to give. The recipient chooses their own flight date.
+        - generic [ref=e432]:
+          - button "How long does the whole airport visit take? +" [ref=e433] [cursor=pointer]
+          - paragraph [ref=e434]: "First Flight: approx. 45 min. Adrenaline: approx. 1.5 h. Masterclass: approx. 3 h."
+        - generic [ref=e435]:
+          - button "What is the maximum passenger weight and height? +" [ref=e436] [cursor=pointer]
+          - paragraph [ref=e437]: Max 110 kg (242 lbs), max 195 cm (6'5") — Extra 300L cockpit limitations. If in doubt, give us a call.
+      - generic [ref=e438]:
+        - link "Didn't find your answer? Message us →" [ref=e439] [cursor=pointer]:
+          - /url: https://wa.me/48535535221
+        - link "Buy voucher →" [ref=e440] [cursor=pointer]:
+          - /url: "#sklep"
+    - generic [ref=e442]:
+      - paragraph [ref=e443]: Safety
+      - heading "Why flying with a champion is safer than you think" [level=2] [ref=e444]:
+        - text: Why flying with a champion
+        - text: is safer than you think
+      - generic [ref=e446]:
+        - generic [ref=e447]:
+          - generic [ref=e448]: 🎯
+          - heading "Aircraft mastery" [level=3] [ref=e449]
+          - paragraph [ref=e450]:
+            - text: 3,000+ hours on the Extra 300L — one of the most resilient aerobatic aircraft in the world. Maciej knows every behaviour of this machine in every flight configuration. An airline pilot flies safely in normal conditions.
+            - strong [ref=e451]: Maciej knows how to maintain control in any conditions.
+        - generic [ref=e452]:
+          - generic [ref=e453]: 📐
+          - heading "Safety margins" [level=3] [ref=e454]
+          - paragraph [ref=e455]:
+            - text: Passenger flights are flown with margins many times greater than in competition. Figures are performed at safe altitudes, at speeds that ensure full control.
+            - strong [ref=e456]: Your flight uses just 30% of the aircraft's and pilot's capabilities.
+        - generic [ref=e457]:
+          - generic [ref=e458]: 🛡️
+          - heading "Emergency training" [level=3] [ref=e459]
+          - paragraph [ref=e460]:
+            - text: Certified FI(A) flight instructor and aerobatic judge. Thousands of hours of training covering emergency procedures, spins and recovery.
+            - strong [ref=e461]: A World Champion leaves nothing to chance.
+    - generic [ref=e462]:
+      - img "Pawel Mamcarz — owner of Extra 300L SP-EKS" [ref=e463]
+      - generic [ref=e464]:
+        - paragraph [ref=e465]: Owner of SP-EKS
+        - heading "Pawel Mamcarz" [level=2] [ref=e466]:
+          - text: Pawel
+          - text: Mamcarz
+        - paragraph [ref=e468]: Pilot with 26 years of aviation experience and owner of Extra 300L SP-EKS — a former Royal Jordanian Falcons aircraft. Responsible for operations, safety, and development of akrobacja.com.
+        - link "mamcarz.com →" [ref=e469] [cursor=pointer]:
+          - /url: https://mamcarz.com
+    - generic [ref=e470]:
+      - paragraph [ref=e471]: Stay in the loop
+      - heading "Be the first to know about airshows" [level=2] [ref=e472]
+      - paragraph [ref=e473]: Leave your number — we'll text you when we fly at airshows, have open slots or new products.
+      - generic [ref=e474]:
+        - textbox "Enter your phone number (9-15 digits)" [ref=e475]:
+          - /placeholder: +48 XXX XXX XXX
+        - button "Subscribe" [ref=e476] [cursor=pointer]
+      - paragraph [ref=e477]: No spam. Max 2-3 texts per month. Unsubscribe anytime.
+    - generic [ref=e478]:
+      - paragraph [ref=e479]: Guide · For passengers
+      - heading "Pre-flight aerobatic briefing" [level=2] [ref=e480]
+      - img "Pre-flight aerobatic briefing Extra 300L - preparation, safety, physiology, aircraft parameters" [ref=e481]
+    - generic [ref=e482]:
+      - paragraph [ref=e483]: Guide · For pilots
+      - heading "FCL.800 Aerobatic Rating Course" [level=2] [ref=e484]
+      - img "FCL.800 aerobatic rating course guide - requirements, manoeuvres, Extra 300L parameters" [ref=e485]
+      - link "Learn more about the course →" [ref=e486] [cursor=pointer]:
+        - /url: /blog/kurs-akrobacji-fcl800
+    - generic [ref=e487]:
+      - paragraph [ref=e488]: Aerobatic course subsidy — up to 90% off
+      - paragraph [ref=e489]: BUR, PUP, KFS — over 10 students have already benefited. Training under the auspices of Radom Aeroclub. We handle all the paperwork from A to Z.
+      - link "Check if you qualify →" [ref=e490] [cursor=pointer]:
+        - /url: /dotacje-szkolenie-lotnicze
+    - generic [ref=e491]:
+      - generic [ref=e492]:
+        - paragraph [ref=e493]: Airshows · Branding
+        - heading "Extra 300L at Your Event" [level=2] [ref=e494]:
+          - text: Extra 300L
+          - text: at Your Event
+      - generic [ref=e496]: Aerobatic Displays
+      - generic [ref=e497]:
+        - generic [ref=e498]:
+          - heading "Solo Display" [level=3] [ref=e499]
+          - paragraph [ref=e500]: Aerobatic display Extra 300L SP-EKS
+          - generic [ref=e501]: from 14,990 PLN
+          - list [ref=e502]:
+            - listitem [ref=e503]: →10-15 minute aerobatic display
+            - listitem [ref=e504]: →Briefing with event organiser
+            - listitem [ref=e505]: →Third-party liability insurance
+            - listitem [ref=e506]: →CAA/PANSA coordination
+            - listitem [ref=e507]: →Aircraft ferry up to 200 km included
+          - link "Ask about availability →" [ref=e508] [cursor=pointer]:
+            - /url: https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20the%20Solo%20Display%20package
+        - generic [ref=e509]:
+          - heading "Event Package" [level=3] [ref=e510]
+          - paragraph [ref=e511]: Full aviation experience for your event
+          - generic [ref=e512]: from 24,990 PLN
+          - list [ref=e513]:
+            - listitem [ref=e514]: →2-3 displays throughout the day
+            - listitem [ref=e515]: →Meet & greet zone by the aircraft
+            - listitem [ref=e516]: →Aircraft photos for promotional materials
+            - listitem [ref=e517]: →CAA/PANSA coordination
+            - listitem [ref=e518]: →Liability + accident insurance
+            - listitem [ref=e519]: →Aircraft ferry included
+          - link "Request a quote →" [ref=e520] [cursor=pointer]:
+            - /url: https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20the%20Event%20Package
+        - generic [ref=e521]:
+          - heading "Premium Partnership" [level=3] [ref=e522]
+          - paragraph [ref=e523]: Exclusive partnership — full day with aircraft and pilot
+          - generic [ref=e524]: custom quote
+          - list [ref=e525]:
+            - listitem [ref=e526]: →Full day with aircraft and pilot
+            - listitem [ref=e527]: →Displays + VIP flights for organiser's guests
+            - listitem [ref=e528]: →Aircraft branding with sponsor/event logo
+            - listitem [ref=e529]: →Photo + video coverage of the display
+            - listitem [ref=e530]: →Presence in event promotional materials
+            - listitem [ref=e531]: →Full logistical coordination
+          - link "Let's talk →" [ref=e532] [cursor=pointer]:
+            - /url: https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20Premium%20Partnership
+      - generic [ref=e533]: Aircraft Branding · Annual Partnership
+      - generic [ref=e534]:
+        - generic [ref=e535]:
+          - generic [ref=e536]: Logo S — Tail
+          - generic [ref=e537]: Logo on vertical stabiliser, both sides
+          - generic [ref=e538]: 9,900 PLN / year
+        - generic [ref=e539]:
+          - generic [ref=e540]: Logo M — Fuselage
+          - generic [ref=e541]: Logo on fuselage, both sides. Visible on the ground and in the air.
+          - generic [ref=e542]: 19,900 PLN / year
+        - generic [ref=e543]:
+          - generic [ref=e544]: Logo M — Wings
+          - generic [ref=e545]: Logo on the underside of the wings. Visible from the ground during displays.
+          - generic [ref=e546]: 24,900 PLN / year
+        - generic [ref=e547]:
+          - generic [ref=e548]: Package L — Fuselage + Tail
+          - generic [ref=e549]: Fuselage both sides + stabiliser. Dominant ground-level exposure.
+          - generic [ref=e550]: 34,900 PLN / year
+        - generic [ref=e551]:
+          - generic [ref=e552]: Package XL — Fuselage + Wings + Tail
+          - generic [ref=e553]: Fuselage + wings + tail. Full exposure in the air and on the ground.
+          - generic [ref=e554]: 54,900 PLN / year
+        - generic [ref=e555]:
+          - generic [ref=e556]: Package XXL — Custom Livery
+          - generic [ref=e557]: Sponsor colours, fully customised paint scheme. Design + execution.
+          - generic [ref=e558]: from 69,900 PLN / year
+        - generic [ref=e559]:
+          - generic [ref=e560]: Full Aircraft — Exclusive Sponsor
+          - generic [ref=e561]: The entire aircraft in one sponsor's colours. Exclusivity at airshows, events, social media and the website.
+          - generic [ref=e562]: 99,888 PLN / year
+      - link "Ask about branding →" [ref=e564] [cursor=pointer]:
+        - /url: https://wa.me/48535535221?text=Hello%2C%20I%27m%20interested%20in%20aircraft%20branding%20on%20Extra%20300L
+  - contentinfo [ref=e565]:
+    - generic [ref=e566]:
+      - generic [ref=e567]:
+        - img "akrobacja.com" [ref=e568]
+        - paragraph [ref=e569]:
+          - text: Extra 300L SP-EKS
+          - text: Radom-Piastow EPRP
+        - generic [ref=e570]:
+          - img "Pawel Mamcarz" [ref=e571]
+          - generic [ref=e572]:
+            - strong [ref=e573]: Pawel Mamcarz
+            - text: Owner SP-EKS ·
+            - link "mamcarz.com" [ref=e574] [cursor=pointer]:
+              - /url: https://mamcarz.com
+        - generic [ref=e575]:
+          - img "Maciej Kulaszewski" [ref=e576]
+          - generic [ref=e577]:
+            - strong [ref=e578]: Maciej Kulaszewski
+            - text: Pilot · FI(A)
+      - generic [ref=e579]:
+        - paragraph [ref=e580]: Navigation
+        - list [ref=e581]:
+          - listitem [ref=e582]:
+            - link "Aerobatic Flight" [ref=e583] [cursor=pointer]:
+              - /url: /lot-akrobacyjny
+          - listitem [ref=e584]:
+            - link "Aircraft SP-EKS" [ref=e585] [cursor=pointer]:
+              - /url: "#maszyna"
+          - listitem [ref=e586]:
+            - link "Maciej Kulaszewski" [ref=e587] [cursor=pointer]:
+              - /url: "#pilot"
+          - listitem [ref=e588]:
+            - link "Voucher Shop" [ref=e589] [cursor=pointer]:
+              - /url: "#sklep"
+          - listitem [ref=e590]:
+            - link "Merch Shop" [ref=e591] [cursor=pointer]:
+              - /url: /sklep-merch
+          - listitem [ref=e592]:
+            - link "Airshows & Branding" [ref=e593] [cursor=pointer]:
+              - /url: "#pokazy"
+          - listitem [ref=e594]:
+            - link "Event Displays" [ref=e595] [cursor=pointer]:
+              - /url: /pokazy-lotnicze
+          - listitem [ref=e596]:
+            - link "Sponsorship" [ref=e597] [cursor=pointer]:
+              - /url: /sponsoring
+          - listitem [ref=e598]:
+            - link "Calendar" [ref=e599] [cursor=pointer]:
+              - /url: /kalendarz
+          - listitem [ref=e600]:
+            - link "Pilot Account" [ref=e601] [cursor=pointer]:
+              - /url: /konto
+          - listitem [ref=e602]:
+            - link "FAQ" [ref=e603] [cursor=pointer]:
+              - /url: "#faq"
+          - listitem [ref=e604]:
+            - link "Terms & Conditions" [ref=e605] [cursor=pointer]:
+              - /url: /regulamin
+      - generic [ref=e606]:
+        - paragraph [ref=e607]: Contact
+        - list [ref=e608]:
+          - listitem [ref=e609]:
+            - link "+48 535 535 221" [ref=e610] [cursor=pointer]:
+              - /url: https://wa.me/48535535221
+          - listitem [ref=e611]:
+            - link "dto@akrobacja.com" [ref=e612] [cursor=pointer]:
+              - /url: mailto:dto@akrobacja.com
+          - listitem [ref=e613]:
+            - link "Radom-Piastow Airport (EPRP)" [ref=e614] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8
+          - listitem [ref=e615]: ul. Lotnikow 1, Radom, Poland
+          - listitem [ref=e616]:
+            - link "Google Maps →" [ref=e617] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8
+      - generic [ref=e618]:
+        - paragraph [ref=e619]: Information
+        - list [ref=e620]:
+          - listitem [ref=e621]:
+            - link "Terms & Conditions" [ref=e622] [cursor=pointer]:
+              - /url: /regulamin
+          - listitem [ref=e623]:
+            - link "Privacy Policy" [ref=e624] [cursor=pointer]:
+              - /url: /polityka-prywatnosci
+          - listitem [ref=e625]:
+            - link "Training Subsidies" [ref=e626] [cursor=pointer]:
+              - /url: /dotacje-szkolenie-lotnicze
+          - listitem [ref=e627]:
+            - link "FAQ — Questions & Answers" [ref=e628] [cursor=pointer]:
+              - /url: "#faq"
+          - listitem [ref=e629]:
+            - link "Directions to the airport" [ref=e630] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8
+    - generic [ref=e631]:
+      - paragraph [ref=e632]: © 2026 akrobacja.com · Doradztwo Pawel Mamcarz · Extra 300L SP-EKS · EPRP
+      - generic [ref=e633]:
+        - link "Instagram" [ref=e634] [cursor=pointer]:
+          - /url: https://www.instagram.com/warsawflightsafety
+        - link "Facebook" [ref=e635] [cursor=pointer]:
+          - /url: https://www.facebook.com/warsawflightsafety
+        - link "WhatsApp" [ref=e636] [cursor=pointer]:
+          - /url: https://wa.me/48535535221
+        - img [ref=e637]
+  - link "Buy aerobatic flight voucher" [ref=e638] [cursor=pointer]:
+    - /url: "#sklep"
+    - text: Buy Voucher →
+  - generic:
+    - dialog "Buy Voucher":
+      - button "×"
+      - heading "Buy Voucher" [level=3]
+      - paragraph
+      - paragraph
+      - generic:
+        - generic:
+          - generic: Full Name
+          - textbox "Full Name":
+            - /placeholder: John Smith
+        - generic:
+          - generic: Email Address
+          - textbox "Email Address":
+            - /placeholder: john@example.com
+        - generic:
+          - generic: Tax ID (optional — for VAT invoice)
+          - textbox "Tax ID (optional — for VAT invoice)":
+            - /placeholder: "1234567890"
+        - generic:
+          - checkbox "+ 360° In-flight Video (+299 PLN)"
+          - text: + 360° In-flight Video (+299 PLN)
+        - button "Proceed to payment"
+  - button "Otwórz czat" [ref=e639] [cursor=pointer]:
+    - img [ref=e640]
+  - dialog "Ustawienia cookies" [ref=e642]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e643]
+    - paragraph [ref=e644]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e645] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e646]:
+      - button "Zgoda na wszystkie" [ref=e647] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e648] [cursor=pointer]
+      - button "Ustawienia" [ref=e649] [cursor=pointer]

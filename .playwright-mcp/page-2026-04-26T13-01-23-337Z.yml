@@ -1,0 +1,93 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "akrobacja.com" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e4]:
+      - link "Strona główna" [ref=e5] [cursor=pointer]:
+        - /url: /
+      - link "Konto pilota" [ref=e6] [cursor=pointer]:
+        - /url: /konto
+  - generic [ref=e7]:
+    - heading "Kalendarz lotów" [level=1] [ref=e8]
+    - paragraph [ref=e9]: Wybierz dzień i slot czasowy. Każda rezerwacja wymaga zatwierdzenia.
+    - generic [ref=e10]:
+      - generic [ref=e11]: Wolne sloty
+      - generic [ref=e13]: Ostatnie miejsca
+      - generic [ref=e15]: Brak miejsc
+      - generic [ref=e17]: ☁ Pogoda, nie latamy
+      - generic [ref=e19]: Zablokowane
+    - generic [ref=e21]:
+      - button "← Poprzedni" [ref=e22] [cursor=pointer]
+      - generic [ref=e23]: Kwiecień 2026
+      - button "Następny →" [ref=e24] [cursor=pointer]
+    - generic [ref=e25]:
+      - generic [ref=e26]: Pn
+      - generic [ref=e27]: Wt
+      - generic [ref=e28]: Śr
+      - generic [ref=e29]: Cz
+      - generic [ref=e30]: Pt
+      - generic [ref=e31]: Sb
+      - generic [ref=e32]: Nd
+      - generic [ref=e35]: "1"
+      - generic [ref=e36]: "2"
+      - generic [ref=e37]: "3"
+      - generic [ref=e38]: "4"
+      - generic [ref=e39]: "5"
+      - generic [ref=e40]: "6"
+      - generic [ref=e41]: "7"
+      - generic [ref=e42]: "8"
+      - generic [ref=e43]: "9"
+      - generic [ref=e44]: "10"
+      - generic [ref=e45]: "11"
+      - generic [ref=e46]: "12"
+      - generic [ref=e47]: "13"
+      - generic [ref=e48]: "14"
+      - generic [ref=e49]: "15"
+      - generic [ref=e50]: "16"
+      - generic [ref=e51]: "17"
+      - generic [ref=e52]: "18"
+      - generic [ref=e53]: "19"
+      - generic [ref=e54]: "20"
+      - generic [ref=e55]: "21"
+      - generic [ref=e56]: "22"
+      - generic [ref=e57]: "23"
+      - generic [ref=e58]: "24"
+      - generic [ref=e59]: "25"
+      - generic [ref=e60] [cursor=pointer]: "26"
+      - generic [ref=e61] [cursor=pointer]: "27"
+      - generic [ref=e62] [cursor=pointer]: "28"
+      - generic [ref=e63] [cursor=pointer]: "29"
+      - generic [ref=e64] [cursor=pointer]: "30"
+  - generic [ref=e65]:
+    - text: "\x01"
+    - link "Strona główna" [ref=e66] [cursor=pointer]:
+      - /url: /
+    - link "Lot akrobacyjny" [ref=e67] [cursor=pointer]:
+      - /url: /lot-akrobacyjny
+    - link "Kalendarz" [ref=e68] [cursor=pointer]:
+      - /url: /kalendarz
+    - link "Blog" [ref=e69] [cursor=pointer]:
+      - /url: /blog
+    - link "Sklep" [ref=e70] [cursor=pointer]:
+      - /url: /sklep-merch
+    - link "Regulamin" [ref=e71] [cursor=pointer]:
+      - /url: /regulamin
+    - link "Prywatność" [ref=e72] [cursor=pointer]:
+      - /url: /polityka-prywatnosci
+    - link "Kontakt" [ref=e73] [cursor=pointer]:
+      - /url: https://wa.me/48535535221
+    - text: "\x02"
+    - generic [ref=e74]: © 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP
+  - button "Otwórz czat" [ref=e75] [cursor=pointer]:
+    - img [ref=e76]
+  - dialog "Ustawienia cookies" [ref=e78]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e79]
+    - paragraph [ref=e80]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e81] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e82]:
+      - button "Zgoda na wszystkie" [ref=e83] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e84] [cursor=pointer]
+      - button "Ustawienia" [ref=e85] [cursor=pointer]

@@ -1,0 +1,285 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "akrobacja.com, strona glowna" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "akrobacja.com" [ref=e4]
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "Maszyna" [ref=e7] [cursor=pointer]:
+          - /url: /#maszyna
+      - listitem [ref=e8]:
+        - link "Pilot" [ref=e9] [cursor=pointer]:
+          - /url: /#pilot
+      - listitem [ref=e10]:
+        - link "Loty" [ref=e11] [cursor=pointer]:
+          - /url: /#sklep
+      - listitem [ref=e12]:
+        - link "Sklep" [ref=e13] [cursor=pointer]:
+          - /url: /sklep-merch
+      - listitem [ref=e14]:
+        - link "Pokazy" [ref=e15] [cursor=pointer]:
+          - /url: /pokazy-lotnicze
+      - listitem [ref=e16]:
+        - link "Sponsoring" [ref=e17] [cursor=pointer]:
+          - /url: /sponsoring
+      - listitem [ref=e18]:
+        - link "Kalendarz" [ref=e19] [cursor=pointer]:
+          - /url: /kalendarz
+      - listitem [ref=e20]:
+        - link "Kontakt" [ref=e21] [cursor=pointer]:
+          - /url: "#kontakt"
+    - link "Napisz" [ref=e22] [cursor=pointer]:
+      - /url: https://wa.me/48535535221
+  - generic [ref=e27]:
+    - paragraph [ref=e28]: Pokazy Lotnicze Extra 300L SP-EKS
+    - heading "Pokaz Akrobacyjny Extra 300L na Twoim Evencie" [level=1] [ref=e29]
+    - paragraph [ref=e30]:
+      - text: Samolotem
+      - strong [ref=e31]: Mistrza Polski, Niemiec i UK
+      - text: .
+      - text: Od
+      - strong [ref=e32]: 14 990 PLN
+      - text: . Ubezpieczenie OC w cenie.
+    - link "Zapytaj o wolny termin →" [ref=e33] [cursor=pointer]:
+      - /url: https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20chcia%C5%82bym%20zapyta%C4%87%20o%20wolny%20termin%20na%20pokaz%20lotniczy
+  - generic [ref=e34]:
+    - generic [ref=e35]:
+      - generic [ref=e36]: 50+
+      - generic [ref=e37]: Pokazow w sezonie
+    - generic [ref=e38]:
+      - generic [ref=e39]: Mistrz PL & DE
+      - generic [ref=e40]: Pilot
+    - generic [ref=e41]:
+      - generic [ref=e42]: Extra 300L
+      - generic [ref=e43]: SP-EKS
+    - generic [ref=e44]:
+      - generic [ref=e45]: OC w cenie
+      - generic [ref=e46]: Ubezpieczenie
+  - generic [ref=e47]:
+    - generic [ref=e48]:
+      - paragraph [ref=e49]: Pakiety pokazowe
+      - heading "Wybierz Pakiet" [level=2] [ref=e50]
+    - generic [ref=e52]:
+      - generic [ref=e53]:
+        - generic [ref=e54]: Podstawowy
+        - heading "Solo Display" [level=3] [ref=e55]
+        - paragraph [ref=e56]: Pojedynczy pokaz akrobacyjny Extra 300L SP-EKS
+        - generic [ref=e57]: 14 990 PLN
+        - list [ref=e59]:
+          - listitem [ref=e60]: →Pokaz akrobacyjny 10-15 minut
+          - listitem [ref=e61]: →Briefing z organizatorem eventu
+          - listitem [ref=e62]: →Ubezpieczenie OC pokazu
+          - listitem [ref=e63]: →Koordynacja z CAA / PAZP
+          - listitem [ref=e64]: →Dojazd samolotu do 200 km w cenie
+          - listitem [ref=e65]: →System dymow kolorowych
+        - link "Zapytaj o termin →" [ref=e66] [cursor=pointer]:
+          - /url: https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20pokaz%20Solo%20Display
+      - generic [ref=e67]:
+        - generic [ref=e68]: Najczesciej wybierany
+        - heading "Event Package" [level=3] [ref=e69]
+        - paragraph [ref=e70]: Pelna oprawa lotnicza Twojego eventu
+        - generic [ref=e71]: 24 990 PLN
+        - list [ref=e73]:
+          - listitem [ref=e74]: →2-3 pokazy w ciagu dnia
+          - listitem [ref=e75]: →Strefa meet & greet przy samolocie
+          - listitem [ref=e76]: →Zdjecia samolotu do PR
+          - listitem [ref=e77]: →Koordynacja z CAA / PAZP
+          - listitem [ref=e78]: →Ubezpieczenie OC + NNW
+          - listitem [ref=e79]: →System dymow kolorowych
+          - listitem [ref=e80]: →Dojazd samolotu w cenie
+        - link "Zapytaj o wycene →" [ref=e81] [cursor=pointer]:
+          - /url: https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20Event%20Package%20na%20pokazy
+      - generic [ref=e82]:
+        - generic [ref=e83]: Premium
+        - heading "Premium Partnership" [level=3] [ref=e84]
+        - paragraph [ref=e85]: Wylaczna wspolpraca - pelny dzien z samolotem i pilotem
+        - generic [ref=e86]: Wycena indywidualna
+        - list [ref=e88]:
+          - listitem [ref=e89]: →Pelny dzien z samolotem i pilotem
+          - listitem [ref=e90]: →Pokazy + loty VIP dla gosci
+          - listitem [ref=e91]: →Branding samolotu logo eventu
+          - listitem [ref=e92]: →Relacja foto + video z pokazu
+          - listitem [ref=e93]: →Pelna koordynacja logistyczna
+          - listitem [ref=e94]: →Obecnosc w PR eventu
+        - link "Porozmawiajmy →" [ref=e95] [cursor=pointer]:
+          - /url: https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20Premium%20Partnership
+  - generic [ref=e96]:
+    - generic [ref=e97]:
+      - paragraph [ref=e98]: W cenie pokazu
+      - heading "Co Otrzymujesz" [level=2] [ref=e99]
+    - generic [ref=e101]:
+      - generic [ref=e102]: Koordynacja z organizatorem eventu
+      - generic [ref=e103]: Plan bezpieczenstwa i briefing operacyjny
+      - generic [ref=e104]: Ubezpieczenie OC pokazu
+      - generic [ref=e105]: Koordynacja z CAA / PAZP
+      - generic [ref=e106]: System dymow kolorowych
+      - generic [ref=e107]: Opcja brandingu samolotu logo eventu
+      - generic [ref=e108]: Materialy foto/video do wykorzystania w PR
+  - generic [ref=e109]:
+    - generic [ref=e110]:
+      - paragraph [ref=e111]: Proces
+      - heading "Jak To Dziala" [level=2] [ref=e112]
+    - generic [ref=e114]:
+      - generic [ref=e115]:
+        - generic [ref=e116]: "01"
+        - generic [ref=e117]: Kontakt
+        - generic [ref=e118]: Ustalenie terminu i lokalizacji. Minimum 60 dni przed planowanym eventem.
+      - generic [ref=e119]:
+        - generic [ref=e120]: "02"
+        - generic [ref=e121]: Wizja lokalna
+        - generic [ref=e122]: Koordynacja przestrzeni powietrznej i ocena mozliwosci operacyjnych.
+      - generic [ref=e123]:
+        - generic [ref=e124]: "03"
+        - generic [ref=e125]: Briefing
+        - generic [ref=e126]: Spotkanie z organizatorem. Plan pokazu, scenariusz, bezpieczenstwo.
+      - generic [ref=e127]:
+        - generic [ref=e128]: "04"
+        - generic [ref=e129]: Dzien eventu
+        - generic [ref=e130]: "Pokaz akrobacyjny + opcje dodatkowe: strefa meet & greet, sesja foto."
+  - generic [ref=e131]:
+    - generic [ref=e132]:
+      - paragraph [ref=e133]: Pytania i odpowiedzi
+      - heading "FAQ" [level=2] [ref=e134]
+    - generic [ref=e136]:
+      - generic [ref=e137]:
+        - button "Ile przestrzeni potrzebuje pokaz? +" [ref=e138] [cursor=pointer]
+        - paragraph [ref=e139]: Pokaz akrobacyjny wymaga strefy o promieniu ok. 1 km od punktu centralnego. Dokladne wymagania ustalamy indywidualnie na podstawie lokalizacji i rodzaju pokazu.
+      - generic [ref=e140]:
+        - button "Czy pokaz wymaga pozwolenia ULC? +" [ref=e141] [cursor=pointer]
+        - paragraph [ref=e142]: Tak, pokazy lotnicze wymagaja zgody ULC / PAZP. Cala koordynacja z urzedami jest po naszej stronie i wliczona w cene pakietu.
+      - generic [ref=e143]:
+        - button "Co w razie zlej pogody? +" [ref=e144] [cursor=pointer]
+        - paragraph [ref=e145]: Bezpieczenstwo jest priorytetem. Jesli warunki pogodowe nie pozwalaja na pokaz, ustalamy termin zastepczy. Decyzja o odwolaniu zapada najpozniej 24h przed eventem.
+      - generic [ref=e146]:
+        - button "Ile czasu wczesniej zamowic? +" [ref=e147] [cursor=pointer]
+        - paragraph [ref=e148]: Zalecamy minimum 60 dni przed planowanym eventem. Wynika to z procedur koordynacji przestrzeni powietrznej z PAZP.
+      - generic [ref=e149]:
+        - button "Czy moge zamowic dym w kolorach firmy? +" [ref=e150] [cursor=pointer]
+        - paragraph [ref=e151]: Tak, dysponujemy systemem dymow kolorowych. Kolory mozna dobrac do identyfikacji wizualnej firmy lub eventu. Dostepne kolory ustalamy przy zamowieniu.
+      - generic [ref=e152]:
+        - button "Czy pokaz mozna przeprowadzic w dowolnym miejscu? +" [ref=e153] [cursor=pointer]
+        - paragraph [ref=e154]: Pokaz mozna przeprowadzic w wiekszosci lokalizacji w Polsce. Kluczowe sa warunki przestrzeni powietrznej i bezpieczenstwa. Oceniamy kazda lokalizacje indywidualnie.
+  - generic [ref=e156]:
+    - generic [ref=e157]:
+      - paragraph [ref=e158]: Zapytanie o pokaz
+      - heading "Wyslij Zapytanie" [level=2] [ref=e159]
+      - paragraph [ref=e161]: Wypelnij formularz lub napisz bezposrednio na WhatsApp. Odpowiadamy w ciagu 24h.
+      - 'link "WhatsApp: +48 535 535 221" [ref=e162] [cursor=pointer]':
+        - /url: https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20chcia%C5%82bym%20zapyta%C4%87%20o%20pokaz%20lotniczy%20na%20moim%20evencie
+    - generic [ref=e163]:
+      - generic [ref=e164]:
+        - generic [ref=e165]: Data eventu
+        - textbox "Data eventu" [ref=e166]
+      - generic [ref=e167]:
+        - generic [ref=e168]: Lokalizacja
+        - textbox "Lokalizacja" [ref=e169]:
+          - /placeholder: Miasto, miejsce
+      - generic [ref=e170]:
+        - generic [ref=e171]: Typ eventu
+        - combobox "Typ eventu" [ref=e172]:
+          - option "Wybierz typ eventu" [disabled] [selected]
+          - option "Dni miasta / gminy"
+          - option "Event firmowy"
+          - option "Festiwal"
+          - option "Piknik rodzinny"
+          - option "Impreza sportowa"
+          - option "Otwarcie / inauguracja"
+          - option "Inny"
+      - generic [ref=e173]:
+        - generic [ref=e174]: Imie i nazwisko
+        - textbox "Imie i nazwisko" [ref=e175]:
+          - /placeholder: Jan Kowalski
+      - generic [ref=e176]:
+        - generic [ref=e177]: Email
+        - textbox "Email" [ref=e178]:
+          - /placeholder: jan@firma.pl
+      - generic [ref=e179]:
+        - generic [ref=e180]: Telefon
+        - textbox "Telefon" [ref=e181]:
+          - /placeholder: +48 500 000 000
+      - button "Wyslij zapytanie →" [ref=e182] [cursor=pointer]
+  - contentinfo [ref=e183]:
+    - generic [ref=e184]:
+      - generic [ref=e185]:
+        - img "akrobacja.com" [ref=e186]
+        - paragraph [ref=e187]:
+          - text: Extra 300L SP-EKS
+          - text: Radom-Piastow EPRP
+          - generic [ref=e188]:
+            - text: Doradztwo Pawel Mamcarz
+            - text: "Pilot:"
+            - strong [ref=e189]: Maciej Kulaszewski
+      - generic [ref=e190]:
+        - paragraph [ref=e191]: Nawigacja
+        - list [ref=e192]:
+          - listitem [ref=e193]:
+            - link "Strona Glowna" [ref=e194] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e195]:
+            - link "Maszyna SP-EKS" [ref=e196] [cursor=pointer]:
+              - /url: /#maszyna
+          - listitem [ref=e197]:
+            - link "Maciej Kulaszewski" [ref=e198] [cursor=pointer]:
+              - /url: /#pilot
+          - listitem [ref=e199]:
+            - link "Sklep z Voucherami" [ref=e200] [cursor=pointer]:
+              - /url: /#sklep
+          - listitem [ref=e201]:
+            - link "Sklep Merch" [ref=e202] [cursor=pointer]:
+              - /url: /sklep-merch
+          - listitem [ref=e203]:
+            - link "Pokazy Lotnicze" [ref=e204] [cursor=pointer]:
+              - /url: /pokazy-lotnicze
+          - listitem [ref=e205]:
+            - link "Sponsoring" [ref=e206] [cursor=pointer]:
+              - /url: /sponsoring
+          - listitem [ref=e207]:
+            - link "Kalendarz" [ref=e208] [cursor=pointer]:
+              - /url: /kalendarz
+          - listitem [ref=e209]:
+            - link "Konto pilota" [ref=e210] [cursor=pointer]:
+              - /url: /konto
+      - generic [ref=e211]:
+        - paragraph [ref=e212]: Kontakt
+        - list [ref=e213]:
+          - listitem [ref=e214]:
+            - link "+48 535 535 221" [ref=e215] [cursor=pointer]:
+              - /url: https://wa.me/48535535221
+          - listitem [ref=e216]:
+            - link "dto@akrobacja.com" [ref=e217] [cursor=pointer]:
+              - /url: mailto:dto@akrobacja.com
+          - listitem [ref=e218]:
+            - link "Lotnisko Radom-Piastow (EPRP)" [ref=e219] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/radom-piastow-eprp
+      - generic [ref=e220]:
+        - paragraph [ref=e221]: Informacje
+        - list [ref=e222]:
+          - listitem [ref=e223]:
+            - link "Regulamin" [ref=e224] [cursor=pointer]:
+              - /url: /regulamin
+          - listitem [ref=e225]:
+            - link "Polityka Prywatnosci (RODO)" [ref=e226] [cursor=pointer]:
+              - /url: /polityka-prywatnosci
+          - listitem [ref=e227]:
+            - link "FAQ" [ref=e228] [cursor=pointer]:
+              - /url: /#faq
+    - generic [ref=e229]:
+      - paragraph [ref=e230]: "© 2026 akrobacja.com · Doradztwo Pawel Mamcarz · Pilot: Maciej Kulaszewski · Extra 300L SP-EKS · EPRP"
+      - img [ref=e231]
+  - link "+48 535 535 221" [ref=e232] [cursor=pointer]:
+    - /url: https://wa.me/48535535221
+    - img [ref=e233]
+    - text: +48 535 535 221
+  - button "Otwórz czat" [ref=e234] [cursor=pointer]:
+    - img [ref=e235]
+  - dialog "Ustawienia cookies" [ref=e237]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e238]
+    - paragraph [ref=e239]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e240] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e241]:
+      - button "Zgoda na wszystkie" [ref=e242] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e243] [cursor=pointer]
+      - button "Ustawienia" [ref=e244] [cursor=pointer]

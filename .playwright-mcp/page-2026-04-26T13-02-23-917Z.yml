@@ -1,0 +1,209 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - link "akrobacja.com" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "akrobacja.com" [ref=e4]
+    - link "535 535 221" [ref=e5] [cursor=pointer]:
+      - /url: tel:+48535535221
+      - img [ref=e6]
+      - text: 535 535 221
+  - generic [ref=e8]:
+    - text: 🎁 PIERWSZY RAZ? Kod
+    - code [ref=e9]: PIERWSZY100
+    - text: = −100 zł na Twój pierwszy voucher
+  - generic [ref=e11]:
+    - generic [ref=e12]: Voucher PDF natychmiast w mailu
+    - heading "Prezent, którego nie zapomni nigdy." [level=1] [ref=e13]:
+      - text: Prezent, którego
+      - generic [ref=e14]: nie zapomni nigdy.
+    - paragraph [ref=e15]:
+      - text: Voucher na lot akrobacyjny samolotem
+      - strong [ref=e16]: Extra 300L
+      - text: z pilotem o
+      - strong [ref=e17]: 3 000+ h doświadczenia
+      - text: . PDF w mailu w kilka minut po zakupie. Ważny
+      - strong [ref=e18]: 12 miesięcy
+      - text: .
+    - button "Wybierz voucher" [ref=e19] [cursor=pointer]:
+      - text: Wybierz voucher
+      - img [ref=e20]
+    - generic [ref=e23]: ★ 4.9 / 5 · 187 opinii · płatność online
+  - generic [ref=e25]:
+    - generic [ref=e26]:
+      - img [ref=e28]
+      - generic [ref=e30]:
+        - text: PDF natychmiast
+        - generic [ref=e31]: w mailu po zakupie
+    - generic [ref=e32]:
+      - img [ref=e34]
+      - generic [ref=e36]:
+        - text: Ważność 12 miesięcy
+        - generic [ref=e37]: obdarowany wybiera termin
+    - generic [ref=e38]:
+      - img [ref=e40]
+      - generic [ref=e42]:
+        - text: Gwarancja zwrotu 14 dni
+        - generic [ref=e43]: zgodnie z prawem konsumenckim
+    - generic [ref=e44]:
+      - img [ref=e46]
+      - generic [ref=e48]:
+        - text: Wielokrotny Mistrz Polski Akrobacji
+        - generic [ref=e49]: pilot Maciej Kulaszewski
+  - generic [ref=e50]:
+    - generic [ref=e51]:
+      - generic [ref=e52]: 3 Pakiety · od 1999 zł
+      - heading "Wybierz voucher idealny na prezent" [level=2] [ref=e53]
+      - paragraph [ref=e54]: Każdy voucher to PDF w eleganckiej oprawie. Obdarowany sam umawia lot w dogodnym terminie, ważność 12 miesięcy.
+    - generic [ref=e55]:
+      - generic [ref=e56]:
+        - generic [ref=e57]: Entry Level
+        - generic [ref=e58]: Pierwszy Lot
+        - generic [ref=e59]: Pierwszy kontakt z akrobacją. Bezpieczne figury, ogromne wrażenie.
+        - generic [ref=e60]: 1 999 zł
+        - generic [ref=e61]: Voucher PDF
+        - list [ref=e62]:
+          - listitem [ref=e63]: 15 minut w powietrzu
+          - listitem [ref=e64]: Podstawowe figury (beczki, loopingi)
+          - listitem [ref=e65]: Briefing przed lotem (20 min)
+          - listitem [ref=e66]: Certyfikat uczestnictwa
+          - listitem [ref=e67]: Voucher PDF w mailu
+        - button "Kup voucher, 1 999 zł" [ref=e68] [cursor=pointer]
+      - generic [ref=e69]:
+        - text: NAJCZĘŚCIEJ KUPOWANY
+        - generic [ref=e70]: Most Popular
+        - generic [ref=e71]: Adrenalina
+        - generic [ref=e72]: Pełny program akrobacyjny, to o tym pamięta się latami.
+        - generic [ref=e73]: 2 999 zł
+        - generic [ref=e74]: Voucher PDF
+        - list [ref=e75]:
+          - listitem [ref=e76]: 20 minut pełnego programu
+          - listitem [ref=e77]: Figury zaawansowane do +6G
+          - listitem [ref=e78]: Briefing i debriefing
+          - listitem [ref=e79]: Certyfikat uczestnictwa
+          - listitem [ref=e80]: "Opcja: video 360° (+299 zł)"
+        - button "Kup voucher, 2 999 zł" [ref=e81] [cursor=pointer]
+      - generic [ref=e82]:
+        - generic [ref=e83]: Premium
+        - generic [ref=e84]: Masterclass
+        - generic [ref=e85]: Sesja z Wielokrotnym Mistrzem Polski. Dla pilotów i ambitnych entuzjastów.
+        - generic [ref=e86]: 4 999 zł
+        - generic [ref=e87]: Voucher PDF
+        - list [ref=e88]:
+          - listitem [ref=e89]: Do 50 minut (2 loty)
+          - listitem [ref=e90]: Figury zawodnicze (Unlimited)
+          - listitem [ref=e91]: Analiza lotu z Mistrzem
+          - listitem [ref=e92]: Certyfikat Masterclass
+          - listitem [ref=e93]: Dofinansowanie BUR/PUP do 90%
+        - button "Kup voucher, 4 999 zł" [ref=e94] [cursor=pointer]
+  - generic [ref=e96]:
+    - generic [ref=e97]:
+      - generic [ref=e98]: Jak to działa
+      - heading "3 kroki, pod choinką w kilka minut" [level=2] [ref=e99]
+    - generic [ref=e100]:
+      - generic [ref=e101]:
+        - generic [ref=e102]: "1"
+        - heading "Kupujesz voucher" [level=3] [ref=e103]
+        - paragraph [ref=e104]: Wybierasz pakiet, płacisz online. Faktura VAT na życzenie, wystarczy NIP.
+      - generic [ref=e105]:
+        - generic [ref=e106]: "2"
+        - heading "PDF w mailu" [level=3] [ref=e107]
+        - paragraph [ref=e108]: Elegancki voucher w formacie PDF trafia na Twojego maila w kilka minut. Drukujesz albo przesyłasz dalej.
+      - generic [ref=e109]:
+        - generic [ref=e110]: "3"
+        - heading "Obdarowany leci" [level=3] [ref=e111]
+        - paragraph [ref=e112]: Obdarowany kontaktuje się z nami, wybiera termin i przeżywa niezapomnianą przygodę. Masz 12 miesięcy.
+  - generic [ref=e113]:
+    - generic [ref=e114]:
+      - generic [ref=e115]: Opinie klientów
+      - heading "187 osób kupiło voucher na prezent" [level=2] [ref=e116]
+    - generic [ref=e117]:
+      - generic [ref=e118]: "4.9"
+      - generic [ref=e119]:
+        - generic [ref=e120]: ★★★★★
+        - generic [ref=e121]: na 187 weryfikowanych opinii
+    - generic [ref=e122]:
+      - generic [ref=e123]:
+        - generic [ref=e124]: ★★★★★
+        - paragraph [ref=e125]: "\"Kupiłam voucher mężowi na 40-tkę. Dostał PDF w 3 minuty, pokazałam mu wieczorem, mało łzy nie leciały. Po locie dzwonił godzinami. Najlepszy prezent jaki mu dałam.\""
+        - generic [ref=e126]: "- Anna, Warszawa"
+      - generic [ref=e127]:
+        - generic [ref=e128]: ★★★★★
+        - paragraph [ref=e129]: "\"Maciek to pro. Briefing spokojny, tłumaczy co będzie się działo. W powietrzu, szok, adrenalina, a jednocześnie pełne zaufanie do pilota. Wrażenia nie do opisania.\""
+        - generic [ref=e130]: "- Tomek, Kraków"
+      - generic [ref=e131]:
+        - generic [ref=e132]: ★★★★★
+        - paragraph [ref=e133]: "\"Voucher Masterclass dla brata na 50-tkę. Obsługa mailowa bez zarzutu, termin umówiony w tydzień. Brat po lądowaniu nie mógł przestać gadać, i to coś znaczy.\""
+        - generic [ref=e134]: "- Piotr, Poznań"
+  - generic [ref=e136]:
+    - generic [ref=e137]:
+      - img "Pilot Maciej Kulaszewski, Wielokrotny Mistrz Polski akrobacji" [ref=e138]
+      - generic [ref=e139]: Wielokrotny Mistrz Polski Akrobacji
+    - generic [ref=e140]:
+      - heading "Twój prezent prowadzi Wielokrotny Mistrz Polski" [level=2] [ref=e141]
+      - paragraph [ref=e142]:
+        - text: Maciej Kulaszewski, 3 000+ godzin w powietrzu, czołowy polski pilot akrobacyjny, reprezentant Polski na Mistrzostwach Świata FAI. Samolot
+        - strong [ref=e143]: Extra 300L SP-EKS
+        - text: certyfikowany do figur od -10G do +10G, serwisowany zgodnie z najwyższymi standardami.
+      - paragraph [ref=e144]: Bezpieczeństwo to nie slogan, to procedura. Każdy lot poprzedza briefing, kontrola techniczna samolotu i check medyczny pasażera.
+      - generic [ref=e145]:
+        - generic [ref=e146]:
+          - generic [ref=e147]: 3 000+
+          - generic [ref=e148]: godzin w powietrzu
+        - generic [ref=e149]:
+          - generic [ref=e150]: 15+
+          - generic [ref=e151]: lat doświadczenia
+        - generic [ref=e152]:
+          - generic [ref=e153]: "0"
+          - generic [ref=e154]: incydentów
+  - generic [ref=e155]:
+    - generic [ref=e156]:
+      - generic [ref=e157]: Najczęstsze pytania
+      - heading "Wszystko co musisz wiedzieć" [level=2] [ref=e158]
+    - group [ref=e159]:
+      - generic "Jak szybko otrzymam voucher po zakupie? +" [ref=e160] [cursor=pointer]
+    - group [ref=e161]:
+      - generic "Jak długo ważny jest voucher? +" [ref=e162] [cursor=pointer]
+    - group [ref=e163]:
+      - generic "Czy mogę zwrócić voucher? +" [ref=e164] [cursor=pointer]
+    - group [ref=e165]:
+      - generic "Gdzie odbywa się lot? +" [ref=e166] [cursor=pointer]
+    - group [ref=e167]:
+      - generic "Czy potrzebuję doświadczenia? +" [ref=e168] [cursor=pointer]
+    - group [ref=e169]:
+      - generic "Czy mogę dostać fakturę VAT? +" [ref=e170] [cursor=pointer]
+    - group [ref=e171]:
+      - generic "Jakie są ograniczenia zdrowotne? +" [ref=e172] [cursor=pointer]
+  - generic [ref=e173]:
+    - heading "Voucher w 3 minuty. Na zawsze w pamięci." [level=2] [ref=e174]
+    - paragraph [ref=e175]: Kliknij, wybierz pakiet i odbierz PDF na maila. Zero ryzyka, 14 dni na zwrot.
+    - button "Wybierz voucher teraz" [ref=e176] [cursor=pointer]:
+      - text: Wybierz voucher teraz
+      - img [ref=e177]
+  - contentinfo [ref=e179]:
+    - generic [ref=e180]:
+      - text: akrobacja.com · ul. Lotników 1, 26-600 Radom ·
+      - link "+48 535 535 221" [ref=e181] [cursor=pointer]:
+        - /url: tel:+48535535221
+      - text: ·
+      - link "dto@akrobacja.com" [ref=e182] [cursor=pointer]:
+        - /url: mailto:dto@akrobacja.com
+    - generic [ref=e183]:
+      - link "Regulamin" [ref=e184] [cursor=pointer]:
+        - /url: /regulamin
+      - text: ·
+      - link "Polityka prywatności" [ref=e185] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: ·
+      - link "Więcej o lotach" [ref=e186] [cursor=pointer]:
+        - /url: /lot-akrobacyjny
+  - dialog "Ustawienia cookies" [ref=e187]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e188]
+    - paragraph [ref=e189]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e190] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e191]:
+      - button "Zgoda na wszystkie" [ref=e192] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e193] [cursor=pointer]
+      - button "Ustawienia" [ref=e194] [cursor=pointer]
