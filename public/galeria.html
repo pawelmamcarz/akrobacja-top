@@ -100,24 +100,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>Extra 300L SP-EKS</p>
     <h2>Rolki</h2>
   </div>
-  <div class="rolki-grid">
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-01.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-02.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-03.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-04.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-05.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-06.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-07.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-08.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-09.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-10.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-11.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-12.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-13.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-14.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-15.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-16.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
-  </div>
+  <div class="rolki-grid" id="rolki-grid"></div>
 </div>
 
 <div class="gallery" id="gallery">
@@ -194,21 +177,44 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') navLb(-1);
 });
 
+let activeRolka = null;
+
+(function buildRolki() {
+  const grid = document.getElementById('rolki-grid');
+  for (let i = 1; i <= 16; i++) {
+    const n = String(i).padStart(2, '0');
+    const item = document.createElement('div');
+    item.className = 'rolki-item';
+    item.innerHTML = `<video src="/rolki/rolka-${n}.mp4" autoplay muted loop playsinline></video>`
+      + `<div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a>`
+      + `<button class="rolki-overlay-close">✕</button></div>`;
+    item.addEventListener('click', () => toggleRolkaCta(item));
+    item.querySelector('.rolki-overlay-close').addEventListener('click', e => closeRolkaCta(e, item));
+    grid.appendChild(item);
+  }
+})();
+
 function toggleRolkaCta(item) {
-  if (item.classList.contains('active')) return;
-  document.querySelectorAll('.rolki-item.active').forEach(el => {
-    el.classList.remove('active');
-    el.querySelector('video').play();
-  });
+  if (item === activeRolka) {
+    item.classList.remove('active');
+    item.querySelector('video').play();
+    activeRolka = null;
+    return;
+  }
+  if (activeRolka) {
+    activeRolka.classList.remove('active');
+    activeRolka.querySelector('video').play();
+  }
+  activeRolka = item;
   item.classList.add('active');
   item.querySelector('video').pause();
 }
 
-function closeRolkaCta(e, btn) {
+function closeRolkaCta(e, item) {
   e.stopPropagation();
-  const item = btn.closest('.rolki-item');
   item.classList.remove('active');
   item.querySelector('video').play();
+  activeRolka = null;
 }
 </script>
 <script src="/chat-widget.js" defer></script>
