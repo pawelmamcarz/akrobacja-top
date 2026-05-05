@@ -12,3 +12,9 @@ node_modules/
 
 # claude code local settings
 .claude/settings.local.json
+
+# duże pliki wideo (>25MB, poza limitem CF Pages / GitHub)
+public/rolki/Bungee extra.mp4
+public/rolki/EXTRA.mov
+public/rolki/SnapSave_AQNwWdJtZ5xYGeJfz_zC1yZz92MMhCTfoBMMLfQXw4LIHd70RUffpP9C0bBq8qQ7jinjQNRZ9T2xn1H0rJpUV5Ke2DJI3cSATPVknQmuTimAWQ_720p_(HD).mp4
+"public/rolki/SnapSave_AQM5M2_2f3zJNsW3lbHb5t8sklRSLKued3hoQCbcGo4OMeDtTTheAT5sx5-qy9fEGx4YvXkUEgWGPDqnSH-E5RRS83nVu2AqyAfy1-I_720p_(HD) (1).mp4"
