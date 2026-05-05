@@ -60,8 +60,13 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:#fff}
 .rolki-header h2{font-family:'Montserrat',sans-serif;font-size:clamp(22px,4vw,40px);font-weight:900;text-transform:uppercase;margin-bottom:6px}
 .rolki-header p{color:var(--chrome);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
 .rolki-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.rolki-item{position:relative;aspect-ratio:9/16;overflow:hidden;background:#0d1a2e}
-.rolki-item video{width:100%;height:100%;object-fit:cover;display:block}
+.rolki-item{position:relative;aspect-ratio:9/16;overflow:hidden;background:#0d1a2e;cursor:pointer}
+.rolki-item video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.rolki-overlay{position:absolute;inset:0;background:rgba(10,20,40,.82);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;transition:opacity .2s;pointer-events:none}
+.rolki-item.active .rolki-overlay{opacity:1;pointer-events:auto}
+.rolki-overlay a{display:inline-block;background:var(--red);color:#fff;padding:14px 28px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;text-decoration:none;border:none}
+.rolki-overlay-close{background:none;border:none;color:rgba(255,255,255,.5);font-size:22px;cursor:pointer;line-height:1;padding:4px 8px;font-family:'Montserrat',sans-serif}
+.rolki-overlay-close:hover{color:#fff}
 @media(max-width:1100px){.rolki-grid{grid-template-columns:repeat(4,1fr)}}
 @media(max-width:768px){.rolki-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:480px){.rolki-grid{grid-template-columns:repeat(2,1fr)}}
@@ -90,6 +95,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <p>Extra 300L SP-EKS w akcji, loty, pokazy, kokpit</p>
 </div>
 
+<div class="rolki-section">
+  <div class="rolki-header">
+    <p>Extra 300L SP-EKS</p>
+    <h2>Rolki</h2>
+  </div>
+  <div class="rolki-grid">
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-01.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-02.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-03.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-04.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-05.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-06.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-07.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-08.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-09.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-10.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-11.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-12.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-13.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-14.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-15.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+    <div class="rolki-item" onclick="toggleRolkaCta(this)"><video src="/rolki/rolka-16.mp4" autoplay muted loop playsinline></video><div class="rolki-overlay"><a href="/lot-akrobacyjny">KUP VOUCHER →</a><button class="rolki-overlay-close" onclick="closeRolkaCta(event,this)">✕</button></div></div>
+  </div>
+</div>
+
 <div class="gallery" id="gallery">
 <img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_001.jpg" alt="Extra 300L SP-EKS - start z dymem" loading="lazy" onclick="openLb(0)">
 <img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_005.jpg" alt="SP-EKS w locie nad jesiennym lasem" loading="lazy" onclick="openLb(1)">
@@ -114,31 +144,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <img src="/gallery/IMG_1437.jpeg" alt="Kokpit Extra 300L SP-EKS" loading="lazy" onclick="openLb(20)">
 <img src="/gallery/IMG_3011.jpeg" alt="SP-EKS - przygotowania do lotu" loading="lazy" onclick="openLb(21)">
 <img src="/gallery/IMG_9933.jpeg" alt="Panel przyrządów Extra 300L" loading="lazy" onclick="openLb(22)">
-</div>
-
-<div class="rolki-section">
-  <div class="rolki-header">
-    <p>Extra 300L SP-EKS</p>
-    <h2>Rolki</h2>
-  </div>
-  <div class="rolki-grid">
-    <div class="rolki-item"><video src="/rolki/rolka-01.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-02.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-03.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-04.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-05.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-06.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-07.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-08.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-09.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-10.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-11.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-12.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-13.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-14.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-15.mp4" autoplay muted loop playsinline></video></div>
-    <div class="rolki-item"><video src="/rolki/rolka-16.mp4" autoplay muted loop playsinline></video></div>
-  </div>
 </div>
 
 <div class="cta-strip">
@@ -188,6 +193,23 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') navLb(1);
   if (e.key === 'ArrowLeft') navLb(-1);
 });
+
+function toggleRolkaCta(item) {
+  if (item.classList.contains('active')) return;
+  document.querySelectorAll('.rolki-item.active').forEach(el => {
+    el.classList.remove('active');
+    el.querySelector('video').play();
+  });
+  item.classList.add('active');
+  item.querySelector('video').pause();
+}
+
+function closeRolkaCta(e, btn) {
+  e.stopPropagation();
+  const item = btn.closest('.rolki-item');
+  item.classList.remove('active');
+  item.querySelector('video').play();
+}
 </script>
 <script src="/chat-widget.js" defer></script>
 <script src="/assets/site-enhancements.js" defer></script>
