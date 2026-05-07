@@ -76,7 +76,7 @@ const PRODUCTS = [
   {
     file      : 'product-masterclass.png',
     bg        : join(GAL, 'ATAM33_Slawek_hesja_Krajniewski_005.jpg'),
-    accent    : '#5A0090',
+    accent    : '#163B6B',
     tag       : 'Z MISTRZEM ŚWIATA',
     name      : 'MASTERCLASS',
     sub       : '2 loty z Mistrzem Świata Akrobacji',
