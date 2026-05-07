@@ -35,7 +35,7 @@ const C = {
 const PRODUCTS = [
   {
     file      : 'product-pierwszy-lot.png',
-    bg        : join(GAL, '2024_10_25_ATAM32_Warszawa_hesja_033.jpg'),
+    bg        : join(GAL, 'ATAM33_Maciej_Juniewicz_028.jpg'),
     accent    : '#1B4DB5',
     tag       : 'PIERWSZY RAZ',
     name      : 'PIERWSZY LOT',
