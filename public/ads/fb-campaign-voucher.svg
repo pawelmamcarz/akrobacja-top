@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Facebook Square Ad  1080 × 1080 px
+     Fonts:  Montserrat (headings 700-900) · Inter (body 400-600)
+     Colors: #0A1428 navy-deep · #C41E3A red · #1B4DB5 navy · #FFFFFF white
+     Swap background image in Affinity Designer: currently ../speks-city.jpg
+-->
+<svg width="1080" height="1080" viewBox="0 0 1080 1080"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <defs>
+    <!-- Dark vignette: heavy on the left, lighter behind the card -->
+    <linearGradient id="bgFade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#040D18" stop-opacity="0.96"/>
+      <stop offset="46%"  stop-color="#0A1428" stop-opacity="0.84"/>
+      <stop offset="100%" stop-color="#0A1428" stop-opacity="0.52"/>
+    </linearGradient>
+    <!-- Vertical bottom darkening -->
+    <linearGradient id="bgFadeV" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0.00"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.60"/>
+    </linearGradient>
+    <!-- Card drop-shadow -->
+    <filter id="cardShadow" x="-8%" y="-4%" width="116%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="20"
+                    flood-color="#000000" flood-opacity="0.42"/>
+    </filter>
+    <!-- Headline text shadow -->
+    <filter id="hShadow" x="-4%" y="-4%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="3" stdDeviation="5"
+                    flood-color="#000000" flood-opacity="0.60"/>
+    </filter>
+  </defs>
+
+  <!-- ══════════════════════════════════════════
+       LAYER 1 – BACKGROUND
+  ══════════════════════════════════════════ -->
+  <image href="../speks-city.jpg"
+         x="0" y="0" width="1080" height="1080"
+         preserveAspectRatio="xMidYMid slice"/>
+  <!-- horizontal gradient overlay -->
+  <rect x="0" y="0" width="1080" height="1080" fill="url(#bgFade)"/>
+  <!-- vertical bottom vignette -->
+  <rect x="0" y="0" width="1080" height="1080" fill="url(#bgFadeV)"/>
+
+  <!-- ══════════════════════════════════════════
+       LAYER 2 – TOP BAR: Logo + World-Champ badge
+  ══════════════════════════════════════════ -->
+  <!-- Logo -->
+  <image href="../akrobacja-logo-light.png"
+         x="22" y="16" width="118" height="54"
+         preserveAspectRatio="xMinYMid meet"/>
+
+  <!-- Red world-champ badge -->
+  <rect x="150" y="16" width="374" height="50" rx="3" fill="#C41E3A"/>
+  <text x="337" y="48"
+        text-anchor="middle"
+        font-family="Montserrat, sans-serif"
+        font-weight="800"
+        font-size="15"
+        fill="#FFFFFF"
+        letter-spacing="2.2">★  MISTRZ ŚWIATA AKROBACJI</text>
+
+  <!-- ══════════════════════════════════════════
+       LAYER 3 – LEFT COLUMN: copy
+  ══════════════════════════════════════════ -->
+
+  <!-- Aircraft / airfield info -->
+  <text x="22" y="96"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="11"
+        fill="#C41E3A" letter-spacing="2.4">EXTRA 300L SP-EKS  ·  LOTNISKO</text>
+  <text x="22" y="114"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="11"
+        fill="#C41E3A" letter-spacing="2.4">RADOM-PIASTÓW EPRP</text>
+
+  <!-- ── MAIN HEADLINE ── -->
+  <text x="16" y="252"
+        font-family="Montserrat, sans-serif"
+        font-weight="900" font-style="italic"
+        font-size="96" fill="#FFFFFF"
+        filter="url(#hShadow)">POCZUJ</text>
+
+  <text x="16" y="348"
+        font-family="Montserrat, sans-serif"
+        font-weight="900" font-style="italic"
+        font-size="76" fill="#FFFFFF"
+        filter="url(#hShadow)">AKROBACJĘ</text>
+
+  <!-- "NA ŻYWO" slightly dimmed for depth / layering effect -->
+  <text x="16" y="446"
+        font-family="Montserrat, sans-serif"
+        font-weight="900" font-style="italic"
+        font-size="90" fill="#FFFFFF" opacity="0.68"
+        filter="url(#hShadow)">NA ŻYWO</text>
+
+  <!-- Pilot credentials -->
+  <text x="22" y="504"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="11"
+        fill="#C8D4E0" letter-spacing="0.6">Z MACIEJEM KULASZEWSKIM,</text>
+  <text x="22" y="522"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="11"
+        fill="#C8D4E0" letter-spacing="0.6">MISTRZEM ŚWIATA  ·  4 000+ H NALOTU</text>
+  <text x="22" y="540"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="11"
+        fill="#C8D4E0" letter-spacing="0.6">INSTRUKTOR  |  TRENER</text>
+
+  <!-- Gift / voucher note -->
+  <!-- Gift box icon (pure SVG) -->
+  <g transform="translate(22,566)" fill="none"
+     stroke="#C8D4E0" stroke-width="1.4" opacity="0.85">
+    <rect x="1" y="10" width="24" height="17" rx="1"/>
+    <rect x="-1" y="5"  width="28" height="7"  rx="1"/>
+    <line x1="13" y1="5"  x2="13" y2="27"/>
+    <path d="M13,5 Q9,0  7,4  Q9,8  13,5"/>
+    <path d="M13,5 Q17,0 19,4 Q17,8 13,5"/>
+  </g>
+  <text x="58" y="578"
+        font-family="Inter, sans-serif"
+        font-weight="400" font-size="13"
+        fill="#C8D4E0">Idealny prezent,</text>
+  <text x="58" y="596"
+        font-family="Inter, sans-serif"
+        font-weight="400" font-size="13"
+        fill="#C8D4E0">voucher PDF gotowy</text>
+  <text x="58" y="614"
+        font-family="Inter, sans-serif"
+        font-weight="400" font-size="13"
+        fill="#C8D4E0">do wręczenia</text>
+
+  <!-- ══════════════════════════════════════════
+       LAYER 4 – RIGHT COLUMN: Pricing card
+       x=562  y=58  w=486  h=784  (ends y=842)
+  ══════════════════════════════════════════ -->
+  <rect x="562" y="58" width="486" height="784"
+        rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+
+  <!-- ── Card header ── -->
+  <text x="596" y="100"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="11"
+        fill="#7A8FA6" letter-spacing="2.8">PIERWSZY RAZ</text>
+  <line x1="596" y1="111" x2="1024" y2="111"
+        stroke="#E4E8ED" stroke-width="1"/>
+
+  <!-- Package title -->
+  <text x="596" y="156"
+        font-family="Montserrat, sans-serif"
+        font-weight="900" font-size="38"
+        fill="#0A1428">PIERWSZY LOT</text>
+  <text x="596" y="182"
+        font-family="Inter, sans-serif"
+        font-weight="400" font-size="14"
+        fill="#7A8FA6">Twój pierwszy kontakt z akrobacją</text>
+
+  <!-- Promo strip -->
+  <rect x="596" y="198" width="400" height="42" rx="2" fill="#C41E3A"/>
+  <text x="796" y="225"
+        text-anchor="middle"
+        font-family="Montserrat, sans-serif"
+        font-weight="800" font-size="14"
+        fill="#FFFFFF" letter-spacing="1.8">-20% DO KOŃCA MIESIĄCA</text>
+
+  <!-- Crossed-out old price -->
+  <text x="596" y="268"
+        font-family="Inter, sans-serif"
+        font-weight="400" font-size="18"
+        fill="#7A8FA6">PLN 2 499</text>
+  <line x1="594" y1="261" x2="712" y2="261"
+        stroke="#7A8FA6" stroke-width="1.8"/>
+
+  <!-- Main price: PLN  1999  /osoba -->
+  <text x="596" y="330"
+        font-family="Montserrat, sans-serif"
+        font-weight="900" font-size="38"
+        fill="#0A1428">PLN</text>
+  <text x="661" y="338"
+        font-family="Montserrat, sans-serif"
+        font-weight="900" font-size="82"
+        fill="#0A1428">1999</text>
+  <text x="968" y="330"
+        font-family="Inter, sans-serif"
+        font-weight="400" font-size="15"
+        fill="#7A8FA6">/osoba</text>
+
+  <!-- ── Feature bullets ── -->
+  <rect x="596" y="356" width="7" height="7" fill="#C41E3A"/>
+  <text x="614" y="366"
+        font-family="Inter, sans-serif" font-weight="400" font-size="14"
+        fill="#0A1428">Do 15 min w powietrzu</text>
+
+  <rect x="596" y="386" width="7" height="7" fill="#C41E3A"/>
+  <text x="614" y="396"
+        font-family="Inter, sans-serif" font-weight="400" font-size="14"
+        fill="#0A1428">Briefing naziemny (20 min)</text>
+
+  <rect x="596" y="416" width="7" height="7" fill="#C41E3A"/>
+  <text x="614" y="426"
+        font-family="Inter, sans-serif" font-weight="400" font-size="14"
+        fill="#0A1428">Do +4G / -2G</text>
+
+  <rect x="596" y="446" width="7" height="7" fill="#C41E3A"/>
+  <text x="614" y="456"
+        font-family="Inter, sans-serif" font-weight="400" font-size="14"
+        fill="#0A1428">Podstawowe figury akrobacyjne</text>
+
+  <rect x="596" y="476" width="7" height="7" fill="#C41E3A"/>
+  <text x="614" y="486"
+        font-family="Inter, sans-serif" font-weight="400" font-size="14"
+        fill="#0A1428">Doświadczenie lotnicze nie jest wymagane</text>
+
+  <!-- ── Primary CTA button ── -->
+  <rect x="596" y="504" width="400" height="60" rx="2" fill="#C41E3A"/>
+  <text x="796" y="540"
+        text-anchor="middle"
+        font-family="Montserrat, sans-serif"
+        font-weight="800" font-size="17"
+        fill="#FFFFFF" letter-spacing="0.8">KUP VOUCHER, 1 999 ZŁ</text>
+
+  <!-- ── Video 360° upsell ── -->
+  <line x1="596" y1="578" x2="1024" y2="578"
+        stroke="#E4E8ED" stroke-width="1"/>
+  <rect x="596" y="590" width="400" height="70" rx="4" fill="#F6F8FA"/>
+  <text x="616" y="616"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="13"
+        fill="#0A1428">+ Video 360° z lotu</text>
+  <text x="616" y="637"
+        font-family="Inter, sans-serif"
+        font-weight="400" font-size="11.5"
+        fill="#7A8FA6">Montaż 90 sek  ·  MP4 w 48h  ·  +299 PLN</text>
+  <!-- Toggle OFF -->
+  <rect x="954" y="600" width="40" height="22" rx="11" fill="#C8D4E0"/>
+  <circle cx="965" cy="611" r="9" fill="#FFFFFF"/>
+
+  <!-- ── Other packages teaser ── -->
+  <line x1="596" y1="676" x2="1024" y2="676"
+        stroke="#E4E8ED" stroke-width="1"/>
+  <text x="596" y="702"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="12"
+        fill="#7A8FA6" letter-spacing="0.4">Dostępne też pakiety:</text>
+
+  <!-- Package pill: STANDARD -->
+  <rect x="596" y="716" width="160" height="38" rx="3"
+        fill="#F0F4F8" stroke="#C8D4E0" stroke-width="1"/>
+  <text x="676" y="740"
+        text-anchor="middle"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="13"
+        fill="#0A1428">STANDARD</text>
+  <text x="676" y="756"
+        text-anchor="middle"
+        font-family="Inter, sans-serif"
+        font-weight="400" font-size="10"
+        fill="#7A8FA6">od 2 799 zł</text>
+
+  <!-- Package pill: EXPERT -->
+  <rect x="768" y="716" width="160" height="38" rx="3"
+        fill="#F0F4F8" stroke="#C8D4E0" stroke-width="1"/>
+  <text x="848" y="740"
+        text-anchor="middle"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="13"
+        fill="#0A1428">EXPERT</text>
+  <text x="848" y="756"
+        text-anchor="middle"
+        font-family="Inter, sans-serif"
+        font-weight="400" font-size="10"
+        fill="#7A8FA6">od 3 499 zł</text>
+
+  <!-- ══════════════════════════════════════════
+       LAYER 5 – BOTTOM RED CTA BAR
+  ══════════════════════════════════════════ -->
+  <rect x="0" y="862" width="1080" height="68" fill="#C41E3A"/>
+  <text x="540" y="905"
+        text-anchor="middle"
+        font-family="Montserrat, sans-serif"
+        font-weight="800" font-size="24"
+        fill="#FFFFFF" letter-spacing="1.6">KUP VOUCHER, OD 1 999 PLN  →</text>
+
+  <!-- ══════════════════════════════════════════
+       LAYER 6 – BOTTOM STATS BAR
+  ══════════════════════════════════════════ -->
+  <rect x="0" y="930" width="1080" height="150" fill="#08111D"/>
+
+  <!-- Left: total flight hours -->
+  <text x="210" y="982"
+        text-anchor="middle"
+        font-family="Montserrat, sans-serif"
+        font-weight="900" font-size="44"
+        fill="#FFFFFF">4000h+</text>
+  <text x="210" y="1008"
+        text-anchor="middle"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="11"
+        fill="#7A8FA6" letter-spacing="2.6">NALOT ŁĄCZNY</text>
+
+  <!-- Center divider + label -->
+  <line x1="540" y1="950" x2="540" y2="1014"
+        stroke="#7A8FA6" stroke-width="1" opacity="0.30"/>
+  <text x="540" y="986"
+        text-anchor="middle"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="11"
+        fill="#7A8FA6" letter-spacing="2.2">POZNAJ PILOTA</text>
+
+  <!-- Right: acrobatic hours -->
+  <text x="870" y="982"
+        text-anchor="middle"
+        font-family="Montserrat, sans-serif"
+        font-weight="900" font-size="44"
+        fill="#FFFFFF">3000h+</text>
+  <text x="870" y="1008"
+        text-anchor="middle"
+        font-family="Montserrat, sans-serif"
+        font-weight="700" font-size="11"
+        fill="#7A8FA6" letter-spacing="2.6">AKROBACJA EXTRA</text>
+
+  <!-- Live-chat support badge -->
+  <circle cx="1042" cy="1042" r="28" fill="#1B4DB5"/>
+  <path d="M1032,1035 h20 a4,4 0 0 1 4,4 v12 a4,4 0 0 1 -4,4
+           h-7 l-6,5 v-5 h-7 a4,4 0 0 1 -4,-4 v-12 a4,4 0 0 1 4,-4 z"
+        fill="#FFFFFF"/>
+  <circle cx="1062" cy="1019" r="7"
+          fill="#C41E3A" stroke="#08111D" stroke-width="2"/>
+
+</svg>
