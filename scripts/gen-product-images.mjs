@@ -1,14 +1,13 @@
 /**
  * Generuje 4 obrazki produktowe 1200×1200 PNG dla katalogu Meta/Facebook.
  * Layout: zasada 3 podziałów — identyfikacja (top) / cena (środek) / CTA (dół)
- * Logo: Extra 300L SP-EKS + AKROBACJA.COM (ads/logo-landscape.png)
  *
  * Output: public/ads/product-pierwszy-lot.png
  *         public/ads/product-adrenalina.png
  *         public/ads/product-masterclass.png
  *         public/ads/product-fcl900-akrobacja.png
  */
-import { createCanvas, loadImage } from '@napi-rs/canvas';
+import { createCanvas, loadImage, GlobalFonts } from '@napi-rs/canvas';
 import { writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -16,6 +15,17 @@ import { fileURLToPath } from 'url';
 const __dir = dirname(fileURLToPath(import.meta.url));
 const ROOT  = join(__dir, '..');
 const ADS   = join(ROOT, 'public', 'ads');
+
+// ── Fonty z polskimi diakrytykami (Arial z macOS) ─────────────────
+const FONT_DIR = '/System/Library/Fonts/Supplemental';
+GlobalFonts.registerFromPath(join(FONT_DIR, 'Arial.ttf'),           'Arial');
+GlobalFonts.registerFromPath(join(FONT_DIR, 'Arial Bold.ttf'),      'Arial');
+GlobalFonts.registerFromPath(join(FONT_DIR, 'Arial Italic.ttf'),    'Arial');
+
+const FONT_REG  = '400 {SIZE}px Arial';
+const FONT_BOLD = 'bold {SIZE}px Arial';
+const f = (size, bold = false) =>
+  (bold ? FONT_BOLD : FONT_REG).replace('{SIZE}', size);
 
 const C = {
   bg0      : '#04101C',
@@ -27,10 +37,9 @@ const C = {
   chrome   : '#9AAEC2',
   greyLine : 'rgba(154,174,194,0.18)',
   gold     : '#C8960C',
-  goldLt   : '#F0C040',
 };
 
-// ── Product definitions ────────────────────────────────────────────
+// ── Produkty ──────────────────────────────────────────────────────
 const PRODUCTS = [
   {
     file        : 'product-pierwszy-lot.png',
@@ -103,23 +112,23 @@ const PRODUCTS = [
   },
   {
     file        : 'product-fcl900-akrobacja.png',
-    tag         : 'KURS PILOTAŻU · UPRAWNIENIE EASA',
+    tag         : 'KURS PILOTAŻU  ·  UPRAWNIENIE EASA',
     name        : 'SZKOLENIE\nFCL.900',
-    sub         : 'Uprawnienie Akrobacja EASA DTO',
-    promoLine   : 'CERTYFIKAT EASA  ·  UPRAWNIENIE DO AKROBACJI ZAROBKOWEJ',
+    sub         : 'Uprawnienie Akrobacja — EASA DTO',
+    promoLine   : 'CERTYFIKAT EASA  ·  UPRAWNIENIE AKROBACJA',
     promoGold   : true,
     oldPrice    : null,
-    price       : '20 900',
+    price       : '19 999',
     currency    : 'PLN',
     perUnit     : null,
     priceSuffix : 'netto',
-    vatNote     : '25 707 PLN brutto (z VAT 23%)',
+    vatNote     : '24 599 PLN brutto (z VAT 23%)',
     ctaText     : 'ZAPISZ SIĘ NA SZKOLENIE  →',
     bullets     : [
-      'Min. 15 h lotu na Extra 300L SP-EKS',
+      'Min. 5 h lotu na Extra 300L SP-EKS',
       'Teoria: przepisy, ograniczenia, bezpieczeństwo',
       'Instruktor z uprawnieniami FI(A)',
-      'Egzamin praktyczny EASA',
+      'Uprawnienie wpisane do licencji',
       'Możliwość dofinansowania UE',
     ],
     accent      : C.gold,
@@ -127,7 +136,7 @@ const PRODUCTS = [
   },
 ];
 
-// ── Helpers ────────────────────────────────────────────────────────
+// ── Helpers ───────────────────────────────────────────────────────
 function roundRect(ctx, x, y, w, h, r) {
   ctx.beginPath();
   ctx.moveTo(x + r, y);
@@ -142,22 +151,33 @@ function roundRect(ctx, x, y, w, h, r) {
   ctx.closePath();
 }
 
-function hline(ctx, y, x0 = 28, x1 = 1172) {
+function hline(ctx, y, x0 = 40, x1 = 1160) {
   ctx.strokeStyle = C.greyLine;
   ctx.lineWidth   = 1;
   ctx.beginPath();
-  ctx.moveTo(x0, y); ctx.lineTo(x1, y);
+  ctx.moveTo(x0, y);
+  ctx.lineTo(x1, y);
   ctx.stroke();
 }
 
-// ── Draw ──────────────────────────────────────────────────────────
-async function drawProduct(p, logo, bg) {
+// Rysuje obraz w trybie "cover" (bez zniekształceń, przyciął od środka)
+function drawCover(ctx, img, x, y, w, h) {
+  const scale = Math.max(w / img.width, h / img.height);
+  const dw    = img.width  * scale;
+  const dh    = img.height * scale;
+  const dx    = x + (w - dw) / 2;
+  const dy    = y + (h - dh) / 2;
+  ctx.drawImage(img, dx, dy, dw, dh);
+}
+
+// ── Rysowanie jednego obrazka ─────────────────────────────────────
+async function drawProduct(p, bg) {
   const S   = 1200;
-  const PAD = 28;
+  const PAD = 40;
   const canvas = createCanvas(S, S);
   const ctx    = canvas.getContext('2d');
 
-  // ── Background ────────────────────────────────────────────────
+  // ── Tło ──────────────────────────────────────────────────────
   const bgG = ctx.createLinearGradient(0, 0, S, S);
   bgG.addColorStop(0,   C.bg0);
   bgG.addColorStop(0.5, C.bg1);
@@ -165,186 +185,189 @@ async function drawProduct(p, logo, bg) {
   ctx.fillStyle = bgG;
   ctx.fillRect(0, 0, S, S);
 
+  // Zdjęcie samolotu — cover fit, przyciemnione
   if (bg) {
-    ctx.globalAlpha = 0.28;
-    ctx.drawImage(bg, 0, 0, S, S);
+    ctx.save();
+    ctx.globalAlpha = 0.30;
+    drawCover(ctx, bg, 0, 0, S, S);
     ctx.globalAlpha = 1;
+    ctx.restore();
   }
 
-  // Accent diagonal band (bottom-left → upper-right, rule of thirds anchor)
+  // Gradient vignette (czytelność tekstu nad zdjęciem)
+  const vig = ctx.createLinearGradient(0, 0, 0, S);
+  vig.addColorStop(0,   'rgba(4,16,28,0.65)');
+  vig.addColorStop(0.35,'rgba(4,16,28,0.30)');
+  vig.addColorStop(0.60,'rgba(4,16,28,0.40)');
+  vig.addColorStop(1,   'rgba(4,16,28,0.75)');
+  ctx.fillStyle = vig;
+  ctx.fillRect(0, 0, S, S);
+
+  // Accent diagonal band
   ctx.save();
   ctx.strokeStyle = p.accent;
-  ctx.globalAlpha = 0.20;
-  ctx.lineWidth   = 360;
+  ctx.globalAlpha = 0.18;
+  ctx.lineWidth   = 380;
   ctx.lineCap     = 'butt';
   ctx.beginPath();
-  ctx.moveTo(-120, S + 120);
-  ctx.lineTo(S * 0.54, -120);
+  ctx.moveTo(-140, S + 140);
+  ctx.lineTo(S * 0.55, -140);
   ctx.stroke();
   ctx.globalAlpha = 1;
   ctx.restore();
 
-  // Left accent bar (rule-of-thirds: left edge marker)
+  // Pasek akcentu — lewa krawędź
   ctx.fillStyle   = p.accent;
-  ctx.globalAlpha = 0.88;
-  ctx.fillRect(0, 0, 7, S);
+  ctx.globalAlpha = 0.9;
+  ctx.fillRect(0, 0, 8, S);
   ctx.globalAlpha = 1;
 
-  // ─── TOP ZONE  0–400  (identyfikacja produktu) ────────────────
+  // ─── STREFA GÓRNA  0–400  (identyfikacja) ────────────────────
 
-  // Logo pill: biały zaokrąglony prostokąt z logo
-  ctx.fillStyle = 'rgba(255,255,255,0.96)';
-  roundRect(ctx, PAD, 22, 234, 66, 7);
-  ctx.fill();
-  if (logo) {
-    ctx.drawImage(logo, PAD + 6, 27, 222, 56);
-  } else {
-    ctx.fillStyle = C.navyDeep;
-    ctx.font      = 'bold 20px sans-serif';
-    ctx.fillText('AKROBACJA.COM', PAD + 10, 62);
-  }
+  // Logo tekstowe: "AKROBACJA" bold white + ".COM" accent
+  ctx.font      = f(28, true);
+  ctx.fillStyle = C.white;
+  ctx.fillText('AKROBACJA', PAD, 58);
+  const aW = ctx.measureText('AKROBACJA').width;
+  ctx.fillStyle = p.accent;
+  ctx.fillText('.COM', PAD + aW, 58);
 
-  // Top-right badge
+  // Linia pod logo
+  ctx.strokeStyle = 'rgba(255,255,255,0.15)';
+  ctx.lineWidth   = 1;
+  ctx.beginPath();
+  ctx.moveTo(PAD, 70); ctx.lineTo(PAD + aW + ctx.measureText('.COM').width, 70);
+  ctx.stroke();
+
+  // Odznaka prawy górny róg
   ctx.fillStyle = C.red;
-  roundRect(ctx, S - 318, 22, 290, 46, 23);
+  roundRect(ctx, S - 330, 22, 298, 46, 23);
   ctx.fill();
   ctx.fillStyle   = C.white;
-  ctx.font        = 'bold 14px sans-serif';
+  ctx.font        = f(14, true);
   ctx.textAlign   = 'center';
-  ctx.fillText('★  MISTRZ ŚWIATA AKROBACJI', S - 173, 50);
+  ctx.fillText('★  MISTRZ ŚWIATA AKROBACJI', S - 181, 51);
   ctx.textAlign   = 'left';
 
-  // Tag chip
-  ctx.font = 'bold 15px sans-serif';
-  const tagW = ctx.measureText(p.tag).width + 30;
+  // Chip tagu
+  ctx.font = f(15, true);
+  const tagTW = ctx.measureText(p.tag).width;
   ctx.fillStyle   = p.accent;
-  ctx.globalAlpha = 0.92;
-  roundRect(ctx, PAD, 108, tagW, 36, 5);
+  ctx.globalAlpha = 0.9;
+  roundRect(ctx, PAD, 100, tagTW + 28, 36, 5);
   ctx.fill();
   ctx.globalAlpha = 1;
-  ctx.fillStyle   = C.white;
-  ctx.fillText(p.tag, PAD + 14, 131);
+  ctx.fillStyle = C.white;
+  ctx.fillText(p.tag, PAD + 14, 124);
 
-  // Nazwa produktu — DUŻA (rule-of-thirds: 1/4 od góry = y≈300)
+  // Nazwa produktu
   ctx.fillStyle = C.white;
   if (p.name.includes('\n')) {
-    // Dwuliniowa nazwa (FCL.900)
     const [l1, l2] = p.name.split('\n');
-    ctx.font = 'bold 80px sans-serif';
-    ctx.fillText(l1, PAD, 240);
-    ctx.fillText(l2, PAD, 330);
-    // Podtytuł
+    ctx.font = f(82, true);
+    ctx.fillText(l1, PAD, 244);
+    ctx.fillText(l2, PAD, 340);
     ctx.fillStyle = C.chrome;
-    ctx.font      = '400 21px sans-serif';
-    ctx.fillText(p.sub, PAD, 368);
+    ctx.font      = f(21, false);
+    ctx.fillText(p.sub, PAD, 376);
   } else {
-    ctx.font = 'bold 92px sans-serif';
-    ctx.fillText(p.name, PAD, 310);
-    // Podtytuł
+    ctx.font = f(94, true);
+    ctx.fillText(p.name, PAD, 316);
     ctx.fillStyle = C.chrome;
-    ctx.font      = '400 22px sans-serif';
-    ctx.fillText(p.sub, PAD, 358);
+    ctx.font      = f(22, false);
+    ctx.fillText(p.sub, PAD, 362);
   }
 
-  // Linia podziału 1/3 (y=400)
+  // Linia 1/3
   hline(ctx, 400);
 
-  // ─── PRICE ZONE  400–800  (oferta) ──────────────────────────
+  // ─── STREFA CENY  400–800 ───────────────────────────────────
 
-  let PY = 420;
+  let PY = 422;
 
-  // Baner promocyjny
+  // Baner promo
   if (p.promoLine) {
-    const bc = p.promoGold ? C.gold : C.red;
-    ctx.fillStyle = bc;
+    ctx.fillStyle = p.promoGold ? C.gold : C.red;
     roundRect(ctx, PAD, PY, S - PAD * 2, 56, 5);
     ctx.fill();
     ctx.fillStyle = p.promoGold ? C.navyDeep : C.white;
-    ctx.font      = 'bold 18px sans-serif';
+    ctx.font      = f(18, true);
     ctx.textAlign = 'center';
-    ctx.fillText(p.promoLine, S / 2, PY + 35);
+    ctx.fillText(p.promoLine, S / 2, PY + 36);
     ctx.textAlign = 'left';
     PY += 76;
   } else {
-    PY += 20;
+    PY += 18;
   }
 
-  // Skreślona cena (OLD) — wyraźna, ~58px ≈ ~45% rozmiaru nowej
+  // Stara cena (skreślona) — czytelna, ~55px
   if (p.oldPrice) {
     const oldStr = `${p.oldPrice} PLN`;
-    ctx.font      = '400 58px sans-serif';
-    ctx.fillStyle = 'rgba(200,212,224,0.72)';
-    ctx.fillText(oldStr, PAD, PY + 54);
+    ctx.font      = f(55, false);
+    ctx.fillStyle = 'rgba(200,212,224,0.70)';
+    ctx.fillText(oldStr, PAD, PY + 52);
     const oldW = ctx.measureText(oldStr).width;
-    ctx.strokeStyle = 'rgba(200,212,224,0.60)';
-    ctx.lineWidth   = 3.5;
+    ctx.strokeStyle = 'rgba(200,212,224,0.58)';
+    ctx.lineWidth   = 3;
     ctx.beginPath();
-    ctx.moveTo(PAD, PY + 33);
-    ctx.lineTo(PAD + oldW, PY + 33);
+    ctx.moveTo(PAD, PY + 32);
+    ctx.lineTo(PAD + oldW, PY + 32);
     ctx.stroke();
-    PY += 76;
+    PY += 72;
   }
 
-  // Nowa cena — GIGANTYCZNA
+  // Nowa cena — DUŻA
   ctx.fillStyle = C.white;
-  ctx.font      = 'bold 54px sans-serif';
-  ctx.fillText(p.currency, PAD, PY + 112);
+  ctx.font      = f(52, true);
+  ctx.fillText(p.currency, PAD, PY + 108);
 
-  ctx.font = 'bold 136px sans-serif';
-  const priceX = PAD + 130;
-  ctx.fillText(p.price, priceX, PY + 124);
+  ctx.font = f(134, true);
+  const priceX = PAD + 124;
+  ctx.fillText(p.price, priceX, PY + 120);
   const priceW = ctx.measureText(p.price).width;
 
   const suffix = p.priceSuffix || p.perUnit;
   if (suffix) {
-    ctx.font      = '400 23px sans-serif';
+    ctx.font      = f(23, false);
     ctx.fillStyle = C.chrome;
-    ctx.fillText(suffix, priceX + priceW + 16, PY + 124);
+    ctx.fillText(suffix, priceX + priceW + 16, PY + 120);
   }
 
-  PY += 146;
+  PY += 142;
 
   if (p.vatNote) {
     ctx.fillStyle = C.chrome;
-    ctx.font      = '400 19px sans-serif';
+    ctx.font      = f(19, false);
     ctx.fillText(p.vatNote, PAD, PY);
-    PY += 30;
   }
 
-  // Linia podziału 2/3 (y=800)
+  // Linia 2/3
   hline(ctx, 800);
 
-  // ─── FEATURES + CTA  800–1110 ──────────────────────────────
+  // ─── STREFA CECH + CTA  800–1110 ───────────────────────────
 
-  // Bullets — 2 kolumny (3 lewa, 2 prawa) dla 5 punktów
-  const colR = S / 2 + 16;
-  let   bY   = 832;
+  // Bullets — 2 kolumny (3 lewa, 2 prawa)
+  const colR = S / 2 + 20;
+  const bY0  = 836;
   p.bullets.forEach((b, i) => {
     const col = (p.bullets.length > 3 && i >= 3) ? colR : PAD;
     const row = (p.bullets.length > 3 && i >= 3) ? i - 3 : i;
-    const by  = bY + row * 42;
+    const by  = bY0 + row * 44;
     ctx.fillStyle = C.red;
-    ctx.fillRect(col, by - 13, 10, 10);
+    ctx.fillRect(col, by - 14, 10, 10);
     ctx.fillStyle = C.white;
-    ctx.font      = '400 20px sans-serif';
+    ctx.font      = f(20, false);
     ctx.fillText(b, col + 26, by);
   });
 
-  // CTA button — pełna szerokość
+  // CTA button
   const ctaY = 984;
   ctx.fillStyle = C.red;
   roundRect(ctx, PAD, ctaY, S - PAD * 2, 82, 6);
   ctx.fill();
-  // Gradient na przycisku (lewy ciemniejszy, prawy jaśniejszy)
-  const btnG = ctx.createLinearGradient(PAD, 0, S - PAD, 0);
-  btnG.addColorStop(0, 'rgba(0,0,0,0.10)');
-  btnG.addColorStop(1, 'rgba(255,255,255,0.06)');
-  ctx.fillStyle = btnG;
-  roundRect(ctx, PAD, ctaY, S - PAD * 2, 82, 6);
-  ctx.fill();
 
   ctx.fillStyle = C.white;
-  ctx.font      = 'bold 27px sans-serif';
+  ctx.font      = f(27, true);
   ctx.textAlign = 'center';
   const cta = p.ctaText ?? `KUP VOUCHER  ·  ${p.price} ZŁ  →`;
   ctx.fillText(cta, S / 2, ctaY + 51);
@@ -352,7 +375,7 @@ async function drawProduct(p, logo, bg) {
 
   // Drobny druk
   ctx.fillStyle = C.chrome;
-  ctx.font      = '400 14px sans-serif';
+  ctx.font      = f(14, false);
   ctx.textAlign = 'center';
   ctx.fillText(
     'Voucher PDF  ·  Ważny 12 miesięcy  ·  Dostawa e-mail natychmiast  ·  akrobacja.com',
@@ -360,26 +383,26 @@ async function drawProduct(p, logo, bg) {
   );
   ctx.textAlign = 'left';
 
-  // ─── STATS BAR  1110–1200 ─────────────────────────────────
+  // ─── PASEK STATYSTYK  1110–1200 ──────────────────────────────
 
   const barY = 1112;
   ctx.fillStyle = 'rgba(4,10,20,0.97)';
   ctx.fillRect(0, barY, S, S - barY);
 
   const stats = [
-    ['4000h+',             'NALOT ŁĄCZNY'],
+    ['4000h+',  'NALOT ŁĄCZNY'],
     p.statsMiddle,
-    ['3000h+',             'AKROBACJA EXTRA'],
+    ['3000h+',  'AKROBACJA EXTRA'],
   ];
   const cW = S / 3;
   stats.forEach(([main, sub], i) => {
     const cx = cW * i + cW / 2;
     ctx.textAlign = 'center';
     ctx.fillStyle = i === 1 ? p.accent : C.white;
-    ctx.font      = 'bold 22px sans-serif';
+    ctx.font      = f(22, true);
     ctx.fillText(main, cx, barY + 28);
     ctx.fillStyle = C.chrome;
-    ctx.font      = 'bold 11px sans-serif';
+    ctx.font      = f(11, true);
     ctx.fillText(sub, cx, barY + 48);
   });
 
@@ -395,19 +418,19 @@ async function drawProduct(p, logo, bg) {
   ctx.globalAlpha = 1;
   ctx.textAlign   = 'left';
 
-  // ── Zapis ─────────────────────────────────────────────────
+  // Zapis
   const buf = canvas.toBuffer('image/png');
   writeFileSync(join(ADS, p.file), buf);
   console.log(`✓  ${p.file}  (${(buf.length / 1024).toFixed(0)} KB)`);
 }
 
-// ── Main ──────────────────────────────────────────────────────────
-const logo = await loadImage(join(ADS, 'logo-landscape.png')).catch(() => null);
-const bg   = existsSync(join(ROOT, 'public', 'speks-city.jpg'))
-  ? await loadImage(join(ROOT, 'public', 'speks-city.jpg')).catch(() => null)
+// ── Main ─────────────────────────────────────────────────────────
+const bgPath = join(ROOT, 'public', 'speks-city.jpg');
+const bg     = existsSync(bgPath)
+  ? await loadImage(bgPath).catch(() => null)
   : null;
 
 for (const p of PRODUCTS) {
-  await drawProduct(p, logo, bg);
+  await drawProduct(p, bg);
 }
 console.log('\nWszystkie grafiki → public/ads/');
