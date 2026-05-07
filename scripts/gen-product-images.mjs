@@ -94,7 +94,7 @@ const PRODUCTS = [
     sub         : 'Sesja szkoleniowa — 2 loty, do 50 min',
     promoLine   : null,
     promoGold   : false,
-    oldPrice    : null,
+    oldPrice    : '6 000',
     price       : '4 999',
     currency    : 'PLN',
     perUnit     : '/ osoba',
@@ -102,7 +102,7 @@ const PRODUCTS = [
     ctaText     : null,
     bullets     : [
       'Do 50 min (2 loty)',
-      'Zaawansowane figury konkursowe',
+      'Zaawansowane wiązanki akrobacyjne',
       'Pełny debriefing + analiza lotu',
       'Certyfikat uczestnictwa',
       'Samolot Extra 300L SP-EKS',
