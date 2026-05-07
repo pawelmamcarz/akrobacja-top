@@ -1,0 +1,261 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "akrobacja.com - strona główna" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "akrobacja.com" [ref=e4]
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "Strona główna" [ref=e7] [cursor=pointer]:
+          - /url: /
+      - listitem [ref=e8]:
+        - link "Lot akrobacyjny" [ref=e9] [cursor=pointer]:
+          - /url: /lot-akrobacyjny
+      - listitem [ref=e10]:
+        - link "Sklep" [ref=e11] [cursor=pointer]:
+          - /url: /sklep-merch
+      - listitem [ref=e12]:
+        - link "Kalendarz" [ref=e13] [cursor=pointer]:
+          - /url: /kalendarz
+      - listitem [ref=e14]:
+        - link "Pokazy na Event" [ref=e15] [cursor=pointer]:
+          - /url: /pokazy-lotnicze
+    - link "Zapisz się" [ref=e16] [cursor=pointer]:
+      - /url: https://wa.me/48535535221?text=Chc%C4%99%20zapisa%C4%87%20si%C4%99%20na%20Camp%20Akrobacyjny%20-%20maj%202026!
+  - generic [ref=e17]:
+    - link "Strona główna" [ref=e18] [cursor=pointer]:
+      - /url: /
+    - text: / Camp Akrobacyjny, Maj 2026
+  - article [ref=e19]:
+    - paragraph [ref=e20]: 17-18 maja 2026 · Lotnisko Radom-Piastów (EPRP) · Liczba miejsc ograniczona
+    - heading "Camp Akrobacyjny, 2 Dni, 6 Lotów, Czysta Akrobacja" [level=1] [ref=e21]
+    - generic [ref=e22]:
+      - strong [ref=e23]: "Szybka odpowiedź:"
+      - text: 2-dniowy camp akrobacyjny,
+      - strong [ref=e24]: 17-18 maja 2026
+      - text: ", lotnisko Radom-Piastów (EPRP)."
+      - strong [ref=e25]: 6 lotów akrobacyjnych
+      - text: na samolocie
+      - link "Extra 300L SP-EKS" [ref=e26] [cursor=pointer]:
+        - /url: /blog/extra-300l-samolot-akrobacyjny
+      - text: z pilotami
+      - strong [ref=e27]: Maciejem Kulaszewskim
+      - text: i
+      - strong [ref=e28]: Arturem Kielakiem
+      - text: (Mistrz Polski). Teoria akrobacji, certyfikat ukończenia, pakiet merch, nocleg i wieczór integracyjny w cenie. Zapisz się przez
+      - link "WhatsApp" [ref=e29] [cursor=pointer]:
+        - /url: https://wa.me/48535535221?text=Chc%C4%99%20zapisa%C4%87%20si%C4%99%20na%20Camp%20Akrobacyjny%20-%20maj%202026!
+      - text: .
+    - paragraph [ref=e30]:
+      - text: Camp Akrobacyjny to intensywne, 2-dniowe doświadczenie stworzone dla tych, którzy chcą zanurzyć się w świat akrobacji lotniczej. To nie pojedynczy lot zapoznawczy, to
+      - strong [ref=e31]: pełny weekend z akrobacją
+      - text: ": teoria, briefing, latanie, debriefing, wieczorne rozmowy o lataniu i powtórka następnego dnia. Wszystko na samolocie"
+      - link "Extra 300L SP-EKS" [ref=e32] [cursor=pointer]:
+        - /url: /blog/extra-300l-samolot-akrobacyjny
+      - text: ", jednej z najlepszych maszyn akrobacyjnych na świecie."
+    - heading "Co obejmuje Camp" [level=2] [ref=e33]
+    - generic [ref=e34]:
+      - generic [ref=e35]:
+        - strong [ref=e36]: 6 lotów akrobacyjnych
+        - text: Na Extra 300L SP-EKS z Maciejem Kulaszewskim. Pętle, beczki, hammerheady, lot odwrócony, pełen program, stopniowo budujący Twoje doświadczenie.
+      - generic [ref=e37]:
+        - strong [ref=e38]: Teoria akrobacji
+        - text: Figury Aresti, fizjologia G-force, aerodynamika akrobacji. Briefing przed każdym lotem, debriefing po, dokładnie jak na szkoleniu zawodowym.
+      - generic [ref=e39]:
+        - strong [ref=e40]: Certyfikat ukończenia
+        - text: Oficjalny certyfikat Camp Akrobacyjnego akrobacja.com. Potwierdzenie Twojego doświadczenia i punkt wyjścia do dalszego rozwoju.
+      - generic [ref=e41]:
+        - strong [ref=e42]: Pakiet merch akrobacja.com
+        - text: Koszulka i naklejki akrobacja.com w cenie campu. Przyjedziesz jako uczestnik, wyjedziesz jako członek społeczności.
+      - generic [ref=e43]:
+        - strong [ref=e44]: Nocleg "u Grubego" w Radomiu
+        - text: Sprawdzone miejsce blisko lotniska. Nocleg z soboty na niedzielę wliczony w cenę campu.
+      - generic [ref=e45]:
+        - strong [ref=e46]: Wspólne wieczory w lotniczym gronie
+        - text: Sobotni wieczór integracyjny z pilotem i uczestnikami. Rozmowy o lataniu, wymiana doświadczeń, budowanie kontaktów w środowisku lotniczym.
+    - heading "Dla kogo jest Camp Akrobacyjny" [level=2] [ref=e47]
+    - paragraph [ref=e48]: "Camp jest zaprojektowany tak, żeby dać maksimum wartości trzem grupom uczestników:"
+    - list [ref=e49]:
+      - listitem [ref=e50]:
+        - strong [ref=e51]: Piloci z PPL(A) chcący zacząć przygodę z akrobacją
+        - text: ", masz licencję, latasz, ale nigdy nie próbowałeś akrobacji? Camp to idealne wprowadzenie. 6 lotów da Ci solidne podstawy i odpowiedź na pytanie, czy akrobacja to Twoja droga."
+      - listitem [ref=e52]:
+        - strong [ref=e53]:
+          - text: Piloci przygotowujący się do kursu
+          - link "FCL.800" [ref=e54] [cursor=pointer]:
+            - /url: /blog/kurs-akrobacji-fcl800
+        - text: ", Camp to doskonałe przygotowanie przed właściwym szkoleniem. Poznasz samolot, figury i instruktora. Wejdziesz w kurs z przewagą doświadczenia."
+      - listitem [ref=e55]:
+        - strong [ref=e56]: Doświadczeni piloci chcący potrenować figury
+        - text: ", masz już FCL.800 lub doświadczenie akrobacyjne? Camp to okazja, żeby wrócić do formy, potrenować konkretne figury i podzielić się wiedzą z innymi uczestnikami."
+    - paragraph [ref=e57]: Nie masz licencji pilota? Nie ma problemu, latasz jako pasażer na tylnym fotelu z Maciejem za sterami. Pełne doświadczenie akrobacyjne, bezpiecznie i pod opieką profesjonalisty.
+    - heading "Kto prowadzi Camp" [level=2] [ref=e58]
+    - generic [ref=e59]:
+      - generic [ref=e60]:
+        - strong [ref=e61]: Maciej Kulaszewski
+        - text: Pilot domowy akrobacja.com. Instruktor FI(A), ponad 3 000+ godzin nalotu na Extra 300L. Wielokrotny Mistrz Polski 2022, wielokrotny Mistrz Polski, Anglii i Niemiec w akrobacji lotniczej. Maciej prowadzi każdy camp osobiście, to nie jest gość na weekend, to Twój instruktor na co dzień.
+      - generic [ref=e62]:
+        - strong [ref=e63]: Artur Kielak
+        - text: Mistrz Polski w akrobacji lotniczej, pilot liniowy Ryanair. Łączy doświadczenie zawodnicze z codzienną praktyką pilota komercyjnego. Na campie dzieli się perspektywą pilota, który akrobację traktuje jako trening bezpieczeństwa, i jednocześnie pasję życia.
+    - heading "Program ramowy" [level=2] [ref=e64]
+    - table [ref=e65]:
+      - rowgroup [ref=e66]:
+        - row "Blok Czas Zakres" [ref=e67]:
+          - columnheader "Blok" [ref=e68]
+          - columnheader "Czas" [ref=e69]
+          - columnheader "Zakres" [ref=e70]
+      - rowgroup [ref=e71]:
+        - row "Dzień 1, Sobota 17.05 cały dzień Teoria akrobacji (figury Aresti, fizjologia G-force, ograniczenia samolotu) + briefing + 3 loty akrobacyjne z debriefingiem po każdym locie + wieczór integracyjny" [ref=e72]:
+          - cell "Dzień 1, Sobota 17.05" [ref=e73]
+          - cell "cały dzień" [ref=e74]
+          - cell "Teoria akrobacji (figury Aresti, fizjologia G-force, ograniczenia samolotu) + briefing + 3 loty akrobacyjne z debriefingiem po każdym locie + wieczór integracyjny" [ref=e75]:
+            - text: Teoria akrobacji (figury Aresti, fizjologia G-force, ograniczenia samolotu) + briefing +
+            - strong [ref=e76]: 3 loty akrobacyjne
+            - text: z debriefingiem po każdym locie + wieczór integracyjny
+        - row "Dzień 2, Niedziela 18.05 cały dzień Briefing poranny + 3 loty akrobacyjne (kontynuacja programu, zaawansowane figury) + debriefing + wręczenie certyfikatów ukończenia Camp" [ref=e77]:
+          - cell "Dzień 2, Niedziela 18.05" [ref=e78]
+          - cell "cały dzień" [ref=e79]
+          - cell "Briefing poranny + 3 loty akrobacyjne (kontynuacja programu, zaawansowane figury) + debriefing + wręczenie certyfikatów ukończenia Camp" [ref=e80]:
+            - text: Briefing poranny +
+            - strong [ref=e81]: 3 loty akrobacyjne
+            - text: (kontynuacja programu, zaawansowane figury) + debriefing + wręczenie certyfikatów ukończenia Camp
+    - generic [ref=e82]:
+      - strong [ref=e83]: Każdy lot to indywidualny briefing i debriefing.
+      - text: Przed lotem omawiasz z pilotem plan figur, po locie analizujecie wykonanie. To nie jest "wskocz i leć", to szkoleniowe podejście, które daje realne efekty.
+    - heading "Ścieżka rozwoju, co po Campie?" [level=2] [ref=e84]
+    - paragraph [ref=e85]: "Camp Akrobacyjny to nie jednorazowa przygoda, to pierwszy krok na ścieżce pilota akrobacyjnego. Oto jak wygląda pełna droga:"
+    - generic [ref=e86]:
+      - generic [ref=e87]:
+        - strong [ref=e88]: Lot zapoznawczy Masterclass
+        - generic [ref=e89]: 4 999 PLN
+      - generic [ref=e90]: ↓
+      - generic [ref=e91]:
+        - strong [ref=e92]: Camp Akrobacyjny
+        - generic [ref=e93]: 2 dni, 6 lotów
+      - generic [ref=e94]: ↓
+      - generic [ref=e95]:
+        - strong [ref=e96]:
+          - link "Kurs FCL.800" [ref=e97] [cursor=pointer]:
+            - /url: /blog/kurs-akrobacji-fcl800
+        - generic [ref=e98]: pełne uprawnienia akrobacyjne
+      - generic [ref=e99]:
+        - paragraph [ref=e100]:
+          - strong [ref=e101]: "Pakiet Camp + Kurs FCL.800:"
+        - text: 18 888 PLN 20 900 PLN standalone
+        - generic [ref=e102]: Oszczędzasz 2 012 PLN
+    - paragraph [ref=e103]: Jeśli wiesz, że chcesz zdobyć uprawnienia FCL.800, pakiet łączony to najlepsza opcja. Camp staje się integralną częścią szkolenia, a cena jest niższa niż przy zakupie osobno.
+    - generic [ref=e104]:
+      - heading "Zapisz się na Camp, Maj 2026" [level=3] [ref=e105]
+      - paragraph [ref=e106]: 17-18 maja 2026 · Radom-Piastów · Extra 300L SP-EKS · 6 lotów
+      - link "NAPISZ NA WHATSAPP" [ref=e107] [cursor=pointer]:
+        - /url: https://wa.me/48535535221?text=Chc%C4%99%20zapisa%C4%87%20si%C4%99%20na%20Camp%20Akrobacyjny%20-%20maj%202026!
+      - paragraph [ref=e108]: Odpowiadamy w ciągu godziny. Liczba miejsc ograniczona.
+    - heading "Cena" [level=2] [ref=e109]
+    - generic [ref=e110]:
+      - paragraph [ref=e111]: 7 777 PLN
+      - paragraph [ref=e112]: Camp Akrobacyjny, kompletna cena za 2 dni
+      - paragraph [ref=e113]: 6 lotów + teoria + certyfikat + merch + nocleg, wszystko w cenie
+    - paragraph [ref=e114]:
+      - strong [ref=e115]: 7 777 PLN
+      - text: "obejmuje kompletny pakiet: 6 lotów akrobacyjnych na Extra 300L SP-EKS, paliwo, czas pilotów (Kulaszewski + Kielak), teorię akrobacji, nocleg \"u Grubego\", pakiet merch i certyfikat. Bez ukrytych kosztów. Liczba miejsc ograniczona, rezerwuj z wyprzedzeniem."
+    - generic [ref=e116]:
+      - heading "Zapisz się na Camp, 7 777 PLN" [level=3] [ref=e117]
+      - paragraph [ref=e118]: Napisz na WhatsApp, zarezerwujemy Twoje miejsce. Odpowiadamy w ciągu godziny.
+      - link "NAPISZ NA WHATSAPP" [ref=e119] [cursor=pointer]:
+        - /url: https://wa.me/48535535221?text=Chc%C4%99%20zapisa%C4%87%20si%C4%99%20na%20Camp%20Akrobacyjny%20-%20maj%202026!
+      - paragraph [ref=e120]: +48 535 535 221 · dto@akrobacja.com
+    - heading "Najczęściej zadawane pytania" [level=2] [ref=e121]
+    - generic [ref=e122]:
+      - heading "Czy muszę mieć licencję pilota?" [level=3] [ref=e123]
+      - paragraph [ref=e124]:
+        - text: Nie, Camp jest otwarty zarówno dla pilotów z licencją PPL(A), jak i dla osób bez uprawnień lotniczych. Jeśli nie masz licencji, latasz z pilotem Maciejem Kulaszewskim jako pasażer na tylnym fotelu Extra 300L. Doświadczasz pełnego programu akrobacyjnego, pętle, beczki, lot odwrócony, przeciążenia. Jeśli masz PPL(A) i min. 30h PIC, lot może być zaliczony jako element przygotowania do
+        - link "kursu FCL.800" [ref=e125] [cursor=pointer]:
+          - /url: /blog/kurs-akrobacji-fcl800
+        - text: .
+    - generic [ref=e126]:
+      - heading "Gdzie jest nocleg?" [level=3] [ref=e127]
+      - paragraph [ref=e128]: Nocleg zapewniamy "u Grubego" w Radomiu, sprawdzone miejsce blisko lotniska, w lotniczym klimacie. Nocleg z soboty na niedzielę jest wliczony w cenę campu. Jeśli wolisz nocować we własnym zakresie (hotel, Airbnb), nie ma problemu, po prostu daj nam znać przy zapisie.
+    - generic [ref=e129]:
+      - heading "Co zabrać na Camp?" [level=3] [ref=e130]
+      - paragraph [ref=e131]:
+        - text: Wygodne ubranie sportowe, okulary przeciwsłoneczne, buty sportowe (nie klapki), dowód tożsamości. Jeśli masz licencję pilota, weź ją ze sobą.
+        - strong [ref=e132]: Spadochrony, kaski i słuchawki zapewniamy.
+        - text: Nie jedz ciężkiego posiłku tuż przed lotem. Zabierz też dobry humor i otwartą głowę, resztą zajmiemy się my.
+    - generic [ref=e133]:
+      - heading "Co jeśli będzie zła pogoda?" [level=3] [ref=e134]
+      - paragraph [ref=e135]: Akrobacja wymaga dobrej widoczności i odpowiedniego pułapu chmur (minimum 1500 ft AGL). Jeśli pogoda uniemożliwi latanie, przenosimy loty na najbliższy możliwy termin. Teoria i część naziemna odbywają się niezależnie od pogody. W najgorszym scenariuszu ustalamy termin zastępczy, Twoje pieniądze nie przepadają. Maj to statystycznie jeden z najlepszych miesięcy do latania w Polsce.
+  - contentinfo [ref=e136]:
+    - generic [ref=e137]:
+      - generic [ref=e138]:
+        - img "akrobacja.com" [ref=e139]
+        - paragraph [ref=e140]:
+          - text: Extra 300L SP-EKS
+          - text: Radom-Piastów EPRP
+          - generic [ref=e141]:
+            - text: Doradztwo Paweł Mamcarz
+            - text: "Pilot:"
+            - strong [ref=e142]: Maciej Kulaszewski
+      - generic [ref=e143]:
+        - paragraph [ref=e144]: Nawigacja
+        - list [ref=e145]:
+          - listitem [ref=e146]:
+            - link "Strona główna" [ref=e147] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e148]:
+            - link "Lot akrobacyjny" [ref=e149] [cursor=pointer]:
+              - /url: /lot-akrobacyjny
+          - listitem [ref=e150]:
+            - link "Sklep Merch" [ref=e151] [cursor=pointer]:
+              - /url: /sklep-merch
+          - listitem [ref=e152]:
+            - link "Pokazy na Event" [ref=e153] [cursor=pointer]:
+              - /url: /pokazy-lotnicze
+          - listitem [ref=e154]:
+            - link "Kalendarz" [ref=e155] [cursor=pointer]:
+              - /url: /kalendarz
+          - listitem [ref=e156]:
+            - link "Regulamin" [ref=e157] [cursor=pointer]:
+              - /url: /regulamin
+      - generic [ref=e158]:
+        - paragraph [ref=e159]: Kontakt
+        - list [ref=e160]:
+          - listitem [ref=e161]:
+            - link "+48 535 535 221" [ref=e162] [cursor=pointer]:
+              - /url: https://wa.me/48535535221
+          - listitem [ref=e163]:
+            - link "dto@akrobacja.com" [ref=e164] [cursor=pointer]:
+              - /url: mailto:dto@akrobacja.com
+          - listitem [ref=e165]:
+            - link "Lotnisko Radom-Piastów (EPRP)" [ref=e166] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/radom-piastow-eprp
+      - generic [ref=e167]:
+        - paragraph [ref=e168]: Informacje
+        - list [ref=e169]:
+          - listitem [ref=e170]:
+            - link "Regulamin" [ref=e171] [cursor=pointer]:
+              - /url: /regulamin
+          - listitem [ref=e172]:
+            - link "Polityka Prywatności" [ref=e173] [cursor=pointer]:
+              - /url: /polityka-prywatnosci
+          - listitem [ref=e174]:
+            - link "FAQ" [ref=e175] [cursor=pointer]:
+              - /url: /lot-akrobacyjny#faq
+    - generic [ref=e176]:
+      - paragraph [ref=e177]: © 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP
+      - generic [ref=e178]:
+        - link "Facebook" [ref=e179] [cursor=pointer]:
+          - /url: https://www.facebook.com/akrobacjacom/
+        - link "WhatsApp" [ref=e180] [cursor=pointer]:
+          - /url: https://wa.me/48535535221
+  - button "Otwórz czat" [ref=e181] [cursor=pointer]:
+    - img [ref=e182]
+  - dialog "Ustawienia cookies" [ref=e184]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e185]
+    - paragraph [ref=e186]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e187] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e188]:
+      - button "Zgoda na wszystkie" [ref=e189] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e190] [cursor=pointer]
+      - button "Ustawienia" [ref=e191] [cursor=pointer]

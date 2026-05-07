@@ -1,0 +1,387 @@
+- generic [ref=e2]:
+  - region "Notifications (F8)":
+    - list
+  - region "Notifications alt+T"
+  - generic [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e6]:
+        - generic [ref=e7] [cursor=pointer]:
+          - generic:
+            - img "World Aerobatic League"
+          - generic [ref=e8]:
+            - generic [ref=e9]: AEROBATICS
+            - generic [ref=e10]: Mastery Camps
+        - generic [ref=e11]:
+          - button "The Concept" [ref=e12] [cursor=pointer]
+          - button "The Camp Experience" [ref=e13] [cursor=pointer]
+          - button "Fleet" [ref=e14] [cursor=pointer]
+          - button "Pricing" [ref=e15] [cursor=pointer]
+          - button "FAQ" [ref=e16] [cursor=pointer]
+          - button "Membership" [ref=e17] [cursor=pointer]
+          - button "APPLY NOW" [ref=e18] [cursor=pointer]:
+            - img
+            - text: APPLY NOW
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: World Aerobatic League — Official Training Camps
+        - generic [ref=e22]:
+          - heading "TRAIN AEROBATICS WITH" [level=1] [ref=e23]
+          - heading "WORLD CHAMPIONS" [level=2] [ref=e24]
+        - paragraph [ref=e25]: "& World Class Coaches"
+        - paragraph [ref=e27]: Passion Knows No Borders — Get ready for the 2026 season
+        - generic [ref=e28]:
+          - button "Apply Now" [ref=e29] [cursor=pointer]:
+            - img
+            - text: Apply Now
+          - button "Learn More" [ref=e30] [cursor=pointer]
+      - generic:
+        - img "Extra 330 SC aerobatic aircraft on tarmac"
+    - generic [ref=e36]:
+      - generic [ref=e37]:
+        - text: The Concept
+        - heading "World-Class Training" [level=2] [ref=e38]
+        - paragraph [ref=e39]: Learn from top aerobatic pilots and Judges with decades of competition experience.
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - img "Florent Oddon" [ref=e44]
+          - generic [ref=e45]:
+            - heading "Florent Oddon" [level=3] [ref=e46]
+            - paragraph [ref=e47]: Aerobatic Coach, World Champion UNL 2X
+        - generic [ref=e48]:
+          - img "Pierre Varloteaux" [ref=e51]
+          - generic [ref=e52]:
+            - heading "Pierre Varloteaux" [level=3] [ref=e53]
+            - paragraph [ref=e54]: 17 years in French Aerobatic team and team world champion
+        - generic [ref=e55]:
+          - img "Louis Vanel" [ref=e58]
+          - generic [ref=e59]:
+            - heading "Louis Vanel" [level=3] [ref=e60]
+            - paragraph [ref=e61]: Aerobatic Coach, World Champion Advanced 2014 World Champion Unlimited 2019
+        - generic [ref=e62]:
+          - img "Mélanie Astles" [ref=e65]
+          - generic [ref=e66]:
+            - heading "Mélanie Astles" [level=3] [ref=e67]
+            - paragraph [ref=e68]: Aerobatic Coach, Former Red Bull Air Race pilot Top 5 International Advanced 2023/2024
+      - generic [ref=e69]:
+        - heading "International Judge" [level=3] [ref=e70]
+        - generic [ref=e72]:
+          - img "Brian Gleave" [ref=e75]
+          - generic [ref=e76]:
+            - heading "Brian Gleave" [level=3] [ref=e77]
+            - paragraph [ref=e78]: World-Class Judging & Professional Feedback
+    - generic [ref=e81]:
+      - generic [ref=e82]:
+        - text: The Machine
+        - heading "Extra 330 SC" [level=2] [ref=e83]
+        - paragraph [ref=e84]: One of the world's finest aerobatic aircraft — pure power, precision, and performance.
+        - generic [ref=e85]:
+          - button "F-HXAL" [ref=e86] [cursor=pointer]
+          - button "F-HMEL" [ref=e87] [cursor=pointer]
+      - generic [ref=e88]:
+        - generic:
+          - img "Extra 330 SC"
+        - img
+        - generic [ref=e90]:
+          - paragraph [ref=e91]: Engine
+          - paragraph [ref=e92]: Lycoming AEIO-580
+          - paragraph [ref=e93]: 6-cylinder, fuel-injected
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - paragraph [ref=e96]: "315"
+              - paragraph [ref=e97]: HP
+            - generic [ref=e98]:
+              - paragraph [ref=e99]: "235"
+              - paragraph [ref=e100]: kW
+        - generic [ref=e102]:
+          - paragraph [ref=e103]: Dimensions
+          - generic [ref=e104]:
+            - generic [ref=e105]:
+              - paragraph [ref=e106]: 8.00 m
+              - paragraph [ref=e107]: Wingspan
+            - generic [ref=e108]:
+              - paragraph [ref=e109]: 6.97 m
+              - paragraph [ref=e110]: Length
+            - generic [ref=e111]:
+              - paragraph [ref=e112]: 680 kg
+              - paragraph [ref=e113]: Empty weight
+            - generic [ref=e114]:
+              - paragraph [ref=e115]: Carbon
+              - paragraph [ref=e116]: Structure
+        - generic [ref=e118]:
+          - paragraph [ref=e119]: Propeller & Gear
+          - paragraph [ref=e120]: MT 3-Blade
+          - paragraph [ref=e121]: Constant-speed propeller
+          - generic [ref=e122]:
+            - paragraph [ref=e123]: Fixed carbon landing gear
+            - paragraph [ref=e124]: Avgas 100LL fuel
+        - generic [ref=e126]:
+          - paragraph [ref=e127]: Performance
+          - generic [ref=e128]:
+            - generic [ref=e129]:
+              - paragraph [ref=e130]: 407 km/h
+              - paragraph [ref=e131]: Top speed
+            - generic [ref=e132]:
+              - paragraph [ref=e133]: ±10 G
+              - paragraph [ref=e134]: G-Load
+            - generic [ref=e135]:
+              - paragraph [ref=e136]: 420 °/s
+              - paragraph [ref=e137]: Roll rate
+            - generic [ref=e138]:
+              - paragraph [ref=e139]: 10,000 ft
+              - paragraph [ref=e140]: Ceiling
+    - generic [ref=e143]:
+      - generic [ref=e144]:
+        - text: Coming Soon — Dual Aircraft
+        - heading "Dyn'Aéro CR 100" [level=2] [ref=e145]
+        - paragraph [ref=e146]: A versatile two-seat aerobatic trainer — arriving very soon at our camps.
+        - generic [ref=e147]: Coming Soon — Dual Aircraft
+      - generic [ref=e148]:
+        - generic:
+          - img "Dyn'Aéro CR 100"
+        - img
+        - generic [ref=e150]:
+          - paragraph [ref=e151]: Engine
+          - paragraph [ref=e152]: Lycoming AEIO-360
+          - paragraph [ref=e153]: 4-cylinder, fuel-injected
+          - generic [ref=e154]:
+            - generic [ref=e155]:
+              - paragraph [ref=e156]: "180"
+              - paragraph [ref=e157]: HP
+            - generic [ref=e158]:
+              - paragraph [ref=e159]: "134"
+              - paragraph [ref=e160]: kW
+        - generic [ref=e162]:
+          - paragraph [ref=e163]: Dimensions
+          - generic [ref=e164]:
+            - generic [ref=e165]:
+              - paragraph [ref=e166]: 8.50 m
+              - paragraph [ref=e167]: Wingspan
+            - generic [ref=e168]:
+              - paragraph [ref=e169]: 7.50 m
+              - paragraph [ref=e170]: Length
+            - generic [ref=e171]:
+              - paragraph [ref=e172]: 550 kg
+              - paragraph [ref=e173]: Empty weight
+            - generic [ref=e174]:
+              - paragraph [ref=e175]: 760 kg
+              - paragraph [ref=e176]: MTOW
+        - generic [ref=e178]:
+          - paragraph [ref=e179]: Structure
+          - paragraph [ref=e180]: Wood & Carbon Fibre
+          - paragraph [ref=e181]: Composite construction
+          - generic [ref=e182]:
+            - paragraph [ref=e183]: 2-seat tandem cockpit
+            - paragraph [ref=e184]: Low-wing monoplane
+        - generic [ref=e186]:
+          - paragraph [ref=e187]: Performance
+          - generic [ref=e188]:
+            - generic [ref=e189]:
+              - paragraph [ref=e190]: 300 km/h
+              - paragraph [ref=e191]: Top speed
+            - generic [ref=e192]:
+              - paragraph [ref=e193]: +8/-6 G
+              - paragraph [ref=e194]: G-Load
+            - generic [ref=e195]:
+              - paragraph [ref=e196]: 200 °/s
+              - paragraph [ref=e197]: Roll rate
+            - generic [ref=e198]:
+              - paragraph [ref=e199]: 10.65 m²
+              - paragraph [ref=e200]: Wing area
+    - generic [ref=e202]:
+      - generic [ref=e203]:
+        - text: 2026 Season
+        - heading "2026 International WAL Training Camps" [level=2] [ref=e204]
+        - paragraph [ref=e205]: Book Direct
+        - paragraph [ref=e206]: Secure your spot at one of our international camps across Europe. Limited places available.
+        - paragraph [ref=e207]: ✈️ Open to external aircraft owners — subject to additional quote
+      - generic [ref=e208]:
+        - generic [ref=e210]:
+          - generic [ref=e212]: Past Camp
+          - heading "WAL TC1" [level=3] [ref=e213]
+          - generic [ref=e214]:
+            - img [ref=e215]
+            - generic [ref=e217]: 20 Mar – 24 Mar 2026
+          - generic [ref=e218]:
+            - img [ref=e219]
+            - generic [ref=e222]: 🇵🇹 Santarém, Portugal
+          - generic [ref=e225]:
+            - img "F-HXAL" [ref=e226]
+            - generic [ref=e227]:
+              - generic [ref=e228]: Extra 330 SC
+              - generic [ref=e229]: F-HXAL
+          - generic [ref=e230]:
+            - generic [ref=e231]:
+              - paragraph [ref=e232]: "Coaches:"
+              - generic [ref=e234]:
+                - img "Florent Oddon" [ref=e236]
+                - generic [ref=e237]: Florent Oddon
+            - generic [ref=e238]:
+              - paragraph [ref=e239]: "Judging Feedback:"
+              - generic [ref=e240]:
+                - img "Brian Gleave" [ref=e242]
+                - generic [ref=e243]: Brian Gleave
+          - generic [ref=e244]:
+            - button "Completed" [disabled]
+        - generic [ref=e246]:
+          - generic [ref=e248]: Past Camp
+          - heading "WAL TC2" [level=3] [ref=e249]
+          - generic [ref=e250]:
+            - img [ref=e251]
+            - generic [ref=e253]: 8 Apr – 12 Apr 2026
+          - generic [ref=e254]:
+            - img [ref=e255]
+            - generic [ref=e258]: 🇵🇹 Santarém, Portugal
+          - generic [ref=e261]:
+            - img "F-HXAL" [ref=e262]
+            - generic [ref=e263]:
+              - generic [ref=e264]: Extra 330 SC
+              - generic [ref=e265]: F-HXAL
+          - generic [ref=e266]:
+            - generic [ref=e267]:
+              - paragraph [ref=e268]: "Coaches:"
+              - generic [ref=e270]:
+                - img "Pierre Varloteaux" [ref=e272]
+                - generic [ref=e273]: Pierre Varloteaux
+            - generic [ref=e274]:
+              - paragraph [ref=e275]: "Judging Feedback:"
+              - generic [ref=e276]:
+                - img "Pierre Varloteaux" [ref=e278]
+                - generic [ref=e279]: Pierre Varloteaux
+          - generic [ref=e280]:
+            - button "Completed" [disabled]
+        - generic [ref=e282]:
+          - heading "WAL TC3" [level=3] [ref=e284]
+          - generic [ref=e285]:
+            - img [ref=e286]
+            - generic [ref=e288]: 15 May – 24 May 2026
+          - generic [ref=e289]:
+            - img [ref=e290]
+            - generic [ref=e293]: 🇵🇹 Santarém, Portugal
+          - generic [ref=e295]:
+            - generic [ref=e296]:
+              - img "F-HXAL" [ref=e297]
+              - generic [ref=e298]:
+                - generic [ref=e299]: Extra 330 SC
+                - generic [ref=e300]: F-HXAL
+            - generic [ref=e301]:
+              - img "F-HMEL" [ref=e302]
+              - generic [ref=e303]:
+                - generic [ref=e304]: Extra 330 SC
+                - generic [ref=e305]: F-HMEL
+            - generic [ref=e306]:
+              - img "CR100" [ref=e307]
+              - generic [ref=e308]:
+                - generic [ref=e309]: DynAéro CR100
+                - generic [ref=e310]: F-PSKG
+          - generic [ref=e311]:
+            - generic [ref=e312]:
+              - paragraph [ref=e313]: "Coaches:"
+              - generic [ref=e315]:
+                - img "Pierre Varloteaux" [ref=e317]
+                - generic [ref=e318]: Pierre Varloteaux
+            - generic [ref=e319]:
+              - paragraph [ref=e320]: "Judging Feedback:"
+              - generic [ref=e321]:
+                - img "Brian Gleave" [ref=e323]
+                - generic [ref=e324]: Brian Gleave
+          - button "Book Now" [ref=e326] [cursor=pointer]
+        - generic [ref=e328]:
+          - heading "WAL TC4" [level=3] [ref=e330]
+          - generic [ref=e331]:
+            - img [ref=e332]
+            - generic [ref=e334]: 12 Jun – 18 Jun 2026
+          - generic [ref=e335]:
+            - img [ref=e336]
+            - generic [ref=e339]: 🇵🇹 Santarém, Portugal
+          - generic [ref=e341]:
+            - generic [ref=e342]:
+              - img "F-HXAL" [ref=e343]
+              - generic [ref=e344]:
+                - generic [ref=e345]: Extra 330 SC
+                - generic [ref=e346]: F-HXAL
+            - generic [ref=e347]:
+              - img "CR100" [ref=e348]
+              - generic [ref=e349]:
+                - generic [ref=e350]: DynAéro CR100
+                - generic [ref=e351]: F-PSKG
+          - generic [ref=e352]:
+            - generic [ref=e353]:
+              - paragraph [ref=e354]: "Coaches:"
+              - generic [ref=e356]:
+                - img "Pierre Varloteaux" [ref=e358]
+                - generic [ref=e359]: Pierre Varloteaux
+            - generic [ref=e360]:
+              - paragraph [ref=e361]: "Judging Feedback:"
+              - generic [ref=e362]:
+                - img "Brian Gleave" [ref=e364]
+                - generic [ref=e365]: Brian Gleave
+          - button "Book Now" [ref=e367] [cursor=pointer]
+      - button "View All Camps →" [ref=e369] [cursor=pointer]
+    - contentinfo [ref=e370]:
+      - generic [ref=e372]:
+        - generic [ref=e373]:
+          - text: Next Camp
+          - heading "WAL TC2" [level=3] [ref=e374]
+          - generic [ref=e375]:
+            - img [ref=e376]
+            - generic [ref=e378]: 8 Apr – 12 Apr 2026
+          - generic [ref=e379]:
+            - img [ref=e380]
+            - generic [ref=e383]: 🇵🇹 Santarém, Portugal
+          - generic [ref=e385]:
+            - img "Pierre Varloteaux" [ref=e387]
+            - generic [ref=e388]:
+              - paragraph [ref=e389]: Coach & Judge
+              - paragraph [ref=e390]: Pierre Varloteaux
+          - generic [ref=e391]:
+            - img [ref=e392]
+            - generic [ref=e394]: Extra 330 SC F-HXAL
+          - generic [ref=e395]: 1 spot left
+          - button "Book Now" [ref=e398] [cursor=pointer]
+        - generic [ref=e399]:
+          - generic [ref=e400]:
+            - generic [ref=e401]:
+              - generic:
+                - img "World Aerobatic League"
+              - generic [ref=e402]:
+                - generic [ref=e403]: AEROBATICS
+                - generic [ref=e404]: Mastery Camps
+            - paragraph [ref=e405]: Aerobatic training camps across Europe for intermediate to Unlimited level pilots.
+          - generic [ref=e406]:
+            - heading "Quick Links" [level=3] [ref=e407]
+            - list [ref=e408]:
+              - listitem [ref=e409]:
+                - link "The Concept" [ref=e410] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e411]:
+                - link "What to Expect" [ref=e412] [cursor=pointer]:
+                  - /url: /about-camps
+              - listitem [ref=e413]:
+                - link "Fleet" [ref=e414] [cursor=pointer]:
+                  - /url: /aircraft
+              - listitem [ref=e415]:
+                - link "Pricing" [ref=e416] [cursor=pointer]:
+                  - /url: /pricing
+              - listitem [ref=e417]:
+                - link "FAQ" [ref=e418] [cursor=pointer]:
+                  - /url: /faq
+              - listitem [ref=e419]:
+                - link "Membership" [ref=e420] [cursor=pointer]:
+                  - /url: /membership
+          - generic [ref=e421]:
+            - heading "Contact" [level=3] [ref=e422]
+            - list [ref=e423]:
+              - listitem [ref=e424]:
+                - img [ref=e425]
+                - generic [ref=e428]: Santarém, Portugal
+              - listitem [ref=e429]:
+                - button "Contact us — Booking form" [ref=e430] [cursor=pointer]:
+                  - img [ref=e431]
+                  - text: Contact us — Booking form
+        - generic [ref=e433]:
+          - paragraph [ref=e434]: © 2026 Aerobatics Mastery Camps. All rights reserved.
+          - generic [ref=e435]:
+            - link "Privacy Policy" [ref=e436] [cursor=pointer]:
+              - /url: "#"
+            - link "Terms of Service" [ref=e437] [cursor=pointer]:
+              - /url: "#"

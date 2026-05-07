@@ -3,6 +3,7 @@ import { generateVoucherPdf } from '../../src/lib/pdf';
 import { sendVoucherEmail, escapeHtml } from '../../src/lib/email';
 import { createInvoice } from '../../src/lib/wfirma';
 import { sendMetaPurchase } from '../../src/lib/meta-capi';
+import { createPrintfulOrder, confirmPrintfulOrder } from '../../src/lib/printful';
 
 // Notify owner about new paid order via Resend
 async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: PackageId; customerName: string; customerEmail: string; amount: number; videoAddon: boolean }): Promise<void> {
@@ -115,10 +116,40 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         "UPDATE merch_orders SET status = 'paid', paid_at = datetime('now'), stripe_session_id = ? WHERE id = ? AND status = 'pending'"
       ).bind(session.id as string, merchOrderId).run();
       if (res.meta.changes === 0) {
-        // Already processed — ack so Stripe stops retrying.
         return Response.json({ ok: true, duplicate: true });
       }
-      // TODO: auto-create Printful order here when product mapping is configured
+
+      // Auto-create Printful order (no-op if printful_data not configured on products yet)
+      ctx.waitUntil((async () => {
+        try {
+          const mo = await ctx.env.DB.prepare(
+            'SELECT customer_name, customer_email, shipping_address, shipping_city, shipping_zip, items FROM merch_orders WHERE id = ?'
+          ).bind(merchOrderId).first<{
+            customer_name: string; customer_email: string;
+            shipping_address: string; shipping_city: string; shipping_zip: string;
+            items: string;
+          }>();
+          if (!mo) return;
+          const pfOrderId = await createPrintfulOrder(ctx.env, {
+            id: merchOrderId,
+            customer_name: mo.customer_name,
+            customer_email: mo.customer_email,
+            shipping_address: mo.shipping_address,
+            shipping_city: mo.shipping_city,
+            shipping_zip: mo.shipping_zip,
+            items: JSON.parse(mo.items),
+          });
+          if (pfOrderId) {
+            await confirmPrintfulOrder(ctx.env, pfOrderId);
+            await ctx.env.DB.prepare(
+              "UPDATE merch_orders SET status = 'in_production' WHERE id = ?"
+            ).bind(merchOrderId).run();
+          }
+        } catch (err) {
+          console.error('Printful order creation failed:', err);
+        }
+      })());
+
       return Response.json({ ok: true });
     }
 

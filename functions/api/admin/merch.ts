@@ -1,13 +1,11 @@
 import { type Env } from '../../../src/lib/types';
 import { checkAdminAuth } from '../../../src/lib/admin-auth';
+import { listPrintfulStoreProducts } from '../../../src/lib/printful';
 
-// Konkretny typ body — żeby walidować typeof przed bindem do D1
-// (zamiast surowego Record<string, unknown>).
 interface MerchBody {
   action?: string;
   id?: string;
   tracking?: string;
-  // create_product
   name?: string;
   slug?: string;
   category?: string;
@@ -16,6 +14,7 @@ interface MerchBody {
   image_url?: string;
   variants?: string;
   sort_order?: number;
+  printful_data?: string; // JSON: {store_product_id, variants:{size->id}}
 }
 
 // GET /api/admin/merch — list merch orders
@@ -124,6 +123,19 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       if (typeof body.id !== 'string' || !body.id) return Response.json({ error: 'Podaj id produktu' }, { status: 400 });
       await ctx.env.DB.prepare('DELETE FROM products WHERE id = ?').bind(body.id).run();
       return Response.json({ ok: true });
+    }
+
+    case 'set_printful_data': {
+      if (typeof body.id !== 'string' || !body.id) return Response.json({ error: 'Podaj id produktu' }, { status: 400 });
+      if (typeof body.printful_data !== 'string') return Response.json({ error: 'Podaj printful_data jako JSON string' }, { status: 400 });
+      try { JSON.parse(body.printful_data); } catch { return Response.json({ error: 'printful_data musi być poprawnym JSON' }, { status: 400 }); }
+      await ctx.env.DB.prepare('UPDATE products SET printful_data = ? WHERE id = ?').bind(body.printful_data, body.id).run();
+      return Response.json({ ok: true });
+    }
+
+    case 'list_printful_products': {
+      const products = await listPrintfulStoreProducts(ctx.env);
+      return Response.json({ products });
     }
 
     default:

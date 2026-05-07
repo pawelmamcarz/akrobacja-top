@@ -1,0 +1,803 @@
+- generic [ref=e8]:
+  - generic [ref=e12]:
+    - generic [ref=e13]:
+      - complementary [ref=e14]:
+        - generic [ref=e15]:
+          - generic [ref=e16]:
+            - link [ref=e17] [cursor=pointer]:
+              - /url: /
+              - img [ref=e19]
+            - generic "Pawel@mamcarz.com's Account" [ref=e24]
+          - navigation [ref=e26]:
+            - generic [ref=e30]:
+              - button "Quick search..." [ref=e32] [cursor=pointer]:
+                - generic [ref=e33]:
+                  - img [ref=e34]
+                  - generic [ref=e36]: Quick search...
+                  - generic [ref=e37]: ⌘K
+              - generic [ref=e40]:
+                - link "Back to Domains" [ref=e43] [cursor=pointer]:
+                  - /url: /7677e3539ca70e9db1ec09c8196b29dd/domains/overview
+                  - generic [ref=e44]:
+                    - img [ref=e45]
+                    - generic [ref=e47]: Back to Domains
+                - list [ref=e50]:
+                  - listitem [ref=e51]:
+                    - link "Overview" [ref=e52] [cursor=pointer]:
+                      - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/
+                      - generic [ref=e53]:
+                        - img [ref=e54]
+                        - generic [ref=e57]: Overview
+                  - listitem [ref=e58]:
+                    - button "Recents" [ref=e59] [cursor=pointer]:
+                      - generic [ref=e60]:
+                        - img [ref=e61]
+                        - generic [ref=e64]: Recents
+                        - img [ref=e65]
+                    - list [ref=e67]:
+                      - listitem [ref=e69]:
+                        - link "Records flowprocurement.co... / DNS" [ref=e70] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/flowprocurement.com/dns/records
+                          - generic [ref=e71]:
+                            - generic [ref=e72]: Records
+                            - generic [ref=e73]:
+                              - generic [ref=e74]: flowprocurement.co...
+                              - generic [ref=e75]: /
+                              - generic [ref=e76]: DNS
+                        - button "Pin" [ref=e78] [cursor=pointer]:
+                          - generic [ref=e79]:
+                            - img [ref=e80]
+                            - img [ref=e85]
+                      - listitem [ref=e87]:
+                        - link "Workers & Pages Compute" [ref=e88] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/workers-and-pages
+                          - generic [ref=e89]:
+                            - generic [ref=e90]: Workers & Pages
+                            - generic [ref=e92]: Compute
+                        - button "Pin" [ref=e94] [cursor=pointer]:
+                          - generic [ref=e95]:
+                            - img [ref=e96]
+                            - img [ref=e101]
+                      - listitem [ref=e103]:
+                        - link "Registrations Domains" [ref=e104] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/domains/registrations
+                          - generic [ref=e105]:
+                            - generic [ref=e106]: Registrations
+                            - generic [ref=e108]: Domains
+                        - button "Pin" [ref=e110] [cursor=pointer]:
+                          - generic [ref=e111]:
+                            - img [ref=e112]
+                            - img [ref=e117]
+                      - listitem [ref=e119]:
+                        - link "Overview Domains" [ref=e120] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/domains/overview
+                          - generic [ref=e121]:
+                            - generic [ref=e122]: Overview
+                            - generic [ref=e124]: Domains
+                        - button "Pin" [ref=e126] [cursor=pointer]:
+                          - generic [ref=e127]:
+                            - img [ref=e128]
+                            - img [ref=e133]
+                      - listitem [ref=e135]:
+                        - link "czympojade.pl Domains" [ref=e136] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/czympojade.pl
+                          - generic [ref=e137]:
+                            - generic [ref=e138]: czympojade.pl
+                            - generic [ref=e140]: Domains
+                        - button "Pin" [ref=e142] [cursor=pointer]:
+                          - generic [ref=e143]:
+                            - img [ref=e144]
+                            - img [ref=e149]
+                  - listitem [ref=e151]:
+                    - button "AI Crawl Control" [ref=e152] [cursor=pointer]:
+                      - generic [ref=e153]:
+                        - img [ref=e154]
+                        - generic [ref=e157]: AI Crawl Control
+                        - img [ref=e158]
+                    - list [ref=e160]:
+                      - listitem [ref=e162]:
+                        - link "Overview" [ref=e163] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/ai/overview
+                          - generic [ref=e164]: Overview
+                      - listitem [ref=e165]:
+                        - link "Crawlers" [ref=e166] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/ai/bots
+                          - generic [ref=e167]: Crawlers
+                      - listitem [ref=e168]:
+                        - link "Metrics" [ref=e169] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/ai/metrics
+                          - generic [ref=e170]: Metrics
+                      - listitem [ref=e171]:
+                        - link "Directives" [ref=e172] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/ai/directives
+                          - generic [ref=e173]: Directives
+                      - listitem [ref=e174]:
+                        - link "Settings" [ref=e175] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/ai/settings
+                          - generic [ref=e176]: Settings
+                  - listitem [ref=e177]:
+                    - button "Investigate" [ref=e178] [cursor=pointer]:
+                      - generic [ref=e179]:
+                        - img [ref=e180]
+                        - generic [ref=e183]: Investigate
+                        - img [ref=e184]
+                    - list [ref=e186]:
+                      - listitem [ref=e188]:
+                        - button "Log Explorer" [ref=e189] [cursor=pointer]:
+                          - generic [ref=e191]: Log Explorer
+                          - img [ref=e192]
+                        - list [ref=e194]:
+                          - listitem [ref=e196]:
+                            - link "Log search" [ref=e197] [cursor=pointer]:
+                              - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/log-explorer/log-search
+                              - generic [ref=e198]: Log search
+                      - listitem [ref=e199]:
+                        - link "Trace Beta" [ref=e200] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/rules/trace/search
+                          - generic [ref=e201]: Trace
+                          - generic [ref=e203]: Beta
+                      - listitem [ref=e204]:
+                        - link "Logpush" [ref=e205] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/analytics/logs
+                          - generic [ref=e206]: Logpush
+                  - listitem [ref=e207]:
+                    - button "Analytics" [ref=e208] [cursor=pointer]:
+                      - generic [ref=e209]:
+                        - img [ref=e210]
+                        - generic [ref=e213]: Analytics
+                        - img [ref=e214]
+                    - list [ref=e216]:
+                      - listitem [ref=e218]:
+                        - link "HTTP Traffic" [ref=e219] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/analytics/traffic
+                          - generic [ref=e220]: HTTP Traffic
+                      - listitem [ref=e221]:
+                        - link "Web analytics" [ref=e222] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/analytics/web/overview
+                          - generic [ref=e223]: Web analytics
+                      - listitem [ref=e224]:
+                        - link "Performance" [ref=e225] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/analytics/performance
+                          - generic [ref=e226]: Performance
+                      - listitem [ref=e227]:
+                        - link "Workers" [ref=e228] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/analytics/workers
+                          - generic [ref=e229]: Workers
+                  - listitem [ref=e230]:
+                    - button "DNS" [expanded] [ref=e231] [cursor=pointer]:
+                      - generic [ref=e232]:
+                        - img [ref=e233]
+                        - generic [ref=e235]: DNS
+                        - img [ref=e236]
+                    - list [ref=e240]:
+                      - listitem [ref=e242]:
+                        - link "Records" [ref=e243] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/dns/records
+                          - generic [ref=e244]: Records
+                      - listitem [ref=e245]:
+                        - link "Analytics" [ref=e246] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/dns/analytics
+                          - generic [ref=e247]: Analytics
+                      - listitem [ref=e248]:
+                        - link "Settings" [ref=e249] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/dns/settings
+                          - generic [ref=e250]: Settings
+                  - listitem [ref=e251]:
+                    - button "Email" [ref=e252] [cursor=pointer]:
+                      - generic [ref=e253]:
+                        - img [ref=e254]
+                        - generic [ref=e258]: Email
+                        - img [ref=e259]
+                    - list [ref=e261]:
+                      - listitem [ref=e263]:
+                        - link "Email Routing" [ref=e264] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/email/routing
+                          - generic [ref=e265]: Email Routing
+                      - listitem [ref=e766]:
+                        - link "DMARC Management" [ref=e767] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/email/dmarc-management
+                          - generic [ref=e768]: DMARC Management
+                      - listitem [ref=e266]:
+                        - link "Email Security" [ref=e267] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/email/security
+                          - generic [ref=e268]: Email Security
+                  - listitem [ref=e269]:
+                    - button "SSL/TLS" [ref=e270] [cursor=pointer]:
+                      - generic [ref=e271]:
+                        - img [ref=e272]
+                        - generic [ref=e275]: SSL/TLS
+                        - img [ref=e276]
+                    - list [ref=e278]:
+                      - listitem [ref=e280]:
+                        - link "Overview" [ref=e281] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/ssl-tls
+                          - generic [ref=e282]: Overview
+                      - listitem [ref=e283]:
+                        - link "Edge Certificates" [ref=e284] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/ssl-tls/edge-certificates
+                          - generic [ref=e285]: Edge Certificates
+                      - listitem [ref=e769]:
+                        - link "Client Certificates" [ref=e770] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/ssl-tls/client-certificates
+                          - generic [ref=e771]: Client Certificates
+                      - listitem [ref=e286]:
+                        - link "Origin Server" [ref=e287] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/ssl-tls/origin
+                          - generic [ref=e288]: Origin Server
+                      - listitem [ref=e289]:
+                        - link "Custom Hostnames" [ref=e290] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/ssl-tls/custom-hostnames
+                          - generic [ref=e291]: Custom Hostnames
+                  - listitem [ref=e292]:
+                    - button "Security" [ref=e293] [cursor=pointer]:
+                      - generic [ref=e294]:
+                        - img [ref=e295]
+                        - generic [ref=e297]: Security
+                        - img [ref=e298]
+                    - list [ref=e300]:
+                      - listitem [ref=e302]:
+                        - link "Overview" [ref=e303] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/security/overview
+                          - generic [ref=e304]: Overview
+                      - listitem [ref=e305]:
+                        - link "Analytics" [ref=e306] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/security/analytics
+                          - generic [ref=e307]: Analytics
+                      - listitem [ref=e308]:
+                        - link "Web assets" [ref=e309] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/security/web-assets
+                          - generic [ref=e310]: Web assets
+                      - listitem [ref=e311]:
+                        - link "Security rules" [ref=e312] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/security/security-rules
+                          - generic [ref=e313]: Security rules
+                      - listitem [ref=e314]:
+                        - link "Settings" [ref=e315] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/security/settings
+                          - generic [ref=e316]: Settings
+                  - listitem [ref=e317]:
+                    - link "Access" [ref=e318] [cursor=pointer]:
+                      - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/access
+                      - generic [ref=e319]:
+                        - img [ref=e320]
+                        - generic [ref=e323]: Access
+                  - listitem [ref=e324]:
+                    - button "Speed" [ref=e325] [cursor=pointer]:
+                      - generic [ref=e326]:
+                        - img [ref=e327]
+                        - generic [ref=e329]: Speed
+                        - img [ref=e330]
+                    - list [ref=e332]:
+                      - listitem [ref=e334]:
+                        - link "Observatory Beta" [ref=e335] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/speed
+                          - generic [ref=e336]: Observatory
+                          - generic [ref=e338]: Beta
+                      - listitem [ref=e339]:
+                        - link "Origin Analytics Beta" [ref=e340] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/speed/origin-analytics
+                          - generic [ref=e341]: Origin Analytics
+                          - generic [ref=e343]: Beta
+                      - listitem [ref=e344]:
+                        - link "Real user monitoring" [ref=e345] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/speed/rum
+                          - generic [ref=e346]: Real user monitoring
+                      - listitem [ref=e347]:
+                        - link "Synthetic monitoring Beta" [ref=e348] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/speed/test
+                          - generic [ref=e349]: Synthetic monitoring
+                          - generic [ref=e351]: Beta
+                      - listitem [ref=e352]:
+                        - link "Settings" [ref=e353] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/speed/optimization
+                          - generic [ref=e354]: Settings
+                      - listitem [ref=e355]:
+                        - link "Smart Shield" [ref=e356] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/speed/smart-shield
+                          - generic [ref=e357]: Smart Shield
+                  - listitem [ref=e358]:
+                    - button "Caching" [ref=e359] [cursor=pointer]:
+                      - generic [ref=e360]:
+                        - img [ref=e361]
+                        - generic [ref=e366]: Caching
+                        - img [ref=e367]
+                    - list [ref=e369]:
+                      - listitem [ref=e371]:
+                        - link "Overview" [ref=e372] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/caching
+                          - generic [ref=e373]: Overview
+                      - listitem [ref=e374]:
+                        - link "Configuration" [ref=e375] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/caching/configuration
+                          - generic [ref=e376]: Configuration
+                      - listitem [ref=e377]:
+                        - link "Cache Rules" [ref=e378] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/caching/cache-rules
+                          - generic [ref=e379]: Cache Rules
+                      - listitem [ref=e380]:
+                        - link "Tiered Cache" [ref=e381] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/caching/tiered-cache
+                          - generic [ref=e382]: Tiered Cache
+                      - listitem [ref=e383]:
+                        - link "Cache Reserve" [ref=e384] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/caching/cache-reserve
+                          - generic [ref=e385]: Cache Reserve
+                  - listitem [ref=e386]:
+                    - link "Workers Routes" [ref=e387] [cursor=pointer]:
+                      - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/workers
+                      - generic [ref=e388]:
+                        - img [ref=e389]
+                        - generic [ref=e393]: Workers Routes
+                  - listitem [ref=e394]:
+                    - button "Rules" [ref=e395] [cursor=pointer]:
+                      - generic [ref=e396]:
+                        - img [ref=e397]
+                        - generic [ref=e400]: Rules
+                        - img [ref=e401]
+                    - list [ref=e403]:
+                      - listitem [ref=e405]:
+                        - link "Overview" [ref=e406] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/rules/overview
+                          - generic [ref=e407]: Overview
+                      - listitem [ref=e408]:
+                        - link "Snippets" [ref=e409] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/rules/snippets
+                          - generic [ref=e410]: Snippets
+                      - listitem [ref=e411]:
+                        - link "Cloud Connector Beta" [ref=e412] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/rules/cloud-connector
+                          - generic [ref=e413]: Cloud Connector
+                          - generic [ref=e415]: Beta
+                      - listitem [ref=e416]:
+                        - link "Page Rules" [ref=e417] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/rules/page-rules
+                          - generic [ref=e418]: Page Rules
+                      - listitem [ref=e419]:
+                        - link "Settings" [ref=e420] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/rules/settings
+                          - generic [ref=e421]: Settings
+                  - listitem [ref=e422]:
+                    - link "Error Pages New" [ref=e423] [cursor=pointer]:
+                      - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/error-pages
+                      - generic [ref=e424]:
+                        - img [ref=e425]
+                        - generic [ref=e428]: Error Pages
+                        - generic [ref=e430]: New
+                  - listitem [ref=e431]:
+                    - link "Network" [ref=e432] [cursor=pointer]:
+                      - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/network
+                      - generic [ref=e433]:
+                        - img [ref=e434]
+                        - generic [ref=e437]: Network
+                  - listitem [ref=e438]:
+                    - button "Traffic" [ref=e439] [cursor=pointer]:
+                      - generic [ref=e440]:
+                        - img [ref=e441]
+                        - generic [ref=e443]: Traffic
+                        - img [ref=e444]
+                    - list [ref=e446]:
+                      - listitem [ref=e448]:
+                        - link "Argo Smart Routing" [ref=e449] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/traffic
+                          - generic [ref=e450]: Argo Smart Routing
+                      - listitem [ref=e451]:
+                        - link "Load Balancing" [ref=e452] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/traffic/load-balancing
+                          - generic [ref=e453]: Load Balancing
+                      - listitem [ref=e454]:
+                        - link "Load Balancing Analytics" [ref=e455] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/traffic/load-balancing-analytics
+                          - generic [ref=e456]: Load Balancing Analytics
+                      - listitem [ref=e457]:
+                        - link "Health Checks" [ref=e458] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/traffic/health-checks
+                          - generic [ref=e459]: Health Checks
+                      - listitem [ref=e460]:
+                        - link "Waiting Room" [ref=e461] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/traffic/waiting-rooms
+                          - generic [ref=e462]: Waiting Room
+                  - listitem [ref=e463]:
+                    - link "Web3" [ref=e464] [cursor=pointer]:
+                      - /url: /7677e3539ca70e9db1ec09c8196b29dd/akrobacja.com/web3
+                      - generic [ref=e465]:
+                        - img [ref=e466]
+                        - generic [ref=e469]: Web3
+                  - listitem [ref=e470]
+                  - listitem [ref=e472]:
+                    - button "Manage account" [ref=e473] [cursor=pointer]:
+                      - generic [ref=e474]:
+                        - img [ref=e475]
+                        - generic [ref=e478]: Manage account
+                        - img [ref=e479]
+                    - list [ref=e481]:
+                      - listitem [ref=e483]:
+                        - link "Members" [ref=e484] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/members
+                          - generic [ref=e485]: Members
+                      - listitem [ref=e486]:
+                        - link "Billing" [ref=e487] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/billing
+                          - generic [ref=e488]: Billing
+                      - listitem [ref=e489]:
+                        - link "Account API tokens" [ref=e490] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/api-tokens
+                          - generic [ref=e491]: Account API tokens
+                      - listitem [ref=e492]:
+                        - link "Audit logs" [ref=e493] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/audit-log
+                          - generic [ref=e494]: Audit logs
+                      - listitem [ref=e495]:
+                        - link "Notifications" [ref=e496] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/notifications
+                          - generic [ref=e497]: Notifications
+                      - listitem [ref=e498]:
+                        - link "Shared config Alpha" [ref=e499] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/shared-configurations
+                          - generic [ref=e500]: Shared config
+                          - generic [ref=e502]: Alpha
+                      - listitem [ref=e503]:
+                        - link "Blocked content" [ref=e504] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/blocked-content
+                          - generic [ref=e505]: Blocked content
+                      - listitem [ref=e506]:
+                        - link "Abuse reports Beta" [ref=e507] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/abuse-reports
+                          - generic [ref=e508]: Abuse reports
+                          - generic [ref=e510]: Beta
+                      - listitem [ref=e511]:
+                        - link "Carbon Impact Report" [ref=e512] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/carbon
+                          - generic [ref=e513]: Carbon Impact Report
+                      - listitem [ref=e514]:
+                        - link "Configurations" [ref=e515] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/configurations
+                          - generic [ref=e516]: Configurations
+                      - listitem [ref=e517]:
+                        - link "Tagged Resources Beta" [ref=e518] [cursor=pointer]:
+                          - /url: /7677e3539ca70e9db1ec09c8196b29dd/tags
+                          - generic [ref=e519]: Tagged Resources
+                          - generic [ref=e521]: Beta
+        - button "Collapse sidebar" [expanded] [ref=e524] [cursor=pointer]:
+          - img
+      - generic [ref=e525]:
+        - banner [ref=e526]:
+          - generic [ref=e527]:
+            - button "akrobacja.com" [ref=e529] [cursor=pointer]:
+              - generic [ref=e530]: akrobacja.com
+              - img [ref=e531]
+            - button "Star domain" [ref=e534] [cursor=pointer]:
+              - img "Star domain" [ref=e535]
+            - button "Free" [ref=e538] [cursor=pointer]
+          - generic [ref=e539]:
+            - button "Ask AI" [ref=e540] [cursor=pointer]:
+              - img [ref=e541]
+              - generic [ref=e543]: Ask AI
+            - link "Support" [ref=e544] [cursor=pointer]:
+              - /url: /?to=/:account/support
+              - img [ref=e545]
+              - generic [ref=e547]: Support
+            - button "User menu" [ref=e548] [cursor=pointer]:
+              - img [ref=e549]
+        - main [ref=e551]:
+          - generic [ref=e553]:
+            - generic [ref=e555]:
+              - paragraph [ref=e556]: DNS
+              - heading "Records" [level=1] [ref=e558]:
+                - generic [ref=e559]: Records
+              - paragraph [ref=e560]:
+                - text: Configure DNS records and review
+                - link "proxy statusdocumentation" [ref=e561] [cursor=pointer]:
+                  - /url: https://developers.cloudflare.com/dns/manage-dns-records/reference/proxied-dns-records/
+                  - text: proxy status
+                  - img "documentation" [ref=e563]
+                - text: of your hostnames.
+              - button "open documentation" [ref=e566] [cursor=pointer]:
+                - button "open documentation" [ref=e567]:
+                  - img [ref=e568]
+                  - text: DNS documentation
+            - generic [ref=e571]:
+              - generic [ref=e572]:
+                - heading "Recommendations Hide" [level=3] [ref=e573]:
+                  - generic [ref=e574]: Recommendations
+                  - button "Hide" [expanded] [ref=e575] [cursor=pointer]
+                - generic [ref=e772]:
+                  - img [ref=e774]
+                  - generic [ref=e776]:
+                    - button "Add a DMARC record" [ref=e777] [cursor=pointer]
+                    - text: so your email provider can stop fake emails from reaching inboxes.
+                    - generic [ref=e779]: New Alert
+              - generic [ref=e599]:
+                - generic [ref=e600]:
+                  - generic [ref=e601]:
+                    - heading "DNS management for akrobacja.com" [level=3] [ref=e602]:
+                      - generic [ref=e603]:
+                        - text: DNS management for
+                        - generic [ref=e604]: akrobacja.com
+                    - generic [ref=e605]: Review, add, and edit DNS records. Changes propagate globally within minutes.
+                  - generic [ref=e606]:
+                    - generic [ref=e607]:
+                      - generic [ref=e608]:
+                        - generic [ref=e609]: "DNS Setup:"
+                        - generic [ref=e610]: Full
+                      - button [ref=e612] [cursor=pointer]:
+                        - img [ref=e613]
+                    - button "Import and Export" [ref=e615] [cursor=pointer]:
+                      - generic [ref=e616]:
+                        - generic [ref=e617]: Import and Export
+                        - img [ref=e618]
+                    - button "Dashboard Display Settings" [ref=e620] [cursor=pointer]:
+                      - generic [ref=e621]:
+                        - img [ref=e622]
+                        - generic [ref=e623]: Dashboard Display Settings
+                - generic [ref=e624]:
+                  - generic [ref=e628]:
+                    - button "Add filter" [ref=e630] [cursor=pointer]:
+                      - img [ref=e631]
+                      - generic [ref=e633]: Add filter
+                    - generic [ref=e634]:
+                      - generic [ref=e636]:
+                        - generic [ref=e637]:
+                          - generic [ref=e638]: Search DNS Records
+                          - generic [ref=e639]:
+                            - img [ref=e641]
+                            - textbox "Search DNS Records" [ref=e643]
+                        - button "Search" [ref=e644] [cursor=pointer]:
+                          - generic [ref=e645]: Search
+                      - button "Add record" [active] [ref=e646] [cursor=pointer]:
+                        - img [ref=e647]
+                        - generic [ref=e649]: Add record
+                  - status [ref=e650]: Your search yielded 8 results
+                  - table [ref=e652] [cursor=pointer]:
+                    - rowgroup [ref=e653]:
+                      - row "Type caret-right Name Content Proxy status TTL Actions" [ref=e654]:
+                        - columnheader [ref=e655]:
+                          - checkbox [ref=e657]
+                        - columnheader [ref=e658]
+                        - columnheader "Type caret-right" [ref=e659]:
+                          - generic [ref=e660]:
+                            - generic [ref=e661]:
+                              - generic [ref=e662]: Type
+                              - button [ref=e664]:
+                                - img [ref=e665]
+                            - img "caret-right" [ref=e1118]
+                        - columnheader "Name" [ref=e670]:
+                          - generic [ref=e672]:
+                            - generic [ref=e673]: Name
+                            - button [ref=e675]:
+                              - img [ref=e676]
+                        - columnheader "Content" [ref=e678]:
+                          - generic [ref=e680]:
+                            - generic [ref=e681]: Content
+                            - button [ref=e683]:
+                              - img [ref=e684]
+                        - columnheader "Proxy status" [ref=e686]:
+                          - generic [ref=e688]:
+                            - generic [ref=e689]: Proxy status
+                            - button [ref=e691]:
+                              - img [ref=e692]
+                        - columnheader "TTL" [ref=e694]:
+                          - generic [ref=e696]:
+                            - generic [ref=e697]: TTL
+                            - button [ref=e699]:
+                              - img [ref=e700]
+                        - columnheader "Actions" [ref=e702]
+                    - rowgroup [ref=e703]:
+                      - row "CNAME www akrobacja-top.pages.dev Proxied Auto Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e1120]:
+                        - cell [ref=e1121]:
+                          - checkbox [ref=e1123]
+                        - cell [ref=e1124]
+                        - cell "CNAME" [ref=e1125]:
+                          - generic "CNAME - modified a few seconds ago" [ref=e1127]: CNAME
+                        - cell "www" [ref=e1128]:
+                          - generic "www.akrobacja.com" [ref=e1129]: www
+                        - cell "akrobacja-top.pages.dev" [ref=e1130]:
+                          - generic "akrobacja-top.pages.dev" [ref=e1133]
+                        - cell "Proxied" [ref=e1134]:
+                          - paragraph [ref=e1141]: Proxied
+                        - cell "Auto" [ref=e1142]:
+                          - generic [ref=e1144]: Auto
+                        - cell "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e1145]:
+                          - button "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e1146]:
+                            - text: Edit
+                            - generic [ref=e1147]: When toggled open, an additional table row will be added below this row to enable editing DNS records.
+                            - img "caret-right" [ref=e1149]
+                      - row "Info CNAME akrobacja.com akrobacja-top.pages.dev Proxied Auto Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e783]:
+                        - cell [ref=e784]:
+                          - checkbox [ref=e786]
+                        - cell "Info" [ref=e787]:
+                          - button "Info" [ref=e788]:
+                            - img [ref=e789]
+                        - cell "CNAME" [ref=e792]:
+                          - generic "CNAME - modified 2 months ago" [ref=e794]: CNAME
+                        - cell "akrobacja.com" [ref=e795]:
+                          - generic "akrobacja.com" [ref=e796]
+                        - cell "akrobacja-top.pages.dev" [ref=e797]:
+                          - generic "akrobacja-top.pages.dev" [ref=e800]
+                        - cell "Proxied" [ref=e801]:
+                          - paragraph [ref=e808]: Proxied
+                        - cell "Auto" [ref=e809]:
+                          - generic [ref=e811]: Auto
+                        - cell "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e812]:
+                          - button "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e813]:
+                            - text: Edit
+                            - generic [ref=e814]: When toggled open, an additional table row will be added below this row to enable editing DNS records.
+                            - img "caret-right" [ref=e816]
+                      - row "MX akrobacja.com route3.mx.cloudflare.net 42 DNS only Auto Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e818]:
+                        - cell [ref=e819]:
+                          - button [ref=e820]:
+                            - img [ref=e821]
+                        - cell [ref=e824]
+                        - cell "MX" [ref=e825]:
+                          - generic "MX - modified a month ago" [ref=e827]: MX
+                        - cell "akrobacja.com" [ref=e828]:
+                          - generic "akrobacja.com" [ref=e829]
+                        - cell "route3.mx.cloudflare.net 42" [ref=e830]:
+                          - generic [ref=e831]:
+                            - generic "route3.mx.cloudflare.net" [ref=e833]
+                            - button "42" [ref=e834]:
+                              - generic [ref=e835]: "42"
+                        - cell "DNS only" [ref=e836]:
+                          - paragraph [ref=e837]: DNS only
+                        - cell "Auto" [ref=e838]:
+                          - generic [ref=e840]: Auto
+                        - cell "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e841]:
+                          - button "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e842]:
+                            - text: Edit
+                            - generic [ref=e843]: When toggled open, an additional table row will be added below this row to enable editing DNS records.
+                            - img "caret-right" [ref=e845]
+                      - row "MX akrobacja.com route2.mx.cloudflare.net 65 DNS only Auto Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e847]:
+                        - cell [ref=e848]:
+                          - button [ref=e849]:
+                            - img [ref=e850]
+                        - cell [ref=e853]
+                        - cell "MX" [ref=e854]:
+                          - generic "MX - modified a month ago" [ref=e856]: MX
+                        - cell "akrobacja.com" [ref=e857]:
+                          - generic "akrobacja.com" [ref=e858]
+                        - cell "route2.mx.cloudflare.net 65" [ref=e859]:
+                          - generic [ref=e860]:
+                            - generic "route2.mx.cloudflare.net" [ref=e862]
+                            - button "65" [ref=e863]:
+                              - generic [ref=e864]: "65"
+                        - cell "DNS only" [ref=e865]:
+                          - paragraph [ref=e866]: DNS only
+                        - cell "Auto" [ref=e867]:
+                          - generic [ref=e869]: Auto
+                        - cell "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e870]:
+                          - button "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e871]:
+                            - text: Edit
+                            - generic [ref=e872]: When toggled open, an additional table row will be added below this row to enable editing DNS records.
+                            - img "caret-right" [ref=e874]
+                      - row "MX akrobacja.com route1.mx.cloudflare.net 80 DNS only Auto Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e876]:
+                        - cell [ref=e877]:
+                          - button [ref=e878]:
+                            - img [ref=e879]
+                        - cell [ref=e882]
+                        - cell "MX" [ref=e883]:
+                          - generic "MX - modified a month ago" [ref=e885]: MX
+                        - cell "akrobacja.com" [ref=e886]:
+                          - generic "akrobacja.com" [ref=e887]
+                        - cell "route1.mx.cloudflare.net 80" [ref=e888]:
+                          - generic [ref=e889]:
+                            - generic "route1.mx.cloudflare.net" [ref=e891]
+                            - button "80" [ref=e892]:
+                              - generic [ref=e893]: "80"
+                        - cell "DNS only" [ref=e894]:
+                          - paragraph [ref=e895]: DNS only
+                        - cell "Auto" [ref=e896]:
+                          - generic [ref=e898]: Auto
+                        - cell "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e899]:
+                          - button "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e900]:
+                            - text: Edit
+                            - generic [ref=e901]: When toggled open, an additional table row will be added below this row to enable editing DNS records.
+                            - img "caret-right" [ref=e903]
+                      - row "TXT akrobacja.com \"v=spf1 include:_spf.mx.cloudflare.net ~all\" DNS only Auto Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e905]:
+                        - cell [ref=e906]:
+                          - checkbox [ref=e908]
+                        - cell [ref=e909]
+                        - cell "TXT" [ref=e910]:
+                          - generic "TXT - modified a month ago" [ref=e912]: TXT
+                        - cell "akrobacja.com" [ref=e913]:
+                          - generic "akrobacja.com" [ref=e914]
+                        - cell "\"v=spf1 include:_spf.mx.cloudflare.net ~all\"" [ref=e915]:
+                          - generic "\"v=spf1 include:_spf.mx.cloudflare.net ~all\"" [ref=e918]
+                        - cell "DNS only" [ref=e919]:
+                          - paragraph [ref=e920]: DNS only
+                        - cell "Auto" [ref=e921]:
+                          - generic [ref=e923]: Auto
+                        - cell "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e924]:
+                          - button "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e925]:
+                            - text: Edit
+                            - generic [ref=e926]: When toggled open, an additional table row will be added below this row to enable editing DNS records.
+                            - img "caret-right" [ref=e928]
+                      - row "TXT akrobacja.com \"google-site-verification=snahlXcj-y-sDzZ8q7C2hWNiqzzl2UyVXDCFqhYYsRQ\" DNS only 1 hr Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e930]:
+                        - cell [ref=e931]:
+                          - checkbox [ref=e933]
+                        - cell [ref=e934]
+                        - cell "TXT" [ref=e935]:
+                          - generic "TXT - modified 2 months ago" [ref=e937]: TXT
+                        - cell "akrobacja.com" [ref=e938]:
+                          - generic "akrobacja.com" [ref=e939]
+                        - cell "\"google-site-verification=snahlXcj-y-sDzZ8q7C2hWNiqzzl2UyVXDCFqhYYsRQ\"" [ref=e940]:
+                          - generic "\"google-site-verification=snahlXcj-y-sDzZ8q7C2hWNiqzzl2UyVXDCFqhYYsRQ\"" [ref=e943]
+                        - cell "DNS only" [ref=e944]:
+                          - paragraph [ref=e945]: DNS only
+                        - cell "1 hr" [ref=e946]:
+                          - generic [ref=e948]: 1 hr
+                        - cell "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e949]:
+                          - button "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e950]:
+                            - text: Edit
+                            - generic [ref=e951]: When toggled open, an additional table row will be added below this row to enable editing DNS records.
+                            - img "caret-right" [ref=e953]
+                      - row "TXT cf2024-1._domainkey \"v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiweykoi+o48IOGuP7GR3X0MOExCUDY/BCRHoWBnh3rChl7WhdyCxW3jgq1daEjPPqoi7sJvdg5hEQVsgVRQP4DcnQDVjGMbASQtrY4WmB1VebF+RPJB2ECPsEDTpeiI5ZyUAwJaVX7r6bznU67g7LvFq35yIo4sdlmtZGV+i0H4cpYH9+3JJ78k\" \"m4KXwaf9xUJCWF6nxeD+qG6Fyruw1Qlbds2r85U9dkNDVAS3gioCvELryh1TxKGiVTkg4wqHTyHfWsp7KD3WQHYJn0RyfJJu6YEmL77zonn7p2SRMvTMP3ZEXibnC9gz3nnhR6wcYL8Q7zXypKTMD58bTixDSJwIDAQAB\" DNS only Auto Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e955]:
+                        - cell [ref=e956]:
+                          - button [ref=e957]:
+                            - img [ref=e958]
+                        - cell [ref=e961]
+                        - cell "TXT" [ref=e962]:
+                          - generic "TXT - modified a month ago" [ref=e964]: TXT
+                        - cell "cf2024-1._domainkey" [ref=e965]:
+                          - generic "cf2024-1._domainkey.akrobacja.com" [ref=e966]: cf2024-1._domainkey
+                        - cell "\"v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiweykoi+o48IOGuP7GR3X0MOExCUDY/BCRHoWBnh3rChl7WhdyCxW3jgq1daEjPPqoi7sJvdg5hEQVsgVRQP4DcnQDVjGMbASQtrY4WmB1VebF+RPJB2ECPsEDTpeiI5ZyUAwJaVX7r6bznU67g7LvFq35yIo4sdlmtZGV+i0H4cpYH9+3JJ78k\" \"m4KXwaf9xUJCWF6nxeD+qG6Fyruw1Qlbds2r85U9dkNDVAS3gioCvELryh1TxKGiVTkg4wqHTyHfWsp7KD3WQHYJn0RyfJJu6YEmL77zonn7p2SRMvTMP3ZEXibnC9gz3nnhR6wcYL8Q7zXypKTMD58bTixDSJwIDAQAB\"" [ref=e967]:
+                          - generic "\"v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiweykoi+o48IOGuP7GR3X0MOExCUDY/BCRHoWBnh3rChl7WhdyCxW3jgq1daEjPPqoi7sJvdg5hEQVsgVRQP4DcnQDVjGMbASQtrY4WmB1VebF+RPJB2ECPsEDTpeiI5ZyUAwJaVX7r6bznU67g7LvFq35yIo4sdlmtZGV+i0H4cpYH9+3JJ78k\" \"m4KXwaf9xUJCWF6nxeD+qG6Fyruw1Qlbds2r85U9dkNDVAS3gioCvELryh1TxKGiVTkg4wqHTyHfWsp7KD3WQHYJn0RyfJJu6YEmL77zonn7p2SRMvTMP3ZEXibnC9gz3nnhR6wcYL8Q7zXypKTMD58bTixDSJwIDAQAB\"" [ref=e970]
+                        - cell "DNS only" [ref=e971]:
+                          - paragraph [ref=e972]: DNS only
+                        - cell "Auto" [ref=e973]:
+                          - generic [ref=e975]: Auto
+                        - cell "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e976]:
+                          - button "Edit When toggled open, an additional table row will be added below this row to enable editing DNS records. caret-right" [ref=e977]:
+                            - text: Edit
+                            - generic [ref=e978]: When toggled open, an additional table row will be added below this row to enable editing DNS records.
+                            - img "caret-right" [ref=e980]
+            - generic [ref=e710]:
+              - generic [ref=e712]:
+                - heading "Cloudflare Nameservers" [level=3] [ref=e713]
+                - text: Every DNS zone on Cloudflare is assigned a set of Cloudflare-branded nameservers.
+              - table [ref=e716] [cursor=pointer]:
+                - rowgroup [ref=e717]:
+                  - row "Type Value" [ref=e718]:
+                    - columnheader "Type" [ref=e719]
+                    - columnheader "Value" [ref=e720]
+                - rowgroup [ref=e721]:
+                  - row "NS rommy.ns.cloudflare.com" [ref=e722]:
+                    - cell "NS" [ref=e723]
+                    - cell "rommy.ns.cloudflare.com" [ref=e724]
+                  - row "NS sneh.ns.cloudflare.com" [ref=e725]:
+                    - cell "NS" [ref=e726]
+                    - cell "sneh.ns.cloudflare.com" [ref=e727]
+        - contentinfo [ref=e728]:
+          - list [ref=e730]:
+            - listitem [ref=e731]:
+              - link "Support" [ref=e732] [cursor=pointer]:
+                - /url: https://support.cloudflare.com
+            - listitem [ref=e733]:
+              - link "System status" [ref=e734] [cursor=pointer]:
+                - /url: https://www.cloudflarestatus.com
+            - listitem [ref=e735]:
+              - link "Careers" [ref=e736] [cursor=pointer]:
+                - /url: https://www.cloudflare.com/careers/
+            - listitem [ref=e737]:
+              - link "Terms of Use" [ref=e738] [cursor=pointer]:
+                - /url: https://www.cloudflare.com/website-terms/
+            - listitem [ref=e739]:
+              - link "Report Security Issues" [ref=e740] [cursor=pointer]:
+                - /url: https://www.cloudflare.com/disclosure/
+            - listitem [ref=e741]:
+              - link "Privacy Policy" [ref=e742] [cursor=pointer]:
+                - /url: https://www.cloudflare.com/privacypolicy/
+            - listitem [ref=e743]:
+              - button "A blue and white pill with a checkmark and an x, representing privacy choices Cookie Preferences" [ref=e744] [cursor=pointer]:
+                - img "A blue and white pill with a checkmark and an x, representing privacy choices" [ref=e745]
+                - text: Cookie Preferences
+            - listitem [ref=e746]:
+              - generic [ref=e747]: © 2026 Cloudflare, Inc.
+    - generic [ref=e997]:
+      - generic [ref=e998]:
+        - heading "Enable Agent Lee access" [level=3] [ref=e999]
+        - paragraph [ref=e1000]: Agent Lee needs a read-only API token to access your account.
+        - button "Read more" [ref=e1003] [cursor=pointer]:
+          - text: Read more
+          - img [ref=e1004]
+      - button "Create Token" [ref=e1006] [cursor=pointer]
+  - generic:
+    - region "Notifications"
