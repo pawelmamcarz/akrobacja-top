@@ -40,9 +40,12 @@ const C = {
 };
 
 // ── Produkty ──────────────────────────────────────────────────────
+const GAL = join(ROOT, 'public', 'gallery');
+
 const PRODUCTS = [
   {
     file        : 'product-pierwszy-lot.png',
+    bg          : join(GAL, '2024_10_25_ATAM32_Warszawa_hesja_033.jpg'),
     tag         : 'PIERWSZY RAZ',
     name        : 'PIERWSZY LOT',
     sub         : 'Twój pierwszy kontakt z akrobacją',
@@ -66,6 +69,7 @@ const PRODUCTS = [
   },
   {
     file        : 'product-adrenalina.png',
+    bg          : join(GAL, 'ATAM33_Slawek_hesja_Krajniewski_007.jpg'),
     tag         : 'DLA ODWAŻNYCH',
     name        : 'ADRENALINA',
     sub         : 'Pełny program akrobacyjny do +6G',
@@ -89,6 +93,7 @@ const PRODUCTS = [
   },
   {
     file        : 'product-masterclass.png',
+    bg          : join(GAL, 'ATAM33_Slawek_hesja_Krajniewski_005.jpg'),
     tag         : 'Z MISTRZEM ŚWIATA',
     name        : 'MASTERCLASS',
     sub         : 'Sesja szkoleniowa — 2 loty, do 50 min',
@@ -112,6 +117,7 @@ const PRODUCTS = [
   },
   {
     file        : 'product-fcl900-akrobacja.png',
+    bg          : join(GAL, 'ATAM33_Slawek_hesja_Krajniewski_001.jpg'),
     tag         : 'KURS PILOTAŻU  ·  UPRAWNIENIE EASA',
     name        : 'SZKOLENIE\nFCL.900',
     sub         : 'Uprawnienie Akrobacja — EASA DTO',
@@ -171,7 +177,10 @@ function drawCover(ctx, img, x, y, w, h) {
 }
 
 // ── Rysowanie jednego obrazka ─────────────────────────────────────
-async function drawProduct(p, bg) {
+async function drawProduct(p) {
+  const bg = p.bg && existsSync(p.bg)
+    ? await loadImage(p.bg).catch(() => null)
+    : null;
   const S   = 1200;
   const PAD = 40;
   const canvas = createCanvas(S, S);
@@ -425,12 +434,7 @@ async function drawProduct(p, bg) {
 }
 
 // ── Main ─────────────────────────────────────────────────────────
-const bgPath = join(ROOT, 'public', 'speks-city.jpg');
-const bg     = existsSync(bgPath)
-  ? await loadImage(bgPath).catch(() => null)
-  : null;
-
 for (const p of PRODUCTS) {
-  await drawProduct(p, bg);
+  await drawProduct(p);
 }
 console.log('\nWszystkie grafiki → public/ads/');
