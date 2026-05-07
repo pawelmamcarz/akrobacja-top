@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler pages dev public --port 8788",
-    "deploy": "wrangler pages deploy --commit-dirty=true",
+    "deploy": "node scripts/deploy.mjs",
     "types": "wrangler types"
   },
   "dependencies": {
