@@ -2,7 +2,8 @@ name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - '**'
 
 jobs:
   deploy:
@@ -16,7 +17,8 @@ jobs:
 
       - run: npm ci
 
-      - run: npx wrangler pages deploy public --project-name=akrobacja-top
+      - name: Deploy ${{ github.ref_name }}
+        run: npx wrangler pages deploy public --project-name=akrobacja-top --branch="${{ github.ref_name }}"
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
