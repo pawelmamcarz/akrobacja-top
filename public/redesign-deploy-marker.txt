@@ -1,0 +1,6 @@
+REDESIGN-MARKER-585904
+deploy-test: 2026-05-09T06:50Z
+branch: claude/redesign-website-nlYEv
+expected commit: HEAD of branch (post-585903d)
+If you see this file at /redesign-deploy-marker.txt — wrangler upload works.
+If 404 — deploy didn't ship public/ contents.
