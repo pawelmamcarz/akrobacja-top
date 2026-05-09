@@ -41,14 +41,15 @@ export const onRequest: PagesFunction = async (context) => {
   const url = new URL(context.request.url);
   const env = context.env as unknown as Record<string, string>;
 
-  // Cloudflare Pages preview deploys (non-production branch) must remain
-  // reachable on their *.pages.dev URL for QA. Production stays canonical.
-  // Default to 'main' if env var is missing — fail-safe to production redirect.
-  const branch = env.CF_PAGES_BRANCH || 'main';
-  const isPreview = branch !== 'main';
+  // Cloudflare Pages preview deploys (hash-prefixed *.pages.dev URLs) must
+  // remain reachable for QA. Production custom domain (akrobacja.com) keeps
+  // canonical redirect; akrobacja.top etc. still get redirected.
+  // Detection: any *.pages.dev hostname (preview hashes + project canonical)
+  // skips redirect — canonical <link> tag in HTML handles SEO for crawlers.
+  const isPagesDev = url.hostname.endsWith('.pages.dev');
 
-  // 301 redirect non-primary domains (akrobacja.top, *.pages.dev) → akrobacja.com
-  if (!isPreview && url.hostname !== PRIMARY_HOST) {
+  // 301 redirect non-primary domains (akrobacja.top etc.) → akrobacja.com
+  if (!isPagesDev && url.hostname !== PRIMARY_HOST) {
     return new Response(null, {
       status: 301,
       headers: { Location: `${SITE_ORIGIN}${url.pathname}${url.search}` },
