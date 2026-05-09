@@ -659,21 +659,21 @@ section.hero h1,
   letter-spacing: .005em !important;
 }
 
-/* ─── Italic <em> highlights inside h1 (legacy pattern) — cyan accent ──── */
+/* ─── Accent highlights inside hero/page h1 — cyan only on explicit accent ──
+   Limited to <em> and elements with .accent class so layout-only <span>s
+   (e.g. line-splits in lot-akrobacyjny.html) are not recolored. */
 .hero h1 em,
-.hero h1 span,
 .hero-title em,
-.hero-title span,
 .page-title em,
-.page-title span,
 section.hero h1 em,
-section.hero h1 span {
+.hero h1 .accent,
+.hero-title .accent,
+.page-title .accent,
+section.hero h1 .accent,
+.r-hero__h1 .accent {
   color: var(--cyan);
   font-style: normal;
 }
-
-/* But preserve white inside dark hero spans where author intended white */
-.r-hero__h1 .accent { color: var(--cyan); }
 
 /* ─── Reduce legacy box-shadows on cards to stay minimal/aviation ───────── */
 .v-card, .step-card, .review-card, .blog-card {
