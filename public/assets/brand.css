@@ -1,0 +1,648 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   akrobacja.com — REDESIGN brand system
+   Loaded LAST in <head> — overrides legacy inline tokens via CSS cascade.
+   Tokens, fonts, utilities and component overrides shared across all pages.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ─── TOKENS ─────────────────────────────────────────────────────────────── */
+:root {
+  /* core palette */
+  --navy:      #0A2F7C;
+  --navy-mid:  #1A4FB0;
+  --navy-deep: #06205A;
+  --navy-ink:  #040E2A;
+  --red:       #E11E26;
+  --red-dark:  #B11820;
+  --cyan:      #00E5FF;
+  --bone:      #F4F1EA;
+  --bone-edge: #E6E2D8;
+  --white:     #FFFFFF;
+  --black:     #070F1A;
+  --steel:     #8BA0B4;
+  --concrete:  #D8DEE6;
+  --sun:       #FFB300;
+
+  /* legacy aliases preserved for inline rules */
+  --chrome:    #8BA0B4;
+  --grey-lt:   #C8D4E0;
+  --ink:       #0E1A35;
+
+  /* gradients */
+  --hangar-grad: linear-gradient(180deg, #040E2A 0%, #0A2F7C 70%, #1A4FB0 100%);
+  --hero-overlay: linear-gradient(90deg, rgba(4,14,42,.78) 0%, rgba(10,47,124,.55) 35%, rgba(0,0,0,0) 65%);
+
+  /* typography */
+  --font-h:       'Anton', 'Bebas Neue', Impact, sans-serif;
+  --font-display: 'Anton', 'Bebas Neue', Impact, sans-serif;
+  --font-b:       'Inter', 'Helvetica Neue', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
+
+  --r: 0px;
+}
+
+/* ─── BASE OVERRIDES ────────────────────────────────────────────────────── */
+body { font-family: var(--font-b); }
+
+/* New display font for headings — Anton renders without italic;
+   legacy `font-style: italic` rules become slanted Anton, which is fine. */
+.section-title,
+.hero-headline,
+h1.hero-headline,
+.hl-1, .hl-2, .hl-3 {
+  font-family: var(--font-display);
+  font-style: normal !important;
+  letter-spacing: .005em !important;
+}
+
+/* ─── UTILITIES ─────────────────────────────────────────────────────────── */
+.font-display { font-family: var(--font-display); letter-spacing: .01em; }
+.font-mono    { font-family: var(--font-mono); }
+.font-body    { font-family: var(--font-b); }
+
+.diag-stripes,
+.hi-vis {
+  background-image: repeating-linear-gradient(45deg,
+    var(--red)  0 14px,
+    var(--sun) 14px 28px);
+}
+
+/* HUD strip — small mono labels, used on dark surfaces */
+.hud-strip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .25em;
+  color: var(--cyan);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.hud-strip .live-dot {
+  display: inline-block; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--cyan);
+  margin-right: 8px;
+  box-shadow: 0 0 0 2px rgba(0,229,255,.25);
+  animation: hud-blink 1.2s ease-in-out infinite;
+  vertical-align: middle;
+}
+@keyframes hud-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .35; }
+}
+
+/* ─── NAV REFRESH ───────────────────────────────────────────────────────── */
+.nav-menu a {
+  font-family: var(--font-mono);
+  letter-spacing: .18em;
+}
+.nav-btn {
+  font-family: var(--font-mono);
+  background: var(--red);
+}
+.nav-lang { font-family: var(--font-mono); }
+
+/* ─── BUTTONS ───────────────────────────────────────────────────────────── */
+.btn-primary,
+.btn-prime {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--red);
+  padding: 16px 28px;
+  display: inline-block;
+  transition: background .2s, transform .2s;
+}
+.btn-primary:hover,
+.btn-prime:hover { background: var(--red-dark); }
+
+.btn-ghost,
+.btn-outline {
+  font-family: var(--font-mono);
+  letter-spacing: .14em;
+}
+
+/* ─── ACCENT BAR — slim cyan rule (was red) ─────────────────────────────── */
+.accent-bar {
+  background: var(--cyan);
+  height: 2px;
+}
+
+/* ─── SECTION LABELS — keep mono+spaced ─────────────────────────────────── */
+.section-label {
+  font-family: var(--font-mono);
+  letter-spacing: .28em;
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--steel);
+}
+
+/* ─── REDESIGNED HERO COMPONENTS (used by new homepage hero) ────────────── */
+.r-hero {
+  position: relative;
+  display: block;
+  min-height: clamp(620px, 92vh, 920px);
+  background: var(--black);
+  overflow: hidden;
+  padding: 0;
+}
+.r-hero__bg {
+  position: absolute; inset: 0;
+  background: url('/hero-takeoff.webp') center 32% / cover no-repeat;
+}
+.r-hero__overlay {
+  position: absolute; inset: 0;
+  background: var(--hero-overlay);
+}
+.r-hero__stripe {
+  position: absolute; left: 0; right: 0; height: 12px;
+  background-image: repeating-linear-gradient(45deg,
+    var(--red)  0 14px,
+    var(--sun) 14px 28px);
+  z-index: 4;
+}
+.r-hero__stripe--top    { top: 0; }
+.r-hero__stripe--bottom { bottom: 0; }
+
+.r-hero__hud {
+  position: absolute;
+  top: 24px; left: 56px; right: 56px;
+  z-index: 5;
+}
+
+.r-hero__inner {
+  position: relative; z-index: 6;
+  padding: 130px 56px 96px;
+  max-width: 1440px; margin: 0 auto;
+  color: #fff;
+}
+.r-hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .5em;
+  color: var(--cyan);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+.r-hero__h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 9.2vw, 132px);
+  line-height: .86;
+  letter-spacing: .005em;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0 0 22px;
+  color: #fff;
+}
+.r-hero__h1 .accent { color: var(--cyan); }
+.r-hero__lead {
+  font-size: clamp(15px, 1.2vw, 19px);
+  line-height: 1.55;
+  max-width: 540px;
+  color: rgba(255,255,255,.92);
+  margin: 0 0 30px;
+}
+.r-hero__lead b { font-weight: 700; }
+.r-hero__cta {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  margin-bottom: 56px;
+}
+.r-hero__cta .btn-primary {
+  font-size: 13px;
+  padding: 18px 26px;
+}
+.r-hero__cta .btn-outline {
+  display: inline-block;
+  border: 1.5px solid #fff;
+  padding: 18px 26px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: #fff;
+  background: rgba(255,255,255,.06);
+  text-transform: uppercase;
+  transition: background .2s;
+}
+.r-hero__cta .btn-outline:hover { background: rgba(255,255,255,.16); }
+
+.r-hero__metrics {
+  display: flex; flex-wrap: wrap; gap: 32px;
+}
+.r-hero__metric {
+  border-left: 2px solid var(--cyan);
+  padding-left: 12px;
+}
+.r-hero__metric-num {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: .9;
+  color: #fff;
+}
+.r-hero__metric-lbl {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-top: 4px;
+  opacity: .9;
+}
+
+.r-hero__tail {
+  position: absolute;
+  right: 56px; top: 96px;
+  z-index: 5;
+  text-align: right;
+  color: #fff;
+}
+.r-hero__tail-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .4em;
+  color: var(--cyan);
+}
+.r-hero__tail-id {
+  font-family: var(--font-display);
+  font-size: 42px;
+  line-height: .9;
+  letter-spacing: .15em;
+  color: #fff;
+  margin-top: 4px;
+}
+.r-hero__tail-meta {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .3em;
+  margin-top: 4px;
+  opacity: .75;
+}
+
+@media (max-width: 1024px) {
+  .r-hero__inner { padding: 110px 24px 64px; }
+  .r-hero__hud { left: 24px; right: 24px; top: 18px; font-size: 10px; }
+  .r-hero__hud .hud-strip span { font-size: 10px; }
+  .r-hero__tail { right: 24px; top: 72px; }
+  .r-hero__tail-id { font-size: 28px; }
+  .r-hero__metrics { gap: 16px; }
+  .r-hero__metric-num { font-size: 22px; }
+}
+@media (max-width: 640px) {
+  .r-hero__hud { display: none; }
+  .r-hero__tail { position: static; text-align: left; margin-bottom: 24px; }
+  .r-hero__cta { flex-direction: column; }
+  .r-hero__cta .btn-primary,
+  .r-hero__cta .btn-outline { width: 100%; text-align: center; }
+}
+
+/* ─── PRODUCT TILES (3 pakiety) ─────────────────────────────────────────── */
+.r-pkg-section {
+  background: var(--bone);
+  padding: 80px 56px 48px;
+  color: var(--ink);
+}
+.r-pkg-header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: 16px;
+  margin-bottom: 28px;
+  max-width: 1440px; margin-inline: auto;
+}
+.r-pkg-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: .9;
+  color: var(--navy);
+  letter-spacing: .005em;
+  margin: 0;
+}
+.r-pkg-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .25em;
+  color: var(--navy);
+  opacity: .65;
+  text-transform: uppercase;
+}
+.r-pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.r-pkg {
+  position: relative;
+  padding: 32px;
+  min-height: 360px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  border: 1px solid var(--bone-edge);
+  background: var(--white);
+  color: var(--ink);
+  transition: transform .2s, box-shadow .2s;
+}
+.r-pkg:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(10,47,124,.18);
+}
+.r-pkg--feature { background: var(--navy); color: #fff; border-color: var(--navy); }
+.r-pkg--dark    { background: var(--black); color: #fff; border-color: var(--black); }
+.r-pkg__badge {
+  position: absolute; top: 0; right: 0;
+  background: var(--red); color: #fff;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: .3em; font-weight: 700;
+}
+.r-pkg__duration {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  opacity: .7;
+}
+.r-pkg__name {
+  font-family: var(--font-display);
+  font-size: 42px;
+  line-height: .95;
+  letter-spacing: .01em;
+  margin-top: 8px;
+}
+.r-pkg__desc {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-top: 14px;
+  opacity: .85;
+}
+.r-pkg__foot {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-top: 24px; gap: 12px;
+}
+.r-pkg__price {
+  font-family: var(--font-display);
+  font-size: 54px;
+  line-height: .9;
+}
+.r-pkg__price .cur { font-size: 18px; opacity: .6; margin-left: 4px; }
+.r-pkg__cta {
+  display: inline-block;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .2em;
+  background: var(--navy);
+  color: #fff;
+  text-transform: uppercase;
+}
+.r-pkg--feature .r-pkg__cta { background: var(--red); }
+.r-pkg--dark .r-pkg__cta    { background: #fff; color: var(--navy); }
+.r-pkg__cta:hover { filter: brightness(1.1); }
+
+@media (max-width: 1024px) {
+  .r-pkg-section { padding: 56px 24px 32px; }
+  .r-pkg-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── HOW IT WORKS — checklist ──────────────────────────────────────────── */
+.r-flow {
+  padding: 56px;
+  background: var(--white);
+  margin: 24px auto;
+  border: 1px solid var(--bone-edge);
+  max-width: 1440px;
+}
+.r-flow__header {
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: 12px;
+  margin-bottom: 32px;
+}
+.r-flow__title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 4.5vw, 56px);
+  line-height: .9;
+  color: var(--navy);
+  margin: 0;
+}
+.r-flow__steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  position: relative;
+}
+.r-flow__steps::before {
+  content: '';
+  position: absolute; left: 24px; right: 24px; top: 14px; height: 2px;
+  background: repeating-linear-gradient(90deg, var(--navy) 0 8px, transparent 8px 16px);
+}
+.r-flow__step {
+  position: relative;
+}
+.r-flow__num {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--navy); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 11px;
+  position: relative; z-index: 1;
+}
+.r-flow__step-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1;
+  margin-top: 14px;
+  color: var(--navy);
+}
+.r-flow__step-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 8px;
+  color: #444;
+}
+@media (max-width: 1024px) {
+  .r-flow { padding: 32px 24px; margin: 16px; }
+  .r-flow__steps { grid-template-columns: repeat(2, 1fr); }
+  .r-flow__steps::before { display: none; }
+}
+
+/* ─── PILOT STRIP ───────────────────────────────────────────────────────── */
+.r-pilot {
+  background: var(--black);
+  color: #fff;
+  padding: 48px 56px;
+  margin: 24px auto 56px;
+  max-width: 1440px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.r-pilot__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .4em;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+.r-pilot__name {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5.5vw, 72px);
+  line-height: .9;
+  margin: 8px 0 16px;
+  letter-spacing: .005em;
+}
+.r-pilot__bio {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: .85;
+  max-width: 460px;
+}
+.r-pilot__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  font-family: var(--font-mono);
+}
+.r-pilot__stat {
+  border-top: 2px solid var(--cyan);
+  padding-top: 10px;
+}
+.r-pilot__stat-k {
+  font-size: 9px;
+  letter-spacing: .3em;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+.r-pilot__stat-v {
+  font-size: 18px;
+  margin-top: 4px;
+}
+@media (max-width: 1024px) {
+  .r-pilot { grid-template-columns: 1fr; padding: 32px 24px; gap: 24px; margin: 16px; }
+}
+
+/* ─── BENEFIT STRIP — restyled with mono labels ─────────────────────────── */
+.benefit-strip {
+  background: var(--navy-ink);
+  border-top: 1px solid var(--cyan);
+  border-bottom: 1px solid var(--cyan);
+}
+.benefit-item {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: var(--cyan);
+  text-transform: uppercase;
+}
+.benefit-dot {
+  background: var(--cyan) !important;
+  box-shadow: 0 0 0 3px rgba(0,229,255,.18);
+}
+
+/* ─── CARDS / SHADOWS — global lift on hover ────────────────────────────── */
+.lift:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(10,47,124,.18); }
+
+/* ─── VOUCHER CARDS (legacy .v-card) — refresh tokens ───────────────────── */
+.v-card {
+  border: 1px solid var(--bone-edge);
+  background: var(--white);
+  color: var(--ink);
+  border-radius: 0;
+  transition: transform .2s, box-shadow .2s;
+}
+.v-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(10,47,124,.18); }
+.v-card--featured {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+.v-card--featured .v-feat,
+.v-card--featured .v-subtitle { color: rgba(255,255,255,.85); }
+.v-tag {
+  font-family: var(--font-mono);
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+.v-tag--start { background: var(--cyan); color: var(--navy-ink); }
+.v-tag--best  { background: var(--red);  color: #fff; }
+.v-tag--limit { background: var(--sun);  color: var(--navy-ink); }
+.v-name {
+  font-family: var(--font-display);
+  font-style: normal !important;
+  letter-spacing: .005em !important;
+}
+.v-price {
+  font-family: var(--font-display);
+  font-style: normal !important;
+}
+.v-cta {
+  font-family: var(--font-mono);
+  letter-spacing: .14em;
+  background: var(--red);
+  color: #fff;
+  border-radius: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.v-cta:hover { background: var(--red-dark); }
+
+/* ─── PROMO BANNER — softer ─────────────────────────────────────────────── */
+.promo-title { font-family: var(--font-display); font-style: normal; }
+
+/* ─── REVIEWS / SHOP / PILOT / MACHINE / FAQ — title family + accent ──── */
+.shop-title .section-title,
+.reviews-header .section-title,
+.faq .section-title,
+.machine .section-title,
+.shows .section-title,
+.video-showcase .section-title,
+.pilot .section-title,
+.gift-section .section-title,
+.steps .section-title { font-family: var(--font-display); font-style: normal !important; letter-spacing: .005em !important; }
+
+/* Section-label refresh — smaller, more aviation */
+.section-label {
+  text-transform: uppercase;
+  font-style: normal !important;
+}
+
+/* ─── FOOTER — subtle adjustments to use new tokens ─────────────────────── */
+footer { background: var(--navy-ink); }
+
+/* ─── PILOT BADGE / STATS ───────────────────────────────────────────────── */
+.pilot-stat-num { font-family: var(--font-display); font-style: normal !important; }
+.pilot-stat-num em { color: var(--cyan); font-style: normal; }
+
+/* ─── HERO STAT EM (legacy num em) — switch to cyan accent ─────────────── */
+.stat-num em { color: var(--cyan); font-style: normal; }
+
+/* ─── HOTSPOT (machine viewer) — cyan accent ────────────────────────────── */
+.hotspot-dot {
+  border-color: var(--cyan) !important;
+  background: rgba(0,229,255,.12) !important;
+}
+
+/* ─── BENEFIT STRIP refresh — keep dark, cyan accents ───────────────────── */
+.proof-bar-num { font-family: var(--font-display); font-style: normal !important; color: var(--navy); }
+.proof-bar-num.alt { color: var(--cyan); }
+
+/* ─── BLOG HEADER REFRESH ───────────────────────────────────────────────── */
+.blog-hero h1, article h1, .blog-grid h2, .blog-card h3 {
+  font-family: var(--font-display);
+  font-style: normal !important;
+  letter-spacing: .005em !important;
+}
+
+/* ─── HI-VIS DIVIDER COMPONENT (use as section separator) ───────────────── */
+.r-hi-vis-divider {
+  height: 8px;
+  background-image: repeating-linear-gradient(45deg,
+    var(--red)  0 14px,
+    var(--sun) 14px 28px);
+  width: 100%;
+}

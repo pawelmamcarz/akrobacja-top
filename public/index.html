@@ -1603,6 +1603,7 @@ footer {
   }
 }
 </script>
+<link rel="stylesheet" href="/assets/brand.css">
 </head>
 
 <body>
@@ -1730,64 +1731,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      HERO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<section class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <video class="hero-video" autoplay muted loop playsinline poster="/hero-takeoff.webp">
-    <!-- Place hero-bg.mp4 in /public/ to activate -->
-  </video>
-  <div class="hero-grid"></div>
-  <div class="hero-accent-line"></div>
+<section class="hero r-hero" id="hero">
+  <div class="r-hero__bg" aria-hidden="true"></div>
+  <div class="r-hero__overlay" aria-hidden="true"></div>
+  <div class="r-hero__stripe r-hero__stripe--top" aria-hidden="true"></div>
+  <div class="r-hero__stripe r-hero__stripe--bottom" aria-hidden="true"></div>
 
-  <!-- Faint aircraft silhouette watermark -->
-  <div class="hero-watermark" aria-hidden="true">
-    <svg viewBox="0 0 480 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Simplified Extra 300L top-down silhouette -->
-      <ellipse cx="240" cy="80" rx="216" ry="14" fill="white" opacity="0.6"/>
-      <ellipse cx="240" cy="80" rx="22" ry="60" fill="white"/>
-      <path d="M 195 80 L 60 95 L 60 85 L 195 72 Z" fill="white" opacity="0.8"/>
-      <path d="M 285 80 L 420 95 L 420 85 L 285 72 Z" fill="white" opacity="0.8"/>
-      <path d="M 60 80 L 10 82 L 10 78 L 60 80 Z" fill="white" opacity="0.4"/>
-      <ellipse cx="226" cy="80" rx="5" ry="10" fill="white" opacity="0.7"/>
-      <path d="M 336 80 L 390 88 L 390 82 L 336 76 Z" fill="white" opacity="0.5"/>
-      <path d="M 336 80 L 390 72 L 390 78 L 336 84 Z" fill="white" opacity="0.5"/>
-      <path d="M 440 80 L 470 80" stroke="white" stroke-width="3" opacity="0.3"/>
-    </svg>
+  <div class="r-hero__hud">
+    <div class="hud-strip">
+      <span><span class="live-dot"></span>LIVE · EPRP RWY 27 · WIND 240/06 · CAVOK</span>
+      <span>N51°23'21" E021°12'48"</span>
+    </div>
   </div>
 
-  <div class="hero-content">
-    <div class="hero-crown reveal"><span class="hero-crown-star">★</span><span>Mistrz Świata Akrobacji</span></div>
-    <p class="hero-kicker reveal">Extra 300L SP-EKS · Lotnisko Radom-Piastów EPRP</p>
+  <div class="r-hero__tail">
+    <div class="r-hero__tail-eyebrow">REG. NUMBER</div>
+    <div class="r-hero__tail-id">SP-EKS</div>
+    <div class="r-hero__tail-meta">EXTRA 300L · S/N 1290</div>
+  </div>
 
-    <h1 class="hero-headline">
-      <span class="hl-1 reveal reveal-d1">POCZUJ</span>
-      <span class="hl-2 reveal reveal-d2">AKROBACJĘ</span>
-      <span class="hl-3 reveal reveal-d3">NA ŻYWO</span>
+  <div class="r-hero__inner">
+    <div class="r-hero__eyebrow reveal">20 MIN · 12 MIN AKROBACJI · ±8G</div>
+    <h1 class="hero-headline r-hero__h1 reveal reveal-d1">
+      LOT, KTÓREGO<br>NIE ZAPOMNISZ.<br><span class="accent">NAPRAWDĘ.</span>
     </h1>
-
-    <p class="hero-sub reveal reveal-d3">Lot z Maciejem Kulaszewskim, Mistrzem Świata · 4 000+ h nalotu · instruktor i trener</p>
-    <p class="hero-gift-hint reveal reveal-d3">Idealny prezent, voucher PDF gotowy do wręczenia</p>
-
-    <div class="hero-actions reveal reveal-d4">
-      <a href="#sklep" class="btn-primary">Kup Voucher, od 1 999 PLN →</a>
-      <a href="#pilot" class="btn-ghost">Poznaj pilota</a>
+    <p class="r-hero__lead reveal reveal-d2">
+      Akrobacja z pilotem instruktorem na dwumiejscowym <b>Extra 300L SP-EKS</b>. Lotnisko Radom-Piastów, 90 minut z Warszawy. Ten sam typ samolotu, którym lata reprezentacja Polski.
+    </p>
+    <div class="r-hero__cta reveal reveal-d3">
+      <a href="#sklep" class="btn-primary">Zarezerwuj — od 1 999 zł →</a>
+      <a href="/voucher-prezent" class="btn-outline">Voucher prezent</a>
     </div>
 
-    <div class="hero-stats">
-      <div class="stat-cell reveal">
-        <div class="stat-num">4000<em>h+</em></div>
-        <div class="stat-lbl">Nalot łączny</div>
+    <div class="r-hero__metrics">
+      <div class="r-hero__metric reveal">
+        <div class="r-hero__metric-num">4 000h+</div>
+        <div class="r-hero__metric-lbl">NA EXTRA 300L</div>
       </div>
-      <div class="stat-cell reveal reveal-d1">
-        <div class="stat-num">3000<em>h+</em></div>
-        <div class="stat-lbl">Akrobacja Extra 300L</div>
+      <div class="r-hero__metric reveal reveal-d1">
+        <div class="r-hero__metric-num">±10G</div>
+        <div class="r-hero__metric-lbl">CERTYFIKAT</div>
       </div>
-      <div class="stat-cell reveal reveal-d2">
-        <div class="stat-num">3<em>·</em>5<em>·</em>1</div>
-        <div class="stat-lbl">Mistrz PL · UK · DE</div>
+      <div class="r-hero__metric reveal reveal-d2">
+        <div class="r-hero__metric-num">5.0★</div>
+        <div class="r-hero__metric-lbl">GOOGLE</div>
       </div>
-      <div class="stat-cell reveal reveal-d3">
-        <div class="stat-num">FI<em>(A)</em></div>
-        <div class="stat-lbl">Instruktor i trener</div>
+      <div class="r-hero__metric reveal reveal-d3">
+        <div class="r-hero__metric-num">1 200+</div>
+        <div class="r-hero__metric-lbl">PASAŻERÓW</div>
       </div>
     </div>
   </div>
@@ -1833,9 +1824,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="shop" id="sklep">
   <div class="shop-header reveal">
     <div class="shop-title">
-      <p class="section-label">Vouchery · Loty Akrobacyjne</p>
-      <h2 class="section-title">Wybierz swój<br>poziom adrenaliny</h2>
+      <p class="section-label">Vouchery · Loty akrobacyjne · 4 pakiety</p>
+      <h2 class="section-title">Wybierz lot.</h2>
       <div class="accent-bar"></div>
+      <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:.25em;color:var(--navy);opacity:.6;margin-top:8px;text-transform:uppercase">3 pakiety + kurs FCL.800 · zapłacisz w 90 sekund</p>
     </div>
     <p class="shop-sub">Voucher ważny 12 miesięcy. Zła pogoda = bezpłatne przełożenie terminu.</p>
   </div>
