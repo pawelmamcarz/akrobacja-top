@@ -1659,8 +1659,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="r-hero__stripe r-hero__stripe--bottom" aria-hidden="true"></div>
 
   <div class="r-hero__hud">
-    <div class="hud-strip">
-      <span><span class="live-dot"></span>LIVE · EPRP RWY 27 · WIND 240/06 · CAVOK</span>
+    <div class="hud-strip" id="hud-strip" data-fallback-rwy="RWY 27" data-fallback-wind="240/06" data-fallback-cond="CAVOK">
+      <span><span class="live-dot" id="hud-live-dot"></span><span id="hud-status">LIVE</span> · EPRP <span id="hud-rwy">RWY 27</span> · WIND <span id="hud-wind">240/06</span> · <span id="hud-cond">CAVOK</span></span>
       <span>N51°23'21" E021°12'48"</span>
     </div>
   </div>
@@ -2816,5 +2816,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 <script src="/chat-widget.js" defer></script>
+<script src="/assets/hud-live.js" defer></script>
 </body>
 </html>
