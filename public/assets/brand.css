@@ -632,10 +632,27 @@ footer { background: var(--navy-ink); }
 .proof-bar-num.alt { color: var(--cyan); }
 
 /* ─── BLOG HEADER REFRESH ───────────────────────────────────────────────── */
-.blog-hero h1, article h1, .blog-grid h2, .blog-card h3 {
+.blog-hero h1, article h1, .blog-grid h2, .blog-card h3,
+.blog-h1, h1.blog-h1, h1.blog-title {
   font-family: var(--font-display);
   font-style: normal !important;
   letter-spacing: .005em !important;
+}
+.blog-h1 span, h1.blog-h1 span, h1.blog-title em { color: var(--cyan); font-style: normal; }
+article h2, .blog-article h2, .article h2 {
+  font-family: var(--font-display);
+  letter-spacing: .005em !important;
+}
+
+/* Slim hi-vis indicator above blog article titles */
+.blog-article > h1::before,
+article > h1::before {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: var(--cyan);
+  margin-bottom: 18px;
 }
 
 /* ─── HI-VIS DIVIDER COMPONENT (use as section separator) ───────────────── */
