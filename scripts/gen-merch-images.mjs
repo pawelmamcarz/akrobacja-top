@@ -49,7 +49,7 @@ async function generateImage(product) {
       'Authorization': `Bearer ${TOKEN}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ prompt: product.prompt, num_steps: 8 }),
+    body: JSON.stringify({ prompt: product.prompt, num_steps: 20 }),
   });
 
   if (!res.ok) {
