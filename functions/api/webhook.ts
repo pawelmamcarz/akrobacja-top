@@ -3,9 +3,7 @@ import { generateVoucherPdf } from '../../src/lib/pdf';
 import { sendVoucherEmail, escapeHtml } from '../../src/lib/email';
 import { createInvoice } from '../../src/lib/wfirma';
 import { sendMetaPurchase } from '../../src/lib/meta-capi';
-import { createPrintfulOrder, confirmPrintfulOrder } from '../../src/lib/printful';
 
-// Notify owner about paid merch order — formatted for manual Snapwear entry
 async function notifyOwnerMerch(env: Env, o: {
   orderId: string;
   customerName: string;
@@ -17,25 +15,24 @@ async function notifyOwnerMerch(env: Env, o: {
   items: Array<{ name: string; variant?: string; quantity: number; price: number }>;
   totalAmount: number;
 }): Promise<void> {
-  try {
-    const totalPLN = (o.totalAmount / 100).toFixed(2);
-    const rows = o.items.map(i =>
-      `<tr>
-        <td style="padding:8px;border-bottom:1px solid #eee">${escapeHtml(i.name)}</td>
-        <td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${escapeHtml(i.variant || '—')}</td>
-        <td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${i.quantity}</td>
-        <td style="padding:8px;border-bottom:1px solid #eee;text-align:right">${(i.price / 100).toFixed(2)} PLN</td>
-      </tr>`
-    ).join('');
+  const totalPLN = (o.totalAmount / 100).toFixed(2);
+  const rows = o.items.map(i =>
+    `<tr>
+      <td style="padding:8px;border-bottom:1px solid #eee">${escapeHtml(i.name)}</td>
+      <td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${escapeHtml(i.variant || '—')}</td>
+      <td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${i.quantity}</td>
+      <td style="padding:8px;border-bottom:1px solid #eee;text-align:right">${(i.price / 100).toFixed(2)} PLN</td>
+    </tr>`
+  ).join('');
 
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${env.RESEND_API_KEY}` },
-      body: JSON.stringify({
-        from: 'akrobacja.com <system@akrobacja.com>',
-        to: ['dto@akrobacja.com'],
-        subject: `🛍️ Nowe zamówienie merch — ${o.customerName} — ${totalPLN} PLN`,
-        html: `
+  await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${env.RESEND_API_KEY}` },
+    body: JSON.stringify({
+      from: 'akrobacja.com <system@akrobacja.com>',
+      to: ['dto@akrobacja.com'],
+      subject: `🛍️ Nowe zamówienie merch — ${o.customerName} — ${totalPLN} PLN`,
+      html: `
 <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
   <h2 style="color:#0A2F7C;margin:0 0 4px">Nowe zamówienie merch</h2>
   <p style="margin:0 0 20px;color:#6B7A90">Zamówienie #${o.orderId.slice(0,8)} · ${totalPLN} PLN zapłacone</p>
@@ -72,14 +69,10 @@ async function notifyOwnerMerch(env: Env, o: {
     </a>
   </p>
 </div>`,
-      }),
-    });
-  } catch (err) {
-    console.error('notifyOwnerMerch failed:', err);
-  }
+    }),
+  });
 }
 
-// Notify owner about new paid order via Resend
 async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: PackageId; customerName: string; customerEmail: string; amount: number; videoAddon: boolean }): Promise<void> {
   try {
     const pkg = PACKAGES[o.packageId];
@@ -205,7 +198,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
           }>();
           if (!mo) return;
           const parsedItems = JSON.parse(mo.items) as Array<{
-            product_id: string; name: string; variant?: string; quantity: number; price: number;
+            name: string; variant?: string; quantity: number; price: number;
           }>;
           await notifyOwnerMerch(ctx.env, {
             orderId: merchOrderId,
