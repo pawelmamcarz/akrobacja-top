@@ -1,0 +1,857 @@
+- generic [active] [ref=e1]:
+  - img:
+    - generic:
+      - generic:
+        - generic: akrobacja.top
+      - generic:
+        - generic: akrobacja.top
+  - link "Przejdź do treści" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation [ref=e3]:
+    - link "akrobacja.com, strona główna" [ref=e4] [cursor=pointer]:
+      - /url: "#hero"
+      - img "akrobacja.com" [ref=e5]
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Loty" [ref=e8] [cursor=pointer]:
+          - /url: /lot-akrobacyjny
+      - listitem [ref=e9]:
+        - link "Pilot" [ref=e10] [cursor=pointer]:
+          - /url: "#pilot"
+      - listitem [ref=e11]:
+        - link "Pokazy" [ref=e12] [cursor=pointer]:
+          - /url: /pokazy-lotnicze
+      - listitem [ref=e13]:
+        - link "Szkolenie" [ref=e14] [cursor=pointer]:
+          - /url: /blog/kurs-akrobacji-fcl800
+      - listitem [ref=e15]:
+        - link "Sklep" [ref=e16] [cursor=pointer]:
+          - /url: /sklep-merch
+      - listitem [ref=e17]:
+        - link "Blog" [ref=e18] [cursor=pointer]:
+          - /url: /blog
+      - listitem [ref=e19]:
+        - link "FAQ" [ref=e20] [cursor=pointer]:
+          - /url: "#faq"
+      - listitem [ref=e21]:
+        - link "Kontakt" [ref=e22] [cursor=pointer]:
+          - /url: "#kontakt"
+      - listitem
+    - link "English version" [ref=e23] [cursor=pointer]:
+      - /url: /en
+      - generic [ref=e24]: 🇬🇧
+      - text: EN
+    - link "Napisz" [ref=e25] [cursor=pointer]:
+      - /url: https://wa.me/48535535221
+  - main [ref=e26]:
+    - generic [ref=e27]:
+      - generic:
+        - img
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]: ★
+          - generic [ref=e34]: Mistrz Świata Akrobacji
+        - paragraph [ref=e35]: Extra 300L SP-EKS · Lotnisko Radom-Piastów EPRP
+        - heading "POCZUJ AKROBACJĘ NA ŻYWO" [level=1] [ref=e36]:
+          - generic [ref=e37]: POCZUJ
+          - generic [ref=e38]: AKROBACJĘ
+          - generic [ref=e39]: NA ŻYWO
+        - paragraph [ref=e40]: Lot z Maciejem Kulaszewskim, Mistrzem Świata · 4 000+ h nalotu · instruktor i trener
+        - paragraph [ref=e41]: Idealny prezent, voucher PDF gotowy do wręczenia
+        - generic [ref=e42]:
+          - link "Kup Voucher, od 1 999 PLN →" [ref=e43] [cursor=pointer]:
+            - /url: "#sklep"
+          - link "Poznaj pilota" [ref=e44] [cursor=pointer]:
+            - /url: "#pilot"
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]:
+              - text: "4000"
+              - emphasis [ref=e48]: h+
+            - generic [ref=e49]: Nalot łączny
+          - generic [ref=e50]:
+            - generic [ref=e51]:
+              - text: "3000"
+              - emphasis [ref=e52]: h+
+            - generic [ref=e53]: Akrobacja Extra 300L
+          - generic [ref=e54]:
+            - generic [ref=e55]:
+              - text: "3"
+              - emphasis [ref=e56]: ·
+              - text: "5"
+              - emphasis [ref=e57]: ·
+              - text: "1"
+            - generic [ref=e58]: Mistrz PL · UK · DE
+          - generic [ref=e59]:
+            - generic [ref=e60]:
+              - text: FI
+              - emphasis [ref=e61]: (A)
+            - generic [ref=e62]: Instruktor i trener
+    - generic [ref=e63]:
+      - generic [ref=e64]: Mistrz Świata Akrobacji za sterami
+      - generic [ref=e66]: Voucher ważny 12 miesięcy
+      - generic [ref=e68]: Bezpłatne przełożenie terminu
+      - generic [ref=e70]: PDF na maila w 60 sekund
+    - region "Tak wygląda lot akrobacyjny Extra 300L" [ref=e72]:
+      - generic [ref=e73]:
+        - paragraph [ref=e74]: Zobacz na żywo
+        - heading "Tak wygląda lot akrobacyjny Extra 300L" [level=2] [ref=e75]:
+          - text: Tak wygląda lot
+          - text: akrobacyjny Extra 300L
+        - button "Odtwórz wideo, lot akrobacyjny Extra 300L" [ref=e77] [cursor=pointer]:
+          - img "Lot akrobacyjny Extra 300L, miniatura wideo" [ref=e78]
+          - img [ref=e80]
+        - paragraph [ref=e83]: Extra 300L SP-EKS · Radom-Piastów EPRP
+    - generic [ref=e84]:
+      - generic [ref=e85]:
+        - generic [ref=e86]:
+          - paragraph [ref=e87]: Vouchery · Loty Akrobacyjne
+          - heading "Wybierz swój poziom adrenaliny" [level=2] [ref=e88]:
+            - text: Wybierz swój
+            - text: poziom adrenaliny
+        - paragraph [ref=e90]: Voucher ważny 12 miesięcy. Zła pogoda = bezpłatne przełożenie terminu.
+      - generic [ref=e91]:
+        - text: 🎁 Pierwszy raz na stronie? Kod
+        - code [ref=e92]: PIERWSZY100
+        - text: = −100 zł na Twój pierwszy voucher ·
+        - link "wybierz pakiet ↓" [ref=e93] [cursor=pointer]:
+          - /url: "#sklep"
+      - generic [ref=e94]:
+        - generic [ref=e95]: Sezon kwiecień–październik
+        - generic [ref=e96]: Zarezerwuj lot, kalendarz zapełnia się szybko
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - generic [ref=e99]: "22"
+            - generic [ref=e100]: Dni
+          - generic [ref=e101]:
+            - generic [ref=e102]: "04"
+            - generic [ref=e103]: Godz
+          - generic [ref=e104]:
+            - generic [ref=e105]: "40"
+            - generic [ref=e106]: Min
+          - generic [ref=e107]:
+            - generic [ref=e108]: "32"
+            - generic [ref=e109]: Sek
+      - generic [ref=e110]:
+        - generic [ref=e111]:
+          - generic [ref=e112]: Pierwszy raz
+          - heading "Pierwszy Lot" [level=3] [ref=e113]
+          - paragraph [ref=e114]: Twój pierwszy kontakt z akrobacją
+          - generic [ref=e115]: "-20% do końca miesiąca"
+          - generic [ref=e116]: PLN 2 499
+          - generic [ref=e117]: PLN1999 / osoba
+          - list [ref=e119]:
+            - listitem [ref=e120]: Do 15 min w powietrzu
+            - listitem [ref=e121]: Briefing naziemny (20 min)
+            - listitem [ref=e122]: Do +4G / −2G
+            - listitem [ref=e123]: Podstawowe figury akrobacyjne
+            - listitem [ref=e124]: Doświadczenie lotnicze nie jest wymagane
+          - button "Kup voucher, 1 999 zł" [ref=e125] [cursor=pointer]
+          - checkbox "+ Video 360° z lotu Montaż 90 sek · MP4 w 48h · +299 PLN" [ref=e126] [cursor=pointer]:
+            - generic [ref=e127]:
+              - generic [ref=e128]: + Video 360° z lotu
+              - generic [ref=e129]: Montaż 90 sek · MP4 w 48h · +299 PLN
+        - generic [ref=e131]:
+          - generic [ref=e132]: Bestseller
+          - heading "Adrenalina" [level=3] [ref=e133]
+          - paragraph [ref=e134]: Pełny program akrobacyjny z Mistrzem
+          - generic [ref=e135]: "-40% do końca miesiąca"
+          - generic [ref=e136]: PLN 4 999
+          - generic [ref=e137]: PLN2999 / osoba
+          - list [ref=e139]:
+            - listitem [ref=e140]: 20 min w powietrzu
+            - listitem [ref=e141]: Briefing (40 min) + debriefing (15 min)
+            - listitem [ref=e142]: Do +6G / −4G
+            - listitem [ref=e143]: Pętle, beczki, roll, lot odwrócony
+            - listitem [ref=e144]: Doświadczenie lotnicze nie jest wymagane
+          - button "Kup voucher, 2 999 zł" [ref=e145] [cursor=pointer]
+          - checkbox "+ Video 360° z lotu Montaż 90 sek · MP4 w 48h · +299 PLN" [ref=e146] [cursor=pointer]:
+            - generic [ref=e147]:
+              - generic [ref=e148]: + Video 360° z lotu
+              - generic [ref=e149]: Montaż 90 sek · MP4 w 48h · +299 PLN
+        - generic [ref=e151]:
+          - generic [ref=e152]: Dla pilotów PPL
+          - heading "Masterclass" [level=3] [ref=e153]
+          - paragraph [ref=e154]: Szkolenie akrobacyjne z Mistrzem
+          - generic [ref=e155]: PLN4999 / osoba
+          - list [ref=e157]:
+            - listitem [ref=e158]: Do 50 min w powietrzu (1 dzień)
+            - listitem [ref=e159]: Briefing + debriefing z analizą figur
+            - listitem [ref=e160]: Korkociąg, figury zaawansowane
+            - listitem [ref=e161]: Wymagana ważna licencja PPL(A)+
+            - listitem [ref=e162]: Limitowana liczba miejsc
+          - button "Kup voucher, 4 999 zł" [ref=e163] [cursor=pointer]
+          - checkbox "+ Video 360° z lotu Montaż 90 sek · kamera cockpit + zewnętrzna · +299 PLN" [ref=e164] [cursor=pointer]:
+            - generic [ref=e165]:
+              - generic [ref=e166]: + Video 360° z lotu
+              - generic [ref=e167]: Montaż 90 sek · kamera cockpit + zewnętrzna · +299 PLN
+        - generic [ref=e169]:
+          - generic [ref=e170]: Uprawnienie akrobacja
+          - heading "Kurs FCL.800" [level=3] [ref=e171]
+          - paragraph [ref=e172]: Wpis do licencji pilota
+          - generic [ref=e173]: Dofinansowanie do 90%
+          - generic [ref=e174]: PLN20 900 netto
+          - list [ref=e176]:
+            - listitem [ref=e177]: 16-20 lotów na Extra 300L (5h)
+            - listitem [ref=e178]: ~5h teorii akrobacji
+            - listitem [ref=e179]: Wpis FCL.800 do licencji
+            - listitem [ref=e180]: Pod egidą Aeroklubu Radomskiego
+            - listitem [ref=e181]: Wymaga PPL(A) + 30h PIC
+          - link "Szczegóły kursu →" [ref=e182] [cursor=pointer]:
+            - /url: /blog/kurs-akrobacji-fcl800
+          - generic [ref=e183]:
+            - strong [ref=e184]: "Pakiet Masterclass + Kurs:"
+            - text: 4 999 + 18 888 =
+            - strong [ref=e185]: 23 887 PLN brutto
+            - text: (19 420 netto)
+            - link "Sprawdź dotacje →" [ref=e186] [cursor=pointer]:
+              - /url: /dotacje-szkolenie-lotnicze
+      - generic [ref=e187]:
+        - generic [ref=e188]:
+          - generic [ref=e189]: Corporate Experience
+          - generic [ref=e190]: Pakiet grupowy od 5 osób. Faktura VAT. Teambuilding, nagrody, eventy firmowe.
+        - link "Zapytaj o Ofertę Grupową →" [ref=e191] [cursor=pointer]:
+          - /url: https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20Corporate%20Experience
+      - paragraph [ref=e192]: Urodziny, kawalerski, Dzień Ojca, bonus firmowy — voucher PDF w 60 sekund
+      - generic [ref=e193]:
+        - generic [ref=e194]: SSL · Stripe
+        - generic [ref=e195]: Voucher PDF w 60 sek
+        - generic [ref=e196]: NNW w cenie
+        - generic [ref=e197]: "Przełożenie przy złej pogodzie: bezpłatne"
+        - generic [ref=e198]: Ważność 12 miesięcy
+      - paragraph [ref=e200]:
+        - strong [ref=e201]: "Piloci z PPL(A):"
+        - text: Kurs akrobacji FCL.800 z dofinansowaniem do 90%.
+        - link "Sprawdź dotacje →" [ref=e202] [cursor=pointer]:
+          - /url: /dotacje-szkolenie-lotnicze
+    - generic [ref=e203]:
+      - generic [ref=e204]:
+        - generic [ref=e205]: 200+
+        - generic [ref=e206]: Lotów w sezonie
+      - generic [ref=e207]:
+        - generic [ref=e208]: 3 000+
+        - generic [ref=e209]: Godzin nalotu pilota
+      - generic [ref=e210]:
+        - generic [ref=e211]: 10+
+        - generic [ref=e212]: Pokazów i zawodów rocznie
+      - generic [ref=e213]:
+        - generic [ref=e214]: "5.0"
+        - generic [ref=e215]: Google Reviews
+    - generic [ref=e216]:
+      - generic [ref=e217]:
+        - generic [ref=e218]:
+          - generic [ref=e219]: "5.0"
+          - generic [ref=e220]:
+            - generic "5 na 5 gwiazdek" [ref=e221]: ★★★★★
+            - generic [ref=e222]: 8 opinii · Google Reviews & Facebook
+        - paragraph [ref=e223]: Co mówią nasi klienci
+        - heading "Nie wierz nam na słowo. Posłuchaj ich" [level=2] [ref=e224]:
+          - text: Nie wierz nam na słowo.
+          - text: Posłuchaj ich
+      - generic [ref=e226]:
+        - generic [ref=e227]:
+          - generic "5 na 5 gwiazdek" [ref=e228]: ★★★★★
+          - generic [ref=e229]: „Lot akrobacyjny? Petarda! Nawet dla totalnego świeżaka w temacie, wrażenia jak po pierwszym przeciągnięciu i beczce. Pilot pełen profesjonalizm, briefing konkretny, a cała operacja dopięta jak w checklistach przed startem. Sprzęt zadbany."
+          - generic [ref=e230]: Mariusz Kosciolek
+          - generic [ref=e231]: Lokalny przewodnik · Google Reviews
+        - generic [ref=e232]:
+          - generic "5 na 5 gwiazdek" [ref=e233]: ★★★★★
+          - generic [ref=e234]: „Wrażenia nie z (tej) ziemii! Wspaniały prezent dla uzależnionych od adrenaliny!"
+          - generic [ref=e235]: Paweł Murak
+          - generic [ref=e236]: Lokalny przewodnik · Google Reviews
+        - generic [ref=e237]:
+          - generic "5 na 5 gwiazdek" [ref=e238]: ★★★★★
+          - generic [ref=e239]: „Doskonałe zaplecze szkoleniowe i świetnie utrzymana maszyna. Akrobacja uczy pokory i doskonałego czucia sterów, a tutaj uczą tego najlepiej. Instruktor nie odpuszcza, dopóki figura nie jest wykręcona 'w punkt'. To miejsce, gdzie buduje się prawdziwy kunszt pilotażowy."
+          - generic [ref=e240]: Marcin Kwiatosz
+          - generic [ref=e241]: Google Reviews
+        - generic [ref=e242]:
+          - generic "5 na 5 gwiazdek" [ref=e243]: ★★★★★
+          - generic [ref=e244]: „Lot dostałem w prezencie od żony. Niesamowite przeżycie!!! Polecam każdemu."
+          - generic [ref=e245]: kuczero91
+          - generic [ref=e246]: Google Reviews
+        - generic [ref=e247]:
+          - generic "5 na 5 gwiazdek" [ref=e248]: ★★★★★
+          - generic [ref=e249]: „Polecam! Super zabawa! Niesamowita adrenalina ;)"
+          - generic [ref=e250]: Rafał Madejewski
+          - generic [ref=e251]: Google Reviews
+        - generic [ref=e252]:
+          - generic "5 na 5 gwiazdek" [ref=e253]: ★★★★★
+          - generic [ref=e254]: „★★★★★"
+          - generic [ref=e255]: FilmoLot
+          - generic [ref=e256]: Lokalny przewodnik · Google Reviews
+        - generic [ref=e257]:
+          - generic "5 na 5 gwiazdek" [ref=e258]: ★★★★★
+          - generic [ref=e259]: „Wrażenia niesamowite. Przeciążenia dodatnie 5G, ujemne 2G mieliśmy. Jak na pierwszy raz było mega. Maciej Kulaszewski dzięki bardzo za fantastyczny dzień spędzony w Powietrzu."
+          - generic [ref=e260]: Tomasz Filipiak
+          - generic [ref=e261]: Fotograf lotniczy · Stowarzyszenie Polskich Fotografów Lotniczych Air-Action · Facebook
+        - generic [ref=e262]:
+          - generic "5 na 5 gwiazdek" [ref=e263]: ★★★★★
+          - generic [ref=e264]: „Miałem okazję latać z Mistrzem Świata w akrobacji lotniczej. To nie był 'lot widokowy', to była precyzja, dyscyplina i poziom, który otwiera oczy. Jeżeli ktoś z Was myśli o rozpoczęciu przygody z akrobacją, serio, lepiej trafić się nie da. Trening z kimś, kto zna granice samolotu… i własne. Polecam z pełnym przekonaniem."
+          - generic [ref=e265]: Paweł P.
+          - generic [ref=e266]: Pilot · Facebook
+      - generic [ref=e267]:
+        - text: "Więcej opinii i materiałów z lotów:"
+        - link "Instagram" [ref=e268] [cursor=pointer]:
+          - /url: https://www.instagram.com/warsawflightsafety
+        - text: ·
+        - link "Facebook" [ref=e269] [cursor=pointer]:
+          - /url: https://www.facebook.com/warsawflightsafety
+      - link "Dołącz do nich, kup voucher →" [ref=e271] [cursor=pointer]:
+        - /url: "#sklep"
+    - generic [ref=e272]:
+      - paragraph [ref=e273]: Prezent
+      - heading "Voucher na lot akrobacyjny. Prezent z innej ligi." [level=2] [ref=e274]:
+        - text: Voucher na lot akrobacyjny.
+        - text: Prezent z innej ligi.
+      - paragraph [ref=e276]: Voucher na lot akrobacyjny, elegancki PDF gotowy do wręczenia w 60 sekund. Obdarowana osoba sama wybiera termin lotu w kalendarzu online.
+      - generic [ref=e277]:
+        - generic [ref=e278]:
+          - generic [ref=e279]: Urodziny
+          - generic [ref=e280]: Do +6G w kokpicie Extra 300L z Mistrzem Świata. Data, miejsce i G-force w prezencie.
+        - generic [ref=e281]:
+          - generic [ref=e282]: Kawalerski
+          - generic [ref=e283]: +6G zamiast kolejnej imprezy. Lot z Wielokrotnym Mistrzem Polski to poziom wyżej.
+        - generic [ref=e284]:
+          - generic [ref=e285]: Bonus firmowy
+          - generic [ref=e286]: Nagroda dla najlepszych. Faktura VAT. Pakiety grupowe od 5 osób.
+      - link "Kup voucher na prezent →" [ref=e287] [cursor=pointer]:
+        - /url: "#sklep"
+    - generic [ref=e288]:
+      - generic [ref=e289]:
+        - paragraph [ref=e290]: Jak to działa
+        - heading "4 kroki do lotu" [level=2] [ref=e291]
+      - generic [ref=e293]:
+        - generic [ref=e294]:
+          - generic [ref=e295]: "01"
+          - generic [ref=e296]: Kup voucher
+          - generic [ref=e297]: Wybierz pakiet i kup online. Voucher PDF otrzymasz na maila w ciągu 60 sekund.
+          - generic [ref=e298]: →
+        - generic [ref=e299]:
+          - generic [ref=e300]: "02"
+          - generic [ref=e301]: Zarezerwuj termin
+          - generic [ref=e302]: "Wybierz datę w kalendarzu online lub napisz na WhatsApp. Sezon: kwiecień–październik."
+          - generic [ref=e303]: →
+        - generic [ref=e304]:
+          - generic [ref=e305]: "03"
+          - generic [ref=e306]: Briefing na lotnisku
+          - generic [ref=e307]: Maciej przeprowadzi Cię przez procedury, figury i technikę oddychania. ~20 minut.
+          - generic [ref=e308]: →
+        - generic [ref=e309]:
+          - generic [ref=e310]: "04"
+          - generic [ref=e311]: Leć!
+          - generic [ref=e312]: Wsiadasz do kokpitu Extra 300L. Maciej komentuje każdą figurę przez intercom. Do +6G.
+      - generic [ref=e314]: Zła pogoda = bezpłatne przełożenie, bez limitu. Voucher ważny 12 miesięcy. Możesz zmienić pakiet lub przekazać voucher innej osobie.
+    - generic [ref=e315]:
+      - generic [ref=e316]:
+        - text: "3000"
+        - img "Maciej Kulaszewski, pilot akrobacyjny Extra 300L w kokpicie" [ref=e317]
+        - generic [ref=e318]: Mistrz Świata 2022 · 3× PL · 5× UK · Zwycięzca DE · Medalista ME · FI(A) · Zasłużony Działacz Lotnictwa Sportowego
+      - generic [ref=e319]:
+        - generic [ref=e320]:
+          - generic [ref=e321]:
+            - generic [ref=e322]: MŚ
+            - generic [ref=e323]: Mistrz Świata
+          - generic [ref=e324]:
+            - generic [ref=e325]:
+              - text: "4000"
+              - emphasis [ref=e326]: h+
+            - generic [ref=e327]: Nalot łączny (3 000 h na Extra 300L)
+          - generic [ref=e328]:
+            - generic [ref=e329]: 3·5·1
+            - generic [ref=e330]: Mistrz PL · UK · DE
+        - paragraph [ref=e331]: Pilot akrobacyjny · Mistrz Świata · FI(A)
+        - heading "Maciej Kulaszewski" [level=2] [ref=e332]:
+          - text: Maciej
+          - text: Kulaszewski
+        - paragraph [ref=e334]:
+          - strong [ref=e335]: Mistrz Świata Akrobacji. 3× Mistrz Polski, 5× Mistrz UK, zwycięzca Mistrzostw Niemiec, medalista Mistrzostw Europy.
+          - text: 4 000+ godzin nalotu łącznie, z czego ponad 3 000 godzin akrobacji na Extra 300L, jeden z najbardziej doświadczonych pilotów na tym typie na świecie. Instruktor FI(A) i trener, dwóch jego podopiecznych zostało Mistrzami Polski. Zero symulatorów, zero skrótów. Każdy lot prowadzi osobiście.
+        - list [ref=e336]:
+          - listitem [ref=e337]:
+            - strong [ref=e338]: Mistrz Świata Akrobacji 2022
+            - text: (kategoria Intermediate)
+          - listitem [ref=e339]:
+            - strong [ref=e340]: 3× Mistrz Polski
+            - text: ·
+            - strong [ref=e341]: 5× Mistrz Wielkiej Brytanii
+            - text: ·
+            - strong [ref=e342]: Zwycięzca Mistrzostw Niemiec
+          - listitem [ref=e343]:
+            - strong [ref=e344]: Medalista Mistrzostw Europy
+          - listitem [ref=e345]:
+            - strong [ref=e346]: Zasłużony Działacz Lotnictwa Sportowego
+            - text: ", odznaka Aeroklubu Polskiego (2026)"
+          - listitem [ref=e347]:
+            - strong [ref=e348]: Brązowy Cumulus 2026
+            - text: ", Aviatornia / Polska Akademia Sportów Lotniczych"
+          - listitem [ref=e349]:
+            - strong [ref=e350]: 4 000+ godzin
+            - text: nalotu łącznie, w tym
+            - strong [ref=e351]: 3 000+ godzin
+            - text: akrobacji na Extra 300L
+          - listitem [ref=e352]:
+            - text: Jeden z najbardziej doświadczonych pilotów na Extra 300L
+            - strong [ref=e353]: na świecie
+          - listitem [ref=e354]:
+            - strong [ref=e355]: Instruktor FI(A) i trener
+            - text: ", dwóch podopiecznych zostało Mistrzami Polski"
+          - listitem [ref=e356]:
+            - text: "Baza:"
+            - strong [ref=e357]: Radom-Piastów (EPRP)
+          - listitem [ref=e358]:
+            - link "mkaeros.com" [ref=e359] [cursor=pointer]:
+              - /url: https://mkaeros.com/pl
+            - text: ·
+            - link "@bullet.aerobatics" [ref=e360] [cursor=pointer]:
+              - /url: https://www.instagram.com/akrobacja_com/
+        - blockquote [ref=e361]:
+          - text: "„Każdy mój pasażer ląduje z uśmiechem i pytaniem:"
+          - strong [ref=e362]: kiedy następny raz?
+          - text: "\""
+          - generic [ref=e363]: "- Maciej Kulaszewski"
+        - blockquote [ref=e364]:
+          - text: „Miałem okazję latać z Mistrzem Świata w akrobacji lotniczej.
+          - strong [ref=e365]: To nie był 'lot widokowy', to była precyzja, dyscyplina i poziom, który otwiera oczy.
+          - text: Jeżeli ktoś z Was myśli o rozpoczęciu przygody z akrobacją, serio, lepiej trafić się nie da. Polecam z pełnym przekonaniem."
+          - generic [ref=e366]: "- Paweł P., pilot · Facebook, marzec 2026"
+        - paragraph [ref=e367]: Wyróżnienia i odznaczenia
+        - generic [ref=e368]:
+          - generic [ref=e369]:
+            - generic [ref=e370]: "2022"
+            - generic [ref=e371]: Mistrz Świata Akrobacji
+            - generic [ref=e372]: Kategoria Intermediate
+          - generic [ref=e373]:
+            - generic [ref=e374]: "2026"
+            - generic [ref=e375]:
+              - text: Zasłużony Działacz
+              - text: Lotnictwa Sportowego
+            - generic [ref=e376]: Aeroklub Polski · 80-lecie Aeroklubu Radomskiego
+          - generic [ref=e377]:
+            - generic [ref=e378]: "2026"
+            - generic [ref=e379]: Brązowy Cumulus
+            - generic [ref=e380]: Aviatornia · Polska Akademia Sportów Lotniczych
+          - generic [ref=e381]:
+            - generic [ref=e382]: Kadra
+            - generic [ref=e383]:
+              - text: Kadra Narodowa
+              - text: Aeroklubu Polskiego
+            - generic [ref=e384]: od 2019
+        - generic [ref=e385]:
+          - link "Zarezerwuj termin →" [ref=e386] [cursor=pointer]:
+            - /url: /kalendarz
+          - link "Instagram @bullet.aerobatics →" [ref=e387] [cursor=pointer]:
+            - /url: https://www.instagram.com/akrobacja_com/
+    - generic [ref=e388]:
+      - text: SP-EKS
+      - generic [ref=e389]:
+        - paragraph [ref=e390]: Extra 300L · SP-EKS
+        - heading "Maszyna" [level=2] [ref=e391]
+      - generic [ref=e393]:
+        - generic [ref=e394]:
+          - generic [ref=e395]: Extra 300L SP-EKS, widok z góry
+          - img "Extra 300L SP-EKS, widok z góry" [ref=e396]
+          - button "1 Silnik 300 KM Lycoming AEIO-580 · 224 kW · bezpośredni napęd śmigła MTV" [ref=e397] [cursor=pointer]:
+            - generic [ref=e399]: "1"
+            - generic:
+              - generic: Silnik
+              - generic: 300 KM
+              - generic: Lycoming AEIO-580 · 224 kW · bezpośredni napęd śmigła MTV
+          - button "2 Przeciążenia +10G / −10G Certyfikacja FAA/EASA. Margines bezpieczeństwa zawsze po Twojej stronie." [ref=e400] [cursor=pointer]:
+            - generic [ref=e402]: "2"
+            - generic:
+              - generic: Przeciążenia
+              - generic: +10G / −10G
+              - generic: Certyfikacja FAA/EASA. Margines bezpieczeństwa zawsze po Twojej stronie.
+          - button "3 Prędkość obrotu 420°/s Rozpiętość 8,0 m · konstrukcja kompozytowa · obrót wokół osi podłużnej" [ref=e403] [cursor=pointer]:
+            - generic [ref=e405]: "3"
+            - generic:
+              - generic: Prędkość obrotu
+              - generic: 420°/s
+              - generic: Rozpiętość 8,0 m · konstrukcja kompozytowa · obrót wokół osi podłużnej
+          - button "4 Usterzenie Klasyczne Symetryczny profil · pełna akrobacja dodatnia i ujemna" [ref=e406] [cursor=pointer]:
+            - generic [ref=e408]: "4"
+            - generic:
+              - generic: Usterzenie
+              - generic: Klasyczne
+              - generic: Symetryczny profil · pełna akrobacja dodatnia i ujemna
+          - button "5 Max Prędkość 220 kt VNE 220 kt (407 km/h) · MTOW 950 kg" [ref=e409] [cursor=pointer]:
+            - generic [ref=e411]: "5"
+            - generic:
+              - generic: Max Prędkość
+              - generic: 220 kt
+              - generic:
+                - text: V
+                - subscript: NE
+                - text: 220 kt (407 km/h) · MTOW 950 kg
+        - generic [ref=e412]:
+          - paragraph [ref=e413]: Parametry techniczne
+          - generic [ref=e414]:
+            - generic [ref=e415]:
+              - generic [ref=e416]: Typ
+              - generic [ref=e417]: Extra 300L
+            - generic [ref=e418]:
+              - generic [ref=e419]: Znaki
+              - generic [ref=e420]: SP-EKS
+            - generic [ref=e421]:
+              - generic [ref=e422]: Silnik
+              - generic [ref=e423]: 300 KM
+            - generic [ref=e424]:
+              - generic [ref=e425]: Maks. +G
+              - generic [ref=e426]: +10G
+            - generic [ref=e427]:
+              - generic [ref=e428]: Maks. −G
+              - generic [ref=e429]: −10G
+            - generic [ref=e430]:
+              - generic [ref=e431]: Roll
+              - generic [ref=e432]: 420°/s
+            - generic [ref=e433]:
+              - generic [ref=e434]: V(NE)
+              - generic [ref=e435]: 220 kt
+            - generic [ref=e436]:
+              - generic [ref=e437]: MTOW
+              - generic [ref=e438]: 950 kg
+            - generic [ref=e439]:
+              - generic [ref=e440]: Kabina
+              - generic [ref=e441]: 2 tandem
+            - generic [ref=e442]:
+              - generic [ref=e443]: Certyfikacja
+              - generic [ref=e444]: FAA / EASA
+            - generic [ref=e445]:
+              - generic [ref=e446]: Baza
+              - generic [ref=e447]: EPRP Radom
+          - paragraph [ref=e449]:
+            - text: Każdy lot z pasażerem prowadzi
+            - strong [ref=e450]: Maciej Kulaszewski osobiście
+            - text: ", bez zastępstw, bez wyjątków."
+    - generic [ref=e451]:
+      - generic [ref=e452]:
+        - paragraph [ref=e453]: Pytania i Odpowiedzi
+        - heading "Masz pytania? Mamy 3 000 godzin odpowiedzi" [level=2] [ref=e454]:
+          - text: Masz pytania?
+          - text: Mamy 3 000 godzin odpowiedzi
+      - generic [ref=e456]:
+        - generic [ref=e457]:
+          - button "Czy potrzebuję doświadczenia lotniczego? +" [ref=e458] [cursor=pointer]
+          - paragraph [ref=e459]: Nie. Przed lotem przeprowadzamy pełny briefing. Pilot dba o bezpieczeństwo przez cały czas.
+        - generic [ref=e460]:
+          - button "Jakie są ograniczenia zdrowotne? +" [ref=e461] [cursor=pointer]
+          - paragraph [ref=e462]: "Wymagany ogólnie dobry stan zdrowia. Przeciwwskazania: schorzenia kardiologiczne, epilepsja, ciąża, niedawne operacje. W razie wątpliwości, konsultacja z lekarzem."
+        - generic [ref=e463]:
+          - button "Co jeśli pogoda nie pozwoli na lot? +" [ref=e464] [cursor=pointer]
+          - paragraph [ref=e465]: Przenosimy termin bezpłatnie. Voucher ważny 12 miesięcy.
+        - generic [ref=e466]:
+          - button "Jak długo ważny jest voucher? +" [ref=e467] [cursor=pointer]
+          - paragraph [ref=e468]: 12 miesięcy od daty zakupu. Termin lotu umawiasz indywidualnie.
+        - generic [ref=e469]:
+          - button "Gdzie odbywają się loty? +" [ref=e470] [cursor=pointer]
+          - paragraph [ref=e471]: Lotnisko Radom-Piastów (EPRP). Parking na miejscu. Wskazówki dojazdu w mailu po rezerwacji.
+        - generic [ref=e472]:
+          - button "Czy mogę kupić voucher na prezent? +" [ref=e473] [cursor=pointer]
+          - paragraph [ref=e474]: Tak. Otrzymasz elegancki PDF gotowy do wręczenia. Obdarowana osoba sama wybiera termin lotu.
+        - generic [ref=e475]:
+          - button "Ile trwa cała wizyta na lotnisku? +" [ref=e476] [cursor=pointer]
+          - paragraph [ref=e477]: "Pierwszy Lot: ok. 45 min. Adrenalina: ok. 1,5 h. Masterclass: ok. 3 h."
+        - generic [ref=e478]:
+          - button "Jaka jest maksymalna waga i wzrost pasażera? +" [ref=e479] [cursor=pointer]
+          - paragraph [ref=e480]: Max 110 kg, max 195 cm wzrostu, ograniczenia kokpitu Extra 300L. W razie wątpliwości, zadzwoń.
+      - generic [ref=e481]:
+        - link "Nie znalazłeś odpowiedzi? Napisz do nas →" [ref=e482] [cursor=pointer]:
+          - /url: https://wa.me/48535535221
+        - link "Kup voucher →" [ref=e483] [cursor=pointer]:
+          - /url: "#sklep"
+    - generic [ref=e485]:
+      - paragraph [ref=e486]: Bezpieczeństwo
+      - heading "Dlaczego lot z mistrzem jest bezpieczniejszy niż myślisz" [level=2] [ref=e487]:
+        - text: Dlaczego lot z mistrzem
+        - text: jest bezpieczniejszy niż myślisz
+      - generic [ref=e489]:
+        - generic [ref=e490]:
+          - generic [ref=e491]: 🎯
+          - heading "Opanowanie maszyny" [level=3] [ref=e492]
+          - paragraph [ref=e493]:
+            - text: 3 000+ godzin na Extra 300L, jednym z najwytrzymalszych samolotów akrobacyjnych na świecie. Maciej zna każde zachowanie tej maszyny w każdej konfiguracji lotu. Pilot liniowy lata bezpiecznie w normalnych warunkach.
+            - strong [ref=e494]: Maciej wie, jak zachować kontrolę w każdych warunkach.
+        - generic [ref=e495]:
+          - generic [ref=e496]: 📐
+          - heading "Marginesy bezpieczeństwa" [level=3] [ref=e497]
+          - paragraph [ref=e498]:
+            - text: Loty z pasażerami odbywają się z marginesami wielokrotnie większymi niż w zawodach. Figury wykonywane na bezpiecznych wysokościach, z prędkościami dającymi pełną kontrolę.
+            - strong [ref=e499]: Twój lot to 30% możliwości maszyny i pilota.
+        - generic [ref=e500]:
+          - generic [ref=e501]: 🛡️
+          - heading "Trening na sytuacje awaryjne" [level=3] [ref=e502]
+          - paragraph [ref=e503]:
+            - text: Certyfikowany instruktor FI(A) i sędzia akrobacji lotniczej. Tysiące godzin treningu obejmujących procedury awaryjne, korkociągi i recovery.
+            - strong [ref=e504]: Wielokrotny Mistrz Polski nie zostawia niczego przypadkowi.
+    - generic [ref=e505]:
+      - img "Paweł Mamcarz, właściciel Extra 300L SP-EKS" [ref=e506]
+      - generic [ref=e507]:
+        - paragraph [ref=e508]: Właściciel SP-EKS
+        - heading "Paweł Mamcarz" [level=2] [ref=e509]:
+          - text: Paweł
+          - text: Mamcarz
+        - paragraph [ref=e511]: Pilot z 26-letnim doświadczeniem lotniczym i właściciel Extra 300L SP-EKS, byłego samolotu Royal Jordanian Falcons. Odpowiada za operacje, bezpieczeństwo i rozwój akrobacja.com.
+        - link "mamcarz.com →" [ref=e512] [cursor=pointer]:
+          - /url: https://mamcarz.com
+    - generic [ref=e513]:
+      - paragraph [ref=e514]: Bądź na bieżąco
+      - heading "Dowiedz się pierwszy o pokazach" [level=2] [ref=e515]
+      - paragraph [ref=e516]: Zostaw numer, wyślemy SMS kiedy latamy na pokazach, mamy wolne terminy lub nowe produkty.
+      - generic [ref=e517]:
+        - textbox "Podaj numer telefonu (9-15 cyfr)" [ref=e518]:
+          - /placeholder: +48 XXX XXX XXX
+        - button "Zapisz się" [ref=e519] [cursor=pointer]
+      - paragraph [ref=e520]: Bez spamu. Max 2-3 SMS w miesiącu. Możesz zrezygnować w każdej chwili.
+    - generic [ref=e521]:
+      - paragraph [ref=e522]: Przewodnik · Dla pasażerów
+      - heading "Briefing przed lotem akrobacyjnym" [level=2] [ref=e523]
+      - img "Briefing przed lotem akrobacyjnym Extra 300L - przygotowanie, bezpieczeństwo, fizjologia, parametry maszyny" [ref=e524]
+    - generic [ref=e525]:
+      - paragraph [ref=e526]: Przewodnik · Dla pilotów
+      - heading "Kurs akrobacji FCL.800" [level=2] [ref=e527]
+      - img "Przewodnik po kursie akrobacji FCL.800 - wymagania, manewry, parametry Extra 300L" [ref=e528]
+      - link "Dowiedz się więcej o szkoleniu →" [ref=e529] [cursor=pointer]:
+        - /url: /blog/kurs-akrobacji-fcl800
+    - generic [ref=e530]:
+      - paragraph [ref=e531]: Dofinansowanie kursu akrobacji, do 90% taniej
+      - paragraph [ref=e532]: BUR, PUP, KFS, ponad 10 kursantów już skorzystało. Szkolenie pod egidą Aeroklubu Radomskiego. Pomagamy w formalności od A do Z.
+      - link "Sprawdź czy się kwalifikujesz →" [ref=e533] [cursor=pointer]:
+        - /url: /dotacje-szkolenie-lotnicze
+    - generic [ref=e534]:
+      - generic [ref=e535]:
+        - paragraph [ref=e536]: Pokazy Lotnicze · Branding
+        - heading "Extra 300L na Twoim Evencie" [level=2] [ref=e537]:
+          - text: Extra 300L
+          - text: na Twoim Evencie
+      - generic [ref=e539]: Pokazy Akrobacyjne
+      - generic [ref=e540]:
+        - generic [ref=e541]:
+          - heading "Solo Display" [level=3] [ref=e542]
+          - paragraph [ref=e543]: Pokaz akrobacyjny Extra 300L SP-EKS
+          - generic [ref=e544]: od 14 990 PLN
+          - list [ref=e545]:
+            - listitem [ref=e546]: → Pokaz akrobacyjny 10–15 minut
+            - listitem [ref=e547]: → Briefing z organizatorem eventu
+            - listitem [ref=e548]: → Ubezpieczenie OC pokazu
+            - listitem [ref=e549]: → Koordynacja z CAA/PAŻP
+            - listitem [ref=e550]: → Dojazd samolotu do 200 km w cenie
+          - link "Zapytaj o termin →" [ref=e551] [cursor=pointer]:
+            - /url: https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20pokaz%20Solo%20Display
+        - generic [ref=e552]:
+          - heading "Event Package" [level=3] [ref=e553]
+          - paragraph [ref=e554]: Pełna oprawa lotnicza Twojego eventu
+          - generic [ref=e555]: od 24 990 PLN
+          - list [ref=e556]:
+            - listitem [ref=e557]: → 2–3 pokazy w ciągu dnia
+            - listitem [ref=e558]: → Strefa meet & greet przy samolocie
+            - listitem [ref=e559]: → Zdjęcia samolotu do materiałów promocyjnych
+            - listitem [ref=e560]: → Koordynacja z CAA/PAŻP
+            - listitem [ref=e561]: → Ubezpieczenie OC + NNW
+            - listitem [ref=e562]: → Dojazd samolotu w cenie
+          - link "Zapytaj o wycenę →" [ref=e563] [cursor=pointer]:
+            - /url: https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20Event%20Package%20na%20pokazy
+        - generic [ref=e564]:
+          - heading "Premium Partnership" [level=3] [ref=e565]
+          - paragraph [ref=e566]: Wyłączna współpraca, pełen dzień z samolotem i pilotem
+          - generic [ref=e567]: wycena indywidualna
+          - list [ref=e568]:
+            - listitem [ref=e569]: → Pełny dzień z samolotem i pilotem
+            - listitem [ref=e570]: → Pokazy + loty VIP dla gości organizatora
+            - listitem [ref=e571]: → Branding samolotu logo sponsora/eventu
+            - listitem [ref=e572]: → Relacja foto + video z pokazu
+            - listitem [ref=e573]: → Obecność w materiałach promocyjnych eventu
+            - listitem [ref=e574]: → Pełna koordynacja logistyczna
+          - link "Porozmawiajmy →" [ref=e575] [cursor=pointer]:
+            - /url: https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20Premium%20Partnership
+      - generic [ref=e576]: Branding Samolotu · Roczna Współpraca
+      - generic [ref=e577]:
+        - generic [ref=e578]:
+          - generic [ref=e579]: Logo S, Ogon
+          - generic [ref=e580]: Logo na stateczniku pionowym, obie strony
+          - generic [ref=e581]: 9 900 PLN / rok
+        - generic [ref=e582]:
+          - generic [ref=e583]: Logo M, Kadłub
+          - generic [ref=e584]: Logo na kadłubie, obie strony. Widoczne na ziemi i w powietrzu.
+          - generic [ref=e585]: 19 900 PLN / rok
+        - generic [ref=e586]:
+          - generic [ref=e587]: Logo M, Skrzydła
+          - generic [ref=e588]: Logo na dolnej powierzchni skrzydeł. Widoczne z ziemi podczas pokazów.
+          - generic [ref=e589]: 24 900 PLN / rok
+        - generic [ref=e590]:
+          - generic [ref=e591]: Pakiet L, Kadłub + Ogon
+          - generic [ref=e592]: Kadłub obie strony + statecznik. Dominująca ekspozycja na ziemi.
+          - generic [ref=e593]: 34 900 PLN / rok
+        - generic [ref=e594]:
+          - generic [ref=e595]: Pakiet XL, Kadłub + Skrzydła + Ogon
+          - generic [ref=e596]: Kadłub + skrzydła + ogon. Pełna ekspozycja w powietrzu i na ziemi.
+          - generic [ref=e597]: 54 900 PLN / rok
+        - generic [ref=e598]:
+          - generic [ref=e599]: Pakiet XXL, Custom Livery
+          - generic [ref=e600]: Kolory sponsora, pełna personalizacja malowania. Projekt + wykonanie.
+          - generic [ref=e601]: od 69 900 PLN / rok
+        - generic [ref=e602]:
+          - generic [ref=e603]: Full Aircraft, Wyłączny Sponsor
+          - generic [ref=e604]: Cały samolot w barwach jednego sponsora. Wyłączność na pokazach, eventach, social media i stronie.
+          - generic [ref=e605]: 99 888 PLN / rok
+      - link "Zapytaj o branding →" [ref=e607] [cursor=pointer]:
+        - /url: https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20branding%20samolotu%20Extra%20300L
+  - contentinfo [ref=e608]:
+    - generic [ref=e609]:
+      - generic [ref=e610]:
+        - img "akrobacja.com" [ref=e611]
+        - paragraph [ref=e612]:
+          - text: Extra 300L SP-EKS
+          - text: Radom-Piastów EPRP
+        - generic [ref=e613]:
+          - img "Paweł Mamcarz" [ref=e614]
+          - generic [ref=e615]:
+            - strong [ref=e616]: Paweł Mamcarz
+            - text: Właściciel SP-EKS ·
+            - link "mamcarz.com" [ref=e617] [cursor=pointer]:
+              - /url: https://mamcarz.com
+        - generic [ref=e618]:
+          - img "Maciej Kulaszewski" [ref=e619]
+          - generic [ref=e620]:
+            - strong [ref=e621]: Maciej Kulaszewski
+            - text: Pilot · FI(A)
+      - generic [ref=e622]:
+        - paragraph [ref=e623]: Nawigacja
+        - list [ref=e624]:
+          - listitem [ref=e625]:
+            - link "Lot akrobacyjny" [ref=e626] [cursor=pointer]:
+              - /url: /lot-akrobacyjny
+          - listitem [ref=e627]:
+            - link "Maszyna SP-EKS" [ref=e628] [cursor=pointer]:
+              - /url: "#maszyna"
+          - listitem [ref=e629]:
+            - link "Maciej Kulaszewski" [ref=e630] [cursor=pointer]:
+              - /url: "#pilot"
+          - listitem [ref=e631]:
+            - link "Sklep z Voucherami" [ref=e632] [cursor=pointer]:
+              - /url: "#sklep"
+          - listitem [ref=e633]:
+            - link "Sklep Merch" [ref=e634] [cursor=pointer]:
+              - /url: /sklep-merch
+          - listitem [ref=e635]:
+            - link "Pokazy i Branding" [ref=e636] [cursor=pointer]:
+              - /url: "#pokazy"
+          - listitem [ref=e637]:
+            - link "Pokazy na Event" [ref=e638] [cursor=pointer]:
+              - /url: /pokazy-lotnicze
+          - listitem [ref=e639]:
+            - link "Sponsoring" [ref=e640] [cursor=pointer]:
+              - /url: /sponsoring
+          - listitem [ref=e641]:
+            - link "Kalendarz" [ref=e642] [cursor=pointer]:
+              - /url: /kalendarz
+          - listitem [ref=e643]:
+            - link "Konto pilota" [ref=e644] [cursor=pointer]:
+              - /url: /konto
+          - listitem [ref=e645]:
+            - link "Camp akrobacyjny" [ref=e646] [cursor=pointer]:
+              - /url: /camp-akrobacyjny
+          - listitem [ref=e647]:
+            - link "Szkolenie FCL.800" [ref=e648] [cursor=pointer]:
+              - /url: /program-szkolenia-akrobacja-fcl800
+          - listitem [ref=e649]:
+            - link "Galeria" [ref=e650] [cursor=pointer]:
+              - /url: /galeria
+          - listitem [ref=e651]:
+            - link "Blog" [ref=e652] [cursor=pointer]:
+              - /url: /blog
+          - listitem [ref=e653]:
+            - link "FAQ" [ref=e654] [cursor=pointer]:
+              - /url: "#faq"
+          - listitem [ref=e655]:
+            - link "Regulamin" [ref=e656] [cursor=pointer]:
+              - /url: /regulamin
+      - generic [ref=e657]:
+        - paragraph [ref=e658]: Kontakt
+        - list [ref=e659]:
+          - listitem [ref=e660]:
+            - link "+48 535 535 221" [ref=e661] [cursor=pointer]:
+              - /url: https://wa.me/48535535221
+          - listitem [ref=e662]:
+            - link "dto@akrobacja.com" [ref=e663] [cursor=pointer]:
+              - /url: mailto:dto@akrobacja.com
+          - listitem [ref=e664]:
+            - link "Lotnisko Radom-Piastów (EPRP)" [ref=e665] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8
+          - listitem [ref=e666]: ul. Lotników 1, Radom
+          - listitem [ref=e667]:
+            - link "Google Maps →" [ref=e668] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8
+      - generic [ref=e669]:
+        - paragraph [ref=e670]: Informacje
+        - list [ref=e671]:
+          - listitem [ref=e672]:
+            - link "Regulamin" [ref=e673] [cursor=pointer]:
+              - /url: /regulamin
+          - listitem [ref=e674]:
+            - link "Polityka prywatności" [ref=e675] [cursor=pointer]:
+              - /url: /polityka-prywatnosci
+          - listitem [ref=e676]:
+            - link "Dotacje na szkolenie" [ref=e677] [cursor=pointer]:
+              - /url: /dotacje-szkolenie-lotnicze
+          - listitem [ref=e678]:
+            - link "FAQ, Pytania i odpowiedzi" [ref=e679] [cursor=pointer]:
+              - /url: "#faq"
+          - listitem [ref=e680]:
+            - link "Dojazd na lotnisko" [ref=e681] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8
+    - generic [ref=e682]:
+      - paragraph [ref=e683]: © 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP
+      - generic [ref=e684]:
+        - link "Instagram" [ref=e685] [cursor=pointer]:
+          - /url: https://www.instagram.com/warsawflightsafety
+        - link "Facebook" [ref=e686] [cursor=pointer]:
+          - /url: https://www.facebook.com/warsawflightsafety
+        - link "WhatsApp" [ref=e687] [cursor=pointer]:
+          - /url: https://wa.me/48535535221
+        - img [ref=e688]
+  - link "Kup voucher na lot akrobacyjny" [ref=e689] [cursor=pointer]:
+    - /url: "#sklep"
+    - text: Kup Voucher →
+  - generic:
+    - dialog "Kup Voucher":
+      - button "×"
+      - heading "Kup Voucher" [level=3]
+      - paragraph
+      - paragraph
+      - generic "Dostępne metody płatności":
+        - text: "Płatność:"
+        - generic: BLIK
+        - generic: Apple Pay
+        - generic: Google Pay
+        - generic: Karta
+        - generic: Przelewy24
+      - generic:
+        - generic:
+          - generic: Imię i Nazwisko
+          - textbox "Imię i Nazwisko":
+            - /placeholder: Jan Kowalski
+        - generic:
+          - generic: Adres Email
+          - textbox "Adres Email":
+            - /placeholder: jan@example.com
+        - generic:
+          - generic: NIP (opcjonalnie, dla faktury VAT)
+          - textbox "NIP (opcjonalnie, dla faktury VAT)":
+            - /placeholder: "1234567890"
+        - generic:
+          - checkbox "+ Video 360° z lotu (+299 PLN)"
+          - text: + Video 360° z lotu (+299 PLN)
+        - button "Przejdź do płatności"
+  - button "Otwórz czat" [ref=e690] [cursor=pointer]:
+    - img [ref=e691]
+  - dialog "Ustawienia cookies" [ref=e693]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e694]
+    - paragraph [ref=e695]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e696] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e697]:
+      - button "Zgoda na wszystkie" [ref=e698] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e699] [cursor=pointer]
+      - button "Ustawienia" [ref=e700] [cursor=pointer]

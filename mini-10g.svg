@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" width="100%" style="max-width:280px" class="diecut">
+  <rect width="500" height="300" rx="14" fill="#FFFFFF"></rect>
+  <rect x="10" y="10" width="480" height="280" rx="10" fill="#070F1A"></rect>
+  <text x="250" y="190" text-anchor="middle" font-family="Anton" font-size="170" letter-spacing="-2" fill="#FFFFFF">±10<tspan fill="#E11E26">G</tspan></text>
+  <text x="250" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="14" letter-spacing="6" fill="#00E5FF">CERTIFIED · EXTRA 300L</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" width="100%" style="max-width:280px" class="diecut">
+  <rect width="500" height="300" rx="14" fill="#FFFFFF"></rect>
+  <rect x="10" y="10" width="480" height="280" rx="10" fill="#0A2F7C" stroke="#E11E26" stroke-width="6"></rect>
+  <text x="250" y="170" text-anchor="middle" font-family="Anton" font-size="120" letter-spacing="10" fill="#FFFFFF">SP-EKS</text>
+  <text x="250" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="18" letter-spacing="6" fill="#00E5FF">EXTRA 300L · S/N 1290</text>
+</svg>

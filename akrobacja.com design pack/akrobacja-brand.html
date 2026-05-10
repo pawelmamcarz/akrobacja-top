@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<title>akrobacja.com — Brand & Merch</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="brand.css"/>
+<style>
+  body{margin:0;background:#0c0d10;color:#fff;font-family:Inter,sans-serif;}
+  .panel-title{font-family:Anton,Impact,sans-serif;letter-spacing:1px;}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="marks.jsx"></script>
+<script type="text/babel" src="section-brand.jsx"></script>
+<script type="text/babel" src="section-logos.jsx"></script>
+<script type="text/babel" src="section-site.jsx"></script>
+<script type="text/babel" src="section-merch.jsx"></script>
+<script type="text/babel" src="section-l1pack.jsx"></script>
+
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent":"#E11E26",
+  "navy":"#0A2F7C",
+  "showCyan": true
+}/*EDITMODE-END*/;
+
+function App(){
+  const [t,setTweak] = useTweaks(TWEAK_DEFAULTS);
+  React.useEffect(()=>{
+    document.documentElement.style.setProperty('--red', t.accent);
+    document.documentElement.style.setProperty('--navy', t.navy);
+  },[t.accent,t.navy]);
+
+  return (
+    <>
+      <DesignCanvas
+        title="akrobacja.com — Brand · Web · Merch"
+        subtitle="Eksploracja: paleta · typografia · 6 kierunków logo · landing · 9 produktów merch · Maciej Kulaszewski Team"
+      >
+        <DCSection id="foundations" title="01 · Fundamenty marki">
+          <DCArtboard id="palette" label="Paleta" width={1200} height={760}><Palette/></DCArtboard>
+          <DCArtboard id="type" label="Typografia" width={1200} height={760}><Typography/></DCArtboard>
+          <DCArtboard id="voice" label="Głos marki" width={1200} height={760}><VoicePrinciples/></DCArtboard>
+        </DCSection>
+
+        <DCSection id="l1pack" title="02 · LOGO L1 — pełny pakiet (FINAL)">
+          <DCArtboard id="l1-primary" label="L1A · Primary" width={720} height={620}><L1_Primary/></DCArtboard>
+          <DCArtboard id="l1-onnavy" label="L1B · On navy" width={720} height={620}><L1_OnNavy/></DCArtboard>
+          <DCArtboard id="l1-onblack" label="L1C · On black" width={720} height={620}><L1_OnBlack/></DCArtboard>
+          <DCArtboard id="l1-mono" label="L1D · Monochrome" width={720} height={620}><L1_Mono/></DCArtboard>
+          <DCArtboard id="l1-clear" label="Clear space" width={1100} height={620}><L1_ClearSpace/></DCArtboard>
+          <DCArtboard id="l1-sizes" label="Min sizes" width={1100} height={520}><L1_Sizes/></DCArtboard>
+          <DCArtboard id="l1-colors" label="Color tokens" width={1100} height={420}><L1_Colors/></DCArtboard>
+          <DCArtboard id="l1-donts" label="Don'ts" width={1100} height={620}><L1_Donts/></DCArtboard>
+          <DCArtboard id="l1-apps" label="Aplikacje" width={1100} height={520}><L1_Apps/></DCArtboard>
+        </DCSection>
+
+        <DCSection id="logos-archive" title="02b · Logo — odrzucone (referencja)">
+          <DCArtboard id="logo-badge" label="L2 · Badge / Patch" width={620} height={620}><Logo_Badge/></DCArtboard>
+          <DCArtboard id="logo-horizontal" label="L3 · Horizontal lockup" width={840} height={620}><Logo_Horizontal/></DCArtboard>
+        </DCSection>
+
+        <DCSection id="site" title="03 · Strona — landing redesign">
+          <DCArtboard id="site-landing" label="Landing · 1440 px" width={1440} height={1720}><SiteLanding/></DCArtboard>
+        </DCSection>
+
+        <DCSection id="merch" title="04 · Merch — 9 produktów">
+          <DCArtboard id="m-tee-navy" label="T-shirt navy · front" width={560} height={620}><TShirtNavy/></DCArtboard>
+          <DCArtboard id="m-tee-bone" label="T-shirt bone · plecy" width={560} height={620}><TShirtBone/></DCArtboard>
+          <DCArtboard id="m-hoodie" label="Hoodie navy" width={560} height={620}><Hoodie/></DCArtboard>
+          <DCArtboard id="m-tote" label="Tote bag" width={560} height={620}><Tote/></DCArtboard>
+          <DCArtboard id="m-cap" label="Czapka snapback" width={560} height={620}><Cap/></DCArtboard>
+          <DCArtboard id="m-stickers" label="Sticker pack" width={560} height={620}><Stickers/></DCArtboard>
+          <DCArtboard id="m-poster" label="Plakat A2" width={560} height={780}><Poster/></DCArtboard>
+          <DCArtboard id="m-mug" label="Kubek 330 ml" width={560} height={620}><Mug/></DCArtboard>
+          <DCArtboard id="m-bottle" label="Bidon 750 ml" width={560} height={620}><Bottle/></DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+
+      <TweaksPanel title="Tweaks">
+        <TweakSection title="Akcent">
+          <TweakColor label="Kolor akcji (CTA)" value={t.accent} onChange={v=>setTweak('accent',v)}
+            options={['#E11E26','#00E5FF','#FFB300','#070F1A']}/>
+          <TweakColor label="Granat główny" value={t.navy} onChange={v=>setTweak('navy',v)}
+            options={['#0A2F7C','#06205A','#1A4FB0','#040E2A']}/>
+        </TweakSection>
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

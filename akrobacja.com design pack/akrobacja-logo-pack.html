@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pl"><head>
+<meta charset="utf-8"/><title>akrobacja.top — Logo pack</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--navy:#1B3A8A;--red:#E11E26;--bone:#F4F1EA;--black:#0B0F1A;--ink:#0E1A35}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bone);color:var(--ink);font-family:Inter,sans-serif;padding:40px}
+header{max-width:1280px;margin-bottom:28px}
+h1{font-family:Anton;font-size:64px;letter-spacing:1px;margin:0;color:var(--navy)}
+.sub{font-family:JetBrains Mono;font-size:11px;letter-spacing:3px;color:var(--navy);opacity:.7;margin-top:6px}
+.note-top{max-width:900px;margin-top:14px;font-size:14px;line-height:1.55;color:#444}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:1280px}
+.card{background:#fff;border:1px solid #E6E2D8;display:flex;flex-direction:column;overflow:hidden}
+.card.dark{background:var(--navy)}
+.card.black{background:var(--black)}
+.card.bone{background:var(--bone);border-color:#D9D4C5}
+.preview{flex:1;display:flex;align-items:center;justify-content:center;padding:36px;min-height:300px}
+.preview img,.preview svg{max-width:100%;max-height:240px;height:auto;display:block}
+.meta{padding:14px 18px;background:rgba(0,0,0,.04);border-top:1px solid #E6E2D8;display:flex;justify-content:space-between;align-items:center;font-family:JetBrains Mono;font-size:10px;letter-spacing:2px;color:var(--navy);gap:8px}
+.card.dark .meta{background:rgba(0,0,0,.25);border-top:1px solid rgba(255,255,255,.12);color:#fff}
+.card.black .meta{background:rgba(255,255,255,.05);border-top:1px solid rgba(255,255,255,.1);color:#fff}
+.btn{padding:6px 11px;background:var(--red);color:#fff;text-decoration:none;font-weight:700;letter-spacing:1.5px;cursor:pointer;border:none;font-family:inherit;font-size:10px}
+.btn:hover{background:#c01620}
+.btn.ghost{background:transparent;border:1px solid currentColor;color:inherit}
+.fmt-row{display:flex;gap:6px;flex-wrap:wrap}
+.section-title{font-family:Anton;letter-spacing:1.5px;color:var(--navy);font-size:28px;margin:48px 0 14px;max-width:1280px;border-top:2px solid var(--navy);padding-top:18px}
+.note{max-width:900px;background:#fff;border:1px solid #E6E2D8;padding:22px;margin-top:32px;font-size:13.5px;line-height:1.6}
+.note h3{font-family:Anton;color:var(--navy);font-size:22px;margin:0 0 10px;letter-spacing:1px}
+.note ul{margin:6px 0;padding-left:20px}
+.note code{background:var(--bone);padding:2px 6px;font-family:JetBrains Mono;font-size:12px}
+.usage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:1280px}
+.usage{aspect-ratio:1;background:#fff;border:1px solid #E6E2D8;display:flex;align-items:center;justify-content:center;padding:18px;position:relative;overflow:hidden}
+.usage.navy{background:var(--navy)}
+.usage.black{background:var(--black)}
+.usage.bone{background:var(--bone)}
+.usage img{max-width:100%;max-height:100%;object-fit:contain}
+.usage .lbl{position:absolute;bottom:6px;left:8px;font-family:JetBrains Mono;font-size:9px;letter-spacing:2px;opacity:.6}
+.usage.navy .lbl,.usage.black .lbl{color:#fff}
+</style>
+</head><body>
+
+<header>
+  <h1>AKROBACJA<span style="color:var(--red)">.TOP</span> — LOGO PACK</h1>
+  <div class="sub">brand assets · v1 · oryginalne pliki + pakiet produkcyjny</div>
+  <p class="note-top">Pakiet używa <b>oryginalnego logo</b> (akrobacja-logo.webp). Każdy kafelek to gotowa wersja do użycia w odpowiednim kontekście — kliknij <b>PNG</b> żeby pobrać, <b>BG</b> żeby zobaczyć na innym tle. Wektorowa wersja .svg/.ai do drukarni — daj znać i wyślę finałkę po akceptacji któregoś kierunku poniżej.</p>
+</header>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="preview"><img src="akrobacja-logo.webp" alt="primary lockup"/></div>
+    <div class="meta"><span>L · PRIMARY (full lockup)</span>
+      <div class="fmt-row">
+        <a class="btn" href="akrobacja-logo.webp" download>WEBP</a>
+        <button class="btn ghost" onclick="dlPNG('akrobacja-logo.webp','akrobacja-logo-primary.png',2400)">PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card dark">
+    <div class="preview"><img src="akrobacja-logo-light.webp" alt="light lockup"/></div>
+    <div class="meta"><span>L · ON NAVY (white version)</span>
+      <div class="fmt-row">
+        <a class="btn ghost" href="akrobacja-logo-light.webp" download>WEBP</a>
+        <button class="btn ghost" onclick="dlPNG('akrobacja-logo-light.webp','akrobacja-logo-light.png',2400)">PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="preview"><img src="akrobacja-logo-mark.webp" alt="mark only"/></div>
+    <div class="meta"><span>M · MARK (avatar / favicon)</span>
+      <div class="fmt-row">
+        <a class="btn" href="akrobacja-logo-mark.webp" download>WEBP</a>
+        <button class="btn ghost" onclick="dlPNG('akrobacja-logo-mark.webp','akrobacja-mark.png',1600)">PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card black">
+    <div class="preview"><img src="akrobacja-logo-mark-light.webp" alt="mark only light"/></div>
+    <div class="meta"><span>M · MARK ON BLACK</span>
+      <div class="fmt-row">
+        <a class="btn ghost" href="akrobacja-logo-mark-light.webp" download>WEBP</a>
+        <button class="btn ghost" onclick="dlPNG('akrobacja-logo-mark-light.webp','akrobacja-mark-light.png',1600)">PNG</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<h2 class="section-title">APLIKACJE — JAK LOGO ŻYJE W ŚWIECIE</h2>
+<div class="usage-grid">
+  <div class="usage"><img src="akrobacja-logo-mark.webp"/><span class="lbl">FAVICON 32×32</span></div>
+  <div class="usage navy"><img src="akrobacja-logo-mark-light.webp"/><span class="lbl">SOCIAL AVATAR</span></div>
+  <div class="usage bone"><img src="akrobacja-logo.webp"/><span class="lbl">EMAIL SIGNATURE</span></div>
+  <div class="usage black"><img src="akrobacja-logo-light.webp"/><span class="lbl">VIDEO BUMPER</span></div>
+</div>
+
+<h2 class="section-title">PROPOZYCJA — UPROSZCZONA WERSJA WEKTOROWA</h2>
+<p class="note-top" style="max-width:900px">Twoje logo ma 3D shading i gradienty — wygląda świetnie cyfrowo, ale na haftach, grawerze, małych nadrukach i monochromie się gubi. Propozycja niżej: ta sama kompozycja (A + samolot + swoosh), sprowadzona do <b>płaskich, wektorowych płaszczyzn</b>. Zachowuje DNA logo, działa od 16 px do plakatu A0. Akceptujesz kierunek? Doszlifuję do finałki SVG/AI.</p>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="preview" id="vec-light"></div>
+    <div class="meta"><span>V · FLAT VECTOR (proposal)</span>
+      <div class="fmt-row">
+        <button class="btn" onclick="dlSVG('vec-light','akrobacja-mark-flat.svg')">SVG</button>
+        <button class="btn ghost" onclick="dlNodePNG('vec-light','akrobacja-mark-flat.png',2400)">PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card dark">
+    <div class="preview" id="vec-dark"></div>
+    <div class="meta"><span>V · FLAT VECTOR ON NAVY</span>
+      <div class="fmt-row">
+        <button class="btn ghost" onclick="dlSVG('vec-dark','akrobacja-mark-flat-onnavy.svg')">SVG</button>
+        <button class="btn ghost" onclick="dlNodePNG('vec-dark','akrobacja-mark-flat-onnavy.png',2400)">PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="preview" id="vec-mono-navy"></div>
+    <div class="meta"><span>V · MONO NAVY (1-color print)</span>
+      <div class="fmt-row">
+        <button class="btn" onclick="dlSVG('vec-mono-navy','akrobacja-mark-mono-navy.svg')">SVG</button>
+        <button class="btn ghost" onclick="dlNodePNG('vec-mono-navy','akrobacja-mark-mono-navy.png',2400)">PNG</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card black">
+    <div class="preview" id="vec-mono-white"></div>
+    <div class="meta"><span>V · MONO WHITE (embroidery / engrave)</span>
+      <div class="fmt-row">
+        <button class="btn ghost" onclick="dlSVG('vec-mono-white','akrobacja-mark-mono-white.svg')">SVG</button>
+        <button class="btn ghost" onclick="dlNodePNG('vec-mono-white','akrobacja-mark-mono-white.png',2400)">PNG</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="note">
+  <h3>JAK UŻYWAĆ</h3>
+  <ul>
+    <li><b>WEBP / PNG</b> — kliknij przycisk pobierania przy danej wersji. PNG renderuje się z transparentnym tłem w 2400 px szerokości (logo) lub 1600 px (mark).</li>
+    <li><b>SVG (flat vector)</b> — uproszczona, jednowarstwowa wersja. Otwórz w Illustratorze, w razie potrzeby dodaj <code>Type → Create Outlines</code>, zapisz jako <code>.ai</code> lub <code>.eps</code>.</li>
+    <li><b>Kiedy której używać:</b> oryginał (3D) — web, social, video, druk pełnokolorowy. Flat vector — haft, grawer, sitodruk 1+0, naklejki vinyl, małe rozmiary, fax-style.</li>
+    <li><b>Kolory marki:</b> <code>navy #1B3A8A</code> · <code>red #E11E26</code> · <code>bone #F4F1EA</code> · <code>ink #0B0F1A</code>.</li>
+    <li><b>Min. rozmiar:</b> mark 16 px (web favicon), full lockup 96 px szer. (web), 24 mm szer. (druk).</li>
+  </ul>
+</div>
+
+<script>
+// === Flat vector reconstruction of the A+plane+swoosh mark ===
+// Simplified to a single layer per color. Matches the actual brand mark composition.
+
+function buildVec({navy, red, bg, white="#FFFFFF", planeAlt}){
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 720" width="100%" style="max-height:240px">
+    ${bg?`<rect width="600" height="720" fill="${bg}"/>`:""}
+    <!-- LEFT half of A (navy) -->
+    <path d="M 130 600 L 280 130 L 305 195 L 220 600 Z" fill="${navy}"/>
+    <!-- RIGHT half of A (red — chevron pointing up, ALT solid color override) -->
+    <path d="M 305 230 L 380 420 L 470 600 L 360 600 L 305 410 Z" fill="${red}"/>
+    <!-- swoosh / contrail crossing the A from lower-left to upper-right -->
+    <path d="M 150 540 C 230 480, 290 430, 360 360 C 410 310, 440 270, 470 220" 
+          stroke="${white}" stroke-width="22" fill="none" stroke-linecap="round"/>
+    <path d="M 150 540 C 230 480, 290 430, 360 360 C 410 310, 440 270, 470 220" 
+          stroke="${navy}" stroke-width="3" fill="none" stroke-linecap="round" opacity="${navy===white||navy==="#FFFFFF"?0:0.0}"/>
+    <!-- Extra 300L silhouette flying up-right at top of swoosh -->
+    <g transform="translate(440,90) rotate(35) scale(0.9)">
+      <!-- main wing -->
+      <path d="M -90 0 L 90 -8 L 95 6 L -85 14 Z" fill="${navy}"/>
+      <!-- fuselage -->
+      <path d="M -10 -55 L 14 -55 L 22 30 L 18 95 L -14 95 L -18 30 Z" fill="${navy}"/>
+      <!-- canopy hint -->
+      <ellipse cx="2" cy="-15" rx="6" ry="14" fill="${white}" opacity=".5"/>
+      <!-- horizontal stab -->
+      <path d="M -42 70 L 46 64 L 50 80 L -44 86 Z" fill="${navy}"/>
+      <!-- vertical fin -->
+      <path d="M -4 60 L 12 60 L 16 100 L -8 100 Z" fill="${navy}"/>
+      <!-- propeller disc -->
+      <ellipse cx="2" cy="-65" rx="34" ry="6" fill="${navy}" opacity=".55"/>
+      <circle cx="2" cy="-65" r="4" fill="${navy}"/>
+    </g>
+  </svg>`;
+}
+
+const variants = {
+  "vec-light":     {navy:"#1B3A8A", red:"#E11E26", bg:null},
+  "vec-dark":      {navy:"#FFFFFF", red:"#E11E26", bg:"#1B3A8A"},
+  "vec-mono-navy": {navy:"#1B3A8A", red:"#1B3A8A", bg:null},
+  "vec-mono-white":{navy:"#FFFFFF", red:"#FFFFFF", bg:"#0B0F1A", white:"#FFFFFF"}
+};
+
+Object.entries(variants).forEach(([id,cfg])=>{
+  document.getElementById(id).innerHTML = buildVec(cfg);
+});
+
+// downloads
+function dlSVG(nodeId, filename){
+  const svg = document.getElementById(nodeId).innerHTML;
+  const blob = new Blob([svg],{type:"image/svg+xml"});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=filename; a.click();
+}
+async function dlNodePNG(nodeId, filename, width){
+  const svg = document.getElementById(nodeId).innerHTML;
+  const blob = new Blob([svg],{type:"image/svg+xml"});
+  const url = URL.createObjectURL(blob);
+  const img = new Image(); img.src = url;
+  await new Promise(r=>img.onload=r);
+  const ratio = img.naturalHeight/img.naturalWidth;
+  const c = document.createElement('canvas'); c.width=width; c.height=Math.round(width*ratio);
+  c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+  c.toBlob(b=>{ const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=filename; a.click(); },"image/png");
+}
+async function dlPNG(srcUrl, filename, width){
+  const img = new Image(); img.crossOrigin="anonymous"; img.src=srcUrl;
+  await new Promise(r=>img.onload=r);
+  const ratio = img.naturalHeight/img.naturalWidth;
+  const c = document.createElement('canvas'); c.width=width; c.height=Math.round(width*ratio);
+  c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+  c.toBlob(b=>{ const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=filename; a.click(); },"image/png");
+}
+</script>
+
+</body></html>

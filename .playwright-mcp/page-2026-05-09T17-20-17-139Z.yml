@@ -1,0 +1,22 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - img [ref=e5]
+    - generic [ref=e40]:
+      - heading "Nothing is here yet" [level=1] [ref=e41]
+      - paragraph [ref=e42]: If the project exists, it may not be ready yet. Please check back later.
+  - generic [ref=e43]:
+    - generic [ref=e44]:
+      - term [ref=e45]: "Your IP:"
+      - definition [ref=e46]:
+        - button "Click to reveal" [ref=e48] [cursor=pointer]
+    - generic [ref=e49]:
+      - term [ref=e50]: Runs on
+      - definition [ref=e51]:
+        - link "Cloudflare Pages" [ref=e52] [cursor=pointer]:
+          - /url: https://pages.cloudflare.com
+    - generic [ref=e53]:
+      - term [ref=e54]: "Ray ID:"
+      - definition [ref=e55]: 9f925fb8e80beece
+    - generic [ref=e56]:
+      - term
+      - definition [ref=e57]: 2026-05-09T17:20:17.134Z

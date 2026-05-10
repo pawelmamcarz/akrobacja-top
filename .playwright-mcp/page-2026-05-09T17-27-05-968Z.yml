@@ -1,0 +1,487 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "akrobacja.com" [ref=e3] [cursor=pointer]:
+      - /url: /
+      - img "akrobacja.com" [ref=e4]
+    - list [ref=e5]:
+      - listitem [ref=e6]:
+        - link "Koncepcja" [ref=e7] [cursor=pointer]:
+          - /url: "#koncepcja"
+      - listitem [ref=e8]:
+        - link "Instruktorzy" [ref=e9] [cursor=pointer]:
+          - /url: "#instruktorzy"
+      - listitem [ref=e10]:
+        - link "Program" [ref=e11] [cursor=pointer]:
+          - /url: "#program"
+      - listitem [ref=e12]:
+        - link "Cena" [ref=e13] [cursor=pointer]:
+          - /url: "#cena"
+      - listitem [ref=e14]:
+        - link "FAQ" [ref=e15] [cursor=pointer]:
+          - /url: "#faq"
+    - link "Zapisz się" [ref=e16] [cursor=pointer]:
+      - /url: "#zapisz-sie"
+  - generic [ref=e17]:
+    - generic [ref=e22]:
+      - generic [ref=e23]: CAMP
+      - generic [ref=e24]: VI / 2026
+      - generic [ref=e25]: EPRP · 6 LOTÓW · 6 OSÓB
+    - generic [ref=e26]:
+      - generic [ref=e27]: CAMP AKROBACYJNY · CZERWIEC 2026 · EPRP
+      - heading "TRENUJ AKROBACJĘ Z MISTRZAMI." [level=1] [ref=e28]:
+        - text: TRENUJ AKROBACJĘ
+        - text: Z MISTRZAMI.
+      - paragraph [ref=e29]: Dwudniowy camp na Extra 300L SP-EKS w Radomiu. 6 lotów z Mistrzem Świata, briefing, debriefing, certyfikat ukończenia. Maks. 6 uczestników.
+      - generic [ref=e30]:
+        - link "Zapisz się na camp →" [ref=e31] [cursor=pointer]:
+          - /url: "#zapisz-sie"
+        - link "Program campu" [ref=e32] [cursor=pointer]:
+          - /url: "#program"
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: 2 DNI
+          - generic [ref=e36]: CZERWIEC 2026
+        - generic [ref=e37]:
+          - generic [ref=e38]: 6×
+          - generic [ref=e39]: LOTY Z MISTRZEM
+        - generic [ref=e40]:
+          - generic [ref=e41]: 6 OS.
+          - generic [ref=e42]: MAX UCZESTNIKÓW
+        - generic [ref=e43]:
+          - generic [ref=e44]: EPRP
+          - generic [ref=e45]: RADOM-PIASTÓW
+  - generic [ref=e46]:
+    - generic [ref=e47]:
+      - generic [ref=e48]: "2"
+      - generic [ref=e49]: Dni Campu
+    - generic [ref=e50]:
+      - generic [ref=e51]: "6"
+      - generic [ref=e52]: Lotów Akrobacyjnych
+    - generic [ref=e53]:
+      - generic [ref=e54]: "4"
+      - generic [ref=e55]: Instruktorzy
+    - generic [ref=e56]:
+      - generic [ref=e57]: "6"
+      - generic [ref=e58]: Miejsc Łącznie
+  - generic [ref=e60]:
+    - generic [ref=e61]: Koncepcja
+    - heading "To nie jest lot zapoznawczy. To Camp." [level=2] [ref=e62]:
+      - text: To nie jest lot zapoznawczy.
+      - text: To Camp.
+    - paragraph [ref=e63]: Jeden lot akrobacyjny to przeżycie. Camp to doświadczenie, które zmienia sposób, w jaki rozumiesz latanie. Dwa dni intensywnego szkolenia, briefingi, debriefingi, teoria i praktyka — pełen immersyjny program z mistrzami.
+    - generic [ref=e64]:
+      - generic [ref=e65]:
+        - generic [ref=e66]: ✈️
+        - heading "6 lotów akrobacyjnych" [level=3] [ref=e67]
+        - paragraph [ref=e68]: 3 loty dziennie na Extra 300L SP-EKS. Pętle, beczki, hammerheady, lot odwrócony — stopniowo budowany program figur.
+      - generic [ref=e69]:
+        - generic [ref=e70]: 📐
+        - heading "Teoria i figury Aresti" [level=3] [ref=e71]
+        - paragraph [ref=e72]: Briefing przed każdym lotem, debriefing po. Dokładnie jak na szkoleniu zawodowym — wiesz co robisz i dlaczego.
+      - generic [ref=e73]:
+        - generic [ref=e74]: 🏆
+        - heading "Certyfikat ukończenia" [level=3] [ref=e75]
+        - paragraph [ref=e76]: Oficjalny certyfikat Camp Akrobacyjnego akrobacja.com. Punkt wyjścia do kursu FCL.800 lub po prostu dowód na to, że to zrobiłeś.
+      - generic [ref=e77]:
+        - generic [ref=e78]: 🌙
+        - heading "Nocleg i wieczór w gronie" [level=3] [ref=e79]
+        - paragraph [ref=e80]: Sobotni wieczór integracyjny z pilotami i uczestnikami. Nocleg wliczony w cenę. Latanie, rozmowy, środowisko.
+      - generic [ref=e81]:
+        - generic [ref=e82]: 👕
+        - heading "Pakiet merch akrobacja.com" [level=3] [ref=e83]
+        - paragraph [ref=e84]: Koszulka i naklejki akrobacja.com w cenie campu. Przyjedziesz jako uczestnik, wyjedziesz jako część społeczności.
+      - generic [ref=e85]:
+        - generic [ref=e86]: 🛡️
+        - heading "Pełne wyposażenie" [level=3] [ref=e87]
+        - paragraph [ref=e88]: Spadochrony, kaski, słuchawki w cenie. Wystarczy przyjechać — sprzęt zapewniamy.
+  - generic [ref=e90]:
+    - generic [ref=e91]: Instruktorzy
+    - heading "Prowadzą Mistrzowie" [level=2] [ref=e92]
+    - paragraph [ref=e93]: Camp prowadzą Maciek Kulaszewski i Paweł Mamcarz. Dołączają do nich dwóch gości specjalnych — znane nazwiska ze świata polskiej i europejskiej akrobacji. Ogłoszenie wkrótce.
+    - generic [ref=e94]:
+      - generic [ref=e95]:
+        - generic [ref=e97]: MK
+        - paragraph [ref=e98]: Maciej Kulaszewski
+        - generic [ref=e99]: Pilot Główny · Instruktor FI(A)
+        - paragraph [ref=e100]: Pilot domowy Extra 300L SP-EKS. Wielokrotny Mistrz Polski, Anglii i Niemiec w akrobacji lotniczej. 3 000+ godzin na Extra 300L. Instruktor FI(A). Maciek prowadzi każdy camp osobiście — to nie gość na weekend, to Twój instruktor.
+      - generic [ref=e101]:
+        - generic [ref=e103]: PM
+        - paragraph [ref=e104]: Paweł Mamcarz
+        - generic [ref=e105]: Organizator · Pilot
+        - paragraph [ref=e106]: Założyciel akrobacja.com, 26 lat w lotnictwie. Inicjator campu i gospodarz projektu. Na co dzień łączy pasję do akrobacji z prowadzeniem operacji na Extra 300L SP-EKS z bazy w Radomiu.
+      - generic [ref=e107]:
+        - generic [ref=e109]: "?"
+        - generic [ref=e110]: Wkrótce
+        - paragraph [ref=e111]: Gość Specjalny
+        - generic [ref=e112]: Instruktor Gościnny
+        - paragraph [ref=e113]: Znana postać polskiej akrobacji lotniczej. Nie ujawniamy jeszcze kto — ale warto czekać. Ogłoszenie w najbliższych tygodniach.
+      - generic [ref=e114]:
+        - generic [ref=e116]: "?"
+        - generic [ref=e117]: Wkrótce
+        - paragraph [ref=e118]: Gość Specjalny
+        - generic [ref=e119]: Instruktor Gościnny
+        - paragraph [ref=e120]: Drugi z instruktorów gościnnych to nazwisko z europejskiej sceny akrobacyjnej. Szczegóły wkrótce — śledź akrobacja.com.
+  - generic [ref=e122]:
+    - generic [ref=e123]: Maszyna
+    - heading "Extra 300L SP-EKS" [level=2] [ref=e124]
+    - paragraph [ref=e125]: Jeden z najlepszych samolotów akrobacyjnych na świecie. Symetryczny profil skrzydła, moc 300 KM, przeciążenia do +10/-10 G. Na campie latasz dokładnie tą maszyną.
+    - generic [ref=e126]: Rejestracja SP-EKS · Radom EPRP
+    - generic [ref=e127]:
+      - img "Extra 300L SP-EKS" [ref=e129]
+      - generic [ref=e130]:
+        - generic [ref=e131]:
+          - generic [ref=e132]: Silnik
+          - generic [ref=e133]: Lycoming AEIO-540
+          - generic [ref=e134]: 300 KM, wtrysk paliwa
+        - generic [ref=e135]:
+          - generic [ref=e136]: Prędkość maks.
+          - generic [ref=e137]: 370 km/h
+          - generic [ref=e138]:
+            - text: V
+            - subscript [ref=e139]: NE
+        - generic [ref=e140]:
+          - generic [ref=e141]: Przeciążenia
+          - generic [ref=e142]: +10 / −10 G
+          - generic [ref=e143]: Pełny program akrobacyjny
+        - generic [ref=e144]:
+          - generic [ref=e145]: Profil skrzydła
+          - generic [ref=e146]: Symetryczny
+          - generic [ref=e147]: Lot odwrócony bez limitu
+        - generic [ref=e148]:
+          - generic [ref=e149]: Rodzaj
+          - generic [ref=e150]: 2-miejscowy
+          - generic [ref=e151]: Tandem (pilot + pasażer)
+        - generic [ref=e152]:
+          - generic [ref=e153]: Baza
+          - generic [ref=e154]: EPRP Radom
+          - generic [ref=e155]: Aeroklub Radomski
+  - generic [ref=e157]:
+    - generic [ref=e158]: Program Ramowy
+    - heading "Dwa Dni, Sześć Lotów" [level=2] [ref=e159]
+    - paragraph [ref=e160]: Szczegółowy plan godzinowy zostanie przesłany po zapisie. Poniżej ramowy plan każdego dnia.
+    - generic [ref=e161]:
+      - generic [ref=e162]:
+        - generic [ref=e163]:
+          - generic [ref=e164]: Dzień 1 · Sobota · Czerwiec 2026
+          - generic [ref=e165]: Wprowadzenie i pierwsze loty
+        - generic [ref=e166]:
+          - generic [ref=e167]:
+            - generic [ref=e168]: 08:00
+            - generic [ref=e169]:
+              - strong [ref=e170]: Zbiórka i odprawa
+              - text: Witamy uczestników, omówienie programu, zasady bezpieczeństwa, zapoznanie z samolotem.
+          - generic [ref=e171]:
+            - generic [ref=e172]: 09:00
+            - generic [ref=e173]:
+              - strong [ref=e174]: Teoria akrobacji
+              - text: Figury Aresti, fizjologia G-force, granice samolotu, praca sterownicami w akrobacji.
+          - generic [ref=e175]:
+            - generic [ref=e176]: 11:00
+            - generic [ref=e177]:
+              - strong [ref=e178]: Lot 1 + debriefing
+              - text: Lot zapoznawczy z samolotu — poczucie G, orientacja, podstawowe figury.
+          - generic [ref=e179]:
+            - generic [ref=e180]: 13:00
+            - strong [ref=e182]: Przerwa obiadowa
+          - generic [ref=e183]:
+            - generic [ref=e184]: 14:00
+            - generic [ref=e185]:
+              - strong [ref=e186]: Lot 2 + debriefing
+              - text: Pętle, beczki — budowanie sekwencji figur.
+          - generic [ref=e187]:
+            - generic [ref=e188]: 16:00
+            - generic [ref=e189]:
+              - strong [ref=e190]: Lot 3 + debriefing
+              - text: Hammerheady, spirale, loty odwrócone — rozszerzony program.
+          - generic [ref=e191]:
+            - generic [ref=e192]: 19:00
+            - generic [ref=e193]:
+              - strong [ref=e194]: Wieczór integracyjny
+              - text: Kolacja z pilotami i uczestnikami. Rozmowy o lataniu, analizy wideo, środowisko.
+      - generic [ref=e195]:
+        - generic [ref=e196]:
+          - generic [ref=e197]: Dzień 2 · Niedziela · Czerwiec 2026
+          - generic [ref=e198]: Zaawansowane figury i certyfikaty
+        - generic [ref=e199]:
+          - generic [ref=e200]:
+            - generic [ref=e201]: 08:00
+            - generic [ref=e202]:
+              - strong [ref=e203]: Briefing poranny
+              - text: Analiza dnia 1, plan lotów, omówienie figur zaawansowanych.
+          - generic [ref=e204]:
+            - generic [ref=e205]: 09:00
+            - generic [ref=e206]:
+              - strong [ref=e207]: Lot 4 + debriefing
+              - text: Kontynuacja programu — konsolidacja figur z dnia 1.
+          - generic [ref=e208]:
+            - generic [ref=e209]: 11:00
+            - generic [ref=e210]:
+              - strong [ref=e211]: Lot 5 + debriefing
+              - text: Zaawansowane figury — rolling turns, lomcevak, pełny program indywidualny.
+          - generic [ref=e212]:
+            - generic [ref=e213]: 13:00
+            - strong [ref=e215]: Przerwa obiadowa
+          - generic [ref=e216]:
+            - generic [ref=e217]: 14:00
+            - generic [ref=e218]:
+              - strong [ref=e219]: Lot 6 + debriefing końcowy
+              - text: Lot zamykający camp — własna sekwencja figur, ocena postępów.
+          - generic [ref=e220]:
+            - generic [ref=e221]: 16:00
+            - generic [ref=e222]:
+              - strong [ref=e223]: Wręczenie certyfikatów
+              - text: Oficjalne certyfikaty ukończenia Camp Akrobacyjnego akrobacja.com. Zdjęcia grupowe.
+  - generic [ref=e225]:
+    - generic [ref=e226]: Miejsce
+    - heading "Aeroklub Radomski" [level=2] [ref=e227]
+    - paragraph [ref=e228]: Lotnisko Radom-Piastów (EPRP) to nasza baza — znamy każdy centymetr tej płyty i każdy warunek pogodowy tej okolicy. Profesjonalna infrastruktura, pełne zaplecze techniczne.
+    - generic [ref=e229]:
+      - generic [ref=e230]:
+        - generic [ref=e231]:
+          - generic [ref=e232]: 📍
+          - generic [ref=e233]:
+            - heading "Lotnisko Radom-Piastów EPRP" [level=4] [ref=e234]
+            - paragraph [ref=e235]: ul. Lotników 1, 26-600 Radom. 100 km na południe od Warszawy. Dojazd DK9 lub A1 (Radom Południe).
+        - generic [ref=e236]:
+          - generic [ref=e237]: 🛬
+          - generic [ref=e238]:
+            - heading "Pełna infrastruktura lotnicza" [level=4] [ref=e239]
+            - paragraph [ref=e240]: Hangar, wieża kontroli, pełne zaplecze techniczne Aeroklubu Radomskiego. Extra 300L stacjonuje tutaj na stałe.
+        - generic [ref=e241]:
+          - generic [ref=e242]: 🛏️
+          - generic [ref=e243]:
+            - heading "Nocleg \"u Grubego\"" [level=4] [ref=e244]
+            - paragraph [ref=e245]: Sprawdzone miejsce z lotniczym klimatem, blisko lotniska. Nocleg z soboty na niedzielę wliczony w cenę campu.
+        - generic [ref=e246]:
+          - generic [ref=e247]: 🚗
+          - generic [ref=e248]:
+            - heading "Dojazd własny lub organizowany" [level=4] [ref=e249]
+            - paragraph [ref=e250]: Dużych parking przy lotnisku. Możliwość organizacji transportu z Warszawy dla grupy — zapytaj przy zapisie.
+      - generic [ref=e251]:
+        - generic [ref=e252]: Lotnisko
+        - generic [ref=e253]: EPRP
+        - generic [ref=e254]:
+          - text: Aeroklub Radomski
+          - text: Radom-Piastów
+        - link "Otwórz w Mapach" [ref=e255] [cursor=pointer]:
+          - /url: https://maps.app.goo.gl/EPRP
+  - generic [ref=e257]:
+    - generic [ref=e258]: Cena
+    - heading "Kompletny Pakiet" [level=2] [ref=e259]
+    - paragraph [ref=e260]: Jedna cena. Wszystko w środku. Bez ukrytych kosztów.
+    - generic [ref=e261]:
+      - generic [ref=e262]:
+        - generic [ref=e263]: Camp Akrobacyjny Czerwiec 2026
+        - paragraph [ref=e264]:
+          - generic [ref=e265]: "7"
+          - text: 777 PLN
+        - paragraph [ref=e266]: Kompletna cena za 2 dni Campu
+        - link "Zapisz się" [ref=e267] [cursor=pointer]:
+          - /url: "#zapisz-sie"
+        - paragraph [ref=e268]: Maks. 6 uczestników · Liczba miejsc ograniczona
+      - generic [ref=e269]:
+        - generic [ref=e270]:
+          - generic [ref=e271]: ✓
+          - generic [ref=e272]:
+            - heading "6 lotów akrobacyjnych na Extra 300L SP-EKS" [level=4] [ref=e273]
+            - paragraph [ref=e274]: Z Maciejem Kulaszewskim lub instruktorem gościnnym. 3 loty dziennie.
+        - generic [ref=e275]:
+          - generic [ref=e276]: ✓
+          - generic [ref=e277]:
+            - heading "Teoria akrobacji + briefingi i debriefingi" [level=4] [ref=e278]
+            - paragraph [ref=e279]: Każdy lot poprzedzony briefingiem, zakończony debriefingiem. Szkoleniowe podejście.
+        - generic [ref=e280]:
+          - generic [ref=e281]: ✓
+          - generic [ref=e282]:
+            - heading "Nocleg \"u Grubego\" (sobota–niedziela)" [level=4] [ref=e283]
+            - paragraph [ref=e284]: Sprawdzone miejsce blisko lotniska z lotniczym klimatem.
+        - generic [ref=e285]:
+          - generic [ref=e286]: ✓
+          - generic [ref=e287]:
+            - heading "Certyfikat ukończenia Camp Akrobacyjnego" [level=4] [ref=e288]
+            - paragraph [ref=e289]: Oficjalny certyfikat akrobacja.com z programem i listą figur.
+        - generic [ref=e290]:
+          - generic [ref=e291]: ✓
+          - generic [ref=e292]:
+            - heading "Pakiet merch akrobacja.com" [level=4] [ref=e293]
+            - paragraph [ref=e294]: Koszulka + naklejki. Pamiątka i przepustka do społeczności.
+        - generic [ref=e295]:
+          - generic [ref=e296]: ✓
+          - generic [ref=e297]:
+            - 'heading "Wyposażenie: spadochrony, kaski, słuchawki" [level=4] [ref=e298]'
+            - paragraph [ref=e299]: Wszystko zapewniamy. Przyjeżdżasz tylko z wygodnym ubraniem.
+  - generic [ref=e301]:
+    - generic [ref=e302]: Rekrutacja
+    - heading "Zapisz się na Camp" [level=2] [ref=e303]
+    - paragraph [ref=e304]: Wypełnij formularz — skontaktujemy się z Tobą w ciągu kilku godzin, żeby potwierdzić miejsce i omówić szczegóły.
+    - generic [ref=e305]:
+      - generic [ref=e306]:
+        - heading "Maks. 6 uczestników" [level=3] [ref=e307]
+        - paragraph [ref=e308]: Camp jest zaprojektowany jako intensywne szkolenie w małej grupie. Nie robimy masowych wydarzeń — każdy uczestnik ma bezpośredni kontakt z instruktorami i realny czas w powietrzu.
+        - paragraph [ref=e309]: Po wypełnieniu formularza odezwiemy się przez WhatsApp lub email, żeby potwierdzić dostępność miejsca i omówić warunki rezerwacji (zaliczka 50%).
+        - generic [ref=e310]:
+          - link "+48 535 535 221" [ref=e311] [cursor=pointer]:
+            - /url: https://wa.me/48535535221
+            - img [ref=e312]
+            - text: +48 535 535 221
+          - link "camp@akrobacja.com" [ref=e314] [cursor=pointer]:
+            - /url: mailto:camp@akrobacja.com
+            - img [ref=e315]
+            - text: camp@akrobacja.com
+      - generic [ref=e318]:
+        - generic [ref=e319]:
+          - generic [ref=e320]:
+            - generic [ref=e321]: Imię i Nazwisko *
+            - textbox "Imię i Nazwisko *" [ref=e322]:
+              - /placeholder: Jan Kowalski
+          - generic [ref=e323]:
+            - generic [ref=e324]: Telefon *
+            - textbox "Telefon *" [ref=e325]:
+              - /placeholder: +48 600 000 000
+        - generic [ref=e326]:
+          - generic [ref=e327]: Email *
+          - textbox "Email *" [ref=e328]:
+            - /placeholder: jan@example.com
+        - generic [ref=e329]:
+          - generic [ref=e330]: Mam licencję pilota PPL(A) lub wyższą *
+          - generic [ref=e331]:
+            - generic [ref=e332] [cursor=pointer]:
+              - radio "Tak, mam PPL(A)" [ref=e333]
+              - text: Tak, mam PPL(A)
+            - generic [ref=e334] [cursor=pointer]:
+              - radio "Nie, nie mam licencji" [ref=e335]
+              - text: Nie, nie mam licencji
+            - generic [ref=e336] [cursor=pointer]:
+              - radio "CPL / ATPL" [ref=e337]
+              - text: CPL / ATPL
+        - generic [ref=e338]:
+          - generic [ref=e339]: Dodatkowe pytania lub informacje
+          - textbox "Dodatkowe pytania lub informacje" [ref=e340]:
+            - /placeholder: Np. czy masz doświadczenie z akrobacją, pytania o program, specjalne wymagania…
+        - button "Wyślij zgłoszenie na WhatsApp" [ref=e341] [cursor=pointer]
+        - paragraph [ref=e342]: Zgłoszenie otwiera WhatsApp z Twoimi danymi. Odpowiadamy w ciągu kilku godzin i omawiamy szczegóły rezerwacji.
+  - generic [ref=e344]:
+    - generic [ref=e345]: FAQ
+    - heading "Najczęstsze Pytania" [level=2] [ref=e346]
+    - generic [ref=e347]:
+      - generic [ref=e348]:
+        - button "Czy muszę mieć licencję pilota, żeby wziąć udział? +" [ref=e349] [cursor=pointer]:
+          - generic [ref=e350]: Czy muszę mieć licencję pilota, żeby wziąć udział?
+          - generic [ref=e351]: +
+        - generic [ref=e352]: Nie. Camp jest otwarty dla pilotów z licencją PPL(A) lub wyższą i dla osób bez żadnych uprawnień lotniczych. Jeśli nie masz licencji, latasz na tylnym fotelu z Maciejem za sterami — pełne doświadczenie akrobacyjne, bezpiecznie, pod opieką profesjonalisty. Jeśli masz PPL(A) i min. 30h PIC, lot może być zaliczony jako element przygotowania do kursu FCL.800.
+      - generic [ref=e353]:
+        - button "Ile kosztuje Camp i co jest w cenie? +" [ref=e354] [cursor=pointer]:
+          - generic [ref=e355]: Ile kosztuje Camp i co jest w cenie?
+          - generic [ref=e356]: +
+        - generic [ref=e357]: "7 777 PLN za kompletny 2-dniowy camp. W cenie: 6 lotów akrobacyjnych na Extra 300L SP-EKS, paliwo, czas pilotów, teoria akrobacji (briefingi i debriefingi), nocleg \"u Grubego\" (sobota–niedziela), wieczór integracyjny, certyfikat ukończenia i pakiet merch akrobacja.com. Bez ukrytych kosztów."
+      - generic [ref=e358]:
+        - button "Ile miejsc jest na Campie? +" [ref=e359] [cursor=pointer]:
+          - generic [ref=e360]: Ile miejsc jest na Campie?
+          - generic [ref=e361]: +
+        - generic [ref=e362]: Maksymalnie 6 uczestników. To nie jest masowy kurs — to intensywne szkolenie w małej grupie, gdzie każdy uczestnik ma realny kontakt z instruktorami i dużo czasu w powietrzu. Kiedy miejsca się skończą, następna edycja najwcześniej jesienią 2026.
+      - generic [ref=e363]:
+        - button "Gdzie nocujemy? +" [ref=e364] [cursor=pointer]:
+          - generic [ref=e365]: Gdzie nocujemy?
+          - generic [ref=e366]: +
+        - generic [ref=e367]: Nocleg zapewniamy "u Grubego" w Radomiu — sprawdzone miejsce blisko lotniska, w lotniczym klimacie. Nocleg z soboty na niedzielę jest wliczony w cenę campu. Jeśli wolisz nocować we własnym zakresie (hotel, Airbnb), po prostu daj znać przy zapisie.
+      - generic [ref=e368]:
+        - button "Co zabrać na Camp? +" [ref=e369] [cursor=pointer]:
+          - generic [ref=e370]: Co zabrać na Camp?
+          - generic [ref=e371]: +
+        - generic [ref=e372]: Wygodne ubranie sportowe (koszulka, spodnie z rozciągiem), buty sportowe — nie klapki. Okulary przeciwsłoneczne. Dowód tożsamości. Jeśli masz licencję pilota, weź ją ze sobą. Spadochrony, kaski i słuchawki zapewniamy. Nie jedz ciężkiego posiłku tuż przed lotem.
+      - generic [ref=e373]:
+        - button "Co jeśli będzie zła pogoda? +" [ref=e374] [cursor=pointer]:
+          - generic [ref=e375]: Co jeśli będzie zła pogoda?
+          - generic [ref=e376]: +
+        - generic [ref=e377]: Akrobacja wymaga dobrej widoczności i minimum 1 500 ft AGL pułapu chmur. Jeśli pogoda uniemożliwi latanie, przenosimy loty na najbliższy możliwy termin. Teoria i część naziemna odbywają się niezależnie od pogody. Twoje pieniądze nie przepadają. Czerwiec to statystycznie jeden z najlepszych miesięcy do latania w Polsce.
+      - generic [ref=e378]:
+        - button "Jak wygląda rezerwacja i płatność? +" [ref=e379] [cursor=pointer]:
+          - generic [ref=e380]: Jak wygląda rezerwacja i płatność?
+          - generic [ref=e381]: +
+        - generic [ref=e382]: Po wypełnieniu formularza odezwiemy się przez WhatsApp lub email w ciągu kilku godzin. Rezerwację potwierdza zaliczka w wysokości 50% (3 888 PLN). Pozostałą kwotę uiszczasz najpóźniej 14 dni przed campem. Akceptujemy przelew bankowy lub płatność kartą.
+      - generic [ref=e383]:
+        - button "Co po Campie — jak wygląda dalszy rozwój? +" [ref=e384] [cursor=pointer]:
+          - generic [ref=e385]: Co po Campie — jak wygląda dalszy rozwój?
+          - generic [ref=e386]: +
+        - generic [ref=e387]: Camp to naturalny krok przed kursem FCL.800 (uprawnienia akrobacyjne). Jeśli wiesz już na starcie, że chcesz zdobyć FCL.800, zapytaj o pakiet Camp + Kurs łączony — cena jest lepsza niż przy zakupie osobno. Piszemy o tym przy potwierdzeniu rezerwacji.
+  - generic [ref=e388]:
+    - generic [ref=e389]:
+      - generic [ref=e390]:
+        - generic [ref=e391]: Camp Akrobacyjny · Extra 300L SP-EKS
+        - generic [ref=e392]: Czerwiec 2026 · Aeroklub Radomski EPRP
+      - generic [ref=e393]: Liczba miejsc ograniczona
+    - link "Zapisz się" [ref=e394] [cursor=pointer]:
+      - /url: "#zapisz-sie"
+  - contentinfo [ref=e395]:
+    - generic [ref=e396]:
+      - generic [ref=e397]:
+        - img "akrobacja.com" [ref=e398]
+        - paragraph [ref=e399]:
+          - text: Extra 300L SP-EKS
+          - text: Aeroklub Radomski · EPRP
+          - generic [ref=e400]:
+            - text: Doradztwo Paweł Mamcarz
+            - text: "Pilot:"
+            - strong [ref=e401]: Maciej Kulaszewski
+      - generic [ref=e402]:
+        - paragraph [ref=e403]: Nawigacja
+        - list [ref=e404]:
+          - listitem [ref=e405]:
+            - link "Strona główna" [ref=e406] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e407]:
+            - link "Lot akrobacyjny" [ref=e408] [cursor=pointer]:
+              - /url: /lot-akrobacyjny
+          - listitem [ref=e409]:
+            - link "Camp Akrobacyjny" [ref=e410] [cursor=pointer]:
+              - /url: /camp-akrobacyjny
+          - listitem [ref=e411]:
+            - link "Pokazy na Event" [ref=e412] [cursor=pointer]:
+              - /url: /pokazy-lotnicze
+          - listitem [ref=e413]:
+            - link "Kalendarz" [ref=e414] [cursor=pointer]:
+              - /url: /kalendarz
+      - generic [ref=e415]:
+        - paragraph [ref=e416]: Kontakt
+        - list [ref=e417]:
+          - listitem [ref=e418]:
+            - link "+48 535 535 221" [ref=e419] [cursor=pointer]:
+              - /url: https://wa.me/48535535221
+          - listitem [ref=e420]:
+            - link "camp@akrobacja.com" [ref=e421] [cursor=pointer]:
+              - /url: mailto:camp@akrobacja.com
+          - listitem [ref=e422]:
+            - link "Lotnisko EPRP, Radom" [ref=e423] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=e424]:
+        - paragraph [ref=e425]: Informacje
+        - list [ref=e426]:
+          - listitem [ref=e427]:
+            - link "Regulamin" [ref=e428] [cursor=pointer]:
+              - /url: /regulamin
+          - listitem [ref=e429]:
+            - link "Polityka Prywatności" [ref=e430] [cursor=pointer]:
+              - /url: /polityka-prywatnosci
+          - listitem [ref=e431]:
+            - link "FAQ — loty" [ref=e432] [cursor=pointer]:
+              - /url: /lot-akrobacyjny#faq
+    - generic [ref=e433]:
+      - paragraph [ref=e434]: © 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP
+      - generic [ref=e435]:
+        - link "Facebook" [ref=e436] [cursor=pointer]:
+          - /url: https://www.facebook.com/akrobacjacom/
+        - link "WhatsApp" [ref=e437] [cursor=pointer]:
+          - /url: https://wa.me/48535535221
+  - button "Otwórz czat" [ref=e438] [cursor=pointer]:
+    - img [ref=e439]
+  - dialog "Ustawienia cookies" [ref=e441]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e442]
+    - paragraph [ref=e443]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e444] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e445]:
+      - button "Zgoda na wszystkie" [ref=e446] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e447] [cursor=pointer]
+      - button "Ustawienia" [ref=e448] [cursor=pointer]

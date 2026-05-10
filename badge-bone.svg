@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" width="320" height="320" class="diecut">
+    <circle cx="240" cy="240" r="232" fill="#FFFFFF"></circle>
+    <circle cx="240" cy="240" r="222" fill="#F4F1EA"></circle>
+    <!-- inner bone field — moved smaller so text stays inside outer ring -->
+    <circle cx="240" cy="240" r="148" fill="#F4F1EA"></circle>
+    <circle cx="240" cy="240" r="148" fill="none" stroke="#E11E26" stroke-width="3"></circle>
+    <g stroke="#E11E26" stroke-width="2" opacity=".5">
+      <line x1="388.0" y1="240.0" x2="374.0" y2="240.0"></line><line x1="385.8" y1="265.7" x2="377.9" y2="264.3"></line><line x1="379.1" y1="290.6" x2="371.6" y2="287.9"></line><line x1="368.2" y1="314.0" x2="356.0" y2="307.0"></line><line x1="353.4" y1="335.1" x2="347.2" y2="330.0"></line><line x1="335.1" y1="353.4" x2="330.0" y2="347.2"></line><line x1="314.0" y1="368.2" x2="307.0" y2="356.0"></line><line x1="290.6" y1="379.1" x2="287.9" y2="371.6"></line><line x1="265.7" y1="385.8" x2="264.3" y2="377.9"></line><line x1="240.0" y1="388.0" x2="240.0" y2="374.0"></line><line x1="214.3" y1="385.8" x2="215.7" y2="377.9"></line><line x1="189.4" y1="379.1" x2="192.1" y2="371.6"></line><line x1="166.0" y1="368.2" x2="173.0" y2="356.0"></line><line x1="144.9" y1="353.4" x2="150.0" y2="347.2"></line><line x1="126.6" y1="335.1" x2="132.8" y2="330.0"></line><line x1="111.8" y1="314.0" x2="124.0" y2="307.0"></line><line x1="100.9" y1="290.6" x2="108.4" y2="287.9"></line><line x1="94.2" y1="265.7" x2="102.1" y2="264.3"></line><line x1="92.0" y1="240.0" x2="106.0" y2="240.0"></line><line x1="94.2" y1="214.3" x2="102.1" y2="215.7"></line><line x1="100.9" y1="189.4" x2="108.4" y2="192.1"></line><line x1="111.8" y1="166.0" x2="124.0" y2="173.0"></line><line x1="126.6" y1="144.9" x2="132.8" y2="150.0"></line><line x1="144.9" y1="126.6" x2="150.0" y2="132.8"></line><line x1="166.0" y1="111.8" x2="173.0" y2="124.0"></line><line x1="189.4" y1="100.9" x2="192.1" y2="108.4"></line><line x1="214.3" y1="94.2" x2="215.7" y2="102.1"></line><line x1="240.0" y1="92.0" x2="240.0" y2="106.0"></line><line x1="265.7" y1="94.2" x2="264.3" y2="102.1"></line><line x1="290.6" y1="100.9" x2="287.9" y2="108.4"></line><line x1="314.0" y1="111.8" x2="307.0" y2="124.0"></line><line x1="335.1" y1="126.6" x2="330.0" y2="132.8"></line><line x1="353.4" y1="144.9" x2="347.2" y2="150.0"></line><line x1="368.2" y1="166.0" x2="356.0" y2="173.0"></line><line x1="379.1" y1="189.4" x2="371.6" y2="192.1"></line><line x1="385.8" y1="214.3" x2="377.9" y2="215.7"></line>
+    </g>
+    <!-- arc text on the navy band, smaller so it fits -->
+    <defs>
+      <path id="bt-F4F1EA" d="M 240,240 m -180,0 a 180,180 0 0,1 360,0"></path>
+      <path id="bb-F4F1EA" d="M 60,240 a 180,180 0 0,0 360,0"></path>
+    </defs>
+    <text fill="#0A2F7C" font-family="Anton,Impact,sans-serif" font-size="32" letter-spacing="6">
+      <textPath href="#bt-F4F1EA" startOffset="50%" text-anchor="middle">AKROBACJA · .COM</textPath>
+    </text>
+    <text fill="#0A2F7C" font-family="JetBrains Mono,monospace" font-size="13" letter-spacing="5" font-weight="700">
+      <textPath href="#bb-F4F1EA" startOffset="50%" text-anchor="middle">EPRP · EST. 2018 · POLAND</textPath>
+    </text>
+    <g fill="#E11E26">
+      <polygon points="60,240 72,234 72,246"></polygon>
+      <polygon points="420,240 408,234 408,246"></polygon>
+    </g>
+    <image href="extra-300l-illustration.png" x="125" y="115" width="220" height="220" preserveAspectRatio="xMidYMid meet" transform="rotate(-15 235 220)"></image>
+    <g transform="translate(240,332)">
+      <rect x="-46" y="-13" width="92" height="26" fill="#0A2F7C" stroke="#E11E26" stroke-width="2"></rect>
+      <text text-anchor="middle" y="6" fill="#FFFFFF" font-family="Anton" font-size="18" letter-spacing="4">SP-EKS</text>
+    </g>
+  </svg>

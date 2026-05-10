@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" width="100%" style="max-width:200px" class="diecut">
+  <rect width="280" height="400" rx="18" fill="#FFFFFF" stroke="#070F1A" stroke-width="3"></rect>
+  <text x="22" y="40" font-family="Anton" font-size="32" fill="#E11E26">A</text>
+  <text x="258" y="376" text-anchor="end" font-family="Anton" font-size="32" fill="#E11E26" transform="rotate(180 258 376)">A</text>
+  <!-- center plane silhouette as 'suit' -->
+  <image href="extra-300l-illustration.png" x="60" y="120" width="160" height="160"></image>
+  <text x="140" y="320" text-anchor="middle" font-family="Anton" font-size="20" letter-spacing="4" fill="#0A2F7C">ACE OF SP-EKS</text>
+  <text x="140" y="345" text-anchor="middle" font-family="JetBrains Mono" font-size="9" letter-spacing="4" fill="#E11E26">akrobacja.com</text>
+</svg>

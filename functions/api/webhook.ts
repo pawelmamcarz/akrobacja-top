@@ -4,6 +4,7 @@ import { sendVoucherEmail, escapeHtml } from '../../src/lib/email';
 import { createInvoice } from '../../src/lib/wfirma';
 import { sendMetaPurchase } from '../../src/lib/meta-capi';
 import { createPrintfulOrder, confirmPrintfulOrder } from '../../src/lib/printful';
+import { createBaseLinkerOrder } from '../../src/lib/baselinker';
 
 // Notify owner about new paid order via Resend
 async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: PackageId; customerName: string; customerEmail: string; amount: number; videoAddon: boolean }): Promise<void> {
@@ -119,34 +120,60 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         return Response.json({ ok: true, duplicate: true });
       }
 
-      // Auto-create Printful order (no-op if printful_data not configured on products yet)
+      // Auto-forward merch order to BaseLinker → Snapwear.
+      // Falls back to Printful if BASELINKER_TOKEN not set (backwards compat).
       ctx.waitUntil((async () => {
         try {
           const mo = await ctx.env.DB.prepare(
-            'SELECT customer_name, customer_email, shipping_address, shipping_city, shipping_zip, items FROM merch_orders WHERE id = ?'
+            'SELECT customer_name, customer_email, customer_phone, shipping_address, shipping_city, shipping_zip, items FROM merch_orders WHERE id = ?'
           ).bind(merchOrderId).first<{
-            customer_name: string; customer_email: string;
+            customer_name: string; customer_email: string; customer_phone: string | null;
             shipping_address: string; shipping_city: string; shipping_zip: string;
             items: string;
           }>();
           if (!mo) return;
-          const pfOrderId = await createPrintfulOrder(ctx.env, {
-            id: merchOrderId,
-            customer_name: mo.customer_name,
-            customer_email: mo.customer_email,
-            shipping_address: mo.shipping_address,
-            shipping_city: mo.shipping_city,
-            shipping_zip: mo.shipping_zip,
-            items: JSON.parse(mo.items),
-          });
-          if (pfOrderId) {
-            await confirmPrintfulOrder(ctx.env, pfOrderId);
-            await ctx.env.DB.prepare(
-              "UPDATE merch_orders SET status = 'in_production' WHERE id = ?"
-            ).bind(merchOrderId).run();
+
+          const parsedItems = JSON.parse(mo.items) as Array<{
+            product_id: string; name: string; variant?: string; quantity: number; price: number;
+          }>;
+
+          if (ctx.env.BASELINKER_TOKEN) {
+            // Primary: BaseLinker → Snapwear
+            const blOrderId = await createBaseLinkerOrder(ctx.env, {
+              id: merchOrderId,
+              customer_name: mo.customer_name,
+              customer_email: mo.customer_email,
+              customer_phone: mo.customer_phone || undefined,
+              shipping_address: mo.shipping_address,
+              shipping_city: mo.shipping_city,
+              shipping_zip: mo.shipping_zip,
+              items: parsedItems,
+            });
+            if (blOrderId) {
+              await ctx.env.DB.prepare(
+                "UPDATE merch_orders SET status = 'in_production', baselinker_order_id = ? WHERE id = ?"
+              ).bind(blOrderId, merchOrderId).run();
+            }
+          } else if (ctx.env.PRINTFUL_TOKEN) {
+            // Fallback: Printful (legacy)
+            const pfOrderId = await createPrintfulOrder(ctx.env, {
+              id: merchOrderId,
+              customer_name: mo.customer_name,
+              customer_email: mo.customer_email,
+              shipping_address: mo.shipping_address,
+              shipping_city: mo.shipping_city,
+              shipping_zip: mo.shipping_zip,
+              items: parsedItems,
+            });
+            if (pfOrderId) {
+              await confirmPrintfulOrder(ctx.env, pfOrderId);
+              await ctx.env.DB.prepare(
+                "UPDATE merch_orders SET status = 'in_production' WHERE id = ?"
+              ).bind(merchOrderId).run();
+            }
           }
         } catch (err) {
-          console.error('Printful order creation failed:', err);
+          console.error('Fulfillment order creation failed:', err);
         }
       })());
 

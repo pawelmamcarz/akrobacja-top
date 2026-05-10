@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 240" width="100%" style="max-width:920px" class="diecut">
+  <rect width="1200" height="240" rx="20" fill="#FFFFFF"></rect>
+  <rect x="8" y="8" width="1184" height="224" rx="14" fill="#F4F1EA" stroke="#0A2F7C" stroke-width="3"></rect>
+  <line x1="40" y1="40" x2="1160" y2="40" stroke="#E11E26" stroke-width="2"></line>
+  <line x1="40" y1="200" x2="1160" y2="200" stroke="#E11E26" stroke-width="2"></line>
+  <image href="extra-300l-illustration.png" x="80" y="50" width="220" height="180" preserveAspectRatio="xMidYMid meet" transform="rotate(-8 190 140)"></image>
+  <line x1="340" y1="70" x2="340" y2="180" stroke="#E11E26" stroke-width="3"></line>
+  <text x="370" y="155" font-family="Anton" font-size="100" letter-spacing="3" fill="#0A2F7C">AKROBACJA<tspan fill="#E11E26">.COM</tspan></text>
+  <text x="370" y="195" font-family="JetBrains Mono" font-size="16" letter-spacing="6" font-weight="700" fill="#0A2F7C" opacity=".75">FLYING THE EXTRA 300L · SP-EKS · EPRP</text>
+</svg>

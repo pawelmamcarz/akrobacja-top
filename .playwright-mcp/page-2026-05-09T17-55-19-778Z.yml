@@ -1,0 +1,468 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "akrobacja.com" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e4]:
+      - link "Maszyna" [ref=e5] [cursor=pointer]:
+        - /url: /#maszyna
+      - link "Pilot" [ref=e6] [cursor=pointer]:
+        - /url: /#pilot
+      - link "Loty" [ref=e7] [cursor=pointer]:
+        - /url: /#sklep
+      - link "Pokazy" [ref=e8] [cursor=pointer]:
+        - /url: /pokazy-lotnicze
+      - link "Sponsoring" [ref=e9] [cursor=pointer]:
+        - /url: /sponsoring
+      - link "Kalendarz" [ref=e10] [cursor=pointer]:
+        - /url: /kalendarz
+      - link "FAQ" [ref=e11] [cursor=pointer]:
+        - /url: /#faq
+    - button "Koszyk" [ref=e12] [cursor=pointer]:
+      - img [ref=e13]
+      - text: Koszyk
+  - generic [ref=e16]:
+    - generic [ref=e21]:
+      - generic [ref=e22]: DROP 01
+      - generic [ref=e23]: SP-EKS
+      - generic [ref=e24]: DTG · BAWEŁNA · PRINTFUL
+    - generic [ref=e25]:
+      - generic [ref=e26]: SKLEP · DTG PREMIUM · DOSTAWA ~10 DNI
+      - heading "OFICJALNY MERCH." [level=1] [ref=e27]:
+        - text: OFICJALNY
+        - text: MERCH.
+      - paragraph [ref=e28]: Koszulki, bluzy, czapki i akcesoria z brandem akrobacja.com i SP-EKS. Druk DTG premium, produkcja na zamówienie, bawełna organiczna 200–350 g.
+      - generic [ref=e29]:
+        - link "Przeglądaj kolekcję →" [ref=e30] [cursor=pointer]:
+          - /url: "#produkty"
+        - link "Dostawa & zwroty" [ref=e31] [cursor=pointer]:
+          - /url: "#dostawa"
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: DTG
+          - generic [ref=e35]: DRUK PREMIUM
+        - generic [ref=e36]:
+          - generic [ref=e37]: ~10 D.
+          - generic [ref=e38]: CZAS DOSTAWY
+        - generic [ref=e39]:
+          - generic [ref=e40]: EU
+          - generic [ref=e41]: PRINTFUL · WYSYŁKA
+        - generic [ref=e42]:
+          - generic [ref=e43]: 14 D.
+          - generic [ref=e44]: ZWROT
+  - generic [ref=e46]:
+    - generic [ref=e47]: Druk DTG premium
+    - generic [ref=e49]: Dostawa ~10 dni roboczych
+    - generic [ref=e51]: Materiały OEKO-TEX
+    - generic [ref=e53]: Produkcja na zamówienie
+    - generic [ref=e55]: Dostawa do całej Polski
+    - generic [ref=e57]: BLIK, Karta, Przelew P24
+    - generic [ref=e59]: Darmowa dostawa od 200 PLN
+    - generic [ref=e61]: Extra 300L SP-EKS
+    - generic [ref=e63]: Druk DTG premium
+    - generic [ref=e65]: Dostawa ~10 dni roboczych
+    - generic [ref=e67]: Materiały OEKO-TEX
+    - generic [ref=e69]: Produkcja na zamówienie
+    - generic [ref=e71]: Dostawa do całej Polski
+    - generic [ref=e73]: BLIK, Karta, Przelew P24
+    - generic [ref=e75]: Darmowa dostawa od 200 PLN
+    - generic [ref=e77]: Extra 300L SP-EKS
+  - main [ref=e79]:
+    - generic [ref=e80]:
+      - generic [ref=e81]: Kolekcja 2026
+      - generic [ref=e82]:
+        - button "Wszystko" [ref=e83] [cursor=pointer]
+        - button "Odzież" [ref=e84] [cursor=pointer]
+        - button "Akcesoria" [ref=e85] [cursor=pointer]
+    - generic [ref=e86]:
+      - generic [ref=e87] [cursor=pointer]:
+        - generic [ref=e88]: MADE TO ORDER
+        - generic [ref=e89]:
+          - img "Technical Performance Polo" [ref=e90]
+          - generic [ref=e91]:
+            - generic [ref=e92]:
+              - button "S" [ref=e93]
+              - button "M" [ref=e94]
+              - button "L" [ref=e95]
+              - button "XL" [ref=e96]
+              - button "XXL" [ref=e97]
+            - button "Wybierz rozmiar" [disabled] [ref=e98]
+        - generic [ref=e99]:
+          - generic [ref=e100]: POLO
+          - generic [ref=e101]: Technical Performance Polo
+          - generic [ref=e102]: Polo premium granatowe z haftem Extra 300L na piersi. Kontrastowe cyan detale na kolnierzu i rekawach. Oddychajacy material. Produkcja na zamowienie.
+          - generic [ref=e103]:
+            - generic [ref=e104]: 199 PLN
+            - button "Szczegóły →" [ref=e105]
+      - generic [ref=e106] [cursor=pointer]:
+        - generic [ref=e107]: MADE TO ORDER
+        - generic [ref=e108]:
+          - img "Koszulka akrobacja.com" [ref=e109]
+          - generic [ref=e110]:
+            - generic [ref=e111]:
+              - button "S" [ref=e112]
+              - button "M" [ref=e113]
+              - button "L" [ref=e114]
+              - button "XL" [ref=e115]
+              - button "XXL" [ref=e116]
+            - button "Wybierz rozmiar" [disabled] [ref=e117]
+        - generic [ref=e118]:
+          - generic [ref=e119]: TSHIRT
+          - generic [ref=e120]: Koszulka akrobacja.com
+          - generic [ref=e121]: Koszulka z logo akrobacja.com
+          - generic [ref=e122]:
+            - generic [ref=e123]: 149 PLN
+            - button "Szczegóły →" [ref=e124]
+      - generic [ref=e125] [cursor=pointer]:
+        - generic [ref=e126]: MADE TO ORDER
+        - generic [ref=e127]:
+          - img "Technical T-Shirt Cyan" [ref=e128]
+          - generic [ref=e129]:
+            - generic [ref=e130]:
+              - button "S" [ref=e131]
+              - button "M" [ref=e132]
+              - button "L" [ref=e133]
+              - button "XL" [ref=e134]
+              - button "XXL" [ref=e135]
+            - button "Wybierz rozmiar" [disabled] [ref=e136]
+        - generic [ref=e137]:
+          - generic [ref=e138]: TSHIRT
+          - generic [ref=e139]: Technical T-Shirt Cyan
+          - generic [ref=e140]: Koszulka cyan z grafika Extra 300L w locie. 100% bawelna premium, 190g. Produkcja na zamowienie.
+          - generic [ref=e141]:
+            - generic [ref=e142]: 149 PLN
+            - button "Szczegóły →" [ref=e143]
+      - generic [ref=e144] [cursor=pointer]:
+        - generic [ref=e145]: MADE TO ORDER
+        - generic [ref=e146]:
+          - img "Czapka Pilot" [ref=e147]
+          - button "Dodaj do koszyka" [ref=e149]
+        - generic [ref=e150]:
+          - generic [ref=e151]: CAP
+          - generic [ref=e152]: Czapka Pilot
+          - generic [ref=e153]: Czapka z logo akrobacja.com
+          - generic [ref=e154]:
+            - generic [ref=e155]: 79 PLN
+            - button "Szczegóły →" [ref=e156]
+      - generic [ref=e157] [cursor=pointer]:
+        - generic [ref=e158]: MADE TO ORDER
+        - generic [ref=e159]:
+          - img "Technical T-Shirt Navy" [ref=e160]
+          - generic [ref=e161]:
+            - generic [ref=e162]:
+              - button "S" [ref=e163]
+              - button "M" [ref=e164]
+              - button "L" [ref=e165]
+              - button "XL" [ref=e166]
+              - button "XXL" [ref=e167]
+            - button "Wybierz rozmiar" [disabled] [ref=e168]
+        - generic [ref=e169]:
+          - generic [ref=e170]: TSHIRT
+          - generic [ref=e171]: Technical T-Shirt Navy
+          - generic [ref=e172]: Koszulka granatowa z grafika Extra 300L. 100% bawelna premium, 190g. Produkcja na zamowienie.
+          - generic [ref=e173]:
+            - generic [ref=e174]: 149 PLN
+            - button "Szczegóły →" [ref=e175]
+      - generic [ref=e176] [cursor=pointer]:
+        - generic [ref=e177]: MADE TO ORDER
+        - generic [ref=e178]:
+          - img "Bluza Softshell" [ref=e179]
+          - generic [ref=e180]:
+            - generic [ref=e181]:
+              - button "S" [ref=e182]
+              - button "M" [ref=e183]
+              - button "L" [ref=e184]
+              - button "XL" [ref=e185]
+              - button "XXL" [ref=e186]
+            - button "Wybierz rozmiar" [disabled] [ref=e187]
+        - generic [ref=e188]:
+          - generic [ref=e189]: HOODIE
+          - generic [ref=e190]: Bluza Softshell
+          - generic [ref=e191]: Bluza softshell z logo akrobacja.com
+          - generic [ref=e192]:
+            - generic [ref=e193]: 379 PLN
+            - button "Szczegóły →" [ref=e194]
+      - generic [ref=e195] [cursor=pointer]:
+        - generic [ref=e196]: MADE TO ORDER
+        - generic [ref=e197]:
+          - img "Pilot Softshell Jacket" [ref=e198]
+          - generic [ref=e199]:
+            - generic [ref=e200]:
+              - button "S" [ref=e201]
+              - button "M" [ref=e202]
+              - button "L" [ref=e203]
+              - button "XL" [ref=e204]
+              - button "XXL" [ref=e205]
+            - button "Wybierz rozmiar" [disabled] [ref=e206]
+        - generic [ref=e207]:
+          - generic [ref=e208]: JACKET
+          - generic [ref=e209]: Pilot Softshell Jacket
+          - generic [ref=e210]: Kurtka softshell grafitowa z grafika Extra 300L na plecach i logo na piersi. Wiatroszczelna, oddychajaca. Produkcja na zamowienie.
+          - generic [ref=e211]:
+            - generic [ref=e212]: 349 PLN
+            - button "Szczegóły →" [ref=e213]
+      - generic [ref=e214] [cursor=pointer]:
+        - generic [ref=e215]: MADE TO ORDER
+        - generic [ref=e216]:
+          - img "Zawieszka Remove Before Aerobatic" [ref=e217]
+          - button "Dodaj do koszyka" [ref=e219]
+        - generic [ref=e220]:
+          - generic [ref=e221]: KEYCHAIN
+          - generic [ref=e222]: Zawieszka Remove Before Aerobatic
+          - generic [ref=e223]: Zawieszka bagażowa Remove Before Aerobatic
+          - generic [ref=e224]:
+            - generic [ref=e225]: 39 PLN
+            - button "Szczegóły →" [ref=e226]
+      - generic [ref=e227] [cursor=pointer]:
+        - generic [ref=e228]: MADE TO ORDER
+        - generic [ref=e229]:
+          - img "Hoodie Akrobacja Navy" [ref=e230]
+          - generic [ref=e231]:
+            - generic [ref=e232]:
+              - button "S" [ref=e233]
+              - button "M" [ref=e234]
+              - button "L" [ref=e235]
+              - button "XL" [ref=e236]
+              - button "XXL" [ref=e237]
+            - button "Wybierz rozmiar" [disabled] [ref=e238]
+        - generic [ref=e239]:
+          - generic [ref=e240]: HOODIE
+          - generic [ref=e241]: Hoodie Akrobacja Navy
+          - generic [ref=e242]: Bluza z kapturem granatowa z duzym logo akrobacja.top. 80% bawelna, 20% poliester, 320g. Produkcja na zamowienie.
+          - generic [ref=e243]:
+            - generic [ref=e244]: 249 PLN
+            - button "Szczegóły →" [ref=e245]
+      - generic [ref=e246] [cursor=pointer]:
+        - generic [ref=e247]: MADE TO ORDER
+        - generic [ref=e248]:
+          - img "Hoodie Akrobacja Cyan" [ref=e249]
+          - generic [ref=e250]:
+            - generic [ref=e251]:
+              - button "S" [ref=e252]
+              - button "M" [ref=e253]
+              - button "L" [ref=e254]
+              - button "XL" [ref=e255]
+              - button "XXL" [ref=e256]
+            - button "Wybierz rozmiar" [disabled] [ref=e257]
+        - generic [ref=e258]:
+          - generic [ref=e259]: HOODIE
+          - generic [ref=e260]: Hoodie Akrobacja Cyan
+          - generic [ref=e261]: Bluza z kapturem cyan z grafika Extra 300L. 80% bawelna, 20% poliester, 320g. Produkcja na zamowienie.
+          - generic [ref=e262]:
+            - generic [ref=e263]: 249 PLN
+            - button "Szczegóły →" [ref=e264]
+      - generic [ref=e265] [cursor=pointer]:
+        - generic [ref=e266]: MADE TO ORDER
+        - generic [ref=e267]:
+          - img "Premium Snapback Cap" [ref=e268]
+          - button "Dodaj do koszyka" [ref=e270]
+        - generic [ref=e271]:
+          - generic [ref=e272]: CAP
+          - generic [ref=e273]: Premium Snapback Cap
+          - generic [ref=e274]: Czapka snapback czarna z logo AKROBACJA i haftem Extra 300L. Cyan daszek, regulowana. Produkcja na zamowienie.
+          - generic [ref=e275]:
+            - generic [ref=e276]: 89 PLN
+            - button "Szczegóły →" [ref=e277]
+      - generic [ref=e278] [cursor=pointer]:
+        - generic [ref=e279]: MADE TO ORDER
+        - generic [ref=e280]:
+          - img "Laser-Engraved Aluchain" [ref=e281]
+          - button "Dodaj do koszyka" [ref=e283]
+        - generic [ref=e284]:
+          - generic [ref=e285]: KEYCHAIN
+          - generic [ref=e286]: Laser-Engraved Aluchain
+          - generic [ref=e287]: Brelok aluminiowy z laserowo grawerowana sylwetka Extra 300L i napisem A.TOP. Karabinczyk.
+          - generic [ref=e288]:
+            - generic [ref=e289]: 49 PLN
+            - button "Szczegóły →" [ref=e290]
+      - generic [ref=e291] [cursor=pointer]:
+        - generic [ref=e292]: MADE TO ORDER
+        - generic [ref=e293]:
+          - img "Extra 300 Sticker Pack" [ref=e294]
+          - button "Dodaj do koszyka" [ref=e296]
+        - generic [ref=e297]:
+          - generic [ref=e298]: STICKER
+          - generic [ref=e299]: Extra 300 Sticker Pack
+          - generic [ref=e300]: Zestaw 4 naklejek winylowych akrobacja.top z grafika Extra 300L. Wodoodporne, UV-odporne. Rozne rozmiary.
+          - generic [ref=e301]:
+            - generic [ref=e302]: 29 PLN
+            - button "Szczegóły →" [ref=e303]
+      - generic [ref=e304] [cursor=pointer]:
+        - generic [ref=e305]: MADE TO ORDER
+        - generic [ref=e306]:
+          - img "T-Shirt Akrobacja" [ref=e307]
+          - generic [ref=e308]:
+            - generic [ref=e309]:
+              - button "XS" [ref=e310]
+              - button "S" [ref=e311]
+              - button "M" [ref=e312]
+              - button "L" [ref=e313]
+              - button "XL" [ref=e314]
+              - button "XXL" [ref=e315]
+            - button "Wybierz rozmiar" [disabled] [ref=e316]
+        - generic [ref=e317]:
+          - generic [ref=e318]: ODZIEŻ
+          - generic [ref=e319]: T-Shirt Akrobacja
+          - generic [ref=e320]: Koszulka z grafiką samolotu Extra 300L. Bawełna 190g, druk DTG.
+          - generic [ref=e321]:
+            - generic [ref=e322]: 149 PLN
+            - button "Szczegóły →" [ref=e323]
+      - generic [ref=e324] [cursor=pointer]:
+        - generic [ref=e325]: MADE TO ORDER
+        - generic [ref=e326]:
+          - img "T-Shirt Granat" [ref=e327]
+          - generic [ref=e328]:
+            - generic [ref=e329]:
+              - button "XS" [ref=e330]
+              - button "S" [ref=e331]
+              - button "M" [ref=e332]
+              - button "L" [ref=e333]
+              - button "XL" [ref=e334]
+              - button "XXL" [ref=e335]
+            - button "Wybierz rozmiar" [disabled] [ref=e336]
+        - generic [ref=e337]:
+          - generic [ref=e338]: ODZIEŻ
+          - generic [ref=e339]: T-Shirt Granat
+          - generic [ref=e340]: Granatowa koszulka z logo akrobacja.com. Bawełna 190g, druk DTG.
+          - generic [ref=e341]:
+            - generic [ref=e342]: 149 PLN
+            - button "Szczegóły →" [ref=e343]
+      - generic [ref=e344] [cursor=pointer]:
+        - generic [ref=e345]: MADE TO ORDER
+        - generic [ref=e346]:
+          - img "T-Shirt Cyan" [ref=e347]
+          - generic [ref=e348]:
+            - generic [ref=e349]:
+              - button "XS" [ref=e350]
+              - button "S" [ref=e351]
+              - button "M" [ref=e352]
+              - button "L" [ref=e353]
+              - button "XL" [ref=e354]
+              - button "XXL" [ref=e355]
+            - button "Wybierz rozmiar" [disabled] [ref=e356]
+        - generic [ref=e357]:
+          - generic [ref=e358]: ODZIEŻ
+          - generic [ref=e359]: T-Shirt Cyan
+          - generic [ref=e360]: Koszulka w kolorze cyan z grafiką SP-EKS. Bawełna 190g, druk DTG.
+          - generic [ref=e361]:
+            - generic [ref=e362]: 149 PLN
+            - button "Szczegóły →" [ref=e363]
+      - generic [ref=e364] [cursor=pointer]:
+        - generic [ref=e365]: MADE TO ORDER
+        - generic [ref=e366]:
+          - img "Polo Granat" [ref=e367]
+          - generic [ref=e368]:
+            - generic [ref=e369]:
+              - button "XS" [ref=e370]
+              - button "S" [ref=e371]
+              - button "M" [ref=e372]
+              - button "L" [ref=e373]
+              - button "XL" [ref=e374]
+              - button "XXL" [ref=e375]
+            - button "Wybierz rozmiar" [disabled] [ref=e376]
+        - generic [ref=e377]:
+          - generic [ref=e378]: ODZIEŻ
+          - generic [ref=e379]: Polo Granat
+          - generic [ref=e380]: Eleganckie polo z haftem logo akrobacja.com. Piqué 220g.
+          - generic [ref=e381]:
+            - generic [ref=e382]: 179 PLN
+            - button "Szczegóły →" [ref=e383]
+      - generic [ref=e384] [cursor=pointer]:
+        - generic [ref=e385]: MADE TO ORDER
+        - generic [ref=e386]:
+          - img "Kurtka Softshell" [ref=e387]
+          - generic [ref=e388]:
+            - generic [ref=e389]:
+              - button "XS" [ref=e390]
+              - button "S" [ref=e391]
+              - button "M" [ref=e392]
+              - button "L" [ref=e393]
+              - button "XL" [ref=e394]
+              - button "XXL" [ref=e395]
+            - button "Wybierz rozmiar" [disabled] [ref=e396]
+        - generic [ref=e397]:
+          - generic [ref=e398]: ODZIEŻ
+          - generic [ref=e399]: Kurtka Softshell
+          - generic [ref=e400]: Kurtka softshell z logo na plecach i piersi. Wiatroszczelna, wodoodporna.
+          - generic [ref=e401]:
+            - generic [ref=e402]: 349 PLN
+            - button "Szczegóły →" [ref=e403]
+      - generic [ref=e404] [cursor=pointer]:
+        - generic [ref=e405]: MADE TO ORDER
+        - generic [ref=e406]:
+          - img "Czapka Snapback" [ref=e407]
+          - button "Dodaj do koszyka" [ref=e409]
+        - generic [ref=e410]:
+          - generic [ref=e411]: AKCESORIA
+          - generic [ref=e412]: Czapka Snapback
+          - generic [ref=e413]: Czapka snapback z haftem AKROBACJA. Regulowana, materiał 6-panelowy.
+          - generic [ref=e414]:
+            - generic [ref=e415]: 99 PLN
+            - button "Szczegóły →" [ref=e416]
+      - generic [ref=e417] [cursor=pointer]:
+        - generic [ref=e418]: MADE TO ORDER
+        - generic [ref=e419]:
+          - img "Brelok Aluminiowy" [ref=e420]
+          - button "Dodaj do koszyka" [ref=e422]
+        - generic [ref=e423]:
+          - generic [ref=e424]: AKCESORIA
+          - generic [ref=e425]: Brelok Aluminiowy
+          - generic [ref=e426]: Brelok z grawerowaną sylwetką Extra 300L. Anodowany aluminium.
+          - generic [ref=e427]:
+            - generic [ref=e428]: 49 PLN
+            - button "Szczegóły →" [ref=e429]
+      - generic [ref=e430] [cursor=pointer]:
+        - generic [ref=e431]: MADE TO ORDER
+        - generic [ref=e432]:
+          - img "Remove Before Flight" [ref=e433]
+          - button "Dodaj do koszyka" [ref=e435]
+        - generic [ref=e436]:
+          - generic [ref=e437]: AKCESORIA
+          - generic [ref=e438]: Remove Before Flight
+          - generic [ref=e439]: Zawieszka „Remove Before Flight" — ikona lotnicza na klucze i plecak.
+          - generic [ref=e440]:
+            - generic [ref=e441]: 29 PLN
+            - button "Szczegóły →" [ref=e442]
+  - contentinfo [ref=e443]:
+    - generic [ref=e444]:
+      - generic [ref=e445]: akrobacja.com
+      - generic [ref=e446]: Extra 300L SP-EKS · Lotnisko Radom-Piastów EPRP
+    - generic [ref=e447]:
+      - link "Strona główna" [ref=e448] [cursor=pointer]:
+        - /url: /
+      - link "Lot akrobacyjny" [ref=e449] [cursor=pointer]:
+        - /url: /lot-akrobacyjny
+      - link "Voucher prezent" [ref=e450] [cursor=pointer]:
+        - /url: /voucher-prezent
+      - link "Camp lotniczy" [ref=e451] [cursor=pointer]:
+        - /url: /camp-akrobacyjny
+      - link "Kalendarz" [ref=e452] [cursor=pointer]:
+        - /url: /kalendarz
+      - link "Blog" [ref=e453] [cursor=pointer]:
+        - /url: /blog
+      - link "Regulamin" [ref=e454] [cursor=pointer]:
+        - /url: /regulamin
+      - link "Prywatność" [ref=e455] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - link "Kontakt" [ref=e456] [cursor=pointer]:
+        - /url: https://wa.me/48535535221
+    - generic [ref=e457]: © 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP
+  - generic [ref=e458]:
+    - generic [ref=e459]:
+      - generic [ref=e461]: Koszyk
+      - button "×" [ref=e462] [cursor=pointer]
+    - generic [ref=e464]:
+      - img [ref=e465]
+      - paragraph [ref=e468]: Koszyk jest pusty
+  - button "Otwórz czat" [ref=e469] [cursor=pointer]:
+    - img [ref=e470]
+  - dialog "Ustawienia cookies" [ref=e472]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e473]
+    - paragraph [ref=e474]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e475] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e476]:
+      - button "Zgoda na wszystkie" [ref=e477] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e478] [cursor=pointer]
+      - button "Ustawienia" [ref=e479] [cursor=pointer]

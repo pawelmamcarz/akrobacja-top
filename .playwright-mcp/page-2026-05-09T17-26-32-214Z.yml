@@ -1,0 +1,499 @@
+- generic [active] [ref=e1]:
+  - link "Przejdź do treści" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - navigation [ref=e3]:
+    - link "akrobacja.com, strona główna" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - img "akrobacja.com" [ref=e5]
+    - list [ref=e6]:
+      - listitem [ref=e7]:
+        - link "Strona główna" [ref=e8] [cursor=pointer]:
+          - /url: /
+      - listitem [ref=e9]:
+        - link "Lot akrobacyjny" [ref=e10] [cursor=pointer]:
+          - /url: /lot-akrobacyjny
+      - listitem [ref=e11]:
+        - link "Kup voucher" [ref=e12] [cursor=pointer]:
+          - /url: "#pakiety"
+      - listitem [ref=e13]:
+        - link "Sklep" [ref=e14] [cursor=pointer]:
+          - /url: /sklep-merch
+      - listitem [ref=e15]:
+        - link "Pokazy na Event" [ref=e16] [cursor=pointer]:
+          - /url: /pokazy-lotnicze
+      - listitem [ref=e17]:
+        - link "Blog" [ref=e18] [cursor=pointer]:
+          - /url: /blog
+      - listitem [ref=e19]:
+        - link "Galeria" [ref=e20] [cursor=pointer]:
+          - /url: /galeria
+      - listitem [ref=e21]:
+        - link "Sponsoring" [ref=e22] [cursor=pointer]:
+          - /url: /sponsoring
+      - listitem [ref=e23]:
+        - link "Kalendarz" [ref=e24] [cursor=pointer]:
+          - /url: /kalendarz
+      - listitem [ref=e25]:
+        - link "FAQ" [ref=e26] [cursor=pointer]:
+          - /url: "#faq"
+      - listitem [ref=e27]:
+        - link "Kontakt" [ref=e28] [cursor=pointer]:
+          - /url: "#kontakt"
+    - link "Napisz" [ref=e29] [cursor=pointer]:
+      - /url: https://wa.me/48535535221
+  - generic [ref=e30]:
+    - link "Strona główna" [ref=e31] [cursor=pointer]:
+      - /url: /
+    - text: / Lot Akrobacyjny
+  - generic [ref=e32]:
+    - generic [ref=e37]:
+      - generic [ref=e38]: REG. NUMBER
+      - generic [ref=e39]: SP-EKS
+      - generic [ref=e40]: EXTRA 300L · ±10G
+    - generic [ref=e41]:
+      - generic [ref=e42]: VOUCHER · OD 1 999 PLN · DO ±6G
+      - heading "LOT AKROBACYJNY EXTRA 300L." [level=1] [ref=e43]:
+        - text: LOT AKROBACYJNY
+        - text: EXTRA 300L.
+      - paragraph [ref=e44]: Voucher od 1 999 PLN. Lot z Mistrzem Świata Akrobacji na Extra 300L SP-EKS. Lotnisko Radom-Piastów, 100 km od Warszawy. Idealny prezent — voucher PDF w mailu w 60 sekund.
+      - generic [ref=e45]:
+        - link "Kup voucher →" [ref=e46] [cursor=pointer]:
+          - /url: "#pakiety"
+        - link "Zobacz pakiety" [ref=e47] [cursor=pointer]:
+          - /url: "#pakiety"
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e50]: ±6G
+          - generic [ref=e51]: PRZECIĄŻENIE
+        - generic [ref=e52]:
+          - generic [ref=e53]: 3 000h+
+          - generic [ref=e54]: NA EXTRA 300L
+        - generic [ref=e55]:
+          - generic [ref=e56]: 5.0★
+          - generic [ref=e57]: GOOGLE
+        - generic [ref=e58]:
+          - generic [ref=e59]: 12 MC.
+          - generic [ref=e60]: WAŻNOŚĆ VOUCHERA
+  - region "Tak wygląda lot akrobacyjny Extra 300L" [ref=e61]:
+    - generic [ref=e62]:
+      - paragraph [ref=e63]: Zobacz na żywo
+      - heading "Tak wygląda lot akrobacyjny Extra 300L" [level=2] [ref=e64]:
+        - text: Tak wygląda lot
+        - text: akrobacyjny Extra 300L
+      - button "Odtwórz wideo, lot akrobacyjny Extra 300L" [ref=e66] [cursor=pointer]:
+        - img "Lot akrobacyjny Extra 300L, miniatura wideo" [ref=e67]
+        - img [ref=e69]
+      - paragraph [ref=e72]: Extra 300L SP-EKS · Radom-Piastów EPRP
+  - generic [ref=e73]:
+    - generic [ref=e74]:
+      - paragraph [ref=e75]: Oferta · Ceny promocyjne do końca miesiąca
+      - heading "Pakiety lotów akrobacyjnych" [level=2] [ref=e76]
+    - generic [ref=e78]:
+      - generic [ref=e79]:
+        - paragraph [ref=e80]: Lot zapoznawczy
+        - heading "Pierwszy Lot Akrobacyjny" [level=3] [ref=e81]
+        - paragraph [ref=e82]: 15 minut w powietrzu z Mistrzem Świata. Beczki, loopingi, do +4G. Doświadczenie lotnicze nie jest wymagane.
+        - paragraph [ref=e83]: "-20% do końca miesiąca"
+        - paragraph [ref=e84]: 2 499 PLN
+        - paragraph [ref=e85]: 1 999 PLN
+        - list [ref=e86]:
+          - listitem [ref=e87]: → 15 minut lotu akrobacyjnego
+          - listitem [ref=e88]: → Briefing naziemny z pilotem
+          - listitem [ref=e89]: "→ Podstawowe figury: beczki, loopingi"
+          - listitem [ref=e90]: → Lot samolotem akrobacyjnym Extra 300L
+          - listitem [ref=e91]: → Certyfikat ukończenia lotu
+          - listitem [ref=e92]: → Voucher ważny 12 miesięcy
+        - button "Kup voucher, 1 999 zł" [ref=e93] [cursor=pointer]
+      - generic [ref=e94]:
+        - paragraph [ref=e95]: Najpopularniejszy
+        - heading "Lot Akrobacyjny Adrenalina" [level=3] [ref=e96]
+        - paragraph [ref=e97]: 20 minut, pełen program figur do +6G. Beczki, loopingi, hammerheady, lot odwrócony. Najczęściej wybierany pakiet.
+        - paragraph [ref=e98]: "-40% do końca miesiąca"
+        - paragraph [ref=e99]: 4 999 PLN
+        - paragraph [ref=e100]: 2 999 PLN
+        - list [ref=e101]:
+          - listitem [ref=e102]: → 20 minut lotu akrobacyjnego
+          - listitem [ref=e103]: → Rozszerzony briefing z pilotem
+          - listitem [ref=e104]: "→ Pełny program figur: beczki, loopingi, loty nożowe, hammerheady"
+          - listitem [ref=e105]: → Przeciążenia do +6G
+          - listitem [ref=e106]: → Lot samolotem akrobacyjnym Extra 300L SP-EKS
+          - listitem [ref=e107]: → Certyfikat + voucher ważny 12 miesięcy
+        - button "Kup voucher, 2 999 zł" [ref=e108] [cursor=pointer]
+      - generic [ref=e109]:
+        - paragraph [ref=e110]: Premium
+        - heading "Lot Akrobacyjny Masterclass" [level=3] [ref=e111]
+        - paragraph [ref=e112]: Do 50 minut w dwóch lotach, dual control, korkociągi, figury zaawansowane, debriefing z analizą GPS. Wymaga PPL(A)+.
+        - paragraph [ref=e113]: 4 999 PLN
+        - list [ref=e114]:
+          - listitem [ref=e115]: → Do 50 minut lotu akrobacyjnego (2 loty)
+          - listitem [ref=e116]: → Pełne szkolenie naziemne
+          - listitem [ref=e117]: → Wszystkie figury akrobacyjne + figury zaawansowane
+          - listitem [ref=e118]: → Próba przejęcia sterów (dual control)
+          - listitem [ref=e119]: → Debriefing z analizą GPS lotu
+          - listitem [ref=e120]: → Video 360° z lotu w cenie
+          - listitem [ref=e121]: → Certyfikat + voucher ważny 12 miesięcy
+        - button "Kup voucher, 4 999 zł" [ref=e122] [cursor=pointer]
+  - generic [ref=e123]:
+    - generic [ref=e124]:
+      - paragraph [ref=e125]: Przebieg
+      - heading "Jak wygląda lot akrobacyjny?" [level=2] [ref=e126]
+    - generic [ref=e128]:
+      - generic [ref=e129]:
+        - paragraph [ref=e130]: "01"
+        - img [ref=e132]
+        - heading "Briefing naziemny" [level=3] [ref=e134]
+        - paragraph [ref=e135]: Przed lotem akrobacyjnym pilot Maciej Kulaszewski omawia plan lotu, figury akrobacyjne i zasady bezpieczeństwa. Poznajesz samolot akrobacyjny Extra 300L od środka.
+      - generic [ref=e136]:
+        - paragraph [ref=e137]: "02"
+        - img [ref=e139]
+        - heading "Start i wznoszenie" [level=3] [ref=e141]
+        - paragraph [ref=e142]: Lot akrobacyjny zaczyna się od startu z lotniska Radom-Piastów. Samolot akrobacyjny Extra 300L wznosi się na wysokość roboczą ok. 1500 m w strefie akrobacji.
+      - generic [ref=e143]:
+        - paragraph [ref=e144]: "03"
+        - img [ref=e146]
+        - heading "Figury akrobacyjne" [level=3] [ref=e148]
+        - paragraph [ref=e149]: Serce każdego lotu akrobacyjnego, beczki, loopingi, loty nożowe, hammerheady. Lot samolotem akrobacyjnym z przeciążeniami do +6G. Pilot komentuje każdą figurę.
+      - generic [ref=e150]:
+        - paragraph [ref=e151]: "04"
+        - img [ref=e153]
+        - heading "Debriefing" [level=3] [ref=e155]
+        - paragraph [ref=e156]: Po wylądowaniu omawiamy lot akrobacyjny, wykonane figury, osiągnięte przeciążenia. Otrzymujesz certyfikat lotu akrobacyjnego na pamiątkę.
+  - generic [ref=e157]:
+    - paragraph [ref=e158]: Idealny prezent
+    - heading "Voucher na lot akrobacyjny, idealny prezent" [level=2] [ref=e159]
+    - generic [ref=e161]:
+      - generic [ref=e162]:
+        - paragraph [ref=e163]:
+          - text: Szukasz
+          - strong [ref=e164]: prezentu na lot akrobacyjny
+          - text: "? Voucher na lot akrobacyjny samolotem Extra 300L to prezent z konkretną datą, miejscem i G-force. Obdarowany sam wybiera termin. Voucher ważny 12 miesięcy, możliwe bezpłatne przełożenie przy złej pogodzie."
+        - paragraph [ref=e165]:
+          - text: Każdy
+          - strong [ref=e166]: voucher lot akrobacyjny
+          - text: jest eleganckim dokumentem PDF z unikalnym kodem. Wysyłamy go natychmiast po płatności, możesz wręczyć prezent na lot akrobacyjny jeszcze dziś. Voucher jest ważny
+          - strong [ref=e167]: 12 miesięcy
+          - text: od daty zakupu.
+        - generic [ref=e168]:
+          - generic [ref=e169]:
+            - img [ref=e171]
+            - generic [ref=e173]:
+              - heading "Natychmiastowa dostawa PDF" [level=3] [ref=e174]
+              - paragraph [ref=e175]: Voucher na lot akrobacyjny dostarczany e-mailem natychmiast po zakupie. Gotowy do wydruku lub wysłania.
+          - generic [ref=e176]:
+            - img [ref=e178]
+            - generic [ref=e180]:
+              - heading "Ważność 12 miesięcy" [level=3] [ref=e181]
+              - paragraph [ref=e182]: Obdarowany ma pełen rok na realizację lotu akrobacyjnego. Elastyczny wybór terminu.
+          - generic [ref=e183]:
+            - img [ref=e185]
+            - generic [ref=e187]:
+              - heading "Prezent lot akrobacyjny" [level=3] [ref=e188]
+              - paragraph [ref=e189]: Elegancki design vouchera. Idealny na urodziny, Dzień Ojca, Walentynki czy rocznicę ślubu.
+      - generic [ref=e190]:
+        - heading "Na jaką okazję kupić voucher na lot akrobacyjny?" [level=3] [ref=e191]
+        - generic [ref=e192]:
+          - generic [ref=e193]: Urodziny
+          - generic [ref=e194]: Dzień Ojca
+          - generic [ref=e195]: Walentynki
+          - generic [ref=e196]: Rocznica ślubu
+          - generic [ref=e197]: Prezent dla szefa
+          - generic [ref=e198]: Wieczór kawalerski
+          - generic [ref=e199]: Gwiazdka / Mikołajki
+          - generic [ref=e200]: Nagroda dla pracownika
+        - generic [ref=e201]:
+          - paragraph [ref=e202]: Jak kupić voucher na lot akrobacyjny?
+          - paragraph [ref=e203]:
+            - text: 1. Wybierz pakiet lotu akrobacyjnego (1999 / 2999 / 4 999 PLN)
+            - text: 2. Kup voucher online lub napisz na WhatsApp
+            - text: 3. Otrzymaj voucher na lot akrobacyjny PDF natychmiast
+            - text: 4. Zarezerwuj termin w kalendarzu
+          - link "Kup voucher teraz" [ref=e204] [cursor=pointer]:
+            - /url: "#pakiety"
+          - link "Napisz na WhatsApp" [ref=e205] [cursor=pointer]:
+            - /url: https://wa.me/48535535221?text=Mam%20pytanie%20o%20lot%20akrobacyjny
+  - generic [ref=e206]:
+    - text: SP-EKS
+    - paragraph [ref=e207]: Maszyna
+    - heading "Samolot akrobacyjny Extra 300L SP-EKS" [level=2] [ref=e208]
+    - generic [ref=e210]:
+      - generic [ref=e211]:
+        - generic [ref=e212]:
+          - img "Samolot akrobacyjny Extra 300L SP-EKS używany do lotów akrobacyjnych" [ref=e213]
+          - generic [ref=e214]: Extra 300L SP-EKS
+        - generic [ref=e215]:
+          - paragraph [ref=e216]:
+            - strong [ref=e217]: Extra 300L
+            - text: to jeden z najlepszych samolotów akrobacyjnych na świecie, używany przez czołowych pilotów akrobacyjnych na mistrzostwach. Nasz egzemplarz
+            - strong [ref=e218]: SP-EKS
+            - text: jest maszyną dwumiejscową, idealną do lotów akrobacyjnych z pasażerem.
+          - paragraph [ref=e219]:
+            - text: Samolot akrobacyjny Extra 300L jest certyfikowany do przeciążeń od
+            - strong [ref=e220]: "-10G do +10G"
+            - text: . Loty z pasażerami odbywają się z marginesami wielokrotnie większymi niż w zawodach — do +6G, czyli ok. 30% możliwości maszyny.
+      - generic [ref=e222]:
+        - generic [ref=e223]:
+          - generic [ref=e224]: Typ
+          - generic [ref=e225]: Extra 300L
+        - generic [ref=e226]:
+          - generic [ref=e227]: Rejestracja
+          - generic [ref=e228]: SP-EKS
+        - generic [ref=e229]:
+          - generic [ref=e230]: Silnik
+          - generic [ref=e231]: Lycoming AEIO-580 / 315 HP
+        - generic [ref=e232]:
+          - generic [ref=e233]: Prędkość max
+          - generic [ref=e234]: 340 km/h
+        - generic [ref=e235]:
+          - generic [ref=e236]: Przeciążenia
+          - generic [ref=e237]: "-10G / +10G"
+        - generic [ref=e238]:
+          - generic [ref=e239]: Masa startowa
+          - generic [ref=e240]: 950 kg
+        - generic [ref=e241]:
+          - generic [ref=e242]: Miejsca
+          - generic [ref=e243]: 2 (tandem)
+        - generic [ref=e244]:
+          - generic [ref=e245]: Kategoria
+          - generic [ref=e246]: Akrobacja Unlimited
+        - generic [ref=e247]:
+          - generic [ref=e248]: Producent
+          - generic [ref=e249]: Extra Aircraft (DE)
+  - generic [ref=e250]:
+    - img "Pilot akrobacyjny Maciej Kulaszewski, prowadzi loty akrobacyjne Extra 300L" [ref=e252]
+    - generic [ref=e253]:
+      - paragraph [ref=e254]: Pilot
+      - heading "Pilot akrobacyjny, Maciej Kulaszewski" [level=2] [ref=e255]
+      - paragraph [ref=e257]:
+        - text: Twój lot akrobacyjny prowadzi
+        - strong [ref=e258]: Maciej Kulaszewski
+        - text: ", wielokrotny Mistrz Polski, Niemiec i UK w akrobacji samolotowej (kat. Unlimited), pilot z ponad"
+        - strong [ref=e259]: 3 000+ godzin
+        - text: doświadczenia lotniczego, w tym tysiące godzin na samolotach akrobacyjnych klasy Unlimited.
+      - paragraph [ref=e260]: Maciej jest instruktorem FI(A) i sędzią akrobacji lotniczej. Każdy lot prowadzi osobiście — komentuje każdą figurę przez intercom i dostosowuje intensywność do Twoich preferencji. Dwóch jego podopiecznych zostało Mistrzami Polski.
+      - generic [ref=e261]:
+        - generic [ref=e262]:
+          - paragraph [ref=e263]:
+            - text: "3000"
+            - emphasis [ref=e264]: +
+          - paragraph [ref=e265]: Godzin nalotu
+        - generic [ref=e266]:
+          - paragraph [ref=e267]:
+            - emphasis [ref=e268]: +
+            - text: 6G
+          - paragraph [ref=e269]: Przeciążenia w locie
+        - generic [ref=e270]:
+          - paragraph [ref=e271]:
+            - text: "15"
+            - emphasis [ref=e272]: +
+          - paragraph [ref=e273]: Lat doświadczenia
+        - generic [ref=e274]:
+          - paragraph [ref=e275]:
+            - text: Mistrz
+            - emphasis [ref=e276]: PL
+          - paragraph [ref=e277]: Akrobacja samolotowa
+  - generic [ref=e278]:
+    - paragraph [ref=e279]: Lokalizacja
+    - heading "Lotnisko Radom-Piastów (EPRP)" [level=2] [ref=e280]
+    - generic [ref=e282]:
+      - generic [ref=e283]:
+        - paragraph [ref=e284]:
+          - text: Lot akrobacyjny odbywa się na
+          - strong [ref=e285]: lotnisku Radom-Piastów (EPRP)
+          - text: ", jednym z najstarszych i najbardziej znanych lotnisk sportowych w Polsce. To tutaj realizujemy wszystkie loty akrobacyjne samolotem Extra 300L."
+        - paragraph [ref=e286]:
+          - text: Lotnisko Radom-Piastów jest łatwo dostępne samochodem z
+          - strong [ref=e287]: Warszawy (ok. 1h 15 min)
+          - text: ", Kielc, Lublina i Łodzi. Darmowy parking na terenie lotniska. Przed lotem akrobacyjnym warto przyjechać 30 minut wcześniej na briefing."
+        - paragraph [ref=e288]:
+          - strong [ref=e289]: "Jak dojechać:"
+          - text: z Warszawy trasą S7 w kierunku Radomia. Na lotnisku Radom-Piastów czeka na Ciebie samolot akrobacyjny Extra 300L SP-EKS i pilot Maciej Kulaszewski.
+        - generic [ref=e290]:
+          - generic [ref=e291]:
+            - generic [ref=e292]: Lotnisko
+            - generic [ref=e293]: Radom-Piastów (EPRP)
+          - generic [ref=e294]:
+            - generic [ref=e295]: Adres
+            - generic [ref=e296]: ul. Lotników 1, 26-600 Radom
+          - generic [ref=e297]:
+            - generic [ref=e298]: Z Warszawy
+            - generic [ref=e299]: ok. 1h 15 min (S7)
+          - generic [ref=e300]:
+            - generic [ref=e301]: Parking
+            - generic [ref=e302]: Bezpłatny
+          - generic [ref=e303]:
+            - generic [ref=e304]: Koordynaty
+            - generic [ref=e305]: 51.3892°N, 21.2131°E
+      - iframe [ref=e307]
+  - generic [ref=e309]:
+    - paragraph [ref=e310]: Bezpieczeństwo
+    - heading "Dlaczego lot z mistrzem jest bezpieczniejszy niż myślisz" [level=2] [ref=e311]:
+      - text: Dlaczego lot z mistrzem
+      - text: jest bezpieczniejszy niż myślisz
+    - generic [ref=e313]:
+      - generic [ref=e314]:
+        - paragraph [ref=e315]: 01 / Nalot na typie
+        - heading "3 000 h na Extra 300L" [level=3] [ref=e316]
+        - paragraph [ref=e317]:
+          - text: Maciej ma ponad 3 000 godzin akrobacji na Extra 300L — jeden z najwyższych nalotem na typie na świecie.
+          - strong [ref=e318]: Zna granice tej maszyny lepiej niż jej producent.
+      - generic [ref=e319]:
+        - paragraph [ref=e320]: 02 / Marginesy
+        - heading "30% możliwości maszyny" [level=3] [ref=e321]
+        - paragraph [ref=e322]:
+          - text: Loty z pasażerami odbywają się do +6G. Maszyna jest certyfikowana do +10G.
+          - strong [ref=e323]: "Margines bezpieczeństwa: ponad trzykrotny."
+      - generic [ref=e324]:
+        - paragraph [ref=e325]: 03 / Kwalifikacje
+        - heading "Instruktor FI(A) i sędzia" [level=3] [ref=e326]
+        - paragraph [ref=e327]:
+          - text: Certyfikowany instruktor FI(A) i sędzia akrobacji. Tysiące godzin treningu korkociągów i recovery.
+          - strong [ref=e328]: Mistrz Świata, który uczy następnych mistrzów.
+  - generic [ref=e329]:
+    - generic [ref=e330]:
+      - paragraph [ref=e331]: Pytania i odpowiedzi
+      - heading "Masz pytania? Mamy 3 000 godzin odpowiedzi" [level=2] [ref=e332]
+    - generic [ref=e334]:
+      - generic [ref=e335]:
+        - button "Ile kosztuje lot akrobacyjny? +" [ref=e336] [cursor=pointer]
+        - generic [ref=e337]:
+          - text: Lot akrobacyjny samolotem Extra 300L kosztuje od
+          - strong [ref=e338]: 1999 PLN
+          - text: za lot zapoznawczy (15 min), przez
+          - strong [ref=e339]: 2999 PLN
+          - text: za pakiet Adrenalina (20 min), do
+          - strong [ref=e340]: 4 999 PLN
+          - text: za Masterclass (do 50 min, 2 loty). Każdy voucher na lot akrobacyjny jest ważny 12 miesięcy. Cena obejmuje briefing, lot akrobacyjny i certyfikat.
+      - generic [ref=e341]:
+        - button "Czy lot akrobacyjny jest bezpieczny? +" [ref=e342] [cursor=pointer]
+        - generic [ref=e343]: Tak, lot akrobacyjny z akrobacja.com jest w pełni bezpieczny. Pilot Maciej Kulaszewski ma ponad 3 000+ godzin doświadczenia, a samolot akrobacyjny Extra 300L SP-EKS jest certyfikowany do figur od -10G do +10G. Lot akrobacyjny odbywa się w wyznaczonej strefie akrobacji nad lotniskiem Radom-Piastów, zgodnie z przepisami lotniczymi.
+      - generic [ref=e344]:
+        - button "Jak długo trwa lot akrobacyjny? +" [ref=e345] [cursor=pointer]
+        - generic [ref=e346]: Lot akrobacyjny trwa od 15 do 50 minut w zależności od wybranego pakietu. Pierwszy Lot Akrobacyjny to 15 minut, Adrenalina 20 minut, a Masterclass do 50 minut (2 loty). Dodatkowo przed lotem akrobacyjnym odbywa się briefing naziemny (ok. 20 minut), a po locie debriefing z omówieniem figur. Łącznie warto zarezerwować 1,5-2 godziny na wizytę.
+      - generic [ref=e347]:
+        - button "Czy potrzebuję doświadczenia do lotu akrobacyjnego? +" [ref=e348] [cursor=pointer]
+        - generic [ref=e349]: Nie, do lotu akrobacyjnego nie potrzebujesz żadnego doświadczenia lotniczego. Lot samolotem akrobacyjnym odbywa się z doświadczonym pilotem, który prowadzi maszynę. Wystarczy być w dobrym stanie zdrowia. Nasz lot zapoznawczy jest zaprojektowany specjalnie dla osób latających po raz pierwszy.
+      - generic [ref=e350]:
+        - button "Jak kupić voucher na lot akrobacyjny? +" [ref=e351] [cursor=pointer]
+        - generic [ref=e352]:
+          - text: Voucher na lot akrobacyjny możesz kupić kontaktując się z nami przez
+          - strong [ref=e353]: WhatsApp
+          - text: (+48 535 535 221) lub bezpośrednio na stronie akrobacja.com. Wybierz pakiet (1999 / 2999 / 4 999 PLN), opłać przelewem lub online, a voucher na lot akrobacyjny w formacie PDF zostanie wysłany natychmiast na Twój e-mail. Cały proces trwa kilka minut.
+      - generic [ref=e354]:
+        - button "Gdzie odbywa się lot akrobacyjny? +" [ref=e355] [cursor=pointer]
+        - generic [ref=e356]:
+          - text: Lot akrobacyjny odbywa się na lotnisku
+          - strong [ref=e357]: Radom-Piastów (EPRP)
+          - text: ", ul. Lotników 1, Radom. Lotnisko jest łatwo dostępne z Warszawy (ok. 1h 15 min trasą S7) i z całej centralnej Polski. Lot akrobacyjny Radom to najlepsze miejsce na akrobację w okolicach Warszawy. Parking na lotnisku jest bezpłatny."
+      - generic [ref=e358]:
+        - button "Co to jest lot zapoznawczy samolotem akrobacyjnym? +" [ref=e359] [cursor=pointer]
+        - generic [ref=e360]: "Lot zapoznawczy to wprowadzający lot akrobacyjny dla osób bez doświadczenia. Trwa 15 minut i obejmuje podstawowe figury akrobacyjne: beczki, loopingi i loty nożowe. Lot zapoznawczy samolotem akrobacyjnym Extra 300L to idealny prezent i wstęp do świata akrobacji lotniczej. Cena: 1999 PLN."
+      - generic [ref=e361]:
+        - button "Voucher na lot akrobacyjny jako prezent, jak działa? +" [ref=e362] [cursor=pointer]
+        - generic [ref=e363]: Voucher na lot akrobacyjny jako prezent to elegancki PDF z unikalnym kodem, który otrzymujesz natychmiast po zakupie. Obdarowany kontaktuje się z nami, wybiera termin i realizuje lot akrobacyjny samolotem Extra 300L. Voucher na lot jest ważny 12 miesięcy od daty zakupu. Prezent lot akrobacyjny to hit na urodziny, Dzień Ojca, Walentynki i rocznicę ślubu.
+  - generic [ref=e364]:
+    - heading "Zarezerwuj lot akrobacyjny" [level=2] [ref=e365]
+    - paragraph [ref=e366]: Napisz do nas przez WhatsApp, zadzwoń lub kup voucher na lot akrobacyjny online. Odpowiadamy w ciągu kilku minut.
+    - generic [ref=e367]:
+      - link "WhatsApp +48 535 535 221" [ref=e368] [cursor=pointer]:
+        - /url: https://wa.me/48535535221?text=Chc%C4%99%20zarezerwowa%C4%87%20lot%20akrobacyjny
+        - img [ref=e369]
+        - text: WhatsApp +48 535 535 221
+      - 'link "Zadzwoń: +48 535 535 221" [ref=e372] [cursor=pointer]':
+        - /url: tel:+48535535221
+    - link "Kup voucher online na akrobacja.com" [ref=e373] [cursor=pointer]:
+      - /url: "#pakiety"
+  - contentinfo [ref=e374]:
+    - generic [ref=e375]:
+      - generic [ref=e376]:
+        - img "akrobacja.com" [ref=e377]
+        - paragraph [ref=e378]:
+          - text: Extra 300L SP-EKS
+          - text: Radom-Piastów EPRP
+          - generic [ref=e379]:
+            - text: Doradztwo Paweł Mamcarz
+            - text: "Pilot:"
+            - strong [ref=e380]: Maciej Kulaszewski
+      - generic [ref=e381]:
+        - paragraph [ref=e382]: Nawigacja
+        - list [ref=e383]:
+          - listitem [ref=e384]:
+            - link "Strona główna" [ref=e385] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e386]:
+            - link "Lot akrobacyjny" [ref=e387] [cursor=pointer]:
+              - /url: /lot-akrobacyjny
+          - listitem [ref=e388]:
+            - link "Sklep z Voucherami" [ref=e389] [cursor=pointer]:
+              - /url: "#pakiety"
+          - listitem [ref=e390]:
+            - link "Sklep Merch" [ref=e391] [cursor=pointer]:
+              - /url: /sklep-merch
+          - listitem [ref=e392]:
+            - link "Pokazy na Event" [ref=e393] [cursor=pointer]:
+              - /url: /pokazy-lotnicze
+          - listitem [ref=e394]:
+            - link "Sponsoring" [ref=e395] [cursor=pointer]:
+              - /url: /sponsoring
+          - listitem [ref=e396]:
+            - link "Kalendarz" [ref=e397] [cursor=pointer]:
+              - /url: /kalendarz
+          - listitem [ref=e398]:
+            - link "Konto pilota" [ref=e399] [cursor=pointer]:
+              - /url: /konto
+          - listitem [ref=e400]:
+            - link "Regulamin" [ref=e401] [cursor=pointer]:
+              - /url: /regulamin
+      - generic [ref=e402]:
+        - paragraph [ref=e403]: Kontakt
+        - list [ref=e404]:
+          - listitem [ref=e405]:
+            - link "+48 535 535 221" [ref=e406] [cursor=pointer]:
+              - /url: https://wa.me/48535535221
+          - listitem [ref=e407]:
+            - link "dto@akrobacja.com" [ref=e408] [cursor=pointer]:
+              - /url: mailto:dto@akrobacja.com
+          - listitem [ref=e409]:
+            - link "Lotnisko Radom-Piastów (EPRP)" [ref=e410] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/radom-piastow-eprp
+          - listitem [ref=e411]: ul. Lotników 1, Radom
+      - generic [ref=e412]:
+        - paragraph [ref=e413]: Informacje
+        - list [ref=e414]:
+          - listitem [ref=e415]:
+            - link "Regulamin" [ref=e416] [cursor=pointer]:
+              - /url: /regulamin
+          - listitem [ref=e417]:
+            - link "Polityka prywatności" [ref=e418] [cursor=pointer]:
+              - /url: /polityka-prywatnosci
+          - listitem [ref=e419]:
+            - link "FAQ, Lot akrobacyjny" [ref=e420] [cursor=pointer]:
+              - /url: "#faq"
+          - listitem [ref=e421]:
+            - link "Dojazd na lotnisko" [ref=e422] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/radom-piastow-eprp
+    - generic [ref=e423]:
+      - paragraph [ref=e424]: © 2026 akrobacja.com · Doradztwo Paweł Mamcarz · Extra 300L SP-EKS · EPRP
+      - generic [ref=e425]:
+        - link "Facebook" [ref=e426] [cursor=pointer]:
+          - /url: https://www.facebook.com/akrobacjacom/
+        - link "WhatsApp" [ref=e427] [cursor=pointer]:
+          - /url: https://wa.me/48535535221
+        - img [ref=e428]
+  - link "+48 535 535 221" [ref=e429] [cursor=pointer]:
+    - /url: https://wa.me/48535535221
+    - img [ref=e430]
+    - text: +48 535 535 221
+  - text: "Płatność:"
+  - button "Otwórz czat" [ref=e431] [cursor=pointer]:
+    - img [ref=e432]
+  - dialog "Ustawienia cookies" [ref=e434]:
+    - heading "🍪 Używamy plików cookies" [level=3] [ref=e435]
+    - paragraph [ref=e436]:
+      - text: Cookies pomagają nam mierzyć skuteczność reklam i poprawiać stronę. Możesz wybrać które zgadzasz się aktywować. Szczegóły w
+      - link "polityce prywatności" [ref=e437] [cursor=pointer]:
+        - /url: /polityka-prywatnosci
+      - text: .
+    - generic [ref=e438]:
+      - button "Zgoda na wszystkie" [ref=e439] [cursor=pointer]
+      - button "Tylko niezbędne" [ref=e440] [cursor=pointer]
+      - button "Ustawienia" [ref=e441] [cursor=pointer]

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360" width="100%" style="max-width:260px" class="diecut">
+  <defs>
+    <filter id="whitePlane" x="-20%" y="-20%" width="140%" height="140%">
+      <!-- knock to silhouette -->
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0" result="white"></feColorMatrix>
+      <feGaussianBlur in="white" stdDeviation="3" result="blur"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur"></feMergeNode>
+        <feMergeNode in="white"></feMergeNode>
+      </feMerge>
+    </filter>
+    <filter id="cyanGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0.9  0 0 0 0 1  0 0 0 1 0"></feColorMatrix>
+      <feGaussianBlur stdDeviation="8"></feGaussianBlur>
+    </filter>
+  </defs>
+  <circle cx="180" cy="180" r="174" fill="#FFFFFF"></circle>
+  <circle cx="180" cy="180" r="166" fill="#070F1A"></circle>
+  <!-- subtle radial cyan glow center -->
+  <circle cx="180" cy="195" r="100" fill="#00E5FF" opacity=".18"></circle>
+  <text x="180" y="80" text-anchor="middle" font-family="Anton" font-size="22" letter-spacing="6" fill="#FFFFFF">INVERTED</text>
+  <text x="180" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="10" letter-spacing="4" fill="#00E5FF">CLUB · MEMBER NO. ___</text>
+  <!-- glow underlay -->
+  <image href="extra-300l-illustration.png" x="80" y="120" width="200" height="160" transform="rotate(180 180 200)" filter="url(#cyanGlow)" opacity=".7"></image>
+  <!-- white silhouette -->
+  <image href="extra-300l-illustration.png" x="80" y="120" width="200" height="160" transform="rotate(180 180 200)" filter="url(#whitePlane)"></image>
+  <text x="180" y="320" text-anchor="middle" font-family="Anton" font-size="18" letter-spacing="6" fill="#E11E26">akrobacja.com</text>
+</svg>

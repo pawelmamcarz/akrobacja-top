@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" width="100%" style="max-width:280px" class="diecut">
+  <rect width="500" height="300" rx="14" fill="#FFFFFF"></rect>
+  <rect x="10" y="10" width="480" height="280" rx="10" fill="#0A2F7C"></rect>
+  <text x="250" y="130" text-anchor="middle" font-family="Anton" font-size="80" letter-spacing="6" fill="#FFFFFF">EPRP</text>
+  <line x1="100" y1="155" x2="400" y2="155" stroke="#E11E26" stroke-width="3"></line>
+  <text x="250" y="200" text-anchor="middle" font-family="JetBrains Mono" font-size="22" letter-spacing="3" fill="#00E5FF">N51°23'21"</text>
+  <text x="250" y="235" text-anchor="middle" font-family="JetBrains Mono" font-size="22" letter-spacing="3" fill="#00E5FF">E021°12'48"</text>
+</svg>

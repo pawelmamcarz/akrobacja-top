@@ -1,0 +1,36 @@
+/* akrobacja.com — design system tokens */
+:root{
+  --navy:#0A2F7C;
+  --navy-deep:#06205A;
+  --navy-ink:#040E2A;
+  --cyan:#00E5FF;
+  --red:#E11E26;
+  --white:#FFFFFF;
+  --bone:#F4F1EA;
+  --black:#070F1A;
+  --steel:#8BA0B4;
+  --concrete:#D8DEE6;
+  --sun:#FFB300; /* high-vis stripe accent */
+  --hangar-grad: linear-gradient(180deg,#040E2A 0%,#0A2F7C 70%,#1A4FB0 100%);
+}
+.font-display{ font-family: "Anton","Bebas Neue","Oswald",Impact,sans-serif; letter-spacing:.01em; }
+.font-mono{ font-family: "JetBrains Mono","IBM Plex Mono",ui-monospace,monospace; }
+.font-body{ font-family: "Inter","Helvetica Neue",system-ui,sans-serif; }
+.italic-display{ font-family:"Anton",sans-serif; font-style:italic; transform: skewX(-8deg); display:inline-block; }
+
+/* utility */
+.diag-stripes{
+  background-image: repeating-linear-gradient(135deg,
+    var(--sun) 0 16px, transparent 16px 32px);
+}
+.checker{
+  background-image:
+    linear-gradient(45deg,#000 25%,transparent 25%),
+    linear-gradient(-45deg,#000 25%,transparent 25%),
+    linear-gradient(45deg,transparent 75%,#000 75%),
+    linear-gradient(-45deg,transparent 75%,#000 75%);
+  background-size:24px 24px;
+  background-position:0 0,0 12px,12px -12px,12px 0;
+}
+
+@font-face{ font-family:"AnchorFallback"; src: local("Anton"); }
