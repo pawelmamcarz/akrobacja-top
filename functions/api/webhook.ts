@@ -4,7 +4,6 @@ import { sendVoucherEmail, escapeHtml } from '../../src/lib/email';
 import { createInvoice } from '../../src/lib/wfirma';
 import { sendMetaPurchase } from '../../src/lib/meta-capi';
 import { createPrintfulOrder, confirmPrintfulOrder } from '../../src/lib/printful';
-import { createBaseLinkerOrder } from '../../src/lib/baselinker';
 
 // Notify owner about paid merch order — formatted for manual Snapwear entry
 async function notifyOwnerMerch(env: Env, o: {
