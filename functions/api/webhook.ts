@@ -6,6 +6,80 @@ import { sendMetaPurchase } from '../../src/lib/meta-capi';
 import { createPrintfulOrder, confirmPrintfulOrder } from '../../src/lib/printful';
 import { createBaseLinkerOrder } from '../../src/lib/baselinker';
 
+// Notify owner about paid merch order — formatted for manual Snapwear entry
+async function notifyOwnerMerch(env: Env, o: {
+  orderId: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string | null;
+  shippingAddress: string;
+  shippingCity: string;
+  shippingZip: string;
+  items: Array<{ name: string; variant?: string; quantity: number; price: number }>;
+  totalAmount: number;
+}): Promise<void> {
+  try {
+    const totalPLN = (o.totalAmount / 100).toFixed(2);
+    const rows = o.items.map(i =>
+      `<tr>
+        <td style="padding:8px;border-bottom:1px solid #eee">${escapeHtml(i.name)}</td>
+        <td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${escapeHtml(i.variant || '—')}</td>
+        <td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${i.quantity}</td>
+        <td style="padding:8px;border-bottom:1px solid #eee;text-align:right">${(i.price / 100).toFixed(2)} PLN</td>
+      </tr>`
+    ).join('');
+
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${env.RESEND_API_KEY}` },
+      body: JSON.stringify({
+        from: 'akrobacja.com <system@akrobacja.com>',
+        to: ['dto@akrobacja.com'],
+        subject: `🛍️ Nowe zamówienie merch — ${o.customerName} — ${totalPLN} PLN`,
+        html: `
+<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
+  <h2 style="color:#0A2F7C;margin:0 0 4px">Nowe zamówienie merch</h2>
+  <p style="margin:0 0 20px;color:#6B7A90">Zamówienie #${o.orderId.slice(0,8)} · ${totalPLN} PLN zapłacone</p>
+
+  <h3 style="margin:0 0 8px;color:#0A2F7C;font-size:14px;text-transform:uppercase;letter-spacing:1px">Produkty do zlecenia w Snapwear</h3>
+  <table style="width:100%;border-collapse:collapse;margin-bottom:20px">
+    <thead>
+      <tr style="background:#f5f7fa">
+        <th style="padding:8px;text-align:left;font-size:12px;color:#6B7A90">Produkt</th>
+        <th style="padding:8px;text-align:center;font-size:12px;color:#6B7A90">Rozmiar</th>
+        <th style="padding:8px;text-align:center;font-size:12px;color:#6B7A90">Szt.</th>
+        <th style="padding:8px;text-align:right;font-size:12px;color:#6B7A90">Cena</th>
+      </tr>
+    </thead>
+    <tbody>${rows}</tbody>
+  </table>
+
+  <h3 style="margin:0 0 8px;color:#0A2F7C;font-size:14px;text-transform:uppercase;letter-spacing:1px">Adres dostawy</h3>
+  <div style="background:#f5f7fa;padding:12px 16px;border-radius:6px;margin-bottom:20px;font-family:monospace;font-size:14px;line-height:1.8">
+    ${escapeHtml(o.customerName)}<br>
+    ${escapeHtml(o.shippingAddress)}<br>
+    ${escapeHtml(o.shippingZip)} ${escapeHtml(o.shippingCity)}<br>
+    ${o.customerPhone ? escapeHtml(o.customerPhone) + '<br>' : ''}
+    ${escapeHtml(o.customerEmail)}
+  </div>
+
+  <p style="margin:0 0 20px">
+    <a href="https://akrobacja.com/admin#merch" style="background:#0A2F7C;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:600">
+      Otwórz panel admina →
+    </a>
+    &nbsp;&nbsp;
+    <a href="https://solutions.snapwear.pro" style="background:#7B2FBE;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:600">
+      Otwórz Snapwear →
+    </a>
+  </p>
+</div>`,
+      }),
+    });
+  } catch (err) {
+    console.error('notifyOwnerMerch failed:', err);
+  }
+}
+
 // Notify owner about new paid order via Resend
 async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: PackageId; customerName: string; customerEmail: string; amount: number; videoAddon: boolean }): Promise<void> {
   try {
@@ -120,60 +194,33 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         return Response.json({ ok: true, duplicate: true });
       }
 
-      // Auto-forward merch order to BaseLinker → Snapwear.
-      // Falls back to Printful if BASELINKER_TOKEN not set (backwards compat).
+      // Notify admin to manually place order in Snapwear panel.
       ctx.waitUntil((async () => {
         try {
           const mo = await ctx.env.DB.prepare(
-            'SELECT customer_name, customer_email, customer_phone, shipping_address, shipping_city, shipping_zip, items FROM merch_orders WHERE id = ?'
+            'SELECT customer_name, customer_email, customer_phone, shipping_address, shipping_city, shipping_zip, items, total_amount FROM merch_orders WHERE id = ?'
           ).bind(merchOrderId).first<{
             customer_name: string; customer_email: string; customer_phone: string | null;
             shipping_address: string; shipping_city: string; shipping_zip: string;
-            items: string;
+            items: string; total_amount: number;
           }>();
           if (!mo) return;
-
           const parsedItems = JSON.parse(mo.items) as Array<{
             product_id: string; name: string; variant?: string; quantity: number; price: number;
           }>;
-
-          if (ctx.env.BASELINKER_TOKEN) {
-            // Primary: BaseLinker → Snapwear
-            const blOrderId = await createBaseLinkerOrder(ctx.env, {
-              id: merchOrderId,
-              customer_name: mo.customer_name,
-              customer_email: mo.customer_email,
-              customer_phone: mo.customer_phone || undefined,
-              shipping_address: mo.shipping_address,
-              shipping_city: mo.shipping_city,
-              shipping_zip: mo.shipping_zip,
-              items: parsedItems,
-            });
-            if (blOrderId) {
-              await ctx.env.DB.prepare(
-                "UPDATE merch_orders SET status = 'in_production', baselinker_order_id = ? WHERE id = ?"
-              ).bind(blOrderId, merchOrderId).run();
-            }
-          } else if (ctx.env.PRINTFUL_TOKEN) {
-            // Fallback: Printful (legacy)
-            const pfOrderId = await createPrintfulOrder(ctx.env, {
-              id: merchOrderId,
-              customer_name: mo.customer_name,
-              customer_email: mo.customer_email,
-              shipping_address: mo.shipping_address,
-              shipping_city: mo.shipping_city,
-              shipping_zip: mo.shipping_zip,
-              items: parsedItems,
-            });
-            if (pfOrderId) {
-              await confirmPrintfulOrder(ctx.env, pfOrderId);
-              await ctx.env.DB.prepare(
-                "UPDATE merch_orders SET status = 'in_production' WHERE id = ?"
-              ).bind(merchOrderId).run();
-            }
-          }
+          await notifyOwnerMerch(ctx.env, {
+            orderId: merchOrderId,
+            customerName: mo.customer_name,
+            customerEmail: mo.customer_email,
+            customerPhone: mo.customer_phone,
+            shippingAddress: mo.shipping_address,
+            shippingCity: mo.shipping_city,
+            shippingZip: mo.shipping_zip,
+            items: parsedItems,
+            totalAmount: mo.total_amount,
+          });
         } catch (err) {
-          console.error('Fulfillment order creation failed:', err);
+          console.error('notifyOwnerMerch failed:', err);
         }
       })());
 
