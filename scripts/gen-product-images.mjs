@@ -34,7 +34,7 @@ const C = {
 // ── Produkty ─────────────────────────────────────────────────────
 const PRODUCTS = [
   {
-    file      : 'product-pierwszy-lot.png',
+    file      : 'product-pierwszy-lot-v2.png',
     bg        : join(GAL, 'ATAM33_Maciej_Juniewicz_028.jpg'),
     accent    : '#1B4DB5',
     tag       : 'PIERWSZY RAZ',
@@ -54,7 +54,7 @@ const PRODUCTS = [
     ctaText   : null,
   },
   {
-    file      : 'product-adrenalina.png',
+    file      : 'product-adrenalina-v2.png',
     bg        : join(GAL, 'ATAM33_Slawek_hesja_Krajniewski_007.jpg'),
     accent    : '#C41E3A',
     tag       : 'DLA ODWAŻNYCH',
@@ -74,7 +74,7 @@ const PRODUCTS = [
     ctaText   : null,
   },
   {
-    file      : 'product-masterclass.png',
+    file      : 'product-masterclass-v2.png',
     bg        : join(GAL, 'ATAM33_Slawek_hesja_Krajniewski_005.jpg'),
     accent    : '#163B6B',
     tag       : 'Z MISTRZEM ŚWIATA',
@@ -94,7 +94,7 @@ const PRODUCTS = [
     ctaText   : null,
   },
   {
-    file      : 'product-fcl900-akrobacja.png',
+    file      : 'product-fcl900-akrobacja-v2.png',
     bg        : join(GAL, 'ATAM33_Slawek_hesja_Krajniewski_001.jpg'),
     accent    : C.gold,
     tag       : 'KURS  ·  UPRAWNIENIE EASA',
