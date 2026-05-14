@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS orders (
 
 CREATE INDEX IF NOT EXISTS idx_orders_voucher_code ON orders(voucher_code);
 CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
+CREATE INDEX IF NOT EXISTS idx_orders_customer_email ON orders(customer_email);
 CREATE INDEX IF NOT EXISTS idx_orders_stripe_session ON orders(stripe_session_id);
 CREATE INDEX IF NOT EXISTS idx_orders_redeemed ON orders(redeemed_at);
 CREATE INDEX IF NOT EXISTS idx_orders_abandon ON orders(status, abandon_email_sent_at, created_at);
@@ -215,6 +216,8 @@ CREATE TABLE IF NOT EXISTS bookings (
 
 CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status, created_at);
 CREATE INDEX IF NOT EXISTS idx_bookings_voucher ON bookings(voucher_code);
+CREATE INDEX IF NOT EXISTS idx_bookings_customer_phone ON bookings(customer_phone);
+CREATE INDEX IF NOT EXISTS idx_bookings_customer_email ON bookings(customer_email);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_bookings_voucher_unique_active
   ON bookings(voucher_code)
   WHERE voucher_code IS NOT NULL AND status != 'rejected';
