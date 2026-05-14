@@ -31,7 +31,7 @@ npx wrangler pages secret put NAME --project-name=akrobacja-top
 
 There is no test suite, no linter, no formatter wired up. `npm run types` is the closest thing to a check.
 
-Auto-deploy: any push to any branch triggers `.github/workflows/deploy.yml` → `wrangler pages deploy public --project-name=akrobacja-top --branch=<ref>`. `main` is production. **A commit will go live within ~1 min of push** — only push when you want it deployed.
+Auto-deploy: pushes to `main` trigger `.github/workflows/deploy.yml` → `wrangler pages deploy public --project-name=akrobacja-top --branch=main`. Other branches do NOT auto-deploy (locked, since D1/R2/AI bindings are shared with prod and preview deploys would corrupt live data). Use `npm run dev` for local staging. **A commit on `main` goes live within ~1 min of push** — only push when you want it deployed.
 
 ## Architecture
 
