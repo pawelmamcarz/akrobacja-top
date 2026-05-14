@@ -26,11 +26,13 @@ interface ScheduledRow {
 }
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  if (ctx.env.CRON_SECRET) {
-    const auth = ctx.request.headers.get('Authorization') || '';
-    if (auth !== `Bearer ${ctx.env.CRON_SECRET}`) {
-      return Response.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+  const expected = ctx.env.CRON_SECRET;
+  if (!expected) {
+    return Response.json({ error: 'Cron not configured' }, { status: 500 });
+  }
+  const auth = ctx.request.headers.get('Authorization') || '';
+  if (auth !== `Bearer ${expected}`) {
+    return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   let sent = 0;
