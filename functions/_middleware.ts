@@ -233,11 +233,13 @@ export const onRequest: PagesFunction = async (context) => {
     'Content-Security-Policy',
     [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://js.stripe.com https://*.js.stripe.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://connect.facebook.net https://challenges.cloudflare.com https://static.cloudflareinsights.com",
-      // Stripe's 3DS / SCA challenge can redirect users into bank-owned iframes served via
-      // subdomains of stripe.com (e.g. m.stripe.network for fingerprinting, hooks.stripe.com
-      // for ACS). Wildcard *.stripe.com per Stripe's own integration guide.
-      "frame-src https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com https://*.stripe.com https://*.stripe.network https://challenges.cloudflare.com",
+      // 'unsafe-eval' is needed by Google Tag Manager custom HTML tags / trigger evaluation.
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://*.js.stripe.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://connect.facebook.net https://challenges.cloudflare.com https://static.cloudflareinsights.com",
+      // Stripe 3DS / SCA challenge redirects users into bank-owned iframes served via
+      // subdomains of stripe.com (m.stripe.network for fingerprinting, *.stripe.com for ACS).
+      // YouTube no-cookie embeds are used on landing pages; GTM noscript fallback iframe
+      // is on every page even when JS is enabled.
+      "frame-src https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com https://*.stripe.com https://*.stripe.network https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com https://www.googletagmanager.com",
       "img-src 'self' data: https:",
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",

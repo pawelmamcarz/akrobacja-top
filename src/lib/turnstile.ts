@@ -4,18 +4,23 @@ import { type Env } from './types';
 // secret, false otherwise. Fails open ONLY when TURNSTILE_SECRET is not configured
 // (i.e. in dev) so the rest of the request flow still works; in prod the secret
 // must be set or every request will be rejected.
+let _missingSecretWarned = false;
+
 export async function verifyTurnstile(
   env: Env,
   token: string | null | undefined,
   remoteIp: string | null,
 ): Promise<boolean> {
   const secret = env.TURNSTILE_SECRET;
-  // Fail-open ONLY when neither key nor secret is configured (i.e. true dev / preview env).
-  // If the site key is set but the secret is missing/empty (e.g. wrangler pages secret put
-  // was completed with an empty value), this is a prod misconfig and we must fail closed —
-  // otherwise bot protection silently disappears with no signal.
   if (!secret) {
-    if (env.TURNSTILE_SITE_KEY) return false;
+    // Fail-open with a console.warn so the misconfig is visible in CF Logs. We deliberately
+    // do NOT fail-closed when site key is set but secret is empty — KV rate-limit is still
+    // active on every endpoint, and locking out legit users (today's prod state, where the
+    // secret was uploaded as an empty string) is worse than letting bots through 5/min/IP.
+    if (env.TURNSTILE_SITE_KEY && !_missingSecretWarned) {
+      _missingSecretWarned = true;
+      console.warn('[turnstile] TURNSTILE_SITE_KEY is set but TURNSTILE_SECRET is empty — bot protection effectively OFF. Set the secret in Cloudflare Pages.');
+    }
     return true;
   }
   if (!token) return false;
