@@ -97,28 +97,42 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
       'appKey': (env.WFIRMA_APP_KEY || '').replace(/\s/g, ''),
     },
     body: JSON.stringify(body),
+    signal: AbortSignal.timeout(15000),
   });
 
   const text = await res.text();
 
   if (!res.ok) {
-    throw new Error(`wFirma API error ${res.status} [ak:${accessKey.length}ch sk:${secretKey.length}ch co:${companyId}]: ${text}`);
+    // Log details (status, body, key lengths) for ops but never bubble them into the
+    // user-visible Response — they would leak secret cardinalities and request bodies.
+    console.error(`wFirma API HTTP ${res.status}`, { body: text.substring(0, 500), accessKeyLen: accessKey.length, secretKeyLen: secretKey.length, companyId });
+    throw new Error('wFirma API request failed');
   }
 
-  // wFirma may return JSON or XML — extract invoice ID from either
-  let invoiceId: string | undefined;
-
-  // Try JSON first
+  // wFirma returns HTTP 200 on app-level errors with status.code === 'ERROR' in the body.
+  // Treating those as success would silently miss invoice issuance and leave invoice_id null.
+  let parsed: { status?: { code?: string; messages?: unknown }; invoices?: Array<{ invoice?: { id?: string } }> } | null = null;
   try {
-    const data = JSON.parse(text) as { invoices?: Array<{ invoice?: { id?: string } }> };
-    invoiceId = data.invoices?.[0]?.invoice?.id;
+    parsed = JSON.parse(text);
   } catch {
-    // Parse XML — look for <id>NUMBER</id>
+    // Older wFirma endpoints sometimes return XML — fall through to regex below.
+  }
+
+  if (parsed && parsed.status && typeof parsed.status.code === 'string' && parsed.status.code !== 'OK') {
+    console.error('wFirma API responded with error code', parsed.status);
+    throw new Error('wFirma API returned error');
+  }
+
+  let invoiceId: string | undefined = parsed?.invoices?.[0]?.invoice?.id;
+  if (!invoiceId) {
     const match = text.match(/<id>(\d+)<\/id>/);
     invoiceId = match?.[1];
   }
 
-  if (!invoiceId) throw new Error(`wFirma: no invoice ID in response: ${text.substring(0, 200)}`);
+  if (!invoiceId) {
+    console.error('wFirma: no invoice ID in response', text.substring(0, 200));
+    throw new Error('wFirma: no invoice ID in response');
+  }
 
   return String(invoiceId);
 }

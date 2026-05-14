@@ -190,6 +190,24 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ ok: true, status_applied: newStatus });
     }
 
+    // Refunds initiated from the Stripe Dashboard — flip status to 'refunded' so the
+    // voucher download endpoint (which filters on status='paid') stops serving the PDF.
+    if (event.type === 'charge.refunded' || event.type === 'charge.refund.updated') {
+      const orderIdFromPI = metadata?.order_id;
+      const merchOrderIdFromPI = metadata?.merch_order_id;
+      if (orderIdFromPI) {
+        await ctx.env.DB.prepare(
+          "UPDATE orders SET status = 'refunded' WHERE id = ? AND status = 'paid'"
+        ).bind(orderIdFromPI).run();
+      }
+      if (merchOrderIdFromPI) {
+        await ctx.env.DB.prepare(
+          "UPDATE merch_orders SET status = 'refunded' WHERE id = ? AND status = 'paid'"
+        ).bind(merchOrderIdFromPI).run();
+      }
+      return Response.json({ ok: true, status_applied: 'refunded' });
+    }
+
     if (event.type !== 'checkout.session.completed') {
       return Response.json({ ok: true, skipped: event.type });
     }

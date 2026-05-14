@@ -1,35 +1,40 @@
 import { type Env } from '../../../src/lib/types';
 import { getPilotFromToken } from '../../../src/lib/pilot-auth';
 
-// GET /api/auth/my-bookings — get pilot's bookings and courses
+// GET /api/auth/my-bookings — get pilot's bookings, courses, vouchers.
+// Matching is by phone (SMS-verified via OTP) — email is user-settable without verification
+// and was previously the IDOR sink: a pilot could change their email to a victim's address
+// in /api/auth/profile and then read the victim's bookings/vouchers here.
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const pilot = await getPilotFromToken(ctx.request, ctx.env.DB);
   if (!pilot) return Response.json({ error: 'Nie zalogowany' }, { status: 401 });
 
-  // Bookings by email or phone
+  // Bookings — phone only.
   const { results: bookings } = await ctx.env.DB.prepare(`
     SELECT b.*, s.date, s.start_time, s.end_time
     FROM bookings b
     JOIN slots s ON s.booking_id = b.id
-    WHERE b.customer_email = ? OR b.customer_phone = ?
+    WHERE b.customer_phone = ?
     ORDER BY s.date DESC, s.start_time DESC
     LIMIT 50
-  `).bind(pilot.email || '', pilot.phone).all();
+  `).bind(pilot.phone).all();
 
-  // Courses by email or phone
+  // Courses — phone only.
   const { results: courses } = await ctx.env.DB.prepare(
-    'SELECT * FROM courses WHERE customer_email = ? OR customer_phone = ? ORDER BY created_at DESC'
-  ).bind(pilot.email || '', pilot.phone).all();
+    'SELECT * FROM courses WHERE customer_phone = ? ORDER BY created_at DESC'
+  ).bind(pilot.phone).all();
 
-  // Vouchers — tylko po email; pomiń query gdy email pusty (inaczej match
-  // wszystkich orderów z pustym emailem to byłby data leak).
-  let vouchers: Record<string, unknown>[] = [];
-  if (pilot.email) {
-    const res = await ctx.env.DB.prepare(
-      "SELECT voucher_code, package_id, status, redeemed_at, expires_at FROM orders WHERE customer_email = ? AND status = 'paid' ORDER BY created_at DESC"
-    ).bind(pilot.email).all();
-    vouchers = res.results as Record<string, unknown>[];
-  }
+  // Vouchers — orders has no customer_phone column, so we surface only vouchers the pilot
+  // has used in a booking with this phone. Self-bought vouchers without a booking are not
+  // listed here; that is a deliberate trade-off to close the email-based IDOR.
+  const res = await ctx.env.DB.prepare(`
+    SELECT DISTINCT o.voucher_code, o.package_id, o.status, o.redeemed_at, o.expires_at
+    FROM orders o
+    JOIN bookings b ON b.voucher_code = o.voucher_code
+    WHERE b.customer_phone = ? AND o.status = 'paid'
+    ORDER BY o.created_at DESC
+  `).bind(pilot.phone).all();
+  const vouchers = res.results as Record<string, unknown>[];
 
   return Response.json({ bookings, courses, vouchers });
 };

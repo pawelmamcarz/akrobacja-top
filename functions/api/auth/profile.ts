@@ -1,5 +1,6 @@
 import { type Env } from '../../../src/lib/types';
 import { getPilotFromToken } from '../../../src/lib/pilot-auth';
+import { isValidEmail } from '../../../src/lib/validate';
 
 // GET /api/auth/profile — get current pilot profile
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
@@ -19,6 +20,21 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     license_type?: string;
     license_number?: string;
   };
+
+  // Email is user-set without verification — validate format and prevent collisions so a
+  // pilot can't claim someone else's email. my-bookings.ts now matches by phone instead of
+  // email to close the IDOR fully; this only blocks the obvious abuse of overwriting.
+  if (body.email !== undefined && body.email !== null && body.email !== '') {
+    if (!isValidEmail(body.email)) {
+      return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
+    }
+    const collision = await ctx.env.DB.prepare(
+      'SELECT 1 FROM pilots WHERE email = ? AND id != ?'
+    ).bind(body.email, pilot.id).first();
+    if (collision) {
+      return Response.json({ error: 'Ten email jest już w użyciu' }, { status: 409 });
+    }
+  }
 
   await ctx.env.DB.prepare(
     'UPDATE pilots SET name = COALESCE(?, name), email = COALESCE(?, email), license_type = COALESCE(?, license_type), license_number = COALESCE(?, license_number) WHERE id = ?'

@@ -79,7 +79,7 @@ export interface Order {
   customer_nip?: string;
   amount: number;
   stripe_session_id: string;
-  status: 'pending' | 'processing' | 'paid' | 'cancelled' | 'failed' | 'expired';
+  status: 'pending' | 'processing' | 'paid' | 'cancelled' | 'failed' | 'expired' | 'refunded';
   invoice_id?: string;
   created_at: string;
   paid_at?: string;

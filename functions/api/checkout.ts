@@ -141,6 +141,10 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     params.append('customer_email', body.customerEmail);
     params.append('metadata[order_id]', orderId);
     params.append('metadata[voucher_code]', voucherCode);
+    // Propagate IDs to the payment_intent so charge.refunded events (which only carry
+    // the payment_intent's metadata, not the session's) can be matched back to the order.
+    params.append('payment_intent_data[metadata][order_id]', orderId);
+    params.append('payment_intent_data[metadata][voucher_code]', voucherCode);
     const siteUrl = ctx.env.SITE_URL || 'https://akrobacja.com';
     params.append('success_url', `${siteUrl}/sukces?code=${voucherCode}&pkg=${body.packageId}&amount=${totalAmount / 100}`);
     const cancelPath = CANCEL_URLS[body.source || ''] || '/voucher-prezent';
