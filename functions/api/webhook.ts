@@ -108,7 +108,19 @@ async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: P
   }
 }
 
-// Stripe webhook signature verification (HMAC-SHA256)
+// Stripe webhook signature verification (HMAC-SHA256).
+// Reference: https://stripe.com/docs/webhooks#verify-manually
+const SIGNATURE_TOLERANCE_SECONDS = 300; // 5-minute replay window, matches Stripe SDK default
+
+function timingSafeEqualHex(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) {
+    diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return diff === 0;
+}
+
 async function verifyStripeSignature(payload: string, sig: string, secret: string): Promise<boolean> {
   const parts = sig.split(',').reduce((acc, part) => {
     const [key, val] = part.split('=');
@@ -118,6 +130,12 @@ async function verifyStripeSignature(payload: string, sig: string, secret: strin
   }, { timestamp: '', signatures: [] as string[] });
 
   if (!parts.timestamp || parts.signatures.length === 0) return false;
+
+  // Reject replayed payloads — Stripe SDK enforces the same 5-minute tolerance.
+  const ts = Number(parts.timestamp);
+  if (!Number.isFinite(ts) || Math.abs(Date.now() / 1000 - ts) > SIGNATURE_TOLERANCE_SECONDS) {
+    return false;
+  }
 
   const signedPayload = `${parts.timestamp}.${payload}`;
   const key = await crypto.subtle.importKey(
@@ -132,7 +150,7 @@ async function verifyStripeSignature(payload: string, sig: string, secret: strin
     .map(b => b.toString(16).padStart(2, '0'))
     .join('');
 
-  return parts.signatures.some(s => s === expected);
+  return parts.signatures.some(s => timingSafeEqualHex(s, expected));
 }
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
