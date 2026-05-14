@@ -10,8 +10,6 @@ export async function verifyTurnstile(
   remoteIp: string | null,
 ): Promise<boolean> {
   const secret = env.TURNSTILE_SECRET;
-  // Temporary debug — confirm secret reaches the worker in prod.
-  console.log('[turnstile] secret present:', !!secret, 'len:', secret?.length || 0, 'token present:', !!token);
   if (!secret) return true; // not configured — allow (dev mode)
   if (!token) return false;
 

@@ -52,19 +52,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       phone: string; name?: string; source?: string; email?: string; turnstileToken?: string;
     };
 
-    // TEMP DEBUG — confirm secret reaches worker
-    const _tsDebug = {
-      secret_present: !!ctx.env.TURNSTILE_SECRET,
-      secret_len: ctx.env.TURNSTILE_SECRET?.length || 0,
-      token_present: !!turnstileToken,
-      env_keys: Object.keys(ctx.env).filter(k => k.includes('TURNST')),
-    };
     if (!(await verifyTurnstile(ctx.env, turnstileToken, ip))) {
-      return Response.json({ error: 'Weryfikacja captcha nieudana', _debug: _tsDebug }, { status: 400 });
-    }
-    // Even on success, return debug temporarily to confirm secret presence path
-    if (turnstileToken === '__DEBUG__') {
-      return Response.json({ ok: false, _debug: _tsDebug });
+      return Response.json({ error: 'Weryfikacja captcha nieudana' }, { status: 400 });
     }
 
     if (!phone || phone.replace(/\D/g, '').length < 9) {
