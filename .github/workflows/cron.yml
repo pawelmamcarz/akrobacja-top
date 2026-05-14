@@ -1,0 +1,32 @@
+name: Cron — voucher delivery, welcome sequence, abandoned-cart recovery
+
+on:
+  schedule:
+    # Hourly at :07 — offset so we don't collide with provider top-of-hour jobs.
+    - cron: '7 * * * *'
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome emails (day 0/2/5)
+        run: |
+          curl -fsS -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            https://akrobacja.com/api/cron/welcome-emails
+        continue-on-error: true
+
+      - name: Abandoned-cart recovery (-5% WRACAM5)
+        run: |
+          curl -fsS -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            https://akrobacja.com/api/cron/abandoned-checkouts
+        continue-on-error: true
+
+      - name: Scheduled gift voucher delivery (send_at)
+        run: |
+          curl -fsS -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            https://akrobacja.com/api/cron/scheduled-vouchers
+        continue-on-error: true

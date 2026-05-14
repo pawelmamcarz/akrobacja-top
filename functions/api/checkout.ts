@@ -150,9 +150,10 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const cancelPath = CANCEL_URLS[body.source || ''] || '/voucher-prezent';
     params.append('cancel_url', `${siteUrl}${cancelPath}`);
     params.append('locale', 'pl');
-    params.append('payment_method_types[0]', 'card');
-    params.append('payment_method_types[1]', 'p24');
-    params.append('payment_method_types[2]', 'blik');
+    // Let Stripe pick the best available payment methods for the browser/device — adds
+    // Apple Pay, Google Pay and Stripe Link on top of card/P24/BLIK automatically, which
+    // are real conversion wins on mobile.
+    params.append('automatic_payment_methods[enabled]', 'true');
 
     lineItems.forEach((item, i) => {
       const pd = item.price_data as Record<string, unknown>;
@@ -170,6 +171,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: params.toString(),
+      signal: AbortSignal.timeout(10000),
     });
 
     const session = (await stripeRes.json()) as { id?: string; url?: string; error?: { message?: string } };

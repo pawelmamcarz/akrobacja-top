@@ -21,6 +21,7 @@ export async function sendSms(env: Env, phone: string, message: string): Promise
       'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: params.toString(),
+    signal: AbortSignal.timeout(10000),
   });
 
   const text = await res.text();
@@ -30,11 +31,14 @@ export async function sendSms(env: Env, phone: string, message: string): Promise
   try {
     data = JSON.parse(text);
   } catch {
-    throw new Error(`SMSAPI error: ${text}`);
+    console.error('SMSAPI non-JSON response', { status: res.status, body: text.substring(0, 200) });
+    throw new Error('SMSAPI request failed');
   }
 
   if (data.error) {
-    throw new Error(`SMSAPI error: ${data.message || data.error} [token:${token.length}ch, to:${to}]`);
+    // Log full details (token length, recipient) but never expose them to the caller.
+    console.error('SMSAPI app-level error', { error: data.error, message: data.message, tokenLen: token.length, to });
+    throw new Error('SMSAPI request failed');
   }
 }
 

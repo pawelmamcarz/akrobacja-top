@@ -34,6 +34,7 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
     body: JSON.stringify({
       from: 'akrobacja.com <voucher@akrobacja.com>',
       to: [params.to],
+      reply_to: 'dto@akrobacja.com',
       subject: `Twój voucher ${pkg.name} — ${params.voucherCode}`,
       html: buildHtml(params),
       attachments: [
@@ -44,6 +45,7 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
         },
       ],
     }),
+    signal: AbortSignal.timeout(10000),
   });
 
   if (!res.ok) {

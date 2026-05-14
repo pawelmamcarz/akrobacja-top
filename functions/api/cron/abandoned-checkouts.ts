@@ -148,6 +148,17 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
         continue;
       }
 
+      // Claim the row BEFORE sending the email — two overlapping cron runs would otherwise
+      // both pass the abandon_email_sent_at IS NULL filter above and double-send.
+      const claim = await ctx.env.DB.prepare(
+        `UPDATE orders SET abandon_email_sent_at = datetime('now')
+         WHERE id = ? AND abandon_email_sent_at IS NULL`
+      ).bind(row.id).run();
+      if (claim.meta.changes === 0) {
+        results.push({ order: row.id, email: row.customer_email, status: 'skipped: already_claimed' });
+        continue;
+      }
+
       try {
         const html = buildRecoveryEmail({
           customerName: row.customer_name,
@@ -160,18 +171,13 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
           `${row.customer_name?.split(/\s+/)[0] || 'Cześć'}, dokończ zakup ze zniżką 5% (48h)`,
           html,
         );
-
-        await ctx.env.DB.prepare(
-          `UPDATE orders SET abandon_email_sent_at = datetime('now') WHERE id = ?`
-        ).bind(row.id).run();
-
         results.push({ order: row.id, email: row.customer_email, status: 'sent' });
       } catch (err) {
         const e = err as Error & { permanent?: boolean };
-        // Permanent fail (invalid email, banned address) → mark as "sent" to skip future retries
-        if (e.permanent) {
+        // For transient (non-permanent) failures we release the claim so the next run can retry.
+        if (!e.permanent) {
           await ctx.env.DB.prepare(
-            `UPDATE orders SET abandon_email_sent_at = datetime('now') WHERE id = ?`
+            `UPDATE orders SET abandon_email_sent_at = NULL WHERE id = ?`
           ).bind(row.id).run();
         }
         results.push({

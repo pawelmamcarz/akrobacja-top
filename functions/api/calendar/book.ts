@@ -114,6 +114,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     } catch (err) {
       // Booking INSERT padł — zwolnij slot, żeby inny klient mógł go zająć.
       await ctx.env.DB.prepare('DELETE FROM slots WHERE id = ?').bind(slotId).run();
+      // The partial UNIQUE index on bookings(voucher_code) WHERE status != 'rejected'
+      // makes a concurrent booking of the same voucher fail here — surface a clear 409.
+      const message = err instanceof Error ? err.message.toLowerCase() : '';
+      if (body.voucher_code && (message.includes('unique') || message.includes('constraint'))) {
+        return Response.json({ error: 'Ten voucher jest już zarezerwowany' }, { status: 409 });
+      }
       throw err;
     }
 

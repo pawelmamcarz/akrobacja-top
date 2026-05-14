@@ -18,7 +18,12 @@ export interface WeatherStatus {
 export async function getWeatherForecast(dateStr: string): Promise<WeatherStatus[]> {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&hourly=visibility,cloud_cover,wind_speed_10m,wind_gusts_10m,temperature_2m,weather_code&start_date=${dateStr}&end_date=${dateStr}&timezone=Europe%2FWarsaw`;
 
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    // Cache at the edge for 15 min — Open-Meteo doesn't rate-limit, but a popular calendar
+    // load would otherwise hit it 30 times per request fan-out.
+    cf: { cacheTtl: 900, cacheEverything: true },
+    signal: AbortSignal.timeout(5000),
+  });
   if (!res.ok) return [];
 
   const data = (await res.json()) as {

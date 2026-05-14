@@ -72,7 +72,8 @@ export async function sendMetaPurchase(env: Env, ev: PurchaseEvent): Promise<voi
           content_type: 'product',
           content_name: `Voucher — ${pkg.name}`,
           content_category: 'Voucher',
-          num_items: ev.videoAddon ? 2 : 1,
+          // One physical product (the voucher) — video is an addon, not a second item.
+          num_items: 1,
           order_id: ev.voucherCode,
         },
       },
@@ -89,5 +90,6 @@ export async function sendMetaPurchase(env: Env, ev: PurchaseEvent): Promise<voi
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(5000),
   });
 }

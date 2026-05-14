@@ -215,6 +215,9 @@ CREATE TABLE IF NOT EXISTS bookings (
 
 CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status, created_at);
 CREATE INDEX IF NOT EXISTS idx_bookings_voucher ON bookings(voucher_code);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_bookings_voucher_unique_active
+  ON bookings(voucher_code)
+  WHERE voucher_code IS NOT NULL AND status != 'rejected';
 
 CREATE TABLE IF NOT EXISTS availability_blocks (
   id TEXT PRIMARY KEY,

@@ -79,13 +79,16 @@ export const onRequest: PagesFunction = async (context) => {
   const path = url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
   const canonicalUrl = path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
   const noindex = NOINDEX_PATHS.has(path);
+  // Admin and pilot portal must not load any third-party analytics tags — the DOM contains
+  // customer PII (emails, names, voucher codes) that auto-tracking would otherwise leak.
+  const isInternal = path === '/admin' || path === '/konto';
 
   // Cloudflare Web Analytics — inject beacon if token is configured
   const cfAnalyticsToken = env.CF_ANALYTICS_TOKEN;
-  const gaId = env.GA_MEASUREMENT_ID;              // e.g. "G-XXXXXXXXXX"
-  const adsId = env.GOOGLE_ADS_ID;                   // e.g. "AW-XXXXXXXXXX"
+  const gaId = isInternal ? undefined : env.GA_MEASUREMENT_ID;              // e.g. "G-XXXXXXXXXX"
+  const adsId = isInternal ? undefined : env.GOOGLE_ADS_ID;                  // e.g. "AW-XXXXXXXXXX"
   const adsPurchaseLabel = env.GOOGLE_ADS_PURCHASE_LABEL; // conversion label
-  const metaPixelId = env.META_PIXEL_ID;           // e.g. "1234567890123456"
+  const metaPixelId = isInternal ? undefined : env.META_PIXEL_ID;          // e.g. "1234567890123456"
 
   const rewriter = new HTMLRewriter()
     // Remove existing canonical tags
@@ -211,5 +214,29 @@ export const onRequest: PagesFunction = async (context) => {
   secured.headers.set('X-Frame-Options', 'DENY');
   secured.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   secured.headers.set('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
+  secured.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  // CSP — allowlist matches everything the public site loads today (Stripe, GA4/Ads, Meta).
+  // 'unsafe-inline' on script and style is unavoidable here because inline tags are injected
+  // by both middleware and the per-page HTML; tightening further would need nonces.
+  secured.headers.set(
+    'Content-Security-Policy',
+    [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' https://js.stripe.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://connect.facebook.net https://challenges.cloudflare.com https://static.cloudflareinsights.com",
+      "frame-src https://js.stripe.com https://hooks.stripe.com https://challenges.cloudflare.com",
+      "img-src 'self' data: https:",
+      "style-src 'self' 'unsafe-inline'",
+      "font-src 'self' data:",
+      "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.facebook.com https://api.stripe.com https://challenges.cloudflare.com https://cloudflareinsights.com",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self' https://checkout.stripe.com",
+    ].join('; '),
+  );
+  // Sensitive paths must not be cached by Cloudflare or the browser — admin sees fresh
+  // data after a deploy, /sukces never serves a stale conversion script.
+  if (path === '/admin' || path === '/konto' || path === '/sukces') {
+    secured.headers.set('Cache-Control', 'no-store');
+  }
   return secured;
 };
