@@ -10,9 +10,10 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ error: 'Podaj numer telefonu' }, { status: 400 });
     }
 
-    const normalized = normalizePhone(phone);
-    // normalizePhone gwarantuje '+48' + 9 cyfr (lub fallback) — odrzuć krótsze.
-    if (!/^\+\d{11}$/.test(normalized)) {
+    let normalized: string;
+    try {
+      normalized = normalizePhone(phone);
+    } catch {
       return Response.json({ error: 'Podaj prawidłowy numer telefonu' }, { status: 400 });
     }
 
@@ -24,6 +25,14 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (recent && recent.cnt >= 3) {
       return Response.json({ error: 'Zbyt wiele prób. Spróbuj za godzinę.' }, { status: 429 });
     }
+
+    // Invalidate prior unused codes for this phone before issuing a new one.
+    // Previously up to 3 codes could be valid simultaneously, so an OTP brute-force
+    // attempt against the latest code could also accidentally match one of the older
+    // active codes — effectively tripling the attacker's success probability.
+    await ctx.env.DB.prepare(
+      'UPDATE otp_codes SET used = 1 WHERE phone = ? AND used = 0'
+    ).bind(normalized).run();
 
     const code = generateOtp();
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000).toISOString();

@@ -1,14 +1,19 @@
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { PACKAGES, type PackageId } from './types';
 
-// Replace Polish diacritics with ASCII equivalents (StandardFonts don't support them)
+// Replace anything outside WinAnsi (Helvetica's encoding) with a safe fallback.
+// Previously the regex only matched ~22 known chars; any other non-ASCII codepoint
+// (emoji, Cyrillic, Chinese, German ß, etc.) passed through and pdf-lib threw
+// "Cannot encode character" inside the webhook, leaving paid orders without a PDF.
 function ascii(text: string): string {
   const map: Record<string, string> = {
     'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z',
     'Ą': 'A', 'Ć': 'C', 'Ę': 'E', 'Ł': 'L', 'Ń': 'N', 'Ó': 'O', 'Ś': 'S', 'Ź': 'Z', 'Ż': 'Z',
-    '—': '-', '·': '-', '°': 'o', '−': '-',
+    '—': '-', '·': '-', '°': 'o', '−': '-', '–': '-', '„': '"', '”': '"', '’': "'", '‘': "'",
+    'ß': 'ss',
   };
-  return text.replace(/[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ—·°−]/g, ch => map[ch] || ch);
+  // Anything outside ASCII printable range gets replaced via map or '?' fallback.
+  return text.replace(/[^\x20-\x7E]/g, ch => map[ch] !== undefined ? map[ch] : '?');
 }
 
 export async function generateVoucherPdf(opts: {
