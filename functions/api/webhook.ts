@@ -308,17 +308,22 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         dedication,
       });
 
-      // R2 upload, wFirma invoice, and customer email are independent — run in parallel.
-      // Each settles individually: R2 failure is fatal (no PDF to serve), invoice/email are
-      // non-critical (admin can reissue).
-      // Jeśli email zaplanowany (send_at w przyszłości) — pomijamy sendVoucherEmail tutaj,
-      // cron scheduled-vouchers wyśle PDF z R2 gdy nadejdzie data.
+      // Idempotency guards — on Stripe retry these may already be populated from a partial
+      // previous run. Skip the side effect rather than double-issue an invoice or email.
+      const existingInvoiceId = (order.invoice_id as string | null) ?? null;
+      const existingEmailSentAt = (order.email_sent_at as string | null) ?? null;
       const isLive = ctx.env.STRIPE_SECRET_KEY?.includes('_live_');
-      const [, invoiceResult] = await Promise.all([
+      const shouldInvoice = !!isLive && !existingInvoiceId;
+      const shouldEmail = !scheduleEmail && !existingEmailSentAt;
+
+      // R2 put is idempotent (same key overwrites). Invoice and email are NOT — gate them on
+      // the existing-state flags above. Promise.allSettled so a soft failure in one path does
+      // not roll back the others (which would re-fire the side effect on Stripe retry).
+      const [r2Res, invoiceRes, emailRes] = await Promise.allSettled([
         ctx.env.VOUCHER_BUCKET.put(`vouchers/${voucherCode}.pdf`, pdfBytes, {
           httpMetadata: { contentType: 'application/pdf' },
         }),
-        isLive
+        shouldInvoice
           ? createInvoice(ctx.env, {
               customerName,
               customerEmail,
@@ -328,28 +333,53 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
               voucherCode,
               amount: order.amount as number,
               discountCode: (order.discount_code as string | null) ?? null,
-            }).catch(err => { console.error(`createInvoice failed for ${voucherCode}:`, err); return undefined; })
+            })
           : Promise.resolve(undefined),
-        scheduleEmail
-          ? Promise.resolve(undefined)
-          : sendVoucherEmail(ctx.env, {
+        shouldEmail
+          ? sendVoucherEmail(ctx.env, {
               to: customerEmail,
               customerName,
               voucherCode,
               packageId,
               pdfBytes,
               siteUrl: ctx.env.SITE_URL || 'https://akrobacja.com',
-            }).catch(err => { console.error(`sendVoucherEmail failed for ${voucherCode}:`, err); return undefined; }),
+            })
+          : Promise.resolve(undefined),
       ]);
-      const invoiceId = invoiceResult;
+
+      // R2 put is the only fatal failure — we cannot serve the PDF without it.
+      if (r2Res.status === 'rejected') {
+        throw r2Res.reason instanceof Error ? r2Res.reason : new Error('R2 put failed');
+      }
+
+      // Persist successful invoice ID immediately so a retry sees it and skips createInvoice.
+      let invoiceId: string | undefined = existingInvoiceId || undefined;
+      if (invoiceRes.status === 'fulfilled' && invoiceRes.value) {
+        invoiceId = invoiceRes.value;
+        await ctx.env.DB.prepare(
+          'UPDATE orders SET invoice_id = ? WHERE id = ? AND invoice_id IS NULL'
+        ).bind(invoiceId, orderId).run();
+      } else if (invoiceRes.status === 'rejected') {
+        console.error(`createInvoice failed for ${voucherCode}:`, invoiceRes.reason);
+      }
+
+      // Persist email_sent_at immediately so a retry sees it and skips sendVoucherEmail.
+      let emailDelivered = !!existingEmailSentAt;
+      if (emailRes.status === 'fulfilled' && shouldEmail) {
+        const guard = await ctx.env.DB.prepare(
+          "UPDATE orders SET email_sent_at = datetime('now') WHERE id = ? AND email_sent_at IS NULL"
+        ).bind(orderId).run();
+        emailDelivered = guard.meta.changes > 0 || emailDelivered;
+      } else if (emailRes.status === 'rejected') {
+        console.error(`sendVoucherEmail failed for ${voucherCode}:`, emailRes.reason);
+      }
 
       // Finalize — guard on status='processing' so we never overwrite a manual cancel.
-      // email_sent_at ustawiamy tylko jeśli faktycznie wysłaliśmy maila tu (nie scheduled).
+      // email_sent_at + invoice_id were already persisted above; this UPDATE only flips status.
       await ctx.env.DB.prepare(`
-        UPDATE orders SET status = 'paid', paid_at = datetime('now'), invoice_id = ?, stripe_session_id = ?,
-          email_sent_at = CASE WHEN ? = 1 THEN email_sent_at ELSE datetime('now') END
+        UPDATE orders SET status = 'paid', paid_at = datetime('now'), stripe_session_id = ?
         WHERE id = ? AND status = 'processing'
-      `).bind(invoiceId || null, session.id as string, scheduleEmail ? 1 : 0, orderId).run();
+      `).bind(session.id as string, orderId).run();
 
       ctx.waitUntil(notifyOwnerOrder(ctx.env, { voucherCode, packageId, customerName, customerEmail, amount: order.amount as number, videoAddon }));
 
@@ -365,7 +395,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         }).catch(err => console.error(`sendMetaPurchase failed for ${voucherCode}:`, err)),
       );
 
-      return Response.json({ ok: true });
+      return Response.json({ ok: true, invoice_id: invoiceId || null, email_delivered: emailDelivered });
     } catch (innerErr) {
       // Revert claim so Stripe retry can pick it up. PDF/invoice/email fail soft above,
       // so we only land here on R2 put or PDF generation errors.
