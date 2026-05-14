@@ -34,5 +34,10 @@
       "binding": "RATE_LIMIT_KV",
       "id": "7bfe8de0db534e20bbfc68c25d1e89fd"
     }
-  ]
+  ],
+  // Public, frontend-safe variables — injected into <head> by middleware so
+  // forms can read them as window.TURNSTILE_SITE_KEY.
+  "vars": {
+    "TURNSTILE_SITE_KEY": "0x4AAAAAADPZ9pGhzOnOfdiW"
+  }
 }

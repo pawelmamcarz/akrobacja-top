@@ -2305,6 +2305,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <form id="subForm" style="display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center">
     <input type="tel" id="subPhone" placeholder="+48 XXX XXX XXX" required pattern="\+?[0-9\s]{9,15}" title="Enter your phone number (9-15 digits)" style="flex:1;min-width:200px;padding:14px 18px;border:none;font-size:14px;font-family:var(--font-b);outline:none">
     <button type="submit" id="subBtn" style="padding:14px 28px;background:var(--red);color:#fff;border:none;font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;cursor:pointer">Subscribe</button>
+    <div class="cf-turnstile" data-name="subscribe" data-theme="dark" data-size="flexible" style="width:100%;margin-top:8px"></div>
   </form>
   <p id="subMsg" style="font-size:12px;margin-top:12px;color:rgba(255,255,255,.6);display:none"></p>
   <p style="font-size:11px;color:rgba(255,255,255,.55);margin-top:16px">No spam. Max 2-3 texts per month. Unsubscribe anytime.</p>
@@ -2759,16 +2760,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const msg = document.getElementById('subMsg');
     btn.disabled = true; btn.textContent = 'Subscribing...';
     try {
+      const turnstileToken = window.getTurnstileToken ? window.getTurnstileToken('subscribe') : '';
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ phone, source: 'homepage' }),
+        body: JSON.stringify({ phone, source: 'homepage', turnstileToken }),
       });
       const data = await res.json();
       msg.textContent = data.message || data.error || 'Done!';
       msg.style.display = 'block';
       msg.style.color = res.ok ? 'rgba(255,255,255,.8)' : '#ff6b6b';
       if (res.ok) { document.getElementById('subPhone').value = ''; }
+      if (!res.ok && window.resetTurnstileToken) window.resetTurnstileToken('subscribe');
     } catch { msg.textContent = 'Error — please try again'; msg.style.display = 'block'; msg.style.color = '#ff6b6b'; }
     btn.disabled = false; btn.textContent = 'Subscribe';
   });

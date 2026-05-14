@@ -139,6 +139,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="phoneStep">
       <label for="phoneInput" class="sr-only">Numer telefonu</label>
       <input type="tel" id="phoneInput" placeholder="+48 XXX XXX XXX" maxlength="15" autocomplete="tel" aria-describedby="phoneErr">
+      <div class="cf-turnstile" data-name="send-code" data-size="flexible" style="margin:12px 0"></div>
       <button onclick="sendCode()" id="sendBtn">Wyślij kod SMS</button>
       <div class="err" id="phoneErr" role="alert" aria-live="polite"></div>
     </div>
@@ -234,13 +235,17 @@ async function sendCode() {
   document.getElementById('phoneErr').textContent = '';
 
   try {
+    const turnstileToken = window.getTurnstileToken ? window.getTurnstileToken('send-code') : '';
     const res = await fetch('/api/auth/send-code', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phone }),
+      body: JSON.stringify({ phone, turnstileToken }),
     });
     const data = await res.json();
-    if (!res.ok) throw new Error(data.error);
+    if (!res.ok) {
+      if (window.resetTurnstileToken) window.resetTurnstileToken('send-code');
+      throw new Error(data.error);
+    }
 
     PHONE = phone;
     document.getElementById('phoneStep').style.display = 'none';

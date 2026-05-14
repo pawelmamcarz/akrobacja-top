@@ -89,6 +89,7 @@ export const onRequest: PagesFunction = async (context) => {
   const adsId = isInternal ? undefined : env.GOOGLE_ADS_ID;                  // e.g. "AW-XXXXXXXXXX"
   const adsPurchaseLabel = env.GOOGLE_ADS_PURCHASE_LABEL; // conversion label
   const metaPixelId = isInternal ? undefined : env.META_PIXEL_ID;          // e.g. "1234567890123456"
+  const turnstileSiteKey = env.TURNSTILE_SITE_KEY;
 
   const rewriter = new HTMLRewriter()
     // Remove existing canonical tags
@@ -126,6 +127,14 @@ export const onRequest: PagesFunction = async (context) => {
             `var s=o.marketing?'granted':'denied';` +
             `gtag('consent','update',{ad_storage:s,ad_user_data:s,ad_personalization:s,analytics_storage:s});` +
             `}}}catch(e){}})();</script>`;
+        }
+
+        // Turnstile — expose the public site key for forms; the explicit-render loader
+        // calls window.onloadTurnstileCallback (defined in /assets/turnstile.js) when ready.
+        if (turnstileSiteKey) {
+          headInject +=
+            `<script>window.TURNSTILE_SITE_KEY=${JSON.stringify(turnstileSiteKey)};</script>` +
+            `<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit" async defer></script>`;
         }
 
         // Meta Pixel (Facebook/Instagram) — respects consent (denied by default, banner grants)
@@ -183,14 +192,16 @@ export const onRequest: PagesFunction = async (context) => {
     });
   }
 
-  // Cookie consent banner + e-commerce events (remarketing, GA4 audiences)
+  // Cookie consent banner + e-commerce events (remarketing, GA4 audiences) + Turnstile helper.
   rewriter.on('body', {
     element(el) {
-      el.append(
+      let bodyAppend =
         `<script src="/assets/consent-banner.js" defer></script>` +
-        `<script src="/assets/ecommerce-events.js" defer></script>`,
-        { html: true },
-      );
+        `<script src="/assets/ecommerce-events.js" defer></script>`;
+      if (turnstileSiteKey) {
+        bodyAppend += `<script src="/assets/turnstile.js" defer></script>`;
+      }
+      el.append(bodyAppend, { html: true });
     },
   });
 
