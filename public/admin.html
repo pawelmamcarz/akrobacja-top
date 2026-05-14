@@ -437,8 +437,8 @@ function renderOrders(orders) {
       <td>${fmtDate(o.paid_at||o.created_at)}</td>
       <td>${o.invoice_id ? '#'+o.invoice_id : '-'}</td>
       <td class="actions">
-        <button class="btn btn-blue" ${o.status==='paid'&&!o.redeemed_at?'':'disabled'} onclick="redeem('${o.voucher_code}')">Wykorzystaj</button>
-        <button class="btn btn-red" ${o.status==='paid'&&!o.invoice_id?'':'disabled'} onclick="invoice('${o.voucher_code}')">Faktura</button>
+        <button class="btn btn-blue" ${o.status==='paid'&&!o.redeemed_at?'':'disabled'} data-action="redeem" data-arg1="${dataAttr(o.voucher_code)}">Wykorzystaj</button>
+        <button class="btn btn-red" ${o.status==='paid'&&!o.invoice_id?'':'disabled'} data-action="invoice" data-arg1="${dataAttr(o.voucher_code)}">Faktura</button>
       </td>
     </tr>`).join('')}
   </table>` : '<p style="padding:20px;color:#888">Brak zamowien</p>';
@@ -478,8 +478,8 @@ async function loadCalendar() {
         <td>${esc(b.customer_name)}</td><td>${esc(b.customer_email)}</td><td>${b.customer_phone||'-'}</td>
         <td class="code">${b.voucher_code||'-'}</td><td>${b.notes||'-'}</td>
         <td class="actions">
-          <button class="btn btn-green" onclick="approveBooking('${b.id}')">Zatwierdz</button>
-          <button class="btn btn-grey" onclick="rejectBooking('${b.id}')">Odrzuc</button>
+          <button class="btn btn-green" data-action="approveBooking" data-arg1="${dataAttr(b.id)}">Zatwierdz</button>
+          <button class="btn btn-grey" data-action="rejectBooking" data-arg1="${dataAttr(b.id)}">Odrzuc</button>
         </td>
       </tr>`).join('')}
     </table>` : '<p style="padding:8px;color:#28a745;font-size:12px">Brak oczekujacych rezerwacji</p>';
@@ -525,8 +525,8 @@ function renderPilots(pilots) {
       <td class="amount">${Math.floor((p.balance_minutes||0)/60)}h ${(p.balance_minutes||0)%60}min</td>
       <td>${fmtDate(p.last_login)}</td>
       <td class="actions">
-        <button class="btn btn-green" onclick="openAddBalance('${p.id}','${esc(p.name||p.phone)}')">+Godz</button>
-        <button class="btn btn-grey" onclick="openDeductBalance('${p.id}','${esc(p.name||p.phone)}')">-Godz</button>
+        <button class="btn btn-green" data-action="openAddBalance" data-arg1="${dataAttr(p.id)}" data-arg2="${dataAttr(p.name||p.phone)}">+Godz</button>
+        <button class="btn btn-grey" data-action="openDeductBalance" data-arg1="${dataAttr(p.id)}" data-arg2="${dataAttr(p.name||p.phone)}">-Godz</button>
       </td>
     </tr>`).join('')}
   </table>` : '<p style="padding:20px;color:#888">Brak pilotow</p>';
@@ -607,8 +607,8 @@ async function loadCourses() {
       <td>${(c.amount/100).toLocaleString('pl-PL')} PLN</td>
       <td><span class="badge badge-${c.status}">${statusLabel(c.status)}</span></td>
       <td class="actions">
-        <button class="btn btn-green" ${c.status==='active'?'':'disabled'} onclick="completeFlight('${c.id}')">+1 lot</button>
-        <button class="btn btn-grey" ${c.status==='active'?'':'disabled'} onclick="cancelCourse('${c.id}')">Anuluj</button>
+        <button class="btn btn-green" ${c.status==='active'?'':'disabled'} data-action="completeFlight" data-arg1="${dataAttr(c.id)}">+1 lot</button>
+        <button class="btn btn-grey" ${c.status==='active'?'':'disabled'} data-action="cancelCourse" data-arg1="${dataAttr(c.id)}">Anuluj</button>
       </td>
     </tr>`).join('')}
   </table>` : '<p style="padding:20px;color:#888">Brak kursow</p>';
@@ -647,7 +647,7 @@ async function loadBlocks() {
     ${blocks.map(b => `<tr>
       <td>${b.date_from}</td><td>${b.date_to}</td>
       <td>${esc(b.reason)}</td><td>${fmtDate(b.created_at)}</td>
-      <td><button class="btn btn-grey" onclick="removeBlock('${b.id}')">Usun</button></td>
+      <td><button class="btn btn-grey" data-action="removeBlock" data-arg1="${dataAttr(b.id)}">Usun</button></td>
     </tr>`).join('')}
   </table>` : '<p style="padding:20px;color:#888">Brak blokad</p>';
 }
@@ -687,8 +687,8 @@ async function loadAircraft() {
         <td>${m.current_hours ? m.current_hours+'h' : '-'}</td>
         <td><span class="badge badge-${badge}">${label}</span></td>
         <td class="actions">
-          ${m.status!=='completed' ? `<button class="btn btn-green" onclick="completeMaint('${m.id}')">Wykonany</button>` : ''}
-          <button class="btn btn-grey" onclick="deleteMaint('${m.id}')">Usun</button>
+          ${m.status!=='completed' ? `<button class="btn btn-green" data-action="completeMaint" data-arg1="${dataAttr(m.id)}">Wykonany</button>` : ''}
+          <button class="btn btn-grey" data-action="deleteMaint" data-arg1="${dataAttr(m.id)}">Usun</button>
         </td>
       </tr>`;
     }).join('')}
@@ -710,7 +710,7 @@ async function loadAircraft() {
         <td>${d.valid_to||'-'}</td>
         <td><span class="badge badge-${badge}">${label}</span></td>
         <td>${esc(d.notes||'-')}</td>
-        <td><button class="btn btn-grey" onclick="deleteDoc('${d.id}')">Usun</button></td>
+        <td><button class="btn btn-grey" data-action="deleteDoc" data-arg1="${dataAttr(d.id)}">Usun</button></td>
       </tr>`;
     }).join('')}
   </table>` : '<p style="padding:12px;color:#888">Brak dokumentow</p>';
@@ -727,8 +727,8 @@ async function loadAircraft() {
       <td><span class="badge badge-${i.status==='approved'?'approved':i.status==='pending'?'pending':'rejected'}">${i.status==='approved'?'Wpisany':i.status==='pending'?'Oczekuje':'Odrzucony'}</span></td>
       <td>${fmtDate(i.requested_at)}</td>
       <td class="actions">
-        ${i.status==='pending' ? `<button class="btn btn-green" onclick="approveIns('${i.id}')">Wpisz</button><button class="btn btn-grey" onclick="rejectIns('${i.id}')">Odrzuc</button>` : ''}
-        ${i.status==='approved' ? `<button class="btn btn-red" onclick="removeIns('${i.id}')">Wypisz</button>` : ''}
+        ${i.status==='pending' ? `<button class="btn btn-green" data-action="approveIns" data-arg1="${dataAttr(i.id)}">Wpisz</button><button class="btn btn-grey" data-action="rejectIns" data-arg1="${dataAttr(i.id)}">Odrzuc</button>` : ''}
+        ${i.status==='approved' ? `<button class="btn btn-red" data-action="removeIns" data-arg1="${dataAttr(i.id)}">Wypisz</button>` : ''}
       </td>
     </tr>`).join('')}
   </table>` : '<p style="padding:12px;color:#888">Brak pilotow w polisie</p>';
@@ -822,10 +822,10 @@ async function loadMerch() {
         <td><span class="badge badge-${merchStatus(o.status).cls}">${merchStatus(o.status).label}</span></td>
         <td>${o.tracking_number||'-'}</td>
         <td class="actions">
-          ${o.status==='pending' ? `<button class="btn btn-green" onclick="merchAction('mark_paid','${o.id}')">Oplacone</button>` : ''}
-          ${o.status==='paid' ? `<button class="btn btn-blue" onclick="merchShip('${o.id}')">Wyslij</button>` : ''}
-          ${o.status==='shipped' ? `<button class="btn btn-green" onclick="merchAction('mark_completed','${o.id}')">Dostarczono</button>` : ''}
-          ${o.status!=='completed'&&o.status!=='cancelled' ? `<button class="btn btn-grey" onclick="merchAction('cancel','${o.id}')">Anuluj</button>` : ''}
+          ${o.status==='pending' ? `<button class="btn btn-green" data-action="merchAction" data-arg1="mark_paid" data-arg2="${dataAttr(o.id)}">Oplacone</button>` : ''}
+          ${o.status==='paid' ? `<button class="btn btn-blue" data-action="merchShip" data-arg1="${dataAttr(o.id)}">Wyslij</button>` : ''}
+          ${o.status==='shipped' ? `<button class="btn btn-green" data-action="merchAction" data-arg1="mark_completed" data-arg2="${dataAttr(o.id)}">Dostarczono</button>` : ''}
+          ${o.status!=='completed'&&o.status!=='cancelled' ? `<button class="btn btn-grey" data-action="merchAction" data-arg1="cancel" data-arg2="${dataAttr(o.id)}">Anuluj</button>` : ''}
         </td>
       </tr>`;
     }).join('')}
@@ -844,8 +844,8 @@ async function loadMerch() {
       <td>${p.active?'Tak':'Nie'}</td>
       <td>${p.sort_order}</td>
       <td class="actions">
-        <button class="btn btn-grey" onclick="toggleProduct('${p.id}')">${p.active?'Ukryj':'Pokaż'}</button>
-        <button class="btn btn-red" onclick="deleteProduct('${p.id}')">Usuń</button>
+        <button class="btn btn-grey" data-action="toggleProduct" data-arg1="${dataAttr(p.id)}">${p.active?'Ukryj':'Pokaż'}</button>
+        <button class="btn btn-red" data-action="deleteProduct" data-arg1="${dataAttr(p.id)}">Usuń</button>
       </td>
     </tr>`).join('')}
   </table>` : '<p style="padding:12px;color:#888">Brak produktów, dodaj pierwszy przyciskiem „+ Dodaj produkt"</p>';
@@ -897,7 +897,7 @@ async function loadSubs() {
       <td>${esc(s.name||'-')}</td>
       <td>${s.source||'-'}</td>
       <td>${fmtDate(s.created_at)}</td>
-      <td><button class="btn btn-grey" onclick="removeSub('${s.id}')">Wypisz</button></td>
+      <td><button class="btn btn-grey" data-action="removeSub" data-arg1="${dataAttr(s.id)}">Wypisz</button></td>
     </tr>`).join('')}
   </table>` : '<p style="padding:20px;color:#888">Brak subskrybentow</p>';
 }
@@ -1017,6 +1017,22 @@ function statusLabel(s) { return {pending:'Oczekuje',approved:'Zatwierdzony',rej
 function pkgLabel(p) { return {pierwszy_lot:'Pierwszy Lot',adrenalina:'Adrenalina',masterclass:'Masterclass'}[p]||p||'-'; }
 function fmtDate(d) { if (!d) return '-'; return new Date(d).toLocaleDateString('pl-PL'); }
 function esc(s) { const d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
+// Safe escape for HTML attribute values. esc() (textContent) only escapes < > &;
+// inserting user data into onclick or data-* without escaping quotes is an XSS sink.
+function dataAttr(v) { return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+// One delegated click listener for every [data-action] button — replaces all inline
+// onclick handlers, which were XSS-prone because the browser HTML-decodes the attribute
+// before parsing it as JS, defeating esc().
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest && e.target.closest('[data-action]');
+  if (!btn) return;
+  var fn = window[btn.dataset.action];
+  if (typeof fn !== 'function') return;
+  var args = [];
+  var i = 1;
+  while (btn.dataset['arg' + i] !== undefined) { args.push(btn.dataset['arg' + i]); i++; }
+  fn.apply(null, args);
+});
 </script>
 <script src="/assets/site-enhancements.js" defer></script>
 </body>

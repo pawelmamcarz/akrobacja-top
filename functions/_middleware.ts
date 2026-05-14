@@ -141,6 +141,8 @@ export const onRequest: PagesFunction = async (context) => {
     });
 
   // /sukces — fire purchase + Enhanced Conversions from URL (?amount=…&code=…&pkg=…)
+  // Skip injection for the test_naklejka package — it exists only for live-pixel debugging
+  // and we don't want it polluting GA4/Ads conversion data with PLN 1-2 events.
   if (path === '/sukces' && (gaId || adsId || metaPixelId)) {
     rewriter.on('body', {
       element(el) {
@@ -150,7 +152,13 @@ export const onRequest: PagesFunction = async (context) => {
           `var a=parseFloat(p.get('amount'))||0;` +
           `var c=p.get('code')||'';` +
           `var pk=p.get('pkg')||'';` +
-          `if(!a)return;` +
+          `if(!a||!c)return;` +
+          // Skip test package — see comment above.
+          `if(pk==='test_naklejka')return;` +
+          // Dedup against page reload — eventID dedup only handles server-vs-client, not
+          // double-fire from the same client. GA4 and Google Ads have no built-in dedup.
+          `var dedupKey='akro_pf_'+c;` +
+          `try{if(sessionStorage.getItem(dedupKey))return;sessionStorage.setItem(dedupKey,'1');}catch(e){}` +
           // Enhanced Conversions — pull email/name from sessionStorage (set at checkout)
           `var ud=null;try{var raw=sessionStorage.getItem('akro_checkout_info');if(raw){var o=JSON.parse(raw);if(o&&o.email){ud={email:o.email,address:{first_name:o.firstName||'',last_name:o.lastName||''}}}}}catch(e){}` +
           (gaId || adsId ? (
@@ -162,7 +170,7 @@ export const onRequest: PagesFunction = async (context) => {
           ) : '') +
           (metaPixelId ? (
             // Meta Pixel Purchase — eventID matches CAPI for dedup
-            `if(window.fbq){fbq('track','Purchase',{value:a,currency:'PLN',content_ids:[pk],content_type:'product',content_name:'Voucher '+pk,num_items:1},{eventID:'purchase_'+c});}` 
+            `if(window.fbq){fbq('track','Purchase',{value:a,currency:'PLN',content_ids:[pk],content_type:'product',content_name:'Voucher '+pk,num_items:1},{eventID:'purchase_'+c});}`
           ) : '') +
           `try{sessionStorage.removeItem('akro_checkout_info');}catch(e){}` +
           `})();</script>`,
