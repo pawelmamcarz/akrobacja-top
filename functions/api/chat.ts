@@ -1,4 +1,6 @@
 import { type Env } from '../../src/lib/types';
+import { rateLimit, clientIp } from '../../src/lib/rate-limit';
+import { verifyTurnstile } from '../../src/lib/turnstile';
 
 const SYSTEM_PROMPT = `Jesteś asystentem akrobacja.com, oficjalnym asystentem serwisu lotów akrobacyjnych samolotem Extra 300L SP-EKS.
 
@@ -188,29 +190,42 @@ ZASADY ODPOWIADANIA:
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   try {
-    const { message, history } = (await ctx.request.json()) as {
+    const ip = clientIp(ctx.request);
+    const rl = await rateLimit(ctx.env, `chat:${ip}`, 20, 60);
+    if (!rl.ok) {
+      return Response.json({ error: 'Zbyt wiele wiadomości, spróbuj za chwilę' }, { status: 429 });
+    }
+
+    const { message, history, turnstileToken } = (await ctx.request.json()) as {
       message: string;
       history?: Array<{ role: string; content: string }>;
+      turnstileToken?: string;
     };
+
+    if (!(await verifyTurnstile(ctx.env, turnstileToken, ip))) {
+      return Response.json({ error: 'Weryfikacja captcha nieudana' }, { status: 400 });
+    }
 
     if (!message?.trim()) {
       return Response.json({ error: 'Pusta wiadomość' }, { status: 400 });
     }
 
+    // Cap inputs so a single attacker can't burn through tokens with a giant prompt.
+    const safeMessage = message.slice(0, 2000);
+    const safeHistory = (history || []).slice(-10);
+
     const messages: Array<{ role: string; content: string }> = [
       { role: 'system', content: SYSTEM_PROMPT },
     ];
 
-    if (history) {
-      for (const msg of history) {
-        messages.push({
-          role: msg.role === 'model' ? 'assistant' : msg.role,
-          content: msg.content,
-        });
-      }
+    for (const msg of safeHistory) {
+      messages.push({
+        role: msg.role === 'model' ? 'assistant' : msg.role,
+        content: (msg.content || '').slice(0, 2000),
+      });
     }
 
-    messages.push({ role: 'user', content: message });
+    messages.push({ role: 'user', content: safeMessage });
 
     const response = await ctx.env.AI.run('@cf/meta/llama-3.1-8b-instruct' as keyof AiModels, {
       messages,

@@ -27,5 +27,12 @@
   // Workers AI (Llama)
   "ai": {
     "binding": "AI"
-  }
+  },
+  // KV for rate-limiting public endpoints
+  "kv_namespaces": [
+    {
+      "binding": "RATE_LIMIT_KV",
+      "id": "7bfe8de0db534e20bbfc68c25d1e89fd"
+    }
+  ]
 }

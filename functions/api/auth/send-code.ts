@@ -1,11 +1,27 @@
 import { type Env } from '../../../src/lib/types';
 import { sendSms, generateOtp } from '../../../src/lib/sms';
 import { normalizePhone } from '../../../src/lib/phone';
+import { rateLimit, clientIp } from '../../../src/lib/rate-limit';
+import { verifyTurnstile } from '../../../src/lib/turnstile';
 
-// POST /api/auth/send-code { phone }
+// POST /api/auth/send-code { phone, turnstileToken }
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   try {
-    const { phone } = (await ctx.request.json()) as { phone: string };
+    const ip = clientIp(ctx.request);
+    const rl = await rateLimit(ctx.env, `send-code:${ip}`, 3, 60);
+    if (!rl.ok) {
+      return Response.json({ error: 'Zbyt wiele zapytań, spróbuj za chwilę' }, { status: 429 });
+    }
+
+    const { phone, turnstileToken } = (await ctx.request.json()) as {
+      phone: string;
+      turnstileToken?: string;
+    };
+
+    if (!(await verifyTurnstile(ctx.env, turnstileToken, ip))) {
+      return Response.json({ error: 'Weryfikacja captcha nieudana' }, { status: 400 });
+    }
+
     if (!phone) {
       return Response.json({ error: 'Podaj numer telefonu' }, { status: 400 });
     }

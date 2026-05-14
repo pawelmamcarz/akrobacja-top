@@ -1,6 +1,8 @@
 import { type Env, PACKAGES, type PackageId } from '../../../src/lib/types';
 import { escapeHtml } from '../../../src/lib/email';
 import { generateSlots } from '../../../src/lib/daylight';
+import { rateLimit, clientIp } from '../../../src/lib/rate-limit';
+import { verifyTurnstile } from '../../../src/lib/turnstile';
 
 interface BookingRequest {
   date: string;
@@ -13,11 +15,22 @@ interface BookingRequest {
   package_id?: PackageId;
   course_id?: string;
   notes?: string;
+  turnstileToken?: string;
 }
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   try {
+    const ip = clientIp(ctx.request);
+    const rl = await rateLimit(ctx.env, `book:${ip}`, 10, 60);
+    if (!rl.ok) {
+      return Response.json({ error: 'Zbyt wiele rezerwacji, spróbuj za chwilę' }, { status: 429 });
+    }
+
     const body = (await ctx.request.json()) as BookingRequest;
+
+    if (!(await verifyTurnstile(ctx.env, body.turnstileToken, ip))) {
+      return Response.json({ error: 'Weryfikacja captcha nieudana' }, { status: 400 });
+    }
 
     // Validate
     if (!body.date || !body.start_time || !body.type || !body.customer_name || !body.customer_email) {

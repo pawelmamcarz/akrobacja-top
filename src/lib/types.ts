@@ -20,7 +20,10 @@ export interface Env {
   META_CAPI_TOKEN?: string;
   META_TEST_EVENT_CODE?: string;
   CRON_SECRET?: string;
+  TURNSTILE_SITE_KEY?: string;
+  TURNSTILE_SECRET?: string;
   AI: Ai;
+  RATE_LIMIT_KV: KVNamespace;
 }
 
 // Voucher packages

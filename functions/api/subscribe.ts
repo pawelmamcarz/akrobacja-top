@@ -2,6 +2,8 @@ import { type Env } from '../../src/lib/types';
 import { normalizePhone } from '../../src/lib/phone';
 import { escapeHtml } from '../../src/lib/email';
 import { isValidEmail } from '../../src/lib/validate';
+import { rateLimit, clientIp } from '../../src/lib/rate-limit';
+import { verifyTurnstile } from '../../src/lib/turnstile';
 
 // Notify owner about new subscriber via Resend
 async function notifyOwner(env: Env, phone: string, name: string | null, source: string): Promise<void> {
@@ -37,10 +39,22 @@ async function notifyOwner(env: Env, phone: string, name: string | null, source:
   }
 }
 
-// POST /api/subscribe { phone, name, source }
+// POST /api/subscribe { phone, name, source, email, turnstileToken }
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   try {
-    const { phone, name, source, email } = (await ctx.request.json()) as { phone: string; name?: string; source?: string; email?: string };
+    const ip = clientIp(ctx.request);
+    const rl = await rateLimit(ctx.env, `subscribe:${ip}`, 5, 60);
+    if (!rl.ok) {
+      return Response.json({ error: 'Zbyt wiele zapytań, spróbuj za chwilę' }, { status: 429 });
+    }
+
+    const { phone, name, source, email, turnstileToken } = (await ctx.request.json()) as {
+      phone: string; name?: string; source?: string; email?: string; turnstileToken?: string;
+    };
+
+    if (!(await verifyTurnstile(ctx.env, turnstileToken, ip))) {
+      return Response.json({ error: 'Weryfikacja captcha nieudana' }, { status: 400 });
+    }
 
     if (!phone || phone.replace(/\D/g, '').length < 9) {
       return Response.json({ error: 'Podaj prawidłowy numer telefonu' }, { status: 400 });
@@ -49,7 +63,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
     }
 
-    const normalized = normalizePhone(phone);
+    let normalized: string;
+    try {
+      normalized = normalizePhone(phone);
+    } catch {
+      return Response.json({ error: 'Nieprawidłowy format telefonu' }, { status: 400 });
+    }
     const srcLabel = source || 'website';
 
     // Check if already subscribed
