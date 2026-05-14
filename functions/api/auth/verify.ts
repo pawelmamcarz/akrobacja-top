@@ -13,7 +13,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ error: 'Podaj numer i kod' }, { status: 400 });
     }
 
-    const normalized = normalizePhone(phone);
+    let normalized: string;
+    try {
+      normalized = normalizePhone(phone);
+    } catch {
+      return Response.json({ error: 'Nieprawidłowy numer telefonu' }, { status: 400 });
+    }
     const ip = ctx.request.headers.get('CF-Connecting-IP') || null;
     const userAgent = ctx.request.headers.get('User-Agent') || null;
 

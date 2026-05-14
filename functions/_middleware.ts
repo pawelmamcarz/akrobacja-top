@@ -233,15 +233,18 @@ export const onRequest: PagesFunction = async (context) => {
     'Content-Security-Policy',
     [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://js.stripe.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://connect.facebook.net https://challenges.cloudflare.com https://static.cloudflareinsights.com",
-      "frame-src https://js.stripe.com https://hooks.stripe.com https://challenges.cloudflare.com",
+      "script-src 'self' 'unsafe-inline' https://js.stripe.com https://*.js.stripe.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://connect.facebook.net https://challenges.cloudflare.com https://static.cloudflareinsights.com",
+      // Stripe's 3DS / SCA challenge can redirect users into bank-owned iframes served via
+      // subdomains of stripe.com (e.g. m.stripe.network for fingerprinting, hooks.stripe.com
+      // for ACS). Wildcard *.stripe.com per Stripe's own integration guide.
+      "frame-src https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com https://*.stripe.com https://*.stripe.network https://challenges.cloudflare.com",
       "img-src 'self' data: https:",
       "style-src 'self' 'unsafe-inline'",
       "font-src 'self' data:",
-      "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.facebook.com https://api.stripe.com https://challenges.cloudflare.com https://cloudflareinsights.com",
+      "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.facebook.com https://api.stripe.com https://*.stripe.com https://*.stripe.network https://challenges.cloudflare.com https://cloudflareinsights.com",
       "object-src 'none'",
       "base-uri 'self'",
-      "form-action 'self' https://checkout.stripe.com",
+      "form-action 'self' https://checkout.stripe.com https://*.stripe.com",
     ].join('; '),
   );
   // Sensitive paths must not be cached by Cloudflare or the browser — admin sees fresh

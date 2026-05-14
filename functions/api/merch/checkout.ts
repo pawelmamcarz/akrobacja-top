@@ -76,6 +76,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     params.append('mode', 'payment');
     params.append('customer_email', body.customer_email);
     params.append('metadata[merch_order_id]', orderId);
+    // Mirror the metadata onto the PaymentIntent so charge.refunded events (which only
+    // carry the PaymentIntent's metadata, not the session's) can still match this order.
+    params.append('payment_intent_data[metadata][merch_order_id]', orderId);
     params.append('success_url', `${ctx.env.SITE_URL || 'https://akrobacja.com'}/sklep-merch?success=1&order=${orderId}`);
     params.append('cancel_url', `${ctx.env.SITE_URL || 'https://akrobacja.com'}/sklep-merch`);
     params.append('locale', 'pl');

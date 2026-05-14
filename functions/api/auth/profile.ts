@@ -24,13 +24,16 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   // Email is user-set without verification — validate format and prevent collisions so a
   // pilot can't claim someone else's email. my-bookings.ts now matches by phone instead of
   // email to close the IDOR fully; this only blocks the obvious abuse of overwriting.
+  let normalizedEmail: string | undefined;
   if (body.email !== undefined && body.email !== null && body.email !== '') {
-    if (!isValidEmail(body.email)) {
+    normalizedEmail = String(body.email).trim().toLowerCase();
+    if (!isValidEmail(normalizedEmail)) {
       return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
     }
+    // LOWER(email) on both sides so "Foo@bar.com" and "foo@bar.com" collide.
     const collision = await ctx.env.DB.prepare(
-      'SELECT 1 FROM pilots WHERE email = ? AND id != ?'
-    ).bind(body.email, pilot.id).first();
+      'SELECT 1 FROM pilots WHERE LOWER(email) = ? AND id != ?'
+    ).bind(normalizedEmail, pilot.id).first();
     if (collision) {
       return Response.json({ error: 'Ten email jest już w użyciu' }, { status: 409 });
     }
@@ -39,7 +42,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   await ctx.env.DB.prepare(
     'UPDATE pilots SET name = COALESCE(?, name), email = COALESCE(?, email), license_type = COALESCE(?, license_type), license_number = COALESCE(?, license_number) WHERE id = ?'
   ).bind(
-    body.name || null, body.email || null,
+    body.name || null, normalizedEmail || null,
     body.license_type || null, body.license_number || null,
     pilot.id,
   ).run();

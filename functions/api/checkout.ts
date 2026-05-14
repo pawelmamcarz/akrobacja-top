@@ -43,6 +43,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!pkg) {
       return Response.json({ error: 'Nieprawidłowy pakiet' }, { status: 400 });
     }
+    // test_naklejka exists only for live-pixel verification — never accept it from any
+    // surface other than the dedicated test page. Otherwise an attacker could blast cheap
+    // 2-PLN purchases that fire Meta CAPI Purchase events and pollute ML optimisation data.
+    if (body.packageId === 'test_naklejka' && body.source !== 'test-konwersji') {
+      return Response.json({ error: 'Nieprawidłowy pakiet' }, { status: 400 });
+    }
     if (!body.customerName || !body.customerEmail) {
       return Response.json({ error: 'Imię i email są wymagane' }, { status: 400 });
     }
@@ -150,10 +156,13 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const cancelPath = CANCEL_URLS[body.source || ''] || '/voucher-prezent';
     params.append('cancel_url', `${siteUrl}${cancelPath}`);
     params.append('locale', 'pl');
-    // Let Stripe pick the best available payment methods for the browser/device — adds
-    // Apple Pay, Google Pay and Stripe Link on top of card/P24/BLIK automatically, which
-    // are real conversion wins on mobile.
-    params.append('automatic_payment_methods[enabled]', 'true');
+    // Keep card/P24/BLIK explicit — Stripe Dashboard activation of P24/BLIK is per-account,
+    // not guaranteed for new accounts, and we don't want to silently drop Polish payment
+    // methods our customers actually use. Apple Pay / Google Pay piggyback on the 'card'
+    // method on supported devices, so the conversion win is preserved.
+    params.append('payment_method_types[0]', 'card');
+    params.append('payment_method_types[1]', 'p24');
+    params.append('payment_method_types[2]', 'blik');
 
     lineItems.forEach((item, i) => {
       const pd = item.price_data as Record<string, unknown>;

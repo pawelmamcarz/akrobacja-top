@@ -10,7 +10,14 @@ export async function verifyTurnstile(
   remoteIp: string | null,
 ): Promise<boolean> {
   const secret = env.TURNSTILE_SECRET;
-  if (!secret) return true; // not configured — allow (dev mode)
+  // Fail-open ONLY when neither key nor secret is configured (i.e. true dev / preview env).
+  // If the site key is set but the secret is missing/empty (e.g. wrangler pages secret put
+  // was completed with an empty value), this is a prod misconfig and we must fail closed —
+  // otherwise bot protection silently disappears with no signal.
+  if (!secret) {
+    if (env.TURNSTILE_SITE_KEY) return false;
+    return true;
+  }
   if (!token) return false;
 
   try {
