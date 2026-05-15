@@ -67,6 +67,12 @@ export const PACKAGES = {
 
 export const VIDEO_ADDON_PRICE = 29900; // 299 PLN
 
+// Google Search URL for the akrobacja.com business profile. Clicking "Napisz opinię"
+// on this page opens the proper write-review dialog for the Google Business Profile
+// of "akrobacja.com — Loty akrobacyjne Extra 300L". Used in every customer-facing
+// review CTA (post-purchase, email, footer, post-flight follow-up).
+export const GOOGLE_REVIEW_URL = 'https://www.google.com/search?q=akrobacja.com+%E2%80%94+Loty+akrobacyjne+Extra+300L&stick=H4sIAAAAAAAA_-NgU1I1qDAxN7RIMzc1NTYwtDAzMLK0MqhItrA0NTAzTLY0MDI1S00xWcSqm5hdlJ-UmJyVqJecn6vwqGGKgk9-SaUCVLgyKy9VwbWipChRwdjAwAcAB12ArlkAAAA&hl=pl&authuser=0';
+
 export type PackageId = keyof typeof PACKAGES;
 
 export interface Order {

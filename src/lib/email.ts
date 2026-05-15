@@ -1,4 +1,4 @@
-import { type Env, PACKAGES, type PackageId } from './types';
+import { type Env, PACKAGES, type PackageId, GOOGLE_REVIEW_URL } from './types';
 
 // HTML-escape user-controlled text before interpolating into email/webhook templates.
 // Prevents broken layout or injection when name/email contains < > & " '.
@@ -100,10 +100,16 @@ function buildHtml(p: EmailParams): string {
       </a>
 
       <hr style="border:none;border-top:1px solid #eee;margin:32px 0">
-      <p style="color:#6B7A90;font-size:13px;line-height:1.6;margin:0">
+      <p style="color:#6B7A90;font-size:13px;line-height:1.6;margin:0 0 32px">
         <strong>Jak umówić lot?</strong><br>
         Zadzwoń pod <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a> lub napisz na <a href="mailto:dto@akrobacja.com" style="color:#0A2F7C">dto@akrobacja.com</a> podając kod vouchera.
       </p>
+
+      <div style="background:linear-gradient(135deg,#fff5e6 0%,#ffe8b8 100%);border-left:4px solid #f59e0b;padding:18px 22px;border-radius:6px;margin-bottom:8px">
+        <p style="color:#0A2F7C;font-size:14px;font-weight:700;margin:0 0 6px">⭐⭐⭐⭐⭐ Po locie zostawisz nam opinię?</p>
+        <p style="color:#6B7A90;font-size:13px;line-height:1.5;margin:0 0 12px">Pomagasz innym zdecydować się na lot z Mistrzem Świata. 30 sekund Twojego czasu znaczy dla nas dużo.</p>
+        <a href="${GOOGLE_REVIEW_URL}" style="display:inline-block;background:#0A2F7C;color:#fff;text-decoration:none;padding:10px 20px;font-weight:700;font-size:13px;border-radius:4px">Zostaw opinię na Google →</a>
+      </div>
     </div>
     <div style="background:#0A2F7C;padding:24px;text-align:center">
       <p style="color:rgba(255,255,255,0.5);font-size:11px;margin:0">
