@@ -21,6 +21,10 @@ const LEGACY_REDIRECTS: Record<string, string> = {
   '/szkolenia/akrobacja/': '/blog/kurs-akrobacji-fcl800',
   '/szkolenia/uprt': '/blog/uprt-szkolenie-upset-recovery',
   '/szkolenia/uprt/': '/blog/uprt-szkolenie-upset-recovery',
+  // Short URL for Google Reviews — used in SMS follow-up messages where every
+  // character costs money. /opinia → full Google Search write-review URL.
+  '/opinia': 'https://www.google.com/search?q=akrobacja.com+%E2%80%94+Loty+akrobacyjne+Extra+300L&stick=H4sIAAAAAAAA_-NgU1I1qDAxN7RIMzc1NTYwtDAzMLK0MqhItrA0NTAzTLY0MDI1S00xWcSqm5hdlJ-UmJyVqJecn6vwqGGKgk9-SaUCVLgyKy9VwbWipChRwdjAwAcAB12ArlkAAAA&hl=pl&authuser=0',
+  '/opinia/': 'https://www.google.com/search?q=akrobacja.com+%E2%80%94+Loty+akrobacyjne+Extra+300L&stick=H4sIAAAAAAAA_-NgU1I1qDAxN7RIMzc1NTYwtDAzMLK0MqhItrA0NTAzTLY0MDI1S00xWcSqm5hdlJ-UmJyVqJecn6vwqGGKgk9-SaUCVLgyKy9VwbWipChRwdjAwAcAB12ArlkAAAA&hl=pl&authuser=0',
   // Anchor links can't be indexed by Google as standalone pages — redirect to the
   // canonical page that hosts the section instead (Google Search Console reported
   // these as "Page with redirect" pointing nowhere).
@@ -59,12 +63,15 @@ export const onRequest: PagesFunction = async (context) => {
     });
   }
 
-  // 301 redirect legacy URLs from old site
+  // 301 redirect legacy URLs from old site. Targets that already start with http(s):
+  // are external (e.g. /opinia → Google Search) and used as-is; relative paths get
+  // the canonical origin prefixed.
   const legacyTarget = LEGACY_REDIRECTS[url.pathname];
   if (legacyTarget) {
+    const location = /^https?:\/\//i.test(legacyTarget) ? legacyTarget : `${SITE_ORIGIN}${legacyTarget}`;
     return new Response(null, {
       status: 301,
-      headers: { Location: `${SITE_ORIGIN}${legacyTarget}` },
+      headers: { Location: location },
     });
   }
 

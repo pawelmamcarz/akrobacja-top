@@ -230,10 +230,12 @@ CREATE TABLE IF NOT EXISTS bookings (
   status TEXT NOT NULL DEFAULT 'pending',
   approved_at TEXT,
   cancelled_at TEXT,
+  review_request_sent_at TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
 CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status, created_at);
+CREATE INDEX IF NOT EXISTS idx_bookings_review_pending ON bookings(status, review_request_sent_at) WHERE review_request_sent_at IS NULL;
 CREATE INDEX IF NOT EXISTS idx_bookings_voucher ON bookings(voucher_code);
 CREATE INDEX IF NOT EXISTS idx_bookings_customer_phone ON bookings(customer_phone);
 CREATE INDEX IF NOT EXISTS idx_bookings_customer_email ON bookings(customer_email);

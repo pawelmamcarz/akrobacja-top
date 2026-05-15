@@ -30,3 +30,14 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             https://akrobacja.com/api/cron/scheduled-vouchers
         continue-on-error: true
+
+      # Post-flight Google Reviews ask. Idempotent (claim-before-send),
+      # max 50 SMS per run. Hourly schedule is safe because the SQL filter
+      # only returns bookings that flew at least 1 day ago and haven't been
+      # pinged. In practice this fires once per booking.
+      - name: Post-flight review SMS
+        run: |
+          curl -fsS -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            https://akrobacja.com/api/cron/post-flight-review-sms
+        continue-on-error: true
