@@ -21,12 +21,15 @@ const LEGACY_REDIRECTS: Record<string, string> = {
   '/szkolenia/akrobacja/': '/blog/kurs-akrobacji-fcl800',
   '/szkolenia/uprt': '/blog/uprt-szkolenie-upset-recovery',
   '/szkolenia/uprt/': '/blog/uprt-szkolenie-upset-recovery',
-  '/szkolenia/faq': '/#faq',
-  '/szkolenia/faq/': '/#faq',
+  // Anchor links can't be indexed by Google as standalone pages — redirect to the
+  // canonical page that hosts the section instead (Google Search Console reported
+  // these as "Page with redirect" pointing nowhere).
+  '/szkolenia/faq': '/lot-akrobacyjny',
+  '/szkolenia/faq/': '/lot-akrobacyjny',
   '/szkolenia/obozy-treningowo-szkoleniowe': '/camp-akrobacyjny',
   '/szkolenia/obozy-treningowo-szkoleniowe/': '/camp-akrobacyjny',
-  '/kontakt': '/#kontakt',
-  '/kontakt/': '/#kontakt',
+  '/kontakt': '/',
+  '/kontakt/': '/',
   '/shop': '/sklep-merch',
   '/shop/': '/sklep-merch',
   '/samoloty-do-filmow-i-reklam': '/pokazy-lotnicze',
@@ -62,6 +65,17 @@ export const onRequest: PagesFunction = async (context) => {
     return new Response(null, {
       status: 301,
       headers: { Location: `${SITE_ORIGIN}${legacyTarget}` },
+    });
+  }
+
+  // Explicit 301 trailing-slash strip. Cloudflare Pages otherwise returns 308 which
+  // Google Search Console flags as "Page with redirect" for every indexed trailing-
+  // slash URL. Done AFTER legacy lookup so '/flota/' still hits LEGACY_REDIRECTS.
+  if (!isPagesDev && url.pathname.length > 1 && url.pathname.endsWith('/')) {
+    const stripped = url.pathname.replace(/\/+$/, '');
+    return new Response(null, {
+      status: 301,
+      headers: { Location: `${SITE_ORIGIN}${stripped}${url.search}` },
     });
   }
 
