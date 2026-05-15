@@ -25,6 +25,9 @@
       .cw-input { font-size:16px; }
       .cw-quick { padding:0 12px 10px; }
       .cw-wa { margin:6px 12px; }
+      /* Sticky mobile CTA injected by site-enhancements.js (#akro-sticky-cta) lives at
+         the bottom — push the chat bubble above it so they don't overlap. */
+      body.has-akro-sticky .cw-btn { bottom:84px; }
     }
     @media (max-width:768px) and (min-width:481px) {
       .cw-btn { bottom:20px; right:20px; }

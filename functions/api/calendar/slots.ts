@@ -74,12 +74,25 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
       };
     });
 
-    return Response.json({
+    // Cache slots-for-a-day at the edge. Bookings rarely change for any single day in any
+    // single minute, so a short cache (60s for today's date, 5 min beyond) cuts D1 + Open-
+    // Meteo round-trips dramatically when a visitor browses the calendar across multiple
+    // dates. POST /api/calendar/book does NOT need to invalidate — partial UNIQUE on slots
+    // means the booker wins or loses atomically, and the next viewer sees fresh data within
+    // the TTL.
+    const isToday = dateStr === today;
+    const maxAge = isToday ? 60 : 300;
+    return new Response(JSON.stringify({
       date: dateStr,
       available: slots.some(s => s.available),
       daylight,
       weather_available: weatherAvailable,
       slots,
+    }), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': `public, s-maxage=${maxAge}, max-age=30`,
+      },
     });
   } catch (err) {
     return Response.json({ error: err instanceof Error ? err.message : 'Unknown error' }, { status: 500 });

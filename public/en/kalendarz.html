@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -11,22 +11,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kalendarz lotów | akrobacja.com</title>
-<meta name="description" content="Kalendarz lotów akrobacyjnych Extra 300L SP-EKS. Sprawdź dostępne terminy, zarezerwuj lot. Lotnisko Radom-Piastów (EPRP). akrobacja.com">
-<link rel="canonical" href="https://akrobacja.com/kalendarz">
+<title>Flight Calendar | akrobacja.com</title>
+<meta name="description" content="Aerobatic flight booking calendar for Extra 300L SP-EKS. Check available slots, book your flight. Radom-Piastów airport (EPRP). akrobacja.com">
+<link rel="canonical" href="https://akrobacja.com/en/kalendarz">
 <link rel="alternate" hreflang="pl" href="https://akrobacja.com/kalendarz">
 <link rel="alternate" hreflang="en" href="https://akrobacja.com/en/kalendarz">
 <link rel="alternate" hreflang="x-default" href="https://akrobacja.com/kalendarz">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://akrobacja.com/kalendarz">
-<meta property="og:title" content="Kalendarz lotów akrobacyjnych | akrobacja.com">
-<meta property="og:description" content="Sprawdź dostępne terminy lotów akrobacyjnych Extra 300L. Rezerwuj swój lot w dogodnym terminie.">
+<meta property="og:url" content="https://akrobacja.com/en/kalendarz">
+<meta property="og:title" content="Flight Calendar | akrobacja.com">
+<meta property="og:description" content="Check available slots for aerobatic flights in an Extra 300L. Book your flight online.">
 <meta property="og:image" content="https://akrobacja.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="pl_PL">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="pl_PL">
 <meta property="og:site_name" content="akrobacja.com">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -34,9 +35,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Kalendarz lotów akrobacyjnych",
-  "description": "Kalendarz lotów akrobacyjnych Extra 300L SP-EKS. Sprawdź dostępne terminy i zarezerwuj lot.",
-  "url": "https://akrobacja.com/kalendarz",
+  "name": "Aerobatic Flight Calendar",
+  "description": "Aerobatic flight calendar for Extra 300L SP-EKS. Check available slots and book your flight.",
+  "url": "https://akrobacja.com/en/kalendarz",
   "provider": {
     "@type": "Organization",
     "name": "akrobacja.com",
@@ -210,10 +211,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <div class="topbar">
-  <a href="/">akrobacja.com</a>
+  <a href="/en">akrobacja.com</a>
   <div class="right">
-    <a href="/" id="homeLink">Strona główna</a>
-    <a href="/konto" id="accountLink">Konto pilota</a>
+    <a href="/en" id="homeLink">Home</a>
+    <a href="/konto" id="accountLink">Pilot account</a>
+    <a href="/kalendarz" hreflang="pl" style="margin-left:8px;opacity:.7">PL</a>
     <span class="pilot-badge hidden" id="pilotBadge"></span>
   </div>
 </div>
@@ -230,21 +232,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <div class="container">
-  <h1 class="page-title" style="font-family:var(--font-display);font-size:clamp(40px,5vw,64px);line-height:.95;color:var(--navy);margin:32px 0 8px;letter-spacing:.005em">KALENDARZ LOTÓW</h1>
-  <p class="page-sub" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel)">WYBIERZ DZIEŃ I SLOT · KAŻDA REZERWACJA WYMAGA ZATWIERDZENIA</p>
+  <h1 class="page-title" style="font-family:var(--font-display);font-size:clamp(40px,5vw,64px);line-height:.95;color:var(--navy);margin:32px 0 8px;letter-spacing:.005em">FLIGHT CALENDAR</h1>
+  <p class="page-sub" style="font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--steel)">PICK A DAY AND SLOT · EVERY BOOKING NEEDS PILOT APPROVAL</p>
 
   <div class="legend">
-    <div class="legend-item"><div class="legend-dot free"></div> Wolne sloty</div>
-    <div class="legend-item"><div class="legend-dot partial"></div> Ostatnie miejsca</div>
-    <div class="legend-item"><div class="legend-dot full"></div> Brak miejsc</div>
-    <div class="legend-item"><div class="legend-dot weather"></div> &#9729; Pogoda, nie latamy</div>
-    <div class="legend-item"><div class="legend-dot blocked"></div> Zablokowane</div>
+    <div class="legend-item"><div class="legend-dot free"></div> Slots open</div>
+    <div class="legend-item"><div class="legend-dot partial"></div> Last seats</div>
+    <div class="legend-item"><div class="legend-dot full"></div> Fully booked</div>
+    <div class="legend-item"><div class="legend-dot weather"></div> &#9729; Weather, no flying</div>
+    <div class="legend-item"><div class="legend-dot blocked"></div> Blocked</div>
   </div>
 
   <div class="cal-nav">
-    <button onclick="prevMonth()">← Poprzedni</button>
+    <button onclick="prevMonth()">← Previous</button>
     <span class="cal-month" id="calMonth"></span>
-    <button onclick="nextMonth()">Następny →</button>
+    <button onclick="nextMonth()">Next →</button>
   </div>
   <div class="cal-grid" id="calGrid"></div>
 
@@ -259,44 +261,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Booking form -->
     <div class="book-form hidden" id="bookForm">
-      <div style="font-family:var(--font-h);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px">Typ lotu</div>
+      <div style="font-family:var(--font-h);font-size:13px;font-weight:700;color:var(--navy);margin-bottom:12px">Flight type</div>
       <div class="type-select" id="typeSelect">
         <div class="type-btn" data-type="voucher" onclick="selectType(this)">Voucher</div>
-        <div class="type-btn" data-type="proficiency" onclick="selectType(this)">Lot doskonalący</div>
-        <div class="type-btn" data-type="training" onclick="selectType(this)">Szkolenie</div>
-        <div class="type-btn" data-type="course" onclick="selectType(this)">Kurs FCL.800</div>
+        <div class="type-btn" data-type="proficiency" onclick="selectType(this)">Proficiency check</div>
+        <div class="type-btn" data-type="training" onclick="selectType(this)">Training</div>
+        <div class="type-btn" data-type="course" onclick="selectType(this)">FCL.800 course</div>
       </div>
 
       <div id="voucherField" class="hidden" style="margin-bottom:12px">
-        <div class="field"><label>Kod vouchera</label><input type="text" id="voucherCode" placeholder="AKR-XXXX-XXXX" style="text-transform:uppercase"></div>
+        <div class="field"><label>Voucher code</label><input type="text" id="voucherCode" placeholder="AKR-XXXX-XXXX" style="text-transform:uppercase"></div>
       </div>
       <div id="courseField" class="hidden" style="margin-bottom:12px">
-        <div class="field"><label>ID kursu</label><input type="text" id="courseId"></div>
+        <div class="field"><label>Course ID</label><input type="text" id="courseId"></div>
       </div>
 
       <div id="guestFields">
         <div class="form-row">
-          <div class="field"><label>Imię i nazwisko *</label><input type="text" id="bookName"></div>
-          <div class="field"><label>Email *</label><input type="email" id="bookEmail"></div>
+          <div class="field"><label>Full name *</label><input type="text" id="bookName" autocomplete="name"></div>
+          <div class="field"><label>Email *</label><input type="email" id="bookEmail" autocomplete="email"></div>
         </div>
         <div class="form-row">
-          <div class="field"><label>Telefon</label><input type="tel" id="bookPhone" placeholder="+48..."></div>
-          <div class="field"><label>Uwagi</label><input type="text" id="bookNotes" placeholder="Opcjonalnie..."></div>
+          <div class="field"><label>Phone</label><input type="tel" id="bookPhone" placeholder="+48..." autocomplete="tel"></div>
+          <div class="field"><label>Notes</label><input type="text" id="bookNotes" placeholder="Optional…"></div>
         </div>
       </div>
 
       <div id="pilotInfo" class="hidden" style="margin-bottom:16px;padding:12px;background:#d4edda;color:#155724;font-size:13px"></div>
 
       <div class="cf-turnstile" data-name="book" data-size="flexible" style="margin-bottom:12px"></div>
-      <button class="btn btn-primary" onclick="submitBooking()" id="submitBtn" disabled>Wybierz typ lotu</button>
+      <button class="btn btn-primary" onclick="submitBooking()" id="submitBtn" disabled>Pick a flight type</button>
       <div id="bookMsg"></div>
     </div>
   </div>
 </div>
 
 <script>
-const MONTHS_PL = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
-const DAYS_PL = ['Pn','Wt','Śr','Cz','Pt','Sb','Nd'];
+const MONTHS_PL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS_PL = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 
 let calMonth = new Date().getMonth();
 let calYear = new Date().getFullYear();
@@ -345,12 +347,12 @@ function renderCalendar() {
     let slotsText = '';
 
     if (!isPast && cached) {
-      if (cached.blocked) { cls = 'cd-blocked'; slotsText = cached.reason || 'zablokowane'; }
-      else if (cached.allWeatherBad) { cls = 'cd-weather'; slotsText = '&#9729; nie latamy'; }
-      else if (cached.free === 0 && cached.weatherBad > 0) { cls = 'cd-weather'; slotsText = '&#9729; pogoda'; }
-      else if (cached.free === 0) { cls = 'cd-full'; slotsText = 'brak miejsc'; }
-      else if (cached.free <= 2) { cls = 'cd-partial'; slotsText = `${cached.free} wolne`; }
-      else { cls = 'cd-free'; slotsText = `${cached.free} wolnych`; }
+      if (cached.blocked) { cls = 'cd-blocked'; slotsText = cached.reason || 'blocked'; }
+      else if (cached.allWeatherBad) { cls = 'cd-weather'; slotsText = '&#9729; no flying'; }
+      else if (cached.free === 0 && cached.weatherBad > 0) { cls = 'cd-weather'; slotsText = '&#9729; weather'; }
+      else if (cached.free === 0) { cls = 'cd-full'; slotsText = 'fully booked'; }
+      else if (cached.free <= 2) { cls = 'cd-partial'; slotsText = `${cached.free} left`; }
+      else { cls = 'cd-free'; slotsText = `${cached.free} open`; }
     }
 
     if (ds === selectedDate) cls += ' cd-selected';
@@ -410,7 +412,7 @@ async function openDay(ds) {
   panel.classList.add('active');
 
   const date = new Date(ds + 'T12:00:00');
-  const dayName = ['niedziela','poniedziałek','wtorek','środa','czwartek','piątek','sobota'][date.getDay()];
+  const dayName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][date.getDay()];
   document.getElementById('dayTitle').textContent = `${parseInt(ds.split('-')[2])} ${MONTHS_PL[parseInt(ds.split('-')[1])-1]} ${ds.split('-')[0]}, ${dayName}`;
 
   // Load or use cached slots
@@ -418,7 +420,7 @@ async function openDay(ds) {
   if (cached?.data) {
     data = cached.data;
   } else {
-    document.getElementById('slotsGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--chrome)">Ładowanie...</div>';
+    document.getElementById('slotsGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--chrome)">Loading…</div>';
     const res = await fetch(`/api/calendar/slots?date=${ds}`);
     data = await res.json();
   }
@@ -426,19 +428,19 @@ async function openDay(ds) {
   // Daylight info
   const dl = data.daylight;
   document.getElementById('dayInfo').innerHTML = dl
-    ? `Wschód <strong>${dl.sunrise}</strong> · Zachód <strong>${dl.sunset}</strong> · ${Math.floor(dl.daylightMinutes/60)}h ${dl.daylightMinutes%60}min dnia${data.weather_available ? '' : ' · <span style="color:var(--chrome)">prognoza pogody niedostępna (>7 dni)</span>'}`
+    ? `Sunrise <strong>${dl.sunrise}</strong> · Sunset <strong>${dl.sunset}</strong> · ${Math.floor(dl.daylightMinutes/60)}h ${dl.daylightMinutes%60}min of daylight${data.weather_available ? '' : ' · <span style="color:var(--chrome)">weather forecast not available (>7 days)</span>'}`
     : '';
 
   // Render slots
   if (!data.slots?.length) {
-    document.getElementById('slotsGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--chrome)">Brak slotów w tym dniu</div>';
+    document.getElementById('slotsGrid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--chrome)">No slots this day</div>';
     return;
   }
 
   document.getElementById('slotsGrid').innerHTML = data.slots.map(s => {
     const cls = s.booked ? 'sl-taken' : !s.available ? 'sl-bad' : '';
-    const info = s.booked ? 'zajęty' : !s.available ? (s.weather?.reason || 'niedostępny') :
-      (s.weather ? `${s.weather.temp_c}° · ${s.weather.wind_kmh} km/h` : 'dostępny');
+    const info = s.booked ? 'booked' : !s.available ? (s.weather?.reason || 'unavailable') :
+      (s.weather ? `${s.weather.temp_c}° · ${s.weather.wind_kmh} km/h` : 'available');
     return `<div class="slot ${cls}" onclick="selectSlot(this,'${s.start}')" data-start="${s.start}">
       <div class="slot-time">${s.start}–${s.end}</div>
       <div class="slot-info">${info}</div>
@@ -450,7 +452,7 @@ async function openDay(ds) {
   document.getElementById('bookMsg').innerHTML = '';
   document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('selected'));
   document.getElementById('submitBtn').disabled = true;
-  document.getElementById('submitBtn').textContent = 'Wybierz typ lotu';
+  document.getElementById('submitBtn').textContent = 'Pick a flight type';
 }
 
 function closePanel() {
@@ -473,7 +475,7 @@ function selectSlot(el, start) {
   if (pilot && pilot.name && pilot.email) {
     document.getElementById('guestFields').classList.add('hidden');
     document.getElementById('pilotInfo').classList.remove('hidden');
-    document.getElementById('pilotInfo').textContent = `Rezerwacja jako ${pilot.name} (${pilot.email})`;
+    document.getElementById('pilotInfo').textContent = `Booking as ${pilot.name} (${pilot.email})`;
     document.getElementById('bookName').value = pilot.name;
     document.getElementById('bookEmail').value = pilot.email;
     if (pilot.phone) document.getElementById('bookPhone').value = pilot.phone;
@@ -498,20 +500,20 @@ function updateSubmitBtn() {
   const btn = document.getElementById('submitBtn');
   if (selectedSlot && selectedType) {
     btn.disabled = false;
-    btn.textContent = 'Zarezerwuj ' + selectedSlot + ' →';
+    btn.textContent = 'Book ' + selectedSlot + ' →';
   } else {
     btn.disabled = true;
-    btn.textContent = selectedSlot ? 'Wybierz typ lotu' : 'Wybierz godzinę';
+    btn.textContent = selectedSlot ? 'Pick a flight type' : 'Pick a time slot';
   }
 }
 
 async function submitBooking() {
   const name = document.getElementById('bookName').value.trim();
   const email = document.getElementById('bookEmail').value.trim();
-  if (!name || !email) { alert('Podaj imię i email (lub zaloguj się na /konto)'); return; }
+  if (!name || !email) { alert('Enter your name and email (or sign in at /konto)'); return; }
 
   const btn = document.getElementById('submitBtn');
-  btn.disabled = true; btn.textContent = 'Rezerwuję...';
+  btn.disabled = true; btn.textContent = 'Booking…';
 
   const body = {
     date: selectedDate,
@@ -541,9 +543,9 @@ async function submitBooking() {
 
     document.getElementById('bookMsg').innerHTML = `
       <div class="msg msg-ok">
-        <strong>Rezerwacja złożona!</strong> ${selectedDate} o ${selectedSlot}<br>
-        Oczekuje na zatwierdzenie, potwierdzenie na ${email}.<br>
-        ${pilot ? '<a href="/konto" style="color:#155724;font-weight:600">Zobacz na koncie →</a>' : '<a href="/konto" style="color:#155724;font-weight:600">Załóż konto pilota →</a>'}
+        <strong>Booking submitted!</strong> ${selectedDate} at ${selectedSlot}<br>
+        Awaiting pilot approval, confirmation will arrive at ${email}.<br>
+        ${pilot ? '<a href="/konto" style="color:#155724;font-weight:600">View in your account →</a>' : '<a href="/konto" style="color:#155724;font-weight:600">Create a pilot account →</a>'}
       </div>`;
     document.getElementById('bookForm').classList.add('hidden');
 
@@ -575,14 +577,13 @@ function nextMonth() {
 
 <div style="background:var(--black);border-top:1px solid rgba(255,255,255,.05);padding:48px 32px 32px;text-align:center;font-family:var(--font-b)">
   
-    <a href="/" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Strona główna</a>
-    <a href="/lot-akrobacyjny" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Lot akrobacyjny</a>
-    <a href="/kalendarz" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Kalendarz</a>
-    <a href="/blog" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Blog</a>
-    <a href="/sklep-merch" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Sklep</a>
-    <a href="/regulamin" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Regulamin</a>
-    <a href="/polityka-prywatnosci" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Prywatność</a>
-    <a href="https://wa.me/48535535221" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Kontakt</a>
+    <a href="/en" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Home</a>
+    <a href="/en/lot-akrobacyjny" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Aerobatic flight</a>
+    <a href="/en/voucher-prezent" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Gift voucher</a>
+    <a href="/en/kalendarz" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Calendar</a>
+    <a href="/blog" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Blog (PL)</a>
+    <a href="/regulamin" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Terms (PL)</a>
+    <a href="https://wa.me/48535535221" style="color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s">Contact</a>
   
   <div style="font-size:10px;color:rgba(255,255,255,.25)">&copy; 2026 akrobacja.com &middot; Doradztwo Paweł Mamcarz &middot; Extra 300L SP-EKS &middot; EPRP</div>
 </div>
