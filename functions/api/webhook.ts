@@ -3,6 +3,7 @@ import { generateVoucherPdf } from '../../src/lib/pdf';
 import { sendVoucherEmail, escapeHtml } from '../../src/lib/email';
 import { createInvoice } from '../../src/lib/wfirma';
 import { sendMetaPurchase } from '../../src/lib/meta-capi';
+import { recordFailedDelivery } from '../../src/lib/audit';
 
 async function notifyOwnerMerch(env: Env, o: {
   orderId: string;
@@ -103,8 +104,12 @@ async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: P
       }),
     });
   } catch (err) {
-    // Non-critical — admin-notify nie blokuje sukcesu zamówienia, ale loguj do CF Logs.
+    // Non-critical — admin-notify nie blokuje sukcesu zamówienia, ale loguj do CF Logs
+    // i audit-table żeby admin widział oprócz "pusta skrzynka" konkretną przyczynę.
     console.error('notifyOwnerOrder failed:', err);
+    await recordFailedDelivery(env, {
+      channel: 'owner_notify', refId: o.voucherCode, recipient: 'dto@akrobacja.com', error: err,
+    });
   }
 }
 
@@ -411,6 +416,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         ).bind(invoiceId, orderId).run();
       } else if (invoiceRes.status === 'rejected') {
         console.error(`createInvoice failed for ${voucherCode}:`, invoiceRes.reason);
+        ctx.waitUntil(recordFailedDelivery(ctx.env, {
+          channel: 'wfirma_invoice', refId: orderId, recipient: customerEmail, error: invoiceRes.reason,
+        }));
       }
 
       // Persist email_sent_at immediately so a retry sees it and skips sendVoucherEmail.
@@ -422,6 +430,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         emailDelivered = guard.meta.changes > 0 || emailDelivered;
       } else if (emailRes.status === 'rejected') {
         console.error(`sendVoucherEmail failed for ${voucherCode}:`, emailRes.reason);
+        ctx.waitUntil(recordFailedDelivery(ctx.env, {
+          channel: 'voucher_email', refId: orderId, recipient: customerEmail, error: emailRes.reason,
+        }));
       }
 
       // Finalize — guard on status='processing' so we never overwrite a manual cancel.
@@ -442,7 +453,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
           customerName,
           amountGrosze: order.amount as number,
           videoAddon,
-        }).catch(err => console.error(`sendMetaPurchase failed for ${voucherCode}:`, err)),
+        }).catch(async (err) => {
+          console.error(`sendMetaPurchase failed for ${voucherCode}:`, err);
+          await recordFailedDelivery(ctx.env, {
+            channel: 'meta_capi', refId: orderId, recipient: customerEmail, error: err,
+          });
+        }),
       );
 
       return Response.json({ ok: true, invoice_id: invoiceId || null, email_delivered: emailDelivered });

@@ -102,6 +102,20 @@ CREATE TABLE IF NOT EXISTS welcome_emails_sent (
 
 CREATE INDEX IF NOT EXISTS idx_welcome_emails_subscriber ON welcome_emails_sent(subscriber_id);
 
+-- Audit table for outbound delivery failures (Resend, SMSAPI, wFirma, Meta CAPI).
+-- Append-only. Admin panel reads grouped counts to spot misconfigured providers.
+CREATE TABLE IF NOT EXISTS failed_deliveries (
+  id TEXT PRIMARY KEY,
+  channel TEXT NOT NULL,
+  ref_id TEXT,
+  recipient TEXT,
+  error_message TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_failed_deliveries_channel_created ON failed_deliveries(channel, created_at);
+CREATE INDEX IF NOT EXISTS idx_failed_deliveries_ref ON failed_deliveries(ref_id);
+
 -- Pilot portal (SMS OTP login)
 CREATE TABLE IF NOT EXISTS pilots (
   id TEXT PRIMARY KEY,

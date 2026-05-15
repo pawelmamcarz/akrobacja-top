@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wypisz się z listy SMS i email | akrobacja.com</title>
+<meta name="description" content="Wypisz się z listy SMS i email akrobacja.com. Wystarczy podać numer telefonu lub email — usuwamy z listy natychmiast.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://akrobacja.com/unsubscribe">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#1B4DB5; --navy-deep:#0A1428; --red:#C41E3A; --red-dark:#A31830; --chrome:#7A8FA6; --green:#28a745; --font-h:'Montserrat',sans-serif; --font-b:'Inter',sans-serif; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--font-b);background:linear-gradient(180deg,#0A1428 0%,#1B4DB5 100%);min-height:100vh;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px;line-height:1.6}
+  .card{max-width:520px;width:100%;background:#fff;color:#1a1a2e;padding:48px 32px;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  h1{font-family:var(--font-h);font-size:24px;font-weight:800;color:var(--navy-deep);margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em}
+  .sub{color:var(--chrome);font-size:14px;margin-bottom:24px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:12px;font-weight:600;color:var(--navy-deep);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em}
+  .field input{width:100%;padding:14px 16px;border:1px solid #e0e6ed;border-radius:4px;font-size:15px;font-family:var(--font-b)}
+  .field input:focus{outline:none;border-color:var(--navy)}
+  .or{text-align:center;color:var(--chrome);font-size:12px;margin:8px 0;letter-spacing:.1em}
+  .btn{width:100%;padding:16px;background:var(--red);color:#fff;border:none;border-radius:6px;font-family:var(--font-h);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:13px;cursor:pointer;transition:background .2s}
+  .btn:hover{background:var(--red-dark)}
+  .btn:disabled{opacity:.5;cursor:not-allowed}
+  .msg{padding:14px;border-radius:6px;font-size:13px;margin-top:16px;display:none}
+  .msg.ok{background:#d4edda;color:#155724;display:block}
+  .msg.err{background:#fbe5e5;color:#a31830;display:block}
+  .foot{margin-top:24px;font-size:12px;color:var(--chrome);text-align:center}
+  .foot a{color:var(--navy)}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Wypisz się z listy</h1>
+  <p class="sub">Podaj numer telefonu, na który dostajesz SMS, albo email. Usuniemy Cię z listy natychmiast — bez pytań i bez "ale dlaczego".</p>
+
+  <form id="unsubForm">
+    <div class="field">
+      <label for="phone">Numer telefonu</label>
+      <input type="tel" id="phone" placeholder="+48 501 234 567" autocomplete="tel">
+    </div>
+    <div class="or">— lub —</div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="jan@example.com" autocomplete="email">
+    </div>
+    <button type="submit" class="btn" id="submitBtn">Wypisz mnie</button>
+    <div class="msg" id="msg"></div>
+  </form>
+
+  <p class="foot">Pytania? <a href="mailto:dto@akrobacja.com">dto@akrobacja.com</a> · <a href="/">Wróć na stronę</a></p>
+</div>
+
+<script>
+  const form = document.getElementById('unsubForm');
+  const btn = document.getElementById('submitBtn');
+  const msg = document.getElementById('msg');
+
+  // Pre-fill from URL if linked from email/SMS (?email=… or ?phone=…)
+  const params = new URLSearchParams(location.search);
+  if (params.get('email')) document.getElementById('email').value = params.get('email');
+  if (params.get('phone')) document.getElementById('phone').value = params.get('phone');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const phone = document.getElementById('phone').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if (!phone && !email) {
+      msg.className = 'msg err';
+      msg.textContent = 'Podaj telefon lub email.';
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = 'Wypisuję…';
+    msg.className = 'msg';
+    msg.textContent = '';
+    try {
+      const res = await fetch('/api/unsubscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone: phone || undefined, email: email || undefined }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Błąd');
+      msg.className = 'msg ok';
+      msg.textContent = data.message || 'Gotowe — nie będziemy więcej do Ciebie pisać.';
+      form.querySelector('input[id="phone"]').value = '';
+      form.querySelector('input[id="email"]').value = '';
+    } catch (err) {
+      msg.className = 'msg err';
+      msg.textContent = err.message;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Wypisz mnie';
+    }
+  });
+</script>
+</body>
+</html>

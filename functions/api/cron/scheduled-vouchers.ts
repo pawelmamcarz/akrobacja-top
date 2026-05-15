@@ -14,6 +14,7 @@
 
 import { type Env, type PackageId, PACKAGES } from '../../../src/lib/types';
 import { sendVoucherEmail } from '../../../src/lib/email';
+import { recordFailedDelivery } from '../../../src/lib/audit';
 
 interface ScheduledRow {
   id: string;
@@ -99,6 +100,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         const msg = err instanceof Error ? err.message : 'unknown';
         results.push({ order: row.id, voucher: row.voucher_code, status: `error: ${msg}` });
         console.error(`scheduled-voucher send failed for ${row.voucher_code}:`, err);
+        await recordFailedDelivery(ctx.env, {
+          channel: 'scheduled_voucher_email', refId: row.id, recipient: row.customer_email, error: err,
+        });
       }
     }
 

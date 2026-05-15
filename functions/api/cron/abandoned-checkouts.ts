@@ -6,6 +6,7 @@
 // na dokończenie sam (ktoś mógł pójść po kartę). Max 48h bo dalej to zimny lead.
 
 import { type Env, PACKAGES, type PackageId } from '../../../src/lib/types';
+import { recordFailedDelivery } from '../../../src/lib/audit';
 import { escapeHtml } from '../../../src/lib/email';
 
 const FROM_EMAIL = 'akrobacja.com <dto@akrobacja.com>';
@@ -195,6 +196,9 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
           order: row.id,
           email: row.customer_email,
           status: `${e.permanent ? 'permanent_fail' : 'error'}: ${e.message || 'unknown'}`,
+        });
+        await recordFailedDelivery(ctx.env, {
+          channel: 'abandoned_email', refId: row.id, recipient: row.customer_email, error: err,
         });
       }
     }

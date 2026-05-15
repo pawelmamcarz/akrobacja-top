@@ -1,4 +1,5 @@
 import { type Env } from '../../../src/lib/types';
+import { recordFailedDelivery } from '../../../src/lib/audit';
 
 // Welcome email sequence configuration
 const WELCOME_STEPS = [
@@ -277,6 +278,9 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
             email: subscriber.email,
             step,
             status: `error: ${err instanceof Error ? err.message : 'unknown'}`,
+          });
+          await recordFailedDelivery(ctx.env, {
+            channel: 'welcome_email', refId: subscriber.id, recipient: subscriber.email, error: err,
           });
         }
       }
