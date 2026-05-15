@@ -587,7 +587,17 @@ const PKGS = {
   masterclass:  { name: 'Masterclass',  sub: 'Voucher PDF, 2 loty, analiza z Mistrzem', price: 4999 },
 };
 
-const DISCOUNTS = { WRACAM5: { pct: 5 }, PIERWSZY100: { fixed: 100 }, IG10: { pct: 10 }, FB10: { pct: 10 }, MAJOWKA: { pct: 10 } };
+// DISCOUNTS mirror the backend registry. `fixed` is in PLN here (backend uses grosze).
+// applicablePackages limits the code to specific package IDs; validFrom/validUntil clip
+// the active window (inclusive YYYY-MM-DD, UTC).
+const DISCOUNTS = {
+  WRACAM5:    { pct: 5 },
+  PIERWSZY100:{ fixed: 100 },
+  IG10:       { pct: 10 },
+  FB10:       { pct: 10 },
+  MAJOWKA:    { pct: 10 },
+  ATAM2205:   { fixed: 444, applicablePackages: ['pierwszy_lot'], validFrom: '2026-05-15', validUntil: '2026-05-23' },
+};
 
 const modal = document.getElementById('checkoutModal');
 const modalTitle = document.getElementById('modalTitle');
@@ -636,6 +646,12 @@ function getDiscount() {
   const code = (discountInput.value || '').trim().toUpperCase();
   const d = DISCOUNTS[code];
   if (!d) return null;
+  // Date-range gate
+  const today = new Date().toISOString().split('T')[0];
+  if (d.validFrom && today < d.validFrom) return null;
+  if (d.validUntil && today > d.validUntil) return null;
+  // Package whitelist
+  if (d.applicablePackages && !d.applicablePackages.includes(pkgInput.value)) return null;
   return { code, pct: d.pct, fixed: d.fixed };
 }
 

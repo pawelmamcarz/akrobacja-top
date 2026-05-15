@@ -25,15 +25,37 @@ const CANCEL_URLS: Record<string, string> = {
 };
 
 // Valid discount codes, simple registry to avoid D1 lookup on every checkout.
+//   pct                 — percentage off
+//   fixed               — fixed amount off (grosze, 100 = 1 PLN)
+//   applicablePackages  — optional whitelist; if set, the code is rejected for any other pkg
+//   validFrom           — inclusive YYYY-MM-DD (UTC date) the code becomes active
+//   validUntil          — inclusive YYYY-MM-DD the code stops being accepted
 // WRACAM5 = -5% recovery (abandoned cart). PIERWSZY100 = -100 PLN (welcome / first-time).
-// IG10 = -10% instagram social (10 first redemptions per campaign).
-const DISCOUNTS: Record<string, { pct?: number; fixed?: number }> = {
+// IG10 / FB10 / MAJOWKA = -10% social campaigns.
+// ATAM2205 = Pierwszy Lot 1999 → 1555 PLN (event partnership), ważny 15-23 maja 2026.
+interface DiscountSpec {
+  pct?: number;
+  fixed?: number;
+  applicablePackages?: PackageId[];
+  validFrom?: string;
+  validUntil?: string;
+}
+const DISCOUNTS: Record<string, DiscountSpec> = {
   WRACAM5: { pct: 5 },
-  PIERWSZY100: { fixed: 10000 }, // 100 PLN in grosze
+  PIERWSZY100: { fixed: 10000 },
   IG10: { pct: 10 },
   FB10: { pct: 10 },
   MAJOWKA: { pct: 10 },
+  ATAM2205: { fixed: 44400, applicablePackages: ['pierwszy_lot'], validFrom: '2026-05-15', validUntil: '2026-05-23' },
 };
+
+function isDiscountActive(d: DiscountSpec | undefined, packageId: PackageId, today: string): boolean {
+  if (!d) return false;
+  if (d.validFrom && today < d.validFrom) return false;
+  if (d.validUntil && today > d.validUntil) return false;
+  if (d.applicablePackages && !d.applicablePackages.includes(packageId)) return false;
+  return true;
+}
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   try {
@@ -73,12 +95,14 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const voucherCode = generateVoucherCode();
     const baseAmount = pkg.price + (body.videoAddon ? VIDEO_ADDON_PRICE : 0);
 
-    // Apply discount if valid
+    // Apply discount if valid (also enforces validFrom / validUntil + applicablePackages).
     const normalizedCode = body.discountCode?.trim().toUpperCase() || '';
-    const discount = normalizedCode ? DISCOUNTS[normalizedCode] : null;
+    const today = new Date().toISOString().split('T')[0];
+    const candidate = normalizedCode ? DISCOUNTS[normalizedCode] : undefined;
+    const discount = isDiscountActive(candidate, body.packageId, today) ? candidate : undefined;
     let totalAmount: number;
     if (discount?.fixed) {
-      totalAmount = Math.max(100, baseAmount - discount.fixed); // min 1 PLN
+      totalAmount = Math.max(200, baseAmount - discount.fixed); // Stripe min 2 PLN
     } else if (discount?.pct) {
       totalAmount = Math.round(baseAmount * (100 - discount.pct) / 100);
     } else {
