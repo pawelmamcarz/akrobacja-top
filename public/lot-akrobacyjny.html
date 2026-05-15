@@ -1845,6 +1845,22 @@ const submitBtn = document.getElementById('checkoutSubmit');
 const errorEl = document.getElementById('checkoutError');
 const dotacjaBanner = document.getElementById('dotacjaBanner');
 
+// If a pilot is signed in via /konto, pre-fill name + email from their profile.
+async function tryPrefillFromPilot() {
+  const token = localStorage.getItem('pilot_token');
+  if (!token) return;
+  const nameEl = document.getElementById('checkoutName');
+  const emailEl = document.getElementById('checkoutEmail');
+  if (!nameEl || !emailEl || (nameEl.value && emailEl.value)) return;
+  try {
+    const res = await fetch('/api/auth/profile', { headers: { 'Authorization': 'Bearer ' + token } });
+    if (!res.ok) return;
+    const { pilot } = await res.json();
+    if (pilot?.name && !nameEl.value) nameEl.value = pilot.name;
+    if (pilot?.email && !emailEl.value) emailEl.value = pilot.email;
+  } catch { /* offline, ignore */ }
+}
+
 function openModal(packageId) {
   const pkg = PKGS[packageId];
   if (!pkg) return;
@@ -1857,6 +1873,7 @@ function openModal(packageId) {
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
   modal.querySelector('input:not([type=hidden])').focus();
+  tryPrefillFromPilot();
 }
 
 function updatePrice(base) {

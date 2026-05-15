@@ -89,7 +89,18 @@ async function sendEmail(env: Env, to: string, subject: string, html: string): P
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${env.RESEND_API_KEY}`,
     },
-    body: JSON.stringify({ from: FROM_EMAIL, to: [to], subject, html }),
+    body: JSON.stringify({
+      from: FROM_EMAIL,
+      to: [to],
+      reply_to: 'dto@akrobacja.com',
+      subject,
+      html,
+      headers: {
+        'List-Unsubscribe': '<mailto:dto@akrobacja.com?subject=unsubscribe>, <https://akrobacja.com/unsubscribe>',
+        'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+      },
+    }),
+    signal: AbortSignal.timeout(10000),
   });
   if (!res.ok) {
     const text = await res.text();

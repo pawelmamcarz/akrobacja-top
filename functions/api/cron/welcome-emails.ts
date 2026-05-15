@@ -171,9 +171,15 @@ async function sendEmail(env: Env, to: string, subject: string, html: string): P
     body: JSON.stringify({
       from: FROM_EMAIL,
       to: [to],
+      reply_to: 'dto@akrobacja.com',
       subject,
       html,
+      headers: {
+        'List-Unsubscribe': '<mailto:dto@akrobacja.com?subject=unsubscribe>, <https://akrobacja.com/unsubscribe>',
+        'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+      },
     }),
+    signal: AbortSignal.timeout(10000),
   });
 
   if (!res.ok) {

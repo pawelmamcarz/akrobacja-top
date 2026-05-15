@@ -601,6 +601,22 @@ const form = document.getElementById('checkoutForm');
 const submitBtn = document.getElementById('checkoutSubmit');
 const errorEl = document.getElementById('checkoutError');
 
+// If a pilot is signed in via /konto, pre-fill buyer name + email from their profile.
+async function tryPrefillFromPilot() {
+  const token = localStorage.getItem('pilot_token');
+  if (!token) return;
+  const nameEl = document.getElementById('checkoutName');
+  const emailEl = document.getElementById('checkoutEmail');
+  if (!nameEl || !emailEl || (nameEl.value && emailEl.value)) return;
+  try {
+    const res = await fetch('/api/auth/profile', { headers: { 'Authorization': 'Bearer ' + token } });
+    if (!res.ok) return;
+    const { pilot } = await res.json();
+    if (pilot?.name && !nameEl.value) nameEl.value = pilot.name;
+    if (pilot?.email && !emailEl.value) emailEl.value = pilot.email;
+  } catch { /* offline, ignore */ }
+}
+
 function openModal(packageId) {
   const pkg = PKGS[packageId];
   if (!pkg) return;
@@ -612,6 +628,7 @@ function openModal(packageId) {
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
   setTimeout(() => modal.querySelector('input:not([type=hidden])').focus(), 50);
+  tryPrefillFromPilot();
   if (typeof gtag === 'function') gtag('event', 'begin_checkout', { value: pkg.price, currency: 'PLN', items: [{ item_id: packageId, item_name: pkg.name, price: pkg.price }] });
 }
 

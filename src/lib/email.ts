@@ -37,6 +37,14 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
       reply_to: 'dto@akrobacja.com',
       subject: `Twój voucher ${pkg.name} — ${params.voucherCode}`,
       html: buildHtml(params),
+      // List-Unsubscribe header — required by Gmail/Yahoo bulk-sender rules and PL
+      // Prawo Telekomunikacyjne art. 172 (opt-out from marketing comms). Voucher
+      // delivery is transactional so unsubscribe is largely cosmetic here, but Gmail
+      // looks at consistency across the sender domain, so it gets the header too.
+      headers: {
+        'List-Unsubscribe': '<mailto:dto@akrobacja.com?subject=unsubscribe>, <https://akrobacja.com/unsubscribe>',
+        'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+      },
       attachments: [
         {
           filename: `voucher-${params.voucherCode}.pdf`,

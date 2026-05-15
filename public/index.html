@@ -2877,6 +2877,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   const dotacjaBanner = document.getElementById('dotacjaBanner');
 
+  // If a pilot is signed in via /konto, pre-fill name + email from their profile.
+  // Repeat-buy friction killer.
+  async function tryPrefillFromPilot() {
+    const token = localStorage.getItem('pilot_token');
+    if (!token) return;
+    const nameEl = document.getElementById('checkoutName');
+    const emailEl = document.getElementById('checkoutEmail');
+    if (!nameEl || !emailEl || (nameEl.value && emailEl.value)) return;
+    try {
+      const res = await fetch('/api/auth/profile', { headers: { 'Authorization': 'Bearer ' + token } });
+      if (!res.ok) return;
+      const { pilot } = await res.json();
+      if (pilot?.name && !nameEl.value) nameEl.value = pilot.name;
+      if (pilot?.email && !emailEl.value) emailEl.value = pilot.email;
+    } catch { /* offline, ignore */ }
+  }
+
   function openModal(packageId) {
     const pkg = PKGS[packageId];
     if (!pkg) return;
@@ -2887,6 +2904,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     updatePrice(pkg.price);
     dotacjaBanner.style.display = packageId === 'masterclass' ? 'block' : 'none';
     modal.classList.add('active');
+    tryPrefillFromPilot();
     document.body.style.overflow = 'hidden';
     modal.querySelector('input:not([type=hidden])').focus();
   }
