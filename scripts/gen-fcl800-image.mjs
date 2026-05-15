@@ -1,6 +1,6 @@
 /**
- * Generates product image for FCL.900 Aerobatics training (1200×1200 PNG).
- * Output: public/ads/product-fcl900-akrobacja.png
+ * Generates product image for FCL.800 Aerobatics training (1200×1200 PNG).
+ * Output: public/ads/product-fcl800-akrobacja.png
  */
 import { createCanvas, loadImage } from '@napi-rs/canvas';
 import { writeFileSync, existsSync } from 'fs';
@@ -121,7 +121,7 @@ ctx.font      = 'bold 50px sans-serif';
 ctx.fillText('SZKOLENIE', PX, PY);
 PY += 60;
 ctx.font = 'bold 50px sans-serif';
-ctx.fillText('FCL.900', PX, PY);
+ctx.fillText('FCL.800', PX, PY);
 PY += 14;
 
 // Subtitle
@@ -137,11 +137,12 @@ ctx.fill();
 ctx.fillStyle = C.navyDeep;
 ctx.font      = 'bold 17px sans-serif';
 ctx.textAlign = 'center';
-ctx.fillText('CERTYFIKAT EASA  ·  UPRAWNIENIE DO AKROBACJI ZAROBKOWEJ', PX + (CW - 88) / 2, PY + 31);
+ctx.fillText('CERTYFIKAT EASA  ·  UPRAWNIENIE AKROBACJI SAMOLOTOWEJ', PX + (CW - 88) / 2, PY + 31);
 ctx.textAlign = 'left';
 PY += 68;
 
-// Price block: netto + brutto
+// Price block. Szkolenia lotnicze są zwolnione z VAT (art. 43 ust. 1 pkt 29 lit. a
+// ustawy o VAT) — pokazujemy więc jedną cenę i CTA o dofinansowaniu.
 ctx.fillStyle = C.navyDeep;
 ctx.font      = 'bold 44px sans-serif';
 ctx.fillText('PLN', PX, PY + 60);
@@ -149,20 +150,20 @@ ctx.font = 'bold 106px sans-serif';
 ctx.fillText('20 900', PX + 96, PY + 72);
 ctx.fillStyle = C.chrome;
 ctx.font      = '400 18px sans-serif';
-ctx.fillText('netto', PX + 96, PY + 98);
-// Brutto note
+ctx.fillText('zwolnione z VAT', PX + 96, PY + 98);
+// Funding upsell
 ctx.font      = '400 17px sans-serif';
-ctx.fillText('25 707 PLN brutto (23% VAT)', PX, PY + 118);
+ctx.fillText('Dofinansowanie BUR / KFS / PUP — do 90%', PX, PY + 118);
 PY += 138;
 
 // Bullets
 const bullets = [
-  'Min. 15 h lotu na samolocie akrobacyjnym',
+  'Min. 5 h lotu na samolocie akrobacyjnym (FCL.800)',
   'Teoria: przepisy, ograniczenia, bezpieczeństwo',
   'Samolot Extra 300L SP-EKS',
   'Egzamin praktyczny EASA',
-  'Instruktor z uprawnieniami FI(A)',
-  'Możliwość finansowania / dofinansowania UE',
+  'Instruktor FI(A) — Mistrz Świata Akrobacji',
+  'Dofinansowanie BUR / KFS / PUP',
 ];
 for (const b of bullets) {
   ctx.fillStyle = C.red;
@@ -190,7 +191,7 @@ PY += 78;
 ctx.fillStyle = C.chrome;
 ctx.font      = '400 14px sans-serif';
 ctx.fillText('Lotnisko Radom-Piastów EPRP  ·  Certyfikat EASA  ·  akrobacja.com', PX, PY);
-ctx.fillText('Cena netto 20 900 PLN + 23% VAT = 25 707 PLN brutto', PX, PY + 20);
+ctx.fillText('20 900 PLN — usługa szkoleniowa zwolniona z VAT', PX, PY + 20);
 
 // ── Bottom stats bar ─────────────────────────────────────────────
 const barY = SIZE - 74;
@@ -199,7 +200,7 @@ ctx.fillRect(0, barY, SIZE, 74);
 
 const stats = [
   ['4000h+', 'NALOT ŁĄCZNY'],
-  ['FCL.900', 'UPRAWNIENIE EASA'],
+  ['FCL.800', 'UPRAWNIENIE EASA'],
   ['3000h+', 'AKROBACJA EXTRA'],
 ];
 const colW = SIZE / 3;
@@ -227,7 +228,7 @@ ctx.lineWidth   = 1;
 ctx.globalAlpha = 1;
 
 // ── Save ─────────────────────────────────────────────────────────
-const outPath = join(ADS, 'product-fcl900-akrobacja.png');
+const outPath = join(ADS, 'product-fcl800-akrobacja.png');
 const buf     = canvas.toBuffer('image/png');
 writeFileSync(outPath, buf);
-console.log(`✓ product-fcl900-akrobacja.png  (${(buf.length / 1024).toFixed(0)} KB)`);
+console.log(`✓ product-fcl800-akrobacja.png  (${(buf.length / 1024).toFixed(0)} KB)`);
