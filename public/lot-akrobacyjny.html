@@ -43,6 +43,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/speks-flight.webp" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <!-- Schema.org: Product -->
@@ -1800,7 +1802,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="modal-field">
         <label for="checkoutNip">NIP (opcjonalnie, dla faktury VAT)</label>
-        <input type="text" id="checkoutNip" placeholder="1234567890" pattern="[0-9]{10}" title="10 cyfr NIP">
+        <input type="text" id="checkoutNip" placeholder="1234567890" pattern="[0-9]{10}" title="10 cyfr NIP" inputmode="numeric">
+      </div>
+      <div class="modal-field">
+        <label for="checkoutDiscount">Kod rabatowy (opcjonalnie)</label>
+        <input type="text" id="checkoutDiscount" placeholder="PIERWSZY100" style="text-transform:uppercase" autocomplete="off">
       </div>
       <label class="modal-checkbox" id="videoAddonCheck">
         <input type="checkbox" id="checkoutVideo">
@@ -1897,6 +1903,8 @@ form.addEventListener('submit', async (e) => {
         customerName: document.getElementById('checkoutName').value.trim(),
         customerEmail: document.getElementById('checkoutEmail').value.trim(),
         customerNip: document.getElementById('checkoutNip').value.trim() || undefined,
+        discountCode: (document.getElementById('checkoutDiscount')?.value || '').trim().toUpperCase() || undefined,
+        source: 'lot-akrobacyjny',
       }),
     });
     const data = await res.json();

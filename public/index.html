@@ -1534,8 +1534,8 @@ footer {
   "areaServed": {"@type": "Country", "name": "Polska"},
   "url": "https://akrobacja.com/pokazy-lotnicze",
   "offers": [
-    {"@type": "Offer", "name": "Solo Display", "price": "11900", "priceCurrency": "PLN", "url": "https://akrobacja.com/pokazy-lotnicze"},
-    {"@type": "Offer", "name": "Event Package", "price": "16900", "priceCurrency": "PLN", "url": "https://akrobacja.com/pokazy-lotnicze"},
+    {"@type": "Offer", "name": "Solo Display", "price": "14990", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://akrobacja.com/pokazy-lotnicze"},
+    {"@type": "Offer", "name": "Event Package", "price": "24990", "priceCurrency": "PLN", "availability": "https://schema.org/InStock", "url": "https://akrobacja.com/pokazy-lotnicze"},
     {"@type": "Offer", "name": "Premium Partnership", "url": "https://akrobacja.com/pokazy-lotnicze"}
   ]
 }
@@ -1751,7 +1751,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <div class="r-hero__inner">
-    <div class="r-hero__eyebrow reveal">20 MIN · 12 MIN AKROBACJI · ±8G</div>
+    <div class="r-hero__eyebrow reveal">20 MIN · 12 MIN AKROBACJI · DO +6G</div>
     <h1 class="hero-headline r-hero__h1 reveal reveal-d1">
       LOT, KTÓREGO<br>NIE ZAPOMNISZ.<br><span class="accent">NAPRAWDĘ.</span>
     </h1>
@@ -2493,13 +2493,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div style="background:var(--white);padding:80px 64px;text-align:center" class="reveal">
   <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pasażerów</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--black);text-transform:uppercase;margin-bottom:32px">Briefing przed lotem akrobacyjnym</h2>
-  <img src="/przewodnik-briefing.png" alt="Briefing przed lotem akrobacyjnym Extra 300L - przygotowanie, bezpieczeństwo, fizjologia, parametry maszyny" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
+  <img src="/przewodnik-briefing.webp" alt="Briefing przed lotem akrobacyjnym Extra 300L - przygotowanie, bezpieczeństwo, fizjologia, parametry maszyny" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
 </div>
 
 <div style="background:var(--black);padding:80px 64px;text-align:center" class="reveal">
   <p style="font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--chrome);margin-bottom:10px">Przewodnik · Dla pilotów</p>
   <h2 style="font-family:var(--font-h);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--white);text-transform:uppercase;margin-bottom:32px">Kurs akrobacji FCL.800</h2>
-  <img src="/przewodnik-fcl800.png" alt="Przewodnik po kursie akrobacji FCL.800 - wymagania, manewry, parametry Extra 300L" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
+  <img src="/przewodnik-fcl800.webp" alt="Przewodnik po kursie akrobacji FCL.800 - wymagania, manewry, parametry Extra 300L" loading="lazy" width="1100" height="778" style="max-width:1100px;width:100%;height:auto;margin:0 auto;display:block">
   <a href="/blog/kurs-akrobacji-fcl800" class="link-ghost-hover" style="display:inline-block;margin-top:32px;font-family:var(--font-h);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--white);border:1px solid rgba(255,255,255,.22);padding:14px 30px;text-decoration:none;transition:border-color .2s">Dowiedz się więcej o szkoleniu →</a>
 </div>
 
@@ -2733,7 +2733,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="modal-field">
         <label for="checkoutNip">NIP (opcjonalnie, dla faktury VAT)</label>
-        <input type="text" id="checkoutNip" placeholder="1234567890" pattern="[0-9]{10}" title="10 cyfr NIP">
+        <input type="text" id="checkoutNip" placeholder="1234567890" pattern="[0-9]{10}" title="10 cyfr NIP" inputmode="numeric">
+      </div>
+      <div class="modal-field">
+        <label for="checkoutDiscount">Kod rabatowy (opcjonalnie)</label>
+        <input type="text" id="checkoutDiscount" placeholder="PIERWSZY100" style="text-transform:uppercase" autocomplete="off">
       </div>
       <label class="modal-checkbox" id="videoAddonCheck">
         <input type="checkbox" id="checkoutVideo">
@@ -2936,6 +2940,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           customerName: document.getElementById('checkoutName').value.trim(),
           customerEmail: document.getElementById('checkoutEmail').value.trim(),
           customerNip: document.getElementById('checkoutNip').value.trim() || undefined,
+          discountCode: (document.getElementById('checkoutDiscount')?.value || '').trim().toUpperCase() || undefined,
+          source: 'index',
         }),
       });
 

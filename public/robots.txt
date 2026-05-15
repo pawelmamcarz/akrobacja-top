@@ -4,11 +4,8 @@ Disallow: /api/
 Disallow: /admin
 Disallow: /sukces
 Disallow: /konto
-Disallow: /seo-implementation
+Disallow: /test-konwersji
 
 Sitemap: https://akrobacja.com/sitemap.xml
 
-# LLM / AI context files
-# https://llmstxt.org/
-LLMs.txt: https://akrobacja.com/llms.txt
-LLMs-full.txt: https://akrobacja.com/llms-full.txt
+# LLM / AI context files (https://llmstxt.org/) — discovered at /llms.txt by convention.

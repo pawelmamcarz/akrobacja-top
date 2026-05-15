@@ -45,13 +45,17 @@ body.has-akro-sticky{padding-bottom:84px}';
 
     var wrap = document.createElement('div');
     wrap.id = 'akro-sticky-cta';
-    wrap.innerHTML = '<a href="/kalendarz" data-akro-cta="sticky">' +
-      '✈️ Zarezerwuj lot <span class="akro-sub">— od 1 999 zł</span></a>';
+    // Cold mobile traffic landing here probably hasn't bought a voucher yet — /kalendarz
+    // demands a voucher code or pilot login and bounces first-time visitors. Send them
+    // to the voucher shop instead. Logged-in pilots already reach /kalendarz via their
+    // dashboard.
+    wrap.innerHTML = '<a href="/lot-akrobacyjny#sklep" data-akro-cta="sticky">' +
+      '✈️ Kup voucher <span class="akro-sub">— od 1 999 zł</span></a>';
     document.body.appendChild(wrap);
     document.body.classList.add('has-akro-sticky');
 
     wrap.querySelector('a').addEventListener('click', function () {
-      dl('cta_click', { cta_location: 'sticky_mobile', cta_label: 'Zarezerwuj lot' });
+      dl('cta_click', { cta_location: 'sticky_mobile', cta_label: 'Kup voucher' });
     });
   }
 
