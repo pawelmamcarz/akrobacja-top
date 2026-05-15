@@ -11,49 +11,128 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zakup udany! | akrobacja.com</title>
+<title>Voucher gotowy — co dalej? | akrobacja.com</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #1B4DB5; --navy-mid: #2258C3; --navy-deep: #0A1428;
     --red: #C41E3A; --red-dark: #A31830;
     --white: #FFFFFF; --black: #0A1428; --chrome: #7A8FA6;
+    --green: #28a745;
     --font-h: 'Montserrat', sans-serif; --font-b: 'Inter', sans-serif;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: var(--font-b); background: var(--navy);
-    min-height: 100vh; display: flex; align-items: center; justify-content: center;
-    padding: 24px;
+  body { font-family: var(--font-b); background: linear-gradient(180deg, #0A1428 0%, #1B4DB5 100%); min-height: 100vh; color: #1a1a2e; padding: 24px 16px 120px; }
+  .container { max-width: 820px; margin: 0 auto; }
+
+  .hero {
+    background: #fff; padding: 48px 40px; text-align: center;
+    border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    margin-bottom: 24px;
   }
-  .card {
-    background: #fff; max-width: 560px; width: 100%; text-align: center;
-    padding: 64px 48px;
-  }
-  .check {
-    width: 72px; height: 72px; background: #e8f5e9; border-radius: 50%;
+  .check { width: 72px; height: 72px; background: #e8f5e9; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 32px; font-size: 36px;
-  }
-  h1 { font-family: var(--font-h); font-size: 28px; color: var(--navy); margin-bottom: 12px; }
-  .sub { color: #7A8FA6; font-size: 15px; line-height: 1.6; margin-bottom: 32px; }
+    margin: 0 auto 24px; font-size: 36px; color: var(--green); }
+  .hero h1 { font-family: var(--font-h); font-size: clamp(24px, 4vw, 32px); color: var(--navy-deep); margin-bottom: 12px; font-weight: 800; }
+  .hero .sub { color: var(--chrome); font-size: 15px; line-height: 1.6; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
   .code-box {
-    background: var(--white); padding: 20px; margin-bottom: 32px;
+    background: linear-gradient(135deg, #f0f4fa 0%, #e3ecf6 100%);
+    padding: 24px; margin-bottom: 24px; border-radius: 6px;
+    border: 1px dashed var(--chrome);
   }
-  .code-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: #7A8FA6; margin-bottom: 6px; }
-  .code { font-family: var(--font-h); font-size: 28px; font-weight: 800; color: var(--navy); letter-spacing: 0.05em; }
-  .info { color: #7A8FA6; font-size: 13px; line-height: 1.7; margin-bottom: 32px; }
-  .btn {
-    display: inline-block; background: var(--red); color: #fff; text-decoration: none;
-    padding: 16px 32px; font-family: var(--font-h); font-weight: 700; font-size: 13px;
-    text-transform: uppercase; letter-spacing: 0.1em;
+  .code-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--chrome); margin-bottom: 8px; font-family: var(--font-h); font-weight: 700; }
+  .code { font-family: var(--font-h); font-size: clamp(22px, 4vw, 30px); font-weight: 900; color: var(--navy-deep); letter-spacing: 0.05em; margin-bottom: 8px; }
+  .code-copy { font-size: 12px; color: var(--navy); cursor: pointer; background: none; border: none; padding: 4px 8px; font-family: var(--font-b); font-weight: 500; }
+  .code-copy:hover { color: var(--red); }
+
+  .btn-primary {
+    display: inline-block; background: var(--red); color: #fff !important; text-decoration: none;
+    padding: 16px 32px; font-family: var(--font-h); font-weight: 800; font-size: 13px;
+    text-transform: uppercase; letter-spacing: 0.12em; border-radius: 6px;
+    transition: background .2s;
   }
-  .btn:hover { background: #A31830; }
+  .btn-primary:hover { background: var(--red-dark); }
   .btn-outline {
-    display: inline-block; border: 2px solid var(--navy); color: var(--navy); text-decoration: none;
-    padding: 14px 28px; font-family: var(--font-h); font-weight: 700; font-size: 12px;
-    text-transform: uppercase; letter-spacing: 0.1em; margin-top: 12px;
+    display: inline-block; border: 2px solid var(--navy); color: var(--navy) !important; text-decoration: none;
+    padding: 12px 24px; font-family: var(--font-h); font-weight: 700; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.1em; border-radius: 6px;
+  }
+  .btn-outline:hover { background: var(--navy); color: #fff !important; }
+
+  .section {
+    background: #fff; padding: 32px 32px;
+    border-radius: 8px; margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  }
+  .section h2 { font-family: var(--font-h); font-size: 18px; color: var(--navy-deep); margin-bottom: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* Timeline */
+  .timeline { list-style: none; }
+  .timeline li {
+    display: flex; gap: 16px; padding: 16px 0;
+    border-bottom: 1px solid #e8edf2;
+    align-items: flex-start;
+  }
+  .timeline li:last-child { border-bottom: none; }
+  .timeline .step-n {
+    flex-shrink: 0; width: 32px; height: 32px; background: var(--navy);
+    color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-h); font-weight: 800; font-size: 14px;
+  }
+  .timeline .step-n.done { background: var(--green); }
+  .timeline .step-text { flex: 1; font-size: 14px; line-height: 1.5; color: #2a3a4a; padding-top: 4px; }
+  .timeline .step-text strong { color: var(--navy-deep); font-weight: 700; }
+  .timeline .step-text small { display: block; color: var(--chrome); font-size: 12px; margin-top: 2px; }
+
+  /* Cross-sell grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .card-x {
+    background: linear-gradient(135deg, #f5f7fa 0%, #fff 100%);
+    border: 1px solid #e0e6ed; padding: 24px 20px; border-radius: 6px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .card-x .icon { font-size: 28px; margin-bottom: 8px; }
+  .card-x h3 { font-family: var(--font-h); font-size: 14px; color: var(--navy-deep); margin-bottom: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
+  .card-x p { font-size: 13px; color: var(--chrome); line-height: 1.5; margin-bottom: 16px; }
+  .card-x .price-tag { font-family: var(--font-h); font-size: 12px; color: var(--red); font-weight: 800; margin-bottom: 8px; }
+  .card-x a { font-family: var(--font-h); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--navy); text-decoration: none; }
+  .card-x a:hover { color: var(--red); }
+
+  /* Share strip */
+  .share { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .share a {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 16px; border: 1px solid #e0e6ed; border-radius: 24px;
+    text-decoration: none; color: var(--navy-deep); font-size: 13px; font-weight: 600;
+    transition: all .2s;
+  }
+  .share a:hover { border-color: var(--navy); background: #f0f4fa; }
+  .share .ico { font-size: 16px; }
+
+  /* Review CTA */
+  .review-box { background: linear-gradient(135deg, #fff5e6 0%, #ffe8b8 100%); border-left: 4px solid #f59e0b; padding: 20px 24px; border-radius: 6px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .review-box .stars { font-size: 24px; }
+  .review-box .review-text { flex: 1; min-width: 220px; }
+  .review-box .review-text strong { display: block; color: var(--navy-deep); font-size: 14px; margin-bottom: 4px; }
+  .review-box .review-text span { color: var(--chrome); font-size: 13px; }
+
+  /* Footer */
+  .site-footer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(10,20,40,.97); backdrop-filter: blur(16px);
+    padding: 14px 24px; text-align: center; font-family: var(--font-b);
+  }
+  .site-footer .links { font-size: 11px; color: rgba(255,255,255,.45); margin-bottom: 4px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+  .site-footer a { color: rgba(255,255,255,.45); text-decoration: none; }
+  .site-footer a:hover { color: rgba(255,255,255,.85); }
+  .site-footer .credit { font-size: 10px; color: rgba(255,255,255,.25); }
+
+  @media (max-width: 560px) {
+    body { padding: 16px 8px 140px; }
+    .hero, .section { padding: 32px 20px; }
+    .grid { grid-template-columns: 1fr; }
   }
 </style>
 <link rel="stylesheet" href="/assets/brand.css">
@@ -64,47 +143,206 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-  <div class="card">
+<div class="container">
+
+  <!-- Hero confirmation -->
+  <div class="hero">
     <div class="check">&#10003;</div>
     <h1>Voucher gotowy!</h1>
-    <p class="sub">Wysłaliśmy voucher na Twój email. Sprawdź skrzynkę (i folder spam).</p>
+    <p class="sub" id="heroSub">Wysłaliśmy voucher PDF na Twój email. Sprawdź skrzynkę (i folder spam), zwykle dociera do 2 minut.</p>
 
-    <div class="code-box">
+    <div class="code-box" id="codeBox">
       <div class="code-label">Twój kod vouchera</div>
       <div class="code" id="voucherCode">---</div>
+      <button class="code-copy" id="copyBtn" type="button">Skopiuj kod</button>
     </div>
 
-    <p class="info">
-      Umów lot: <strong>+48 535 535 221</strong> lub <strong>dto@akrobacja.com</strong>, podaj kod vouchera.<br>
-      Ważność: 12 miesięcy od zakupu.
+    <p style="margin-bottom: 24px;">
+      <a class="btn-primary" id="bookBtn" href="/kalendarz">Zarezerwuj termin lotu →</a>
     </p>
-
-    <a class="btn" id="downloadBtn" href="#">Pobierz Voucher PDF</a><br>
-    <a class="btn-outline" href="/">Wróć na stronę</a>
+    <p>
+      <a class="btn-outline" id="downloadBtn" href="#">Pobierz Voucher PDF</a>
+    </p>
   </div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');
-    if (code && /^AKR-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(code)) {
-      document.getElementById('voucherCode').textContent = code;
-      document.getElementById('downloadBtn').href = `/api/voucher/${code}`;
-    } else {
-      document.getElementById('voucherCode').textContent = '-';
-      document.getElementById('downloadBtn').style.display = 'none';
-      document.querySelector('.sub').textContent = 'Dziękujemy za zakup! Sprawdź skrzynkę email, voucher PDF jest w załączniku.';
-    }
-  </script>
-
-<div style="position:fixed;bottom:0;left:0;right:0;background:rgba(10,20,40,.97);backdrop-filter:blur(16px);padding:16px 32px;text-align:center;font-family:var(--font-b)">
-  <div style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:6px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap">
-    <a href="/" style="color:rgba(255,255,255,.45);text-decoration:none">Strona główna</a>
-    <a href="/kalendarz" style="color:rgba(255,255,255,.45);text-decoration:none">Kalendarz</a>
-    <a href="https://wa.me/48535535221" style="color:rgba(255,255,255,.45);text-decoration:none">+48 535 535 221</a>
-    <a href="mailto:dto@akrobacja.com" style="color:rgba(255,255,255,.45);text-decoration:none">dto@akrobacja.com</a>
+  <!-- Timeline: co dalej -->
+  <div class="section">
+    <h2>Co dalej?</h2>
+    <ol class="timeline">
+      <li>
+        <span class="step-n done">&#10003;</span>
+        <div class="step-text">
+          <strong>Voucher PDF wysłany na email</strong>
+          <small>Sprawdź skrzynkę w ciągu 2 minut. Jeśli nie dotrze, napisz na <a href="mailto:dto@akrobacja.com">dto@akrobacja.com</a>.</small>
+        </div>
+      </li>
+      <li>
+        <span class="step-n">2</span>
+        <div class="step-text">
+          <strong>Zarezerwuj termin w kalendarzu</strong>
+          <small>Wybierz dzień i godzinę online — system pokazuje sloty z prognozą pogody dla EPRP. Termin musisz wybrać w ciągu 12 miesięcy od dziś.</small>
+        </div>
+      </li>
+      <li>
+        <span class="step-n">3</span>
+        <div class="step-text">
+          <strong>Przyjedź na lotnisko Radom-Piastów (EPRP)</strong>
+          <small>90 minut z Warszawy. Bądź 30 minut przed planowanym lotem (briefing).</small>
+        </div>
+      </li>
+      <li>
+        <span class="step-n">4</span>
+        <div class="step-text">
+          <strong>Polecisz Extra 300L z Maciejem Kulaszewskim</strong>
+          <small>Mistrz Świata Akrobacji 2022, 3 000+ godzin nalotu na tym typie. Lot dopasowany do Twojej tolerancji G.</small>
+        </div>
+      </li>
+    </ol>
   </div>
-  <div style="font-size:10px;color:rgba(255,255,255,.25)">&copy; 2026 akrobacja.com &middot; Doradztwo Paweł Mamcarz</div>
+
+  <!-- Cross-sell -->
+  <div class="section">
+    <h2>Coś jeszcze przed lotem?</h2>
+    <div class="grid">
+      <div class="card-x" id="videoAddonCard" style="display:none">
+        <div>
+          <div class="icon">🎥</div>
+          <h3>Dokup Video 360°</h3>
+          <p>Montaż 90 sek MP4 w 48 h po locie. Zewnętrzne + kabinowe ujęcia. Zapisz każdą beczkę.</p>
+        </div>
+        <div>
+          <div class="price-tag">+ 299 PLN</div>
+          <a href="mailto:dto@akrobacja.com?subject=Dokupienie%20Video%20360%20do%20vouchera&body=Cze%C5%9B%C4%87%2C%20chc%C4%99%20dokupi%C4%87%20Video%20360%C2%B0%20do%20mojego%20vouchera%3A%20">Napisz, dokupimy →</a>
+        </div>
+      </div>
+
+      <div class="card-x">
+        <div>
+          <div class="icon">🎁</div>
+          <h3>Voucher dla kogoś</h3>
+          <p>Personalizowany prezent z dedykacją, planowana wysyłka na konkretny dzień (urodziny, święta).</p>
+        </div>
+        <div>
+          <div class="price-tag">od 1 999 PLN</div>
+          <a href="/voucher-prezent">Zamów drugi voucher →</a>
+        </div>
+      </div>
+
+      <div class="card-x">
+        <div>
+          <div class="icon">✈️</div>
+          <h3>Merch akrobacja.com</h3>
+          <p>Czapki, bluzy, t-shirty z motywem Extra 300L. Wysyłka kurierem.</p>
+        </div>
+        <div>
+          <div class="price-tag">od 89 PLN</div>
+          <a href="/sklep-merch">Sklep merch →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Share -->
+  <div class="section">
+    <h2>Pochwal się znajomym</h2>
+    <p style="font-size: 13px; color: var(--chrome); margin-bottom: 20px;">Akrobacja to lepsze doświadczenie w parze. Wyślij linka znajomym — może też dolecą.</p>
+    <div class="share">
+      <a href="#" id="shareWhatsApp" target="_blank" rel="noopener"><span class="ico">💬</span> WhatsApp</a>
+      <a href="#" id="shareMessenger" target="_blank" rel="noopener"><span class="ico">📨</span> Messenger</a>
+      <a href="#" id="shareFB" target="_blank" rel="noopener"><span class="ico">📘</span> Facebook</a>
+      <a href="#" id="shareEmail"><span class="ico">✉️</span> Email</a>
+      <a href="#" id="copyLinkBtn"><span class="ico">🔗</span> <span id="copyLinkLabel">Skopiuj link</span></a>
+    </div>
+  </div>
+
+  <!-- Review CTA -->
+  <div class="section" id="reviewBox">
+    <div class="review-box">
+      <span class="stars">⭐⭐⭐⭐⭐</span>
+      <div class="review-text">
+        <strong>Po locie zostawisz nam opinię?</strong>
+        <span>Pomóż innym pilotom-w-przyszłości zdecydować. Wystarczy 5-min na Google.</span>
+      </div>
+      <a class="btn-outline" href="https://g.page/r/akrobacja-com/review" target="_blank" rel="noopener">Google Reviews →</a>
+    </div>
+  </div>
+
 </div>
+
+<div class="site-footer">
+  <div class="links">
+    <a href="/">Strona główna</a>
+    <a href="/kalendarz">Kalendarz</a>
+    <a href="https://wa.me/48535535221" target="_blank" rel="noopener">+48 535 535 221</a>
+    <a href="mailto:dto@akrobacja.com">dto@akrobacja.com</a>
+  </div>
+  <div class="credit">&copy; 2026 akrobacja.com &middot; Doradztwo Paweł Mamcarz</div>
+</div>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var code = params.get('code') || '';
+    var pkg = params.get('pkg') || '';
+    var amount = params.get('amount') || '';
+    var isValidCode = /^AKR-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(code);
+
+    // Voucher code + download
+    var codeBox = document.getElementById('codeBox');
+    var voucherCodeEl = document.getElementById('voucherCode');
+    var downloadBtn = document.getElementById('downloadBtn');
+    var bookBtn = document.getElementById('bookBtn');
+    var heroSub = document.getElementById('heroSub');
+
+    if (isValidCode) {
+      voucherCodeEl.textContent = code;
+      downloadBtn.href = '/api/voucher/' + encodeURIComponent(code);
+      // Pre-fill voucher code into the booking flow.
+      bookBtn.href = '/kalendarz?voucher=' + encodeURIComponent(code);
+    } else {
+      codeBox.style.display = 'none';
+      downloadBtn.style.display = 'none';
+      heroSub.textContent = 'Dziękujemy za zakup! Sprawdź skrzynkę email — voucher PDF jest w załączniku.';
+    }
+
+    // Hide video addon cross-sell when pkg=test_naklejka (test product never has it)
+    if (pkg !== 'test_naklejka') {
+      document.getElementById('videoAddonCard').style.display = 'flex';
+    }
+
+    // Copy code
+    var copyBtn = document.getElementById('copyBtn');
+    if (copyBtn && isValidCode) {
+      copyBtn.addEventListener('click', function () {
+        navigator.clipboard.writeText(code).then(function () {
+          copyBtn.textContent = 'Skopiowano ✓';
+          setTimeout(function () { copyBtn.textContent = 'Skopiuj kod'; }, 2000);
+        }).catch(function () { /* no-op */ });
+      });
+    }
+
+    // Share — text varies if we have a code (for the buyer themselves) vs not.
+    var shareText = 'Kupiłem właśnie voucher na lot akrobacyjny Extra 300L — z Mistrzem Świata Akrobacji 2022. Zerknij: https://akrobacja.com';
+    var shareUrl = 'https://akrobacja.com/';
+
+    document.getElementById('shareWhatsApp').href = 'https://wa.me/?text=' + encodeURIComponent(shareText);
+    document.getElementById('shareMessenger').href = 'https://www.facebook.com/dialog/send?app_id=&link=' + encodeURIComponent(shareUrl) + '&redirect_uri=' + encodeURIComponent(shareUrl);
+    document.getElementById('shareFB').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl);
+    document.getElementById('shareEmail').href = 'mailto:?subject=' + encodeURIComponent('Zerknij na akrobacja.com') + '&body=' + encodeURIComponent(shareText);
+
+    var copyLink = document.getElementById('copyLinkBtn');
+    var copyLinkLabel = document.getElementById('copyLinkLabel');
+    if (copyLink && copyLinkLabel) {
+      copyLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        navigator.clipboard.writeText(shareUrl).then(function () {
+          copyLinkLabel.textContent = 'Skopiowano ✓';
+          setTimeout(function () { copyLinkLabel.textContent = 'Skopiuj link'; }, 2000);
+        }).catch(function () { /* no-op */ });
+      });
+    }
+  })();
+</script>
 
 </body>
 </html>
