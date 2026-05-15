@@ -1,5 +1,6 @@
 import { type Env } from '../../../src/lib/types';
 import { normalizePhone } from '../../../src/lib/phone';
+import { hashToken } from '../../../src/lib/pilot-auth';
 
 const MAX_FAILURES = 10;       // w oknie
 const WINDOW_MINUTES = 10;     // minut
@@ -85,14 +86,18 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     const sessionToken = crypto.randomUUID() + '-' + crypto.randomUUID();
+    const sessionTokenHash = await hashToken(sessionToken);
     const sessionExpiresClause = `datetime('now', '+${SESSION_TTL_DAYS} days')`;
 
     if (!existingPilot) {
       const pilotId = crypto.randomUUID();
+      // Store HASH on disk, send raw token to client. session_token (plaintext) is
+      // explicitly NULL — migrated rows from before 015 still match via legacy fallback
+      // in pilot-auth.ts, but new sessions never write plaintext.
       await ctx.env.DB.prepare(
-        `INSERT INTO pilots (id, phone, verified, session_token, session_expires_at, last_login)
-         VALUES (?, ?, 1, ?, ${sessionExpiresClause}, datetime('now'))`
-      ).bind(pilotId, normalized, sessionToken).run();
+        `INSERT INTO pilots (id, phone, verified, session_token, session_token_hash, session_expires_at, last_login)
+         VALUES (?, ?, 1, NULL, ?, ${sessionExpiresClause}, datetime('now'))`
+      ).bind(pilotId, normalized, sessionTokenHash).run();
 
       await ctx.env.DB.prepare(
         'INSERT INTO auth_events (id, phone, pilot_id, event_type, ip, user_agent) VALUES (?, ?, ?, ?, ?, ?)'
@@ -105,12 +110,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       });
     }
 
-    // Existing pilot — update session + TTL
+    // Existing pilot — rotate session: clear plaintext, write hash.
     await ctx.env.DB.prepare(
-      `UPDATE pilots SET verified = 1, session_token = ?, session_expires_at = ${sessionExpiresClause},
-              last_login = datetime('now')
+      `UPDATE pilots SET verified = 1, session_token = NULL, session_token_hash = ?,
+              session_expires_at = ${sessionExpiresClause}, last_login = datetime('now')
         WHERE phone = ?`
-    ).bind(sessionToken, normalized).run();
+    ).bind(sessionTokenHash, normalized).run();
 
     await ctx.env.DB.prepare(
       'INSERT INTO auth_events (id, phone, pilot_id, event_type, ip, user_agent) VALUES (?, ?, ?, ?, ?, ?)'

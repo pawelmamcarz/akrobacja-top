@@ -22,12 +22,14 @@ CREATE TABLE IF NOT EXISTS orders (
   recipient_name TEXT,
   dedication TEXT,
   send_at TEXT,
-  email_sent_at TEXT
+  email_sent_at TEXT,
+  refund_received_at TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_orders_voucher_code ON orders(voucher_code);
 CREATE INDEX IF NOT EXISTS idx_orders_status ON orders(status);
 CREATE INDEX IF NOT EXISTS idx_orders_customer_email ON orders(customer_email);
+CREATE INDEX IF NOT EXISTS idx_orders_refund_received_at ON orders(refund_received_at) WHERE refund_received_at IS NOT NULL;
 CREATE INDEX IF NOT EXISTS idx_orders_stripe_session ON orders(stripe_session_id);
 CREATE INDEX IF NOT EXISTS idx_orders_redeemed ON orders(redeemed_at);
 CREATE INDEX IF NOT EXISTS idx_orders_abandon ON orders(status, abandon_email_sent_at, created_at);
@@ -68,6 +70,7 @@ CREATE TABLE IF NOT EXISTS merch_orders (
   paid_at TEXT,
   shipped_at TEXT,
   tracking_number TEXT,
+  refund_received_at TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
@@ -111,6 +114,7 @@ CREATE TABLE IF NOT EXISTS pilots (
   insurance_status TEXT NOT NULL DEFAULT 'none',
   verified INTEGER NOT NULL DEFAULT 0,
   session_token TEXT,
+  session_token_hash TEXT,
   session_expires_at TEXT,
   last_login TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
@@ -118,6 +122,7 @@ CREATE TABLE IF NOT EXISTS pilots (
 
 CREATE INDEX IF NOT EXISTS idx_pilots_phone ON pilots(phone);
 CREATE INDEX IF NOT EXISTS idx_pilots_session ON pilots(session_token);
+CREATE INDEX IF NOT EXISTS idx_pilots_session_token_hash ON pilots(session_token_hash);
 
 -- Audyt zdarzeń auth: login / login_new_ip / logout (per phone, z IP + UA)
 CREATE TABLE IF NOT EXISTS auth_events (

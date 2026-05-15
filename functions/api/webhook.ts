@@ -190,19 +190,26 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ ok: true, status_applied: newStatus });
     }
 
-    // Refunds initiated from the Stripe Dashboard — flip status to 'refunded' so the
-    // voucher download endpoint (which filters on status='paid') stops serving the PDF.
+    // Refunds initiated from the Stripe Dashboard. Stripe doesn't guarantee event
+    // ordering, so charge.refunded can arrive BEFORE checkout.session.completed.
+    // We stamp refund_received_at unconditionally, and ALSO flip paid→refunded if
+    // the order is already paid. The completed handler below checks
+    // refund_received_at before issuing the voucher to cover the out-of-order case.
     if (event.type === 'charge.refunded' || event.type === 'charge.refund.updated') {
       const orderIdFromPI = metadata?.order_id;
       const merchOrderIdFromPI = metadata?.merch_order_id;
       if (orderIdFromPI) {
         await ctx.env.DB.prepare(
-          "UPDATE orders SET status = 'refunded' WHERE id = ? AND status = 'paid'"
+          `UPDATE orders SET refund_received_at = COALESCE(refund_received_at, datetime('now')),
+                  status = CASE WHEN status = 'paid' THEN 'refunded' ELSE status END
+             WHERE id = ?`
         ).bind(orderIdFromPI).run();
       }
       if (merchOrderIdFromPI) {
         await ctx.env.DB.prepare(
-          "UPDATE merch_orders SET status = 'refunded' WHERE id = ? AND status = 'paid'"
+          `UPDATE merch_orders SET refund_received_at = COALESCE(refund_received_at, datetime('now')),
+                  status = CASE WHEN status = 'paid' THEN 'refunded' ELSE status END
+             WHERE id = ?`
         ).bind(merchOrderIdFromPI).run();
       }
       return Response.json({ ok: true, status_applied: 'refunded' });
@@ -277,6 +284,31 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     if (!order) {
       return Response.json({ error: 'Order not found' }, { status: 404 });
+    }
+
+    // Out-of-order safety: Stripe's charge.refunded may have arrived BEFORE this
+    // checkout.session.completed event (rare but possible during replays). If so,
+    // refund_received_at is already set — finalize to refunded without issuing PDF,
+    // invoice or email.
+    if (order.refund_received_at) {
+      await ctx.env.DB.prepare(
+        "UPDATE orders SET status = 'refunded', stripe_session_id = ? WHERE id = ? AND status = 'processing'"
+      ).bind(session.id as string, orderId).run();
+      console.warn(`[webhook] refunded-before-completed for ${voucherCode}; skipping voucher delivery`);
+      return Response.json({ ok: true, refunded: true });
+    }
+
+    // Sanity: assert Stripe charged what we expected. amount_total is in the smallest
+    // currency unit (grosze for PLN), same as our orders.amount. If they diverge,
+    // someone or something is editing the price between checkout-create and webhook
+    // — log it and refuse to issue the voucher.
+    const stripeAmount = Number((session as { amount_total?: number }).amount_total);
+    if (Number.isFinite(stripeAmount) && stripeAmount !== order.amount) {
+      console.error(`[webhook] amount mismatch for ${voucherCode}: stripe=${stripeAmount} db=${order.amount}`);
+      await ctx.env.DB.prepare(
+        "UPDATE orders SET status = 'failed' WHERE id = ? AND status = 'processing'"
+      ).bind(orderId).run();
+      return Response.json({ error: 'Amount mismatch' }, { status: 400 });
     }
 
     const packageId = order.package_id as PackageId;
