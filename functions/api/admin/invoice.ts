@@ -13,9 +13,11 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     return Response.json({ error: 'Brak kodu vouchera' }, { status: 400 });
   }
 
-  const order = await ctx.env.DB.prepare(
-    'SELECT * FROM orders WHERE voucher_code = ?'
-  ).bind(body.voucher_code).first<Record<string, unknown>>();
+  const order = await ctx.env.DB.prepare(`
+    SELECT id, package_id, video_addon, customer_name, customer_email, customer_nip,
+           amount, status, invoice_id, discount_code
+      FROM orders WHERE voucher_code = ?
+  `).bind(body.voucher_code).first<Record<string, unknown>>();
 
   if (!order) return Response.json({ error: 'Voucher nie znaleziony' }, { status: 404 });
   if (order.status !== 'paid') return Response.json({ error: 'Voucher nie jest opłacony' }, { status: 400 });

@@ -283,9 +283,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ ok: true, duplicate: true });
     }
 
-    const order = await ctx.env.DB.prepare(
-      'SELECT * FROM orders WHERE id = ?'
-    ).bind(orderId).first<Record<string, unknown>>();
+    const order = await ctx.env.DB.prepare(`
+      SELECT id, voucher_code, package_id, video_addon, customer_name, customer_email,
+             customer_nip, amount, status, invoice_id, expires_at, recipient_name,
+             dedication, send_at, email_sent_at, refund_received_at, discount_code
+        FROM orders WHERE id = ?
+    `).bind(orderId).first<Record<string, unknown>>();
 
     if (!order) {
       return Response.json({ error: 'Order not found' }, { status: 404 });

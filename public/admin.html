@@ -441,7 +441,7 @@ function renderOrders(orders) {
         <button class="btn btn-red" ${o.status==='paid'&&!o.invoice_id?'':'disabled'} data-action="invoice" data-arg1="${dataAttr(o.voucher_code)}">Faktura</button>
       </td>
     </tr>`).join('')}
-  </table>` : '<p style="padding:20px;color:#888">Brak zamowien</p>';
+  </table>` : '<p style="padding:20px;color:#888">Brak zamówień</p>';
 }
 function filterOrders() {
   const q = document.getElementById('searchOrders').value.toLowerCase();
@@ -478,8 +478,8 @@ async function loadCalendar() {
         <td>${esc(b.customer_name)}</td><td>${esc(b.customer_email)}</td><td>${b.customer_phone||'-'}</td>
         <td class="code">${b.voucher_code||'-'}</td><td>${b.notes||'-'}</td>
         <td class="actions">
-          <button class="btn btn-green" data-action="approveBooking" data-arg1="${dataAttr(b.id)}">Zatwierdz</button>
-          <button class="btn btn-grey" data-action="rejectBooking" data-arg1="${dataAttr(b.id)}">Odrzuc</button>
+          <button class="btn btn-green" data-action="approveBooking" data-arg1="${dataAttr(b.id)}">Zatwierdź</button>
+          <button class="btn btn-grey" data-action="rejectBooking" data-arg1="${dataAttr(b.id)}">Odrzuć</button>
         </td>
       </tr>`).join('')}
     </table>` : '<p style="padding:8px;color:#28a745;font-size:12px">Brak oczekujacych rezerwacji</p>';
@@ -529,7 +529,7 @@ function renderPilots(pilots) {
         <button class="btn btn-grey" data-action="openDeductBalance" data-arg1="${dataAttr(p.id)}" data-arg2="${dataAttr(p.name||p.phone)}">-Godz</button>
       </td>
     </tr>`).join('')}
-  </table>` : '<p style="padding:20px;color:#888">Brak pilotow</p>';
+  </table>` : '<p style="padding:20px;color:#888">Brak pilotów</p>';
 }
 function filterPilots() {
   const q = document.getElementById('searchPilots').value.toLowerCase();
@@ -727,11 +727,11 @@ async function loadAircraft() {
       <td><span class="badge badge-${i.status==='approved'?'approved':i.status==='pending'?'pending':'rejected'}">${i.status==='approved'?'Wpisany':i.status==='pending'?'Oczekuje':'Odrzucony'}</span></td>
       <td>${fmtDate(i.requested_at)}</td>
       <td class="actions">
-        ${i.status==='pending' ? `<button class="btn btn-green" data-action="approveIns" data-arg1="${dataAttr(i.id)}">Wpisz</button><button class="btn btn-grey" data-action="rejectIns" data-arg1="${dataAttr(i.id)}">Odrzuc</button>` : ''}
+        ${i.status==='pending' ? `<button class="btn btn-green" data-action="approveIns" data-arg1="${dataAttr(i.id)}">Wpisz</button><button class="btn btn-grey" data-action="rejectIns" data-arg1="${dataAttr(i.id)}">Odrzuć</button>` : ''}
         ${i.status==='approved' ? `<button class="btn btn-red" data-action="removeIns" data-arg1="${dataAttr(i.id)}">Wypisz</button>` : ''}
       </td>
     </tr>`).join('')}
-  </table>` : '<p style="padding:12px;color:#888">Brak pilotow w polisie</p>';
+  </table>` : '<p style="padding:12px;color:#888">Brak pilotów w polisie</p>';
 
   // Fill insurance pilot dropdown, pilots not already in active insurance
   const inInsurance = new Set(ins.filter(i => i.status === 'approved' || i.status === 'pending').map(i => i.pilot_id));
@@ -829,7 +829,7 @@ async function loadMerch() {
         </td>
       </tr>`;
     }).join('')}
-  </table>` : '<p style="padding:20px;color:#888">Brak zamowien merch</p>';
+  </table>` : '<p style="padding:20px;color:#888">Brak zamówień merch</p>';
 
   // Products list
   const products = res.products || [];
@@ -878,7 +878,7 @@ async function merchActionWithTracking(action, id, tracking) {
 }
 
 function merchStatus(s) {
-  return {pending:{cls:'pending',label:'Oczekuje'},paid:{cls:'approved',label:'Oplacone'},shipped:{cls:'redeemed',label:'Wyslane'},completed:{cls:'completed',label:'Dostarczone'},cancelled:{cls:'rejected',label:'Anulowane'}}[s]||{cls:'pending',label:s};
+  return {pending:{cls:'pending',label:'Oczekuje'},paid:{cls:'approved',label:'Opłacone'},shipped:{cls:'redeemed',label:'Wysłane'},completed:{cls:'completed',label:'Dostarczone'},cancelled:{cls:'rejected',label:'Anulowane'},refunded:{cls:'rejected',label:'Zwrot'}}[s]||{cls:'pending',label:s};
 }
 
 // ── SUBSCRIBERS ──
@@ -1013,7 +1013,7 @@ function getOrderStatus(o) {
   return { cls:'pending', label:'Oczekujacy' };
 }
 function typeLabel(t) { return {voucher:'Voucher',proficiency:'Doskonalacy',training:'Szkolenie',course:'Kurs'}[t]||t||'-'; }
-function statusLabel(s) { return {pending:'Oczekuje',approved:'Zatwierdzony',rejected:'Odrzucony',active:'Aktywny',completed:'Ukonczony',cancelled:'Anulowany',available:'Wolny',booked:'Zajety',paid:'Oplacony'}[s]||s||'-'; }
+function statusLabel(s) { return {pending:'Oczekuje',approved:'Zatwierdzony',rejected:'Odrzucony',active:'Aktywny',completed:'Ukończony',cancelled:'Anulowany',available:'Wolny',booked:'Zajęty',paid:'Opłacony',refunded:'Zwrot'}[s]||s||'-'; }
 function pkgLabel(p) { return {pierwszy_lot:'Pierwszy Lot',adrenalina:'Adrenalina',masterclass:'Masterclass'}[p]||p||'-'; }
 function fmtDate(d) { if (!d) return '-'; return new Date(d).toLocaleDateString('pl-PL'); }
 function esc(s) { const d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
