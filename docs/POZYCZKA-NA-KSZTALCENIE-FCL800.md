@@ -93,7 +93,7 @@ Lista podstawowa (do wniosku):
   - Dane DTO (Aeroklub Radomski) i numer ewidencji ULC
   - Konto bankowe akrobacja.com na które operator przeleje środki
   
-  **Aby uzyskać ofertę — napisz na info@akrobacja.com lub WhatsApp +48 535 535 221.** Przygotujemy w 24 godziny w dni robocze.
+  **Aby uzyskać ofertę — napisz na info@akrobacja.com lub WhatsApp +48 739 158 131.** Przygotujemy w 24 godziny w dni robocze.
 
 ### Krok 4 — Wypełnij wniosek online
 
@@ -309,8 +309,8 @@ Czas wystawienia: **24 godziny w dni robocze**.
 ## Kontakt klienta z akrobacja.com
 
 - **Email:** info@akrobacja.com
-- **WhatsApp:** +48 535 535 221
-- **Telefon:** +48 535 535 221
+- **WhatsApp:** +48 739 158 131
+- **Telefon:** +48 739 158 131
 - **Strona dotacji:** https://akrobacja.com/dotacje-szkolenie-lotnicze
 - **Strona programu szkolenia:** https://akrobacja.com/program-szkolenia-akrobacja-fcl800
 
