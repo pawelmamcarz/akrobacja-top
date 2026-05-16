@@ -309,3 +309,18 @@ CREATE UNIQUE INDEX IF NOT EXISTS idx_reviews_google_id
   ON reviews(google_review_id) WHERE google_review_id IS NOT NULL;
 CREATE INDEX IF NOT EXISTS idx_reviews_visible_time ON reviews(visible, time DESC);
 CREATE INDEX IF NOT EXISTS idx_reviews_source ON reviews(source);
+
+CREATE TABLE IF NOT EXISTS wa_clicks (
+  id TEXT PRIMARY KEY,
+  page TEXT NOT NULL,
+  location TEXT,
+  prefilled_text TEXT,
+  ip TEXT,
+  user_agent TEXT,
+  referer TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_wa_clicks_created ON wa_clicks(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_wa_clicks_page ON wa_clicks(page, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_wa_clicks_location ON wa_clicks(location, created_at DESC);

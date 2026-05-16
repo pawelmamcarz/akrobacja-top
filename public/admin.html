@@ -112,6 +112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="tab" onclick="switchTab('aircraft')">Samolot</div>
     <div class="tab" onclick="switchTab('merch')">Merch</div>
     <div class="tab" onclick="switchTab('subs')">SMS Lista</div>
+    <div class="tab" onclick="switchTab('waclicks')">WA Klikniecia</div>
   </div>
 
   <!-- ORDERS -->
@@ -204,6 +205,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="stats" id="subsStats"></div>
     </div>
     <div id="subsTable"></div>
+  </div>
+
+  <!-- WHATSAPP CLICKS -->
+  <div class="panel" id="panel-waclicks">
+    <div class="toolbar">
+      <button class="btn btn-blue" onclick="loadWaClicks()">Odswiez</button>
+      <div class="stats" id="waStats"></div>
+    </div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Klikniecia w 30 dniach wg strony</h4>
+    <div id="waByPage"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Klikniecia w 30 dniach wg lokalizacji CTA</h4>
+    <div id="waByLocation"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 200 klikniec</h4>
+    <div id="waRecentTable"></div>
   </div>
 </div>
 
@@ -416,6 +431,41 @@ function switchTab(name) {
   if (name === 'aircraft') loadAircraft();
   if (name === 'merch') loadMerch();
   if (name === 'subs') loadSubs();
+  if (name === 'waclicks') loadWaClicks();
+}
+
+// ── WHATSAPP CLICKS ──
+async function loadWaClicks() {
+  try {
+    const res = await api('GET', '/api/admin/wa-clicks');
+    if (res.error) { document.getElementById('waRecentTable').innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + res.error + '</p>'; return; }
+
+    document.getElementById('waStats').textContent =
+      `Ostatnie 24h: ${res.last24h} | 7 dni: ${res.last7d} | Total ostatnie 200: ${(res.recent || []).length}`;
+
+    document.getElementById('waByPage').innerHTML = (res.byPage && res.byPage.length) ? `<table>
+      <tr><th>Strona</th><th>Klikniecia (30 dni)</th></tr>
+      ${res.byPage.map(r => `<tr><td>${esc(r.page)}</td><td class="amount">${r.cnt}</td></tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak danych</p>';
+
+    document.getElementById('waByLocation').innerHTML = (res.byLocation && res.byLocation.length) ? `<table>
+      <tr><th>Lokalizacja CTA</th><th>Klikniecia (30 dni)</th></tr>
+      ${res.byLocation.map(r => `<tr><td>${esc(r.location)}</td><td class="amount">${r.cnt}</td></tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak danych</p>';
+
+    document.getElementById('waRecentTable').innerHTML = (res.recent && res.recent.length) ? `<table>
+      <tr><th>Czas</th><th>Strona</th><th>Lokalizacja</th><th>Tekst CTA</th><th>Referer</th></tr>
+      ${res.recent.map(r => `<tr>
+        <td>${fmtDate(r.created_at)}</td>
+        <td>${esc(r.page)}</td>
+        <td>${esc(r.location || '-')}</td>
+        <td style="max-width:300px;font-size:11px;color:#555">${esc((r.prefilled_text || '').slice(0,80))}</td>
+        <td style="max-width:200px;font-size:10px;color:#999">${esc((r.referer || '').slice(0,50))}</td>
+      </tr>`).join('')}
+    </table>` : '<p style="padding:20px;color:#888">Brak klikniec jeszcze</p>';
+  } catch (err) {
+    document.getElementById('waRecentTable').innerHTML = '<p style="padding:20px;color:#c00">Blad ladowania: ' + (err.message || 'unknown') + '</p>';
+  }
 }
 
 // ── ORDERS ──
