@@ -67,6 +67,68 @@ export const PACKAGES = {
 
 export const VIDEO_ADDON_PRICE = 29900; // 299 PLN
 
+// Cross-sell addons available in the voucher checkout modal. Each addon is a separate
+// Stripe line item, a separate wFirma invoice line and persisted in orders.addons as a
+// JSON array of ids. Names are ASCII-safe because they end up in Stripe metadata and
+// product_data.name (CLAUDE.md § Conventions). The `video` entry keeps parity with the
+// legacy `video_addon` boolean column so older orders render correctly.
+//
+// applicablePackages restricts which packages can pick the addon (analog do
+// DISCOUNTS.applicablePackages in checkout.ts). Omitted = any package.
+export interface AddonSpec {
+  id: string;
+  price: number;              // grosze
+  name: string;               // ASCII-safe — Stripe product_data.name
+  invoiceName: string;        // PL z diakrytykami — wFirma invoicecontent.name
+  applicablePackages?: PackageId[];
+}
+
+export const ADDONS: Record<string, AddonSpec> = {
+  video: {
+    id: 'video',
+    price: VIDEO_ADDON_PRICE,
+    name: 'Video 360 z lotu akrobacyjnego',
+    invoiceName: 'Video 360° z lotu akrobacyjnego (montaż + MP4)',
+  },
+  second_seat: {
+    id: 'second_seat',
+    price: 79900,
+    name: 'Drugi pasazer w samolocie',
+    invoiceName: 'Drugi pasażer w Extra 300L (ten sam lot, briefing wspólny)',
+    applicablePackages: ['pierwszy_lot', 'adrenalina'],
+  },
+  ground_photo: {
+    id: 'ground_photo',
+    price: 24900,
+    name: 'Fotograf z ziemi (5 JPG w 48h)',
+    invoiceName: 'Fotograf z ziemi — minimum 5 zdjęć JPG (dostarczone w 48h)',
+  },
+  framed_print: {
+    id: 'framed_print',
+    price: 19900,
+    name: 'Wydruk + rama A3 najlepszego ujecia',
+    invoiceName: 'Wydruk A3 + rama drewniana (wysyłka 7-14 dni po locie)',
+  },
+};
+
+export type AddonId = keyof typeof ADDONS;
+
+export function sumAddons(ids: readonly string[]): number {
+  return ids.reduce((sum, id) => sum + (ADDONS[id]?.price ?? 0), 0);
+}
+
+export function validAddonIds(ids: readonly string[], packageId: PackageId): string[] {
+  const seen = new Set<string>();
+  return ids.filter(id => {
+    if (seen.has(id)) return false;
+    seen.add(id);
+    const a = ADDONS[id];
+    if (!a) return false;
+    if (a.applicablePackages && !a.applicablePackages.includes(packageId)) return false;
+    return true;
+  });
+}
+
 // Google Search URL for the akrobacja.com business profile. Clicking "Napisz opinię"
 // on this page opens the proper write-review dialog for the Google Business Profile
 // of "akrobacja.com — Loty akrobacyjne Extra 300L". Used in every customer-facing
@@ -95,6 +157,7 @@ export interface Order {
   dedication?: string;       // tekst dedykacji (max 200 znaków)
   send_at?: string;          // ISO datetime — kiedy wysłać voucher email (cron)
   email_sent_at?: string;    // kiedy faktycznie wysłaliśmy voucher email (idempotency)
+  addons?: string | null;    // JSON array of AddonId stringów (np. '["second_seat","ground_photo"]')
 }
 
 export interface Pilot {

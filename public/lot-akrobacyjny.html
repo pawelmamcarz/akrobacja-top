@@ -1814,8 +1814,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <input type="text" id="checkoutDiscount" placeholder="PIERWSZY100" style="text-transform:uppercase" autocomplete="off">
       </div>
       <label class="modal-checkbox" id="videoAddonCheck">
-        <input type="checkbox" id="checkoutVideo">
+        <input type="checkbox" id="checkoutVideo" data-addon-id="video">
         + Video 360° z lotu (+299 PLN)
+      </label>
+      <label class="modal-checkbox" data-addon-label="second_seat">
+        <input type="checkbox" data-addon-id="second_seat">
+        + Drugi pasażer w samolocie, ten sam lot (+799 PLN)
+      </label>
+      <label class="modal-checkbox">
+        <input type="checkbox" data-addon-id="ground_photo">
+        + Fotograf z ziemi — min. 5 zdjęć JPG w 48h (+249 PLN)
+      </label>
+      <label class="modal-checkbox">
+        <input type="checkbox" data-addon-id="framed_print">
+        + Wydruk najlepszego kadru + rama A3 (+199 PLN)
       </label>
       <button type="submit" class="modal-submit" id="checkoutSubmit">Przejdź do płatności</button>
       <p class="modal-error" id="checkoutError"></p>
@@ -1846,6 +1858,32 @@ const submitBtn = document.getElementById('checkoutSubmit');
 const errorEl = document.getElementById('checkoutError');
 const dotacjaBanner = document.getElementById('dotacjaBanner');
 
+// Cross-sell addony — ceny w PLN (backend trzyma grosze). null = dotyczy wszystkich pakietow.
+const ADDON_PRICES = { video: 299, second_seat: 799, ground_photo: 249, framed_print: 199 };
+const ADDON_APPLICABLE = { video: null, second_seat: ['pierwszy_lot', 'adrenalina'], ground_photo: null, framed_print: null };
+
+function gateAddonsForPackage(pkgId) {
+  document.querySelectorAll('input[data-addon-id]').forEach(cb => {
+    const id = cb.dataset.addonId;
+    const allowed = ADDON_APPLICABLE[id];
+    const label = cb.closest('label');
+    if (allowed && !allowed.includes(pkgId)) {
+      if (label) label.style.display = 'none';
+      cb.checked = false;
+    } else {
+      if (label) label.style.display = '';
+    }
+  });
+}
+function sumCheckedAddons() {
+  return Array.from(document.querySelectorAll('input[data-addon-id]:checked'))
+    .reduce((s, cb) => s + (ADDON_PRICES[cb.dataset.addonId] || 0), 0);
+}
+function collectCheckedAddons() {
+  return Array.from(document.querySelectorAll('input[data-addon-id]:checked'))
+    .map(cb => cb.dataset.addonId);
+}
+
 // If a pilot is signed in via /konto, pre-fill name + email from their profile.
 async function tryPrefillFromPilot() {
   const token = localStorage.getItem('pilot_token');
@@ -1868,8 +1906,10 @@ function openModal(packageId) {
   pkgInput.value = packageId;
   modalTitle.textContent = pkg.name;
   modalSub.textContent = pkg.sub;
-  videoCheck.checked = false;
-  updatePrice(pkg.price);
+  // Reset addonow + ukryj niedostepne dla tego pakietu (np. second_seat dla masterclass).
+  document.querySelectorAll('input[data-addon-id]').forEach(cb => { cb.checked = false; });
+  gateAddonsForPackage(packageId);
+  updatePrice();
   dotacjaBanner.style.display = packageId === 'masterclass' ? 'block' : 'none';
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -1877,16 +1917,14 @@ function openModal(packageId) {
   tryPrefillFromPilot();
 }
 
-function updatePrice(base) {
-  const video = videoCheck.checked ? 299 : 0;
-  const total = base + video;
+function updatePrice() {
+  const pkg = PKGS[pkgInput.value];
+  if (!pkg) return;
+  const total = pkg.price + sumCheckedAddons();
   modalPrice.textContent = total.toLocaleString('pl-PL') + ' PLN';
 }
 
-videoCheck.addEventListener('change', () => {
-  const pkg = PKGS[pkgInput.value];
-  if (pkg) updatePrice(pkg.price);
-});
+document.querySelectorAll('input[data-addon-id]').forEach(cb => cb.addEventListener('change', updatePrice));
 
 function closeModal() {
   modal.classList.remove('active');
@@ -1921,7 +1959,8 @@ form.addEventListener('submit', async (e) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         packageId: pkgInput.value,
-        videoAddon: videoCheck.checked,
+        addons: collectCheckedAddons(),
+        videoAddon: videoCheck.checked,            // legacy duplicate dla starszych webhookow
         customerName: document.getElementById('checkoutName').value.trim(),
         customerEmail: document.getElementById('checkoutEmail').value.trim(),
         customerNip: document.getElementById('checkoutNip').value.trim() || undefined,

@@ -1,4 +1,4 @@
-import { type Env, type PackageId, PACKAGES } from '../../src/lib/types';
+import { type Env, type PackageId, PACKAGES, ADDONS } from '../../src/lib/types';
 import { generateVoucherPdf } from '../../src/lib/pdf';
 import { sendVoucherEmail, escapeHtml } from '../../src/lib/email';
 import { createInvoice } from '../../src/lib/wfirma';
@@ -74,10 +74,16 @@ async function notifyOwnerMerch(env: Env, o: {
   });
 }
 
-async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: PackageId; customerName: string; customerEmail: string; amount: number; videoAddon: boolean }): Promise<void> {
+async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: PackageId; customerName: string; customerEmail: string; amount: number; addons: string[] }): Promise<void> {
   try {
     const pkg = PACKAGES[o.packageId];
     const amountPLN = (o.amount / 100).toLocaleString('pl-PL') + ' PLN';
+    const addonsCell = o.addons.length === 0
+      ? 'brak'
+      : o.addons
+          .map(id => ADDONS[id]?.invoiceName ?? id)
+          .map(s => escapeHtml(s))
+          .join('<br>');
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -97,7 +103,7 @@ async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: P
               <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Klient</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(o.customerName)}</td></tr>
               <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Email</td><td style="padding:8px 0;border-bottom:1px solid #eee;text-align:right"><a href="mailto:${encodeURIComponent(o.customerEmail)}">${escapeHtml(o.customerEmail)}</a></td></tr>
               <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Voucher</td><td style="padding:8px 0;font-weight:600;font-family:monospace;border-bottom:1px solid #eee;text-align:right">${escapeHtml(o.voucherCode)}</td></tr>
-              <tr><td style="padding:8px 0;color:#6B7A90">Video 360°</td><td style="padding:8px 0;font-weight:600;text-align:right">${o.videoAddon ? 'Tak (+299 PLN)' : 'Nie'}</td></tr>
+              <tr><td style="padding:8px 0;color:#6B7A90;vertical-align:top">Addony</td><td style="padding:8px 0;font-weight:600;text-align:right;vertical-align:top">${addonsCell}</td></tr>
             </table>
             <p style="margin-top:16px"><a href="https://akrobacja.com/admin" style="color:#0A2F7C;font-weight:600">Otwórz panel admina →</a></p>
           </div>`,
@@ -286,7 +292,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const order = await ctx.env.DB.prepare(`
       SELECT id, voucher_code, package_id, video_addon, customer_name, customer_email,
              customer_nip, amount, status, invoice_id, expires_at, recipient_name,
-             dedication, send_at, email_sent_at, refund_received_at, discount_code
+             dedication, send_at, email_sent_at, refund_received_at, discount_code,
+             addons
         FROM orders WHERE id = ?
     `).bind(orderId).first<Record<string, unknown>>();
 
@@ -324,6 +331,20 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const customerEmail = order.customer_email as string;
     const customerNip = order.customer_nip as string | undefined;
     const videoAddon = order.video_addon === 1;
+    // orders.addons jest JSON tekstem zapisanym w checkout.ts. Stary order (sprzed migracji
+    // 019) ma NULL — fallback: 'video' tylko jeśli video_addon == 1, dzięki czemu pojedyncza
+    // pozycja "Video 360°" trafia do faktury tak jak wcześniej.
+    let addons: string[];
+    if (typeof order.addons === 'string' && order.addons.length > 0) {
+      try {
+        const parsed = JSON.parse(order.addons);
+        addons = Array.isArray(parsed) ? parsed.filter((x: unknown): x is string => typeof x === 'string') : [];
+      } catch {
+        addons = [];
+      }
+    } else {
+      addons = videoAddon ? ['video'] : [];
+    }
     const expiresAt = order.expires_at as string;
     const recipientName = (order.recipient_name as string | null) ?? null;
     const dedication = (order.dedication as string | null) ?? null;
@@ -388,6 +409,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
               customerNip,
               packageId,
               videoAddon,
+              addons,
               voucherCode,
               amount: order.amount as number,
               discountCode: (order.discount_code as string | null) ?? null,
@@ -445,7 +467,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         WHERE id = ? AND status = 'processing'
       `).bind(session.id as string, orderId).run();
 
-      ctx.waitUntil(notifyOwnerOrder(ctx.env, { voucherCode, packageId, customerName, customerEmail, amount: order.amount as number, videoAddon }));
+      ctx.waitUntil(notifyOwnerOrder(ctx.env, { voucherCode, packageId, customerName, customerEmail, amount: order.amount as number, addons }));
 
       // Meta CAPI Purchase pairs with client Pixel via event_id for dedup.
       ctx.waitUntil(

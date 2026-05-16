@@ -1,10 +1,11 @@
-import { type Env, PACKAGES, VIDEO_ADDON_PRICE, type PackageId } from '../../src/lib/types';
+import { type Env, PACKAGES, ADDONS, sumAddons, validAddonIds, type PackageId } from '../../src/lib/types';
 import { generateVoucherCode } from '../../src/lib/voucher-code';
 import { isValidEmail, isValidSendAt } from '../../src/lib/validate';
 
 interface CheckoutBody {
   packageId: PackageId;
-  videoAddon: boolean;
+  videoAddon?: boolean;   // legacy — utrzymane dla starszych formularzy. Zostaje zmergowane z addons[].
+  addons?: string[];      // nowe — lista AddonId (np. ['video','second_seat']). Walidowane przeciw ADDONS + applicablePackages.
   customerName: string;
   customerEmail: string;
   customerNip?: string;
@@ -93,7 +94,15 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     const voucherCode = generateVoucherCode();
-    const baseAmount = pkg.price + (body.videoAddon ? VIDEO_ADDON_PRICE : 0);
+
+    // Backward-compat merge: starsze formularze (en/, lot-akrobacyjny.html bez cross-sellu)
+    // wysyłają tylko `videoAddon: boolean`. Mergujemy do jednej listy `validatedAddons`,
+    // potem cała logika ceny / Stripe / faktury / D1 idzie przez ten kanał.
+    const requestedAddons: string[] = Array.isArray(body.addons) ? body.addons.filter(x => typeof x === 'string') : [];
+    if (body.videoAddon === true && !requestedAddons.includes('video')) requestedAddons.push('video');
+    const validatedAddons = validAddonIds(requestedAddons, body.packageId);
+    const videoAddonFinal = validatedAddons.includes('video');
+    const baseAmount = pkg.price + sumAddons(validatedAddons);
 
     // Apply discount if valid (also enforces validFrom / validUntil + applicablePackages).
     const normalizedCode = body.discountCode?.trim().toUpperCase() || '';
@@ -115,14 +124,15 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const expiresAt = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
 
     await ctx.env.DB.prepare(`
-      INSERT INTO orders (id, voucher_code, package_id, video_addon, customer_name, customer_email, customer_nip, amount, status, created_at, expires_at, discount_code, recipient_name, dedication, send_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', datetime('now'), ?, ?, ?, ?, ?)
+      INSERT INTO orders (id, voucher_code, package_id, video_addon, customer_name, customer_email, customer_nip, amount, status, created_at, expires_at, discount_code, recipient_name, dedication, send_at, addons)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', datetime('now'), ?, ?, ?, ?, ?, ?)
     `).bind(
       orderId, voucherCode, body.packageId,
-      body.videoAddon ? 1 : 0,
+      videoAddonFinal ? 1 : 0,
       body.customerName, body.customerEmail, body.customerNip || null,
       totalAmount, expiresAt, appliedDiscountCode,
       recipientName, dedication, sendAt,
+      validatedAddons.length > 0 ? JSON.stringify(validatedAddons) : null,
     ).run();
 
     // Create Stripe Checkout session via fetch
@@ -131,7 +141,10 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (discount) {
       // Single line item with total after discount, simpler display, avoids negative line_items (unsupported).
       const parts = [`Voucher "${pkg.name}", lot akrobacyjny Extra 300L`];
-      if (body.videoAddon) parts.push('+ Video 360°');
+      for (const id of validatedAddons) {
+        const a = ADDONS[id];
+        if (a) parts.push(`+ ${a.name}`);
+      }
       const discountDesc = discount.fixed
         ? `rabat ${discount.fixed / 100} PLN kod ${appliedDiscountCode}`
         : `rabat ${discount.pct}% kod ${appliedDiscountCode}`;
@@ -154,12 +167,14 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         quantity: 1,
       });
 
-      if (body.videoAddon) {
+      for (const id of validatedAddons) {
+        const a = ADDONS[id];
+        if (!a) continue;
         lineItems.push({
           price_data: {
             currency: 'pln',
-            product_data: { name: 'Video 360° z lotu akrobacyjnego' },
-            unit_amount: VIDEO_ADDON_PRICE,
+            product_data: { name: a.name },
+            unit_amount: a.price,
           },
           quantity: 1,
         });

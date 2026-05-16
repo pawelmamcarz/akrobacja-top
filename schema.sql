@@ -23,7 +23,8 @@ CREATE TABLE IF NOT EXISTS orders (
   dedication TEXT,
   send_at TEXT,
   email_sent_at TEXT,
-  refund_received_at TEXT
+  refund_received_at TEXT,
+  addons TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_orders_voucher_code ON orders(voucher_code);

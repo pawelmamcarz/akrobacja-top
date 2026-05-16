@@ -1,11 +1,12 @@
-import { type Env, PACKAGES, VIDEO_ADDON_PRICE, type PackageId } from './types';
+import { type Env, PACKAGES, ADDONS, type PackageId } from './types';
 
 interface InvoiceParams {
   customerName: string;
   customerEmail: string;
   customerNip?: string;
   packageId: PackageId;
-  videoAddon: boolean;
+  videoAddon: boolean;          // legacy — utrzymane dla starych orderów (sprzed migracji 019), ignorowane gdy `addons` zawiera 'video'
+  addons?: string[];            // lista AddonId z webhook.ts (parsed JSON z orders.addons)
   voucherCode: string;
   amount: number;               // faktycznie pobrana kwota (grosze) — po rabacie
   discountCode?: string | null;
@@ -16,7 +17,13 @@ interface InvoiceParams {
 export async function createInvoice(env: Env, params: InvoiceParams): Promise<string> {
   const pkg = PACKAGES[params.packageId];
   const isCompany = !!params.customerNip;
-  const baseAmount = pkg.price + (params.videoAddon ? VIDEO_ADDON_PRICE : 0);
+  // Nowe ordery zawsze mają addons (może być []). Stare (sprzed migracji 019) tylko videoAddon.
+  // Webhook robi już ten fallback przy parsowaniu (`videoAddon ? ['video'] : []`), więc tu
+  // przyjmujemy `params.addons` jako autorytatywne źródło. Fallback poniżej zostaje na wypadek
+  // gdyby createInvoice było kiedyś wywołane spoza webhooka bez addons.
+  const effectiveAddons: string[] = params.addons ?? (params.videoAddon ? ['video'] : []);
+  const addonTotal = effectiveAddons.reduce((s, id) => s + (ADDONS[id]?.price ?? 0), 0);
+  const baseAmount = pkg.price + addonTotal;
   const hasDiscount = typeof params.amount === 'number' && params.amount !== baseAmount;
   const totalBrutto = (hasDiscount ? params.amount : baseAmount) / 100;
 
@@ -25,7 +32,10 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
   if (hasDiscount) {
     // Jeden wiersz z kwotą po rabacie — inaczej suma linii rozjedzie się z alreadypaid.
     const parts = [`Voucher akrobacyjny "${pkg.name}" — lot Extra 300L (${pkg.duration})`];
-    if (params.videoAddon) parts.push('+ Video 360°');
+    for (const id of effectiveAddons) {
+      const a = ADDONS[id];
+      if (a) parts.push(`+ ${a.invoiceName}`);
+    }
     if (params.discountCode) parts.push(`(rabat: kod ${params.discountCode})`);
     items.push({
       invoicecontent: {
@@ -46,13 +56,15 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
         vat: '23',
       },
     });
-    if (params.videoAddon) {
+    for (const id of effectiveAddons) {
+      const a = ADDONS[id];
+      if (!a) continue;
       items.push({
         invoicecontent: {
-          name: 'Video 360° z lotu akrobacyjnego (montaż + MP4)',
+          name: a.invoiceName,
           unit: 'szt.',
           count: 1,
-          price: VIDEO_ADDON_PRICE / 100,
+          price: a.price / 100,
           vat: '23',
         },
       });
