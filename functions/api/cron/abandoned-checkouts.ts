@@ -9,7 +9,7 @@ import { type Env, PACKAGES, type PackageId } from '../../../src/lib/types';
 import { recordFailedDelivery } from '../../../src/lib/audit';
 import { escapeHtml } from '../../../src/lib/email';
 
-const FROM_EMAIL = 'akrobacja.com <dto@akrobacja.com>';
+const FROM_EMAIL = 'akrobacja.com <info@akrobacja.com>';
 const DISCOUNT_CODE = 'WRACAM5';
 const DISCOUNT_PCT = 5;
 
@@ -93,11 +93,11 @@ async function sendEmail(env: Env, to: string, subject: string, html: string): P
     body: JSON.stringify({
       from: FROM_EMAIL,
       to: [to],
-      reply_to: 'dto@akrobacja.com',
+      reply_to: 'info@akrobacja.com',
       subject,
       html,
       headers: {
-        'List-Unsubscribe': '<mailto:dto@akrobacja.com?subject=unsubscribe>, <https://akrobacja.com/unsubscribe>',
+        'List-Unsubscribe': '<mailto:info@akrobacja.com?subject=unsubscribe>, <https://akrobacja.com/unsubscribe>',
         'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
       },
     }),

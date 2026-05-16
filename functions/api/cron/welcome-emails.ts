@@ -8,7 +8,7 @@ const WELCOME_STEPS = [
   { step: 3, delayDays: 5, subject: 'Twój kod rabatowy -100 PLN' },
 ] as const;
 
-const FROM_EMAIL = 'akrobacja.com <dto@akrobacja.com>';
+const FROM_EMAIL = 'akrobacja.com <info@akrobacja.com>';
 
 // Branded HTML wrapper
 function wrapHtml(body: string): string {
@@ -63,7 +63,7 @@ function buildWelcomeEmail(name: string | null): string {
     </p>
     <hr style="border:none;border-top:1px solid #eee;margin:24px 0">
     <p style="color:#6B7A90;font-size:13px;line-height:1.6;margin:0">
-      Masz pytania? Pisz na <a href="mailto:dto@akrobacja.com" style="color:#0A2F7C">dto@akrobacja.com</a>
+      Masz pytania? Pisz na <a href="mailto:info@akrobacja.com" style="color:#0A2F7C">info@akrobacja.com</a>
       lub dzwoń: <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a>
     </p>
   `);
@@ -108,7 +108,7 @@ function buildEducationalEmail(name: string | null): string {
     </p>
     <hr style="border:none;border-top:1px solid #eee;margin:24px 0">
     <p style="color:#6B7A90;font-size:13px;line-height:1.6;margin:0">
-      Pytania? <a href="mailto:dto@akrobacja.com" style="color:#0A2F7C">dto@akrobacja.com</a>
+      Pytania? <a href="mailto:info@akrobacja.com" style="color:#0A2F7C">info@akrobacja.com</a>
       &middot; <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a>
     </p>
   `);
@@ -145,7 +145,7 @@ function buildDiscountEmail(name: string | null): string {
     </p>
     <hr style="border:none;border-top:1px solid #eee;margin:24px 0">
     <p style="color:#6B7A90;font-size:13px;line-height:1.6;margin:0">
-      Pytania o rezerwację? <a href="mailto:dto@akrobacja.com" style="color:#0A2F7C">dto@akrobacja.com</a>
+      Pytania o rezerwację? <a href="mailto:info@akrobacja.com" style="color:#0A2F7C">info@akrobacja.com</a>
       &middot; <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a>
     </p>
   `);
@@ -172,11 +172,11 @@ async function sendEmail(env: Env, to: string, subject: string, html: string): P
     body: JSON.stringify({
       from: FROM_EMAIL,
       to: [to],
-      reply_to: 'dto@akrobacja.com',
+      reply_to: 'info@akrobacja.com',
       subject,
       html,
       headers: {
-        'List-Unsubscribe': '<mailto:dto@akrobacja.com?subject=unsubscribe>, <https://akrobacja.com/unsubscribe>',
+        'List-Unsubscribe': '<mailto:info@akrobacja.com?subject=unsubscribe>, <https://akrobacja.com/unsubscribe>',
         'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
       },
     }),

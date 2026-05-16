@@ -26,7 +26,7 @@ const URL_NOAA = `https://aviationweather.gov/api/data/metar?ids=${STATION}&form
 export const onRequest: PagesFunction = async () => {
   try {
     const r = await fetch(URL_NOAA, {
-      headers: { 'User-Agent': 'akrobacja.com/1.0 (dto@akrobacja.com)' },
+      headers: { 'User-Agent': 'akrobacja.com/1.0 (info@akrobacja.com)' },
       cf: { cacheTtl: 300, cacheEverything: true } as RequestInitCfProperties,
     });
     if (!r.ok) throw new Error(`upstream ${r.status}`);

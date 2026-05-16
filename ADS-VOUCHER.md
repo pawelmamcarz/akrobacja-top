@@ -708,7 +708,7 @@ Albo zostaw — pojawią się w stats jako 1 zł, więc nie zaszkodzą revenue, 
 - Brak linków do niej z publicznych stron
 - Nie pojawia się w sitemap
 - Webhook nie generuje PDF/faktury/email dla `test_naklejka` → zero śladów u klienta
-- Twój zakup pójdzie też do Resend jako conversion email do owner (`dto@akrobacja.com`) — w treści zobaczysz „Voucher Naklejka testowa — 1.00 PLN"
+- Twój zakup pójdzie też do Resend jako conversion email do owner (`info@akrobacja.com`) — w treści zobaczysz „Voucher Naklejka testowa — 1.00 PLN"
 
 ### Kiedy używać
 
@@ -723,7 +723,7 @@ Albo zostaw — pojawią się w stats jako 1 zł, więc nie zaszkodzą revenue, 
 
 Bez tego **żaden mail z systemu nie chodzi**:
 - ❌ Vouchery PDF po zakupie (klient nie dostaje vouchera!)
-- ❌ Owner notifications („nowe zamówienie" do `dto@akrobacja.com`)
+- ❌ Owner notifications („nowe zamówienie" do `info@akrobacja.com`)
 - ❌ Welcome email sequence (3 maile po zapisie)
 - ❌ Abandoned cart recovery (nasz nowy system rabatu WRACAM5)
 - ✅ Działa tylko: maile do `pawel@mamcarz.com` (właściciel konta Resend — sandbox)
@@ -753,7 +753,7 @@ Bez tego **żaden mail z systemu nie chodzi**:
 
 **4.** Wracaj na `resend.com/domains` → kliknij **Verify DNS Records** → status powinien się zmienić na ✅ Verified w 1–10 min (czasem do 1h)
 
-**5.** Po weryfikacji nic w kodzie nie trzeba zmieniać — `FROM_EMAIL` w `welcome-emails.ts` i `abandoned-checkouts.ts` używa `dto@akrobacja.com` które działa od razu.
+**5.** Po weryfikacji nic w kodzie nie trzeba zmieniać — `FROM_EMAIL` w `welcome-emails.ts` i `abandoned-checkouts.ts` używa `info@akrobacja.com` które działa od razu.
 
 ### Weryfikacja działania
 

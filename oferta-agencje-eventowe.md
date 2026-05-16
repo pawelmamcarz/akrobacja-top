@@ -3,7 +3,7 @@
 **Gotowa atrakcja, którą sprzedasz w jednym mailu.**
 Oferta dla agencji eventowych — pełna obsługa, ubezpieczenie w cenie, koordynacja z PAŻP po naszej stronie.
 
-akrobacja.com · +48 535 535 221 · dto@akrobacja.com
+akrobacja.com · +48 535 535 221 · info@akrobacja.com
 
 ---
 
@@ -163,7 +163,7 @@ Pokazy nie odbywają się nad ścisłym centrum miast (klasa C/D przestrzeni). L
 
 **Wyślij zapytanie z datą i lokalizacją eventu:**
 
-📧 **dto@akrobacja.com**
+📧 **info@akrobacja.com**
 📞 **+48 535 535 221** (WhatsApp)
 🌐 [akrobacja.com/pokazy-lotnicze](https://akrobacja.com/pokazy-lotnicze)
 

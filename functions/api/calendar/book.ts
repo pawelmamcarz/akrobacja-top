@@ -180,7 +180,7 @@ async function sendBookingEmails(env: Env, o: {
         </table>
         <p style="color:#6B7A90;font-size:13px;margin-top:24px">
           Pytania? Zadzwoń: <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a>
-          lub napisz: <a href="mailto:dto@akrobacja.com" style="color:#0A2F7C">dto@akrobacja.com</a>
+          lub napisz: <a href="mailto:info@akrobacja.com" style="color:#0A2F7C">info@akrobacja.com</a>
         </p>
       </div>
     </div>`;
@@ -203,13 +203,13 @@ async function sendBookingEmails(env: Env, o: {
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${env.RESEND_API_KEY}` },
-      body: JSON.stringify({ from: 'akrobacja.com <dto@akrobacja.com>', to: [to], subject, html }),
+      body: JSON.stringify({ from: 'akrobacja.com <info@akrobacja.com>', to: [to], subject, html }),
     });
   };
 
   await Promise.allSettled([
     sendEmail(o.customerEmail, `Rezerwacja złożona — ${o.date} ${o.startTime}`, customerHtml),
-    sendEmail('dto@akrobacja.com', `✈️ Nowa rezerwacja: ${label} — ${o.date} ${o.startTime}`, adminHtml),
+    sendEmail('info@akrobacja.com', `✈️ Nowa rezerwacja: ${label} — ${o.date} ${o.startTime}`, adminHtml),
   ]);
 }
 

@@ -34,7 +34,7 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
     body: JSON.stringify({
       from: 'akrobacja.com <voucher@akrobacja.com>',
       to: [params.to],
-      reply_to: 'dto@akrobacja.com',
+      reply_to: 'info@akrobacja.com',
       subject: `Twój voucher ${pkg.name} — ${params.voucherCode}`,
       html: buildHtml(params),
       // List-Unsubscribe header — required by Gmail/Yahoo bulk-sender rules and PL
@@ -42,7 +42,7 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
       // delivery is transactional so unsubscribe is largely cosmetic here, but Gmail
       // looks at consistency across the sender domain, so it gets the header too.
       headers: {
-        'List-Unsubscribe': '<mailto:dto@akrobacja.com?subject=unsubscribe>, <https://akrobacja.com/unsubscribe>',
+        'List-Unsubscribe': '<mailto:info@akrobacja.com?subject=unsubscribe>, <https://akrobacja.com/unsubscribe>',
         'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
       },
       attachments: [
@@ -102,7 +102,7 @@ function buildHtml(p: EmailParams): string {
       <hr style="border:none;border-top:1px solid #eee;margin:32px 0">
       <p style="color:#6B7A90;font-size:13px;line-height:1.6;margin:0 0 32px">
         <strong>Jak umówić lot?</strong><br>
-        Zadzwoń pod <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a> lub napisz na <a href="mailto:dto@akrobacja.com" style="color:#0A2F7C">dto@akrobacja.com</a> podając kod vouchera.
+        Zadzwoń pod <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a> lub napisz na <a href="mailto:info@akrobacja.com" style="color:#0A2F7C">info@akrobacja.com</a> podając kod vouchera.
       </p>
 
       <div style="background:linear-gradient(135deg,#fff5e6 0%,#ffe8b8 100%);border-left:4px solid #f59e0b;padding:18px 22px;border-radius:6px;margin-bottom:8px">

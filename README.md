@@ -236,5 +236,5 @@ Zidentyfikowane podczas audytu kompleksowości (kwiecień 2026). Priorytety:
 
 ## Kontakt
 
-- Paweł Mamcarz (owner): dto@akrobacja.com, +48 535 535 221
+- Paweł Mamcarz (owner): info@akrobacja.com, +48 535 535 221
 - Pilot Maciej Kulaszewski: <https://www.facebook.com/bullet.aerobatics/>

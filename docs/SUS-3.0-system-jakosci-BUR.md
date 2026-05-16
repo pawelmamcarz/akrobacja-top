@@ -89,7 +89,7 @@ Procedura określa zasady przyjmowania, rozpatrywania i odpowiadania na reklamac
 
 ## 2. Kanały zgłoszeń
 Klient może zgłosić reklamację, zastrzeżenie lub informację o sytuacji nieprzewidzianej:
-- **e-mail:** dto@akrobacja.com
+- **e-mail:** info@akrobacja.com
 - **telefon:** +48 535 535 221 (potwierdzenie pisemne w terminie 3 dni od kontaktu)
 - **pocztą tradycyjną:** Doradztwo Paweł Mamcarz, ul. Jesionowa 18, 05-825 Grodzisk Mazowiecki
 
@@ -163,13 +163,13 @@ Ograniczenia te wynikają z bezpieczeństwa lotów i nie podlegają zmianie. DTO
 
 ## 5. Zgłaszanie szczególnych potrzeb
 Kursant może zgłosić szczególne potrzeby:
-- przed rezerwacją: dto@akrobacja.com lub w polu „Uwagi" w kalendarzu,
+- przed rezerwacją: info@akrobacja.com lub w polu „Uwagi" w kalendarzu,
 - po rezerwacji: telefon +48 535 535 221.
 
 DTO odpowiada na zgłoszenie w terminie do 5 dni roboczych.
 
 ## 6. Kontakt w sprawie dostępności
-Koordynator ds. dostępności: Paweł Mamcarz, dto@akrobacja.com.
+Koordynator ds. dostępności: Paweł Mamcarz, info@akrobacja.com.
 
 ---
 
@@ -410,7 +410,7 @@ Wyniki ewaluacji + plan doskonalenia są:
 **Wydawca:** Doradztwo Paweł Mamcarz · **Wersja:** 1.0 · **Data:** 15.05.2026
 
 ## 1. Administrator danych osobowych
-**Paweł Mamcarz** prowadzący działalność gospodarczą pod firmą **Doradztwo Paweł Mamcarz**, ul. Jesionowa 18, 05-825 Grodzisk Mazowiecki, NIP 7122188089. Kontakt w sprawach danych osobowych: dto@akrobacja.com.
+**Paweł Mamcarz** prowadzący działalność gospodarczą pod firmą **Doradztwo Paweł Mamcarz**, ul. Jesionowa 18, 05-825 Grodzisk Mazowiecki, NIP 7122188089. Kontakt w sprawach danych osobowych: info@akrobacja.com.
 
 ## 2. Podstawy prawne przetwarzania
 - **art. 6 ust. 1 lit. b RODO** — wykonanie umowy o szkolenie,
@@ -446,7 +446,7 @@ Wyniki ewaluacji + plan doskonalenia są:
 - cofnięcie zgody w dowolnym momencie;
 - wniesienie skargi do Prezesa Urzędu Ochrony Danych Osobowych.
 
-Realizacja praw: dto@akrobacja.com, termin odpowiedzi do 30 dni.
+Realizacja praw: info@akrobacja.com, termin odpowiedzi do 30 dni.
 
 ## 7. Podmioty przetwarzające
 - **Cloudflare, Inc.** (hosting + D1 + R2) — umowa DPA, transfer do USA na podstawie SCC,
@@ -622,7 +622,7 @@ E. DOJAZD I LOGISTYKA
 ═══════════════════════════════════════════════════════════
 F. JEŚLI MASZ JAKIEKOLWIEK PYTANIA
 ═══════════════════════════════════════════════════════════
-Email: dto@akrobacja.com  |  Tel: +48 535 535 221
+Email: info@akrobacja.com  |  Tel: +48 535 535 221
 ```
 
 ---
@@ -750,7 +750,7 @@ Oświadczam, że jestem świadomy/a:
 1. że zgoda ma charakter dobrowolny — udział w szkoleniu nie
    jest uzależniony od jej udzielenia;
 2. że mogę ją odwołać w każdym momencie, kontaktując się
-   z administratorem danych pod adresem dto@akrobacja.com;
+   z administratorem danych pod adresem info@akrobacja.com;
 3. że odwołanie zgody nie wpływa na zgodność z prawem wykorzystania
    wizerunku przed odwołaniem;
 4. że materiały wykonane na podstawie udzielonej zgody mogą zostać

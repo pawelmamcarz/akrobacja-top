@@ -31,7 +31,7 @@ async function notifyOwnerMerch(env: Env, o: {
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${env.RESEND_API_KEY}` },
     body: JSON.stringify({
       from: 'akrobacja.com <system@akrobacja.com>',
-      to: ['dto@akrobacja.com'],
+      to: ['info@akrobacja.com'],
       subject: `🛍️ Nowe zamówienie merch — ${o.customerName} — ${totalPLN} PLN`,
       html: `
 <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
@@ -92,7 +92,7 @@ async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: P
       },
       body: JSON.stringify({
         from: 'akrobacja.com <system@akrobacja.com>',
-        to: ['dto@akrobacja.com'],
+        to: ['info@akrobacja.com'],
         subject: `💰 Nowe zamówienie: ${pkg.name} — ${amountPLN}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto">
@@ -114,7 +114,7 @@ async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: P
     // i audit-table żeby admin widział oprócz "pusta skrzynka" konkretną przyczynę.
     console.error('notifyOwnerOrder failed:', err);
     await recordFailedDelivery(env, {
-      channel: 'owner_notify', refId: o.voucherCode, recipient: 'dto@akrobacja.com', error: err,
+      channel: 'owner_notify', refId: o.voucherCode, recipient: 'info@akrobacja.com', error: err,
     });
   }
 }

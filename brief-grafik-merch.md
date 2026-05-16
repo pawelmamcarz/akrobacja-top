@@ -127,5 +127,5 @@ ASAP — priorytet: logo wektorowe + grafiki na T-shirt i hoodie (żeby uruchomi
 - Logo na szarym tle (JPG) — referencja logo
 
 ## Kontakt
-dto@akrobacja.com
+info@akrobacja.com
 +48 535 535 221

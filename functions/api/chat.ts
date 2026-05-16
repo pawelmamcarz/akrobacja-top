@@ -130,7 +130,7 @@ PODSTAWY PRAWNE:
 
 KONTAKT:
 - WhatsApp / Telefon: +48 535 535 221
-- Email: dto@akrobacja.com
+- Email: info@akrobacja.com
 - Adres: Lotnisko Radom-Piastów (EPRP), Radom
 - Facebook pilota: https://www.facebook.com/bullet.aerobatics/, gdy klient chce zobaczyć zdjęcia/filmy z lotów, podaj ten link
 
