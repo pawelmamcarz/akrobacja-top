@@ -287,3 +287,25 @@ CREATE TABLE IF NOT EXISTS insurance_pilots (
 );
 
 CREATE INDEX IF NOT EXISTS idx_insurance_pilot ON insurance_pilots(pilot_id, status);
+
+CREATE TABLE IF NOT EXISTS reviews (
+  id TEXT PRIMARY KEY,
+  source TEXT NOT NULL DEFAULT 'google',
+  google_review_id TEXT,
+  author_name TEXT NOT NULL,
+  author_url TEXT,
+  profile_photo_url TEXT,
+  rating INTEGER NOT NULL,
+  text TEXT NOT NULL,
+  language TEXT,
+  relative_time TEXT,
+  time INTEGER NOT NULL,
+  visible INTEGER NOT NULL DEFAULT 1,
+  fetched_at TEXT NOT NULL DEFAULT (datetime('now')),
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_reviews_google_id
+  ON reviews(google_review_id) WHERE google_review_id IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_reviews_visible_time ON reviews(visible, time DESC);
+CREATE INDEX IF NOT EXISTS idx_reviews_source ON reviews(source);

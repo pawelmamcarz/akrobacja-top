@@ -2006,17 +2006,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="reviews" id="opinie">
   <div class="reviews-header reveal">
     <div class="reviews-stats">
-      <div class="reviews-avg">5.0</div>
+      <div class="reviews-avg" id="reviewsAvg">5.0</div>
       <div>
         <div class="reviews-stars" aria-label="5 na 5 gwiazdek">★★★★★</div>
-        <div class="reviews-count">8 opinii · Google Reviews &amp; Facebook</div>
+        <div class="reviews-count" id="reviewsCount">8 opinii · Google Reviews &amp; Facebook</div>
       </div>
     </div>
     <p class="section-label" style="color:rgba(255,255,255,.5)">Co mówią nasi klienci</p>
     <h2 class="section-title" style="color:var(--white)">Nie wierz nam na słowo.<br>Posłuchaj ich</h2>
     <div class="accent-bar"></div>
   </div>
-  <div class="reviews-grid">
+  <div class="reviews-grid" id="reviewsGrid">
     <div class="review-card reveal">
       <div class="review-stars" aria-label="5 na 5 gwiazdek">★★★★★</div>
       <div class="review-text">„Lot akrobacyjny? Petarda! Nawet dla totalnego świeżaka w temacie, wrażenia jak po pierwszym przeciągnięciu i beczce. Pilot pełen profesjonalizm, briefing konkretny, a cała operacja dopięta jak w checklistach przed startem. Sprzęt zadbany."</div>
@@ -2065,6 +2065,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="review-author">Paweł P.</div>
       <div class="review-meta">Pilot · Facebook</div>
     </div>
+  </div>
+  <div class="reviews-loadmore reveal" style="text-align:center;margin-top:32px">
+    <button id="loadMoreReviews" type="button" style="display:none;padding:12px 32px;border:2px solid rgba(255,255,255,.4);background:transparent;color:#fff;font-family:var(--font-h);font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;border-radius:6px;transition:all .2s">
+      Pokaż więcej opinii →
+    </button>
   </div>
   <div class="reviews-social reveal" style="margin-top:24px">
     <a href="https://www.google.com/search?q=akrobacja.com+%E2%80%94+Loty+akrobacyjne+Extra+300L&stick=H4sIAAAAAAAA_-NgU1I1qDAxN7RIMzc1NTYwtDAzMLK0MqhItrA0NTAzTLY0MDI1S00xWcSqm5hdlJ-UmJyVqJecn6vwqGGKgk9-SaUCVLgyKy9VwbWipChRwdjAwAcAB12ArlkAAAA&hl=pl&authuser=0" target="_blank" rel="noopener" style="display:inline-block;background:#0A2F7C;color:#fff;text-decoration:none;padding:12px 24px;font-weight:700;font-size:13px;letter-spacing:.05em;border-radius:6px;margin-bottom:16px">
@@ -3049,5 +3054,99 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 <script src="/chat-widget.js" defer></script>
 <script src="/assets/hud-live.js" defer></script>
+
+<!-- Reviews: auto-pull z Google Places API z paginacja (Pokaz wiecej). Cron co 6h
+     odswieza wiersze w D1 (functions/api/cron/refresh-google-reviews.ts). 8 hardcoded
+     kart powyzej zostaje jako SEO/no-JS fallback i jest nadpisywane przez fetch /api/reviews
+     na load (jezeli endpoint odpowiada). -->
+<script>
+(function () {
+  const grid = document.getElementById('reviewsGrid');
+  const loadMoreBtn = document.getElementById('loadMoreReviews');
+  const avgEl = document.getElementById('reviewsAvg');
+  const countEl = document.getElementById('reviewsCount');
+  if (!grid || !loadMoreBtn) return;
+
+  let nextPage = 1;
+  let initialReplaced = false;
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function makeCard(r, indexInList) {
+    const card = document.createElement('div');
+    const delay = indexInList % 3;
+    card.className = 'review-card reveal' + (delay === 1 ? ' reveal-d1' : delay === 2 ? ' reveal-d2' : '');
+    const filled = Math.max(0, Math.min(5, r.rating));
+    const stars = '★'.repeat(filled) + '☆'.repeat(5 - filled);
+    const sourceLabel = r.source === 'google' ? 'Google Reviews' : r.source === 'facebook' ? 'Facebook' : '';
+    const metaParts = [sourceLabel, r.relativeTime].filter(Boolean);
+    card.innerHTML =
+      '<div class="review-stars" aria-label="' + r.rating + ' na 5 gwiazdek">' + stars + '</div>' +
+      '<div class="review-text">„' + escapeHtml(r.text) + '"</div>' +
+      '<div class="review-author">' + escapeHtml(r.authorName) + '</div>' +
+      '<div class="review-meta">' + escapeHtml(metaParts.join(' · ')) + '</div>';
+    return card;
+  }
+
+  async function fetchPage(page, limit) {
+    const res = await fetch('/api/reviews?page=' + page + '&limit=' + limit);
+    if (!res.ok) throw new Error('reviews_http_' + res.status);
+    return res.json();
+  }
+
+  function updateStats(data) {
+    if (avgEl && typeof data.avgRating === 'number') {
+      avgEl.textContent = data.avgRating.toFixed(1);
+    }
+    if (countEl && typeof data.total === 'number') {
+      countEl.textContent = data.total + ' opinii · Google Reviews & Facebook';
+    }
+  }
+
+  async function loadInitial() {
+    try {
+      const data = await fetchPage(1, 8);
+      if (!data.reviews || !data.reviews.length) return;
+      grid.innerHTML = '';
+      data.reviews.forEach((r, i) => grid.appendChild(makeCard(r, i)));
+      initialReplaced = true;
+      nextPage = 2;
+      loadMoreBtn.style.display = data.hasMore ? 'inline-block' : 'none';
+      updateStats(data);
+    } catch (err) {
+      console.warn('Reviews initial load failed, keeping prerendered cards', err);
+    }
+  }
+
+  async function loadMore() {
+    if (loadMoreBtn.disabled) return;
+    loadMoreBtn.disabled = true;
+    const originalLabel = loadMoreBtn.textContent;
+    loadMoreBtn.textContent = 'Ładowanie...';
+    try {
+      const data = await fetchPage(nextPage, 5);
+      if (!initialReplaced) {
+        grid.innerHTML = '';
+        initialReplaced = true;
+      }
+      const startIndex = grid.children.length;
+      (data.reviews || []).forEach((r, i) => grid.appendChild(makeCard(r, startIndex + i)));
+      nextPage++;
+      loadMoreBtn.style.display = data.hasMore ? 'inline-block' : 'none';
+      updateStats(data);
+    } catch (err) {
+      console.warn('Reviews load-more failed', err);
+    } finally {
+      loadMoreBtn.disabled = false;
+      loadMoreBtn.textContent = originalLabel;
+    }
+  }
+
+  loadMoreBtn.addEventListener('click', loadMore);
+  loadInitial();
+})();
+</script>
 </body>
 </html>

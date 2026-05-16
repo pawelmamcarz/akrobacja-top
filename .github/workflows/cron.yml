@@ -41,3 +41,15 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             https://akrobacja.com/api/cron/post-flight-review-sms
         continue-on-error: true
+
+      # Refresh Google Reviews (Places API -> D1 reviews table).
+      # Endpoint ma wewnetrzny throttle 6h, wiec choc leci co godzine, faktyczny
+      # call do Places API dzieje sie 4x/dobe (~120/mc, miesci sie w darmowym
+      # $200/mc kredycie Google Cloud). Miedzy callami endpoint odpowiada
+      # {skipped: 'throttle'} bez kontaktu z Google API.
+      - name: Refresh Google Reviews
+        run: |
+          curl -fsS -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            https://akrobacja.com/api/cron/refresh-google-reviews
+        continue-on-error: true

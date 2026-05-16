@@ -22,6 +22,8 @@ export interface Env {
   CRON_SECRET?: string;
   TURNSTILE_SITE_KEY?: string;
   TURNSTILE_SECRET?: string;
+  GOOGLE_PLACES_API_KEY?: string;
+  GOOGLE_PLACE_ID?: string;
   AI: Ai;
   RATE_LIMIT_KV: KVNamespace;
 }
