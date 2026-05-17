@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS products (
   variants TEXT DEFAULT '[]',
   active INTEGER NOT NULL DEFAULT 1,
   sort_order INTEGER NOT NULL DEFAULT 100,
+  printful_data TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 

@@ -67,7 +67,7 @@ A second flow (`functions/api/cron/scheduled-vouchers.ts`) handles gift vouchers
 
 ## Conventions
 
-- **Polish diacritics** (ą/ć/ę/ł/ń/ó/ś/ź/ż): every Polish-facing string in HTML, emails, and PDFs must use proper Unicode. The `pdf-lib` voucher template uses a font that supports them — if you change fonts, verify rendering. Note: a few constants in `src/lib/types.ts` (`PACKAGES`) intentionally use ASCII for safety inside Stripe metadata.
+- **Polish diacritics** (ą/ć/ę/ł/ń/ó/ś/ź/ż): every Polish-facing string in HTML and email templates must use proper Unicode. The voucher **PDF is a known exception** — `src/lib/pdf.ts` uses pdf-lib StandardFonts which only encode WinAnsi, so the `ascii()` helper on every `drawText` call transliterates `ą→a`, `ł→l`, `ó→o`, etc. To restore real diacritics in the PDF, embed a TTF via `@pdf-lib/fontkit` and drop the `ascii()` calls. Constants in `src/lib/types.ts` (`PACKAGES`) are also ASCII because they feed both the PDF and Stripe metadata.
 - **PL/EN sync**: when editing a polish page, sync the equivalent English one if it exists, and vice versa.
 - **After UX/visual changes**: deploy and verify the rendered output in a browser before declaring done — production is one push away and CSS regressions are easy to miss locally.
 - **Deploy gotcha**: `scripts/deploy.mjs` rsyncs `public/` to a temp dir and excludes large `rolki/*.mp4|.mov` files (>25 MiB Cloudflare Pages limit). If you add new large assets, extend the exclude list there or move to R2.
@@ -77,9 +77,9 @@ A second flow (`functions/api/cron/scheduled-vouchers.ts`) handles gift vouchers
 ## Known gaps to be aware of
 
 `README.md` § "Znane luki" lists the original prioritized backlog (some items there are now resolved — see source of truth in code, not the README). Live gaps to keep in mind today:
-- `PRINTFUL_PRODUCTS = {}` in `src/lib/printful.ts` — calling `createPrintfulOrder` throws. Merch orders ship manually for now.
+- Printful fulfilment is now per-product via the `products.printful_data` JSON column (added in migration 008). A product without `printful_data` simply skips Printful — `createPrintfulOrder` no longer throws. Manual fulfilment still needed for any product whose `printful_data` is `NULL`.
 - `GEMINI_API_KEY` is in `Env` but unused.
-- `calendar/book` still doesn't email customer or admin on booking — admin learns via panel polling.
-- `/api/calendar/book` doesn't verify `start_time` matches `generateSlots(date)` — direct POST can reserve at 03:00.
+- `calendar/book` doesn't email the customer on booking — only the owner notification path is wired up. Customer hears nothing until admin approves.
+- Voucher PDF transliterates Polish diacritics (see Conventions above). Brand artefact reads `PIASTOW` instead of `PIASTÓW`.
 
-Already fixed since the README was written (don't re-fix): rate limiting on `/api/chat` and `/api/subscribe` (`src/lib/rate-limit.ts`); cron endpoints all enforce `CRON_SECRET`; webhook handles `checkout.session.expired` and `async_payment_failed`.
+Already fixed since the README was written (don't re-fix): rate limiting on `/api/chat` and `/api/subscribe` (`src/lib/rate-limit.ts`); cron endpoints all enforce `CRON_SECRET`; webhook handles `checkout.session.expired`, `async_payment_failed`, and `charge.refunded` (out-of-order safe); `calendar/book.ts:44-47` validates `start_time` against `generateSlots(date)`.
