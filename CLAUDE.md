@@ -67,7 +67,7 @@ A second flow (`functions/api/cron/scheduled-vouchers.ts`) handles gift vouchers
 
 ## Conventions
 
-- **Polish diacritics** (ą/ć/ę/ł/ń/ó/ś/ź/ż): every Polish-facing string in HTML and email templates must use proper Unicode. The voucher **PDF is a known exception** — `src/lib/pdf.ts` uses pdf-lib StandardFonts which only encode WinAnsi, so the `ascii()` helper on every `drawText` call transliterates `ą→a`, `ł→l`, `ó→o`, etc. To restore real diacritics in the PDF, embed a TTF via `@pdf-lib/fontkit` and drop the `ascii()` calls. Constants in `src/lib/types.ts` (`PACKAGES`) are also ASCII because they feed both the PDF and Stripe metadata.
+- **Polish diacritics** (ą/ć/ę/ł/ń/ó/ś/ź/ż): every Polish-facing string in HTML, emails, and PDFs must use proper Unicode. The voucher PDF now embeds Inter Regular + Bold via `@pdf-lib/fontkit` (`src/lib/fonts/inter.ts`, ~870 KB base64) so all diacritics render correctly. `sanitizeUserText()` in `pdf.ts` is a defensive fallback for emoji/CJK codepoints outside Inter's coverage. Constants in `src/lib/types.ts` (`PACKAGES.name`, `ADDONS.name`) are still ASCII for Stripe metadata safety, but `PACKAGES.subtitle/features` are full PL.
 - **PL/EN sync**: when editing a polish page, sync the equivalent English one if it exists, and vice versa.
 - **After UX/visual changes**: deploy and verify the rendered output in a browser before declaring done — production is one push away and CSS regressions are easy to miss locally.
 - **Deploy gotcha**: `scripts/deploy.mjs` rsyncs `public/` to a temp dir and excludes large `rolki/*.mp4|.mov` files (>25 MiB Cloudflare Pages limit). If you add new large assets, extend the exclude list there or move to R2.
@@ -76,10 +76,9 @@ A second flow (`functions/api/cron/scheduled-vouchers.ts`) handles gift vouchers
 
 ## Known gaps to be aware of
 
-`README.md` § "Znane luki" lists the original prioritized backlog (some items there are now resolved — see source of truth in code, not the README). Live gaps to keep in mind today:
-- Printful fulfilment is now per-product via the `products.printful_data` JSON column (added in migration 008). A product without `printful_data` simply skips Printful — `createPrintfulOrder` no longer throws. Manual fulfilment still needed for any product whose `printful_data` is `NULL`.
-- `GEMINI_API_KEY` is in `Env` but unused.
-- `calendar/book` doesn't email the customer on booking — only the owner notification path is wired up. Customer hears nothing until admin approves.
-- Voucher PDF transliterates Polish diacritics (see Conventions above). Brand artefact reads `PIASTOW` instead of `PIASTÓW`.
+`README.md` § "Znane luki" lists the original prioritized backlog. Live gaps as of the 2026-05 full-site audit:
+- Printful fulfilment is per-product via the `products.printful_data` JSON column. A product without it just skips Printful (no throw). Manual fulfilment still required where `printful_data IS NULL`.
+- EN site has only 3 pages (lot-akrobacyjny, voucher-prezent, kalendarz) + `en.html` landing. No EN regulamin/polityka — legally required if you sell to non-PL EU customers via Stripe.
+- `atrakcje-okolice-warszawy.html` blog post is the only piece of copy with mild AI-slop signal (7× generic superlatives). Everything else passes.
 
-Already fixed since the README was written (don't re-fix): rate limiting on `/api/chat` and `/api/subscribe` (`src/lib/rate-limit.ts`); cron endpoints all enforce `CRON_SECRET`; webhook handles `checkout.session.expired`, `async_payment_failed`, and `charge.refunded` (out-of-order safe); `calendar/book.ts:44-47` validates `start_time` against `generateSlots(date)`.
+Already fixed since the README was written (don't re-fix): rate limiting on every public GET (`chat`, `subscribe`, `voucher/[code]`, `calendar/slots`, `metar`, `reviews`, `wa-click`, `unsubscribe`, `auth/send-code`, `calendar/book`); cron endpoints all enforce `CRON_SECRET`; webhook handles `checkout.session.expired`, `async_payment_failed`, and `charge.refunded` (out-of-order safe); `calendar/book.ts:44-47` validates `start_time` against `generateSlots(date)`; `sendBookingEmails` notifies both customer and admin; voucher PDF renders full Polish diacritics via Inter (`@pdf-lib/fontkit`); `schema.sql` carries the full state including `products.printful_data` and the May 2026 audit indexes.
