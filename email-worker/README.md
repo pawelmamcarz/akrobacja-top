@@ -10,11 +10,13 @@ Mapowanie aliasow w `src/index.ts` -> `ROUTING`.
 
 ```bash
 cd email-worker
-npx wrangler deploy
+npm install   # pierwszy raz - instaluje wrangler i types lokalnie
+npm run deploy
 ```
 
-(globalne `wrangler` z `package.json` rodzica wystarczy - nie ma osobnego
-`package.json` tutaj.)
+`npm run deploy` wywoluje `wrangler deploy --config wrangler.toml` zeby
+nie kolidowac z `wrangler.jsonc` rodzica (Pages config). Bez `--config`
+wrangler wykrywa rodzicowski plik i probuje deploy jako Pages.
 
 ## Konfiguracja w CF Dashboard
 

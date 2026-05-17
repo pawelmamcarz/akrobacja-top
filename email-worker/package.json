@@ -1,0 +1,13 @@
+{
+  "name": "akrobacja-email-fanout",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "deploy": "wrangler deploy --config wrangler.toml",
+    "tail": "wrangler tail akrobacja-email-fanout"
+  },
+  "devDependencies": {
+    "wrangler": "^4.88.0",
+    "@cloudflare/workers-types": "^4.20250313.0"
+  }
+}
