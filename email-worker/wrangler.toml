@@ -1,0 +1,15 @@
+name = "akrobacja-email-fanout"
+main = "src/index.ts"
+compatibility_date = "2026-01-01"
+
+# CF Email Routing Worker - forwarduje przychodzace maile na voucher@/info@
+# do wielu destinations (workaround na ograniczenie CF Email Routing dashboard
+# ktore pozwala tylko 1 destination per custom address).
+#
+# Deploy: cd email-worker && npx wrangler deploy
+# Skonfiguruj: CF Dashboard -> Email Routing -> Custom Address ->
+#   voucher@akrobacja.com -> Edit -> Action "Send to a Worker"
+#   -> akrobacja-email-fanout
+
+# Forwardery musza byc zweryfikowane w CF Email Routing -> Destination Addresses.
+# Oba juz sa zweryfikowane (pawel@mamcarz.com + maciej.kulaszewski@gmail.com).
