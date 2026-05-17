@@ -327,3 +327,24 @@ CREATE TABLE IF NOT EXISTS wa_clicks (
 CREATE INDEX IF NOT EXISTS idx_wa_clicks_created ON wa_clicks(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_wa_clicks_page ON wa_clicks(page, created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_wa_clicks_location ON wa_clicks(location, created_at DESC);
+
+-- Resend webhook events log: kazdy event (sent/delivered/opened/clicked/bounced/
+-- complained/delivery_delayed/failed) zapisywany dla observability.
+CREATE TABLE IF NOT EXISTS email_events (
+  id TEXT PRIMARY KEY,
+  resend_id TEXT,
+  type TEXT NOT NULL,
+  sender TEXT,
+  recipient TEXT,
+  subject TEXT,
+  tag_type TEXT,
+  tag_extra TEXT,
+  raw_payload TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_email_events_created ON email_events(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_email_events_type ON email_events(type, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_email_events_sender ON email_events(sender, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_email_events_resend_id ON email_events(resend_id);
+CREATE INDEX IF NOT EXISTS idx_email_events_tag_type ON email_events(tag_type, created_at DESC);

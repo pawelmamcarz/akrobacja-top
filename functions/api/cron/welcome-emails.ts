@@ -173,6 +173,7 @@ async function sendEmail(env: Env, to: string, subject: string, html: string): P
       from: FROM_EMAIL,
       to: [to],
       reply_to: 'info@akrobacja.com',
+      tags: [{ name: 'type', value: 'welcome' }],
       subject,
       html,
       headers: {

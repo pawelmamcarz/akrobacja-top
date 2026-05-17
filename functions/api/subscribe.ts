@@ -17,6 +17,7 @@ async function notifyOwner(env: Env, phone: string, name: string | null, source:
       body: JSON.stringify({
         from: 'akrobacja.com <system@akrobacja.com>',
         to: ['info@akrobacja.com'],
+        tags: [{ name: 'type', value: 'subscribe-notify' }],
         subject: `📲 Nowy subskrybent: ${phone}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto">

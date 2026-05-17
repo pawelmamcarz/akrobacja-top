@@ -113,6 +113,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="tab" onclick="switchTab('merch')">Merch</div>
     <div class="tab" onclick="switchTab('subs')">SMS Lista</div>
     <div class="tab" onclick="switchTab('waclicks')">WA Klikniecia</div>
+    <div class="tab" onclick="switchTab('maile')">Maile</div>
   </div>
 
   <!-- ORDERS -->
@@ -219,6 +220,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="waByLocation"></div>
     <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 200 klikniec</h4>
     <div id="waRecentTable"></div>
+  </div>
+
+  <!-- EMAIL EVENTS (Resend webhook) -->
+  <div class="panel" id="panel-maile">
+    <div class="toolbar">
+      <button class="btn btn-blue" onclick="loadEmailEvents()">Odswiez</button>
+      <select id="mailFilterType" onchange="loadEmailEvents()" style="padding:6px 10px;border:1px solid #ccc">
+        <option value="">Wszystkie typy</option>
+        <option value="email.sent">Sent</option>
+        <option value="email.delivered">Delivered</option>
+        <option value="email.opened">Opened</option>
+        <option value="email.clicked">Clicked</option>
+        <option value="email.bounced">Bounced</option>
+        <option value="email.complained">Complained</option>
+        <option value="email.failed">Failed</option>
+        <option value="email.delivery_delayed">Delayed</option>
+      </select>
+      <select id="mailFilterTag" onchange="loadEmailEvents()" style="padding:6px 10px;border:1px solid #ccc">
+        <option value="">Wszystkie kategorie</option>
+        <option value="voucher">Voucher</option>
+        <option value="booking">Booking (kalendarz)</option>
+        <option value="welcome">Welcome (newsletter)</option>
+        <option value="abandoned">Abandoned cart</option>
+        <option value="owner-voucher-notify">Owner: voucher</option>
+        <option value="owner-merch-notify">Owner: merch</option>
+        <option value="subscribe-notify">Owner: subscribe</option>
+      </select>
+      <div class="stats" id="mailStats"></div>
+    </div>
+    <div id="mailAlerts" style="margin-top:8px"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Eventy w 30 dniach wg typu</h4>
+    <div id="mailByType"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Wg sendera</h4>
+    <div id="mailBySender"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Wg kategorii (tag)</h4>
+    <div id="mailByTag"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 200 eventow</h4>
+    <div id="mailRecentTable"></div>
   </div>
 </div>
 
@@ -432,6 +471,73 @@ function switchTab(name) {
   if (name === 'merch') loadMerch();
   if (name === 'subs') loadSubs();
   if (name === 'waclicks') loadWaClicks();
+  if (name === 'maile') loadEmailEvents();
+}
+
+// ── EMAIL EVENTS (Resend webhook) ──
+async function loadEmailEvents() {
+  const type = (document.getElementById('mailFilterType') || {}).value || '';
+  const tag = (document.getElementById('mailFilterTag') || {}).value || '';
+  const qs = new URLSearchParams();
+  if (type) qs.set('type', type);
+  if (tag) qs.set('tag', tag);
+  try {
+    const res = await api('GET', '/api/admin/email-events' + (qs.toString() ? '?' + qs.toString() : ''));
+    if (res.error) { document.getElementById('mailRecentTable').innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + res.error + '</p>'; return; }
+
+    document.getElementById('mailStats').textContent = `Eventow (filtr): ${(res.recent || []).length} | Alertow 7d: ${(res.alerts7 || []).length}`;
+
+    // Alerty: bounces / complaints / failed w 7 dni
+    if (res.alerts7 && res.alerts7.length) {
+      document.getElementById('mailAlerts').innerHTML = `<div style="background:#ffe5e5;border:1px solid #c00;padding:12px 16px;font-size:13px">
+        <strong style="color:#c00">UWAGA</strong>: ${res.alerts7.length} bounce/complaint/failed w ostatnich 7 dniach &middot;
+        <details style="display:inline-block;margin-left:8px"><summary style="cursor:pointer;color:#c00">Pokaz</summary>
+          <table style="margin-top:8px">
+            <tr><th>Typ</th><th>Sender</th><th>Recipient</th><th>Temat</th><th>Czas</th></tr>
+            ${res.alerts7.map(a => `<tr><td><span style="color:#c00">${esc(a.type.replace('email.',''))}</span></td><td>${esc(a.sender || '')}</td><td>${esc(a.recipient || '')}</td><td>${esc(a.subject || '').slice(0,80)}</td><td style="white-space:nowrap">${esc(a.created_at)}</td></tr>`).join('')}
+          </table>
+        </details>
+      </div>`;
+    } else {
+      document.getElementById('mailAlerts').innerHTML = '<div style="background:#e8f5e9;border:1px solid #2e7d32;padding:8px 14px;font-size:12px;color:#2e7d32">Brak bounce/complaint/failed w 7 dniach</div>';
+    }
+
+    document.getElementById('mailByType').innerHTML = (res.stats30 && res.stats30.length) ? `<table>
+      <tr><th>Typ eventu</th><th>Liczba (30 dni)</th></tr>
+      ${res.stats30.map(r => `<tr><td>${esc(r.type)}</td><td class="amount">${r.n}</td></tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak danych. Webhook Resend nie skonfigurowany lub brak eventow.</p>';
+
+    document.getElementById('mailBySender').innerHTML = (res.bySender30 && res.bySender30.length) ? `<table>
+      <tr><th>Sender</th><th>Liczba (30 dni)</th></tr>
+      ${res.bySender30.map(r => `<tr><td>${esc(r.sender)}</td><td class="amount">${r.n}</td></tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak</p>';
+
+    document.getElementById('mailByTag').innerHTML = (res.byTag30 && res.byTag30.length) ? `<table>
+      <tr><th>Kategoria (tag)</th><th>Liczba (30 dni)</th></tr>
+      ${res.byTag30.map(r => `<tr><td>${esc(r.tag)}</td><td class="amount">${r.n}</td></tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak</p>';
+
+    const typeColor = (t) => {
+      if (t === 'email.bounced' || t === 'email.failed' || t === 'email.complained') return '#c00';
+      if (t === 'email.delivered') return '#2e7d32';
+      if (t === 'email.opened' || t === 'email.clicked') return '#1B4DB5';
+      return '#666';
+    };
+
+    document.getElementById('mailRecentTable').innerHTML = (res.recent && res.recent.length) ? `<table>
+      <tr><th>Czas</th><th>Typ</th><th>Sender</th><th>Recipient</th><th>Tag</th><th>Temat</th></tr>
+      ${res.recent.map(r => `<tr>
+        <td style="white-space:nowrap;font-size:11px;color:#666">${esc(r.created_at)}</td>
+        <td><span style="color:${typeColor(r.type)};font-weight:600">${esc((r.type || '').replace('email.',''))}</span></td>
+        <td style="font-size:11px">${esc(r.sender || '')}</td>
+        <td style="font-size:11px">${esc(r.recipient || '')}</td>
+        <td style="font-size:11px;color:#1B4DB5">${esc(r.tag_type || '')}</td>
+        <td style="font-size:11px">${esc((r.subject || '').slice(0, 60))}</td>
+      </tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak eventow dla filtra. Sprawdz czy webhook Resend jest skonfigurowany na https://akrobacja.com/api/webhook/resend i secret w env RESEND_WEBHOOK_SECRET.</p>';
+  } catch (e) {
+    document.getElementById('mailRecentTable').innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + e.message + '</p>';
+  }
 }
 
 // ── WHATSAPP CLICKS ──

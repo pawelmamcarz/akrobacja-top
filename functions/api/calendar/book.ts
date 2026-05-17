@@ -203,7 +203,7 @@ async function sendBookingEmails(env: Env, o: {
     await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${env.RESEND_API_KEY}` },
-      body: JSON.stringify({ from: 'akrobacja.com <info@akrobacja.com>', to: [to], subject, html }),
+      body: JSON.stringify({ from: 'akrobacja.com <info@akrobacja.com>', to: [to], tags: [{ name: 'type', value: 'booking' }], subject, html }),
     });
   };
 

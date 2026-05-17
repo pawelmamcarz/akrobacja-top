@@ -32,6 +32,7 @@ async function notifyOwnerMerch(env: Env, o: {
     body: JSON.stringify({
       from: 'akrobacja.com <system@akrobacja.com>',
       to: ['info@akrobacja.com'],
+      tags: [{ name: 'type', value: 'owner-merch-notify' }],
       subject: `🛍️ Nowe zamówienie merch — ${o.customerName} — ${totalPLN} PLN`,
       html: `
 <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
@@ -93,6 +94,7 @@ async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: P
       body: JSON.stringify({
         from: 'akrobacja.com <system@akrobacja.com>',
         to: ['info@akrobacja.com'],
+        tags: [{ name: 'type', value: 'owner-voucher-notify' }],
         subject: `💰 Nowe zamówienie: ${pkg.name} — ${amountPLN}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto">
