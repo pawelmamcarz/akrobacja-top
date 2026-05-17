@@ -38,8 +38,8 @@ Auto-deploy: pushes to `main` trigger `.github/workflows/deploy.yml` → `wrangl
 ### Pages vs Functions split
 - `public/` is the deploy target — every `.html` is served as-is by Cloudflare Pages. JS lives inline or in `public/assets/`.
 - `functions/_middleware.ts` runs on every request: SEO canonical/robots injection via `HTMLRewriter`, legacy WordPress URL redirects, security headers, and analytics tag injection. Hit it before debugging "why isn't my page rendering."
-- `functions/api/**` are the API routes (file-based routing — `functions/api/foo.ts` → `/api/foo`). Cron endpoints live under `functions/api/cron/` and are HTTP-triggered by an external scheduler (must send `Authorization: Bearer ${CRON_SECRET}`).
-- Shared TS modules in `src/lib/` (pdf, email, wfirma, sms, pilot-auth, admin-auth, weather, daylight, meta-capi, validate, types). `Env` interface and `PACKAGES` constant live in `src/lib/types.ts` — all voucher pricing and product IDs are defined there.
+- `functions/api/**` are the API routes (file-based routing — `functions/api/foo.ts` → `/api/foo`). Cron endpoints live under `functions/api/cron/` and are HTTP-triggered by an external scheduler — every cron handler verifies `Authorization: Bearer ${CRON_SECRET}` and 401s on mismatch. Current crons: `welcome-emails`, `abandoned-checkouts`, `scheduled-vouchers`, `refresh-google-reviews`, `post-flight-review-sms`.
+- Shared TS modules in `src/lib/`: `pdf`, `email`, `wfirma`, `sms`, `pilot-auth`, `admin-auth`, `weather`, `daylight`, `meta-capi`, `validate`, `phone`, `voucher-code`, `rate-limit` (KV-backed counter), `turnstile` (Cloudflare CAPTCHA verify), `audit` (admin action log), `printful`, `types`. `Env` interface and `PACKAGES` constant live in `src/lib/types.ts` — all voucher pricing and product IDs are defined there. Addons (cross-sell) live in `src/lib/types.ts` under `ADDONS` with per-package gating.
 
 ### Voucher purchase flow (the core path)
 The Stripe webhook is the heart of the app. Read `functions/api/webhook.ts` end-to-end before touching it.
@@ -76,8 +76,10 @@ A second flow (`functions/api/cron/scheduled-vouchers.ts`) handles gift vouchers
 
 ## Known gaps to be aware of
 
-`README.md` § "Znane luki" lists prioritized backlog. The ones most likely to trip up changes today:
+`README.md` § "Znane luki" lists the original prioritized backlog (some items there are now resolved — see source of truth in code, not the README). Live gaps to keep in mind today:
 - `PRINTFUL_PRODUCTS = {}` in `src/lib/printful.ts` — calling `createPrintfulOrder` throws. Merch orders ship manually for now.
-- `/api/chat` (Workers AI) and `/api/subscribe` have no rate limiting.
-- Webhook only handles `checkout.session.completed` — `expired` / `payment_failed` sessions stay `pending` forever.
 - `GEMINI_API_KEY` is in `Env` but unused.
+- `calendar/book` still doesn't email customer or admin on booking — admin learns via panel polling.
+- `/api/calendar/book` doesn't verify `start_time` matches `generateSlots(date)` — direct POST can reserve at 03:00.
+
+Already fixed since the README was written (don't re-fix): rate limiting on `/api/chat` and `/api/subscribe` (`src/lib/rate-limit.ts`); cron endpoints all enforce `CRON_SECRET`; webhook handles `checkout.session.expired` and `async_payment_failed`.
