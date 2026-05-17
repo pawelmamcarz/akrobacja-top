@@ -2730,8 +2730,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div>
       <p class="footer-col-title">Kontakt</p>
+
+      <!-- Callback form: zostaw numer -> WA do Kulaszewskiego z prefilled msg -->
+      <form id="kontakt-cb" onsubmit="return akroCallback(event)" style="margin:6px 0 18px;display:flex;flex-direction:column;gap:6px;max-width:280px">
+        <label for="kontakt-cb-phone" style="font-size:11px;color:#fff;font-weight:700;letter-spacing:.04em">Wolisz, żebyśmy oddzwonili?</label>
+        <div style="display:flex;gap:6px">
+          <input type="tel" id="kontakt-cb-phone" name="phone" placeholder="+48 ___ ___ ___" required pattern="[+0-9 ()\-]{9,18}" autocomplete="tel" style="flex:1;min-width:0;padding:10px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:13px;font-family:inherit;border-radius:2px;outline:none">
+          <button type="submit" style="padding:10px 14px;background:#25D366;color:#fff;border:none;font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;white-space:nowrap">Oddzwoń &rarr;</button>
+        </div>
+        <p id="kontakt-cb-hint" style="font-size:10px;color:rgba(255,255,255,.45);line-height:1.5;margin:0">Otworzy WhatsApp do Macieja Kulaszewskiego z Twoim numerem. Odpowiada zwykle w ciągu 30 minut.</p>
+      </form>
+
       <ul class="footer-links">
-        <li><a href="https://wa.me/48535535221">+48 535 535 221</a></li>
+        <li><a href="https://wa.me/48739158131?text=Cze%C5%9B%C4%87%2C%20pisze%20z%20akrobacja.com%20%E2%80%94%20pyta%C5%82bym%20o%20" data-wa-track="footer-kontakt-kulaszewski">+48 739 158 131 — Maciej Kulaszewski (WA)</a></li>
+        <li><a href="https://wa.me/48535535221?text=Cze%C5%9B%C4%87%2C%20pisze%20z%20akrobacja.com" data-wa-track="footer-kontakt-pawel">+48 535 535 221 — Paweł Mamcarz (WA)</a></li>
         <li><a href="mailto:info@akrobacja.com">info@akrobacja.com</a></li>
         <li><a href="https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8" target="_blank" rel="noopener">Lotnisko Radom-Piastów (EPRP)</a></li>
         <li><span style="font-size:13px;color:rgba(245,247,250,.45)">ul. Lotników 1, Radom</span></li>
@@ -3106,6 +3118,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 <script src="/chat-widget.js" defer></script>
 <script src="/assets/hud-live.js" defer></script>
+<script src="/assets/wa-tracker.js" defer></script>
 
 <!-- Reviews: auto-pull z Google Places API z paginacja (Pokaz wiecej). Cron co 6h
      odswieza wiersze w D1 (functions/api/cron/refresh-google-reviews.ts). 8 hardcoded
@@ -3221,6 +3234,60 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   loadMoreBtn.addEventListener('click', loadMore);
   loadInitial();
+})();
+</script>
+
+<!-- Kontakt: callback form (form -> WA Kulaszewski z numerem klienta) + pasywny copy tracker.
+     Pasywny: jezeli ktos zaznacza i kopiuje numer ze strony (np. zeby przepisac do telefonu),
+     rejestrujemy event bez interakcji. Bez friction - user nawet nie wie.
+     Numery sa juz publiczne w footerze, copy event nie zbiera dodatkowej PII. -->
+<script>
+(function () {
+  // 1) callback form: zostaw numer -> otwiera WA Kulaszewski z pre-filled msg
+  window.akroCallback = function (e) {
+    e.preventDefault();
+    var phoneEl = document.getElementById('kontakt-cb-phone');
+    var phone = (phoneEl && phoneEl.value || '').trim();
+    if (!phone) return false;
+    var msg = 'Cześć! Mój numer to ' + phone + ' — proszę o oddzwonienie w sprawie akrobacja.com.';
+    var wa = 'https://wa.me/48739158131?text=' + encodeURIComponent(msg);
+    try {
+      navigator.sendBeacon && navigator.sendBeacon('/api/wa-click', new Blob([JSON.stringify({
+        page: location.pathname,
+        location: 'footer-kontakt-callback-form',
+        prefilledText: msg.slice(0, 500)
+      })], { type: 'application/json' }));
+    } catch (err) { /* never block submit on tracking error */ }
+    var hint = document.getElementById('kontakt-cb-hint');
+    if (hint) { hint.textContent = 'Otwieram WhatsApp do Macieja...'; hint.style.color = '#25D366'; }
+    window.open(wa, '_blank', 'noopener,noreferrer');
+    setTimeout(function () { if (phoneEl) phoneEl.value = ''; }, 800);
+    return false;
+  };
+
+  // 2) pasywny copy tracker: jezeli user kopiuje fragment zawierajacy numer Kulaszewskiego
+  //    lub Pawla, rejestrujemy event. Bez friction. Pomocne dla "passive copy" gdzie user
+  //    nie klika linku WA tylko przepisuje numer do telefonu.
+  var PHONE_PATTERNS = [
+    { re: /739\s?158\s?131/, who: 'kulaszewski' },
+    { re: /535\s?535\s?221/, who: 'pawel' }
+  ];
+  document.addEventListener('copy', function () {
+    try {
+      var sel = (window.getSelection && window.getSelection().toString() || '').trim();
+      if (!sel || sel.length > 200) return;
+      for (var i = 0; i < PHONE_PATTERNS.length; i++) {
+        if (PHONE_PATTERNS[i].re.test(sel)) {
+          navigator.sendBeacon && navigator.sendBeacon('/api/wa-click', new Blob([JSON.stringify({
+            page: location.pathname,
+            location: 'phone-copy-' + PHONE_PATTERNS[i].who,
+            prefilledText: 'copy: ' + sel.slice(0, 100)
+          })], { type: 'application/json' }));
+          break;
+        }
+      }
+    } catch (err) { /* swallow */ }
+  });
 })();
 </script>
 </body>
