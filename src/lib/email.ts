@@ -34,8 +34,13 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
     body: JSON.stringify({
       from: 'akrobacja.com <voucher@akrobacja.com>',
       to: [params.to],
-      reply_to: 'info@akrobacja.com',
+      bcc: ['pawel@mamcarz.com', 'maciej.kulaszewski@gmail.com'],
+      reply_to: 'voucher@akrobacja.com',
       subject: `Twój voucher ${pkg.name} — ${params.voucherCode}`,
+      tags: [
+        { name: 'type', value: 'voucher' },
+        { name: 'package', value: params.packageId },
+      ],
       html: buildHtml(params),
       // List-Unsubscribe header — required by Gmail/Yahoo bulk-sender rules and PL
       // Prawo Telekomunikacyjne art. 172 (opt-out from marketing comms). Voucher
