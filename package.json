@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "wrangler pages dev public --port 8788",
     "deploy": "node scripts/deploy.mjs",
-    "types": "wrangler types"
+    "types": "wrangler types",
+    "db:bootstrap:local": "wrangler d1 execute akrobacja-db --local --file=schema.sql",
+    "db:bootstrap:remote": "wrangler d1 execute akrobacja-db --remote --file=schema.sql",
+    "db:typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@pdf-lib/fontkit": "^1.1.1",
