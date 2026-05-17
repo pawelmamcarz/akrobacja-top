@@ -2002,32 +2002,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <!-- PAKIET 4, KURS AKROBACJI FCL.800 -->
-    <div class="v-card v-card--featured reveal reveal-d3" style="background:var(--black)">
-      <span class="v-tag" style="background:var(--navy);color:#fff">Uprawnienie akrobacja</span>
-      <h3 class="v-name">Kurs FCL.800</h3>
-      <p class="v-subtitle">Wpis do licencji pilota</p>
-      <div class="v-promo-tag" style="background:rgba(196,30,58,.15);color:#C41E3A">Cena do 31.05.2026 &middot; potem 21 777 PLN</div>
-      <div class="v-price" style="color:#fff">
-        20 999<span class="v-price-unit" style="color:rgba(255,255,255,.5)">zł netto</span>
-      </div>
-      <div class="v-divider"></div>
-      <ul class="v-features">
-        <li class="v-feat">16-20 lotów na Extra 300L (5h)</li>
-        <li class="v-feat">~5h teorii akrobacji</li>
-        <li class="v-feat">Wpis FCL.800 do licencji</li>
-        <li class="v-feat">Pod egidą Aeroklubu Radomskiego</li>
-        <li class="v-feat">Wymaga PPL(A) + 30h PIC</li>
-      </ul>
-      <a href="/blog/kurs-akrobacji-fcl800" class="v-cta" style="background:var(--navy);text-decoration:none">Szczegóły kursu →</a>
-      <div style="margin-top:12px;padding:10px;background:rgba(196,30,58,.1);font-size:11px;color:rgba(255,255,255,.8);text-align:center;line-height:1.5">
-        <strong style="color:#C41E3A">Pakiet Masterclass + Kurs:</strong><br>
-        4 999 + 18 888 = <strong>23 887 PLN brutto</strong> (19 420 netto)<br>
-        <a href="/dotacje-szkolenie-lotnicze" style="color:#C41E3A;font-weight:700;font-size:10px">Sprawdź dotacje →</a>
-      </div>
-    </div>
-
   </div><!-- /voucher-grid -->
+
+  <!-- Risk-reversal strip (5 checkmarks) -->
+  <div class="risk-strip reveal" style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px;background:#fff;border:1px solid #E0DCD2;padding:14px 18px">
+    <div style="display:flex;gap:8px;align-items:center;font-size:11px;color:#0A2F7C;font-weight:600"><span style="width:18px;height:18px;background:#0A2F7C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">✓</span> Voucher PDF w 60 sek</div>
+    <div style="display:flex;gap:8px;align-items:center;font-size:11px;color:#0A2F7C;font-weight:600"><span style="width:18px;height:18px;background:#0A2F7C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">✓</span> Ważny 12 miesięcy</div>
+    <div style="display:flex;gap:8px;align-items:center;font-size:11px;color:#0A2F7C;font-weight:600"><span style="width:18px;height:18px;background:#0A2F7C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">✓</span> Zła pogoda = bezpłatne przełożenie</div>
+    <div style="display:flex;gap:8px;align-items:center;font-size:11px;color:#0A2F7C;font-weight:600"><span style="width:18px;height:18px;background:#0A2F7C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">✓</span> NNW w cenie</div>
+    <div style="display:flex;gap:8px;align-items:center;font-size:11px;color:#0A2F7C;font-weight:600"><span style="width:18px;height:18px;background:#0A2F7C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0">✓</span> Stripe / BLIK / Apple Pay</div>
+  </div>
+  <style>
+    @media (max-width: 900px) { .risk-strip { grid-template-columns: 1fr 1fr !important; } }
+    @media (max-width: 480px) { .risk-strip { grid-template-columns: 1fr !important; } }
+  </style>
+
+  <!-- Baner FCL.800 wyniesiony z gridu (M2) -->
+  <aside class="fcl-banner reveal" style="background:#070F1A;color:#fff;padding:26px;margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:0;right:0;width:220px;height:100%;opacity:.25;background-image:repeating-linear-gradient(135deg,#FFB300 0 16px,transparent 16px 32px);pointer-events:none"></div>
+    <div style="position:relative;z-index:1;flex:1">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.4em;color:#00E5FF;text-transform:uppercase">Jesteś pilotem PPL?</div>
+      <h3 style="font-family:'Anton',sans-serif;font-size:clamp(24px,3vw,36px);line-height:.95;margin:6px 0;font-weight:400;text-transform:uppercase">Kurs akrobacji FCL.800, dofinansowanie 90%</h3>
+      <p style="font-size:13px;opacity:.85;margin:6px 0 0">16-20 lotów na Extra 300L · wpis do licencji · pod egidą Aeroklubu Radomskiego. Cena do 31.05.2026, potem 21 777 zł.</p>
+    </div>
+    <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0">
+      <div style="font-family:'Anton',sans-serif;font-size:44px;color:#00E5FF;line-height:.9">20 999<span style="font-size:14px;opacity:.7;margin-left:6px;font-family:'Inter',sans-serif">zł netto</span></div>
+      <a href="/dotacje-szkolenie-lotnicze" style="background:#00E5FF;color:#040E2A;padding:12px 18px;font-family:'Inter',sans-serif;font-size:11px;font-weight:800;letter-spacing:.18em;text-decoration:none;text-transform:uppercase">Sprawdź dotacje →</a>
+    </div>
+  </aside>
+  <style>
+    @media (max-width: 720px) {
+      .fcl-banner { flex-direction: column !important; align-items: flex-start !important; }
+      .fcl-banner > div:last-child { align-items: flex-start !important; }
+    }
+  </style>
+
+  <!-- Pakiet łączony (przeniesiony pod baner) -->
+  <div class="reveal" style="margin-top:14px;padding:14px 18px;background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.18);font-size:13px;color:#0A2F7C;text-align:center">
+    <strong>Pakiet Masterclass + Kurs:</strong> 4 999 + 18 888 = <strong>23 887 zł brutto</strong> (19 420 netto) · <a href="/dotacje-szkolenie-lotnicze" style="color:#E11E26;font-weight:700;border-bottom:1px solid rgba(225,30,38,.3);text-decoration:none">Sprawdź dotacje →</a>
+  </div>
 
   <!-- B2B stripe -->
   <div class="v-b2b reveal">
