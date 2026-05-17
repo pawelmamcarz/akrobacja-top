@@ -19,17 +19,19 @@ npm install
 cp .dev.vars.example .dev.vars                    # fill in secrets
 npm run dev                                        # wrangler pages dev public --port 8788
 npm run types                                      # regenerate worker-configuration.d.ts
+npm run db:typecheck                               # tsc --noEmit — actual type check across functions/ + src/
 npm run deploy                                     # node scripts/deploy.mjs (rsync + wrangler pages deploy)
 
 # D1 schema — see "Schema policy" below
-npx wrangler d1 execute akrobacja-db --local  --file=schema.sql                # fresh local DB
-npx wrangler d1 execute akrobacja-db --remote --file=migrations/NNN-<name>.sql # prod drift patch
+npm run db:bootstrap:local                                                     # fresh local DB from schema.sql
+npm run db:bootstrap:remote                                                    # ⚠ wipes/recreates prod DB — disaster recovery only
+npx wrangler d1 execute akrobacja-db --remote --file=migrations/NNN-<name>.sql # prod drift patch (normal path)
 
 # Push secrets to Cloudflare (one at a time)
 npx wrangler pages secret put NAME --project-name=akrobacja-top
 ```
 
-There is no test suite, no linter, no formatter wired up. `npm run types` is the closest thing to a check.
+There is no test suite, no linter, no formatter wired up. `npm run db:typecheck` (TS strict mode) is the real check; `npm run types` only regenerates the wrangler-derived `worker-configuration.d.ts` and doesn't validate anything.
 
 Auto-deploy: pushes to `main` trigger `.github/workflows/deploy.yml` → `wrangler pages deploy public --project-name=akrobacja-top --branch=main`. Other branches do NOT auto-deploy (locked, since D1/R2/AI bindings are shared with prod and preview deploys would corrupt live data). Use `npm run dev` for local staging. **A commit on `main` goes live within ~1 min of push** — only push when you want it deployed.
 

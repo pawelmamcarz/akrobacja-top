@@ -1755,6 +1755,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h1 class="hero-headline r-hero__h1">
       LOT, KTÓREGO<br>NIE ZAPOMNISZ.<br><span class="accent">NAPRAWDĘ.</span>
     </h1>
+    <p class="r-hero__dream reveal in" style="font-family:var(--font-b);font-size:clamp(15px,1.4vw,18px);color:rgba(255,255,255,.78);margin:18px 0 20px;line-height:1.55;max-width:640px;font-style:italic">
+      Od dziecięcego marzenia o lataniu do prawdziwych +6G obok mistrza Polski.
+    </p>
     <p class="r-hero__lead">
       Akrobacja z pilotem instruktorem na dwumiejscowym <b>Extra 300L SP-EKS</b>. Lotnisko Radom-Piastów, 90 minut z Warszawy. Ten sam typ samolotu, którym lata reprezentacja Polski.
     </p>
@@ -1780,6 +1783,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="r-hero__metric-num">1 200+</div>
         <div class="r-hero__metric-lbl">PASAŻERÓW</div>
       </div>
+    </div>
+    <div class="r-hero__since reveal in" style="margin-top:18px;font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.12em;text-transform:uppercase;font-family:var(--font-h);font-weight:600">
+      Akrobacja od 2019 · Mistrz Świata 2022 · Kadra Narodowa Aeroklubu Polskiego
     </div>
   </div>
 </section>
@@ -3074,18 +3080,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
+  // Detekcja kraju recenzenta na podstawie tekstu opinii i imienia. Google Places API
+  // nie zwraca country recenzenta, wiec dedukujemy po markerach jezykowych. Sluzy tylko
+  // do wyswietlenia emoji flagi obok autora (trust signal "klienci z roznych krajow").
+  // Pewnosc nie jest krytyczna - przy bledzie pokazemy zla flage, ale to mniejszy
+  // problem niz brak flagi w ogole.
+  function detectFlag(text, name) {
+    const t = (text + ' ' + name).toLowerCase();
+    if (/[ąćęłńóśźż]/.test(t)) return '🇵🇱';
+    if (/\b(very|the|and|was|is|my|our|amazing|great|awesome|recommend|perfect|experience|flight|pilot)\b/.test(t)) return '🇬🇧';
+    if (/\b(sehr|gut|war|ist|mit|der|die|und|nicht|hatte|wirklich|empfehlen)\b/.test(t)) return '🇩🇪';
+    if (/\b(velmi|dobré|byl|jsem|není|všechno|skvělé|opravdu)\b/.test(t)) return '🇨🇿';
+    if (/\b(très|bien|était|merveilleux|recommande|expérience)\b/.test(t)) return '🇫🇷';
+    // Polskie markery bez diakrytykow (klient pisze ASCII-only).
+    if (/\b(jest|polecam|swietny|swietna|swietne|wspanialy|wspaniale|przezycie|pilot|lot|akrobacja)\b/.test(t)) return '🇵🇱';
+    return '🇵🇱'; // default - dominujacy rynek
+  }
+
   function makeCard(r, indexInList) {
     const card = document.createElement('div');
     const delay = indexInList % 3;
-    card.className = 'review-card reveal' + (delay === 1 ? ' reveal-d1' : delay === 2 ? ' reveal-d2' : '');
+    // Klasa 'in' od razu, bo IntersectionObserver z linii 2829 obserwuje tylko elementy
+    // istniejące w DOM przy page-load. Karty fetch-injected przez loadInitial/loadMore
+    // omijaja observer i bez 'in' utykaja na opacity:0 (regresja od commitu reviews
+    // auto-pull). Reveal animacja nie ma znaczenia tutaj, fetch resolvuje pol sekundy
+    // po starcie strony, sekcja juz widoczna lub uzytkownik dopiero zjeazda.
+    card.className = 'review-card reveal in' + (delay === 1 ? ' reveal-d1' : delay === 2 ? ' reveal-d2' : '');
     const filled = Math.max(0, Math.min(5, r.rating));
     const stars = '★'.repeat(filled) + '☆'.repeat(5 - filled);
     const sourceLabel = r.source === 'google' ? 'Google Reviews' : r.source === 'facebook' ? 'Facebook' : '';
     const metaParts = [sourceLabel, r.relativeTime].filter(Boolean);
+    const flag = detectFlag(r.text || '', r.authorName || '');
     card.innerHTML =
       '<div class="review-stars" aria-label="' + r.rating + ' na 5 gwiazdek">' + stars + '</div>' +
       '<div class="review-text">„' + escapeHtml(r.text) + '"</div>' +
-      '<div class="review-author">' + escapeHtml(r.authorName) + '</div>' +
+      '<div class="review-author"><span aria-hidden="true" style="margin-right:6px">' + flag + '</span>' + escapeHtml(r.authorName) + '</div>' +
       '<div class="review-meta">' + escapeHtml(metaParts.join(' · ')) + '</div>';
     return card;
   }
