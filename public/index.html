@@ -3077,7 +3077,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   function makeCard(r, indexInList) {
     const card = document.createElement('div');
     const delay = indexInList % 3;
-    card.className = 'review-card reveal' + (delay === 1 ? ' reveal-d1' : delay === 2 ? ' reveal-d2' : '');
+    // Klasa 'in' od razu, bo IntersectionObserver z linii 2829 obserwuje tylko elementy
+    // istniejące w DOM przy page-load. Karty fetch-injected przez loadInitial/loadMore
+    // omijaja observer i bez 'in' utykaja na opacity:0 (regresja od commitu reviews
+    // auto-pull). Reveal animacja nie ma znaczenia tutaj, fetch resolvuje pol sekundy
+    // po starcie strony, sekcja juz widoczna lub uzytkownik dopiero zjeazda.
+    card.className = 'review-card reveal in' + (delay === 1 ? ' reveal-d1' : delay === 2 ? ' reveal-d2' : '');
     const filled = Math.max(0, Math.min(5, r.rating));
     const stars = '★'.repeat(filled) + '☆'.repeat(5 - filled);
     const sourceLabel = r.source === 'google' ? 'Google Reviews' : r.source === 'facebook' ? 'Facebook' : '';
