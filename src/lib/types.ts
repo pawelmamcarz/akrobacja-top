@@ -41,18 +41,18 @@ export const PACKAGES = {
   adrenalina: {
     id: 'adrenalina',
     name: 'Adrenalina',
-    subtitle: 'Pelen program akrobacyjny z Mistrzem',
+    subtitle: 'Pełen program akrobacyjny z Mistrzem',
     price: 299900,
     duration: '20 min lotu + 40 min briefing + 15 min debriefing',
-    features: ['20 minut w powietrzu', 'Do +6G / -4G', 'Pelny program: petle, beczki, roll, lot odwrocony'],
+    features: ['20 minut w powietrzu', 'Do +6G / -4G', 'Pełny program: pętle, beczki, roll, lot odwrócony'],
   },
   masterclass: {
     id: 'masterclass',
     name: 'Masterclass',
-    subtitle: 'Sesja szkoleniowa dla pilotow PPL(A)',
+    subtitle: 'Sesja szkoleniowa dla pilotów PPL(A)',
     price: 499900,
     duration: 'do 50 min w powietrzu + briefing + debriefing',
-    features: ['Do 50 minut w powietrzu', 'Wyprowadzanie z korkociagu, figury zaawansowane', 'Wymagana licencja PPL(A)'],
+    features: ['Do 50 minut w powietrzu', 'Wyprowadzanie z korkociągu, figury zaawansowane', 'Wymagana licencja PPL(A)'],
   },
   // Test-only product — niewidoczne w publicznym UI, dostępne tylko z /test-konwersji.
   // Webhook NIE generuje vouchera PDF i NIE wystawia faktury wfirma dla tego packageId.

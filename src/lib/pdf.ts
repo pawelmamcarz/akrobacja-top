@@ -1,19 +1,21 @@
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { PDFDocument, rgb } from 'pdf-lib';
+import fontkit from '@pdf-lib/fontkit';
 import { PACKAGES, type PackageId } from './types';
+import { INTER_REGULAR_B64, INTER_BOLD_B64, b64ToUint8 } from './fonts/inter';
 
-// Replace anything outside WinAnsi (Helvetica's encoding) with a safe fallback.
-// Previously the regex only matched ~22 known chars; any other non-ASCII codepoint
-// (emoji, Cyrillic, Chinese, German ß, etc.) passed through and pdf-lib threw
-// "Cannot encode character" inside the webhook, leaving paid orders without a PDF.
-function ascii(text: string): string {
-  const map: Record<string, string> = {
-    'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z',
-    'Ą': 'A', 'Ć': 'C', 'Ę': 'E', 'Ł': 'L', 'Ń': 'N', 'Ó': 'O', 'Ś': 'S', 'Ź': 'Z', 'Ż': 'Z',
-    '—': '-', '·': '-', '°': 'o', '−': '-', '–': '-', '„': '"', '”': '"', '’': "'", '‘': "'",
-    'ß': 'ss',
-  };
-  // Anything outside ASCII printable range gets replaced via map or '?' fallback.
-  return text.replace(/[^\x20-\x7E]/g, ch => map[ch] !== undefined ? map[ch] : '?');
+// Safety net for dedication text that may contain emoji / non-Latin codepoints
+// outside Inter's coverage. Inter covers Latin (PL/CZ/HU/etc.), Cyrillic, Greek,
+// Vietnamese — anything past that gets replaced so embedFont doesn't throw mid-flow.
+const SAFE_MAP: Record<string, string> = {
+  '—': '—', '–': '–', '·': '·', '°': '°', '−': '-', '„': '„', '”': '”', '’': "'", '‘': "'",
+};
+function sanitizeUserText(text: string): string {
+  // Inter covers U+0000-024F (Latin) + U+0370-03FF (Greek) + U+0400-04FF (Cyrillic) + common punctuation.
+  // Replace anything else with '?' rather than crash the PDF.
+  return text.replace(
+    /[^ -ɏͰ-ϿЀ-ӿḀ-ỿ -⁯₠-⃏]/g,
+    ch => SAFE_MAP[ch] ?? '?',
+  );
 }
 
 export async function generateVoucherPdf(opts: {
@@ -22,16 +24,16 @@ export async function generateVoucherPdf(opts: {
   customerName: string;
   videoAddon: boolean;
   expiresAt: string;
-  recipientName?: string | null;  // jeśli podane, używamy w sekcji "Voucher dla:" zamiast customerName
-  dedication?: string | null;     // jeśli podane, render ramki z dedykacją pod tytułem vouchera
+  recipientName?: string | null;
+  dedication?: string | null;
 }): Promise<Uint8Array> {
   const pkg = PACKAGES[opts.packageId];
   const doc = await PDFDocument.create();
+  doc.registerFontkit(fontkit);
   const page = doc.addPage([595.28, 841.89]); // A4
 
-  const helveticaBold = await doc.embedFont(StandardFonts.HelveticaBold);
-  const helvetica = await doc.embedFont(StandardFonts.Helvetica);
-  const helveticaOblique = await doc.embedFont(StandardFonts.HelveticaOblique);
+  const fontBold = await doc.embedFont(b64ToUint8(INTER_BOLD_B64));
+  const font = await doc.embedFont(b64ToUint8(INTER_REGULAR_B64));
 
   const navy = rgb(10 / 255, 47 / 255, 124 / 255);
   const red = rgb(225 / 255, 30 / 255, 38 / 255);
@@ -46,23 +48,23 @@ export async function generateVoucherPdf(opts: {
 
   // Brand
   page.drawText('akrobacja.com', {
-    x: 50, y: H - 60, size: 14, font: helveticaBold, color: white,
+    x: 50, y: H - 60, size: 14, font: fontBold, color: white,
   });
-  page.drawText('Extra 300L - SP-EKS', {
-    x: 50, y: H - 80, size: 9, font: helvetica, color: rgb(0.6, 0.7, 0.85),
+  page.drawText('Extra 300L · SP-EKS', {
+    x: 50, y: H - 80, size: 9, font, color: rgb(0.6, 0.7, 0.85),
   });
 
   // Title
   page.drawText('VOUCHER', {
-    x: 50, y: H - 130, size: 42, font: helveticaBold, color: white,
+    x: 50, y: H - 130, size: 42, font: fontBold, color: white,
   });
 
   // Red accent line
   page.drawRectangle({ x: 50, y: H - 145, width: 60, height: 4, color: red });
 
   // Package name
-  page.drawText(ascii(pkg.name.toUpperCase()), {
-    x: 50, y: H - 175, size: 18, font: helveticaBold, color: white,
+  page.drawText(pkg.name.toUpperCase(), {
+    x: 50, y: H - 175, size: 18, font: fontBold, color: white,
   });
 
   // Voucher code box
@@ -72,19 +74,18 @@ export async function generateVoucherPdf(opts: {
     color: rgb(0.94, 0.95, 0.97),
   });
   page.drawText('KOD VOUCHERA', {
-    x: 60, y: codeBoxY + 32, size: 8, font: helveticaBold, color: grey,
+    x: 60, y: codeBoxY + 32, size: 8, font: fontBold, color: grey,
   });
   page.drawText(opts.voucherCode, {
-    x: 60, y: codeBoxY + 8, size: 20, font: helveticaBold, color: navy,
+    x: 60, y: codeBoxY + 8, size: 20, font: fontBold, color: navy,
   });
 
   // Details section
   let y = codeBoxY - 40;
 
-  // Dedykacja (opcjonalna) — ramka z italikiem pod kodem vouchera, przed polami pakietu.
-  // pdf-lib nie wspiera polskich diakrytyków przy StandardFonts → ascii() jak reszta.
+  // Dedykacja (opcjonalna) — ramka pod kodem vouchera.
   if (opts.dedication && opts.dedication.trim().length > 0) {
-    const dedText = ascii(opts.dedication.trim());
+    const dedText = sanitizeUserText(opts.dedication.trim());
     // Wrap tekstu do max ~60 znaków na linię, max 4 linie (limit 200 zn. na backendzie).
     const words = dedText.split(/\s+/);
     const lines: string[] = [];
@@ -108,7 +109,6 @@ export async function generateVoucherPdf(opts: {
     const boxH = padY * 2 + titleH + lines.length * lineH;
     const boxY = y - boxH + 10;
 
-    // Tło + lewa czerwona linia akcentu (spójne z hero stroną).
     page.drawRectangle({
       x: 50, y: boxY, width: W - 100, height: boxH,
       color: rgb(0.985, 0.97, 0.97),
@@ -117,19 +117,17 @@ export async function generateVoucherPdf(opts: {
       x: 50, y: boxY, width: 3, height: boxH, color: red,
     });
 
-    // Tytuł sekcji
     page.drawText('DEDYKACJA', {
-      x: 50 + padX, y: boxY + boxH - padY - 8, size: 8, font: helveticaBold, color: red,
+      x: 50 + padX, y: boxY + boxH - padY - 8, size: 8, font: fontBold, color: red,
     });
 
-    // Tekst dedykacji — italic, navy, centered horyzontalnie w ramce.
     const dedFontSize = 12;
     let lineY = boxY + boxH - padY - titleH - 4;
     for (const line of lines) {
-      const textWidth = helveticaOblique.widthOfTextAtSize(line, dedFontSize);
+      const textWidth = font.widthOfTextAtSize(line, dedFontSize);
       const textX = 50 + (W - 100) / 2 - textWidth / 2;
       page.drawText(line, {
-        x: textX, y: lineY, size: dedFontSize, font: helveticaOblique, color: navy,
+        x: textX, y: lineY, size: dedFontSize, font, color: navy,
       });
       lineY -= lineH;
     }
@@ -138,30 +136,30 @@ export async function generateVoucherPdf(opts: {
   }
 
   const drawField = (label: string, value: string) => {
-    page.drawText(ascii(label), { x: 50, y, size: 8, font: helveticaBold, color: grey });
-    page.drawText(ascii(value), { x: 50, y: y - 16, size: 13, font: helvetica, color: navy });
+    page.drawText(label, { x: 50, y, size: 8, font: fontBold, color: grey });
+    page.drawText(sanitizeUserText(value), { x: 50, y: y - 16, size: 13, font, color: navy });
     y -= 45;
   };
 
-  drawField('PAKIET', `${pkg.name} - ${pkg.subtitle}`);
+  drawField('PAKIET', `${pkg.name} — ${pkg.subtitle}`);
   drawField('CZAS LOTU', pkg.duration);
   // "DLA" — preferuj recipient_name (prezent), fallback na customer_name.
   drawField('DLA', opts.recipientName?.trim() || opts.customerName);
-  drawField('WAZNY DO', formatDate(opts.expiresAt));
+  drawField('WAŻNY DO', formatDate(opts.expiresAt));
 
   if (opts.videoAddon) {
-    drawField('DODATEK', 'Video 360 z lotu (montaz 90 sek - MP4 w 48h)');
+    drawField('DODATEK', 'Video 360° z lotu (montaż 90 sek — MP4 w 48h)');
   }
 
   // Features
   y -= 10;
   page.drawText('CO ZAWIERA PAKIET:', {
-    x: 50, y, size: 9, font: helveticaBold, color: navy,
+    x: 50, y, size: 9, font: fontBold, color: navy,
   });
   y -= 20;
 
   for (const feat of pkg.features) {
-    page.drawText(ascii(`-  ${feat}`), { x: 55, y, size: 10, font: helvetica, color: grey });
+    page.drawText(`•  ${feat}`, { x: 55, y, size: 10, font, color: grey });
     y -= 18;
   }
 
@@ -169,39 +167,39 @@ export async function generateVoucherPdf(opts: {
   y -= 20;
   page.drawRectangle({ x: 50, y: y - 5, width: W - 100, height: 2, color: rgb(0.9, 0.92, 0.95) });
   y -= 25;
-  page.drawText('JAK SIE PRZYGOTOWAC DO LOTU:', {
-    x: 50, y, size: 9, font: helveticaBold, color: navy,
+  page.drawText('JAK SIĘ PRZYGOTOWAĆ DO LOTU:', {
+    x: 50, y, size: 9, font: fontBold, color: navy,
   });
   y -= 20;
 
   const tips = [
-    'Lekki posilek 2h przed lotem - nie lataj na czczo ani po obfitym posilku',
-    'Pij duzo wody - nawodnienie obniza ryzyko choroby lokomocyjnej',
-    'Wygodne sportowe ubranie i buty (nie klapki) - spadochron i kask zapewniamy',
-    'Zabierz okulary przeciwsloneczne i dowod tozsamosci',
-    'Badz na lotnisku 30 min przed planowanym lotem (briefing)',
-    'Przeciwwskazania: ciaza, epilepsja, ciezkie schorzenia serca, alkohol',
-    'Max waga: 110 kg | Wiek: 13+ (niepelnoletni - zgoda rodzica)',
+    'Lekki posiłek 2h przed lotem — nie lataj na czczo ani po obfitym posiłku',
+    'Pij dużo wody — nawodnienie obniża ryzyko choroby lokomocyjnej',
+    'Wygodne sportowe ubranie i buty (nie klapki) — spadochron i kask zapewniamy',
+    'Zabierz okulary przeciwsłoneczne i dowód tożsamości',
+    'Bądź na lotnisku 30 min przed planowanym lotem (briefing)',
+    'Przeciwwskazania: ciąża, epilepsja, ciężkie schorzenia serca, alkohol',
+    'Max waga: 110 kg | Wiek: 13+ (niepełnoletni — zgoda rodzica)',
   ];
 
   for (const tip of tips) {
     if (y < 100) break;
-    page.drawText(ascii(`-  ${tip}`), { x: 55, y, size: 8, font: helvetica, color: grey });
+    page.drawText(`•  ${tip}`, { x: 55, y, size: 8, font, color: grey });
     y -= 14;
   }
 
   y -= 10;
-  page.drawText(ascii('Wiecej: akrobacja.com/blog/10-rzeczy-przed-lotem-akrobacyjnym'), {
-    x: 55, y, size: 7, font: helvetica, color: navy,
+  page.drawText('Więcej: akrobacja.com/blog/10-rzeczy-przed-lotem-akrobacyjnym', {
+    x: 55, y, size: 7, font, color: navy,
   });
 
   // Footer
   page.drawRectangle({ x: 0, y: 0, width: W, height: 80, color: navy });
-  page.drawText(ascii('Lotnisko Radom-Piastow (EPRP)  -  +48 535 535 221  -  info@akrobacja.com'), {
-    x: 50, y: 45, size: 9, font: helvetica, color: rgb(0.6, 0.7, 0.85),
+  page.drawText('Lotnisko Radom-Piastów (EPRP)  ·  +48 535 535 221  ·  info@akrobacja.com', {
+    x: 50, y: 45, size: 9, font, color: rgb(0.6, 0.7, 0.85),
   });
-  page.drawText(ascii('Voucher jest imienny i niezbywalny. Rezerwacja terminu: info@akrobacja.com lub telefonicznie.'), {
-    x: 50, y: 25, size: 7, font: helvetica, color: rgb(0.45, 0.55, 0.7),
+  page.drawText('Voucher jest imienny i niezbywalny. Rezerwacja terminu: info@akrobacja.com lub telefonicznie.', {
+    x: 50, y: 25, size: 7, font, color: rgb(0.45, 0.55, 0.7),
   });
 
   return doc.save();
@@ -209,6 +207,6 @@ export async function generateVoucherPdf(opts: {
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
-  const months = ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','wrzesnia','pazdziernika','listopada','grudnia'];
+  const months = ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'];
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
