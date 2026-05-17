@@ -270,16 +270,20 @@ export const onRequest: PagesFunction = async (context) => {
     [
       "default-src 'self'",
       // 'unsafe-eval' is needed by Google Tag Manager custom HTML tags / trigger evaluation.
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://*.js.stripe.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://connect.facebook.net https://challenges.cloudflare.com https://static.cloudflareinsights.com",
+      // unpkg.com — meta-capi-param-builder loaded by GTM tag; analytics.tiktok.com — TikTok pixel.
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://*.js.stripe.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://connect.facebook.net https://challenges.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com https://analytics.tiktok.com https://*.tiktok.com",
       // Stripe 3DS / SCA challenge redirects users into bank-owned iframes served via
       // subdomains of stripe.com (m.stripe.network for fingerprinting, *.stripe.com for ACS).
       // YouTube no-cookie embeds are used on landing pages; GTM noscript fallback iframe
       // is on every page even when JS is enabled.
       "frame-src https://js.stripe.com https://*.js.stripe.com https://hooks.stripe.com https://*.stripe.com https://*.stripe.network https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com https://www.googletagmanager.com",
       "img-src 'self' data: https:",
-      "style-src 'self' 'unsafe-inline'",
-      "font-src 'self' data:",
-      "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.facebook.com https://api.stripe.com https://*.stripe.com https://*.stripe.network https://challenges.cloudflare.com https://cloudflareinsights.com",
+      // Google Fonts CSS loaded from fonts.googleapis.com on every page (Montserrat + Inter).
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      // Google Fonts TTF/WOFF served from fonts.gstatic.com.
+      "font-src 'self' data: https://fonts.gstatic.com",
+      // analytics.tiktok.com — TikTok pixel beacon endpoint.
+      "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.facebook.com https://api.stripe.com https://*.stripe.com https://*.stripe.network https://challenges.cloudflare.com https://cloudflareinsights.com https://analytics.tiktok.com https://*.tiktok.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self' https://checkout.stripe.com https://*.stripe.com",
