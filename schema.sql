@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS merch_orders (
 
 CREATE INDEX IF NOT EXISTS idx_merch_orders_status ON merch_orders(status);
 CREATE INDEX IF NOT EXISTS idx_merch_orders_stripe ON merch_orders(stripe_session_id);
+CREATE INDEX IF NOT EXISTS idx_merch_orders_created_at ON merch_orders(created_at DESC);
 
 -- SMS subscribers (email column used by welcome email sequence)
 CREATE TABLE IF NOT EXISTS subscribers (
@@ -201,6 +202,7 @@ CREATE TABLE IF NOT EXISTS courses (
 );
 
 CREATE INDEX IF NOT EXISTS idx_courses_email ON courses(customer_email);
+CREATE INDEX IF NOT EXISTS idx_courses_customer_phone ON courses(customer_phone);
 
 CREATE TABLE IF NOT EXISTS slots (
   id TEXT PRIMARY KEY,

@@ -10,6 +10,7 @@
 // odswiezac proof-bar (5.0 / 187 opinii) bez drugiego query.
 
 import { type Env } from '../../src/lib/types';
+import { rateLimit, clientIp } from '../../src/lib/rate-limit';
 
 interface ReviewRow {
   id: string;
@@ -27,6 +28,12 @@ const DEFAULT_LIMIT = 5;
 const MAX_LIMIT = 20;
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
+  const ip = clientIp(ctx.request);
+  const rl = await rateLimit(ctx.env, `reviews:${ip}`, 30, 60);
+  if (!rl.ok) {
+    return Response.json({ ok: false, error: 'rate-limited' }, { status: 429 });
+  }
+
   const url = new URL(ctx.request.url);
   const page = Math.max(1, parseInt(url.searchParams.get('page') ?? '1', 10) || 1);
   const limit = Math.min(MAX_LIMIT, Math.max(1, parseInt(url.searchParams.get('limit') ?? String(DEFAULT_LIMIT), 10) || DEFAULT_LIMIT));

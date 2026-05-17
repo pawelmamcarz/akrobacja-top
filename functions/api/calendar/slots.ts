@@ -1,11 +1,18 @@
 import { type Env } from '../../../src/lib/types';
 import { generateSlots, getDaylight } from '../../../src/lib/daylight';
 import { getWeatherForecast } from '../../../src/lib/weather';
+import { rateLimit, clientIp } from '../../../src/lib/rate-limit';
 
 // GET /api/calendar/slots?date=2026-04-15
 // Returns available slots for a given date with weather info
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   try {
+    const ip = clientIp(ctx.request);
+    const rl = await rateLimit(ctx.env, `slots:${ip}`, 60, 60);
+    if (!rl.ok) {
+      return Response.json({ error: 'Zbyt wiele zapytań, spróbuj za chwilę' }, { status: 429 });
+    }
+
     const url = new URL(ctx.request.url);
     const dateStr = url.searchParams.get('date');
     if (!dateStr || !/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {

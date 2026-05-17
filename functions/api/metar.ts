@@ -9,6 +9,9 @@
  * Failure modes: returns ok:false; client falls back to static defaults.
  */
 
+import { type Env } from '../../src/lib/types';
+import { rateLimit, clientIp } from '../../src/lib/rate-limit';
+
 interface MetarRaw {
   wdir?: number | string;
   wspd?: number;
@@ -23,8 +26,14 @@ interface MetarRaw {
 const STATION = 'EPRA';
 const URL_NOAA = `https://aviationweather.gov/api/data/metar?ids=${STATION}&format=json&taf=false&hours=2`;
 
-export const onRequest: PagesFunction = async () => {
+export const onRequest: PagesFunction<Env> = async (ctx) => {
   try {
+    const ip = clientIp(ctx.request);
+    const rl = await rateLimit(ctx.env, `metar:${ip}`, 30, 60);
+    if (!rl.ok) {
+      return Response.json({ ok: false, error: 'rate-limited' }, { status: 429 });
+    }
+
     const r = await fetch(URL_NOAA, {
       headers: { 'User-Agent': 'akrobacja.com/1.0 (info@akrobacja.com)' },
       cf: { cacheTtl: 300, cacheEverything: true } as RequestInitCfProperties,
