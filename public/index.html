@@ -1792,21 +1792,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="r-hero__metric-lbl">CERTYFIKAT</div>
       </div>
     </div>
-    <div class="r-hero__since reveal in" style="margin-top:18px;font-size:clamp(12px,1.1vw,13px);color:rgba(255,255,255,.82);letter-spacing:.16em;text-transform:uppercase;font-family:var(--font-h);font-weight:700">
-      Mistrz Świata 2022 · Wybitna Osobowość Lotnictwa 2026 · Cumulusy I 2024
-    </div>
   </div>
 </section>
 
-<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-     BENEFIT STRIP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-<div class="benefit-strip">
-  <div class="benefit-item"><span class="benefit-dot"></span>Mistrz Świata Akrobacji za sterami</div>
-  <div class="benefit-item"><span class="benefit-dot"></span>Voucher ważny 12 miesięcy</div>
-  <div class="benefit-item"><span class="benefit-dot"></span>Bezpłatne przełożenie terminu</div>
-  <div class="benefit-item"><span class="benefit-dot"></span>PDF na maila w 60 sekund</div>
-</div>
+<!-- Trust strip granatowy pod hero, 5 metryk (M3) -->
+<section class="trust-strip-hero" aria-label="Kluczowe metryki" style="background:#0A2F7C;color:#fff;padding:22px 28px;display:grid;grid-template-columns:repeat(5,1fr);gap:24px">
+  <div class="trust-item" style="border-left:2px solid #00E5FF;padding-left:14px">
+    <div style="font-family:'Anton',sans-serif;font-size:36px;line-height:.9">MŚ 2022</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;color:#00E5FF;margin-top:6px;text-transform:uppercase">Mistrz Świata</div>
+  </div>
+  <div class="trust-item" style="border-left:2px solid #00E5FF;padding-left:14px">
+    <div style="font-family:'Anton',sans-serif;font-size:36px;line-height:.9">3 500h+</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;color:#00E5FF;margin-top:6px;text-transform:uppercase">na Extra 300L</div>
+  </div>
+  <div class="trust-item" style="border-left:2px solid #00E5FF;padding-left:14px">
+    <div style="font-family:'Anton',sans-serif;font-size:36px;line-height:.9">1 200+</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;color:#00E5FF;margin-top:6px;text-transform:uppercase">pasażerów</div>
+  </div>
+  <div class="trust-item" style="border-left:2px solid #00E5FF;padding-left:14px">
+    <div style="font-family:'Anton',sans-serif;font-size:36px;line-height:.9">5.0★</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;color:#00E5FF;margin-top:6px;text-transform:uppercase">8 opinii Google</div>
+  </div>
+  <div class="trust-item" style="border-left:2px solid #00E5FF;padding-left:14px">
+    <div style="font-family:'Anton',sans-serif;font-size:36px;line-height:.9">12 mc</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;color:#00E5FF;margin-top:6px;text-transform:uppercase">ważność vouchera</div>
+  </div>
+</section>
+<style>
+  @media (max-width: 900px) { .trust-strip-hero { grid-template-columns: 1fr 1fr !important; gap: 18px !important; } }
+  @media (max-width: 480px) {
+    .trust-strip-hero { display: flex !important; overflow-x: auto; scroll-snap-type: x mandatory; padding: 18px !important; gap: 18px !important; }
+    .trust-strip-hero .trust-item { flex: 0 0 60%; scroll-snap-align: start; }
+  }
+</style>
 
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      GABINET TROFEOW
