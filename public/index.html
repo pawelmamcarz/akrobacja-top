@@ -3302,6 +3302,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
+<!-- Mobile sticky CTA bar (H2) - pojawia sie po scroll 600px, ukrywa gdy #sklep w viewport, tylko mobile <720px -->
+<div class="sticky-cta" data-visible="false" id="stickyCta" aria-hidden="true" style="position:fixed;bottom:0;left:0;right:0;background:rgba(4,14,42,.96);backdrop-filter:blur(8px);display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px;transform:translateY(100%);transition:transform .25s cubic-bezier(.4,0,.2,1);z-index:50;border-top:1px solid rgba(0,229,255,.25)">
+  <a href="#sklep" style="background:#E11E26;color:#fff;padding:14px 12px;text-align:center;font-family:'Inter',sans-serif;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;text-decoration:none">Kup voucher</a>
+  <a href="/voucher-prezent" style="background:rgba(255,255,255,.1);border:1.5px solid #fff;color:#fff;padding:14px 12px;text-align:center;font-family:'Inter',sans-serif;font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;text-decoration:none">Prezent</a>
+</div>
+<style>
+  .sticky-cta[data-visible="true"] { transform: translateY(0) !important; }
+  @media (min-width: 720px) { .sticky-cta { display: none !important; } }
+  body.sticky-cta-active { padding-bottom: 72px; }
+</style>
+<script>
+(function () {
+  if (window.innerWidth >= 720) return;
+  var bar = document.getElementById('stickyCta');
+  var sklep = document.getElementById('sklep');
+  if (!bar) return;
+  var sklepInView = false;
+  function show() {
+    var scrolled = window.scrollY > 600;
+    bar.dataset.visible = (scrolled && !sklepInView) ? 'true' : 'false';
+    bar.setAttribute('aria-hidden', scrolled && !sklepInView ? 'false' : 'true');
+  }
+  if (sklep && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      sklepInView = entries[0].isIntersecting;
+      show();
+    }, { rootMargin: '-20% 0px -20% 0px' }).observe(sklep);
+  }
+  window.addEventListener('scroll', show, { passive: true });
+  show();
+})();
+</script>
+
 <!-- Kontakt: callback form (form -> WA Kulaszewski z numerem klienta) + pasywny copy tracker.
      Pasywny: jezeli ktos zaznacza i kopiuje numer ze strony (np. zeby przepisac do telefonu),
      rejestrujemy event bez interakcji. Bez friction - user nawet nie wie.
