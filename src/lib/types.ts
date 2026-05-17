@@ -15,7 +15,6 @@ export interface Env {
   ADMIN_PASSWORD: string;
   SMSAPI_TOKEN: string;
   PRINTFUL_TOKEN: string;
-  GEMINI_API_KEY: string;
   META_PIXEL_ID?: string;
   META_CAPI_TOKEN?: string;
   META_TEST_EVENT_CODE?: string;

@@ -124,6 +124,21 @@ export const onRequest: PagesFunction = async (context) => {
           `<link rel="canonical" href="${canonicalUrl}">` +
           (noindex ? `<meta name="robots" content="noindex, nofollow">` : '');
 
+        // Preconnect to 3rd-party origins we load on every page. Saves the DNS+TLS
+        // handshake (~50-200ms each) before the actual script <script> tag fires.
+        // crossorigin needed for gstatic/connect.facebook.net which serve CORS resources.
+        if (gaId || adsId) {
+          headInject +=
+            `<link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>` +
+            `<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>`;
+        }
+        if (metaPixelId) {
+          headInject += `<link rel="preconnect" href="https://connect.facebook.net" crossorigin>`;
+        }
+        // Stripe.js is loaded only on checkout pages, but the handshake to js.stripe.com
+        // happens on every visit that lands on /lot-akrobacyjny etc. — warm it early.
+        headInject += `<link rel="preconnect" href="https://js.stripe.com" crossorigin>`;
+
         // Global gtag.js loader — GA4 + Google Ads with Consent Mode v2
         if (gaId || adsId) {
           const tagId = gaId || adsId;
