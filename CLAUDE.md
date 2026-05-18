@@ -42,6 +42,10 @@ Auto-deploy: pushes to `main` trigger `.github/workflows/deploy.yml` → `wrangl
 - `functions/_middleware.ts` runs on every request: SEO canonical/robots injection via `HTMLRewriter`, legacy WordPress URL redirects, security headers, and analytics tag injection. Hit it before debugging "why isn't my page rendering."
 - `functions/api/**` are the API routes (file-based routing — `functions/api/foo.ts` → `/api/foo`). Cron endpoints live under `functions/api/cron/` and are HTTP-triggered by an external scheduler — every cron handler verifies `Authorization: Bearer ${CRON_SECRET}` and 401s on mismatch. Current crons: `welcome-emails`, `abandoned-checkouts`, `scheduled-vouchers`, `refresh-google-reviews`, `post-flight-review-sms`.
 - Shared TS modules in `src/lib/`: `pdf`, `email`, `wfirma`, `sms`, `pilot-auth`, `admin-auth`, `weather`, `daylight`, `meta-capi`, `validate`, `phone`, `voucher-code`, `rate-limit` (KV-backed counter), `turnstile` (Cloudflare CAPTCHA verify), `audit` (admin action log), `printful`, `types`. `Env` interface and `PACKAGES` constant live in `src/lib/types.ts` — all voucher pricing and product IDs are defined there. Addons (cross-sell) live in `src/lib/types.ts` under `ADDONS` with per-package gating.
+- **Email observability**: `functions/api/webhook/resend.ts` ingests Resend delivery events into the `email_events` table; admin "Maile" tab consumes `functions/api/admin/email-events.ts` + `functions/api/admin/failed-deliveries.ts`. Set `RESEND_WEBHOOK_SECRET` for signature verification.
+
+### `email-worker/` — separate Worker (not Pages)
+`email-worker/` is a standalone Cloudflare **Worker** (not a Pages Function) that fans out incoming mail to `voucher@`/`info@akrobacja.com` to multiple destinations (CF Email Routing dashboard only allows 1 destination per address). It has its own `package.json` and `wrangler.toml` and a **manual** deploy path: `cd email-worker && npx wrangler deploy`. It is NOT touched by the Pages auto-deploy workflow — bumping it requires the manual command above plus a CF Dashboard wire-up (Email Routing → Custom Address → Action "Send to a Worker" → `akrobacja-email-fanout`).
 
 ### Voucher purchase flow (the core path)
 The Stripe webhook is the heart of the app. Read `functions/api/webhook.ts` end-to-end before touching it.
@@ -74,7 +78,8 @@ A second flow (`functions/api/cron/scheduled-vouchers.ts`) handles gift vouchers
 - **After UX/visual changes**: deploy and verify the rendered output in a browser before declaring done — production is one push away and CSS regressions are easy to miss locally.
 - **Deploy gotcha**: `scripts/deploy.mjs` rsyncs `public/` to a temp dir and excludes large `rolki/*.mp4|.mov` files (>25 MiB Cloudflare Pages limit). If you add new large assets, extend the exclude list there or move to R2.
 - **Before changing anything**: `git fetch && git log origin/main..HEAD` — auto-deploy means the local working copy can lag behind production.
-- **Session memory files** the assistant writes for itself: name them `CLAUDE.md`, never `klot.md` or other variants.
+- **Session memory files** the assistant writes for itself: name them `CLAUDE.md`, never `klot.md` or other variants. The parallel `AGENTS.md` at repo root is the equivalent for other agents (Codex etc.) — keep them separate, don't merge or overwrite.
+- **`docs/` folder** holds long-form references that don't fit inline: `deep-code-audit-2026-05-05.md`, `POZYCZKA-NA-KSZTALCENIE-FCL800.md` (BGK loan USP source-of-truth), `SUS-3.0-system-jakosci-BUR.md`. Consult before duplicating their content.
 
 ## Known gaps to be aware of
 
