@@ -53,3 +53,14 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             https://akrobacja.com/api/cron/refresh-google-reviews
         continue-on-error: true
+
+      # Lead magnet 5-day email course - nurture steps 2/4/7/14
+      # (krok 0 wysyla endpoint /api/lead-magnet od razu po zapisie).
+      # Endpoint sprawdza created_at vs delayDays, wiec hourly trigger
+      # jest bezpieczny - faktyczne maile leca tylko gdy nadejdzie czas.
+      - name: Lead magnet nurture emails
+        run: |
+          curl -fsS -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            https://akrobacja.com/api/cron/lead-magnet-emails
+        continue-on-error: true
