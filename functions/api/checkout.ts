@@ -52,6 +52,7 @@ const DISCOUNTS: Record<string, DiscountSpec> = {
   KURS5OFF: { pct: 5 },
   MACIEJ10: { pct: 10 },   // Linktree akrobacja.com/maciej, ruch z IG @bullet.aerobatics
   PAWEL10: { pct: 10 },    // Linktree akrobacja.com/pawel, ruch z IG @xpoli
+  URODZINY10: { pct: 10 }, // SEO landing /prezent-na-urodziny
 };
 
 function isDiscountActive(d: DiscountSpec | undefined, packageId: PackageId, today: string): boolean {
