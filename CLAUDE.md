@@ -31,7 +31,7 @@ npx wrangler d1 execute akrobacja-db --remote --file=migrations/NNN-<name>.sql #
 npx wrangler pages secret put NAME --project-name=akrobacja-top
 ```
 
-There is no test suite, no linter, no formatter wired up. **`npm run db:typecheck` (TS strict mode, covers `functions/` + `src/`) is the only safety net before a push** — auto-deploy on `main` is ~1 min, so run it before every commit that touches `.ts`. `npm run types` only regenerates the wrangler-derived `worker-configuration.d.ts` and doesn't validate anything.
+There is no test suite, no linter, no formatter wired up. **`npm run db:typecheck` (TS strict mode, covers `functions/` + `src/`) is the only safety net** — run it before every commit that touches `.ts`. `npm run types` only regenerates the wrangler-derived `worker-configuration.d.ts` and doesn't validate anything.
 
 Auto-deploy: pushes to `main` trigger `.github/workflows/deploy.yml` → `wrangler pages deploy public --project-name=akrobacja-top --branch=main`. Other branches do NOT auto-deploy (locked, since D1/R2/AI bindings are shared with prod and preview deploys would corrupt live data). Use `npm run dev` for local staging. **A commit on `main` goes live within ~1 min of push** — only push when you want it deployed.
 
