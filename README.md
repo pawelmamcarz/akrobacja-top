@@ -77,8 +77,8 @@ przyrostowo). Kolejne migracje nazywamy `NNN-opis.sql` — guard przez
 5. Klient ląduje na `/sukces?code=...&amount=...&pkg=...` → GA4/Ads/Pixel strzelają
    konwersję z `sessionStorage.akro_checkout_info` (Enhanced Conversions).
 
-Produkt testowy `test_naklejka` (100 gr) pomija PDF/email/fakturę — służy tylko
-weryfikacji pikseli konwersji.
+Produkt testowy `test_naklejka` (200 gr = 2 PLN, minimum Stripe PLN) pomija
+PDF/email/fakturę — służy tylko weryfikacji pikseli konwersji.
 
 ## Przepływ rezerwacji kalendarza
 

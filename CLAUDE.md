@@ -31,7 +31,7 @@ npx wrangler d1 execute akrobacja-db --remote --file=migrations/NNN-<name>.sql #
 npx wrangler pages secret put NAME --project-name=akrobacja-top
 ```
 
-There is no test suite, no linter, no formatter wired up. `npm run db:typecheck` (TS strict mode) is the real check; `npm run types` only regenerates the wrangler-derived `worker-configuration.d.ts` and doesn't validate anything.
+There is no test suite, no linter, no formatter wired up. **`npm run db:typecheck` (TS strict mode, covers `functions/` + `src/`) is the only safety net before a push** — auto-deploy on `main` is ~1 min, so run it before every commit that touches `.ts`. `npm run types` only regenerates the wrangler-derived `worker-configuration.d.ts` and doesn't validate anything.
 
 Auto-deploy: pushes to `main` trigger `.github/workflows/deploy.yml` → `wrangler pages deploy public --project-name=akrobacja-top --branch=main`. Other branches do NOT auto-deploy (locked, since D1/R2/AI bindings are shared with prod and preview deploys would corrupt live data). Use `npm run dev` for local staging. **A commit on `main` goes live within ~1 min of push** — only push when you want it deployed.
 
@@ -40,7 +40,8 @@ Auto-deploy: pushes to `main` trigger `.github/workflows/deploy.yml` → `wrangl
 ### Pages vs Functions split
 - `public/` is the deploy target — every `.html` is served as-is by Cloudflare Pages. JS lives inline or in `public/assets/`.
 - `functions/_middleware.ts` runs on every request: SEO canonical/robots injection via `HTMLRewriter`, legacy WordPress URL redirects, security headers, and analytics tag injection. Hit it before debugging "why isn't my page rendering."
-- `functions/api/**` are the API routes (file-based routing — `functions/api/foo.ts` → `/api/foo`). Cron endpoints live under `functions/api/cron/` and are HTTP-triggered by an external scheduler — every cron handler verifies `Authorization: Bearer ${CRON_SECRET}` and 401s on mismatch. Current crons: `welcome-emails`, `abandoned-checkouts`, `scheduled-vouchers`, `refresh-google-reviews`, `post-flight-review-sms`.
+- `functions/api/**` are the API routes (file-based routing — `functions/api/foo.ts` → `/api/foo`, `functions/api/foo/bar.ts` → `/api/foo/bar`). Two distinct webhooks share the prefix: `functions/api/webhook.ts` is the **Stripe** webhook at `/api/webhook` (signature via `STRIPE_WEBHOOK_SECRET`); `functions/api/webhook/resend.ts` is the **Resend** delivery-events webhook at `/api/webhook/resend` (signature via `RESEND_WEBHOOK_SECRET`). Don't conflate them.
+- Cron endpoints live under `functions/api/cron/` and are HTTP-triggered by an external scheduler — every cron handler verifies `Authorization: Bearer ${CRON_SECRET}` and 401s on mismatch. Current crons: `welcome-emails`, `abandoned-checkouts`, `scheduled-vouchers`, `refresh-google-reviews`, `post-flight-review-sms`.
 - Shared TS modules in `src/lib/`: `pdf`, `email`, `wfirma`, `sms`, `pilot-auth`, `admin-auth`, `weather`, `daylight`, `meta-capi`, `validate`, `phone`, `voucher-code`, `rate-limit` (KV-backed counter), `turnstile` (Cloudflare CAPTCHA verify), `audit` (admin action log), `printful`, `types`. `Env` interface and `PACKAGES` constant live in `src/lib/types.ts` — all voucher pricing and product IDs are defined there. Addons (cross-sell) live in `src/lib/types.ts` under `ADDONS` with per-package gating.
 - **Email observability**: `functions/api/webhook/resend.ts` ingests Resend delivery events into the `email_events` table; admin "Maile" tab consumes `functions/api/admin/email-events.ts` + `functions/api/admin/failed-deliveries.ts`. Set `RESEND_WEBHOOK_SECRET` for signature verification.
 
@@ -55,7 +56,7 @@ The Stripe webhook is the heart of the app. Read `functions/api/webhook.ts` end-
 3. Status flips to `paid`; `ctx.waitUntil` fires Meta CAPI `Purchase` and the owner notification email.
 4. Customer lands on `/sukces?code=…&amount=…&pkg=…`. GA4 / Google Ads / Meta Pixel fire conversion from `sessionStorage.akro_checkout_info` (Enhanced Conversions, dedup with the CAPI event via `event_id`).
 
-The `test_naklejka` package (200 gr / 2 PLN) deliberately **skips PDF + email + invoice** — it exists only to validate live conversion pixels without burning real PDFs/invoices. Don't add it to public UI.
+The `test_naklejka` package (200 gr = 2 PLN, Stripe PLN minimum) deliberately **skips PDF + email + invoice** in the webhook (`src/lib/types.ts:59`) — it exists only to validate live conversion pixels without burning real PDFs/invoices. Reachable only from `/test-konwersji`; don't add it to public UI.
 
 A second flow (`functions/api/cron/scheduled-vouchers.ts`) handles gift vouchers with a future `send_at`: webhook stored the PDF in R2 but skipped the email; cron picks it up on/after `send_at` and sends it.
 
