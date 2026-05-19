@@ -15,7 +15,7 @@ Plan pozyskiwania zamówień na pokazy akrobacyjne Macieja Kulaszewskiego (Extra
 | `https://akrobacja.com/maciej-osiagniecia` | Sales bio Macieja, pełne osiągnięcia, pakiety, FAQ B2B |
 | `https://akrobacja.com/pokazy-lotnicze` | Strona produktowa: pakiety, ceny, hero z metrykami |
 | `https://akrobacja.com/dla-mediow` | Press kit dla dziennikarzy (boilerplate, fakty, zdjęcia HD) |
-| Gamma deck pitch | `https://gamma.app/docs/531xkj0mzmbiqfx` (9-slajdowa prezentacja, export PDF/PPTX z Gamma editor) |
+| Gamma deck pitch | `https://gamma.app/docs/dcubafc3xxf9fsa` (9-slajdowa prezentacja z prawdziwymi zdjęciami z akrobacja.com, export PDF/PPTX z Gamma editor) |
 
 ---
 
