@@ -490,6 +490,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <details class="faq-item"><summary class="faq-q">Jak dojechać na lotnisko Radom-Piastów (EPRP)?</summary><div class="faq-a">Lotnisko leży ok. 100 km od Warszawy, przejazd autem zajmuje ok. 1h 45 min trasą S7 + S12. Parking przy lotnisku jest gratis. Adres: Lotnisko Radom-Piastów (EPRP), ul. Lotników 1, 26-600 Radom. Dla obdarowanego z innego miasta chętnie polecamy nocleg w okolicy.</div></details>
 </section>
 
+<section class="lead-magnet" id="kurs-mailowy" aria-labelledby="kurs-mailowy-title-vp" style="background:linear-gradient(135deg,#0A2F7C 0%,#1a4ba8 100%);padding:64px 24px;color:#fff">
+  <div style="max-width:720px;margin:0 auto;text-align:center">
+    <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin:0 0 12px">Bezpłatny kurs mailowy</p>
+    <h2 id="kurs-mailowy-title-vp" style="font-size:clamp(24px,4vw,32px);font-weight:800;margin:0 0 16px;line-height:1.2">Wybierasz prezent? Zacznij od bezpłatnego kursu.</h2>
+    <p style="font-size:16px;line-height:1.6;margin:0 0 32px;color:rgba(255,255,255,.85)">5 maili przez 14 dni z odpowiedziami na najczęstsze pytania o lot akrobacyjny. Plus kod rabatowy 5% na dowolny voucher.</p>
+    <form id="lead-magnet-form" style="display:flex;gap:8px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center" novalidate>
+      <input type="email" id="lead-magnet-email" name="email" required placeholder="twoj@email.com" autocomplete="email"
+             style="flex:1;min-width:240px;padding:14px 18px;border:none;border-radius:6px;font-size:15px;font-family:inherit;color:#1A2438">
+      <button type="submit" id="lead-magnet-submit"
+              style="background:#fff;color:#0A2F7C;border:none;padding:14px 28px;border-radius:6px;font-weight:700;font-size:15px;cursor:pointer;font-family:inherit;letter-spacing:.02em">Zapisz mnie</button>
+    </form>
+    <p id="lead-magnet-status" role="status" aria-live="polite" style="margin:16px 0 0;font-size:14px;color:rgba(255,255,255,.85);min-height:20px"></p>
+    <p style="margin:24px 0 0;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.5px">Brak spamu. Tylko konkretna wiedza o lataniu.</p>
+  </div>
+</section>
+<script>
+(function(){
+  var form = document.getElementById('lead-magnet-form');
+  if (!form) return;
+  var input = document.getElementById('lead-magnet-email');
+  var btn = document.getElementById('lead-magnet-submit');
+  var status = document.getElementById('lead-magnet-status');
+  function getUtm(){
+    var p = new URLSearchParams(window.location.search);
+    return {
+      utm_source: p.get('utm_source') || undefined,
+      utm_medium: p.get('utm_medium') || undefined,
+      utm_campaign: p.get('utm_campaign') || undefined,
+    };
+  }
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var email = (input.value || '').trim();
+    if (!email || email.indexOf('@') < 1) { status.textContent = 'Podaj prawidłowy adres email'; return; }
+    btn.disabled = true; btn.textContent = 'Wysyłam...'; status.textContent = '';
+    try {
+      var body = Object.assign({ email: email, source: 'lead_magnet_voucher_prezent' }, getUtm());
+      var r = await fetch('/api/lead-magnet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      var data = await r.json().catch(function(){ return {}; });
+      if (r.ok) {
+        status.textContent = data.message || 'Sprawdź pocztę.';
+        form.style.display = 'none';
+        if (window.fbq) { fbq('track','Lead',{content_name:'lead_magnet_v1',content_category:'email_course'}); }
+        if (window.gtag) { gtag('event','generate_lead',{content_name:'lead_magnet_v1'}); }
+      } else {
+        status.textContent = data.error || 'Coś poszło nie tak. Spróbuj jeszcze raz.';
+        btn.disabled = false; btn.textContent = 'Zapisz mnie';
+      }
+    } catch (err) {
+      status.textContent = 'Błąd połączenia. Spróbuj za chwilę.';
+      btn.disabled = false; btn.textContent = 'Zapisz mnie';
+    }
+  });
+})();
+</script>
+
 <section class="final">
   <h2>Voucher w <span style="color:var(--cyan)">3 minuty</span>. Na zawsze w pamięci.</h2>
   <p>Kliknij, wybierz pakiet i odbierz PDF na maila. Zero ryzyka, 14 dni na zwrot.</p>
@@ -799,11 +859,15 @@ form.addEventListener('submit', async (e) => {
   try {
     const sendMode = (document.querySelector('input[name="sendMode"]:checked') || {}).value;
     const sendAtVal = sendMode === 'schedule' ? sendAtInput.value : '';
+    const pkgId = pkgInput.value;
+    const valuePLN = (PKGS && PKGS[pkgId] && PKGS[pkgId].price) ? PKGS[pkgId].price : 0;
+    if (window.fbq) fbq('track','InitiateCheckout',{content_ids:[pkgId],content_type:'product',value:valuePLN,currency:'PLN',num_items:1});
+    if (window.gtag) gtag('event','begin_checkout',{currency:'PLN',value:valuePLN,items:[{item_id:pkgId,item_name:'Voucher '+pkgId,price:valuePLN,quantity:1}]});
     const res = await fetch('/api/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        packageId: pkgInput.value,
+        packageId: pkgId,
         addons: collectCheckedAddons(),
         videoAddon: videoCheck.checked,            // legacy duplicate dla starszych webhookow
         customerName: document.getElementById('checkoutName').value.trim(),
@@ -827,6 +891,25 @@ form.addEventListener('submit', async (e) => {
     submitBtn.textContent = 'Przejdź do płatności →';
   }
 });
+
+/* ═══ Meta ViewContent + GA view_item_list, fire once when pricing-section enters viewport ═══ */
+(function(){
+  if (!window.IntersectionObserver) return;
+  var sect = document.getElementById('pakiety');
+  if (!sect) return;
+  var fired = false;
+  new IntersectionObserver(function(entries){
+    if (fired) return;
+    for (var i=0; i<entries.length; i++){
+      if (entries[i].isIntersecting){
+        fired = true;
+        if (window.fbq) fbq('track','ViewContent',{content_type:'product_group',content_name:'Vouchery prezent',content_category:'voucher',currency:'PLN',content_ids:['pierwszy_lot','adrenalina','masterclass']});
+        if (window.gtag) gtag('event','view_item_list',{item_list_name:'Vouchery prezent'});
+        break;
+      }
+    }
+  }, {threshold:0.3}).observe(sect);
+})();
 </script>
 
 </body>

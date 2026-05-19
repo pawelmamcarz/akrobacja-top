@@ -12,7 +12,8 @@ export type DeliveryChannel =
   | 'welcome_email'
   | 'scheduled_voucher_email'
   | 'merch_owner_notify'
-  | 'google_places';
+  | 'google_places'
+  | 'lead_magnet_email';
 
 interface AuditOpts {
   channel: DeliveryChannel;

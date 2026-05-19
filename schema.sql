@@ -105,6 +105,35 @@ CREATE TABLE IF NOT EXISTS welcome_emails_sent (
 
 CREATE INDEX IF NOT EXISTS idx_welcome_emails_subscriber ON welcome_emails_sent(subscriber_id);
 
+-- Email-first lead capture (lead magnet PDF). Osobno od subscribers, bo subscribers.phone
+-- jest UNIQUE NOT NULL — lead magnet nie wymaga telefonu.
+CREATE TABLE IF NOT EXISTS email_leads (
+  id TEXT PRIMARY KEY,
+  email TEXT UNIQUE NOT NULL,
+  source TEXT NOT NULL DEFAULT 'lead_magnet_v1',
+  name TEXT,
+  active INTEGER NOT NULL DEFAULT 1,
+  utm_source TEXT,
+  utm_medium TEXT,
+  utm_campaign TEXT,
+  ip TEXT,
+  user_agent TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_email_leads_active ON email_leads(active, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_email_leads_source ON email_leads(source, created_at DESC);
+
+CREATE TABLE IF NOT EXISTS lead_emails_sent (
+  id TEXT PRIMARY KEY,
+  lead_id TEXT NOT NULL,
+  step INTEGER NOT NULL,
+  sent_at TEXT NOT NULL DEFAULT (datetime('now')),
+  UNIQUE(lead_id, step)
+);
+
+CREATE INDEX IF NOT EXISTS idx_lead_emails_sent_lead ON lead_emails_sent(lead_id);
+
 -- Audit table for outbound delivery failures (Resend, SMSAPI, wFirma, Meta CAPI).
 -- Append-only. Admin panel reads grouped counts to spot misconfigured providers.
 CREATE TABLE IF NOT EXISTS failed_deliveries (
