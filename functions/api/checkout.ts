@@ -50,6 +50,7 @@ const DISCOUNTS: Record<string, DiscountSpec> = {
   MAJOWKA: { pct: 10 },
   ATAM2205: { fixed: 44400, applicablePackages: ['pierwszy_lot'], validFrom: '2026-05-15', validUntil: '2026-05-23' },
   KURS5OFF: { pct: 5 },
+  MACIEJ10: { pct: 10 },   // Linktree akrobacja.com/maciej, ruch z IG @maciej_kulaszewski
 };
 
 function isDiscountActive(d: DiscountSpec | undefined, packageId: PackageId, today: string): boolean {

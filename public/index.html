@@ -3042,6 +3042,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     videoCheck.checked = !!document.querySelector(`[data-addon="${packageId}"].on`);
     updatePrice(pkg.price);
     dotacjaBanner.style.display = packageId === 'masterclass' ? 'block' : 'none';
+    var urlDiscount = new URLSearchParams(location.search).get('discount');
+    if (urlDiscount) {
+      var discInput = document.getElementById('checkoutDiscount');
+      if (discInput && !discInput.value) discInput.value = urlDiscount.toUpperCase();
+    }
     modal.classList.add('active');
     tryPrefillFromPilot();
     document.body.style.overflow = 'hidden';

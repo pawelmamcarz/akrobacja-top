@@ -669,6 +669,8 @@ const DISCOUNTS = {
   FB10:       { pct: 10 },
   MAJOWKA:    { pct: 10 },
   ATAM2205:   { fixed: 444, applicablePackages: ['pierwszy_lot'], validFrom: '2026-05-15', validUntil: '2026-05-23' },
+  KURS5OFF:   { pct: 5 },
+  MACIEJ10:   { pct: 10 },
 };
 
 // Ceny w PLN (backend trzyma grosze). null = addon dostępny dla każdego pakietu.
@@ -736,6 +738,10 @@ function openModal(packageId) {
   // Reset wszystkich addonów + ukryj niedostępne dla tego pakietu (np. second_seat dla masterclass).
   document.querySelectorAll('input[data-addon-id]').forEach(cb => { cb.checked = false; });
   gateAddonsForPackage(packageId);
+  var urlDiscount = new URLSearchParams(location.search).get('discount');
+  if (urlDiscount && discountInput && !discountInput.value) {
+    discountInput.value = urlDiscount.toUpperCase();
+  }
   updatePrice();
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';

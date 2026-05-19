@@ -2020,6 +2020,12 @@ function openModal(packageId) {
   gateAddonsForPackage(packageId);
   updatePrice();
   dotacjaBanner.style.display = packageId === 'masterclass' ? 'block' : 'none';
+  // Prefill discount z URL ?discount=KOD (linktree, kampanie, affiliate)
+  var urlDiscount = new URLSearchParams(location.search).get('discount');
+  if (urlDiscount) {
+    var discInput = document.getElementById('checkoutDiscount');
+    if (discInput && !discInput.value) discInput.value = urlDiscount.toUpperCase();
+  }
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
   modal.querySelector('input:not([type=hidden])').focus();
