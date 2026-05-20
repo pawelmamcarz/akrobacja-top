@@ -1758,7 +1758,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       LOT, KTÓREGO<br>NIE ZAPOMNISZ.<br><span class="accent">±6G NAD RADOMIEM.</span>
     </h1>
     <p class="r-hero__lead">
-      20 minut w kokpicie <b>Extra 300L SP-EKS</b>. 90 min z Warszawy. Voucher PDF na maila w 60 sekund.
+      20 minut w kokpicie <b>Extra 300L SP-EKS</b>. 50 min z Warszawy. Voucher PDF na maila w 60 sekund.
     </p>
     <div class="r-hero__cta" style="display:flex;gap:10px;flex-wrap:wrap">
       <a href="#sklep?path=self" class="cta cta-primary" data-persona="self" style="background:#E11E26;color:#fff;padding:20px 26px;display:flex;flex-direction:column;gap:3px;text-decoration:none;font-family:'Inter',sans-serif">
@@ -1835,7 +1835,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 class="section-title reveal" style="text-align:center;margin-bottom:12px">Czemu warto latać z Maciejem</h2>
     <div class="accent-bar reveal" style="margin:0 auto 16px"></div>
     <p class="reveal" style="text-align:center;color:rgba(255,255,255,.7);font-size:15px;max-width:680px;margin:0 auto 48px">
-      Mistrz Świata 2022, cztery sezony pod rząd na podium Mistrzostw Polski, świeże wyróżnienie Aeroklubu Polskiego za 2026 rok. Konkretne tytuły, nie marketingowe slogany.
+      Mistrz Świata 2022, cztery sezony z rzędu na podium Mistrzostw Polski, świeże wyróżnienie Aeroklubu Polskiego za 2026 rok. Konkretne tytuły, nie marketingowe slogany.
     </p>
 
     <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px">
@@ -2820,6 +2820,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="/partnerzy">Partnerzy</a><a href="/regulamin">Regulamin</a></li>
         <li><a href="/polityka-prywatnosci">Polityka prywatności</a></li>
         <li><a href="/dotacje-szkolenie-lotnicze" style="color:#C41E3A">Dotacje na szkolenie</a></li>
+        <li><a href="/prezent-na-urodziny">Prezent na urodziny</a></li>
+        <li><a href="/dla-mediow">Dla mediów (Press kit)</a></li>
         <li><a href="#faq">FAQ, Pytania i odpowiedzi</a></li>
         <li><a href="https://maps.app.goo.gl/vw3hYE5V7XJUXU2G8" target="_blank" rel="noopener">Dojazd na lotnisko</a></li>
       </ul>
@@ -3042,6 +3044,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     videoCheck.checked = !!document.querySelector(`[data-addon="${packageId}"].on`);
     updatePrice(pkg.price);
     dotacjaBanner.style.display = packageId === 'masterclass' ? 'block' : 'none';
+    var urlDiscount = new URLSearchParams(location.search).get('discount');
+    if (urlDiscount) {
+      var discInput = document.getElementById('checkoutDiscount');
+      if (discInput && !discInput.value) discInput.value = urlDiscount.toUpperCase();
+    }
     modal.classList.add('active');
     tryPrefillFromPilot();
     document.body.style.overflow = 'hidden';
@@ -3088,11 +3095,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     submitBtn.textContent = 'Przetwarzanie...';
 
     try {
+      const pkgId = pkgInput.value;
+      const valuePLN = (PKGS && PKGS[pkgId] && PKGS[pkgId].price) ? PKGS[pkgId].price : 0;
+      if (window.fbq) fbq('track','InitiateCheckout',{content_ids:[pkgId],content_type:'product',value:valuePLN,currency:'PLN',num_items:1});
+      if (window.gtag) gtag('event','begin_checkout',{currency:'PLN',value:valuePLN,items:[{item_id:pkgId,item_name:'Voucher '+pkgId,price:valuePLN,quantity:1}]});
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          packageId: pkgInput.value,
+          packageId: pkgId,
           videoAddon: videoCheck.checked,
           customerName: document.getElementById('checkoutName').value.trim(),
           customerEmail: document.getElementById('checkoutEmail').value.trim(),
@@ -3385,6 +3396,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     } catch (err) { /* swallow */ }
   });
+})();
+
+/* ═══ Meta ViewContent + GA view_item_list, fire once when pricing-section enters viewport ═══ */
+(function(){
+  if (!window.IntersectionObserver) return;
+  var sect = document.getElementById('sklep') || document.getElementById('pakiety');
+  if (!sect) return;
+  var fired = false;
+  new IntersectionObserver(function(entries){
+    if (fired) return;
+    for (var i=0; i<entries.length; i++){
+      if (entries[i].isIntersecting){
+        fired = true;
+        if (window.fbq) fbq('track','ViewContent',{content_type:'product_group',content_name:'Vouchery home',content_category:'voucher',currency:'PLN',content_ids:['pierwszy_lot','adrenalina','masterclass']});
+        if (window.gtag) gtag('event','view_item_list',{item_list_name:'Vouchery home'});
+        break;
+      }
+    }
+  }, {threshold:0.3}).observe(sect);
 })();
 </script>
 </body>
