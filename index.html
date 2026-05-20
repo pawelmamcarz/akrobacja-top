@@ -1903,7 +1903,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="section-label">Vouchery · Loty akrobacyjne · 4 pakiety</p>
       <h2 class="section-title">Wybierz lot.</h2>
       <div class="accent-bar"></div>
-      <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:.25em;color:var(--navy);opacity:.6;margin-top:8px;text-transform:uppercase">3 pakiety + kurs FCL.800 · zapłacisz w 90 sekund</p>
+      <p style="font-family:var(--font-mono);font-size:11px;letter-spacing:.25em;color:var(--navy);opacity:.6;margin-top:8px;text-transform:uppercase">4 pakiety · zapłacisz w 90 sekund</p>
     </div>
     <p class="shop-sub">Voucher ważny 12 miesięcy. Zła pogoda = bezpłatne przełożenie terminu.</p>
   </div>
@@ -1992,8 +1992,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <!-- PAKIET 3, MASTERCLASS -->
+    <!-- PAKIET 3, PARA -->
     <div class="v-card reveal reveal-d2">
+      <span class="v-tag v-tag--start" style="background:#FFB300;color:#0A2F7C">Dla dwojga</span>
+      <h3 class="v-name">Para</h3>
+      <p class="v-subtitle">2 loty dla dwojga, oszczędność 221 zł</p>
+      <div class="v-price">
+        3 777<span class="v-price-unit">zł / 2 osoby</span>
+      </div>
+      <div class="v-divider"></div>
+      <ul class="v-features">
+        <li class="v-feat">2 osobne loty (każdy partner leci sam)</li>
+        <li class="v-feat">Do 15 min w powietrzu na osobę</li>
+        <li class="v-feat">Briefing naziemny (20 min)</li>
+        <li class="v-feat">Do +4G / −2G, podstawowe figury</li>
+        <li class="v-feat">Terminy ustalacie niezależnie · oszczędność 221 zł</li>
+      </ul>
+      <button class="v-cta" data-package="para" style="letter-spacing:.18em">KUP VOUCHER →</button>
+      <div class="v-addon" style="opacity:.55;pointer-events:none">
+        <div class="v-addon-text">
+          <div class="v-addon-title">+ Video 360° dla każdego z lotów</div>
+          <div class="v-addon-desc">Możliwość dokupienia po locie · +299 PLN za lot</div>
+        </div>
+        <div class="v-toggle"></div>
+      </div>
+    </div>
+
+    <!-- PAKIET 4, MASTERCLASS -->
+    <div class="v-card reveal reveal-d3">
       <span class="v-tag v-tag--limit">Dla pilotów PPL</span>
       <h3 class="v-name">Masterclass</h3>
       <p class="v-subtitle">Szkolenie akrobacyjne z Mistrzem</p>
@@ -3003,6 +3029,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const PKGS = {
     pierwszy_lot: { name: 'Pierwszy Lot', sub: 'Twój pierwszy kontakt z akrobacją', price: 1999 },
     adrenalina:   { name: 'Adrenalina', sub: 'Pełny program akrobacyjny z Mistrzem', price: 2999 },
+    para:         { name: 'Para', sub: '2 loty Pierwszy Lot dla dwojga, oszczędność 221 zł', price: 3777 },
     masterclass:  { name: 'Masterclass', sub: 'Sesja szkoleniowa z Wielokrotnym Mistrzem Polski, dla pilotów PPL(A)+', price: 4999 },
   };
 
@@ -3042,6 +3069,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     modalTitle.textContent = pkg.name;
     modalSub.textContent = pkg.sub;
     videoCheck.checked = !!document.querySelector(`[data-addon="${packageId}"].on`);
+    // Pakiet Para = 2 loty, video addon nie ma sensu w tym checkoucie (przyznawany po locie osobno).
+    const videoLabel = document.getElementById('videoAddonCheck');
+    if (videoLabel) videoLabel.style.display = packageId === 'para' ? 'none' : '';
+    if (packageId === 'para') videoCheck.checked = false;
     updatePrice(pkg.price);
     dotacjaBanner.style.display = packageId === 'masterclass' ? 'block' : 'none';
     var urlDiscount = new URLSearchParams(location.search).get('discount');
@@ -3409,7 +3440,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     for (var i=0; i<entries.length; i++){
       if (entries[i].isIntersecting){
         fired = true;
-        if (window.fbq) fbq('track','ViewContent',{content_type:'product_group',content_name:'Vouchery home',content_category:'voucher',currency:'PLN',content_ids:['pierwszy_lot','adrenalina','masterclass']});
+        if (window.fbq) fbq('track','ViewContent',{content_type:'product_group',content_name:'Vouchery home',content_category:'voucher',currency:'PLN',content_ids:['pierwszy_lot','adrenalina','para','masterclass']});
         if (window.gtag) gtag('event','view_item_list',{item_list_name:'Vouchery home'});
         break;
       }

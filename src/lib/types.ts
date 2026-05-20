@@ -45,6 +45,23 @@ export const PACKAGES = {
     duration: '20 min lotu + 40 min briefing + 15 min debriefing',
     features: ['20 minut w powietrzu', 'Do +6G / -4G', 'Pełny program: pętle, beczki, roll, lot odwrócony'],
   },
+  // 2x Pierwszy Lot dla pary, oba loty osobno (kazdy partner leci sam w przednim fotelu).
+  // Cena = 2×1999 - 221 zł rabatu = 3777 zł. PDF generuje jeden voucher na 2 loty, klient
+  // ustala 2 terminy przy rezerwacji. second_seat addon nie ma sensu (juz sa 2 loty).
+  para: {
+    id: 'para',
+    name: 'Para',
+    subtitle: '2 loty Pierwszy Lot dla dwojga, oszczędność 221 zł',
+    price: 377700,
+    duration: '2× (do 15 min lotu + 20 min briefing)',
+    features: [
+      '2 osobne loty (każdy partner leci sam)',
+      'Do 15 minut w powietrzu na osobę',
+      'Do +4G / -2G',
+      'Podstawowe figury akrobacyjne',
+      'Terminy ustalacie niezależnie, oszczędność 221 zł vs 2× pakiet osobno',
+    ],
+  },
   masterclass: {
     id: 'masterclass',
     name: 'Masterclass',
