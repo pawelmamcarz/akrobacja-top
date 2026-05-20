@@ -33,7 +33,7 @@ const CANCEL_URLS: Record<string, string> = {
 //   validUntil          — inclusive YYYY-MM-DD the code stops being accepted
 // WRACAM5 = -5% recovery (abandoned cart). PIERWSZY100 = -100 PLN (welcome / first-time).
 // IG10 / FB10 / MAJOWKA = -10% social campaigns.
-// ATAM2205 = Pierwszy Lot 1999 → 1555 PLN (event partnership), ważny 15-23 maja 2026.
+// ATAM2205 = Pierwszy Lot 1999 → 1555 PLN (event partnership), ważny 15-30 maja 2026.
 // KURS5OFF = -5% dla subskrybentów 5-day email course (lead magnet flow).
 interface DiscountSpec {
   pct?: number;
@@ -48,7 +48,7 @@ const DISCOUNTS: Record<string, DiscountSpec> = {
   IG10: { pct: 10 },
   FB10: { pct: 10 },
   MAJOWKA: { pct: 10 },
-  ATAM2205: { fixed: 44400, applicablePackages: ['pierwszy_lot'], validFrom: '2026-05-15', validUntil: '2026-05-23' },
+  ATAM2205: { fixed: 44400, applicablePackages: ['pierwszy_lot'], validFrom: '2026-05-15', validUntil: '2026-05-30' },
   KURS5OFF: { pct: 5 },
   MACIEJ10: { pct: 10 },   // Linktree akrobacja.com/maciej, ruch z IG @bullet.aerobatics
   PAWEL10: { pct: 10 },    // Linktree akrobacja.com/pawel, ruch z IG @xpoli
