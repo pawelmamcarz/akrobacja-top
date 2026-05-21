@@ -82,7 +82,13 @@ export const onRequest: PagesFunction = async (context) => {
       element(el) {
         let headInject =
           `<link rel="canonical" href="${canonicalUrl}">` +
-          (noindex ? `<meta name="robots" content="noindex, nofollow">` : '');
+          (noindex ? `<meta name="robots" content="noindex, nofollow">` : '') +
+          // Unified top navigation — stylesheet + behaviour. Admin/pilot UIs skip the
+          // marketing nav entirely (see body injection below).
+          (isInternal ? '' :
+            `<link rel="stylesheet" href="/assets/akro-nav.css">` +
+            `<script src="/assets/akro-nav.js" defer></script>`
+          );
 
         // Preconnect to 3rd-party origins we load on every page. Saves the DNS+TLS
         // handshake (~50-200ms each) before the actual script <script> tag fires.
@@ -186,6 +192,42 @@ export const onRequest: PagesFunction = async (context) => {
         );
       },
     });
+  }
+
+  // Unified top navigation — prepend single canonical <nav> on every marketing page
+  // and remove every legacy variant. Admin and pilot portals skip injection so their
+  // app-shells stay isolated from the marketing chrome.
+  if (!isInternal) {
+    const unifiedNav =
+      `<nav class="akro-nav" id="akro-nav" aria-label="Główna nawigacja">` +
+        `<a href="/" class="akro-nav__logo" aria-label="akrobacja.com, strona główna">` +
+          `<img src="/assets/logo-mark.png" alt="" width="44" height="44" loading="eager" decoding="async">` +
+          `<span class="akro-nav__logo-text">akrobacja.com</span>` +
+        `</a>` +
+        `<ul class="akro-nav__menu" id="akro-nav-menu">` +
+          `<li><a href="/lot-akrobacyjny">Loty</a></li>` +
+          `<li><a href="/kalendarz">Kalendarz</a></li>` +
+          `<li><a href="/pokazy-lotnicze">Pokazy</a></li>` +
+          `<li><a href="/galeria">Galeria</a></li>` +
+          `<li><a href="/sklep-merch">Sklep</a></li>` +
+          `<li><a href="/blog">Blog</a></li>` +
+          `<li><a href="/#kontakt">Kontakt</a></li>` +
+          `<li><a href="/en" class="akro-nav__lang-mobile" hreflang="en"><span aria-hidden="true">🇬🇧</span> EN</a></li>` +
+        `</ul>` +
+        `<div class="akro-nav__right">` +
+          `<a href="/en" class="akro-nav__lang" hreflang="en" aria-label="English version"><span aria-hidden="true">🇬🇧</span>EN</a>` +
+          `<a href="https://wa.me/48535535221" class="akro-nav__cta" target="_blank" rel="noopener noreferrer">Napisz</a>` +
+        `</div>` +
+        `<button class="akro-nav__burger" type="button" aria-label="Menu" aria-controls="akro-nav-menu" aria-expanded="false">` +
+          `<span></span><span></span><span></span>` +
+        `</button>` +
+      `</nav>`;
+    rewriter
+      .on('body', { element(el) { el.prepend(unifiedNav, { html: true }); } })
+      .on(
+        'nav.nav, div.topbar, nav.nav-links, nav.top, nav.links',
+        { element(el) { el.remove(); } },
+      );
   }
 
   // Cookie consent banner + e-commerce events (remarketing, GA4 audiences) + Turnstile helper.

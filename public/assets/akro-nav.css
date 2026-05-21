@@ -1,0 +1,32 @@
+/* Unified top navigation injected by functions/_middleware.ts on every public page. */
+.akro-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 32px;background:rgba(10,20,40,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);font-family:'Montserrat','Inter',sans-serif;border-bottom:1px solid rgba(255,255,255,.04)}
+.akro-nav *{box-sizing:border-box}
+.akro-nav__logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex-shrink:0}
+.akro-nav__logo img{display:block;height:44px;width:auto}
+.akro-nav__logo-text{font-family:'Montserrat',sans-serif;font-weight:900;font-size:15px;letter-spacing:.04em;color:#fff;text-transform:lowercase}
+.akro-nav__menu{list-style:none;display:flex;gap:22px;margin:0;padding:0;align-items:center;flex:1;justify-content:center}
+.akro-nav__menu li{display:block}
+.akro-nav__menu a{color:rgba(255,255,255,.62);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:color .18s;white-space:nowrap}
+.akro-nav__menu a:hover,.akro-nav__menu a[aria-current="page"]{color:#fff}
+.akro-nav__menu a[aria-current="page"]{border-bottom:2px solid #C41E3A;padding-bottom:2px}
+.akro-nav__right{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.akro-nav__lang{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);text-decoration:none;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.akro-nav__lang:hover{color:#fff}
+.akro-nav__cta{display:inline-block;background:#C41E3A;color:#fff;padding:10px 20px;text-decoration:none;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;transition:background .18s}
+.akro-nav__cta:hover{background:#A51932}
+.akro-nav__burger{display:none;background:none;border:0;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
+.akro-nav__burger span{display:block;width:24px;height:2px;background:#fff;transition:transform .2s,opacity .2s}
+.akro-nav__burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.akro-nav__burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.akro-nav__burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:1024px){.akro-nav{padding:12px 20px}.akro-nav__menu{gap:18px}.akro-nav__menu a{font-size:10px;letter-spacing:.14em}}
+@media(max-width:880px){
+  .akro-nav__menu{display:none;position:fixed;top:68px;left:0;right:0;flex-direction:column;background:rgba(10,20,40,.98);backdrop-filter:blur(16px);padding:24px 32px;gap:18px;border-top:1px solid rgba(255,255,255,.06);max-height:calc(100vh - 68px);overflow-y:auto}
+  .akro-nav__menu.open{display:flex}
+  .akro-nav__menu a{font-size:13px;letter-spacing:.18em}
+  .akro-nav__burger{display:flex}
+  .akro-nav__lang{display:none}
+  .akro-nav__menu .akro-nav__lang-mobile{display:inline-flex}
+  .akro-nav__cta{padding:9px 16px;font-size:10px}
+}
+.akro-nav__lang-mobile{display:none}
