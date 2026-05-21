@@ -1,0 +1,33 @@
+name: Scrape cold leads (daily)
+
+# Pojedyncze daily polling cold-lead-scrapera. Wala w /api/cron/scrape-cold-leads
+# ktore iteruje scraper_sources i wpisuje hity jako leady kategorii scraped_tender.
+#
+# Wymagane secrets w repo (Settings -> Secrets and variables -> Actions):
+#   CRON_SECRET - ten sam co w Cloudflare Pages secrets (zeby endpoint zaakceptowal request)
+
+on:
+  schedule:
+    # Codziennie o 06:30 UTC = 08:30 CET / 07:30 CEST
+    - cron: '30 6 * * *'
+  workflow_dispatch:  # rowniez manual trigger z GitHub UI
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fire scrape endpoint
+        run: |
+          set -euo pipefail
+          response=$(curl -sS -o /tmp/response.json -w "%{http_code}" \
+            -X POST "https://akrobacja.com/api/cron/scrape-cold-leads" \
+            -H "Authorization: Bearer ${CRON_SECRET}" \
+            -H "Content-Type: application/json")
+          echo "HTTP status: $response"
+          cat /tmp/response.json | head -50
+          if [ "$response" != "200" ]; then
+            echo "Scraper endpoint zwrocil $response - failuje workflow"
+            exit 1
+          fi
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
