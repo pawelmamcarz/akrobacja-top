@@ -151,7 +151,7 @@ h1.hero-headline,
 }
 .r-hero__bg {
   position: absolute; inset: 0;
-  background: url('/hero-takeoff.webp') center 32% / cover no-repeat;
+  background: url('/hero-takeoff.webp') center center / cover no-repeat;
 }
 .r-hero__overlay {
   position: absolute; inset: 0;

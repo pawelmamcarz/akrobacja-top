@@ -201,7 +201,7 @@ export const onRequest: PagesFunction = async (context) => {
     const unifiedNav =
       `<nav class="akro-nav" id="akro-nav" aria-label="Główna nawigacja">` +
         `<a href="/" class="akro-nav__logo" aria-label="akrobacja.com, strona główna">` +
-          `<img src="/assets/logo-mark-light.png" alt="" width="44" height="44" loading="eager" decoding="async">` +
+          `<img src="/assets/logo-mark-white.png" alt="" width="44" height="44" loading="eager" decoding="async">` +
           `<span class="akro-nav__logo-text">akrobacja.com</span>` +
         `</a>` +
         `<ul class="akro-nav__menu" id="akro-nav-menu">` +
