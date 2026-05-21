@@ -379,3 +379,62 @@ CREATE INDEX IF NOT EXISTS idx_email_events_type ON email_events(type, created_a
 CREATE INDEX IF NOT EXISTS idx_email_events_sender ON email_events(sender, created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_email_events_resend_id ON email_events(resend_id);
 CREATE INDEX IF NOT EXISTS idx_email_events_tag_type ON email_events(tag_type, created_at DESC);
+
+-- Leady (Magda + cold-lead-scraper).
+-- Centralna tabela kontaktow B2B z workflow new -> contacted -> responded ->
+-- qualified -> won/lost. Kategorie odzwierciedlaja kanaly sprzedazy.
+CREATE TABLE IF NOT EXISTS leads (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  category TEXT NOT NULL,
+  contact_person TEXT,
+  email TEXT,
+  phone TEXT,
+  url TEXT,
+  city TEXT,
+  status TEXT NOT NULL DEFAULT 'new',
+  priority TEXT,
+  source TEXT,
+  value_estimate_pln INTEGER,
+  notes TEXT,
+  next_action_at TEXT,
+  last_contacted_at TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+  UNIQUE(name, category)
+);
+
+CREATE INDEX IF NOT EXISTS idx_leads_status ON leads(status);
+CREATE INDEX IF NOT EXISTS idx_leads_priority ON leads(priority);
+CREATE INDEX IF NOT EXISTS idx_leads_category ON leads(category);
+CREATE INDEX IF NOT EXISTS idx_leads_next_action ON leads(next_action_at);
+
+-- Zrodla dla cold-lead-scrapera (e-Zamowienia, TED, eGospodarka RSS, etc.).
+-- search_template to JSON {keywords, cpv, country, ...} interpretowany przez
+-- src/lib/lead-scraper.ts.
+CREATE TABLE IF NOT EXISTS scraper_sources (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  url TEXT NOT NULL,
+  source_type TEXT NOT NULL,
+  search_template TEXT,
+  category TEXT NOT NULL DEFAULT 'scraped_tender',
+  enabled INTEGER NOT NULL DEFAULT 1,
+  last_run_at TEXT,
+  last_hit_count INTEGER DEFAULT 0,
+  last_error TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS scraper_runs (
+  id TEXT PRIMARY KEY,
+  source_id TEXT NOT NULL,
+  ran_at TEXT NOT NULL DEFAULT (datetime('now')),
+  hits_found INTEGER DEFAULT 0,
+  leads_created INTEGER DEFAULT 0,
+  error TEXT,
+  duration_ms INTEGER,
+  FOREIGN KEY (source_id) REFERENCES scraper_sources(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_scraper_runs_source ON scraper_runs(source_id, ran_at DESC);

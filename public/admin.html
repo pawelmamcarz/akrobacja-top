@@ -99,7 +99,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="app" id="appView">
   <div class="topbar">
-    <h1>akrobacja.com, Panel Admina <span id="roleBadge" style="display:none;background:#fbe9a7;color:#8a6d00;border:1px solid #d6b300;padding:2px 8px;font-size:11px;font-weight:600;border-radius:3px;margin-left:8px;vertical-align:middle">tryb ograniczony</span></h1>
+    <h1>akrobacja.com, Panel Admina</h1>
     <button class="logout" onclick="doLogout()">Wyloguj</button>
   </div>
 
@@ -115,6 +115,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="tab" onclick="switchTab('waclicks')">WA Klikniecia</div>
     <div class="tab" onclick="switchTab('maile')">Maile</div>
     <div class="tab" onclick="switchTab('seo')">SEO</div>
+    <div class="tab" onclick="switchTab('leads')">Leady</div>
+    <div class="tab" onclick="switchTab('scraper')">Scraper</div>
   </div>
 
   <!-- ORDERS -->
@@ -279,6 +281,63 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Sciezki noindex (middleware NOINDEX_PATHS)</h4>
     <div id="seoNoindex"></div>
   </div>
+
+  <!-- LEADS -->
+  <div class="panel" id="panel-leads">
+    <div class="toolbar">
+      <button class="btn btn-blue" onclick="openModal('newLead')">+ Dodaj lead</button>
+      <select id="leadFilterStatus" onchange="loadLeads()" style="padding:6px 10px;border:1px solid #ccc">
+        <option value="">Wszystkie statusy</option>
+        <option value="new">new</option>
+        <option value="contacted">contacted</option>
+        <option value="responded">responded</option>
+        <option value="qualified">qualified</option>
+        <option value="won">won</option>
+        <option value="lost">lost</option>
+        <option value="archived">archived</option>
+      </select>
+      <select id="leadFilterCategory" onchange="loadLeads()" style="padding:6px 10px;border:1px solid #ccc">
+        <option value="">Wszystkie kategorie</option>
+        <option value="event_agency">event_agency</option>
+        <option value="airshow">airshow</option>
+        <option value="voucher_channel">voucher_channel</option>
+        <option value="b2b_benefit">b2b_benefit</option>
+        <option value="municipal">municipal</option>
+        <option value="corp_b2b">corp_b2b</option>
+        <option value="wedding">wedding</option>
+        <option value="automotive">automotive</option>
+        <option value="influencer_agency">influencer_agency</option>
+        <option value="media">media</option>
+        <option value="foundation">foundation</option>
+        <option value="csr_influencer">csr_influencer</option>
+        <option value="scraped_tender">scraped_tender</option>
+        <option value="other">other</option>
+      </select>
+      <select id="leadFilterPriority" onchange="loadLeads()" style="padding:6px 10px;border:1px solid #ccc">
+        <option value="">Wszystkie priorytety</option>
+        <option value="high">high</option>
+        <option value="medium">medium</option>
+        <option value="low">low</option>
+      </select>
+      <input type="text" id="leadSearch" placeholder="Szukaj nazwa/notatka/kontakt..." oninput="leadSearchDebounce()" style="padding:6px 10px;border:1px solid #ccc;flex:1;min-width:200px">
+      <div class="stats" id="leadsStats"></div>
+    </div>
+    <div id="leadsByStatus"></div>
+    <div id="leadsTable" style="margin-top:12px"></div>
+  </div>
+
+  <!-- SCRAPER -->
+  <div class="panel" id="panel-scraper">
+    <div class="toolbar">
+      <button class="btn btn-blue" onclick="runScraper()">Uruchom scrape teraz (wszystkie zrodla)</button>
+      <button class="btn" onclick="loadScraper()">Odswiez</button>
+      <div class="stats" id="scraperStats"></div>
+    </div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Zrodla scrapera</h4>
+    <div id="scraperSources"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 20 uruchomien</h4>
+    <div id="scraperRuns"></div>
+  </div>
 </div>
 
 <!-- MODALS -->
@@ -399,6 +458,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="btn btn-blue" onclick="createSub()">Dodaj</button>
   </div>
 
+  <!-- New Lead -->
+  <div class="modal" id="modal-newLead" style="display:none">
+    <h3>Dodaj lead</h3>
+    <input type="hidden" id="leadEditId">
+    <div class="field"><label>Nazwa *</label><input id="leadName" placeholder="np. Agencja XYZ"></div>
+    <div class="field"><label>Kategoria *</label>
+      <select id="leadCategory">
+        <option value="event_agency">event_agency</option>
+        <option value="airshow">airshow</option>
+        <option value="voucher_channel">voucher_channel</option>
+        <option value="b2b_benefit">b2b_benefit</option>
+        <option value="municipal">municipal</option>
+        <option value="corp_b2b">corp_b2b</option>
+        <option value="wedding">wedding</option>
+        <option value="automotive">automotive</option>
+        <option value="influencer_agency">influencer_agency</option>
+        <option value="media">media</option>
+        <option value="foundation">foundation</option>
+        <option value="csr_influencer">csr_influencer</option>
+        <option value="scraped_tender">scraped_tender</option>
+        <option value="other">other</option>
+      </select>
+    </div>
+    <div class="field"><label>Osoba kontaktowa</label><input id="leadContactPerson"></div>
+    <div class="field"><label>Email</label><input id="leadEmail" type="email"></div>
+    <div class="field"><label>Telefon</label><input id="leadPhone"></div>
+    <div class="field"><label>URL</label><input id="leadUrl"></div>
+    <div class="field"><label>Miasto</label><input id="leadCity"></div>
+    <div class="field"><label>Status</label>
+      <select id="leadStatus">
+        <option value="new">new</option>
+        <option value="contacted">contacted</option>
+        <option value="responded">responded</option>
+        <option value="qualified">qualified</option>
+        <option value="won">won</option>
+        <option value="lost">lost</option>
+        <option value="archived">archived</option>
+      </select>
+    </div>
+    <div class="field"><label>Priorytet</label>
+      <select id="leadPriority">
+        <option value="">(brak)</option>
+        <option value="high">high</option>
+        <option value="medium">medium</option>
+        <option value="low">low</option>
+      </select>
+    </div>
+    <div class="field"><label>Wartosc szacowana (PLN)</label><input type="number" id="leadValue" placeholder="np. 30000"></div>
+    <div class="field"><label>Nastepna akcja (data ISO)</label><input id="leadNextAction" placeholder="2026-06-15"></div>
+    <div class="field"><label>Notatki</label><textarea id="leadNotes" rows="4"></textarea></div>
+    <button class="btn btn-blue" onclick="saveLead()">Zapisz</button>
+  </div>
+
   <!-- Add to insurance -->
   <div class="modal" id="modal-addInsurance" style="display:none">
     <h3>Wpisz pilota do polisy</h3>
@@ -445,17 +557,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 let TOKEN = localStorage.getItem('admin_token') || '';
-let ROLE = null; // 'full' | 'limited'
 let allOrders = [], allPilots = [], allCourses = [];
-
-// Taby ukrywane dla roli ograniczonej (Magda).
-// Tylko Piloci - zawiera PII (licencje, balanse, telefony) ktore nie sa
-// potrzebne do sprzedazy ani monitoringu cash flow / przegladow.
-// Wszystkie inne taby ma widoczne, bo musi sledzic przeglady samolotu,
-// blokady kalendarza i kursy podczas pilnowania partnerow.
-// Backend i tak blokuje wszystkie POST/PUT/DELETE dla jej tokena, wiec
-// czyta wszystko ale nic nie modyfikuje.
-const LIMITED_HIDDEN_TABS = ['pilots'];
 
 if (TOKEN) tryLoad();
 
@@ -466,51 +568,18 @@ async function doLogin() {
 }
 function doLogout() {
   TOKEN = '';
-  ROLE = null;
   localStorage.removeItem('admin_token');
-  document.body.classList.remove('role-limited');
   document.getElementById('loginView').style.display = 'flex';
   document.getElementById('appView').classList.remove('active');
 }
 
-async function fetchRole() {
-  try {
-    const r = await api('GET', '/api/admin/me');
-    if (r && r.role) return r.role;
-  } catch {}
-  return 'full';
-}
-
-function applyRoleUI() {
-  if (ROLE === 'limited') {
-    document.body.classList.add('role-limited');
-    LIMITED_HIDDEN_TABS.forEach(name => {
-      const tab = document.querySelector(`.tab[onclick*="'${name}'"]`);
-      if (tab) tab.style.display = 'none';
-    });
-    const badge = document.getElementById('roleBadge');
-    if (badge) { badge.style.display = 'inline-block'; badge.textContent = 'tryb ograniczony'; }
-  } else {
-    document.body.classList.remove('role-limited');
-    LIMITED_HIDDEN_TABS.forEach(name => {
-      const tab = document.querySelector(`.tab[onclick*="'${name}'"]`);
-      if (tab) tab.style.display = '';
-    });
-    const badge = document.getElementById('roleBadge');
-    if (badge) badge.style.display = 'none';
-  }
-}
-
 async function tryLoad() {
   try {
-    ROLE = await fetchRole();
-    if (!ROLE || (ROLE !== 'full' && ROLE !== 'limited')) throw new Error('no role');
     const res = await api('GET', '/api/admin/orders');
     if (res.error) throw new Error();
     allOrders = res.orders || [];
     document.getElementById('loginView').style.display = 'none';
     document.getElementById('appView').classList.add('active');
-    applyRoleUI();
     renderOrders(allOrders);
     // Set calendar defaults
     const today = new Date().toISOString().split('T')[0];
@@ -536,6 +605,175 @@ function switchTab(name) {
   if (name === 'waclicks') loadWaClicks();
   if (name === 'maile') loadEmailEvents();
   if (name === 'seo') loadSeoSnapshot();
+  if (name === 'leads') loadLeads();
+  if (name === 'scraper') loadScraper();
+}
+
+// ── LEADS ──
+let leadSearchTimer = null;
+function leadSearchDebounce() {
+  if (leadSearchTimer) clearTimeout(leadSearchTimer);
+  leadSearchTimer = setTimeout(loadLeads, 300);
+}
+async function loadLeads() {
+  const qs = new URLSearchParams();
+  const status = (document.getElementById('leadFilterStatus') || {}).value || '';
+  const category = (document.getElementById('leadFilterCategory') || {}).value || '';
+  const priority = (document.getElementById('leadFilterPriority') || {}).value || '';
+  const q = (document.getElementById('leadSearch') || {}).value || '';
+  if (status) qs.set('status', status);
+  if (category) qs.set('category', category);
+  if (priority) qs.set('priority', priority);
+  if (q) qs.set('q', q);
+  try {
+    const res = await api('GET', '/api/admin/leads' + (qs.toString() ? '?' + qs.toString() : ''));
+    if (res.error) { document.getElementById('leadsTable').innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + res.error + '</p>'; return; }
+
+    const total = (res.leads || []).length;
+    const totalAll = (res.byStatus || []).reduce((s, r) => s + (r.cnt || 0), 0);
+    document.getElementById('leadsStats').textContent =
+      `Pokazane: ${total} | Wszystkie w bazie: ${totalAll}`;
+
+    document.getElementById('leadsByStatus').innerHTML = (res.byStatus && res.byStatus.length) ? `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+      ${res.byStatus.map(r => `<div style="background:#f3f4f6;border:1px solid #e2e8f0;padding:4px 10px;font-size:11px;border-radius:3px">${esc(r.status)}: <strong>${r.cnt}</strong></div>`).join('')}
+    </div>` : '';
+
+    const prioColor = p => p === 'high' ? '#c41e3a' : (p === 'medium' ? '#1B4DB5' : '#999');
+    const statusColor = s => ({won:'#2e7d32', lost:'#999', contacted:'#1B4DB5', responded:'#1B4DB5', qualified:'#8a6d00', archived:'#bbb'})[s] || '#666';
+
+    document.getElementById('leadsTable').innerHTML = total ? `<table>
+      <tr><th>Prio</th><th>Status</th><th>Kategoria</th><th>Nazwa</th><th>Osoba</th><th>Email / Tel</th><th>Miasto</th><th>Akcja</th></tr>
+      ${res.leads.map(l => `<tr>
+        <td style="color:${prioColor(l.priority)};font-weight:600;font-size:10px">${esc(l.priority || '-')}</td>
+        <td><span style="background:${statusColor(l.status)};color:#fff;font-size:10px;padding:2px 6px;border-radius:3px">${esc(l.status)}</span></td>
+        <td style="font-size:10px;color:#666">${esc(l.category)}</td>
+        <td style="font-size:11px"><strong>${esc(l.name)}</strong>${l.url ? ' <a href="' + esc(l.url) + '" target="_blank" rel="noopener" style="font-size:10px;color:#1B4DB5">link</a>' : ''}${l.notes ? '<br><span style="color:#666;font-size:10px">' + esc((l.notes || '').slice(0,140)) + '</span>' : ''}</td>
+        <td style="font-size:11px">${esc(l.contact_person || '-')}</td>
+        <td style="font-size:10px">${esc(l.email || '')}${l.email && l.phone ? '<br>' : ''}${esc(l.phone || '')}</td>
+        <td style="font-size:11px">${esc(l.city || '-')}</td>
+        <td><button class="btn" style="font-size:10px;padding:3px 8px" onclick='editLead(${JSON.stringify(l).replace(/'/g, "\\'")})'>Edytuj</button></td>
+      </tr>`).join('')}
+    </table>` : '<p style="padding:20px;color:#888">Brak leadow dla tego filtra</p>';
+  } catch (err) {
+    document.getElementById('leadsTable').innerHTML = '<p style="padding:20px;color:#c00">Blad ladowania: ' + (err.message || 'unknown') + '</p>';
+  }
+}
+
+function editLead(l) {
+  openModal('newLead');
+  document.getElementById('leadEditId').value = l.id || '';
+  document.getElementById('leadName').value = l.name || '';
+  document.getElementById('leadCategory').value = l.category || 'other';
+  document.getElementById('leadContactPerson').value = l.contact_person || '';
+  document.getElementById('leadEmail').value = l.email || '';
+  document.getElementById('leadPhone').value = l.phone || '';
+  document.getElementById('leadUrl').value = l.url || '';
+  document.getElementById('leadCity').value = l.city || '';
+  document.getElementById('leadStatus').value = l.status || 'new';
+  document.getElementById('leadPriority').value = l.priority || '';
+  document.getElementById('leadValue').value = l.value_estimate_pln || '';
+  document.getElementById('leadNextAction').value = l.next_action_at || '';
+  document.getElementById('leadNotes').value = l.notes || '';
+}
+
+async function saveLead() {
+  const id = document.getElementById('leadEditId').value;
+  const payload = {
+    action: id ? 'update' : 'create',
+    name: document.getElementById('leadName').value.trim(),
+    category: document.getElementById('leadCategory').value,
+    contact_person: document.getElementById('leadContactPerson').value.trim() || null,
+    email: document.getElementById('leadEmail').value.trim() || null,
+    phone: document.getElementById('leadPhone').value.trim() || null,
+    url: document.getElementById('leadUrl').value.trim() || null,
+    city: document.getElementById('leadCity').value.trim() || null,
+    status: document.getElementById('leadStatus').value,
+    priority: document.getElementById('leadPriority').value || null,
+    value_estimate_pln: parseInt(document.getElementById('leadValue').value, 10) || null,
+    next_action_at: document.getElementById('leadNextAction').value.trim() || null,
+    notes: document.getElementById('leadNotes').value.trim() || null,
+  };
+  if (id) payload.id = id;
+  if (!payload.name) { alert('Nazwa wymagana'); return; }
+  const res = await api('POST', '/api/admin/leads', payload);
+  if (res.error) { alert('Blad: ' + res.error); return; }
+  document.getElementById('leadEditId').value = '';
+  closeModal();
+  loadLeads();
+}
+
+// ── SCRAPER ──
+async function loadScraper() {
+  try {
+    const res = await api('GET', '/api/admin/scraper');
+    if (res.error) { document.getElementById('scraperSources').innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + res.error + '</p>'; return; }
+
+    const enabled = (res.sources || []).filter(s => s.enabled).length;
+    const totalSources = (res.sources || []).length;
+    document.getElementById('scraperStats').textContent =
+      `Zrodla: ${enabled} / ${totalSources} enabled | Ostatnie uruchomien: ${(res.recentRuns || []).length}`;
+
+    document.getElementById('scraperSources').innerHTML = (res.sources && res.sources.length) ? `<table>
+      <tr><th>Nazwa</th><th>Typ</th><th>URL</th><th>Enabled</th><th>Ostatni run</th><th>Hits</th><th>Blad</th><th>Akcja</th></tr>
+      ${res.sources.map(s => `<tr>
+        <td><strong>${esc(s.name)}</strong></td>
+        <td style="font-size:10px;color:#666">${esc(s.source_type)}</td>
+        <td style="font-size:10px;max-width:300px;overflow:hidden;text-overflow:ellipsis"><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.url.slice(0, 60))}</a></td>
+        <td>${s.enabled ? '<span style="color:#2e7d32">tak</span>' : '<span style="color:#999">nie</span>'}</td>
+        <td style="font-size:10px">${esc(s.last_run_at || 'nigdy')}</td>
+        <td class="amount">${s.last_hit_count || 0}</td>
+        <td style="font-size:10px;color:#c00">${esc(s.last_error || '')}</td>
+        <td>
+          <button class="btn" style="font-size:10px;padding:3px 8px" onclick="runScraperOne('${esc(s.id)}')">Uruchom</button>
+          <button class="btn" style="font-size:10px;padding:3px 8px;margin-left:4px" onclick="toggleSource('${esc(s.id)}', ${s.enabled ? 0 : 1})">${s.enabled ? 'Wyl' : 'Wl'}</button>
+        </td>
+      </tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak zrodel</p>';
+
+    document.getElementById('scraperRuns').innerHTML = (res.recentRuns && res.recentRuns.length) ? `<table>
+      <tr><th>Czas</th><th>Zrodlo</th><th>Hits</th><th>Nowe leady</th><th>Trwalo</th><th>Blad</th></tr>
+      ${res.recentRuns.map(r => `<tr>
+        <td style="font-size:11px">${esc(r.ran_at)}</td>
+        <td style="font-size:11px"><strong>${esc(r.source_name || r.source_id)}</strong></td>
+        <td class="amount">${r.hits_found || 0}</td>
+        <td class="amount">${r.leads_created || 0}</td>
+        <td style="font-size:10px;color:#666">${r.duration_ms || 0}ms</td>
+        <td style="font-size:10px;color:#c00">${esc(r.error || '')}</td>
+      </tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Jeszcze nie uruchomione</p>';
+  } catch (err) {
+    document.getElementById('scraperSources').innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + (err.message || 'unknown') + '</p>';
+  }
+}
+
+async function runScraper() {
+  const btn = event.target;
+  btn.disabled = true;
+  btn.textContent = 'Uruchamiam...';
+  try {
+    const res = await api('POST', '/api/admin/scraper', { action: 'run' });
+    if (res.error) { alert('Blad: ' + res.error); return; }
+    const totalNew = (res.results || []).reduce((s, r) => s + (r.leadsCreated || 0), 0);
+    const totalHits = (res.results || []).reduce((s, r) => s + (r.hits || 0), 0);
+    alert(`Scrape zakonczony. Hits: ${totalHits}, nowe leady: ${totalNew}.`);
+    loadScraper();
+    loadLeads();
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Uruchom scrape teraz (wszystkie zrodla)';
+  }
+}
+
+async function runScraperOne(sourceId) {
+  const res = await api('POST', '/api/admin/scraper', { action: 'run', sourceId });
+  if (res.error) { alert('Blad: ' + res.error); return; }
+  loadScraper();
+}
+
+async function toggleSource(sourceId, enabled) {
+  const res = await api('POST', '/api/admin/scraper', { action: 'toggle', sourceId, enabled });
+  if (res.error) { alert('Blad: ' + res.error); return; }
+  loadScraper();
 }
 
 // ── SEO SNAPSHOT ──
