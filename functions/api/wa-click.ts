@@ -4,10 +4,11 @@
 // na stronach FCL.800 / dotacje / pozyczka 0%. Fire-and-forget - nie blokuje
 // otwarcia WhatsAppa.
 //
-// Body: { page: string, location: string, prefilledText?: string }
+// Body: { page: string, location: string, prefilledText?: string, targetNumber?: string }
 // page: pathname (np. '/dotacje-szkolenie-lotnicze')
 // location: nazwa CTA (np. 'hero-cta', '10-krokow-cta', 'footer')
 // prefilledText: wartosc z parametru ?text= w wa.me URL (jasne intencje klienta)
+// targetNumber: cyfry numeru docelowego WA bez '+' (np. '48739158131')
 //
 // Bez autoryzacji (publiczny). Rate-limit przeciw spam: 60 klikniec / IP / godzine.
 
@@ -18,6 +19,7 @@ interface WaClickBody {
   page: string;
   location?: string;
   prefilledText?: string;
+  targetNumber?: string;
 }
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
@@ -46,10 +48,16 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const location = typeof body.location === 'string' ? body.location.slice(0, 80) : null;
     const prefilledText = typeof body.prefilledText === 'string' ? body.prefilledText.slice(0, 500) : null;
 
+    // targetNumber: cyfry numeru WA bez '+'. Walidacja: 6-15 cyfr.
+    const targetNumberRaw = typeof body.targetNumber === 'string' ? body.targetNumber : null;
+    const targetNumber = targetNumberRaw && /^\d{6,15}$/.test(targetNumberRaw)
+      ? targetNumberRaw.slice(0, 15)
+      : null;
+
     await ctx.env.DB.prepare(`
-      INSERT INTO wa_clicks (id, page, location, prefilled_text, ip, user_agent, referer)
-      VALUES (?, ?, ?, ?, ?, ?, ?)
-    `).bind(crypto.randomUUID(), page, location, prefilledText, ip, userAgent, referer).run();
+      INSERT INTO wa_clicks (id, page, location, prefilled_text, target_number, ip, user_agent, referer)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `).bind(crypto.randomUUID(), page, location, prefilledText, targetNumber, ip, userAgent, referer).run();
 
     return Response.json({ ok: true });
   } catch (err) {

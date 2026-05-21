@@ -347,6 +347,7 @@ CREATE TABLE IF NOT EXISTS wa_clicks (
   page TEXT NOT NULL,
   location TEXT,
   prefilled_text TEXT,
+  target_number TEXT,              -- cyfry numeru WA bez '+' (np. '48739158131')
   ip TEXT,
   user_agent TEXT,
   referer TEXT,
@@ -356,6 +357,7 @@ CREATE TABLE IF NOT EXISTS wa_clicks (
 CREATE INDEX IF NOT EXISTS idx_wa_clicks_created ON wa_clicks(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_wa_clicks_page ON wa_clicks(page, created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_wa_clicks_location ON wa_clicks(location, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_wa_clicks_target ON wa_clicks(target_number, created_at DESC);
 
 -- Resend webhook events log: kazdy event (sent/delivered/opened/clicked/bounced/
 -- complained/delivery_delayed/failed) zapisywany dla observability.

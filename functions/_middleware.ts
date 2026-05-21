@@ -2,47 +2,7 @@
 // Single source of truth for SEO directives — no need to hardcode them in each HTML file.
 // Uses HTMLRewriter for streaming transformation (zero-copy, no buffering).
 
-const NOINDEX_PATHS = new Set(['/admin', '/sukces', '/konto', '/seo-implementation', '/test-konwersji', '/maciej', '/pawel', '/unsubscribe', '/404.html']);
-
-const PRIMARY_HOST = 'akrobacja.com';
-const SITE_ORIGIN = `https://${PRIMARY_HOST}`;
-
-// Old/legacy URLs → redirect to correct pages (cleanup from old WordPress/WFS site)
-const LEGACY_REDIRECTS: Record<string, string> = {
-  '/flota': '/blog/extra-300l-samolot-akrobacyjny',
-  '/flota/': '/blog/extra-300l-samolot-akrobacyjny',
-  '/szkolenia': '/blog/kurs-akrobacji-fcl800',
-  '/szkolenia/': '/blog/kurs-akrobacji-fcl800',
-  '/product-category/uncategorized': '/',
-  '/product-category/uncategorized/': '/',
-  '/product/warsaw-voucher': '/lot-akrobacyjny',
-  '/product/warsaw-voucher/': '/lot-akrobacyjny',
-  '/szkolenia/akrobacja': '/blog/kurs-akrobacji-fcl800',
-  '/szkolenia/akrobacja/': '/blog/kurs-akrobacji-fcl800',
-  '/szkolenia/uprt': '/blog/uprt-szkolenie-upset-recovery',
-  '/szkolenia/uprt/': '/blog/uprt-szkolenie-upset-recovery',
-  // Short URL for Google Reviews — used in SMS follow-up messages where every
-  // character costs money. /opinia → full Google Search write-review URL.
-  '/opinia': 'https://www.google.com/search?q=akrobacja.com+%E2%80%94+Loty+akrobacyjne+Extra+300L&stick=H4sIAAAAAAAA_-NgU1I1qDAxN7RIMzc1NTYwtDAzMLK0MqhItrA0NTAzTLY0MDI1S00xWcSqm5hdlJ-UmJyVqJecn6vwqGGKgk9-SaUCVLgyKy9VwbWipChRwdjAwAcAB12ArlkAAAA&hl=pl&authuser=0',
-  '/opinia/': 'https://www.google.com/search?q=akrobacja.com+%E2%80%94+Loty+akrobacyjne+Extra+300L&stick=H4sIAAAAAAAA_-NgU1I1qDAxN7RIMzc1NTYwtDAzMLK0MqhItrA0NTAzTLY0MDI1S00xWcSqm5hdlJ-UmJyVqJecn6vwqGGKgk9-SaUCVLgyKy9VwbWipChRwdjAwAcAB12ArlkAAAA&hl=pl&authuser=0',
-  // Anchor links can't be indexed by Google as standalone pages — redirect to the
-  // canonical page that hosts the section instead (Google Search Console reported
-  // these as "Page with redirect" pointing nowhere).
-  '/szkolenia/faq': '/lot-akrobacyjny',
-  '/szkolenia/faq/': '/lot-akrobacyjny',
-  '/szkolenia/obozy-treningowo-szkoleniowe': '/camp-akrobacyjny',
-  '/szkolenia/obozy-treningowo-szkoleniowe/': '/camp-akrobacyjny',
-  '/kontakt': '/',
-  '/kontakt/': '/',
-  '/shop': '/sklep-merch',
-  '/shop/': '/sklep-merch',
-  '/samoloty-do-filmow-i-reklam': '/pokazy-lotnicze',
-  '/samoloty-do-filmow-i-reklam/': '/pokazy-lotnicze',
-  '/product/szkolenie-do-uprawnienia-akrobacja-samolotowa': '/blog/kurs-akrobacji-fcl800',
-  '/product/szkolenie-do-uprawnienia-akrobacja-samolotowa/': '/blog/kurs-akrobacji-fcl800',
-  '/uprawnienia-akrobacji-szkolenie-uprt-loty-zapoznawcze-z-akrobacja-pilotaz-akrobacyjny-bezpieczenstwo-lotow': '/blog/uprt-szkolenie-upset-recovery',
-  '/uprawnienia-akrobacji-szkolenie-uprt-loty-zapoznawcze-z-akrobacja-pilotaz-akrobacyjny-bezpieczenstwo-lotow/': '/blog/uprt-szkolenie-upset-recovery',
-};
+import { NOINDEX_PATHS, LEGACY_REDIRECTS, PRIMARY_HOST, SITE_ORIGIN } from '../src/lib/seo-config';
 
 export const onRequest: PagesFunction = async (context) => {
   const url = new URL(context.request.url);

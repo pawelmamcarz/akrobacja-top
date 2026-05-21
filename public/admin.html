@@ -99,7 +99,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="app" id="appView">
   <div class="topbar">
-    <h1>akrobacja.com, Panel Admina</h1>
+    <h1>akrobacja.com, Panel Admina <span id="roleBadge" style="display:none;background:#fbe9a7;color:#8a6d00;border:1px solid #d6b300;padding:2px 8px;font-size:11px;font-weight:600;border-radius:3px;margin-left:8px;vertical-align:middle">tryb ograniczony</span></h1>
     <button class="logout" onclick="doLogout()">Wyloguj</button>
   </div>
 
@@ -114,6 +114,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="tab" onclick="switchTab('subs')">SMS Lista</div>
     <div class="tab" onclick="switchTab('waclicks')">WA Klikniecia</div>
     <div class="tab" onclick="switchTab('maile')">Maile</div>
+    <div class="tab" onclick="switchTab('seo')">SEO</div>
   </div>
 
   <!-- ORDERS -->
@@ -214,6 +215,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="btn btn-blue" onclick="loadWaClicks()">Odswiez</button>
       <div class="stats" id="waStats"></div>
     </div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Klikniecia w 30 dniach wg numeru naszego (Pawel vs Maciej)</h4>
+    <div id="waByTarget"></div>
     <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Klikniecia w 30 dniach wg strony</h4>
     <div id="waByPage"></div>
     <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Klikniecia w 30 dniach wg lokalizacji CTA</h4>
@@ -258,6 +261,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="mailByTag"></div>
     <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 200 eventow</h4>
     <div id="mailRecentTable"></div>
+  </div>
+
+  <!-- SEO SNAPSHOT -->
+  <div class="panel" id="panel-seo">
+    <div class="toolbar">
+      <button class="btn btn-blue" onclick="loadSeoSnapshot()">Odswiez</button>
+      <div class="stats" id="seoStats"></div>
+    </div>
+    <div id="seoAlerts" style="margin-top:8px"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Sitemap pages.xml</h4>
+    <div id="seoSitemapPages"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Sitemap blog.xml</h4>
+    <div id="seoSitemapBlog"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Redirecty legacy (LEGACY_REDIRECTS) z health checkiem destynacji</h4>
+    <div id="seoRedirects"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Sciezki noindex (middleware NOINDEX_PATHS)</h4>
+    <div id="seoNoindex"></div>
   </div>
 </div>
 
@@ -425,7 +445,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 let TOKEN = localStorage.getItem('admin_token') || '';
+let ROLE = null; // 'full' | 'limited'
 let allOrders = [], allPilots = [], allCourses = [];
+
+// Taby ukrywane dla roli ograniczonej (Magda): same write-heavy panele.
+const LIMITED_HIDDEN_TABS = ['pilots', 'courses', 'blocks', 'aircraft'];
 
 if (TOKEN) tryLoad();
 
@@ -436,18 +460,51 @@ async function doLogin() {
 }
 function doLogout() {
   TOKEN = '';
+  ROLE = null;
   localStorage.removeItem('admin_token');
+  document.body.classList.remove('role-limited');
   document.getElementById('loginView').style.display = 'flex';
   document.getElementById('appView').classList.remove('active');
 }
 
+async function fetchRole() {
+  try {
+    const r = await api('GET', '/api/admin/me');
+    if (r && r.role) return r.role;
+  } catch {}
+  return 'full';
+}
+
+function applyRoleUI() {
+  if (ROLE === 'limited') {
+    document.body.classList.add('role-limited');
+    LIMITED_HIDDEN_TABS.forEach(name => {
+      const tab = document.querySelector(`.tab[onclick*="'${name}'"]`);
+      if (tab) tab.style.display = 'none';
+    });
+    const badge = document.getElementById('roleBadge');
+    if (badge) { badge.style.display = 'inline-block'; badge.textContent = 'tryb ograniczony'; }
+  } else {
+    document.body.classList.remove('role-limited');
+    LIMITED_HIDDEN_TABS.forEach(name => {
+      const tab = document.querySelector(`.tab[onclick*="'${name}'"]`);
+      if (tab) tab.style.display = '';
+    });
+    const badge = document.getElementById('roleBadge');
+    if (badge) badge.style.display = 'none';
+  }
+}
+
 async function tryLoad() {
   try {
+    ROLE = await fetchRole();
+    if (!ROLE || (ROLE !== 'full' && ROLE !== 'limited')) throw new Error('no role');
     const res = await api('GET', '/api/admin/orders');
     if (res.error) throw new Error();
     allOrders = res.orders || [];
     document.getElementById('loginView').style.display = 'none';
     document.getElementById('appView').classList.add('active');
+    applyRoleUI();
     renderOrders(allOrders);
     // Set calendar defaults
     const today = new Date().toISOString().split('T')[0];
@@ -472,6 +529,70 @@ function switchTab(name) {
   if (name === 'subs') loadSubs();
   if (name === 'waclicks') loadWaClicks();
   if (name === 'maile') loadEmailEvents();
+  if (name === 'seo') loadSeoSnapshot();
+}
+
+// ── SEO SNAPSHOT ──
+async function loadSeoSnapshot() {
+  try {
+    const res = await api('GET', '/api/admin/seo-snapshot');
+    if (res.error) { document.getElementById('seoRedirects').innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + res.error + '</p>'; return; }
+
+    const pages = (res.sitemap && res.sitemap.pages) || { count: 0, urls: [] };
+    const blog = (res.sitemap && res.sitemap.blog) || { count: 0, urls: [] };
+    const redirects = res.redirects || [];
+    const noindex = res.noindexPaths || [];
+    const ctx = res.context || {};
+
+    const broken = redirects.filter(r => !r.external && (r.status === null || r.status >= 400));
+    const ok = redirects.length - broken.length;
+
+    document.getElementById('seoStats').textContent =
+      `Pages: ${pages.count} | Blog: ${blog.count} | Redirecty: ${ok}/${redirects.length} OK | Noindex: ${noindex.length} | WA 7d: ${ctx.waClicksLast7d || 0} | Newsletter: ${ctx.subscribersActive || 0}`;
+
+    if (broken.length) {
+      document.getElementById('seoAlerts').innerHTML = `<div style="background:#ffe5e5;border:1px solid #c00;padding:12px 16px;font-size:13px">
+        <strong style="color:#c00">UWAGA</strong>: ${broken.length} redirect(ow) celuje w niedzialajaca destynacje &middot;
+        <details style="display:inline-block;margin-left:8px"><summary style="cursor:pointer;color:#c00">Pokaz</summary>
+          <table style="margin-top:8px">
+            <tr><th>Z</th><th>Do</th><th>Status</th><th>Final URL</th></tr>
+            ${broken.map(r => `<tr><td>${esc(r.from)}</td><td>${esc(r.to)}</td><td style="color:#c00">${r.status === null ? esc(r.error || 'fetch error') : r.status}</td><td style="font-size:11px;color:#666">${esc(r.finalUrl || '-')}</td></tr>`).join('')}
+          </table>
+        </details>
+      </div>`;
+    } else {
+      document.getElementById('seoAlerts').innerHTML = '<div style="background:#e8f5e9;border:1px solid #2e7d32;padding:8px 14px;font-size:12px;color:#2e7d32">Wszystkie destynacje redirectow zwracaja 200</div>';
+    }
+
+    const sitemapTable = (urls) => urls.length ? `<table>
+      <tr><th>URL</th></tr>
+      ${urls.map(u => `<tr><td style="font-size:11px">${esc(u)}</td></tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak</p>';
+
+    document.getElementById('seoSitemapPages').innerHTML = sitemapTable(pages.urls);
+    document.getElementById('seoSitemapBlog').innerHTML = sitemapTable(blog.urls);
+
+    document.getElementById('seoRedirects').innerHTML = redirects.length ? `<table>
+      <tr><th>Z (legacy)</th><th>Do</th><th>Typ</th><th>Status destynacji</th></tr>
+      ${redirects.map(r => {
+        const statusColor = r.status === null ? '#c00' : (r.status >= 200 && r.status < 300 ? '#2e7d32' : (r.status >= 300 && r.status < 400 ? '#888' : '#c00'));
+        const statusText = r.status === null ? (r.error || 'error') : r.status;
+        return `<tr>
+          <td style="font-size:11px">${esc(r.from)}</td>
+          <td style="font-size:11px">${esc(r.to)}</td>
+          <td style="font-size:10px;color:${r.external ? '#1B4DB5' : '#666'}">${r.external ? 'external' : 'self'}</td>
+          <td style="color:${statusColor};font-weight:600">${esc(String(statusText))}</td>
+        </tr>`;
+      }).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak</p>';
+
+    document.getElementById('seoNoindex').innerHTML = noindex.length ? `<table>
+      <tr><th>Sciezka</th></tr>
+      ${noindex.map(p => `<tr><td style="font-size:11px">${esc(p)}</td></tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak</p>';
+  } catch (err) {
+    document.getElementById('seoRedirects').innerHTML = '<p style="padding:20px;color:#c00">Blad ladowania: ' + (err.message || 'unknown') + '</p>';
+  }
 }
 
 // ── EMAIL EVENTS (Resend webhook) ──
@@ -549,6 +670,18 @@ async function loadWaClicks() {
     document.getElementById('waStats').textContent =
       `Ostatnie 24h: ${res.last24h} | 7 dni: ${res.last7d} | Total ostatnie 200: ${(res.recent || []).length}`;
 
+    // Etykiety dla znanych numerow naszych WA - pomaga rozpoznac kto dostal lead.
+    const NUMBER_LABELS = {
+      '48535535221': 'Pawel (535 535 221)',
+      '48739158131': 'Maciej (739 158 131)',
+    };
+    const labelNumber = n => n ? (NUMBER_LABELS[n] || ('+' + n)) : 'brak';
+
+    document.getElementById('waByTarget').innerHTML = (res.byTarget && res.byTarget.length) ? `<table>
+      <tr><th>Nasz numer (target)</th><th>Klikniecia (30 dni)</th></tr>
+      ${res.byTarget.map(r => `<tr><td>${esc(labelNumber(r.target_number))}</td><td class="amount">${r.cnt}</td></tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak danych. Dane zaczna sie zbierac dopiero po wgraniu migracji 025 i nowego wa-trackera.</p>';
+
     document.getElementById('waByPage').innerHTML = (res.byPage && res.byPage.length) ? `<table>
       <tr><th>Strona</th><th>Klikniecia (30 dni)</th></tr>
       ${res.byPage.map(r => `<tr><td>${esc(r.page)}</td><td class="amount">${r.cnt}</td></tr>`).join('')}
@@ -560,9 +693,10 @@ async function loadWaClicks() {
     </table>` : '<p style="padding:8px;color:#888">Brak danych</p>';
 
     document.getElementById('waRecentTable').innerHTML = (res.recent && res.recent.length) ? `<table>
-      <tr><th>Czas</th><th>Strona</th><th>Lokalizacja</th><th>Tekst CTA</th><th>Referer</th></tr>
+      <tr><th>Czas</th><th>Nasz nr</th><th>Strona</th><th>Lokalizacja</th><th>Tekst CTA</th><th>Referer</th></tr>
       ${res.recent.map(r => `<tr>
         <td>${fmtDate(r.created_at)}</td>
+        <td style="font-size:11px;color:#1B4DB5">${esc(labelNumber(r.target_number))}</td>
         <td>${esc(r.page)}</td>
         <td>${esc(r.location || '-')}</td>
         <td style="max-width:300px;font-size:11px;color:#555">${esc((r.prefilled_text || '').slice(0,80))}</td>

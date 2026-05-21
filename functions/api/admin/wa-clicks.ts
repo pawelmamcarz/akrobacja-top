@@ -2,11 +2,12 @@
 // Header: Authorization: Bearer ${ADMIN_PASSWORD}
 //
 // Zwraca:
-//   - recent: top 200 ostatnich klikniec
+//   - recent: top 200 ostatnich klikniec (zawiera target_number)
 //   - last24h: liczba klikniec w ostatnie 24h
 //   - last7d: liczba klikniec w ostatnie 7 dni
 //   - byPage: grupowanie po page (top 10)
 //   - byLocation: grupowanie po location (top 10)
+//   - byTarget: grupowanie po target_number (ostatnie 30 dni, bez NULL)
 
 import { type Env } from '../../../src/lib/types';
 import { checkAdminAuth } from '../../../src/lib/admin-auth';
@@ -16,9 +17,9 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const [recentRes, last24hRes, last7dRes, byPageRes, byLocationRes] = await Promise.all([
+  const [recentRes, last24hRes, last7dRes, byPageRes, byLocationRes, byTargetRes] = await Promise.all([
     ctx.env.DB.prepare(`
-      SELECT id, page, location, prefilled_text, referer, created_at
+      SELECT id, page, location, prefilled_text, target_number, referer, created_at
         FROM wa_clicks
        ORDER BY created_at DESC
        LIMIT 200
@@ -45,6 +46,13 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
        ORDER BY cnt DESC
        LIMIT 10
     `).all(),
+    ctx.env.DB.prepare(`
+      SELECT target_number, COUNT(*) AS cnt
+        FROM wa_clicks
+       WHERE created_at >= datetime('now', '-30 days') AND target_number IS NOT NULL
+       GROUP BY target_number
+       ORDER BY cnt DESC
+    `).all(),
   ]);
 
   return Response.json({
@@ -53,5 +61,6 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     last7d: last7dRes?.cnt ?? 0,
     byPage: byPageRes.results ?? [],
     byLocation: byLocationRes.results ?? [],
+    byTarget: byTargetRes.results ?? [],
   });
 };
