@@ -448,8 +448,14 @@ let TOKEN = localStorage.getItem('admin_token') || '';
 let ROLE = null; // 'full' | 'limited'
 let allOrders = [], allPilots = [], allCourses = [];
 
-// Taby ukrywane dla roli ograniczonej (Magda): same write-heavy panele.
-const LIMITED_HIDDEN_TABS = ['pilots', 'courses', 'blocks', 'aircraft'];
+// Taby ukrywane dla roli ograniczonej (Magda).
+// Tylko Piloci - zawiera PII (licencje, balanse, telefony) ktore nie sa
+// potrzebne do sprzedazy ani monitoringu cash flow / przegladow.
+// Wszystkie inne taby ma widoczne, bo musi sledzic przeglady samolotu,
+// blokady kalendarza i kursy podczas pilnowania partnerow.
+// Backend i tak blokuje wszystkie POST/PUT/DELETE dla jej tokena, wiec
+// czyta wszystko ale nic nie modyfikuje.
+const LIMITED_HIDDEN_TABS = ['pilots'];
 
 if (TOKEN) tryLoad();
 
