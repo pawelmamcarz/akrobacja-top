@@ -383,6 +383,14 @@ CREATE INDEX IF NOT EXISTS idx_email_events_tag_type ON email_events(tag_type, c
 -- Leady (Magda + cold-lead-scraper).
 -- Centralna tabela kontaktow B2B z workflow new -> contacted -> responded ->
 -- qualified -> won/lost. Kategorie odzwierciedlaja kanaly sprzedazy.
+-- UWAGA: category jest walidowana w warstwie aplikacji (leads.ts VALID_CATEGORIES),
+-- nie na poziomie DB (SQLite nie ma natywnych enumow).
+-- Aktualne wartosci (2026-05):
+--   event_agency, airshow, voucher_channel, b2b_benefit, municipal,
+--   corp_b2b, wedding, automotive, influencer_agency, media,
+--   foundation, csr_influencer, scraped_tender,
+--   private_banking, stag_hen, car_club, film_production, foreign_marketplace,
+--   other
 CREATE TABLE IF NOT EXISTS leads (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,

@@ -24,6 +24,11 @@ interface ForwardableEmailMessage {
 const ROUTING: Record<string, string[]> = {
   // alias -> lista destination addresses (musza byc zweryfikowane w CF)
   'voucher@akrobacja.com': ['pawel@mamcarz.com', 'maciej.kulaszewski@gmail.com'],
+  // Magda ma wlasny adres magda@akrobacja.com. Tymczasowo maile leca do Pawla
+  // zanim Magda potwierdzi swoj prywatny destination (musi byc verified w CF).
+  // TODO: gdy Magda poda swoj prywatny mail, zamienic na ['magda-real@...']
+  // i Pawel weryfikuje go w CF Dashboard -> Email Routing -> Destination Addresses.
+  'magda@akrobacja.com': ['pawel@mamcarz.com'],
   // Mozna dorzucic kolejne aliasy w przyszlosci, np:
   // 'maciej@akrobacja.com': ['maciej.kulaszewski@gmail.com', 'pawel@mamcarz.com'],
 };

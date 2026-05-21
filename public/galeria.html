@@ -178,6 +178,7 @@ function closeLb() {
 function navLb(dir) {
   current = (current + dir + imgs.length) % imgs.length;
   document.getElementById('lbImg').src = imgs[current].src;
+  document.getElementById('lbImg').alt = imgs[current].alt;
   document.getElementById('lbCaption').textContent = imgs[current].alt;
 }
 document.addEventListener('keydown', e => {

@@ -787,9 +787,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p style="font-size:14px;color:var(--chrome);line-height:1.7;max-width:380px;margin-bottom:28px" class="reveal reveal-d2">
         Wypelnij formularz lub napisz bezposrednio. Odpowiadamy w ciagu 24h z indywidualna oferta.
       </p>
-      <a href="https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20sponsoring%20samolotu%20akrobacyjnego%20Extra%20300L" class="wa-btn reveal reveal-d3">
-        WhatsApp: +48 535 535 221
-      </a>
+      <div style="display:flex;flex-direction:column;gap:12px" class="reveal reveal-d3">
+        <a href="https://wa.me/48739158131?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20sponsoring%20sportowy%20i%20branding%20samolotu%20Extra%20300L" class="wa-btn" data-wa-track="sponsoring-maciej">
+          <strong>Maciej Kulaszewski</strong>, pilot &middot; Mistrz Swiata 2022<br>
+          <span style="font-size:13px;opacity:.85">Sponsoring sportowy, branding samolotu, partnerstwo airshow</span><br>
+          WhatsApp: +48 739 158 131
+        </a>
+        <a href="https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20sponsoring%20akrobacja.com" class="wa-btn" data-wa-track="sponsoring-pawel">
+          <strong>Pawel Mamcarz</strong>, wlasciciel<br>
+          <span style="font-size:13px;opacity:.85">Sponsoring brand/voucher, kampanie marketingowe, eventy korporacyjne</span><br>
+          WhatsApp: +48 535 535 221
+        </a>
+      </div>
     </div>
 
     <form class="contact-form reveal reveal-d2" id="sponsorForm" onsubmit="submitSponsorForm(event)">
@@ -855,7 +864,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <p class="footer-col-title">Kontakt</p>
       <ul class="footer-links">
-        <li><a href="https://wa.me/48535535221">+48 535 535 221</a></li>
+        <li><a href="https://wa.me/48739158131" data-wa-track="footer-maciej">Maciej (pilot): +48 739 158 131</a></li>
+        <li><a href="https://wa.me/48535535221" data-wa-track="footer-pawel">Pawel (wlasciciel): +48 535 535 221</a></li>
         <li><a href="mailto:info@akrobacja.com">info@akrobacja.com</a></li>
         <li><a href="https://maps.app.goo.gl/radom-piastow-eprp" target="_blank" rel="noopener">Lotnisko Radom-Piastow (EPRP)</a></li>
       </ul>
@@ -877,11 +887,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <!-- ━━━━ STICKY CTA ━━━━ -->
-<a href="https://wa.me/48535535221" class="sticky-cta">
-  <img src="/assets/logo-mark.png" alt="" aria-hidden="true"
-       style="height:18px;width:auto;display:inline-block;vertical-align:middle;margin-right:4px">
-  +48 535 535 221
-</a>
+<div class="sticky-cta" style="display:flex;gap:10px;align-items:center;padding:10px 16px">
+  <a href="https://wa.me/48739158131?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20sponsoring%20samolotu" data-wa-track="sticky-maciej" style="color:inherit;font-size:12px;white-space:nowrap">Maciej: +48 739 158 131</a>
+  <span style="opacity:.4">|</span>
+  <a href="https://wa.me/48535535221?text=Dzie%C5%84%20dobry%2C%20interesuje%20mnie%20sponsoring%20akrobacja.com" data-wa-track="sticky-pawel" style="color:inherit;font-size:12px;white-space:nowrap">Pawel: +48 535 535 221</a>
+</div>
 
 <!-- ━━━━ SCRIPTS ━━━━ -->
 <script>
@@ -920,6 +930,7 @@ function submitSponsorForm(e) {
   window.open('https://wa.me/48535535221?text=' + encodeURIComponent(msg), '_blank');
 }
 </script>
+<script src="/assets/wa-tracker.js" defer></script>
 <script src="/chat-widget.js" defer></script>
 </body>
 </html>

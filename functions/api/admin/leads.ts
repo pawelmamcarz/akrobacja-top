@@ -13,7 +13,9 @@ const VALID_PRIORITIES = ['high', 'medium', 'low'];
 const VALID_CATEGORIES = [
   'event_agency', 'airshow', 'voucher_channel', 'b2b_benefit', 'municipal',
   'corp_b2b', 'wedding', 'automotive', 'influencer_agency', 'media',
-  'foundation', 'csr_influencer', 'scraped_tender', 'other',
+  'foundation', 'csr_influencer', 'scraped_tender',
+  'private_banking', 'stag_hen', 'car_club', 'film_production', 'foreign_marketplace',
+  'other',
 ];
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
