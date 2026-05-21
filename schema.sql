@@ -459,3 +459,25 @@ CREATE TABLE IF NOT EXISTS admin_logins (
 
 CREATE INDEX IF NOT EXISTS idx_admin_logins_user ON admin_logins(username, logged_at DESC);
 CREATE INDEX IF NOT EXISTS idx_admin_logins_at ON admin_logins(logged_at DESC);
+
+-- Photographer submission queue. Public form POSTs to /api/photographer/upload,
+-- file lands in R2 under submissions/{uuid}.jpg, row stays 'pending' until an admin
+-- approves it from the "Zdjecia" tab. Approved rows surface on /galeria via /api/gallery.
+CREATE TABLE IF NOT EXISTS gallery_submissions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  r2_key TEXT NOT NULL UNIQUE,
+  width INTEGER NOT NULL,
+  height INTEGER NOT NULL,
+  photographer_name TEXT NOT NULL,
+  photographer_city TEXT,
+  photographer_instagram TEXT,
+  photographer_email TEXT,
+  caption TEXT,
+  status TEXT NOT NULL DEFAULT 'pending',
+  submitted_at INTEGER NOT NULL,
+  approved_at INTEGER,
+  approved_by TEXT,
+  submitter_ip TEXT,
+  submitter_ua TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_gallery_subs_status ON gallery_submissions(status, submitted_at DESC);

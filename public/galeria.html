@@ -157,6 +157,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="https://wa.me/48535535221?text=Chcę%20zarezerwować%20lot%20Extra%20300L" target="_blank" rel="noopener noreferrer">Zarezerwuj swój lot →</a>
 </div>
 
+<div style="text-align:center;padding:0 16px 64px">
+<p style="color:var(--chrome);font-size:13px;margin-bottom:14px">Zrobiłeś zdjęcia SP-EKS na pokazach?</p>
+<a href="/wyslij-zdjecia" style="display:inline-block;color:#fff;border:1px solid rgba(255,255,255,.2);padding:12px 28px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.16em;text-decoration:none">Wyślij je do galerii →</a>
+</div>
+
 <!-- Lightbox -->
 <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Podgląd zdjęcia" aria-hidden="true" onclick="if(event.target===this)closeLb()">
 <button class="lb-close" type="button" aria-label="Zamknij podgląd" onclick="closeLb()">&times;</button>
@@ -172,8 +177,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <script>
-const imgs = document.querySelectorAll('.gallery img');
+const gallery = document.getElementById('gallery');
+let imgs = document.querySelectorAll('.gallery img');
 let current = 0;
+
+// Approved photographer submissions — fetched after initial render, prepended to grid.
+fetch('/api/gallery').then(r => r.json()).then(data => {
+  if (!data?.photos?.length) return;
+  const frag = document.createDocumentFragment();
+  data.photos.forEach(p => {
+    const fig = document.createElement('figure');
+    fig.dataset.author = p.photographer_name;
+    if (p.photographer_instagram) fig.dataset.authorUrl = igUrl(p.photographer_instagram);
+    const img = document.createElement('img');
+    img.src = '/api/gallery/file/' + p.id;
+    img.alt = p.caption || ('Extra 300L SP-EKS — fot. ' + p.photographer_name);
+    img.loading = 'lazy';
+    if (p.width && p.height) { img.width = p.width; img.height = p.height; }
+    img.addEventListener('click', () => openLbByImg(img));
+    const cap = document.createElement('figcaption');
+    const url = p.photographer_instagram ? igUrl(p.photographer_instagram) : null;
+    cap.innerHTML = 'fot. ' + (url
+      ? `<a href="${url}" target="_blank" rel="noopener noreferrer">${escapeHtml(p.photographer_name)}</a>`
+      : escapeHtml(p.photographer_name));
+    fig.appendChild(img); fig.appendChild(cap);
+    frag.appendChild(fig);
+  });
+  gallery.insertBefore(frag, gallery.firstChild);
+  imgs = document.querySelectorAll('.gallery img');
+}).catch(() => {});
+
+function igUrl(h) {
+  const clean = h.replace(/^@/, '').trim();
+  if (!clean) return null;
+  if (/^https?:\/\//i.test(clean)) return clean;
+  return 'https://instagram.com/' + encodeURIComponent(clean);
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+}
+function openLbByImg(img) {
+  const list = Array.from(document.querySelectorAll('.gallery img'));
+  const i = list.indexOf(img);
+  if (i >= 0) openLb(i);
+}
+
 function captionFor(img) {
   const fig = img.closest('figure');
   const author = fig?.dataset.author;

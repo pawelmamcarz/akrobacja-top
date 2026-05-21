@@ -115,6 +115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="tab" onclick="switchTab('subs')">SMS Lista</div>
     <div class="tab" onclick="switchTab('waclicks')">WA Klikniecia</div>
     <div class="tab" onclick="switchTab('maile')">Maile</div>
+    <div class="tab" onclick="switchTab('zdjecia')">Zdjecia</div>
     <div class="tab" onclick="switchTab('seo')">SEO</div>
     <div class="tab" onclick="switchTab('leads')">Leady</div>
     <div class="tab" onclick="switchTab('scraper')">Scraper</div>
@@ -265,6 +266,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="mailByTag"></div>
     <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 200 eventow</h4>
     <div id="mailRecentTable"></div>
+  </div>
+
+  <!-- PHOTOGRAPHER SUBMISSIONS -->
+  <div class="panel" id="panel-zdjecia">
+    <div class="toolbar">
+      <select id="zdjFilter" onchange="loadGallerySubs()" style="padding:6px 10px;border:1px solid #ccc">
+        <option value="pending">Oczekujace</option>
+        <option value="approved">Zaakceptowane</option>
+        <option value="rejected">Odrzucone</option>
+        <option value="all">Wszystkie</option>
+      </select>
+      <button class="btn btn-blue" onclick="loadGallerySubs()">Odswiez</button>
+      <a class="btn" href="/wyslij-zdjecia" target="_blank" style="background:#eee;color:#333;text-decoration:none;padding:6px 12px">Otworz formularz</a>
+      <div class="stats" id="zdjStats"></div>
+    </div>
+    <div id="zdjGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:14px"></div>
   </div>
 
   <!-- SEO SNAPSHOT -->
@@ -656,6 +673,7 @@ function switchTab(name) {
   if (name === 'subs') loadSubs();
   if (name === 'waclicks') loadWaClicks();
   if (name === 'maile') loadEmailEvents();
+  if (name === 'zdjecia') loadGallerySubs();
   if (name === 'seo') loadSeoSnapshot();
   if (name === 'leads') loadLeads();
   if (name === 'scraper') loadScraper();
@@ -691,6 +709,73 @@ async function loadLoginHistory() {
   } catch (err) {
     document.getElementById('loginRecent').innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + (err.message || 'unknown') + '</p>';
   }
+}
+
+// ── GALLERY SUBMISSIONS (Zdjecia od fotografow) ──
+async function loadGallerySubs() {
+  const status = (document.getElementById('zdjFilter') || {}).value || 'pending';
+  const grid = document.getElementById('zdjGrid');
+  grid.innerHTML = '<p style="padding:20px;color:#888">Ladowanie...</p>';
+  try {
+    const res = await api('GET', '/api/admin/gallery-submissions?status=' + encodeURIComponent(status));
+    if (res.error) { grid.innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + res.error + '</p>'; return; }
+    const c = res.counts || {};
+    document.getElementById('zdjStats').textContent =
+      `Oczekujace: ${c.pending || 0} | Zaakceptowane: ${c.approved || 0} | Odrzucone: ${c.rejected || 0}`;
+    const list = res.submissions || [];
+    if (list.length === 0) { grid.innerHTML = '<p style="padding:20px;color:#888">Brak zgloszen w tej kategorii</p>'; return; }
+    const token = localStorage.getItem('admin_token') || '';
+    grid.innerHTML = list.map(s => zdjCard(s, token)).join('');
+  } catch (err) {
+    grid.innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + (err.message || 'unknown') + '</p>';
+  }
+}
+function zdjCard(s, token) {
+  const ts = new Date(s.submitted_at * 1000).toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' });
+  const ig = s.photographer_instagram || '';
+  const igLink = ig
+    ? `<a href="https://instagram.com/${esc(ig.replace(/^@/, ''))}" target="_blank" style="color:#1B4DB5">${esc(ig)}</a>`
+    : '<span style="color:#aaa">brak IG</span>';
+  const statusBadge = {
+    pending:  '<span style="background:#ffd56b;padding:2px 8px;font-size:10px;font-weight:700">PENDING</span>',
+    approved: '<span style="background:#9be3a8;padding:2px 8px;font-size:10px;font-weight:700">APPROVED</span>',
+    rejected: '<span style="background:#ffb7c0;padding:2px 8px;font-size:10px;font-weight:700">REJECTED</span>',
+  }[s.status] || s.status;
+  const actions = s.status === 'pending'
+    ? `<button class="btn" style="background:#2EA043;color:#fff" onclick="zdjAction(${s.id},'approve')">Zaakceptuj</button>
+       <button class="btn" style="background:#C41E3A;color:#fff" onclick="zdjAction(${s.id},'reject')">Odrzuc</button>`
+    : `<button class="btn" style="background:#eee;color:#333" onclick="zdjAction(${s.id},'approve')">Re-approve</button>
+       <button class="btn" style="background:#C41E3A;color:#fff" onclick="zdjDelete(${s.id})">Usun na zawsze</button>`;
+  return `<div style="background:#fff;border:1px solid #ddd;overflow:hidden">
+    <a href="/api/admin/gallery-submissions/file/${s.id}?t=${encodeURIComponent(token)}" target="_blank">
+      <img src="/api/admin/gallery-submissions/file/${s.id}?t=${encodeURIComponent(token)}" style="width:100%;aspect-ratio:1;object-fit:cover;background:#000;display:block" loading="lazy" alt="">
+    </a>
+    <div style="padding:10px;font-size:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <strong>${esc(s.photographer_name)}</strong>
+        ${statusBadge}
+      </div>
+      <div style="color:#666;font-size:11px;margin-bottom:4px">${esc(s.photographer_city || '-')} · ${igLink}</div>
+      ${s.caption ? `<div style="font-size:11px;color:#444;margin-bottom:6px;font-style:italic">"${esc(s.caption)}"</div>` : ''}
+      <div style="color:#aaa;font-size:10px;margin-bottom:8px">${ts} · ${s.width}×${s.height}</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">${actions}</div>
+    </div>
+  </div>`;
+}
+async function zdjAction(id, action) {
+  try {
+    const res = await api('POST', '/api/admin/gallery-submissions', { id, action });
+    if (res.error) { alert('Blad: ' + res.error); return; }
+    loadGallerySubs();
+  } catch (err) { alert('Blad: ' + (err.message || 'unknown')); }
+}
+async function zdjDelete(id) {
+  if (!confirm('Usunac zdjecie na zawsze (plik z R2 + wpis z bazy)?')) return;
+  try {
+    const res = await api('POST', '/api/admin/gallery-submissions', { id, action: 'delete' });
+    if (res.error) { alert('Blad: ' + res.error); return; }
+    loadGallerySubs();
+  } catch (err) { alert('Blad: ' + (err.message || 'unknown')); }
 }
 
 // ── LEADS ──

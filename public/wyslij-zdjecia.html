@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wyślij zdjęcia | akrobacja.com</title>
+<meta name="description" content="Zrobiłeś zdjęcia Extra 300L SP-EKS? Wyślij je do galerii akrobacja.com – z podpisem fotografa.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"></noscript>
+<style>
+:root{--navy:#1B4DB5;--red:#C41E3A;--black:#0A1428;--white:#FFFFFF;--chrome:#7A8FA6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:var(--black);color:#fff;min-height:100vh}
+.wrap{max-width:760px;margin:0 auto;padding:120px 24px 80px}
+h1{font-family:'Montserrat',sans-serif;font-size:clamp(32px,4.5vw,48px);font-weight:900;text-transform:uppercase;margin-bottom:14px;line-height:1.05}
+h1 .accent{color:var(--red)}
+.lead{color:var(--chrome);font-size:15px;line-height:1.55;margin-bottom:32px;max-width:580px}
+.lead strong{color:#fff;font-weight:600}
+form{background:#0d1a2e;padding:32px;border:1px solid rgba(255,255,255,.05)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+label{display:block;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:6px}
+label .req{color:var(--red)}
+input[type=text],input[type=email],textarea{width:100%;padding:12px 14px;background:#0A1428;border:1px solid rgba(255,255,255,.08);color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border-color .15s}
+input[type=text]:focus,input[type=email]:focus,textarea:focus{border-color:var(--navy)}
+textarea{resize:vertical;min-height:80px}
+.drop{margin-top:18px;border:2px dashed rgba(255,255,255,.12);padding:32px 20px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s}
+.drop:hover,.drop.over{border-color:var(--navy);background:rgba(27,77,181,.06)}
+.drop input{display:none}
+.drop p{color:var(--chrome);font-size:13px}
+.drop strong{color:#fff;font-weight:600}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-top:14px}
+.thumb{position:relative;aspect-ratio:1;background:#0A1428;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb .x{position:absolute;top:4px;right:4px;background:rgba(0,0,0,.7);color:#fff;border:0;width:22px;height:22px;cursor:pointer;font-size:14px;line-height:22px;padding:0}
+.thumb .meta{position:absolute;bottom:0;left:0;right:0;font-size:9px;background:rgba(0,0,0,.7);padding:3px 6px;color:rgba(255,255,255,.6);letter-spacing:.05em}
+.captcha{margin-top:18px}
+button[type=submit]{display:block;width:100%;background:var(--red);color:#fff;padding:16px;border:0;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.16em;cursor:pointer;margin-top:24px;transition:background .15s}
+button[type=submit]:hover{background:#A51932}
+button[type=submit]:disabled{background:#3a4458;cursor:not-allowed}
+.msg{padding:14px 16px;margin-top:18px;font-size:13px;line-height:1.5}
+.msg.ok{background:rgba(46,160,67,.12);border-left:3px solid #2EA043;color:#9be3a8}
+.msg.err{background:rgba(196,30,58,.12);border-left:3px solid var(--red);color:#ffb7c0}
+.note{margin-top:24px;padding:18px;background:rgba(27,77,181,.08);border-left:3px solid var(--navy);font-size:12px;line-height:1.6;color:var(--chrome)}
+.note strong{color:#fff;font-weight:600}
+.back{display:inline-block;margin-top:20px;color:var(--chrome);font-size:12px;text-decoration:none;letter-spacing:.1em;text-transform:uppercase}
+.back:hover{color:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Wyślij <span class="accent">zdjęcia</span> do galerii</h1>
+  <p class="lead">
+    Zrobiłeś świetne ujęcie Extra 300L SP-EKS na pokazach albo nad lotniskiem? Wrzuć tutaj –
+    po naszej akceptacji trafi do galerii na <strong>akrobacja.com/galeria</strong>
+    z Twoim podpisem.
+  </p>
+
+  <form id="uploadForm">
+    <div class="row">
+      <div>
+        <label>Imię i nazwisko <span class="req">*</span></label>
+        <input type="text" name="photographer_name" required maxlength="80" autocomplete="name">
+      </div>
+      <div>
+        <label>Miasto</label>
+        <input type="text" name="photographer_city" maxlength="60" placeholder="np. Warszawa">
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Instagram (opcjonalnie)</label>
+        <input type="text" name="photographer_instagram" maxlength="60" placeholder="@twojnick">
+      </div>
+      <div>
+        <label>Email (opcjonalnie, do kontaktu)</label>
+        <input type="email" name="photographer_email" maxlength="120">
+      </div>
+    </div>
+    <div>
+      <label>Opis zdjęć (opcjonalnie)</label>
+      <textarea name="caption" maxlength="200" placeholder="np. Pokazy w Płocku, październik 2025"></textarea>
+    </div>
+
+    <label class="drop" id="drop">
+      <input type="file" id="files" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple>
+      <p><strong>Kliknij lub przeciągnij zdjęcia tutaj</strong></p>
+      <p style="margin-top:6px;font-size:11px">JPG, PNG, WebP, HEIC · max 8 zdjęć · automatycznie zoptymalizowane przed wysyłką</p>
+    </label>
+
+    <div class="thumbs" id="thumbs"></div>
+
+    <div class="captcha" id="captcha-wrap"></div>
+
+    <button type="submit" id="submitBtn" disabled>Wyślij zdjęcia</button>
+
+    <div id="msg"></div>
+  </form>
+
+  <div class="note">
+    <strong>Co się dzieje po wysłaniu?</strong><br>
+    Każde zdjęcie ręcznie sprawdzamy. Zaakceptowane pojawia się w galerii z Twoim podpisem
+    (imię + opcjonalnie link do Instagrama). Zachowujemy prawo do odmowy bez podania powodu.
+    Twoje zdjęcia nie będą używane w reklamach bez osobnej zgody.
+  </div>
+
+  <a href="/galeria" class="back">← Wróć do galerii</a>
+</div>
+
+<script>
+const MAX_FILES = 8;
+const TARGET_LONG_EDGE = 1800;
+const JPEG_QUALITY = 0.85;
+const files = [];
+const drop = document.getElementById('drop');
+const inp = document.getElementById('files');
+const thumbsEl = document.getElementById('thumbs');
+const submitBtn = document.getElementById('submitBtn');
+const msgEl = document.getElementById('msg');
+let turnstileToken = '';
+
+function showMsg(kind, text) {
+  msgEl.className = 'msg ' + kind;
+  msgEl.textContent = text;
+}
+function clearMsg() { msgEl.className = ''; msgEl.textContent = ''; }
+function updateBtn() {
+  submitBtn.disabled = files.length === 0 || !turnstileToken;
+}
+function fmtKB(b) { return (b / 1024).toFixed(0) + ' KB'; }
+
+async function processFile(rawFile) {
+  if (files.length >= MAX_FILES) return null;
+  // Decode via Image — handles JPEG/PNG/WebP. HEIC/HEIF fails silently here; browser
+  // support is uneven (Safari decodes, Chrome doesn't), so we just skip those gracefully.
+  const dataUrl = await new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = reject;
+    r.readAsDataURL(rawFile);
+  });
+  const img = await new Promise((resolve, reject) => {
+    const i = new Image();
+    i.onload = () => resolve(i);
+    i.onerror = reject;
+    i.src = dataUrl;
+  });
+  const longEdge = Math.max(img.naturalWidth, img.naturalHeight);
+  const scale = longEdge > TARGET_LONG_EDGE ? TARGET_LONG_EDGE / longEdge : 1;
+  const w = Math.round(img.naturalWidth * scale);
+  const h = Math.round(img.naturalHeight * scale);
+  const canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(img, 0, 0, w, h);
+  const blob = await new Promise((res) => canvas.toBlob(res, 'image/jpeg', JPEG_QUALITY));
+  if (!blob) throw new Error('Konwersja JPEG nieudana');
+  return { blob, width: w, height: h, originalName: rawFile.name };
+}
+
+function renderThumbs() {
+  thumbsEl.innerHTML = '';
+  files.forEach((f, i) => {
+    const url = URL.createObjectURL(f.blob);
+    const div = document.createElement('div');
+    div.className = 'thumb';
+    div.innerHTML = `<img src="${url}" alt=""><div class="meta">${f.width}×${f.height} · ${fmtKB(f.blob.size)}</div><button type="button" class="x" data-i="${i}" aria-label="Usuń">×</button>`;
+    thumbsEl.appendChild(div);
+  });
+  thumbsEl.querySelectorAll('.x').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const i = parseInt(e.target.dataset.i, 10);
+      files.splice(i, 1);
+      renderThumbs();
+      updateBtn();
+    });
+  });
+}
+
+async function handleFiles(list) {
+  clearMsg();
+  for (const f of list) {
+    if (files.length >= MAX_FILES) {
+      showMsg('err', `Maksymalnie ${MAX_FILES} zdjęć — pomijam pozostałe`);
+      break;
+    }
+    try {
+      const processed = await processFile(f);
+      if (processed) files.push(processed);
+    } catch (err) {
+      showMsg('err', `Nie udało się przetworzyć pliku ${f.name}. HEIC z iPhone'a? Spróbuj zapisać jako JPG.`);
+    }
+  }
+  renderThumbs();
+  updateBtn();
+}
+
+inp.addEventListener('change', e => {
+  handleFiles(Array.from(e.target.files));
+  inp.value = '';
+});
+['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => {
+  e.preventDefault(); drop.classList.add('over');
+}));
+['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => {
+  e.preventDefault(); drop.classList.remove('over');
+}));
+drop.addEventListener('drop', e => {
+  if (e.dataTransfer?.files) handleFiles(Array.from(e.dataTransfer.files));
+});
+
+// Turnstile widget
+window.onloadTurnstileCallback = function() {
+  if (window.TURNSTILE_SITE_KEY && window.turnstile) {
+    window.turnstile.render('#captcha-wrap', {
+      sitekey: window.TURNSTILE_SITE_KEY,
+      callback: (token) => { turnstileToken = token; updateBtn(); },
+      'expired-callback': () => { turnstileToken = ''; updateBtn(); },
+    });
+  } else {
+    // No turnstile configured — let submit happen without it (server fails open in dev).
+    turnstileToken = 'dev';
+    updateBtn();
+  }
+};
+// If turnstile script never loads (e.g. blocked), unlock submit after 3s.
+setTimeout(() => { if (!turnstileToken) { turnstileToken = 'dev'; updateBtn(); } }, 3000);
+
+document.getElementById('uploadForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  if (files.length === 0) return;
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Wysyłanie...';
+  clearMsg();
+
+  const fd = new FormData(e.target);
+  fd.set('turnstileToken', turnstileToken);
+  files.forEach(f => {
+    fd.append('files', f.blob, (f.originalName || 'photo') + '.jpg');
+    fd.append('widths', String(f.width));
+    fd.append('heights', String(f.height));
+  });
+
+  try {
+    const res = await fetch('/api/photographer/upload', { method: 'POST', body: fd });
+    const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || 'Wystąpił błąd');
+    }
+    showMsg('ok', `Dziękujemy! Wysłaliśmy ${data.count} ${data.count === 1 ? 'zdjęcie' : 'zdjęć'} do akceptacji. Skontaktujemy się jeśli zostaną dodane do galerii.`);
+    files.length = 0;
+    renderThumbs();
+    e.target.reset();
+    submitBtn.textContent = 'Wyślij kolejne zdjęcia';
+  } catch (err) {
+    showMsg('err', err.message || 'Nie udało się wysłać. Spróbuj ponownie.');
+    submitBtn.textContent = 'Wyślij zdjęcia';
+  } finally {
+    submitBtn.disabled = false;
+    updateBtn();
+  }
+});
+</script>
+</body>
+</html>
