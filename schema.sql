@@ -438,3 +438,16 @@ CREATE TABLE IF NOT EXISTS scraper_runs (
 );
 
 CREATE INDEX IF NOT EXISTS idx_scraper_runs_source ON scraper_runs(source_id, ran_at DESC);
+
+-- Log logowan do /admin (Pawel/Magda/...). Insert robi /api/admin/me z 1h
+-- debounce per (username, ip).
+CREATE TABLE IF NOT EXISTS admin_logins (
+  id TEXT PRIMARY KEY,
+  username TEXT NOT NULL,
+  ip TEXT,
+  user_agent TEXT,
+  logged_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_admin_logins_user ON admin_logins(username, logged_at DESC);
+CREATE INDEX IF NOT EXISTS idx_admin_logins_at ON admin_logins(logged_at DESC);

@@ -13,6 +13,7 @@ export interface Env {
   RESEND_API_KEY: string;
   SITE_URL: string;
   ADMIN_PASSWORD: string;
+  MAGDA_PASSWORD?: string;
   SMSAPI_TOKEN: string;
   PRINTFUL_TOKEN: string;
   META_PIXEL_ID?: string;

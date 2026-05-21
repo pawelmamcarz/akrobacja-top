@@ -99,7 +99,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="app" id="appView">
   <div class="topbar">
-    <h1>akrobacja.com, Panel Admina</h1>
+    <h1>akrobacja.com, Panel Admina <span id="userBadge" style="display:none;background:#1B4DB5;color:#fff;padding:3px 10px;font-size:11px;font-weight:600;border-radius:3px;margin-left:8px;vertical-align:middle"></span></h1>
     <button class="logout" onclick="doLogout()">Wyloguj</button>
   </div>
 
@@ -117,6 +117,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="tab" onclick="switchTab('seo')">SEO</div>
     <div class="tab" onclick="switchTab('leads')">Leady</div>
     <div class="tab" onclick="switchTab('scraper')">Scraper</div>
+    <div class="tab" onclick="switchTab('logi')">Logi</div>
   </div>
 
   <!-- ORDERS -->
@@ -338,6 +339,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 20 uruchomien</h4>
     <div id="scraperRuns"></div>
   </div>
+
+  <!-- LOGI (admin login history) -->
+  <div class="panel" id="panel-logi">
+    <div class="toolbar">
+      <button class="btn btn-blue" onclick="loadLoginHistory()">Odswiez</button>
+      <div class="stats" id="loginStats"></div>
+    </div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Logowania w 7 dniach (wg uzytkownika)</h4>
+    <div id="loginByUser7"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Logowania w 30 dniach (wg uzytkownika)</h4>
+    <div id="loginByUser30"></div>
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 100 logowan</h4>
+    <div id="loginRecent"></div>
+  </div>
 </div>
 
 <!-- MODALS -->
@@ -557,6 +572,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 let TOKEN = localStorage.getItem('admin_token') || '';
+let USER = null;
 let allOrders = [], allPilots = [], allCourses = [];
 
 if (TOKEN) tryLoad();
@@ -568,18 +584,43 @@ async function doLogin() {
 }
 function doLogout() {
   TOKEN = '';
+  USER = null;
   localStorage.removeItem('admin_token');
+  const badge = document.getElementById('userBadge');
+  if (badge) badge.style.display = 'none';
   document.getElementById('loginView').style.display = 'flex';
   document.getElementById('appView').classList.remove('active');
 }
 
+async function fetchUser() {
+  try {
+    const r = await api('GET', '/api/admin/me');
+    if (r && r.user) return r.user;
+  } catch {}
+  return null;
+}
+
+function applyUserBadge() {
+  const badge = document.getElementById('userBadge');
+  if (!badge) return;
+  if (USER) {
+    badge.textContent = 'zalogowany jako: ' + USER;
+    badge.style.display = 'inline-block';
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
 async function tryLoad() {
   try {
+    USER = await fetchUser();
+    if (!USER) throw new Error('no user');
     const res = await api('GET', '/api/admin/orders');
     if (res.error) throw new Error();
     allOrders = res.orders || [];
     document.getElementById('loginView').style.display = 'none';
     document.getElementById('appView').classList.add('active');
+    applyUserBadge();
     renderOrders(allOrders);
     // Set calendar defaults
     const today = new Date().toISOString().split('T')[0];
@@ -607,6 +648,38 @@ function switchTab(name) {
   if (name === 'seo') loadSeoSnapshot();
   if (name === 'leads') loadLeads();
   if (name === 'scraper') loadScraper();
+  if (name === 'logi') loadLoginHistory();
+}
+
+// ── LOGIN HISTORY ──
+async function loadLoginHistory() {
+  try {
+    const res = await api('GET', '/api/admin/login-history');
+    if (res.error) { document.getElementById('loginRecent').innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + res.error + '</p>'; return; }
+
+    const total = (res.recent || []).length;
+    document.getElementById('loginStats').textContent = `Pokazane: ${total} ostatnich logowan`;
+
+    const userTable = arr => arr.length ? `<table>
+      <tr><th>Uzytkownik</th><th>Logowania</th></tr>
+      ${arr.map(r => `<tr><td><strong>${esc(r.username)}</strong></td><td class="amount">${r.cnt}</td></tr>`).join('')}
+    </table>` : '<p style="padding:8px;color:#888">Brak</p>';
+
+    document.getElementById('loginByUser7').innerHTML = userTable(res.byUser7 || []);
+    document.getElementById('loginByUser30').innerHTML = userTable(res.byUser30 || []);
+
+    document.getElementById('loginRecent').innerHTML = total ? `<table>
+      <tr><th>Czas</th><th>Uzytkownik</th><th>IP</th><th>User-agent</th></tr>
+      ${res.recent.map(r => `<tr>
+        <td style="font-size:11px;white-space:nowrap">${esc(r.logged_at)}</td>
+        <td><strong>${esc(r.username)}</strong></td>
+        <td style="font-size:10px;color:#666">${esc(r.ip || '-')}</td>
+        <td style="font-size:10px;color:#666;max-width:400px;overflow:hidden;text-overflow:ellipsis">${esc((r.user_agent || '').slice(0, 100))}</td>
+      </tr>`).join('')}
+    </table>` : '<p style="padding:20px;color:#888">Brak logowan jeszcze</p>';
+  } catch (err) {
+    document.getElementById('loginRecent').innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + (err.message || 'unknown') + '</p>';
+  }
 }
 
 // ── LEADS ──
