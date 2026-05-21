@@ -44,6 +44,11 @@ body{font-family:'Inter',sans-serif;background:var(--black);color:#fff}
 .gallery{max-width:1400px;margin:0 auto;padding:0 16px 80px;columns:3;column-gap:8px}
 .gallery img{width:100%;display:block;margin-bottom:8px;cursor:pointer;transition:opacity .2s}
 .gallery img:hover{opacity:.85}
+.gallery figure{margin:0 0 8px;break-inside:avoid;display:block}
+.gallery figure img{margin-bottom:0}
+.gallery figcaption{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.42);padding:6px 2px 0}
+.gallery figcaption a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.18)}
+.gallery figcaption a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.6)}
 /* Lightbox */
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:2000;display:none;align-items:center;justify-content:center;padding:40px}
 .lb.open{display:flex}
@@ -114,29 +119,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <div class="gallery" id="gallery">
-<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_001.jpg" alt="Extra 300L SP-EKS - start z dymem" loading="lazy" onclick="openLb(0)">
-<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_005.jpg" alt="SP-EKS w locie nad jesiennym lasem" loading="lazy" onclick="openLb(1)">
-<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_003.jpg" alt="Zbliżenie kokpitu Extra 300L w locie" loading="lazy" onclick="openLb(2)">
-<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_033.jpg" alt="SP-EKS nad miastem - widok z góry" loading="lazy" onclick="openLb(3)">
-<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_005.jpg" alt="Maciej Kulaszewski w kokpicie" loading="lazy" onclick="openLb(4)">
-<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_006.jpg" alt="Extra 300L SP-EKS - lot akrobacyjny" loading="lazy" onclick="openLb(5)">
-<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_007.jpg" alt="SP-EKS w locie - widok z boku" loading="lazy" onclick="openLb(6)">
-<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_008.jpg" alt="Lot akrobacyjny Extra 300L" loading="lazy" onclick="openLb(7)">
-<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_041.jpg" alt="SP-EKS - akrobacja nad Warszawą" loading="lazy" onclick="openLb(8)">
-<img src="/gallery/ATAM33_Grzegorz_Golus_007.jpg" alt="Extra 300L SP-EKS - zdjęcie z pokazu" loading="lazy" onclick="openLb(9)">
-<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_044.jpg" alt="Lot akrobacyjny nad jesiennym krajobrazem" loading="lazy" onclick="openLb(10)">
-<img src="/gallery/ATAM33_Maciej_Juniewicz_028.jpg" alt="SP-EKS w akcji" loading="lazy" onclick="openLb(11)">
-<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_045.jpg" alt="Extra 300L w locie" loading="lazy" onclick="openLb(12)">
-<img src="/gallery/ATAM33_Michal_Marzec_001.jpg" alt="Kokpit Extra 300L - przyrządy" loading="lazy" onclick="openLb(13)">
-<img src="/gallery/ATAM33_Przemek_Saracen_015.jpg" alt="SP-EKS - lot z dymem" loading="lazy" onclick="openLb(14)">
-<img src="/gallery/ATAM33_Tomasz_Chochol_005.jpg" alt="Extra 300L na tle nieba" loading="lazy" onclick="openLb(15)">
-<img src="/gallery/dji_fly_20240929_152324_0371_1727673297944_photo.jpg" alt="SP-EKS na lotnisku Radom-Piastów" loading="lazy" onclick="openLb(16)">
-<img src="/gallery/dji_fly_20240929_153058_0394_1727673213512_photo.jpg" alt="Extra 300L - widok z drona" loading="lazy" onclick="openLb(17)">
-<img src="/gallery/DSC_2287.JPG" alt="SP-EKS na pasie startowym" loading="lazy" onclick="openLb(18)">
-<img src="/gallery/DSC_2307.JPG" alt="Extra 300L - detal" loading="lazy" onclick="openLb(19)">
-<img src="/gallery/IMG_1437.jpeg" alt="Kokpit Extra 300L SP-EKS" loading="lazy" onclick="openLb(20)">
-<img src="/gallery/IMG_3011.jpeg" alt="SP-EKS - przygotowania do lotu" loading="lazy" onclick="openLb(21)">
-<img src="/gallery/IMG_9933.jpeg" alt="Panel przyrządów Extra 300L" loading="lazy" onclick="openLb(22)">
+<figure data-author="Piotr Łagowski" data-author-url="https://instagram.com/lagowczak"><img src="/gallery/Piotr_Lagowski_976.jpg" alt="Extra 300L SP-EKS - pionowe wznoszenie ze smugą dymną" loading="lazy" onclick="openLb(0)"><figcaption>fot. <a href="https://instagram.com/lagowczak" target="_blank" rel="noopener noreferrer">Piotr Łagowski</a></figcaption></figure>
+<figure data-author="Piotr Łagowski" data-author-url="https://instagram.com/lagowczak"><img src="/gallery/Piotr_Lagowski_977.jpg" alt="SP-EKS niskie przejście nad lasem o złotej godzinie" loading="lazy" onclick="openLb(1)"><figcaption>fot. <a href="https://instagram.com/lagowczak" target="_blank" rel="noopener noreferrer">Piotr Łagowski</a></figcaption></figure>
+<figure data-author="Piotr Łagowski" data-author-url="https://instagram.com/lagowczak"><img src="/gallery/Piotr_Lagowski_978.jpg" alt="Extra 300L w locie odwróconym - widok od dołu" loading="lazy" onclick="openLb(2)"><figcaption>fot. <a href="https://instagram.com/lagowczak" target="_blank" rel="noopener noreferrer">Piotr Łagowski</a></figcaption></figure>
+<figure data-author="Piotr Łagowski" data-author-url="https://instagram.com/lagowczak"><img src="/gallery/Piotr_Lagowski_979.jpg" alt="Skrzydło SP-EKS z malowaniem Route 66 i Duplo" loading="lazy" onclick="openLb(3)"><figcaption>fot. <a href="https://instagram.com/lagowczak" target="_blank" rel="noopener noreferrer">Piotr Łagowski</a></figcaption></figure>
+<figure data-author="Piotr Łagowski" data-author-url="https://instagram.com/lagowczak"><img src="/gallery/Piotr_Lagowski_980.jpg" alt="SP-EKS w chmurze dymu na trawie lotniska" loading="lazy" onclick="openLb(4)"><figcaption>fot. <a href="https://instagram.com/lagowczak" target="_blank" rel="noopener noreferrer">Piotr Łagowski</a></figcaption></figure>
+<figure data-author="Piotr Łagowski" data-author-url="https://instagram.com/lagowczak"><img src="/gallery/Piotr_Lagowski_981.jpg" alt="Extra 300L w przelocie nad obiektywem - widok od dołu" loading="lazy" onclick="openLb(5)"><figcaption>fot. <a href="https://instagram.com/lagowczak" target="_blank" rel="noopener noreferrer">Piotr Łagowski</a></figcaption></figure>
+<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_001.jpg" alt="Extra 300L SP-EKS - start z dymem" loading="lazy" onclick="openLb(6)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_005.jpg" alt="SP-EKS w locie nad jesiennym lasem" loading="lazy" onclick="openLb(7)">
+<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_003.jpg" alt="Zbliżenie kokpitu Extra 300L w locie" loading="lazy" onclick="openLb(8)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_033.jpg" alt="SP-EKS nad miastem - widok z góry" loading="lazy" onclick="openLb(9)">
+<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_005.jpg" alt="Maciej Kulaszewski w kokpicie" loading="lazy" onclick="openLb(10)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_006.jpg" alt="Extra 300L SP-EKS - lot akrobacyjny" loading="lazy" onclick="openLb(11)">
+<img src="/gallery/ATAM33_Slawek_hesja_Krajniewski_007.jpg" alt="SP-EKS w locie - widok z boku" loading="lazy" onclick="openLb(12)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_008.jpg" alt="Lot akrobacyjny Extra 300L" loading="lazy" onclick="openLb(13)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_041.jpg" alt="SP-EKS - akrobacja nad Warszawą" loading="lazy" onclick="openLb(14)">
+<img src="/gallery/ATAM33_Grzegorz_Golus_007.jpg" alt="Extra 300L SP-EKS - zdjęcie z pokazu" loading="lazy" onclick="openLb(15)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_044.jpg" alt="Lot akrobacyjny nad jesiennym krajobrazem" loading="lazy" onclick="openLb(16)">
+<img src="/gallery/ATAM33_Maciej_Juniewicz_028.jpg" alt="SP-EKS w akcji" loading="lazy" onclick="openLb(17)">
+<img src="/gallery/2024_10_25_ATAM32_Warszawa_hesja_045.jpg" alt="Extra 300L w locie" loading="lazy" onclick="openLb(18)">
+<img src="/gallery/ATAM33_Michal_Marzec_001.jpg" alt="Kokpit Extra 300L - przyrządy" loading="lazy" onclick="openLb(19)">
+<img src="/gallery/ATAM33_Przemek_Saracen_015.jpg" alt="SP-EKS - lot z dymem" loading="lazy" onclick="openLb(20)">
+<img src="/gallery/ATAM33_Tomasz_Chochol_005.jpg" alt="Extra 300L na tle nieba" loading="lazy" onclick="openLb(21)">
+<img src="/gallery/dji_fly_20240929_152324_0371_1727673297944_photo.jpg" alt="SP-EKS na lotnisku Radom-Piastów" loading="lazy" onclick="openLb(22)">
+<img src="/gallery/dji_fly_20240929_153058_0394_1727673213512_photo.jpg" alt="Extra 300L - widok z drona" loading="lazy" onclick="openLb(23)">
+<img src="/gallery/DSC_2287.JPG" alt="SP-EKS na pasie startowym" loading="lazy" onclick="openLb(24)">
+<img src="/gallery/DSC_2307.JPG" alt="Extra 300L - detal" loading="lazy" onclick="openLb(25)">
+<img src="/gallery/IMG_1437.jpeg" alt="Kokpit Extra 300L SP-EKS" loading="lazy" onclick="openLb(26)">
+<img src="/gallery/IMG_3011.jpeg" alt="SP-EKS - przygotowania do lotu" loading="lazy" onclick="openLb(27)">
+<img src="/gallery/IMG_9933.jpeg" alt="Panel przyrządów Extra 300L" loading="lazy" onclick="openLb(28)">
 </div>
 
 <div class="cta-strip">
@@ -160,11 +171,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 const imgs = document.querySelectorAll('.gallery img');
 let current = 0;
+function captionFor(img) {
+  const fig = img.closest('figure');
+  const author = fig?.dataset.author;
+  return author ? `${img.alt} — fot. ${author}` : img.alt;
+}
 function openLb(i) {
   current = i;
   document.getElementById('lbImg').src = imgs[i].src;
   document.getElementById('lbImg').alt = imgs[i].alt;
-  document.getElementById('lbCaption').textContent = imgs[i].alt;
+  document.getElementById('lbCaption').textContent = captionFor(imgs[i]);
   const lb = document.getElementById('lightbox');
   lb.classList.add('open');
   lb.setAttribute('aria-hidden', 'false');
@@ -180,7 +196,7 @@ function navLb(dir) {
   current = (current + dir + imgs.length) % imgs.length;
   document.getElementById('lbImg').src = imgs[current].src;
   document.getElementById('lbImg').alt = imgs[current].alt;
-  document.getElementById('lbCaption').textContent = imgs[current].alt;
+  document.getElementById('lbCaption').textContent = captionFor(imgs[current]);
 }
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeLb();
