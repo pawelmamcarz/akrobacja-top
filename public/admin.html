@@ -1154,6 +1154,7 @@ function renderOrders(orders) {
       <td class="actions">
         <button class="btn btn-blue" ${o.status==='paid'&&!o.redeemed_at?'':'disabled'} data-action="redeem" data-arg1="${dataAttr(o.voucher_code)}">Wykorzystaj</button>
         <button class="btn btn-red" ${o.status==='paid'&&!o.invoice_id?'':'disabled'} data-action="invoice" data-arg1="${dataAttr(o.voucher_code)}">Faktura</button>
+        <button class="btn" ${o.status==='pending'&&o.customer_email?`style="background:#FFB300;color:#0A2F7C"`:'disabled'} data-action="recover" data-arg1="${dataAttr(o.voucher_code)}" title="${o.abandon_email_sent_at ? 'Ostatnie wyslane: '+o.abandon_email_sent_at : 'Wyslij maila z kodem WRACAM5 (-5%)'}">Recovery${o.abandon_email_sent_at ? ' ✓' : ''}</button>
       </td>
     </tr>`).join('')}
   </table>` : '<p style="padding:20px;color:#888">Brak zamówień</p>';
@@ -1171,6 +1172,11 @@ async function invoice(code) {
   if (!confirm(`Wystawic fakture dla ${code}?`)) return;
   const res = await api('POST', '/api/admin/invoice', { voucher_code: code });
   if (res.ok) { showMsg(`Faktura #${res.invoice_id}`,'ok'); tryLoad(); } else showMsg(res.error,'err');
+}
+async function recover(code) {
+  if (!confirm(`Wyslac maila z kodem WRACAM5 (-5%) dla ${code}? Mozna wykorzystac wielokrotnie.`)) return;
+  const res = await api('POST', '/api/admin/recover', { voucher_code: code });
+  if (res.ok) { showMsg(`Recovery wyslane do ${res.sent_to}`,'ok'); tryLoad(); } else showMsg(res.error || 'Blad','err');
 }
 
 // ── CALENDAR ──
