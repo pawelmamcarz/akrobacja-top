@@ -6,13 +6,12 @@
 
 # ATAM #37 - sesja air-to-air z Extra 300L nad Piotrkowem Trybunalskim
 
-W piątek **22 maja 2026** polecieliśmy w **Air To Air Meeting #37** nad Piotrkowem Trybunalskim. Cztery maszyny w formacji: dwa Extra 300L (my, czyli akrobacja.com - Paweł Mamcarz i Maciej Kulaszewski), **Lim-5** Bartka Maciejczyka i **L-39 Albatros** Artura Kielaka z Łukaszem Ziobem. Kilkudziesięciu fotografów lotniczych - część na pokładzie Skyvana z otwartą rampą, reszta na ziemi w osi pasa - jedna z najlepszych sesji, jaką do tej pory mieliśmy nad SP-EKS. Powyżej hero kadru autorstwa **Tomasza Filipiaka** (TOMI Photography) - poniżej galeria i kulisy.
+W piątek **22 maja 2026** polecieliśmy w **Air To Air Meeting #37** nad Piotrkowem Trybunalskim. Trzy maszyny w formacji: nasza **Extra 300L SP-EKS** (akrobacja.com - Paweł Mamcarz i Maciej Kulaszewski w tandemie), **Lim-5** należący do FUBAR Aviation LTD i eksploatowany przez nasze SPO PL.SPO.080-KRAJ (pilot Bartek Maciejczyk) oraz **L-39 Albatros** Łukasza Zioba (właściciel), pilotowany wspólnie przez Łukasza Zioba i Artura Kielaka. Kilkudziesięciu fotografów lotniczych - część na pokładzie Skyvana z otwartą rampą, reszta na ziemi w osi pasa - jedna z najlepszych sesji, jaką do tej pory mieliśmy nad SP-EKS. Powyżej hero kadru autorstwa **Tomasza Filipiaka** (TOMI Photography) - poniżej galeria i kulisy.
 
 > **Skład formacji:**
-> - **Extra 300L SP-EKS** - Paweł Mamcarz (akrobacja.com)
-> - **Extra 300L SP-EKS** - Maciej Kulaszewski (Mistrz Świata kat. Unlimited)
-> - **Lim-5** - Bartek Maciejczyk
-> - **L-39 Albatros** - Artur Kielak + Łukasz Ziob
+> - **Extra 300L SP-EKS** - załoga w tandemie: Paweł Mamcarz (akrobacja.com) + Maciej Kulaszewski (Mistrz Świata kat. Intermediate)
+> - **Lim-5** - FUBAR Aviation LTD, eksploatowany przez nasze SPO PL.SPO.080-KRAJ (pilot Bartek Maciejczyk)
+> - **L-39 Albatros** - załoga w tandemie: Łukasz Ziob (właściciel) + Artur Kielak
 >
 > **Baza Extra 300L:** [Radom-Piastów EPRP](/blog/lot-akrobacyjny-radom)
 > **Platforma fotograficzna:** Skyvan z otwartą rampą
@@ -25,7 +24,7 @@ Air To Air Meeting to cykl spotkań polskich fotografów lotniczych organizowany
 
 ## Jak to wyglądało
 
-Briefing, weryfikacja sprzętu, podział na grupy, odprawa z pilotem Skyvana. Po starcie cztery maszyny ustawiły się w formacji za rampą - najpierw dwie Extry, później dołączał Lim-5 i L-39 Albatros. Skyvan trzymał stały kurs i prędkość, a fotografowie zmieniali pozycje przy otwartej rampie. Słońce zachodziło - światło robi w tej formule więcej niż wszystko inne. Trochę zachmurzenia z zachodu dało dodatkową fakturę zamiast jednolitej szarości.
+Briefing, weryfikacja sprzętu, podział na grupy, odprawa z pilotem Skyvana. Po starcie trzy maszyny ustawiły się w formacji za rampą - SP-EKS, Lim-5 i L-39 Albatros. Skyvan trzymał stały kurs i prędkość, a fotografowie zmieniali pozycje przy otwartej rampie. Słońce zachodziło - światło robi w tej formule więcej niż wszystko inne. Trochę zachmurzenia z zachodu dało dodatkową fakturę zamiast jednolitej szarości.
 
 Maciej i ja lecieliśmy w stałej geometrii względem Skyvana - delikatne bankowanie pod kamerę, krótki rozjazd, dolot z powrotem do pozycji, znów banking. Wszystko z myślą o tym, żeby **każdy fotograf z pokładu** wyszedł z lotu z kadrem.
 
@@ -38,7 +37,7 @@ Drugą częścią sesji była **niska przepustka nad linią fotografów** stoją
 
 Hero zdjęcia na samej górze tej strony zrobił [Tomasz Filipiak (TOMI Photography)](https://www.facebook.com/TOMIPhotography.pl). To rzadko spotykane ujęcie - SP-EKS w pełnym wirażu, widoczna góra skrzydła z brandingiem *Warsaw Flight Safety*, herb Dywizjonu 303 na owiewce silnika i Phillips 66 na samym końcu skrzydła. Słońce z boku, długie cienie, ostry detal mimo prędkości. Dziękujemy Tomku.
 
-Pełna lista fotografów ATAM #37 - na profilach ATAM i u samych autorów. Galeria poniżej to mix kadru Filipiaka (góra strony), zdjęcie grupowe przed Skyvanem oraz nasze *behind-the-scenes* z pokładu obu Extr.
+Pełna lista fotografów ATAM #37 - na profilach ATAM i u samych autorów. Galeria poniżej to mix kadru Filipiaka (góra strony), zdjęcie grupowe przed Skyvanem oraz nasze *behind-the-scenes* z pokładu SP-EKS.
 
 ## Galeria
 
