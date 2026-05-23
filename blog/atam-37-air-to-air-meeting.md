@@ -6,12 +6,13 @@
 
 # ATAM #37 - sesja air-to-air z Extra 300L nad Piotrkowem Trybunalskim
 
-W piątek **22 maja 2026** polecieliśmy w **Air To Air Meeting #37** nad Piotrkowem Trybunalskim. Trzy maszyny w formacji: nasza **Extra 300L SP-EKS** (akrobacja.com - Paweł Mamcarz i Maciej Kulaszewski w tandemie), **Lim-5** należący do FUBAR Aviation LTD i eksploatowany przez nasze SPO PL.SPO.080-KRAJ (pilot Bartek Maciejczyk) oraz **L-39 Albatros** Łukasza Zioba (właściciel), pilotowany wspólnie przez Łukasza Zioba i Artura Kielaka. Kilkudziesięciu fotografów lotniczych - część na pokładzie Skyvana z otwartą rampą, reszta na ziemi w osi pasa - jedna z najlepszych sesji, jaką do tej pory mieliśmy nad SP-EKS. Powyżej hero kadru autorstwa **Tomasza Filipiaka** (TOMI Photography) - poniżej galeria i kulisy.
+W piątek **22 maja 2026** polecieliśmy w **Air To Air Meeting #37** nad Piotrkowem Trybunalskim. Trzy maszyny: nasza **Extra 300L SP-EKS** (akrobacja.com - Paweł Mamcarz i Maciej Kulaszewski w tandemie), **Lim-5** należący do FUBAR Aviation LTD i eksploatowany przez nasze SPO PL.SPO.080-KRAJ (pilot Bartek Maciejczyk) oraz **L-39 Albatros** Łukasza Zioba (właściciel), pilotowany wspólnie przez Łukasza Zioba i Artura Kielaka. Kilkudziesięciu fotografów lotniczych - część na pokładzie Skyvana z otwartą rampą, reszta na ziemi w osi pasa - jedna z najlepszych sesji, jaką do tej pory mieliśmy naszym SP-EKS. Powyżej kadr autorstwa **Tomasza Filipiaka** (TOMI Photography) - poniżej galeria i kulisy. Galeria jeszcze się rozrośnie jak ruszy fotograficzna obrabiarka!
 
-> **Skład formacji:**
+> **Skład ATAM37:**
 > - **Extra 300L SP-EKS** - załoga w tandemie: Paweł Mamcarz (akrobacja.com) + Maciej Kulaszewski (Mistrz Świata kat. Intermediate)
 > - **Lim-5** - FUBAR Aviation LTD, eksploatowany przez nasze SPO PL.SPO.080-KRAJ (pilot Bartek Maciejczyk)
 > - **L-39 Albatros** - załoga w tandemie: Łukasz Ziob (właściciel) + Artur Kielak
+> - Skyvan ze Skyforce - pilotowany przez Zefira :)
 >
 > **Baza Extra 300L:** [Radom-Piastów EPRP](/blog/lot-akrobacyjny-radom)
 > **Platforma fotograficzna:** Skyvan z otwartą rampą
@@ -20,24 +21,24 @@ W piątek **22 maja 2026** polecieliśmy w **Air To Air Meeting #37** nad Piotrk
 
 ## Czym jest ATAM
 
-Air To Air Meeting to cykl spotkań polskich fotografów lotniczych organizowany przez **Sławka "Hesję" Krajniewskiego** ([hesja.pl](https://hesja.pl)), na których w jednej sesji **kilkudziesięciu autorów** zjeżdża się z całego kraju, żeby zrobić zdjęcia z powietrza tym samym samolotom z platformy fotograficznej (najczęściej Skyvan z otwartą rampą). To formuła, której w Polsce nie ma odpowiednika - jeden lot, mnóstwo różnych ujęć, jeden temat. Extra 300L SP-EKS gościła już na ATAM #32 (Warszawa, jesień 2024) i ATAM #33 - tym razem wracaliśmy do nich po raz kolejny, na #37.
+Air To Air Meeting to cykl spotkań polskich fotografów lotniczych ze statkami powietrznymi w powietrzu. ATAMy organizowane są przez **Sławka "Hesję" Krajniewskiego** ([hesja.pl](https://hesja.pl)). Na ATAM zjeżdża się z całego kraju rzesza fanów lotnictwa, żeby zrobić zdjęcia z powietrza  (najczęściej Skyvan z otwartą rampą). To formuła, której w Polsce nie ma odpowiednika - jeden albo kilka lotów, mnóstwo topowych ujęć, jeden temat. Extra 300L SP-EKS gościła już na ATAM #32 (Warszawa, jesień 2024) i ATAM #33 - tym razem wracaliśmy do nich po raz kolejny, na #37.
 
 ## Jak to wyglądało
 
-Briefing, weryfikacja sprzętu, podział na grupy, odprawa z pilotem Skyvana. Po starcie trzy maszyny ustawiły się w formacji za rampą - SP-EKS, Lim-5 i L-39 Albatros. Skyvan trzymał stały kurs i prędkość, a fotografowie zmieniali pozycje przy otwartej rampie. Słońce zachodziło - światło robi w tej formule więcej niż wszystko inne. Trochę zachmurzenia z zachodu dało dodatkową fakturę zamiast jednolitej szarości.
+Briefing, weryfikacja sprzętu, podział na grupy, odprawa z pilotem Skyvana. Po starcie trzy maszyny ustawiały się w swoich slotach czasowych za rampą - L-39 Albatros, Lim-5 i na koniec SP-EKS. Skyvan trzymał kurs i prędkość tak, by fotografowie dostali to co najlepsze. Koniec dnia, piękne niebo i światło, które robi w tej formule więcej niż wszystko inne. Trochę zachmurzenia z zachodu dało dodatkową fakturę zamiast jednolitej szarości.
 
-Maciej i ja lecieliśmy w stałej geometrii względem Skyvana - delikatne bankowanie pod kamerę, krótki rozjazd, dolot z powrotem do pozycji, znów banking. Wszystko z myślą o tym, żeby **każdy fotograf z pokładu** wyszedł z lotu z kadrem.
+Maciej i ja lecieliśmy w różnych pozycjach względem Skyvana - od sesji portretowej, przez zabawy ze światłem pod kamerę, aż do freestyle i low-pasów nad lotniskiem na koniec. Wszystko z myślą o tym, żeby **każdy fotograf z pokładu** wyszedł z lotu z kadrem życia :).
 
-Drugą częścią sesji była **niska przepustka nad linią fotografów** stojących na lotnisku - klasyczny element ATAM, zupełnie inna geometria niż air-to-air, ale dla fotografów z teleobiektywem absolutnie kluczowa. Trzecia warstwa to materiał z **kamery zamontowanej na statecznikach** SP-EKS (POV ogonowe) - kilka tych kadrów też w galerii poniżej.
+Drugą częścią sesji był **pokaz z dymem nad lotniskiem** - klasyczny element ATAM Ground, zupełnie inna geometria niż air-to-air, ale dla fotografów z teleobiektywem absolutnie kluczowa. Trzecia warstwa to materiał z **kamery zamontowanej na statecznikach** SP-EKS (POV ogonowe) - kilka tych kadrów też w galerii poniżej.
 
-> "Sesja air-to-air to nie pokaz. Tu nie chodzi o figury, tylko o ustawienie się względem kamery."
-> — Paweł Mamcarz
+> "Sesja air-to-air to nie pokaz. Tu nie chodzi o figury, tylko o ustawienie się względem kamery. Kilkadziesiąt razy byłem na rampie z aparatem, teraz w samolocie pod rampą - ciarki i koncentracja na maxa"
+> - Paweł Mamcarz
 
 ## Kadr Filipiaka
 
-Hero zdjęcia na samej górze tej strony zrobił [Tomasz Filipiak (TOMI Photography)](https://www.facebook.com/TOMIPhotography.pl). To rzadko spotykane ujęcie - SP-EKS w pełnym wirażu, widoczna góra skrzydła z brandingiem *Warsaw Flight Safety*, herb Dywizjonu 303 na owiewce silnika i Phillips 66 na samym końcu skrzydła. Słońce z boku, długie cienie, ostry detal mimo prędkości. Dziękujemy Tomku.
+Hero zdjęcia na samej górze tej strony zrobił [Tomasz Filipiak (TOMI Photography)](https://www.facebook.com/TOMIPhotography.pl). To ujęcie - SP-EKS eksponuje logo naszego partnera -  Phillips 66 na skrzydłach. Słońce z boku, długie cienie, ostry detal mimo prędkości, dobry panning. Dziękujemy Tomku.
 
-Pełna lista fotografów ATAM #37 - na profilach ATAM i u samych autorów. Galeria poniżej to mix kadru Filipiaka (góra strony), zdjęcie grupowe przed Skyvanem oraz nasze *behind-the-scenes* z pokładu SP-EKS.
+Pełna lista fotografów ATAM #37 - na profilach ATAM i u samych autorów. Galeria poniżej będzie pęcznieć jak spłyną obrobione zdjęcia. Zdjęcie grupowe przed Skyvanem oraz nasze *behind-the-scenes* z pokładu SP-EKS.
 
 ## Galeria
 
@@ -47,11 +48,11 @@ Hero u góry - kadr Tomasza Filipiaka (TOMI Photography). Poniżej pierwsza part
 
 ## G-meter po sesji
 
-W trakcie sesji ATAM nie ciągniemy pełnej akrobacji - to nie miejsce. Ale w trakcie krótkich rozjazdów i powrotów do formacji **+G** dochodziło do okolicy **+8**, a strona ujemna do **-4**. To w granicach codziennego użytkowania SP-EKS (struktura certyfikowana na ±10 G). Zdjęcie wskaźnika z orange-needle pamięcią max - w galerii powyżej.
+W trakcie sesji ATAM nie ciągniemy pełnej akrobacji - to nie miejsce. Ale w trakcie krótkich rozjazdów i powrotów do formacji **+G** dochodziło do okolicy **+7**, a -G... też do **-7**. To w granicach codziennego użytkowania SP-EKS (struktura certyfikowana na ±10 G). Zdjęcie wskaźnika z orange-needle pamięcią max - w galerii powyżej.
 
 ## Podziękowania
 
-Dziękujemy **Tomaszowi Filipiakowi** za hero kadr, **wszystkim fotografom ATAM #37** za przyjazd i robotę w powietrzu, **Sławkowi "Hesji" Krajniewskiemu** ([hesja.pl](https://hesja.pl)) za organizację, pilotom Skyvana za perfekcyjnie trzymaną platformę, sponsorom SP-EKS (Phillips 66, Warsaw Flight Safety, Duplo, it.com). Następna sesja - już w planie sezonu 2026.
+Dziękujemy **wszystkim fotografom ATAM #37** za przyjazd i robotę w powietrzu, **Sławkowi "Hesji" Krajniewskiemu** ([hesja.pl](https://hesja.pl)) za organizację, pilotom Skyvana za perfekcyjnie trzymaną platformę, sponsorom SP-EKS. Następna sesja - już w planie sezonu 2026. Stay tuned!
 
 ## Chcesz polecieć Extra 300L?
 
