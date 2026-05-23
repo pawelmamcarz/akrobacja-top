@@ -481,3 +481,36 @@ CREATE TABLE IF NOT EXISTS gallery_submissions (
   submitter_ua TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_gallery_subs_status ON gallery_submissions(status, submitted_at DESC);
+
+-- Post-flight media share. Admin uploads photos/videos per voucher_code into
+-- R2 (prefix flight/{voucher_code}/{uuid}.ext); a flight_share row holds a
+-- random token the passenger uses to view everything at /lot/[token]. Tokens
+-- expire (default 180 days). Multiple shares per voucher allowed for re-issue.
+CREATE TABLE IF NOT EXISTS flight_media (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  voucher_code TEXT NOT NULL,
+  r2_key TEXT NOT NULL UNIQUE,
+  kind TEXT NOT NULL,
+  filename TEXT NOT NULL,
+  size INTEGER NOT NULL,
+  content_type TEXT NOT NULL,
+  width INTEGER,
+  height INTEGER,
+  duration_sec REAL,
+  uploaded_at INTEGER NOT NULL,
+  uploaded_by TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_flight_media_voucher ON flight_media(voucher_code, uploaded_at DESC);
+
+CREATE TABLE IF NOT EXISTS flight_shares (
+  token TEXT PRIMARY KEY,
+  voucher_code TEXT NOT NULL,
+  created_at INTEGER NOT NULL,
+  expires_at INTEGER NOT NULL,
+  created_by TEXT,
+  notify_sent_at INTEGER,
+  view_count INTEGER NOT NULL DEFAULT 0,
+  last_viewed_at INTEGER
+);
+CREATE INDEX IF NOT EXISTS idx_flight_shares_voucher ON flight_shares(voucher_code, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_flight_shares_expires ON flight_shares(expires_at);

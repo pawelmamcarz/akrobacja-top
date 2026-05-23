@@ -50,6 +50,15 @@ export const onRequest: PagesFunction = async (context) => {
     return context.next();
   }
 
+  // Compatibility: old /lot/{token} links (early share emails) redirect to /lot?t=
+  const lotMatch = /^\/lot\/([a-f0-9]{32,})$/.exec(url.pathname);
+  if (lotMatch) {
+    return new Response(null, {
+      status: 301,
+      headers: { Location: `${SITE_ORIGIN}/lot?t=${lotMatch[1]}` },
+    });
+  }
+
   const response = await context.next();
 
   const contentType = response.headers.get('content-type') || '';

@@ -117,6 +117,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="tab" onclick="switchTab('waclicks')">WA Klikniecia</div>
     <div class="tab" onclick="switchTab('maile')">Maile</div>
     <div class="tab" onclick="switchTab('zdjecia')">Zdjecia</div>
+    <div class="tab" onclick="switchTab('lotmedia')">Lot Media</div>
     <div class="tab" onclick="switchTab('seo')">SEO</div>
     <div class="tab" onclick="switchTab('leads')">Leady</div>
     <div class="tab" onclick="switchTab('scraper')">Scraper</div>
@@ -283,6 +284,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="stats" id="zdjStats"></div>
     </div>
     <div id="zdjGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:14px"></div>
+  </div>
+
+  <!-- LOT MEDIA (share photos+videos with passenger) -->
+  <div class="panel" id="panel-lotmedia">
+    <div class="toolbar">
+      <input type="text" id="lmVoucher" placeholder="AKR-XXXX-XXXX" style="padding:6px 10px;border:1px solid #ccc;font-family:monospace;text-transform:uppercase;width:180px" onkeydown="if(event.key==='Enter')loadLotMedia()">
+      <button class="btn btn-blue" onclick="loadLotMedia()">Wczytaj</button>
+      <div class="stats" id="lmStats" style="font-size:11px;color:#888"></div>
+    </div>
+    <div id="lmContent" style="margin-top:14px"></div>
   </div>
 
   <!-- SEO SNAPSHOT -->
@@ -686,6 +697,7 @@ function switchTab(name) {
   if (name === 'waclicks') loadWaClicks();
   if (name === 'maile') loadEmailEvents();
   if (name === 'zdjecia') loadGallerySubs();
+  if (name === 'lotmedia') { /* operator wpisuje voucher i klika */ }
   if (name === 'seo') loadSeoSnapshot();
   if (name === 'leads') loadLeads();
   if (name === 'scraper') loadScraper();
@@ -788,6 +800,174 @@ async function zdjDelete(id) {
     if (res.error) { alert('Blad: ' + res.error); return; }
     loadGallerySubs();
   } catch (err) { alert('Blad: ' + (err.message || 'unknown')); }
+}
+
+// ── LOT MEDIA (share photos+videos with passenger) ──
+let _lmVoucher = '';
+async function loadLotMedia() {
+  const v = (document.getElementById('lmVoucher').value || '').trim().toUpperCase();
+  if (!v) return;
+  _lmVoucher = v;
+  document.getElementById('lmVoucher').value = v;
+  const c = document.getElementById('lmContent');
+  c.innerHTML = '<p style="padding:20px;color:#888">Ladowanie...</p>';
+  try {
+    const res = await api('GET', '/api/admin/flight-media?voucher_code=' + encodeURIComponent(v));
+    if (res.error) { c.innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + esc(res.error) + '</p>'; return; }
+    renderLotMedia(res);
+  } catch (err) {
+    c.innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + esc(err.message || 'unknown') + '</p>';
+  }
+}
+function renderLotMedia(data) {
+  const c = document.getElementById('lmContent');
+  const mediaCount = (data.media || []).length;
+  const shareCount = (data.shares || []).length;
+  document.getElementById('lmStats').textContent =
+    `Voucher: ${data.voucher_code} | Plików: ${mediaCount} | Linkow: ${shareCount}`;
+
+  let html = `<div style="background:#f7f9fc;border:1px dashed #c4d2e0;padding:20px;text-align:center;margin-bottom:18px;cursor:pointer" id="lmDrop">
+    <input type="file" id="lmFiles" multiple accept="image/jpeg,image/png,image/webp,image/heic,image/heif,video/mp4,video/quicktime,video/webm" style="display:none">
+    <strong>Kliknij lub przeciagnij pliki (zdjecia/filmy do 100 MB kazdy, max 12 na raz)</strong>
+    <div style="font-size:11px;color:#888;margin-top:6px">JPG/PNG/WebP/HEIC, MP4/MOV/WebM</div>
+  </div>
+  <div id="lmUploadStatus" style="margin-bottom:14px;font-size:12px;color:#666"></div>`;
+
+  // Media list
+  if (mediaCount === 0) {
+    html += '<p style="padding:14px;background:#fff8e8;border-left:3px solid #FFB300;color:#666;font-size:13px">Brak materialu dla tego voucha. Wgraj pliki najpierw, potem wygeneruj link.</p>';
+  } else {
+    html += '<h3 style="font-size:13px;color:#1B4DB5;text-transform:uppercase;letter-spacing:.12em;margin:18px 0 10px">Pliki (' + mediaCount + ')</h3>';
+    html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px">';
+    (data.media || []).forEach(m => {
+      const isVid = m.kind === 'video';
+      const sz = (m.size / 1024 / 1024).toFixed(1) + ' MB';
+      const dim = (m.width && m.height) ? `${m.width}×${m.height}` : '';
+      const dur = m.duration_sec ? ` · ${Math.round(m.duration_sec)}s` : '';
+      html += `<div style="background:#fff;border:1px solid #ddd;overflow:hidden">
+        ${isVid
+          ? `<div style="aspect-ratio:16/9;background:#0A1428;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px">▶</div>`
+          : `<img src="/api/admin/flight-media/file/${m.id}?t=${encodeURIComponent(localStorage.getItem('admin_token')||'')}" onerror="this.style.display='none'" style="width:100%;aspect-ratio:1;object-fit:cover;background:#000;display:block">`}
+        <div style="padding:8px 10px;font-size:11px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong>${esc(m.kind.toUpperCase())}</strong><span style="color:#aaa">${sz}</span></div>
+          <div style="color:#666;font-size:10px;word-break:break-all;margin-bottom:4px">${esc(m.filename)}</div>
+          <div style="color:#aaa;font-size:10px">${esc(dim)}${esc(dur)}</div>
+          <button class="btn btn-grey" style="margin-top:6px;width:100%;font-size:10px" onclick="lmDeleteMedia(${m.id})">Usun</button>
+        </div>
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  // Shares list + create
+  html += `<h3 style="font-size:13px;color:#1B4DB5;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 10px">Linki dla pasazera (${shareCount})</h3>`;
+  if (mediaCount > 0) {
+    html += `<div style="background:#f4f8ff;border:1px solid #c4d2e0;padding:14px;margin-bottom:14px">
+      <button class="btn btn-green" onclick="lmCreateShare(true)" style="margin-right:6px">Generuj link + wyslij mail</button>
+      <button class="btn" style="background:#eee;color:#333" onclick="lmCreateShare(false)">Generuj link (bez maila)</button>
+      <span style="margin-left:14px;font-size:11px;color:#666">Domyslnie 180 dni, mozna przedluzyc.</span>
+    </div>`;
+  }
+  if (shareCount === 0) {
+    html += '<p style="padding:14px;background:#f7f9fc;color:#888;font-size:13px">Brak wygenerowanych linkow.</p>';
+  } else {
+    html += '<table style="width:100%;font-size:12px"><tr><th>Link</th><th>Utworzony</th><th>Wygasa</th><th>Wyswietlen</th><th>Mail</th><th>Akcje</th></tr>';
+    (data.shares || []).forEach(s => {
+      const url = location.origin + '/lot?t=' + s.token;
+      const created = new Date(s.created_at * 1000).toLocaleString('pl-PL');
+      const expires = new Date(s.expires_at * 1000).toLocaleDateString('pl-PL');
+      const expired = (s.expires_at * 1000) < Date.now();
+      const mail = s.notify_sent_at ? '✓ ' + new Date(s.notify_sent_at * 1000).toLocaleDateString('pl-PL') : '—';
+      html += `<tr style="${expired ? 'opacity:.5' : ''}">
+        <td style="font-family:monospace;font-size:10px;word-break:break-all"><a href="${esc(url)}" target="_blank" style="color:#1B4DB5">${esc(url)}</a></td>
+        <td style="font-size:10px;color:#666">${esc(created)}</td>
+        <td style="font-size:10px;color:${expired ? '#c00' : '#666'}">${esc(expires)}${expired ? ' (wygasł)' : ''}</td>
+        <td class="amount">${s.view_count}${s.last_viewed_at ? ' (ostatnie ' + new Date(s.last_viewed_at * 1000).toLocaleDateString('pl-PL') + ')' : ''}</td>
+        <td style="font-size:10px;color:#666">${esc(mail)}</td>
+        <td>
+          <button class="btn" style="background:#eee;color:#333;font-size:10px" onclick="lmCopy('${esc(url)}')">Kopiuj</button>
+          <button class="btn btn-blue" style="font-size:10px" onclick="lmNotify('${esc(s.token)}')">Wyslij mail</button>
+          <button class="btn" style="background:#FFB300;color:#0A1428;font-size:10px" onclick="lmExtend('${esc(s.token)}')">+180 dni</button>
+          <button class="btn btn-red" style="font-size:10px" onclick="lmDeleteShare('${esc(s.token)}')">Skasuj</button>
+        </td>
+      </tr>`;
+    });
+    html += '</table>';
+  }
+
+  c.innerHTML = html;
+
+  // Wire drag-drop / file picker
+  const drop = document.getElementById('lmDrop');
+  const inp = document.getElementById('lmFiles');
+  drop.addEventListener('click', () => inp.click());
+  inp.addEventListener('change', e => lmUpload(Array.from(e.target.files || [])));
+  ['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.style.background='#eaf3ff'; }));
+  ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.style.background='#f7f9fc'; }));
+  drop.addEventListener('drop', e => { if (e.dataTransfer?.files) lmUpload(Array.from(e.dataTransfer.files)); });
+}
+
+async function lmUpload(files) {
+  if (files.length === 0 || !_lmVoucher) return;
+  const status = document.getElementById('lmUploadStatus');
+  const fd = new FormData();
+  fd.append('voucher_code', _lmVoucher);
+  files.forEach(f => fd.append('files', f, f.name));
+  status.textContent = `Wysylanie ${files.length} plikow...`;
+  try {
+    const res = await fetch('/api/admin/flight-media', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + (localStorage.getItem('admin_token') || '') },
+      body: fd,
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Upload nieudany');
+    status.textContent = `OK - dodano ${data.count} plikow.`;
+    loadLotMedia();
+  } catch (err) {
+    status.textContent = 'Blad: ' + (err.message || 'unknown');
+  }
+}
+async function lmDeleteMedia(id) {
+  if (!confirm('Usunac plik (z R2 i bazy)?')) return;
+  const res = await fetch('/api/admin/flight-media', {
+    method: 'DELETE',
+    headers: { 'Authorization': 'Bearer ' + (localStorage.getItem('admin_token') || ''), 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id }),
+  });
+  if (!res.ok) { alert('Blad'); return; }
+  loadLotMedia();
+}
+async function lmCreateShare(notify) {
+  if (!_lmVoucher) return;
+  const res = await api('POST', '/api/admin/flight-share', { voucher_code: _lmVoucher, notify });
+  if (res.error) { alert('Blad: ' + res.error); return; }
+  if (notify && res.notify_status) showMsg(res.notify_status, res.notify_status.startsWith('sent') ? 'ok' : 'err');
+  loadLotMedia();
+}
+async function lmNotify(token) {
+  const res = await api('POST', '/api/admin/flight-share', { token, action: 'notify' });
+  if (res.error) { alert('Blad: ' + res.error); return; }
+  showMsg('Mail wyslany do ' + res.sent_to, 'ok');
+  loadLotMedia();
+}
+async function lmExtend(token) {
+  const res = await api('POST', '/api/admin/flight-share', { token, action: 'extend', expires_days: 180 });
+  if (res.error) { alert('Blad: ' + res.error); return; }
+  loadLotMedia();
+}
+async function lmDeleteShare(token) {
+  if (!confirm('Skasowac link? Pasazer straci dostep, pliki zostaja.')) return;
+  const res = await fetch('/api/admin/flight-share', {
+    method: 'DELETE',
+    headers: { 'Authorization': 'Bearer ' + (localStorage.getItem('admin_token') || ''), 'Content-Type': 'application/json' },
+    body: JSON.stringify({ token }),
+  });
+  if (!res.ok) { alert('Blad'); return; }
+  loadLotMedia();
+}
+function lmCopy(url) {
+  navigator.clipboard?.writeText(url).then(() => showMsg('Skopiowane', 'ok')).catch(() => {});
 }
 
 // ── LEADS ──
