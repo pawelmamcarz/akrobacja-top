@@ -93,8 +93,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="login" id="loginView">
   <div class="login-box">
     <h1>akrobacja.com Admin</h1>
-    <input type="password" id="passInput" placeholder="Haslo admina" autofocus>
+    <input type="password" id="passInput" placeholder="Haslo admina" autofocus onkeydown="if(event.key==='Enter')doLogin()">
     <button onclick="doLogin()">Zaloguj</button>
+    <p id="loginErr" style="color:#C41E3A;font-size:13px;margin-top:12px;display:none"></p>
   </div>
 </div>
 
@@ -606,9 +607,19 @@ let allOrders = [], allPilots = [], allCourses = [];
 if (TOKEN) tryLoad();
 
 async function doLogin() {
+  const errEl = document.getElementById('loginErr');
+  if (errEl) errEl.style.display = 'none';
   TOKEN = document.getElementById('passInput').value.trim();
+  if (!TOKEN) {
+    if (errEl) { errEl.textContent = 'Wpisz hasło'; errEl.style.display = 'block'; }
+    return;
+  }
   localStorage.setItem('admin_token', TOKEN);
-  await tryLoad();
+  const ok = await tryLoad();
+  if (!ok && errEl) {
+    errEl.textContent = 'Nieprawidłowe hasło lub błąd połączenia';
+    errEl.style.display = 'block';
+  }
 }
 function doLogout() {
   TOKEN = '';
@@ -655,7 +666,8 @@ async function tryLoad() {
     const nextMonth = new Date(Date.now() + 30*86400000).toISOString().split('T')[0];
     document.getElementById('calFrom').value = today;
     document.getElementById('calTo').value = nextMonth;
-  } catch { doLogout(); }
+    return true;
+  } catch { doLogout(); return false; }
 }
 
 function switchTab(name) {
