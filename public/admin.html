@@ -329,7 +329,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- LOT MEDIA (share photos+videos with passenger) -->
   <div class="panel" id="panel-lotmedia">
     <div class="toolbar">
-      <input type="text" id="lmVoucher" placeholder="AKR-XXXX-XXXX" style="padding:6px 10px;border:1px solid #ccc;font-family:monospace;text-transform:uppercase;width:180px" onkeydown="if(event.key==='Enter')loadLotMedia()">
+      <input list="lmVoucherList" type="text" id="lmVoucher" placeholder="Wpisz nazwisko lub AKR-... (autocomplete)" style="padding:6px 10px;border:1px solid #ccc;width:340px" onchange="lmPickVoucher()" onkeydown="if(event.key==='Enter')loadLotMedia()">
+      <datalist id="lmVoucherList"></datalist>
       <button class="btn btn-blue" onclick="loadLotMedia()">Wczytaj</button>
       <div class="stats" id="lmStats" style="font-size:11px;color:#888"></div>
     </div>
@@ -856,7 +857,7 @@ function switchTab(name) {
   if (name === 'finance') loadFinance();
   if (name === 'koszty') loadKoszty();
   if (name === 'zdjecia') loadGallerySubs();
-  if (name === 'lotmedia') { /* operator wpisuje voucher i klika */ }
+  if (name === 'lotmedia') populateLmVoucherList();
   if (name === 'seo') loadSeoSnapshot();
   if (name === 'leads') loadLeads();
   if (name === 'scraper') loadScraper();
@@ -1224,9 +1225,34 @@ async function submitKoszt() {
 
 // ── LOT MEDIA (share photos+videos with passenger) ──
 let _lmVoucher = '';
+function populateLmVoucherList() {
+  const list = document.getElementById('lmVoucherList');
+  if (!list || !allOrders) return;
+  // Paid + manual cash/transfer/free orders — every voucher that's "out the door"
+  // can have flight media attached. Newest first so recent passengers surface fast.
+  const candidates = allOrders
+    .filter(o => o.status === 'paid')
+    .slice(0, 200);
+  list.innerHTML = candidates.map(o => {
+    const pkg = pkgLabel(o.package_id);
+    const label = `${esc(o.customer_name || 'bez nazwiska')} • ${esc(pkg)}${o.payment_method && o.payment_method !== 'stripe' ? ' • ' + esc(o.payment_method.toUpperCase()) : ''}`;
+    return `<option value="${esc(o.voucher_code)}">${label}</option>`;
+  }).join('');
+}
+// Datalist puts the voucher_code into the input on selection — no parsing needed.
+// Hook stays in place in case we ever switch to a "Nazwisko · KOD" value format.
+function lmPickVoucher() { /* placeholder for richer parsing */ }
 async function loadLotMedia() {
-  const v = (document.getElementById('lmVoucher').value || '').trim().toUpperCase();
-  if (!v) return;
+  // Trim, uppercase, then strip anything that isn't a valid voucher-code char so
+  // partial typing ("Daria Kostecka") doesn't get sent as a voucher_code to the API.
+  let raw = (document.getElementById('lmVoucher').value || '').trim().toUpperCase();
+  // Try to find an AKR-XXXX-XXXX pattern inside the input (handles paste of long labels)
+  const m = raw.match(/AKR-[A-Z0-9]{4}-[A-Z0-9]{4}/);
+  const v = m ? m[0] : raw;
+  if (!v || !/^AKR-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(v)) {
+    document.getElementById('lmContent').innerHTML = '<p style="padding:14px;color:#c00">Niepoprawny voucher_code. Wybierz z listy lub wpisz AKR-XXXX-XXXX.</p>';
+    return;
+  }
   _lmVoucher = v;
   document.getElementById('lmVoucher').value = v;
   const c = document.getElementById('lmContent');
