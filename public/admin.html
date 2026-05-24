@@ -1158,8 +1158,11 @@ async function loadVoucherSplit() {
     </tfoot>
   </table>
   <p style="margin-top:8px;font-size:11px;color:#666">
-    <strong>Założenia:</strong> samolot (amortyzacja Extra 300L) 30 zł/min, paliwo 200 zł/lot, hangar 1000 zł/mies, marketing FB 2000 zł/mies. Instruktor (Paweł) bez kosztu — jego udział to marża. Marża = cena − wszystkie koszty, dzielona 50/50.
-    <br>Maciej co miesiąc wystawia Pawłowi fakturę na sumę z kolumny <strong style="color:#C41E3A">Maciej</strong> (samolot + paliwo + hangar + 50% marży).
+    <strong>Założenia:</strong>
+    <span style="color:#1B4DB5">Paweł = samolot Extra 300L (30 zł/min) + marketing FB (2000 zł/mies / N)</span>,
+    <span style="color:#C41E3A">Maciej = paliwo (200 zł/lot) + hangar (1000 zł/mies / N)</span>.
+    Marża = cena − wszystkie koszty, dzielona 50/50.
+    <br>Maciej co miesiąc wystawia Pawłowi fakturę na sumę z kolumny <strong style="color:#C41E3A">Maciej</strong> (paliwo + hangar + 50% marży).
   </p>`;
 }
 function renderFinance(d) {

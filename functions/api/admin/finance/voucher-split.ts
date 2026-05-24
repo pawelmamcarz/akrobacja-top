@@ -1,14 +1,15 @@
 // GET /api/admin/finance/voucher-split?month=YYYY-MM
 //
 // Liczy podzial kasy per voucher sprzedany w danym miesiacu:
-//   samolot (Maciej)     = 30 zl/min * flight_minutes(pakiet)  (amortyzacja Extra 300L)
+//   samolot (Pawel)      = 30 zl/min * flight_minutes(pakiet)  (Extra 300L - Pawel wlasciciel)
+//   marketing (Pawel)    = 2000 zl/mies / N voucherow miesiaca  (FB Ads)
 //   paliwo (Maciej)      = 200 zl per lot
 //   hangar (Maciej)      = 1000 zl/mies / N voucherow miesiaca
-//   marketing (Pawel)    = 2000 zl/mies / N voucherow miesiaca  (FB Ads)
-//   marza                = cena - samolot - paliwo - hangar_share - marketing_share
+//   marza                = cena - samolot - marketing_share - paliwo - hangar_share
 //   marza dzielona 50/50 miedzy Pawla i Macieja (umowa).
 //
-// Instruktor (Pawel) nie ma osobnego kosztu - jego "praca" to udzial w marzy.
+// Pawel dostaje: samolot + marketing_share + 50% marzy.
+// Maciej dostaje: paliwo + hangar_share + 50% marzy.
 
 import { type Env, PACKAGES, type PackageId } from '../../../../src/lib/types';
 import { checkAdminAuthAsync } from '../../../../src/lib/admin-auth';
@@ -52,8 +53,8 @@ interface VoucherSplit {
   cost_marketing_share_gr: number;
   cost_total_gr: number;
   margin_gr: number;
-  pawel_total_gr: number;     // marketing_share (przepuszczone) + marza/2
-  maciej_total_gr: number;    // samolot + paliwo + hangar_share (przepuszczone) + marza/2
+  pawel_total_gr: number;     // samolot + marketing_share (przepuszczone) + marza/2
+  maciej_total_gr: number;    // paliwo + hangar_share (przepuszczone) + marza/2
 }
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
@@ -104,8 +105,8 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
       cost_marketing_share_gr: marketingShare,
       cost_total_gr: costTotal,
       margin_gr: margin,
-      pawel_total_gr: marketingShare + marginHalf,
-      maciej_total_gr: costAircraft + costFuel + hangarShare + marginHalf,
+      pawel_total_gr: costAircraft + marketingShare + marginHalf,
+      maciej_total_gr: costFuel + hangarShare + marginHalf,
     };
   });
 
