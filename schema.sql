@@ -480,9 +480,11 @@ CREATE TABLE IF NOT EXISTS gallery_submissions (
   approved_at INTEGER,
   approved_by TEXT,
   submitter_ip TEXT,
-  submitter_ua TEXT
+  submitter_ua TEXT,
+  event_tag TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_gallery_subs_status ON gallery_submissions(status, submitted_at DESC);
+CREATE INDEX IF NOT EXISTS idx_gallery_subs_event ON gallery_submissions(event_tag);
 
 -- Post-flight media share. Admin uploads photos/videos per voucher_code into
 -- R2 (prefix flight/{voucher_code}/{uuid}.ext); a flight_share row holds a

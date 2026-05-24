@@ -896,6 +896,38 @@ async function loadLoginHistory() {
 }
 
 // ── GALLERY SUBMISSIONS (Zdjecia od fotografow) ──
+let _lastGallerySubs = [];
+
+// FB has a no-auth sharer endpoint that takes a URL and shows the OG card.
+// IG has no equivalent web share API for desktop, so we download the file +
+// copy a ready-made caption that the admin pastes into the IG mobile app.
+function socialShareButtons(s, token) {
+  const fileUrl = location.origin + '/api/gallery/file/' + s.id;
+  const downloadUrl = '/api/admin/gallery-submissions/file/' + s.id + '?t=' + encodeURIComponent(token);
+  return `<div style="margin-top:8px;padding-top:8px;border-top:1px dashed #ddd;display:flex;gap:6px;flex-wrap:wrap">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(fileUrl)}" target="_blank" rel="noopener" class="btn" style="background:#1877F2;color:#fff;font-size:10px;text-decoration:none">FB share</a>
+    <a href="${downloadUrl}" download class="btn" style="background:#E1306C;color:#fff;font-size:10px;text-decoration:none" onclick="zdjCopyCaption(${s.id})">Pobierz + caption IG</a>
+    <button class="btn" style="background:#eee;color:#333;font-size:10px" onclick="zdjCopyCaption(${s.id})">Skopiuj caption</button>
+  </div>`;
+}
+function zdjCopyCaption(id) {
+  const s = _lastGallerySubs.find(x => x.id === id);
+  if (!s) return;
+  const ig = (s.photographer_instagram || '').replace(/^@/, '').trim();
+  const eventBit = s.event_tag ? '\\n\\n#' + s.event_tag.replace(/[^a-zA-Z0-9]/g, '') : '';
+  const caption =
+`Extra 300L SP-EKS · za sterami Mistrz Świata akrobacji.
+${s.caption ? '\\n' + s.caption + '\\n' : ''}
+📸 fot. ${s.photographer_name}${ig ? ' (@' + ig + ')' : ''}${eventBit}
+
+Voucher na lot → akrobacja.com
+
+#akrobacja #extra300 #lotakrobacyjny #aerobatic #polishpilot #aviation #aviationphotography #aerobaticpilot #aviationlovers`;
+  navigator.clipboard?.writeText(caption.replace(/\\n/g, '\n'))
+    .then(() => showMsg('Caption + tagi skopiowane do schowka', 'ok'))
+    .catch(() => {});
+}
+
 async function loadGallerySubs() {
   const status = (document.getElementById('zdjFilter') || {}).value || 'pending';
   const grid = document.getElementById('zdjGrid');
@@ -907,6 +939,7 @@ async function loadGallerySubs() {
     document.getElementById('zdjStats').textContent =
       `Oczekujace: ${c.pending || 0} | Zaakceptowane: ${c.approved || 0} | Odrzucone: ${c.rejected || 0}`;
     const list = res.submissions || [];
+    _lastGallerySubs = list;
     if (list.length === 0) { grid.innerHTML = '<p style="padding:20px;color:#888">Brak zgloszen w tej kategorii</p>'; return; }
     const token = localStorage.getItem('admin_token') || '';
     grid.innerHTML = list.map(s => zdjCard(s, token)).join('');
@@ -940,9 +973,11 @@ function zdjCard(s, token) {
         ${statusBadge}
       </div>
       <div style="color:#666;font-size:11px;margin-bottom:4px">${esc(s.photographer_city || '-')} · ${igLink}</div>
+      ${s.event_tag ? `<div style="margin-bottom:6px"><span style="background:#1B4DB5;color:#fff;padding:2px 6px;font-size:10px;font-weight:600">${esc(s.event_tag)}</span></div>` : ''}
       ${s.caption ? `<div style="font-size:11px;color:#444;margin-bottom:6px;font-style:italic">"${esc(s.caption)}"</div>` : ''}
       <div style="color:#aaa;font-size:10px;margin-bottom:8px">${ts} · ${s.width}×${s.height}</div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">${actions}</div>
+      ${s.status === 'approved' ? socialShareButtons(s, token) : ''}
     </div>
   </div>`;
 }

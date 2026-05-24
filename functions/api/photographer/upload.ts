@@ -61,6 +61,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   const photographer_instagram = safeStr(form.get('photographer_instagram'), 60);
   const photographer_email = safeStr(form.get('photographer_email'), 120);
   const caption = safeStr(form.get('caption'), 200);
+  const event_tag = safeStr(form.get('event_tag'), 40);
   const turnstileToken = safeStr(form.get('turnstileToken'), 4096);
 
   if (photographer_email && !isValidEmail(photographer_email)) {
@@ -113,11 +114,11 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const res = await ctx.env.DB.prepare(
       `INSERT INTO gallery_submissions
         (r2_key, width, height, photographer_name, photographer_city, photographer_instagram,
-         photographer_email, caption, status, submitted_at, submitter_ip, submitter_ua)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?, ?)`,
+         photographer_email, caption, event_tag, status, submitted_at, submitter_ip, submitter_ua)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?, ?)`,
     )
       .bind(key, w, h, photographer_name, photographer_city, photographer_instagram,
-        photographer_email, caption, submittedAt, ip, ua)
+        photographer_email, caption, event_tag, submittedAt, ip, ua)
       .run();
     if (res.meta.last_row_id) insertedIds.push(Number(res.meta.last_row_id));
   }

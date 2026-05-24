@@ -21,6 +21,7 @@ interface Row {
   photographer_instagram: string | null;
   photographer_email: string | null;
   caption: string | null;
+  event_tag: string | null;
   status: string;
   submitted_at: number;
   approved_at: number | null;
@@ -41,11 +42,11 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
 
   const sql = status === 'all'
     ? `SELECT id, r2_key, width, height, photographer_name, photographer_city,
-              photographer_instagram, photographer_email, caption, status,
+              photographer_instagram, photographer_email, caption, event_tag, status,
               submitted_at, approved_at, approved_by, submitter_ip
        FROM gallery_submissions ORDER BY submitted_at DESC LIMIT 200`
     : `SELECT id, r2_key, width, height, photographer_name, photographer_city,
-              photographer_instagram, photographer_email, caption, status,
+              photographer_instagram, photographer_email, caption, event_tag, status,
               submitted_at, approved_at, approved_by, submitter_ip
        FROM gallery_submissions WHERE status = ?
        ORDER BY submitted_at DESC LIMIT 200`;
