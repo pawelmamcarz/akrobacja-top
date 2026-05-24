@@ -333,8 +333,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="finStats" style="margin-top:14px"></div>
 
     <h3 style="margin:24px 0 8px;font-size:13px;color:#1B4DB5">Split kasy Paweł / Maciej (per voucher)</h3>
-    <div class="toolbar" style="margin-bottom:8px">
+    <div class="toolbar" style="margin-bottom:8px;flex-wrap:wrap;gap:6px">
       <label>Miesiąc <input type="month" id="splitMonth"></label>
+      <label title="Ile faktycznie wydales na FB w tym miesiacu">Marketing FB [zł] <input type="number" id="splitMarketing" value="2000" style="width:90px"></label>
+      <label title="Stała opłata za hangar SP-EKS">Hangar [zł] <input type="number" id="splitHangar" value="1000" style="width:90px"></label>
       <button class="btn btn-blue" onclick="loadVoucherSplit()">Wczytaj</button>
       <div class="stats" id="splitStats" style="font-size:11px;color:#666"></div>
     </div>
@@ -1107,13 +1109,33 @@ async function loadFinance() {
 
 async function loadVoucherSplit() {
   const month = document.getElementById('splitMonth').value || new Date().toISOString().slice(0,7);
+
+  // Per-month override marketing/hangar - zapisz w localStorage
+  const mKey = `split_marketing_${month}`;
+  const hKey = `split_hangar_${month}`;
+  const mInput = document.getElementById('splitMarketing');
+  const hInput = document.getElementById('splitHangar');
+  // Wczytaj zapisana wartosc dla tego miesiaca (jesli istnieje)
+  const savedM = localStorage.getItem(mKey);
+  const savedH = localStorage.getItem(hKey);
+  if (savedM !== null && mInput.dataset.lastMonth !== month) mInput.value = savedM;
+  if (savedH !== null && hInput.dataset.lastMonth !== month) hInput.value = savedH;
+  mInput.dataset.lastMonth = month;
+  hInput.dataset.lastMonth = month;
+  // Zapisz biezaca wartosc
+  localStorage.setItem(mKey, mInput.value);
+  localStorage.setItem(hKey, hInput.value);
+
+  const marketingGr = Math.round((parseFloat(mInput.value) || 0) * 100);
+  const hangarGr = Math.round((parseFloat(hInput.value) || 0) * 100);
+
   const wrap = document.getElementById('voucherSplitTable');
   wrap.innerHTML = '<p style="padding:12px;color:#888">Ladowanie...</p>';
-  const res = await api('GET', `/api/admin/finance/voucher-split?month=${month}`);
+  const res = await api('GET', `/api/admin/finance/voucher-split?month=${month}&marketing_gr=${marketingGr}&hangar_gr=${hangarGr}`);
   if (res.error) { wrap.innerHTML = '<p style="padding:12px;color:#c00">Blad: ' + esc(res.error) + '</p>'; return; }
 
   const t = res.totals; const c = res.counts;
-  document.getElementById('splitStats').textContent = `${c.vouchers_sold} voucherow | hangar/voucher: ${fmtPln(c.hangar_share_gr)} PLN | marketing/voucher: ${fmtPln(c.marketing_share_gr)} PLN`;
+  document.getElementById('splitStats').textContent = `${c.vouchers_sold} voucherow + ${c.courses_started} kursow = ${c.n_total} jednostek dzielacych marketing/hangar | hangar/voucher: ${fmtPln(c.hangar_share_gr)} PLN | marketing/voucher: ${fmtPln(c.marketing_share_gr)} PLN`;
 
   if (!res.splits.length) { wrap.innerHTML = '<p style="padding:12px;color:#888">Brak voucherow w tym miesiacu</p>'; return; }
 
@@ -1159,9 +1181,11 @@ async function loadVoucherSplit() {
   </table>
   <p style="margin-top:8px;font-size:11px;color:#666">
     <strong>Założenia:</strong>
-    <span style="color:#1B4DB5">Paweł = samolot Extra 300L (30 zł/min) + marketing FB (2000 zł/mies / N)</span>,
-    <span style="color:#C41E3A">Maciej = paliwo (200 zł/lot) + hangar (1000 zł/mies / N)</span>.
+    <span style="color:#1B4DB5">Paweł = samolot Extra 300L (30 zł/min) + marketing FB / N</span>,
+    <span style="color:#C41E3A">Maciej = paliwo (200 zł/lot) + hangar / N</span>.
+    N = vouchery + kursy w miesiącu (kursanci też z FB).
     Marża = cena − wszystkie koszty, dzielona 50/50.
+    <br>Marketing zmienny - wpisz ile faktycznie wydałeś na FB ten miesiąc. Liczba voucherów rośnie do końca miesiąca, więc share/voucher spadnie.
     <br>Maciej co miesiąc wystawia Pawłowi fakturę na sumę z kolumny <strong style="color:#C41E3A">Maciej</strong> (paliwo + hangar + 50% marży).
   </p>`;
 }

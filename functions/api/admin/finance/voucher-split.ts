@@ -1,23 +1,28 @@
-// GET /api/admin/finance/voucher-split?month=YYYY-MM
+// GET /api/admin/finance/voucher-split?month=YYYY-MM&marketing_gr=NNN&hangar_gr=NNN
 //
 // Liczy podzial kasy per voucher sprzedany w danym miesiacu:
 //   samolot (Pawel)      = 30 zl/min * flight_minutes(pakiet)  (Extra 300L - Pawel wlasciciel)
-//   marketing (Pawel)    = 2000 zl/mies / N voucherow miesiaca  (FB Ads)
+//   marketing (Pawel)    = MARKETING_GR / N_total                (FB Ads, dynamicznie zmienne)
 //   paliwo (Maciej)      = 200 zl per lot
-//   hangar (Maciej)      = 1000 zl/mies / N voucherow miesiaca
+//   hangar (Maciej)      = HANGAR_GR / N_total
 //   marza                = cena - samolot - marketing_share - paliwo - hangar_share
 //   marza dzielona 50/50 miedzy Pawla i Macieja (umowa).
 //
-// Pawel dostaje: samolot + marketing_share + 50% marzy.
-// Maciej dostaje: paliwo + hangar_share + 50% marzy.
+// N_total = voucherow_sprzedanych + kursow_rozpoczetych w miesiacu.
+// Kursy tez konsumuja share marketingu i hangaru (kursanci tez przychodza z FB),
+// ale ich rozliczenie jest poza ta tabela.
+//
+// marketing_gr i hangar_gr mozna nadpisac w URL (UI pozwala wpisac kwote
+// faktycznie zainwestowana w danym miesiacu - bo do konca miesiaca nie znamy).
+// Default fallback: 2000 zl marketing, 1000 zl hangar.
 
 import { type Env, PACKAGES, type PackageId } from '../../../../src/lib/types';
 import { checkAdminAuthAsync } from '../../../../src/lib/admin-auth';
 
-const AIRCRAFT_RATE_PER_MIN_GR = 3000;       // 30 zl/min amortyzacja Extra 300L
-const MARKETING_MONTHLY_GR = 200_000;        // 2000 zl
-const HANGAR_MONTHLY_GR = 100_000;           // 1000 zl
-const FUEL_PER_FLIGHT_GR = 20_000;           // 200 zl
+const AIRCRAFT_RATE_PER_MIN_GR = 3000;          // 30 zl/min amortyzacja Extra 300L
+const MARKETING_MONTHLY_GR_DEFAULT = 200_000;   // 2000 zl - fallback gdy brak override
+const HANGAR_MONTHLY_GR_DEFAULT = 100_000;      // 1000 zl - fallback
+const FUEL_PER_FLIGHT_GR = 20_000;              // 200 zl
 
 const PACKAGE_FLIGHT_MINUTES: Record<PackageId, number> = {
   pierwszy_lot: 15,
@@ -78,6 +83,15 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     return Response.json({ error: 'Format: YYYY-MM' }, { status: 400 });
   }
 
+  const marketingParam = url.searchParams.get('marketing_gr');
+  const hangarParam = url.searchParams.get('hangar_gr');
+  const marketingMonthlyGr = marketingParam && /^\d+$/.test(marketingParam)
+    ? parseInt(marketingParam, 10)
+    : MARKETING_MONTHLY_GR_DEFAULT;
+  const hangarMonthlyGr = hangarParam && /^\d+$/.test(hangarParam)
+    ? parseInt(hangarParam, 10)
+    : HANGAR_MONTHLY_GR_DEFAULT;
+
   // Pomijamy: testowe naklejki, vouchery free/barter (klient nic nie zaplacil),
   // wewnetrzne TEST za 0 zl. Te nie generuja rozliczenia miedzy Pawlem a Maciejem.
   const orders = await ctx.env.DB.prepare(`
@@ -93,10 +107,19 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   `).bind(month).all<OrderRow>();
 
   const rows = orders.results || [];
-  const N = rows.length;
+  const vouchersCount = rows.length;
 
-  const hangarShare = N > 0 ? Math.round(HANGAR_MONTHLY_GR / N) : 0;
-  const marketingShare = N > 0 ? Math.round(MARKETING_MONTHLY_GR / N) : 0;
+  // Kursy rozpoczete w miesiacu - tez konsumuja share marketingu/hangaru
+  // bo kursanci tez przychodza z FB Ads i samolot stoi w tym samym hangarze.
+  const coursesRow = await ctx.env.DB.prepare(`
+    SELECT COUNT(*) AS cnt FROM courses
+    WHERE strftime('%Y-%m', created_at) = ?
+  `).bind(month).first<{ cnt: number }>();
+  const coursesCount = coursesRow?.cnt || 0;
+
+  const nTotal = vouchersCount + coursesCount;
+  const hangarShare = nTotal > 0 ? Math.round(hangarMonthlyGr / nTotal) : 0;
+  const marketingShare = nTotal > 0 ? Math.round(marketingMonthlyGr / nTotal) : 0;
 
   const splits: VoucherSplit[] = rows.map((o) => {
     const pkg = PACKAGES[o.package_id] || PACKAGES.pierwszy_lot;
@@ -143,11 +166,19 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     month,
     constants: {
       aircraft_rate_per_min_gr: AIRCRAFT_RATE_PER_MIN_GR,
-      marketing_monthly_gr: MARKETING_MONTHLY_GR,
-      hangar_monthly_gr: HANGAR_MONTHLY_GR,
+      marketing_monthly_gr: marketingMonthlyGr,
+      hangar_monthly_gr: hangarMonthlyGr,
       fuel_per_flight_gr: FUEL_PER_FLIGHT_GR,
+      marketing_overridden: marketingParam !== null,
+      hangar_overridden: hangarParam !== null,
     },
-    counts: { vouchers_sold: N, hangar_share_gr: hangarShare, marketing_share_gr: marketingShare },
+    counts: {
+      vouchers_sold: vouchersCount,
+      courses_started: coursesCount,
+      n_total: nTotal,
+      hangar_share_gr: hangarShare,
+      marketing_share_gr: marketingShare,
+    },
     splits,
     totals,
   });
