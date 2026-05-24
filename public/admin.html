@@ -1272,9 +1272,11 @@ function renderLotMedia(data) {
   document.getElementById('lmStats').textContent =
     `Voucher: ${data.voucher_code} | Plików: ${mediaCount} | Linkow: ${shareCount}`;
 
-  let html = `<div style="background:#f7f9fc;border:1px dashed #c4d2e0;padding:20px;text-align:center;margin-bottom:18px;cursor:pointer" id="lmDrop">
+  let html = _lmTopNotice || '';
+  _lmTopNotice = ''; // one-shot
+  html += `<div style="background:#f7f9fc;border:1px dashed #c4d2e0;padding:20px;text-align:center;margin-bottom:18px;cursor:pointer" id="lmDrop">
     <input type="file" id="lmFiles" multiple accept="image/jpeg,image/png,image/webp,image/heic,image/heif,video/mp4,video/quicktime,video/webm" style="display:none">
-    <strong>Kliknij lub przeciagnij pliki (zdjecia/filmy do 500 MB kazdy, max 20 na raz)</strong>
+    <strong>Kliknij lub przeciagnij pliki (do 5 GB / plik, HEIC auto-konwersja, drag-drop wielu)</strong>
     <div style="font-size:11px;color:#888;margin-top:6px">JPG/PNG/WebP/HEIC, MP4/MOV/WebM</div>
   </div>
   <div id="lmUploadStatus" style="margin-bottom:14px;font-size:12px;color:#666"></div>`;
@@ -1354,26 +1356,191 @@ function renderLotMedia(data) {
   drop.addEventListener('drop', e => { if (e.dataTransfer?.files) lmUpload(Array.from(e.dataTransfer.files)); });
 }
 
+// Lazy-loads heic2any from CDN on first HEIC and caches the promise so
+// subsequent files reuse the same script tag instead of redownloading.
+let _heicLib = null;
+function loadHeicLib() {
+  if (_heicLib) return _heicLib;
+  _heicLib = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js';
+    s.onload = () => resolve(window.heic2any);
+    s.onerror = () => reject(new Error('Nie udało się załadować heic2any (sprawdź internet)'));
+    document.head.appendChild(s);
+  });
+  return _heicLib;
+}
+function isHeic(f) {
+  if (!f) return false;
+  const t = (f.type || '').toLowerCase();
+  if (t === 'image/heic' || t === 'image/heif') return true;
+  const n = (f.name || '').toLowerCase();
+  return n.endsWith('.heic') || n.endsWith('.heif');
+}
+async function convertHeic(file, status) {
+  status.textContent = `Konwertuję HEIC → JPEG: ${file.name}...`;
+  const heic2any = await loadHeicLib();
+  const blob = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.92 });
+  const out = Array.isArray(blob) ? blob[0] : blob;
+  const newName = file.name.replace(/\.(heic|heif)$/i, '.jpg');
+  return new File([out], newName, { type: 'image/jpeg' });
+}
+
+// Files larger than this go straight to R2 via presigned URLs to bypass the
+// Pages Functions 500 MB body limit. Smaller files use the simpler multipart
+// path (no extra round-trip for presign+confirm).
+const LM_DIRECT_R2_THRESHOLD = 100 * 1024 * 1024;
+
+function fmtBytes(n) {
+  if (n < 1024) return n + ' B';
+  if (n < 1024 * 1024) return (n / 1024).toFixed(0) + ' KB';
+  if (n < 1024 * 1024 * 1024) return (n / 1024 / 1024).toFixed(1) + ' MB';
+  return (n / 1024 / 1024 / 1024).toFixed(2) + ' GB';
+}
+
+function lmRenderProgress(rows) {
+  const status = document.getElementById('lmUploadStatus');
+  if (rows.length === 0) { status.textContent = ''; return; }
+  status.innerHTML = '<div style="display:flex;flex-direction:column;gap:4px">' + rows.map(r => {
+    const pct = Math.round(r.pct);
+    const bar = `<div style="background:#e5eaf2;height:14px;position:relative;overflow:hidden"><div style="background:${r.err?'#c00':r.done?'#27ae60':'#1B4DB5'};width:${pct}%;height:100%;transition:width .2s"></div><div style="position:absolute;top:0;left:0;right:0;text-align:center;font-size:10px;line-height:14px;color:#fff;text-shadow:0 0 2px #000;font-family:monospace">${pct}% · ${esc(r.label)}</div></div>`;
+    return bar;
+  }).join('') + '</div>';
+}
+
+// XHR upload (fetch lacks per-chunk progress events in browsers today).
+function xhrPut(url, body, contentType, onProgress) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('PUT', url, true);
+    if (contentType) xhr.setRequestHeader('Content-Type', contentType);
+    xhr.upload.onprogress = (e) => { if (e.lengthComputable) onProgress(e.loaded / e.total); };
+    xhr.onload = () => xhr.status >= 200 && xhr.status < 300 ? resolve() : reject(new Error(`HTTP ${xhr.status}`));
+    xhr.onerror = () => reject(new Error('Network error'));
+    xhr.send(body);
+  });
+}
+
 async function lmUpload(files) {
   if (files.length === 0 || !_lmVoucher) return;
   const status = document.getElementById('lmUploadStatus');
-  const fd = new FormData();
-  fd.append('voucher_code', _lmVoucher);
-  files.forEach(f => fd.append('files', f, f.name));
-  status.textContent = `Wysylanie ${files.length} plikow...`;
-  try {
-    const res = await fetch('/api/admin/flight-media', {
-      method: 'POST',
-      headers: { 'Authorization': 'Bearer ' + (localStorage.getItem('admin_token') || '') },
-      body: fd,
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Upload nieudany');
-    status.textContent = `OK - dodano ${data.count} plikow.`;
-    loadLotMedia();
-  } catch (err) {
-    status.textContent = 'Blad: ' + (err.message || 'unknown');
+
+  // Phase 0: HEIC → JPEG on the client.
+  const prepared = [];
+  for (const f of files) {
+    if (isHeic(f)) {
+      try {
+        prepared.push(await convertHeic(f, status));
+      } catch (err) {
+        status.textContent = `Konwersja HEIC zawiodła (${f.name}): ${err.message || 'unknown'}.`;
+        continue;
+      }
+    } else {
+      prepared.push(f);
+    }
   }
+  if (prepared.length === 0) return;
+
+  // Split: small files via multipart endpoint, big ones via direct-to-R2 presigned PUT.
+  const smallFiles = prepared.filter(f => f.size <= LM_DIRECT_R2_THRESHOLD);
+  const bigFiles = prepared.filter(f => f.size > LM_DIRECT_R2_THRESHOLD);
+
+  const progressRows = prepared.map(f => ({ label: f.name + ' · ' + fmtBytes(f.size), pct: 0, done: false, err: false, file: f }));
+  lmRenderProgress(progressRows);
+
+  // ── Phase A: small files (≤100 MB each) — bundled multipart, single request.
+  if (smallFiles.length > 0) {
+    const indexed = smallFiles.map(f => progressRows.findIndex(r => r.file === f));
+    const fd = new FormData();
+    fd.append('voucher_code', _lmVoucher);
+    smallFiles.forEach(f => fd.append('files', f, f.name));
+    try {
+      // No granular per-file progress for the bundled small batch — show 50%
+      // until response, then 100%. Acceptable because each file <=100 MB.
+      indexed.forEach(i => { progressRows[i].pct = 50; });
+      lmRenderProgress(progressRows);
+      const res = await fetch('/api/admin/flight-media', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + (localStorage.getItem('admin_token') || '') },
+        body: fd,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Upload nieudany');
+      indexed.forEach(i => { progressRows[i].pct = 100; progressRows[i].done = true; });
+    } catch (err) {
+      indexed.forEach(i => { progressRows[i].pct = 100; progressRows[i].err = true; progressRows[i].label += ' — ' + (err.message || 'błąd'); });
+    }
+    lmRenderProgress(progressRows);
+  }
+
+  // ── Phase B: big files — presigned direct-to-R2.
+  if (bigFiles.length > 0) {
+    let presignRes;
+    try {
+      presignRes = await api('POST', '/api/admin/flight-media/presign', {
+        voucher_code: _lmVoucher,
+        files: bigFiles.map(f => ({ name: f.name, size: f.size, type: f.type })),
+      });
+      if (presignRes.error) throw new Error(presignRes.error + (presignRes.hint ? ' · ' + presignRes.hint : ''));
+    } catch (err) {
+      bigFiles.forEach(f => {
+        const i = progressRows.findIndex(r => r.file === f);
+        progressRows[i].err = true; progressRows[i].pct = 100;
+        progressRows[i].label += ' — presign: ' + (err.message || 'błąd');
+      });
+      lmRenderProgress(progressRows);
+      return;
+    }
+
+    const confirmFiles = [];
+    // Parallel uploads, up to 3 at a time so a slow file doesn't block the queue.
+    const concurrency = 3;
+    let cursor = 0;
+    async function next() {
+      const idx = cursor++;
+      if (idx >= bigFiles.length) return;
+      const f = bigFiles[idx];
+      const u = presignRes.uploads[idx];
+      const rowIdx = progressRows.findIndex(r => r.file === f);
+      try {
+        await xhrPut(u.upload_url, f, u.content_type, (frac) => {
+          progressRows[rowIdx].pct = frac * 100;
+          lmRenderProgress(progressRows);
+        });
+        progressRows[rowIdx].pct = 100;
+        progressRows[rowIdx].done = true;
+        confirmFiles.push({
+          r2_key: u.r2_key, original_name: f.name, size: f.size, content_type: f.type,
+        });
+      } catch (err) {
+        progressRows[rowIdx].err = true;
+        progressRows[rowIdx].pct = 100;
+        progressRows[rowIdx].label += ' — upload: ' + (err.message || 'błąd');
+      }
+      lmRenderProgress(progressRows);
+      await next();
+    }
+    await Promise.all(Array.from({ length: Math.min(concurrency, bigFiles.length) }, next));
+
+    if (confirmFiles.length > 0) {
+      try {
+        await api('POST', '/api/admin/flight-media/confirm', {
+          voucher_code: _lmVoucher,
+          files: confirmFiles,
+        });
+      } catch (err) {
+        status.textContent += '  | confirm error: ' + (err.message || 'błąd');
+      }
+    }
+  }
+
+  // Brief summary, then refresh the list.
+  const ok = progressRows.filter(r => r.done).length;
+  const fail = progressRows.filter(r => r.err).length;
+  setTimeout(() => {
+    status.innerHTML = `<span style="color:${fail?'#c00':'#27ae60'}">Wysłano: ${ok} · błędy: ${fail}</span>`;
+    loadLotMedia();
+  }, 600);
 }
 async function lmDeleteMedia(id) {
   if (!confirm('Usunac plik (z R2 i bazy)?')) return;
@@ -1385,11 +1552,23 @@ async function lmDeleteMedia(id) {
   if (!res.ok) { alert('Blad'); return; }
   loadLotMedia();
 }
+let _lmTopNotice = '';
 async function lmCreateShare(notify) {
   if (!_lmVoucher) return;
   const res = await api('POST', '/api/admin/flight-share', { voucher_code: _lmVoucher, notify });
   if (res.error) { alert('Blad: ' + res.error); return; }
-  if (notify && res.notify_status) showMsg(res.notify_status, res.notify_status.startsWith('sent') ? 'ok' : 'err');
+  if (res.link) {
+    navigator.clipboard?.writeText(res.link).catch(() => {});
+    const statusBit = notify && res.notify_status ? ' · ' + res.notify_status : '';
+    _lmTopNotice = `<div style="background:#f0fbf4;border:2px solid #27ae60;padding:14px 18px;margin:0 0 14px;border-radius:4px">
+      <div style="font-size:11px;color:#1a6e2e;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:6px">Link wygenerowany${esc(statusBit)} · skopiowane do schowka</div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <input type="text" readonly value="${esc(res.link)}" onclick="this.select()" style="flex:1;min-width:280px;padding:8px 12px;border:1px solid #c4d2e0;font-family:monospace;font-size:12px;background:#fff">
+        <a href="${esc(res.link)}" target="_blank" rel="noopener" class="btn btn-blue" style="text-decoration:none;font-size:11px">Otwórz w nowej karcie</a>
+        <button class="btn" style="background:#25D366;color:#fff;font-size:11px" onclick="lmShareWa('${esc(res.link)}')">Wyślij WA</button>
+      </div>
+    </div>`;
+  }
   loadLotMedia();
 }
 async function lmNotify(token) {

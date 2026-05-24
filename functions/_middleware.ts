@@ -282,7 +282,7 @@ export const onRequest: PagesFunction = async (context) => {
       "default-src 'self'",
       // 'unsafe-eval' is needed by Google Tag Manager custom HTML tags / trigger evaluation.
       // unpkg.com — meta-capi-param-builder loaded by GTM tag; analytics.tiktok.com — TikTok pixel.
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://*.js.stripe.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://connect.facebook.net https://challenges.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com https://analytics.tiktok.com https://*.tiktok.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://*.js.stripe.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://connect.facebook.net https://challenges.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net https://analytics.tiktok.com https://*.tiktok.com",
       // Stripe 3DS / SCA challenge redirects users into bank-owned iframes served via
       // subdomains of stripe.com (m.stripe.network for fingerprinting, *.stripe.com for ACS).
       // YouTube no-cookie embeds are used on landing pages; GTM noscript fallback iframe

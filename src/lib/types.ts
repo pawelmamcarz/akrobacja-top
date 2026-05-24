@@ -26,6 +26,13 @@ export interface Env {
   GOOGLE_PLACE_ID?: string;
   AI: Ai;
   RATE_LIMIT_KV: KVNamespace;
+  // R2 S3-compatible API credentials — used by direct-to-R2 multipart upload
+  // (flight-media presign endpoint) for raw video files above the Pages
+  // Functions 500 MB body limit. Set these once: wrangler pages secret put.
+  R2_ACCOUNT_ID?: string;
+  R2_ACCESS_KEY_ID?: string;
+  R2_SECRET_ACCESS_KEY?: string;
+  R2_BUCKET?: string;
 }
 
 // Voucher packages
