@@ -27,6 +27,15 @@ const PACKAGE_FLIGHT_MINUTES: Record<PackageId, number> = {
   test_naklejka: 0,
 };
 
+// Liczba osobnych lotow per pakiet (mnoznik paliwa). Para = 2 osobne loty.
+const PACKAGE_FLIGHT_COUNT: Record<PackageId, number> = {
+  pierwszy_lot: 1,
+  adrenalina: 1,
+  para: 2,
+  masterclass: 1,
+  test_naklejka: 0,
+};
+
 interface OrderRow {
   id: string;
   voucher_code: string;
@@ -87,8 +96,9 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const splits: VoucherSplit[] = rows.map((o) => {
     const pkg = PACKAGES[o.package_id] || PACKAGES.pierwszy_lot;
     const minutes = PACKAGE_FLIGHT_MINUTES[o.package_id] || 0;
+    const flights = PACKAGE_FLIGHT_COUNT[o.package_id] || 1;
     const costAircraft = minutes * AIRCRAFT_RATE_PER_MIN_GR;
-    const costFuel = FUEL_PER_FLIGHT_GR;
+    const costFuel = FUEL_PER_FLIGHT_GR * flights;
     const costTotal = costAircraft + costFuel + hangarShare + marketingShare;
     const margin = Math.max(0, o.amount - costTotal);
     const marginHalf = Math.round(margin / 2);
