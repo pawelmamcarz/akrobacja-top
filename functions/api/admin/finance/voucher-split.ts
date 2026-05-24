@@ -27,12 +27,13 @@ const PACKAGE_FLIGHT_MINUTES: Record<PackageId, number> = {
   test_naklejka: 0,
 };
 
-// Liczba osobnych lotow per pakiet (mnoznik paliwa). Para = 2 osobne loty.
+// Mnoznik paliwa per pakiet. Para = 2 osobne loty. Masterclass = 50 min,
+// wymaga dotankowania w trakcie (zasieg ~30 min na pelnym baku akrobacji).
 const PACKAGE_FLIGHT_COUNT: Record<PackageId, number> = {
   pierwszy_lot: 1,
   adrenalina: 1,
   para: 2,
-  masterclass: 1,
+  masterclass: 2,
   test_naklejka: 0,
 };
 
