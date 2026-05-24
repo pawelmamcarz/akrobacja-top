@@ -103,14 +103,18 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   const addonsJson = videoAddon ? JSON.stringify(['video']) : null;
 
   // Insert as 'paid' immediately — no Stripe handshake needed.
+  // orders.customer_email is NOT NULL — fall back to empty string when admin
+  // intentionally creates a voucher without one (cash sale, no contact data).
+  // orders has no customer_phone column; phone is captured at Stripe checkout
+  // only, so we drop it here.
   await ctx.env.DB.prepare(`
     INSERT INTO orders (id, voucher_code, package_id, video_addon, customer_name, customer_email,
-                        customer_phone, amount, status, payment_method, created_at, paid_at,
+                        amount, status, payment_method, created_at, paid_at,
                         expires_at, recipient_name, dedication, addons)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'paid', ?, datetime('now'), datetime('now'), ?, ?, ?, ?)
+    VALUES (?, ?, ?, ?, ?, ?, ?, 'paid', ?, datetime('now'), datetime('now'), ?, ?, ?, ?)
   `).bind(
     orderId, voucherCode, packageId, videoAddon ? 1 : 0,
-    customerName, customerEmail || null, (body.customer_phone || '').trim() || null,
+    customerName, customerEmail || '',
     amount, paymentMethod, expiresAt, recipientName, dedication, addonsJson,
   ).run();
 
