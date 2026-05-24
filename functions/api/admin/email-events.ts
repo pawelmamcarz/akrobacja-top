@@ -8,10 +8,10 @@
 //   ?limit=200 (default 200, max 500)
 
 import { type Env } from '../../../src/lib/types';
-import { checkAdminAuth } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return new Response('unauthorized', { status: 401 });
   }
 

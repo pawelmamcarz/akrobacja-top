@@ -93,9 +93,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="login" id="loginView">
   <div class="login-box">
     <h1>akrobacja.com Admin</h1>
-    <input type="password" id="passInput" placeholder="Haslo admina" autofocus onkeydown="if(event.key==='Enter')doLogin()">
+    <input type="email" id="emailInput" placeholder="Email (opcj. dla legacy)" autocomplete="email" autofocus onkeydown="if(event.key==='Enter')document.getElementById('passInput').focus()" style="margin-bottom:8px">
+    <input type="password" id="passInput" placeholder="Hasło" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
     <button onclick="doLogin()">Zaloguj</button>
     <p id="loginErr" style="color:#C41E3A;font-size:13px;margin-top:12px;display:none"></p>
+    <p style="margin-top:14px;font-size:12px;text-align:center"><a href="#" onclick="event.preventDefault();showForgot()" style="color:#1B4DB5;text-decoration:none">Zapomniałem hasła</a></p>
+    <div id="forgotBox" style="display:none;margin-top:12px;padding:12px;background:#f4f8ff;border:1px solid #c4d2e0">
+      <p style="font-size:12px;margin-bottom:8px">Wpisz swój email — wyślemy link do ustawienia nowego hasła.</p>
+      <input type="email" id="forgotEmail" placeholder="email" style="width:100%;padding:8px;border:1px solid #c4d2e0;margin-bottom:6px;font-size:13px">
+      <button onclick="sendForgot()" style="padding:8px 14px;background:#1B4DB5;color:#fff;border:0;font-size:12px;cursor:pointer">Wyślij link resetujący</button>
+      <p id="forgotMsg" style="margin-top:8px;font-size:11px"></p>
+    </div>
   </div>
 </div>
 
@@ -713,19 +721,68 @@ if (TOKEN) tryLoad();
 async function doLogin() {
   const errEl = document.getElementById('loginErr');
   if (errEl) errEl.style.display = 'none';
-  TOKEN = document.getElementById('passInput').value.trim();
-  if (!TOKEN) {
+  const email = (document.getElementById('emailInput').value || '').trim();
+  const password = document.getElementById('passInput').value.trim();
+  if (!password) {
     if (errEl) { errEl.textContent = 'Wpisz hasło'; errEl.style.display = 'block'; }
     return;
   }
-  localStorage.setItem('admin_token', TOKEN);
+
+  // Email present → use new email+password endpoint (session token).
+  // Email blank → legacy mode (raw password as Bearer for ADMIN_PASSWORD/MAGDA_PASSWORD).
+  if (email) {
+    try {
+      const res = await fetch('/api/admin/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        if (errEl) { errEl.textContent = data.error || 'Nieprawidłowy email lub hasło'; errEl.style.display = 'block'; }
+        return;
+      }
+      TOKEN = data.token;
+      localStorage.setItem('admin_token', TOKEN);
+    } catch (err) {
+      if (errEl) { errEl.textContent = 'Błąd połączenia: ' + (err.message || 'unknown'); errEl.style.display = 'block'; }
+      return;
+    }
+  } else {
+    TOKEN = password;
+    localStorage.setItem('admin_token', TOKEN);
+  }
+
   const ok = await tryLoad();
   if (!ok && errEl) {
     errEl.textContent = 'Nieprawidłowe hasło lub błąd połączenia';
     errEl.style.display = 'block';
   }
 }
+
+function showForgot() {
+  document.getElementById('forgotBox').style.display = 'block';
+  document.getElementById('forgotEmail').focus();
+}
+async function sendForgot() {
+  const email = (document.getElementById('forgotEmail').value || '').trim();
+  const msgEl = document.getElementById('forgotMsg');
+  if (!email) { msgEl.innerHTML = '<span style="color:#c00">Wpisz email</span>'; return; }
+  msgEl.textContent = 'Wysyłam...';
+  try {
+    await fetch('/api/admin/auth/password-reset', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+    // Zawsze "ok" — endpoint nie zdradza czy email istnieje
+    msgEl.innerHTML = '<span style="color:#1a6e2e">Jeśli email istnieje w bazie, dostaniesz link do resetu w ciągu kilkudziesięciu sekund.</span>';
+  } catch (err) {
+    msgEl.innerHTML = '<span style="color:#c00">Błąd: ' + (err.message || 'unknown') + '</span>';
+  }
+}
 function doLogout() {
+  const oldToken = TOKEN;
   TOKEN = '';
   USER = null;
   localStorage.removeItem('admin_token');
@@ -733,6 +790,13 @@ function doLogout() {
   if (badge) badge.style.display = 'none';
   document.getElementById('loginView').style.display = 'flex';
   document.getElementById('appView').classList.remove('active');
+  // Best-effort server-side invalidation for DB sessions; no-op for legacy bearer.
+  if (oldToken) {
+    fetch('/api/admin/auth/logout', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + oldToken },
+    }).catch(() => {});
+  }
 }
 
 async function fetchUser() {

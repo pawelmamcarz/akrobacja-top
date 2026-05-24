@@ -1,5 +1,5 @@
 import { type Env, PACKAGES, type PackageId } from '../../../src/lib/types';
-import { checkAdminAuth, getAdminUser } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync, getAdminUserAsync } from '../../../src/lib/admin-auth';
 import { generateVoucherCode } from '../../../src/lib/voucher-code';
 import { generateVoucherPdf } from '../../../src/lib/pdf';
 import { sendVoucherEmail } from '../../../src/lib/email';
@@ -8,7 +8,7 @@ import { recordFailedDelivery } from '../../../src/lib/audit';
 
 // GET /api/admin/orders — list all orders
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -35,7 +35,7 @@ type PaymentMethod = 'cash' | 'transfer' | 'free';
 const VALID_PAYMENT_METHODS = new Set<PaymentMethod>(['cash', 'transfer', 'free']);
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  const user = getAdminUser(ctx.request, ctx.env);
+  const user = await getAdminUserAsync(ctx.request, ctx.env);
   if (!user) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await ctx.request.json().catch(() => null) as {

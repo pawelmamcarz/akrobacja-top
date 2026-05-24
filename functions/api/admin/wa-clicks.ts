@@ -10,10 +10,10 @@
 //   - byTarget: grupowanie po target_number (ostatnie 30 dni, bez NULL)
 
 import { type Env } from '../../../src/lib/types';
-import { checkAdminAuth } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

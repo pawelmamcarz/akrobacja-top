@@ -9,7 +9,7 @@
 // Auth: Bearer ADMIN_PASSWORD (or MAGDA_PASSWORD via getAdminUser).
 
 import { type Env } from '../../../src/lib/types';
-import { checkAdminAuth, getAdminUser } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync, getAdminUserAsync } from '../../../src/lib/admin-auth';
 import { syncWfirmaExpenses } from '../cron/sync-wfirma-expenses';
 
 interface ExpenseRow {
@@ -30,7 +30,7 @@ interface ExpenseRow {
 }
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const url = new URL(ctx.request.url);
@@ -78,7 +78,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
 };
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  const user = getAdminUser(ctx.request, ctx.env);
+  const user = await getAdminUserAsync(ctx.request, ctx.env);
   if (!user) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await ctx.request.json().catch(() => null) as Record<string, unknown> | null;
@@ -133,7 +133,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 };
 
 export const onRequestPatch: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const body = await ctx.request.json().catch(() => null) as { id?: number; manual_category?: string | null } | null;
@@ -145,7 +145,7 @@ export const onRequestPatch: PagesFunction<Env> = async (ctx) => {
 };
 
 export const onRequestDelete: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const body = await ctx.request.json().catch(() => null) as { id?: number } | null;

@@ -8,7 +8,7 @@
 // Header: Authorization: Bearer ${ADMIN_PASSWORD}
 
 import { type Env } from '../../../src/lib/types';
-import { checkAdminAuth } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
 import { NOINDEX_PATHS, LEGACY_REDIRECTS, SITE_ORIGIN } from '../../../src/lib/seo-config';
 
 function parseLocs(xml: string): string[] {
@@ -57,7 +57,7 @@ async function checkRedirectDestination(to: string): Promise<RedirectHealth> {
 }
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

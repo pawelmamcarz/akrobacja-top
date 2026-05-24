@@ -541,3 +541,35 @@ CREATE INDEX IF NOT EXISTS idx_expenses_issue_date ON expenses(issue_date DESC);
 CREATE INDEX IF NOT EXISTS idx_expenses_contractor ON expenses(contractor_name);
 CREATE INDEX IF NOT EXISTS idx_expenses_category ON expenses(category);
 CREATE INDEX IF NOT EXISTS idx_expenses_source ON expenses(source);
+
+-- Proper admin auth — email + PBKDF2 password + session tokens + magic-link reset.
+-- Legacy ADMIN_PASSWORD / MAGDA_PASSWORD Bearer secrets still work in parallel as
+-- fallback (cron jobs and any non-migrated users keep working).
+CREATE TABLE IF NOT EXISTS admin_users (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  email TEXT NOT NULL UNIQUE,
+  name TEXT NOT NULL,
+  password_hash TEXT NOT NULL,
+  password_salt TEXT NOT NULL,
+  role TEXT NOT NULL DEFAULT 'admin',
+  created_at INTEGER NOT NULL,
+  last_login_at INTEGER,
+  password_reset_token TEXT,
+  password_reset_expires_at INTEGER,
+  password_changed_at INTEGER
+);
+CREATE INDEX IF NOT EXISTS idx_admin_users_email ON admin_users(email);
+CREATE INDEX IF NOT EXISTS idx_admin_users_reset ON admin_users(password_reset_token) WHERE password_reset_token IS NOT NULL;
+
+CREATE TABLE IF NOT EXISTS admin_sessions (
+  token TEXT PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  created_at INTEGER NOT NULL,
+  expires_at INTEGER NOT NULL,
+  ip TEXT,
+  user_agent TEXT,
+  last_used_at INTEGER,
+  FOREIGN KEY (user_id) REFERENCES admin_users(id)
+);
+CREATE INDEX IF NOT EXISTS idx_admin_sessions_user ON admin_sessions(user_id);
+CREATE INDEX IF NOT EXISTS idx_admin_sessions_expires ON admin_sessions(expires_at);

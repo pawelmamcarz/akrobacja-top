@@ -6,7 +6,7 @@
 // Auth: Bearer ADMIN_PASSWORD (zwykly admin).
 
 import { type Env } from '../../../src/lib/types';
-import { checkAdminAuth } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
 
 const VALID_STATUSES = ['new', 'contacted', 'responded', 'qualified', 'won', 'lost', 'archived'];
 const VALID_PRIORITIES = ['high', 'medium', 'low'];
@@ -19,7 +19,7 @@ const VALID_CATEGORIES = [
 ];
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -91,7 +91,7 @@ function sanitizeStr(v: unknown, max = 500): string | null {
 }
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

@@ -4,7 +4,7 @@
 // Mirrors functions/api/admin/gallery-submissions/file/[id].ts.
 
 import { type Env } from '../../../../../src/lib/types';
-import { checkAdminAuth } from '../../../../../src/lib/admin-auth';
+import { checkAdminAuthAsync } from '../../../../../src/lib/admin-auth';
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const url = new URL(ctx.request.url);
@@ -12,7 +12,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const reqForAuth = tokenFromQuery
     ? new Request(ctx.request, { headers: { Authorization: `Bearer ${tokenFromQuery}` } })
     : ctx.request;
-  if (!checkAdminAuth(reqForAuth, ctx.env)) {
+  if (!(await checkAdminAuthAsync(reqForAuth, ctx.env))) {
     return new Response('Unauthorized', { status: 401 });
   }
 

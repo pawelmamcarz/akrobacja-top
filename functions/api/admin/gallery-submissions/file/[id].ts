@@ -4,7 +4,7 @@
 // 'approved' rows.
 
 import { type Env } from '../../../../../src/lib/types';
-import { checkAdminAuth } from '../../../../../src/lib/admin-auth';
+import { checkAdminAuthAsync } from '../../../../../src/lib/admin-auth';
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   // Admin endpoint is opened by an <img src> in the admin UI which can't send
@@ -14,7 +14,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const reqForAuth = tokenFromQuery
     ? new Request(ctx.request, { headers: { Authorization: `Bearer ${tokenFromQuery}` } })
     : ctx.request;
-  if (!checkAdminAuth(reqForAuth, ctx.env)) {
+  if (!(await checkAdminAuthAsync(reqForAuth, ctx.env))) {
     return new Response('Unauthorized', { status: 401 });
   }
 

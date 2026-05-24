@@ -1,10 +1,10 @@
 import { type Env } from '../../../src/lib/types';
-import { checkAdminAuth } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
 import { normalizePhone } from '../../../src/lib/phone';
 
 // GET /api/admin/pilots
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
@@ -17,7 +17,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
 
 // POST /api/admin/pilots — manage pilot balance
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

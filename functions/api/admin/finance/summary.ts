@@ -12,7 +12,7 @@
 // Expenses: expenses.gross_amount grouped by COALESCE(manual_category, category, 'inne').
 
 import { type Env } from '../../../../src/lib/types';
-import { checkAdminAuth } from '../../../../src/lib/admin-auth';
+import { checkAdminAuthAsync } from '../../../../src/lib/admin-auth';
 
 type GroupBy = 'month' | 'day';
 
@@ -45,7 +45,7 @@ interface RedemptionRow {
 }
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

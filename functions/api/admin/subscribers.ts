@@ -1,11 +1,11 @@
 import { type Env } from '../../../src/lib/types';
 import { sendSms } from '../../../src/lib/sms';
-import { checkAdminAuth } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
 import { normalizePhone } from '../../../src/lib/phone';
 
 // GET /api/admin/subscribers
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) return Response.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { results } = await ctx.env.DB.prepare(
     'SELECT * FROM subscribers ORDER BY created_at DESC'
@@ -16,7 +16,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
 
 // POST /api/admin/subscribers — send SMS blast or manage
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) return Response.json({ error: 'Unauthorized' }, { status: 401 });
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = (await ctx.request.json()) as { action: string; message?: string; id?: string; phone?: string; name?: string; email?: string };
 

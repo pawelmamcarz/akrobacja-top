@@ -9,7 +9,7 @@
 // Auth: Bearer ADMIN_PASSWORD (or MAGDA_PASSWORD via getAdminUser).
 
 import { type Env } from '../../../src/lib/types';
-import { checkAdminAuth, getAdminUser } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync, getAdminUserAsync } from '../../../src/lib/admin-auth';
 
 interface Row {
   id: number;
@@ -29,7 +29,7 @@ interface Row {
 }
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const url = new URL(ctx.request.url);
@@ -65,7 +65,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
 };
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  const user = getAdminUser(ctx.request, ctx.env);
+  const user = await getAdminUserAsync(ctx.request, ctx.env);
   if (!user) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await ctx.request.json().catch(() => null) as {

@@ -3,11 +3,11 @@
 // do admin_logins (debounce 1h per (user, ip) zeby nie spamowac tabeli).
 
 import { type Env } from '../../../src/lib/types';
-import { getAdminUser } from '../../../src/lib/admin-auth';
+import { getAdminUserAsync } from '../../../src/lib/admin-auth';
 import { clientIp } from '../../../src/lib/rate-limit';
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  const user = getAdminUser(ctx.request, ctx.env);
+  const user = await getAdminUserAsync(ctx.request, ctx.env);
   if (!user) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   const ip = clientIp(ctx.request);

@@ -8,7 +8,7 @@
 // Larger raw videos: pre-transcode locally (DaVinci/FFmpeg) and upload the web copy.
 
 import { type Env } from '../../../src/lib/types';
-import { checkAdminAuth, getAdminUser } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync, getAdminUserAsync } from '../../../src/lib/admin-auth';
 
 const MAX_FILE_BYTES = 100 * 1024 * 1024;
 const MAX_FILES_PER_REQUEST = 12;
@@ -49,7 +49,7 @@ function kindFromMime(mime: string): 'photo' | 'video' {
 }
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const url = new URL(ctx.request.url);
@@ -74,7 +74,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
 };
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  const user = getAdminUser(ctx.request, ctx.env);
+  const user = await getAdminUserAsync(ctx.request, ctx.env);
   if (!user) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   let form: FormData;
@@ -139,7 +139,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 };
 
 export const onRequestDelete: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const body = await ctx.request.json().catch(() => null) as { id?: number } | null;

@@ -5,7 +5,7 @@
 // status='pending' and have a customer_email.
 
 import { type Env, type PackageId } from '../../../src/lib/types';
-import { checkAdminAuth } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
 import { buildRecoveryEmail, sendRecoveryEmail } from '../../../src/lib/abandoned-recovery';
 import { recordFailedDelivery } from '../../../src/lib/audit';
 
@@ -20,7 +20,7 @@ interface OrderRow {
 }
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

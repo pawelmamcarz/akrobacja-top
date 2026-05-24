@@ -10,7 +10,7 @@
 // Auth: Bearer ADMIN_PASSWORD.
 
 import { type Env, PACKAGES, type PackageId } from '../../../src/lib/types';
-import { checkAdminAuth, getAdminUser } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync, getAdminUserAsync } from '../../../src/lib/admin-auth';
 import { escapeHtml } from '../../../src/lib/email';
 import { recordFailedDelivery } from '../../../src/lib/audit';
 
@@ -89,7 +89,7 @@ async function sendNotifyEmail(env: Env, to: string, name: string, packageId: st
 }
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
-  const user = getAdminUser(ctx.request, ctx.env);
+  const user = await getAdminUserAsync(ctx.request, ctx.env);
   if (!user) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await ctx.request.json().catch(() => null) as {
@@ -171,7 +171,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 };
 
 export const onRequestDelete: PagesFunction<Env> = async (ctx) => {
-  if (!checkAdminAuth(ctx.request, ctx.env)) {
+  if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const body = await ctx.request.json().catch(() => null) as { token?: string } | null;
