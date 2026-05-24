@@ -1122,7 +1122,7 @@ async function loadVoucherSplit() {
     <td>${esc(s.customer||'-')}</td>
     <td>${esc(s.package_name)}<br><small style="color:#888">${s.flight_minutes} min</small></td>
     <td class="amount">${fmtPln(s.price_gr)}</td>
-    <td class="amount" style="color:#666">${fmtPln(s.cost_instructor_gr)}</td>
+    <td class="amount" style="color:#666">${fmtPln(s.cost_aircraft_gr)}</td>
     <td class="amount" style="color:#666">${fmtPln(s.cost_fuel_gr)}</td>
     <td class="amount" style="color:#666">${fmtPln(s.cost_hangar_share_gr)}</td>
     <td class="amount" style="color:#666">${fmtPln(s.cost_marketing_share_gr)}</td>
@@ -1136,7 +1136,7 @@ async function loadVoucherSplit() {
       <tr style="background:#f4f8ff">
         <th>Voucher</th><th>Klient</th><th>Pakiet</th>
         <th class="amount">Cena</th>
-        <th class="amount" title="30 zl/min × czas">Instr.</th>
+        <th class="amount" title="30 zl/min × czas (amortyzacja Extra 300L)">Samolot</th>
         <th class="amount" title="200 zl/lot">Paliwo</th>
         <th class="amount" title="1000 zl/mies / N">Hangar</th>
         <th class="amount" title="2000 zl/mies / N">Marketing</th>
@@ -1158,8 +1158,8 @@ async function loadVoucherSplit() {
     </tfoot>
   </table>
   <p style="margin-top:8px;font-size:11px;color:#666">
-    <strong>Założenia:</strong> instruktor 30 zł/min, paliwo 200 zł/lot, hangar 1000 zł/mies, marketing FB 2000 zł/mies. Marża = cena − wszystkie koszty. Marża dzielona 50/50.
-    <br>Maciej co miesiąc wystawia Pawłowi fakturę na sumę z kolumny <strong style="color:#C41E3A">Maciej</strong>.
+    <strong>Założenia:</strong> samolot (amortyzacja Extra 300L) 30 zł/min, paliwo 200 zł/lot, hangar 1000 zł/mies, marketing FB 2000 zł/mies. Instruktor (Paweł) bez kosztu — jego udział to marża. Marża = cena − wszystkie koszty, dzielona 50/50.
+    <br>Maciej co miesiąc wystawia Pawłowi fakturę na sumę z kolumny <strong style="color:#C41E3A">Maciej</strong> (samolot + paliwo + hangar + 50% marży).
   </p>`;
 }
 function renderFinance(d) {
