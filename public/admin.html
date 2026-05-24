@@ -1792,7 +1792,18 @@ function filterOrders() {
 async function redeem(code) {
   if (!confirm(`Wykorzystac voucher ${code}?`)) return;
   const res = await api('POST', '/api/admin/redeem', { voucher_code: code });
-  if (res.ok) { showMsg('Voucher wykorzystany','ok'); tryLoad(); } else showMsg(res.error,'err');
+  if (!res.ok) { showMsg(res.error || 'Blad', 'err'); return; }
+  showMsg('Voucher wykorzystany', 'ok');
+  await tryLoad();
+  // After redemption admin almost always wants to attach the flight media —
+  // skip the manual voucher_code typing into Lot Media tab.
+  if (confirm(`Voucher ${code} wykorzystany.\n\nDodać teraz zdjęcia / filmy z lotu do tego vouchera?`)) {
+    switchTab('lotmedia');
+    setTimeout(() => {
+      const inp = document.getElementById('lmVoucher');
+      if (inp) { inp.value = code; loadLotMedia(); }
+    }, 50);
+  }
 }
 async function invoice(code) {
   if (!confirm(`Wystawic fakture dla ${code}?`)) return;
