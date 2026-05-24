@@ -10,8 +10,13 @@
 import { type Env } from '../../../src/lib/types';
 import { checkAdminAuthAsync, getAdminUserAsync } from '../../../src/lib/admin-auth';
 
-const MAX_FILE_BYTES = 100 * 1024 * 1024;
-const MAX_FILES_PER_REQUEST = 12;
+// Per-file cap = Cloudflare Pages Functions body limit on the Standard plan
+// (500 MB). Anything larger has to go via the direct-to-R2 multipart presigned-URL
+// flow (separate endpoint, build on request). Per-request count is generous —
+// 500 files in a single multipart works for batches but timeouts loom around
+// the 30s CPU budget if files are >50 MB on average.
+const MAX_FILE_BYTES = 500 * 1024 * 1024;
+const MAX_FILES_PER_REQUEST = 500;
 const ALLOWED_MIME = new Set([
   'image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif',
   'video/mp4', 'video/quicktime', 'video/webm',
@@ -100,7 +105,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   }
   for (const f of files) {
     if (f.size > MAX_FILE_BYTES) {
-      return Response.json({ error: `Plik ${f.name} >100MB, przetnij/skompresuj lokalnie` }, { status: 400 });
+      return Response.json({ error: `Plik ${f.name} >500MB, przetnij/skompresuj lokalnie` }, { status: 400 });
     }
     if (!ALLOWED_MIME.has(f.type)) {
       return Response.json({ error: `Typ ${f.type} nieobsługiwany (${f.name})` }, { status: 400 });

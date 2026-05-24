@@ -1274,7 +1274,7 @@ function renderLotMedia(data) {
 
   let html = `<div style="background:#f7f9fc;border:1px dashed #c4d2e0;padding:20px;text-align:center;margin-bottom:18px;cursor:pointer" id="lmDrop">
     <input type="file" id="lmFiles" multiple accept="image/jpeg,image/png,image/webp,image/heic,image/heif,video/mp4,video/quicktime,video/webm" style="display:none">
-    <strong>Kliknij lub przeciagnij pliki (zdjecia/filmy do 100 MB kazdy, max 12 na raz)</strong>
+    <strong>Kliknij lub przeciagnij pliki (zdjecia/filmy do 500 MB kazdy, max 20 na raz)</strong>
     <div style="font-size:11px;color:#888;margin-top:6px">JPG/PNG/WebP/HEIC, MP4/MOV/WebM</div>
   </div>
   <div id="lmUploadStatus" style="margin-bottom:14px;font-size:12px;color:#666"></div>`;
@@ -1333,6 +1333,7 @@ function renderLotMedia(data) {
         <td>
           <button class="btn" style="background:#eee;color:#333;font-size:10px" onclick="lmCopy('${esc(url)}')">Kopiuj</button>
           <button class="btn btn-blue" style="font-size:10px" onclick="lmNotify('${esc(s.token)}')">Wyslij mail</button>
+          <button class="btn" style="background:#25D366;color:#fff;font-size:10px" onclick="lmShareWa('${esc(url)}')">WA</button>
           <button class="btn" style="background:#FFB300;color:#0A1428;font-size:10px" onclick="lmExtend('${esc(s.token)}')">+180 dni</button>
           <button class="btn btn-red" style="font-size:10px" onclick="lmDeleteShare('${esc(s.token)}')">Skasuj</button>
         </td>
@@ -1414,6 +1415,18 @@ async function lmDeleteShare(token) {
 }
 function lmCopy(url) {
   navigator.clipboard?.writeText(url).then(() => showMsg('Skopiowane', 'ok')).catch(() => {});
+}
+function lmShareWa(url) {
+  // Open WhatsApp with pre-filled message; admin picks the customer from contacts
+  // (we don't have customer_phone on orders today). Works in WhatsApp Web + native app.
+  const text = `Cześć! Twoje zdjęcia i filmy z lotu Extra 300L SP-EKS są gotowe — kliknij i pobieraj:\n\n${url}\n\nLink działa 180 dni. akrobacja.com`;
+  const phone = prompt('Numer telefonu odbiorcy (np. 48535535221) lub puste = wybierzesz kontakt w WhatsApp:', '');
+  if (phone === null) return;
+  const cleanPhone = (phone || '').replace(/[^\d]/g, '');
+  const waUrl = cleanPhone
+    ? `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`
+    : `https://wa.me/?text=${encodeURIComponent(text)}`;
+  window.open(waUrl, '_blank', 'noopener');
 }
 
 // ── LEADS ──
