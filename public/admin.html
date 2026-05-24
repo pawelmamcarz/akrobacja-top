@@ -107,6 +107,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="tabs">
     <div class="tab active" onclick="switchTab('orders')">Zamowienia</div>
+    <div class="tab" onclick="switchTab('finance')">Rozliczenia</div>
+    <div class="tab" onclick="switchTab('koszty')">Koszty</div>
     <div class="tab" onclick="switchTab('calendar')">Kalendarz</div>
     <div class="tab" onclick="switchTab('pilots')">Piloci</div>
     <div class="tab" onclick="switchTab('courses')">Kursy</div>
@@ -128,6 +130,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="panel active" id="panel-orders">
     <div class="toolbar">
       <input type="text" id="searchOrders" placeholder="Szukaj po kodzie, nazwisku..." oninput="filterOrders()">
+      <button class="btn btn-green" onclick="openCashOrderModal()">+ Nowy voucher (gotówka/przelew/free)</button>
       <div class="stats" id="orderStats"></div>
     </div>
     <div id="ordersTable"></div>
@@ -284,6 +287,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="stats" id="zdjStats"></div>
     </div>
     <div id="zdjGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:14px"></div>
+  </div>
+
+  <!-- FINANCE / P&L SUMMARY -->
+  <div class="panel" id="panel-finance">
+    <div class="toolbar">
+      <label>Od <input type="date" id="finFrom"></label>
+      <label>Do <input type="date" id="finTo"></label>
+      <button class="btn" onclick="finPreset('this_month')">Ten miesiąc</button>
+      <button class="btn" onclick="finPreset('last_month')">Poprzedni</button>
+      <button class="btn" onclick="finPreset('ytd')">Od początku roku</button>
+      <button class="btn" onclick="finPreset('12m')">Ostatnie 12 mies.</button>
+      <button class="btn btn-blue" onclick="loadFinance()">Wczytaj</button>
+      <button class="btn" onclick="finExportCsv()">Pobierz CSV</button>
+    </div>
+    <div id="finStats" style="margin-top:14px"></div>
+  </div>
+
+  <!-- KOSZTY (expenses from wFirma + manual) -->
+  <div class="panel" id="panel-koszty">
+    <div class="toolbar">
+      <label>Od <input type="date" id="kostFrom"></label>
+      <label>Do <input type="date" id="kostTo"></label>
+      <input type="text" id="kostContractor" placeholder="Filtr po kontrahencie..." style="padding:6px 10px;border:1px solid #ccc">
+      <button class="btn btn-blue" onclick="loadKoszty()">Wczytaj</button>
+      <button class="btn btn-green" onclick="kostRefresh()">↻ Pobierz z wFirmy</button>
+      <button class="btn" onclick="openModal('newKoszt')">+ Dodaj koszt ręcznie</button>
+      <div class="stats" id="kostStats"></div>
+    </div>
+    <div id="kostContent" style="margin-top:14px"></div>
   </div>
 
   <!-- LOT MEDIA (share photos+videos with passenger) -->
@@ -508,6 +540,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="btn btn-blue" onclick="createSub()">Dodaj</button>
   </div>
 
+  <!-- New manual expense -->
+  <div class="modal" id="modal-newKoszt" style="display:none">
+    <h3>Dodaj koszt ręcznie</h3>
+    <p style="font-size:12px;color:#666;margin-bottom:12px">Dla paragonów / wydatków bez faktury wFirma. Faktury z wFirmy ściągają się automatycznie raz dziennie + przyciskiem "↻ Pobierz z wFirmy".</p>
+    <div class="field"><label>Data wystawienia *</label><input id="nkDate" type="date"></div>
+    <div class="field"><label>Kontrahent *</label><input id="nkContractor" placeholder="np. Stacja paliw Orlen"></div>
+    <div class="field"><label>Numer faktury / paragonu (opcj.)</label><input id="nkNumber" placeholder="np. FV/123/2026"></div>
+    <div class="field"><label>NIP kontrahenta (opcj.)</label><input id="nkNip"></div>
+    <div class="field"><label>Kwota brutto (PLN) *</label><input id="nkGross" type="number" step="0.01" min="0"></div>
+    <div class="field"><label>VAT (PLN, opcj.)</label><input id="nkVat" type="number" step="0.01" min="0" placeholder="domyślnie 0"></div>
+    <div class="field"><label>Kategoria</label>
+      <select id="nkCategory">
+        <option value="">-- wybierz --</option>
+        <option value="paliwo">Paliwo</option>
+        <option value="mechanik">Mechanik</option>
+        <option value="hangar">Hangar</option>
+        <option value="ubezpieczenie">Ubezpieczenie</option>
+        <option value="czesci">Części zamienne</option>
+        <option value="oplaty_lotniskowe">Opłaty lotniskowe</option>
+        <option value="reklama">Reklama / marketing</option>
+        <option value="ksiegowosc">Księgowość</option>
+        <option value="inne">Inne</option>
+      </select>
+    </div>
+    <div class="field"><label>Opis (opcj.)</label><input id="nkDesc"></div>
+    <button class="btn btn-green" onclick="submitKoszt()" id="nkBtn">Dodaj</button>
+    <div id="nkStatus" style="margin-top:12px;font-size:12px"></div>
+  </div>
+
+  <!-- New Cash/Transfer/Free Order -->
+  <div class="modal" id="modal-newCashOrder" style="display:none">
+    <h3>Nowy voucher (gotówka / przelew / free)</h3>
+    <p style="font-size:12px;color:#666;margin-bottom:12px">Generuje PDF, wrzuca do R2, opcjonalnie wysyła mailem. Nie tworzy faktury wFirma — to oddzielnie.</p>
+    <div class="field"><label>Pakiet *</label>
+      <select id="ncoPackage" onchange="ncoAutofillAmount()">
+        <option value="">-- wybierz --</option>
+        <option value="pierwszy_lot">Pierwszy Lot (1 999 PLN)</option>
+        <option value="adrenalina">Adrenalina (2 999 PLN)</option>
+        <option value="para">Para (3 777 PLN)</option>
+        <option value="masterclass">Masterclass (4 999 PLN)</option>
+      </select>
+    </div>
+    <div class="field"><label>Imię i nazwisko klienta *</label><input id="ncoName" placeholder="np. Jan Kowalski"></div>
+    <div class="field"><label>Email (opcj., bez = bez wysłania)</label><input id="ncoEmail" type="email" placeholder="jan@example.com"></div>
+    <div class="field"><label>Telefon (opcj.)</label><input id="ncoPhone" placeholder="np. 535535221"></div>
+    <div class="field"><label>Kwota (PLN, edytowalna)</label><input id="ncoAmount" type="number" step="0.01" min="0" placeholder="1999"></div>
+    <div class="field"><label>Metoda płatności *</label>
+      <select id="ncoMethod" onchange="ncoMethodChange()">
+        <option value="cash">Gotówka</option>
+        <option value="transfer">Przelew (bez Stripe)</option>
+        <option value="free">Free (barter / pokazowy / 0 PLN)</option>
+      </select>
+    </div>
+    <div class="field"><label>Imię odbiorcy (jeśli prezent, opcj.)</label><input id="ncoRecipient" placeholder="np. Anna Kowalska"></div>
+    <div class="field"><label>Dedykacja (opcj.)</label><input id="ncoDedication" placeholder="Wszystkiego najlepszego!"></div>
+    <div class="field"><label><input type="checkbox" id="ncoSendEmail" checked> Wyślij PDF mailem do klienta</label></div>
+    <div class="field"><label><input type="checkbox" id="ncoVideoAddon"> Addon video 360° (+299 PLN, na fakturze gdyby była)</label></div>
+    <button class="btn btn-green" onclick="submitCashOrder()" id="ncoBtn">Utwórz voucher</button>
+    <div id="ncoStatus" style="margin-top:12px;font-size:12px"></div>
+  </div>
+
   <!-- New Lead -->
   <div class="modal" id="modal-newLead" style="display:none">
     <h3>Dodaj lead</h3>
@@ -696,6 +789,8 @@ function switchTab(name) {
   if (name === 'subs') loadSubs();
   if (name === 'waclicks') loadWaClicks();
   if (name === 'maile') loadEmailEvents();
+  if (name === 'finance') loadFinance();
+  if (name === 'koszty') loadKoszty();
   if (name === 'zdjecia') loadGallerySubs();
   if (name === 'lotmedia') { /* operator wpisuje voucher i klika */ }
   if (name === 'seo') loadSeoSnapshot();
@@ -800,6 +895,267 @@ async function zdjDelete(id) {
     if (res.error) { alert('Blad: ' + res.error); return; }
     loadGallerySubs();
   } catch (err) { alert('Blad: ' + (err.message || 'unknown')); }
+}
+
+// ── FINANCE / P&L SUMMARY ──
+let _finData = null;
+function finPreset(name) {
+  const now = new Date();
+  let from, to = now.toISOString().slice(0, 10);
+  if (name === 'this_month') {
+    from = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0, 10);
+  } else if (name === 'last_month') {
+    from = new Date(now.getFullYear(), now.getMonth() - 1, 1).toISOString().slice(0, 10);
+    to = new Date(now.getFullYear(), now.getMonth(), 0).toISOString().slice(0, 10);
+  } else if (name === 'ytd') {
+    from = new Date(now.getFullYear(), 0, 1).toISOString().slice(0, 10);
+  } else if (name === '12m') {
+    const d = new Date(now); d.setMonth(d.getMonth() - 11); d.setDate(1);
+    from = d.toISOString().slice(0, 10);
+  }
+  document.getElementById('finFrom').value = from;
+  document.getElementById('finTo').value = to;
+  loadFinance();
+}
+function fmtPln(grosze) {
+  if (!grosze) return '0';
+  return (grosze / 100).toLocaleString('pl-PL', { maximumFractionDigits: 0 });
+}
+async function loadFinance() {
+  const from = document.getElementById('finFrom').value;
+  const to = document.getElementById('finTo').value;
+  if (!from || !to) { finPreset('12m'); return; }
+  const stats = document.getElementById('finStats');
+  stats.innerHTML = '<p style="padding:20px;color:#888">Ladowanie...</p>';
+  try {
+    const res = await api('GET', `/api/admin/finance/summary?from=${from}&to=${to}`);
+    if (res.error) { stats.innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + esc(res.error) + '</p>'; return; }
+    _finData = res;
+    renderFinance(res);
+  } catch (err) {
+    stats.innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + esc(err.message || 'unknown') + '</p>';
+  }
+}
+function renderFinance(d) {
+  const t = d.totals;
+  const netClass = t.net >= 0 ? '#27ae60' : '#c00';
+  let html = `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px">
+    <div style="background:#f4f8ff;padding:18px;border-left:4px solid #1B4DB5">
+      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.1em">Przychód</div>
+      <div style="font-size:28px;font-weight:800;color:#1B4DB5;margin-top:6px">${fmtPln(t.income)} PLN</div>
+      <div style="font-size:11px;color:#888;margin-top:4px">${t.vouchers_sold} voucherów + merch + kursy</div>
+    </div>
+    <div style="background:#fff5f5;padding:18px;border-left:4px solid #c00">
+      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.1em">Koszty</div>
+      <div style="font-size:28px;font-weight:800;color:#c00;margin-top:6px">${fmtPln(t.expenses)} PLN</div>
+      <div style="font-size:11px;color:#888;margin-top:4px">faktury wFirma + ręczne</div>
+    </div>
+    <div style="background:${t.net >= 0 ? '#f0fbf4' : '#fff5f5'};padding:18px;border-left:4px solid ${netClass}">
+      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.1em">Netto</div>
+      <div style="font-size:32px;font-weight:900;color:${netClass};margin-top:6px">${fmtPln(t.net)} PLN</div>
+      <div style="font-size:11px;color:#888;margin-top:4px">${t.net >= 0 ? 'zysk' : 'strata'} w okresie</div>
+    </div>
+    <div style="background:#f7f9fc;padding:18px;border-left:4px solid #7A8FA6">
+      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.1em">Vouchery</div>
+      <div style="font-size:28px;font-weight:800;color:#0A1428;margin-top:6px">${t.vouchers_sold}</div>
+      <div style="font-size:11px;color:#888;margin-top:4px">sprzedanych · ${t.vouchers_redeemed} wykorzystanych</div>
+    </div>
+  </div>`;
+
+  // Monthly bar chart
+  if (d.periods && d.periods.length > 0) {
+    const maxVal = Math.max(...d.periods.map(p => Math.max(p.income.total, p.expenses.total)));
+    html += '<h3 style="font-size:13px;color:#1B4DB5;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 14px">Miesięcznie</h3>';
+    html += '<div style="display:flex;gap:8px;align-items:flex-end;height:240px;background:#fafbfc;padding:16px;border-radius:4px">';
+    d.periods.forEach(p => {
+      const incH = maxVal ? (p.income.total / maxVal) * 200 : 0;
+      const expH = maxVal ? (p.expenses.total / maxVal) * 200 : 0;
+      html += `<div style="flex:1;display:flex;flex-direction:column;align-items:center;min-width:30px" title="${esc(p.label)}: +${fmtPln(p.income.total)} / -${fmtPln(p.expenses.total)} / net ${fmtPln(p.net)}">
+        <div style="font-size:9px;color:${p.net >= 0 ? '#27ae60' : '#c00'};font-weight:600;margin-bottom:2px">${fmtPln(p.net)}</div>
+        <div style="display:flex;align-items:flex-end;gap:2px;height:200px">
+          <div style="width:14px;background:#1B4DB5;height:${incH}px" title="Przychód"></div>
+          <div style="width:14px;background:#c00;height:${expH}px" title="Koszty"></div>
+        </div>
+        <div style="font-size:10px;color:#666;margin-top:6px;writing-mode:vertical-rl;text-orientation:mixed">${esc(p.label)}</div>
+      </div>`;
+    });
+    html += '</div>';
+    html += '<div style="display:flex;gap:24px;font-size:11px;color:#666;margin-top:8px"><span><span style="display:inline-block;width:12px;height:12px;background:#1B4DB5;vertical-align:middle"></span> Przychód</span><span><span style="display:inline-block;width:12px;height:12px;background:#c00;vertical-align:middle"></span> Koszty</span></div>';
+  }
+
+  // Income by source
+  html += '<h3 style="font-size:13px;color:#1B4DB5;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 10px">Przychody wg źródła</h3>';
+  html += '<table><tr><th>Źródło</th><th>Brutto</th></tr>';
+  const incLabels = { stripe: 'Stripe (karta/p24/BLIK)', cash: 'Gotówka', transfer: 'Przelew (bez Stripe)', free: 'Free (vouchery 0 zł)', merch: 'Merch', courses: 'Kursy', refunded: 'Zwroty (refunded)' };
+  Object.entries(d.income_by_source || {}).forEach(([k, v]) => {
+    if (!v && k !== 'free') return;
+    html += `<tr><td>${esc(incLabels[k] || k)}</td><td class="amount">${fmtPln(v)} PLN</td></tr>`;
+  });
+  html += '</table>';
+
+  // Expenses by category
+  html += '<h3 style="font-size:13px;color:#c00;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 10px">Koszty wg kategorii</h3>';
+  html += '<table><tr><th>Kategoria</th><th>Brutto</th></tr>';
+  const cats = Object.entries(d.expenses_by_category || {}).sort((a, b) => b[1] - a[1]);
+  if (cats.length === 0) {
+    html += '<tr><td colspan="2" style="text-align:center;color:#888;padding:14px">Brak kosztów w tym okresie</td></tr>';
+  } else {
+    cats.forEach(([k, v]) => {
+      html += `<tr><td>${esc(k)}</td><td class="amount">${fmtPln(v)} PLN</td></tr>`;
+    });
+  }
+  html += '</table>';
+
+  document.getElementById('finStats').innerHTML = html;
+}
+function finExportCsv() {
+  if (!_finData) { alert('Najpierw wczytaj dane'); return; }
+  const rows = [['Miesiac', 'Vouchery Stripe (PLN)', 'Vouchery Gotówka', 'Vouchery Przelew', 'Merch', 'Kursy', 'Przychód razem', 'Koszty razem', 'Netto', 'Vouchery sprzedane', 'Vouchery wykorzystane']];
+  (_finData.periods || []).forEach(p => {
+    rows.push([
+      p.label,
+      (p.income.vouchers_stripe / 100).toFixed(2),
+      (p.income.vouchers_cash / 100).toFixed(2),
+      (p.income.vouchers_transfer / 100).toFixed(2),
+      (p.income.merch / 100).toFixed(2),
+      (p.income.courses / 100).toFixed(2),
+      (p.income.total / 100).toFixed(2),
+      (p.expenses.total / 100).toFixed(2),
+      (p.net / 100).toFixed(2),
+      String(p.counts.vouchers_sold),
+      String(p.counts.vouchers_redeemed),
+    ]);
+  });
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
+  const blob = new Blob([new TextEncoder().encode('﻿' + csv)], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `akrobacja-finance-${_finData.range.from}-${_finData.range.to}.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+// ── KOSZTY (expenses tab) ──
+async function loadKoszty() {
+  const from = document.getElementById('kostFrom').value;
+  const to = document.getElementById('kostTo').value;
+  const contractor = document.getElementById('kostContractor').value.trim();
+  const qs = new URLSearchParams();
+  if (from) qs.set('from', from);
+  if (to) qs.set('to', to);
+  if (contractor) qs.set('contractor', contractor);
+  const c = document.getElementById('kostContent');
+  c.innerHTML = '<p style="padding:20px;color:#888">Ladowanie...</p>';
+  try {
+    const res = await api('GET', '/api/admin/expenses' + (qs.toString() ? '?' + qs.toString() : ''));
+    if (res.error) { c.innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + esc(res.error) + '</p>'; return; }
+    renderKoszty(res);
+  } catch (err) {
+    c.innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + esc(err.message || 'unknown') + '</p>';
+  }
+}
+function renderKoszty(d) {
+  document.getElementById('kostStats').textContent =
+    `${d.count} kosztów | Suma: ${fmtPln(d.total_gross)} PLN`;
+  let html = '';
+  const cats = Object.entries(d.by_category || {}).sort((a, b) => b[1] - a[1]);
+  if (cats.length > 0) {
+    html += '<div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">';
+    cats.forEach(([k, v]) => {
+      html += `<div style="background:#fff5f5;border-left:3px solid #c00;padding:10px 14px;min-width:140px">
+        <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.08em">${esc(k)}</div>
+        <div style="font-size:18px;font-weight:700;color:#c00;margin-top:3px">${fmtPln(v)} PLN</div>
+      </div>`;
+    });
+    html += '</div>';
+  }
+  if (!d.expenses || d.expenses.length === 0) {
+    html += '<p style="padding:20px;color:#888">Brak kosztów. Wciśnij "↻ Pobierz z wFirmy" lub "+ Dodaj koszt ręcznie".</p>';
+  } else {
+    html += '<table><tr><th>Data</th><th>Numer</th><th>Kontrahent</th><th>Netto</th><th>VAT</th><th>Brutto</th><th>Kategoria</th><th>Źródło</th><th>Akcje</th></tr>';
+    d.expenses.forEach(r => {
+      const cat = r.manual_category || r.category || '';
+      const isWfirma = r.source === 'wfirma';
+      html += `<tr>
+        <td style="white-space:nowrap;font-size:11px">${esc(r.issue_date)}</td>
+        <td style="font-size:11px;color:#666">${esc(r.invoice_number || '—')}</td>
+        <td>${esc(r.contractor_name || '—')}${r.contractor_nip ? ` <span style="font-size:10px;color:#999">NIP ${esc(r.contractor_nip)}</span>` : ''}</td>
+        <td class="amount" style="font-size:11px">${fmtPln(r.net_amount)}</td>
+        <td class="amount" style="font-size:11px;color:#888">${fmtPln(r.vat_amount)}</td>
+        <td class="amount"><strong>${fmtPln(r.gross_amount)}</strong></td>
+        <td><input type="text" value="${esc(cat)}" onblur="kostUpdateCategory(${r.id}, this.value)" style="width:120px;padding:3px 6px;font-size:11px;border:1px solid #ccc" placeholder="kategoria"></td>
+        <td>${isWfirma ? '<span style="background:#1B4DB5;color:#fff;padding:2px 6px;font-size:9px">wFirma</span>' : '<span style="background:#FFB300;color:#0A1428;padding:2px 6px;font-size:9px">ręczne</span>'}</td>
+        <td>${!isWfirma ? `<button class="btn btn-red" style="font-size:10px" onclick="kostDelete(${r.id})">Usun</button>` : '<span style="color:#aaa;font-size:10px">re-sync z wFirma</span>'}</td>
+      </tr>`;
+    });
+    html += '</table>';
+  }
+  document.getElementById('kostContent').innerHTML = html;
+}
+async function kostRefresh() {
+  const btn = event.target;
+  btn.disabled = true;
+  btn.textContent = 'Pobieram...';
+  try {
+    const res = await api('POST', '/api/admin/expenses', { action: 'refresh' });
+    if (res.error) { alert('Blad: ' + res.error); return; }
+    showMsg(`wFirma sync: ${res.inserted} nowych, ${res.updated} zaktualizowanych`, 'ok');
+    loadKoszty();
+  } catch (err) { alert('Blad: ' + (err.message || 'unknown')); }
+  finally { btn.disabled = false; btn.textContent = '↻ Pobierz z wFirmy'; }
+}
+async function kostUpdateCategory(id, cat) {
+  await fetch('/api/admin/expenses', {
+    method: 'PATCH',
+    headers: { 'Authorization': 'Bearer ' + (localStorage.getItem('admin_token') || ''), 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id, manual_category: cat }),
+  });
+}
+async function kostDelete(id) {
+  if (!confirm('Usunac ten koszt?')) return;
+  const res = await fetch('/api/admin/expenses', {
+    method: 'DELETE',
+    headers: { 'Authorization': 'Bearer ' + (localStorage.getItem('admin_token') || ''), 'Content-Type': 'application/json' },
+    body: JSON.stringify({ id }),
+  });
+  if (!res.ok) { alert('Blad'); return; }
+  loadKoszty();
+}
+async function submitKoszt() {
+  const date = document.getElementById('nkDate').value;
+  const contractor = document.getElementById('nkContractor').value.trim();
+  const number = document.getElementById('nkNumber').value.trim();
+  const nip = document.getElementById('nkNip').value.trim();
+  const gross = parseFloat(document.getElementById('nkGross').value);
+  const vat = parseFloat(document.getElementById('nkVat').value) || 0;
+  const category = document.getElementById('nkCategory').value;
+  const desc = document.getElementById('nkDesc').value.trim();
+  const status = document.getElementById('nkStatus');
+  status.textContent = '';
+  if (!date) { status.innerHTML = '<span style="color:#c00">Data wymagana</span>'; return; }
+  if (!contractor) { status.innerHTML = '<span style="color:#c00">Kontrahent wymagany</span>'; return; }
+  if (!Number.isFinite(gross) || gross <= 0) { status.innerHTML = '<span style="color:#c00">Kwota brutto > 0</span>'; return; }
+  const btn = document.getElementById('nkBtn');
+  btn.disabled = true; btn.textContent = 'Dodaję...';
+  try {
+    const res = await api('POST', '/api/admin/expenses', {
+      issue_date: date,
+      contractor_name: contractor,
+      invoice_number: number || undefined,
+      contractor_nip: nip || undefined,
+      gross_amount: gross,
+      vat_amount: vat,
+      category: category || undefined,
+      description: desc || undefined,
+    });
+    if (res.error) { status.innerHTML = '<span style="color:#c00">Blad: ' + esc(res.error) + '</span>'; return; }
+    status.innerHTML = '<span style="color:#27ae60">Dodano koszt #' + res.id + '</span>';
+    setTimeout(() => closeModal('newKoszt'), 800);
+    loadKoszty();
+  } catch (err) {
+    status.innerHTML = '<span style="color:#c00">Blad: ' + esc(err.message || 'unknown') + '</span>';
+  } finally {
+    btn.disabled = false; btn.textContent = 'Dodaj';
+  }
 }
 
 // ── LOT MEDIA (share photos+videos with passenger) ──
@@ -1328,7 +1684,7 @@ function renderOrders(orders) {
       <td>${esc(o.customer_name)}</td>
       <td>${esc(o.customer_email)}</td>
       <td class="amount">${(o.amount/100).toLocaleString('pl-PL')} PLN</td>
-      <td><span class="badge badge-${getOrderStatus(o).cls}">${getOrderStatus(o).label}</span></td>
+      <td><span class="badge badge-${getOrderStatus(o).cls}">${getOrderStatus(o).label}</span>${o.payment_method && o.payment_method !== 'stripe' ? ` <span class="badge" style="background:#7B2FBE;color:#fff;font-size:9px">${o.payment_method.toUpperCase()}</span>` : ''}</td>
       <td>${fmtDate(o.paid_at||o.created_at)}</td>
       <td>${o.invoice_id ? '#'+o.invoice_id : '-'}</td>
       <td class="actions">
@@ -1357,6 +1713,79 @@ async function recover(code) {
   if (!confirm(`Wyslac maila z kodem WRACAM5 (-5%) dla ${code}? Mozna wykorzystac wielokrotnie.`)) return;
   const res = await api('POST', '/api/admin/recover', { voucher_code: code });
   if (res.ok) { showMsg(`Recovery wyslane do ${res.sent_to}`,'ok'); tryLoad(); } else showMsg(res.error || 'Blad','err');
+}
+
+// ── NEW CASH/TRANSFER/FREE VOUCHER ──
+const _ncoPrices = { pierwszy_lot: 1999, adrenalina: 2999, para: 3777, masterclass: 4999 };
+function openCashOrderModal() {
+  ['ncoPackage','ncoName','ncoEmail','ncoPhone','ncoAmount','ncoRecipient','ncoDedication'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  document.getElementById('ncoMethod').value = 'cash';
+  document.getElementById('ncoSendEmail').checked = true;
+  document.getElementById('ncoVideoAddon').checked = false;
+  document.getElementById('ncoStatus').textContent = '';
+  openModal('newCashOrder');
+}
+function ncoAutofillAmount() {
+  const pkg = document.getElementById('ncoPackage').value;
+  const method = document.getElementById('ncoMethod').value;
+  if (method === 'free') { document.getElementById('ncoAmount').value = '0'; return; }
+  if (pkg && _ncoPrices[pkg]) document.getElementById('ncoAmount').value = _ncoPrices[pkg];
+}
+function ncoMethodChange() {
+  const method = document.getElementById('ncoMethod').value;
+  const amt = document.getElementById('ncoAmount');
+  if (method === 'free') { amt.value = '0'; amt.disabled = true; }
+  else { amt.disabled = false; if (!amt.value) ncoAutofillAmount(); }
+}
+async function submitCashOrder() {
+  const pkg = document.getElementById('ncoPackage').value;
+  const name = document.getElementById('ncoName').value.trim();
+  const email = document.getElementById('ncoEmail').value.trim();
+  const phone = document.getElementById('ncoPhone').value.trim();
+  const amountPln = parseFloat(document.getElementById('ncoAmount').value);
+  const method = document.getElementById('ncoMethod').value;
+  const sendEmail = document.getElementById('ncoSendEmail').checked;
+  const videoAddon = document.getElementById('ncoVideoAddon').checked;
+  const recipient = document.getElementById('ncoRecipient').value.trim();
+  const dedication = document.getElementById('ncoDedication').value.trim();
+  const status = document.getElementById('ncoStatus');
+  status.textContent = '';
+
+  if (!pkg) { status.innerHTML = '<span style="color:#c00">Wybierz pakiet</span>'; return; }
+  if (!name) { status.innerHTML = '<span style="color:#c00">Imię i nazwisko wymagane</span>'; return; }
+  if (!method) { status.innerHTML = '<span style="color:#c00">Wybierz metodę</span>'; return; }
+
+  const btn = document.getElementById('ncoBtn');
+  btn.disabled = true;
+  btn.textContent = 'Tworzę...';
+  try {
+    const res = await api('POST', '/api/admin/orders', {
+      package_id: pkg,
+      customer_name: name,
+      customer_email: email || undefined,
+      customer_phone: phone || undefined,
+      amount: Number.isFinite(amountPln) ? Math.round(amountPln * 100) : undefined,
+      payment_method: method,
+      video_addon: videoAddon,
+      send_email: sendEmail,
+      recipient_name: recipient || undefined,
+      dedication: dedication || undefined,
+    });
+    if (res.error) {
+      status.innerHTML = '<span style="color:#c00">Blad: ' + esc(res.error) + '</span>';
+      btn.disabled = false; btn.textContent = 'Utwórz voucher';
+      return;
+    }
+    status.innerHTML = `<span style="color:#27ae60"><strong>OK!</strong> Voucher: <code>${esc(res.voucher_code)}</code> · <a href="${esc(res.pdf_url)}" target="_blank">Pobierz PDF</a> · ${res.email_sent ? 'Mail wysłany' : 'Bez maila'}</span>`;
+    btn.textContent = 'Utwórz kolejny';
+    btn.disabled = false;
+    tryLoad();
+  } catch (err) {
+    status.innerHTML = '<span style="color:#c00">Blad: ' + esc(err.message || 'unknown') + '</span>';
+    btn.disabled = false; btn.textContent = 'Utwórz voucher';
+  }
 }
 
 // ── CALENDAR ──

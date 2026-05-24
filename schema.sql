@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS orders (
   send_at TEXT,
   email_sent_at TEXT,
   refund_received_at TEXT,
-  addons TEXT
+  addons TEXT,
+  payment_method TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_orders_voucher_code ON orders(voucher_code);
@@ -35,6 +36,7 @@ CREATE INDEX IF NOT EXISTS idx_orders_stripe_session ON orders(stripe_session_id
 CREATE INDEX IF NOT EXISTS idx_orders_redeemed ON orders(redeemed_at);
 CREATE INDEX IF NOT EXISTS idx_orders_abandon ON orders(status, abandon_email_sent_at, created_at);
 CREATE INDEX IF NOT EXISTS idx_orders_send_at ON orders(status, send_at, email_sent_at);
+CREATE INDEX IF NOT EXISTS idx_orders_payment_method ON orders(payment_method);
 
 -- Merch products
 CREATE TABLE IF NOT EXISTS products (
@@ -514,3 +516,28 @@ CREATE TABLE IF NOT EXISTS flight_shares (
 );
 CREATE INDEX IF NOT EXISTS idx_flight_shares_voucher ON flight_shares(voucher_code, created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_flight_shares_expires ON flight_shares(expires_at);
+
+-- Operating costs ledger. source = 'wfirma' (pulled daily from wFirma /expenses)
+-- or 'manual' (admin-added paragon / cost without invoice). All amounts in grosze.
+CREATE TABLE IF NOT EXISTS expenses (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  source TEXT NOT NULL,
+  wfirma_id TEXT UNIQUE,
+  invoice_number TEXT,
+  contractor_name TEXT,
+  contractor_nip TEXT,
+  net_amount INTEGER NOT NULL,
+  vat_amount INTEGER NOT NULL DEFAULT 0,
+  gross_amount INTEGER NOT NULL,
+  currency TEXT NOT NULL DEFAULT 'PLN',
+  category TEXT,
+  manual_category TEXT,
+  issue_date TEXT NOT NULL,
+  description TEXT,
+  created_at INTEGER NOT NULL,
+  added_by TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_expenses_issue_date ON expenses(issue_date DESC);
+CREATE INDEX IF NOT EXISTS idx_expenses_contractor ON expenses(contractor_name);
+CREATE INDEX IF NOT EXISTS idx_expenses_category ON expenses(category);
+CREATE INDEX IF NOT EXISTS idx_expenses_source ON expenses(source);
