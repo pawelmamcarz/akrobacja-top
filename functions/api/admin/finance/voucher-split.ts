@@ -78,6 +78,8 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     return Response.json({ error: 'Format: YYYY-MM' }, { status: 400 });
   }
 
+  // Pomijamy: testowe naklejki, vouchery free/barter (klient nic nie zaplacil),
+  // wewnetrzne TEST za 0 zl. Te nie generuja rozliczenia miedzy Pawlem a Maciejem.
   const orders = await ctx.env.DB.prepare(`
     SELECT id, voucher_code, package_id, amount, paid_at, customer_name, recipient_name, addons, payment_method, status
     FROM orders
@@ -85,6 +87,8 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
       AND paid_at IS NOT NULL
       AND strftime('%Y-%m', paid_at) = ?
       AND package_id != 'test_naklejka'
+      AND amount > 0
+      AND COALESCE(payment_method, 'stripe') != 'free'
     ORDER BY paid_at
   `).bind(month).all<OrderRow>();
 
@@ -101,7 +105,9 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     const costAircraft = minutes * AIRCRAFT_RATE_PER_MIN_GR;
     const costFuel = FUEL_PER_FLIGHT_GR * flights;
     const costTotal = costAircraft + costFuel + hangarShare + marketingShare;
-    const margin = Math.max(0, o.amount - costTotal);
+    // Marza moze byc ujemna (voucher promocyjny ze znizka ponizej kosztow):
+    // wtedy obaj dziela strate po polowie zeby suma pawel+maciej = cena vouchera.
+    const margin = o.amount - costTotal;
     const marginHalf = Math.round(margin / 2);
     return {
       voucher_code: o.voucher_code,
