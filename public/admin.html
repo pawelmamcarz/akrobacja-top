@@ -1115,14 +1115,19 @@ async function loadVoucherSplit() {
   const hKey = `split_hangar_${month}`;
   const mInput = document.getElementById('splitMarketing');
   const hInput = document.getElementById('splitHangar');
-  // Wczytaj zapisana wartosc dla tego miesiaca (jesli istnieje)
-  const savedM = localStorage.getItem(mKey);
-  const savedH = localStorage.getItem(hKey);
-  if (savedM !== null && mInput.dataset.lastMonth !== month) mInput.value = savedM;
-  if (savedH !== null && hInput.dataset.lastMonth !== month) hInput.value = savedH;
+  // Przy zmianie miesiaca: jesli LS ma wartosc - wez ja, jak nie - default.
+  // Bez tego input "zostaje" z poprzedniego miesiaca i zapisuje sie pod nowym kluczem.
+  if (mInput.dataset.lastMonth !== month) {
+    const savedM = localStorage.getItem(mKey);
+    mInput.value = savedM !== null ? savedM : '2000';
+  }
+  if (hInput.dataset.lastMonth !== month) {
+    const savedH = localStorage.getItem(hKey);
+    hInput.value = savedH !== null ? savedH : '1000';
+  }
   mInput.dataset.lastMonth = month;
   hInput.dataset.lastMonth = month;
-  // Zapisz biezaca wartosc
+  // Zapisz biezaca wartosc (override defaultu tylko jesli user zmienil)
   localStorage.setItem(mKey, mInput.value);
   localStorage.setItem(hKey, hInput.value);
 
