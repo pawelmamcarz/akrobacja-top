@@ -209,6 +209,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="section-title">Twoje rezerwacje</div>
     <div id="bookingsTable"></div>
 
+    <!-- My Calendar (instruktorzy / piloci z calendar_token) -->
+    <div id="calendarSection" style="display:none">
+      <div class="section-title">Mój kalendarz</div>
+      <div id="icsBox"></div>
+      <h4 style="font-size:13px;color:var(--navy);margin:16px 0 8px">Nadchodzące loty / eventy</h4>
+      <div id="myEventsTable"></div>
+    </div>
+
     <!-- Courses -->
     <div class="section-title">Kursy akrobacji</div>
     <div id="coursesTable"></div>
@@ -317,10 +325,60 @@ async function loadDashboard() {
 
     loadInsurance(p.insurance_status);
     loadBookings();
+    loadMyCalendar(res.calendar_ics_url);
   } catch (e) {
     logout();
   }
 }
+
+async function loadMyCalendar(icsUrl) {
+  const section = document.getElementById('calendarSection');
+  const box = document.getElementById('icsBox');
+  if (!icsUrl) {
+    // Pokaz sekcje tylko jesli pilot dostal token; w przeciwnym razie ukrywamy.
+    section.style.display = 'none';
+    return;
+  }
+  section.style.display = 'block';
+  box.innerHTML = `<div style="padding:14px;background:#f1f8ff;border:1px solid #1B4DB5;border-radius:6px;font-size:13px;line-height:1.5">
+    <strong>Subskrybuj swój kalendarz w GCal/Apple/Outlook:</strong>
+    <div style="display:flex;gap:8px;margin:10px 0">
+      <input value="${icsUrl}" readonly style="flex:1;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:11px" onclick="this.select()">
+      <button onclick="navigator.clipboard.writeText('${icsUrl}').then(()=>this.textContent='Skopiowano')" style="padding:8px 14px;background:#1B4DB5;color:#fff;border:none;border-radius:4px;font-size:12px;cursor:pointer">Kopiuj</button>
+    </div>
+    <details style="margin-top:6px"><summary style="cursor:pointer;color:#1B4DB5">Jak dodać do kalendarza?</summary>
+      <ul style="margin:8px 0 0 16px;font-size:12px;color:#555">
+        <li><strong>Google Calendar</strong>: calendar.google.com → Inne kalendarze (+) → Z URL → wklej.</li>
+        <li><strong>Apple Calendar (Mac)</strong>: Plik → Nowa subskrypcja kalendarza → wklej URL.</li>
+        <li><strong>iPhone</strong>: Ustawienia → Kalendarz → Konta → Dodaj konto → Inne → Dodaj subskrybowany kalendarz.</li>
+      </ul>
+    </details>
+  </div>`;
+  loadMyEvents();
+}
+
+async function loadMyEvents() {
+  const res = await api('GET', '/api/auth/my-events');
+  const wrap = document.getElementById('myEventsTable');
+  const events = res.events || [];
+  if (!events.length) {
+    wrap.innerHTML = '<p style="padding:12px;color:#888;font-size:13px">Brak nadchodzących eventów.</p>';
+    return;
+  }
+  wrap.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:13px">
+    <tr style="background:#f6f8fa"><th style="text-align:left;padding:8px">Kiedy</th><th style="text-align:left;padding:8px">Typ</th><th style="text-align:left;padding:8px">Samolot</th><th style="text-align:left;padding:8px">Opis</th></tr>
+    ${events.map(e => `<tr style="border-bottom:1px solid #eee">
+      <td style="padding:8px">${fmtPL(e.start_at)}<br><small style="color:#888">do ${fmtPL(e.end_at)}</small></td>
+      <td style="padding:8px">${evLabel(e.type)}</td>
+      <td style="padding:8px">${e.aircraft_tail||'-'}</td>
+      <td style="padding:8px">${escHtml(e.title||'')}${e.notes?'<br><small style="color:#666">'+escHtml(e.notes).slice(0,120)+'</small>':''}</td>
+    </tr>`).join('')}
+  </table>`;
+}
+
+function evLabel(t) { return {flight:'Lot',training:'Szkolenie',maintenance:'Maint.',show:'Pokaz',other:'Inne'}[t]||t; }
+function fmtPL(iso) { if (!iso) return '-'; return new Date(iso).toLocaleString('pl-PL', { timeZone:'Europe/Warsaw', dateStyle:'short', timeStyle:'short' }); }
+function escHtml(s) { const d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
 
 function loadInsurance(status) {
   const el = document.getElementById('insuranceSection');

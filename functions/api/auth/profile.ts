@@ -6,7 +6,11 @@ import { isValidEmail } from '../../../src/lib/validate';
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const pilot = await getPilotFromToken(ctx.request, ctx.env.DB);
   if (!pilot) return Response.json({ error: 'Nie zalogowany' }, { status: 401 });
-  return Response.json({ pilot });
+  const siteUrl = (ctx.env.SITE_URL || 'https://akrobacja.com').replace(/\/$/, '');
+  const calendar_ics_url = pilot.calendar_token
+    ? `${siteUrl}/api/calendar/feed.ics?token=${pilot.calendar_token}`
+    : null;
+  return Response.json({ pilot, calendar_ics_url });
 };
 
 // POST /api/auth/profile — update profile

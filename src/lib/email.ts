@@ -107,7 +107,7 @@ function buildHtml(p: EmailParams): string {
       <hr style="border:none;border-top:1px solid #eee;margin:32px 0">
       <p style="color:#6B7A90;font-size:13px;line-height:1.6;margin:0 0 32px">
         <strong>Jak umówić lot?</strong><br>
-        Zadzwoń pod <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a> lub napisz na <a href="mailto:info@akrobacja.com" style="color:#0A2F7C">info@akrobacja.com</a> podając kod vouchera.
+        Zadzwoń pod <a href="tel:+48739158131" style="color:#0A2F7C">+48 739 158 131</a> lub napisz na <a href="mailto:maciej@akrobacja.com" style="color:#0A2F7C">maciej@akrobacja.com</a> podając kod vouchera.
       </p>
 
       <div style="background:linear-gradient(135deg,#fff5e6 0%,#ffe8b8 100%);border-left:4px solid #f59e0b;padding:18px 22px;border-radius:6px;margin-bottom:8px">
@@ -132,4 +132,55 @@ function uint8ToBase64(bytes: Uint8Array): string {
     binary += String.fromCharCode(bytes[i]);
   }
   return btoa(binary);
+}
+
+function stringToBase64(s: string): string {
+  // UTF-8 safe base64 encoding for ICS / text payloads.
+  const bytes = new TextEncoder().encode(s);
+  return uint8ToBase64(bytes);
+}
+
+export interface EventEmailParams {
+  to: string | string[];
+  subject: string;
+  html: string;
+  icsContent: string;
+  filename?: string;
+  fromAddress?: string;
+  replyTo?: string;
+  bcc?: string[];
+  tagType?: string;
+}
+
+export async function sendEventEmailWithICS(env: Env, params: EventEmailParams): Promise<void> {
+  const recipients = Array.isArray(params.to) ? params.to : [params.to];
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+    },
+    body: JSON.stringify({
+      from: params.fromAddress ?? 'akrobacja.com <kalendarz@akrobacja.com>',
+      to: recipients,
+      bcc: params.bcc,
+      reply_to: params.replyTo ?? 'maciej@akrobacja.com',
+      subject: params.subject,
+      html: params.html,
+      tags: [{ name: 'type', value: params.tagType ?? 'calendar_event' }],
+      attachments: [
+        {
+          filename: params.filename ?? 'event.ics',
+          content: stringToBase64(params.icsContent),
+          content_type: 'text/calendar; charset=utf-8; method=REQUEST',
+        },
+      ],
+    }),
+    signal: AbortSignal.timeout(10000),
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Resend ICS error ${res.status}: ${text}`);
+  }
 }

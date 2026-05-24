@@ -64,6 +64,13 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       await ctx.env.DB.prepare(
         "UPDATE slots SET status = 'booked' WHERE booking_id = ?"
       ).bind(body.booking_id).run();
+
+      // Auto-event w kalendarzu Macieja (zeby ICS feed mial komplet lotow).
+      // Best-effort: blad nie przerywa approve.
+      await createBookingCalendarEvent(ctx.env, body.booking_id).catch((err) => {
+        console.error('createBookingCalendarEvent failed', err);
+      });
+
       return Response.json({ ok: true, message: 'Rezerwacja zatwierdzona' });
     }
 
@@ -102,3 +109,84 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ error: 'Nieznana akcja' }, { status: 400 });
   }
 };
+
+// Konwertuje "YYYY-MM-DD" + "HH:MM" w czasie Europe/Warsaw na ISO UTC.
+// Wykorzystuje Intl do wykrycia aktualnego offsetu (CET +1 zima / CEST +2 lato).
+function warsawWallToUTC(dateStr: string, timeStr: string): string {
+  const sample = new Date(`${dateStr}T12:00:00Z`);
+  const hourStr = sample.toLocaleString('en-US', {
+    timeZone: 'Europe/Warsaw',
+    hour: '2-digit',
+    hour12: false,
+  });
+  const wsHour = parseInt(hourStr, 10);
+  const offsetHours = wsHour - 12;        // 1 zima, 2 lato
+  const utc = new Date(`${dateStr}T${timeStr}:00Z`);
+  utc.setUTCHours(utc.getUTCHours() - offsetHours);
+  return utc.toISOString();
+}
+
+const MACIEJ_PILOT_ID = 'pilot-maciej';
+const SPEKS_AIRCRAFT_ID = 'speks-001';
+
+async function createBookingCalendarEvent(env: Env, bookingId: string): Promise<void> {
+  const row = await env.DB.prepare(
+    `SELECT b.id, b.type, b.customer_name, b.customer_email, b.customer_phone,
+            b.voucher_code, b.package_id, b.notes,
+            s.date, s.start_time, s.end_time
+     FROM bookings b
+     JOIN slots s ON s.booking_id = b.id
+     WHERE b.id = ?`
+  ).bind(bookingId).first<{
+    id: string;
+    type: string;
+    customer_name: string;
+    customer_email: string;
+    customer_phone: string | null;
+    voucher_code: string | null;
+    package_id: string | null;
+    notes: string | null;
+    date: string;
+    start_time: string;
+    end_time: string;
+  }>();
+  if (!row) return;
+
+  const startAt = warsawWallToUTC(row.date, row.start_time);
+  const endAt = warsawWallToUTC(row.date, row.end_time);
+
+  const typeLabel: Record<string, string> = {
+    voucher: 'Lot voucherowy',
+    proficiency: 'Proficiency check',
+    training: 'Szkolenie',
+    course: 'Kurs FCL.800',
+  };
+  const baseLabel = typeLabel[row.type] || row.type;
+  const titleParts = [baseLabel];
+  if (row.voucher_code) titleParts.push(row.voucher_code);
+  if (row.customer_name) titleParts.push(row.customer_name);
+  const title = titleParts.join(' · ');
+
+  const notesParts: string[] = [];
+  notesParts.push(`Klient: ${row.customer_name}`);
+  if (row.customer_phone) notesParts.push(`Tel: ${row.customer_phone}`);
+  notesParts.push(`Email: ${row.customer_email}`);
+  if (row.package_id) notesParts.push(`Pakiet: ${row.package_id}`);
+  if (row.notes) notesParts.push(`Uwagi: ${row.notes}`);
+  const notes = notesParts.join('\n');
+
+  const id = crypto.randomUUID();
+  await env.DB.prepare(
+    `INSERT INTO calendar_events (id, pilot_id, aircraft_id, type, title, notes, start_at, end_at, status, source, booking_id, created_by)
+     VALUES (?, ?, ?, 'flight', ?, ?, ?, ?, 'confirmed', 'booking', ?, 'system')`
+  ).bind(
+    id,
+    MACIEJ_PILOT_ID,
+    SPEKS_AIRCRAFT_ID,
+    title,
+    notes,
+    startAt,
+    endAt,
+    bookingId,
+  ).run();
+}

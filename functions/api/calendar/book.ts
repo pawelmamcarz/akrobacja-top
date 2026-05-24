@@ -179,8 +179,8 @@ async function sendBookingEmails(env: Env, o: {
           ${o.voucherCode ? `<tr><td style="padding:8px 0;color:#6B7A90">Voucher</td><td style="padding:8px 0;font-weight:600;font-family:monospace;text-align:right">${escapeHtml(o.voucherCode)}</td></tr>` : ''}
         </table>
         <p style="color:#6B7A90;font-size:13px;margin-top:24px">
-          Pytania? Zadzwoń: <a href="tel:+48535535221" style="color:#0A2F7C">+48 535 535 221</a>
-          lub napisz: <a href="mailto:info@akrobacja.com" style="color:#0A2F7C">info@akrobacja.com</a>
+          Pytania? Zadzwoń: <a href="tel:+48739158131" style="color:#0A2F7C">+48 739 158 131</a>
+          lub napisz: <a href="mailto:maciej@akrobacja.com" style="color:#0A2F7C">maciej@akrobacja.com</a>
         </p>
       </div>
     </div>`;

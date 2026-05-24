@@ -151,6 +151,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <input type="date" id="calTo" onchange="loadCalendar()">
       <div class="stats" id="calStats"></div>
     </div>
+
+    <h3 style="margin:8px 0;font-size:13px;color:#1B4DB5">Eventy pilotów (loty, szkolenia, maintenance)</h3>
+    <div class="toolbar" style="margin-bottom:8px;flex-wrap:wrap;gap:6px">
+      <button class="btn btn-blue" onclick="openModal('newCalendarEvent')">+ Dodaj event</button>
+      <select id="evfPilot" onchange="renderEvents()"><option value="">Wszyscy piloci</option></select>
+      <select id="evfAircraft" onchange="renderEvents()"><option value="">Wszystkie samoloty</option></select>
+      <select id="evfType" onchange="renderEvents()">
+        <option value="">Wszystkie typy</option>
+        <option value="flight">Lot</option>
+        <option value="training">Szkolenie</option>
+        <option value="maintenance">Maintenance</option>
+        <option value="show">Pokaz</option>
+        <option value="other">Inne</option>
+      </select>
+      <label style="display:flex;align-items:center;gap:4px;font-size:11px"><input type="checkbox" id="evfAvailable" onchange="loadAvailable()"> Pokaz dostepne samoloty</label>
+    </div>
+    <div id="eventsTable"></div>
+    <div id="availableAircraft"></div>
+
+    <h3 style="margin:16px 0 8px;font-size:13px;color:#C41E3A">Rezerwacje klientów</h3>
     <div id="pendingBookings"></div>
     <h3 style="margin:16px 0 8px;font-size:13px;color:#1B4DB5">Wszystkie sloty</h3>
     <div id="calTable"></div>
@@ -160,6 +180,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="panel" id="panel-pilots">
     <div class="toolbar">
       <button class="btn btn-blue" onclick="openModal('newPilot')">+ Dodaj pilota</button>
+      <button class="btn btn-green" onclick="openModal('newAdminUser')">+ Dodaj admin login</button>
       <input type="text" id="searchPilots" placeholder="Szukaj pilota..." oninput="filterPilots()">
       <div class="stats" id="pilotStats"></div>
     </div>
@@ -310,6 +331,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="btn" onclick="finExportCsv()">Pobierz CSV</button>
     </div>
     <div id="finStats" style="margin-top:14px"></div>
+
+    <h3 style="margin:24px 0 8px;font-size:13px;color:#1B4DB5">Split kasy Paweł / Maciej (per voucher)</h3>
+    <div class="toolbar" style="margin-bottom:8px">
+      <label>Miesiąc <input type="month" id="splitMonth"></label>
+      <button class="btn btn-blue" onclick="loadVoucherSplit()">Wczytaj</button>
+      <div class="stats" id="splitStats" style="font-size:11px;color:#666"></div>
+    </div>
+    <div id="voucherSplitTable"></div>
   </div>
 
   <!-- KOSZTY (expenses from wFirma + manual) -->
@@ -710,12 +739,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p style="font-size:11px;color:#888;margin-bottom:12px">SMS zostanie wyslany do <strong id="blastCount">0</strong> subskrybentow</p>
     <button class="btn btn-red" onclick="sendBlast()">Wyslij SMS</button>
   </div>
+
+  <!-- New Calendar Event -->
+  <div class="modal" id="modal-newCalendarEvent" style="display:none">
+    <h3>Dodaj event w kalendarzu</h3>
+    <div class="field"><label>Pilot *</label><select id="evPilotId"></select></div>
+    <div class="field"><label>Samolot</label><select id="evAircraftId"><option value="">— (bez samolotu)</option></select></div>
+    <div class="field"><label>Typ *</label>
+      <select id="evType">
+        <option value="flight">Lot</option>
+        <option value="training">Szkolenie</option>
+        <option value="maintenance">Maintenance</option>
+        <option value="show">Pokaz</option>
+        <option value="other">Inne</option>
+      </select>
+    </div>
+    <div class="field"><label>Tytul (opcjonalny)</label><input id="evTitle" placeholder="np. Treningi przed MŚ"></div>
+    <div class="field"><label>Start (Warsaw) *</label><input type="datetime-local" id="evStart"></div>
+    <div class="field"><label>Koniec (Warsaw) *</label><input type="datetime-local" id="evEnd"></div>
+    <div class="field"><label>Notatki</label><textarea id="evNotes" style="height:60px"></textarea></div>
+    <label style="display:flex;gap:6px;align-items:center;font-size:12px;margin-bottom:12px">
+      <input type="checkbox" id="evNotify" checked> Wyslij .ics mailem do pilota
+    </label>
+    <button class="btn btn-blue" onclick="createCalendarEvent()">Utwórz event</button>
+  </div>
+
+  <!-- New Admin User -->
+  <div class="modal" id="modal-newAdminUser" style="display:none">
+    <h3>Dodaj uzytkownika admin</h3>
+    <p style="font-size:11px;color:#888;margin-bottom:12px">System wygeneruje losowe haslo i pokaze je JEDNORAZOWO — skopiuj i wyslij Signalem/WA.</p>
+    <div class="field"><label>Email *</label><input id="auEmail" type="email" placeholder="np. maciej@akrobacja.com"></div>
+    <div class="field"><label>Imie i nazwisko *</label><input id="auName" placeholder="np. Maciej Kulaszewski"></div>
+    <button class="btn btn-blue" onclick="createAdminUser()">Utwórz konto</button>
+    <div id="auResult" style="display:none;margin-top:16px;padding:12px;background:#f1f8ff;border:1px solid #1B4DB5;border-radius:4px"></div>
+  </div>
 </div>
 
 <script>
 let TOKEN = localStorage.getItem('admin_token') || '';
 let USER = null;
-let allOrders = [], allPilots = [], allCourses = [];
+let allOrders = [], allPilots = [], allCourses = [], allEvents = [], allAircrafts = [];
 
 if (TOKEN) tryLoad();
 
@@ -1035,6 +1098,69 @@ async function loadFinance() {
   } catch (err) {
     stats.innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + esc(err.message || 'unknown') + '</p>';
   }
+
+  if (!document.getElementById('splitMonth').value) {
+    document.getElementById('splitMonth').value = new Date().toISOString().slice(0,7);
+  }
+  loadVoucherSplit();
+}
+
+async function loadVoucherSplit() {
+  const month = document.getElementById('splitMonth').value || new Date().toISOString().slice(0,7);
+  const wrap = document.getElementById('voucherSplitTable');
+  wrap.innerHTML = '<p style="padding:12px;color:#888">Ladowanie...</p>';
+  const res = await api('GET', `/api/admin/finance/voucher-split?month=${month}`);
+  if (res.error) { wrap.innerHTML = '<p style="padding:12px;color:#c00">Blad: ' + esc(res.error) + '</p>'; return; }
+
+  const t = res.totals; const c = res.counts;
+  document.getElementById('splitStats').textContent = `${c.vouchers_sold} voucherow | hangar/voucher: ${fmtPln(c.hangar_share_gr)} PLN | marketing/voucher: ${fmtPln(c.marketing_share_gr)} PLN`;
+
+  if (!res.splits.length) { wrap.innerHTML = '<p style="padding:12px;color:#888">Brak voucherow w tym miesiacu</p>'; return; }
+
+  const rows = res.splits.map(s => `<tr>
+    <td class="code">${esc(s.voucher_code)}</td>
+    <td>${esc(s.customer||'-')}</td>
+    <td>${esc(s.package_name)}<br><small style="color:#888">${s.flight_minutes} min</small></td>
+    <td class="amount">${fmtPln(s.price_gr)}</td>
+    <td class="amount" style="color:#666">${fmtPln(s.cost_instructor_gr)}</td>
+    <td class="amount" style="color:#666">${fmtPln(s.cost_fuel_gr)}</td>
+    <td class="amount" style="color:#666">${fmtPln(s.cost_hangar_share_gr)}</td>
+    <td class="amount" style="color:#666">${fmtPln(s.cost_marketing_share_gr)}</td>
+    <td class="amount" style="font-weight:700;color:${s.margin_gr>=0?'#28a745':'#c00'}">${fmtPln(s.margin_gr)}</td>
+    <td class="amount" style="color:#1B4DB5;font-weight:600">${fmtPln(s.pawel_total_gr)}</td>
+    <td class="amount" style="color:#C41E3A;font-weight:600">${fmtPln(s.maciej_total_gr)}</td>
+  </tr>`).join('');
+
+  wrap.innerHTML = `<table style="font-size:12px">
+    <thead>
+      <tr style="background:#f4f8ff">
+        <th>Voucher</th><th>Klient</th><th>Pakiet</th>
+        <th class="amount">Cena</th>
+        <th class="amount" title="30 zl/min × czas">Instr.</th>
+        <th class="amount" title="200 zl/lot">Paliwo</th>
+        <th class="amount" title="1000 zl/mies / N">Hangar</th>
+        <th class="amount" title="2000 zl/mies / N">Marketing</th>
+        <th class="amount">Marża</th>
+        <th class="amount" style="color:#1B4DB5">Paweł</th>
+        <th class="amount" style="color:#C41E3A">Maciej</th>
+      </tr>
+    </thead>
+    <tbody>${rows}</tbody>
+    <tfoot>
+      <tr style="background:#f4f8ff;font-weight:700;border-top:2px solid #1B4DB5">
+        <td colspan="3">SUMA (${c.vouchers_sold} voucherow)</td>
+        <td class="amount">${fmtPln(t.revenue_gr)}</td>
+        <td colspan="4" class="amount" style="color:#666">${fmtPln(t.cost_total_gr)} koszt</td>
+        <td class="amount" style="color:${t.margin_gr>=0?'#28a745':'#c00'}">${fmtPln(t.margin_gr)}</td>
+        <td class="amount" style="color:#1B4DB5">${fmtPln(t.pawel_gr)}</td>
+        <td class="amount" style="color:#C41E3A">${fmtPln(t.maciej_gr)}</td>
+      </tr>
+    </tfoot>
+  </table>
+  <p style="margin-top:8px;font-size:11px;color:#666">
+    <strong>Założenia:</strong> instruktor 30 zł/min, paliwo 200 zł/lot, hangar 1000 zł/mies, marketing FB 2000 zł/mies. Marża = cena − wszystkie koszty. Marża dzielona 50/50.
+    <br>Maciej co miesiąc wystawia Pawłowi fakturę na sumę z kolumny <strong style="color:#C41E3A">Maciej</strong>.
+  </p>`;
 }
 function renderFinance(d) {
   const t = d.totals;
@@ -2121,6 +2247,10 @@ async function loadCalendar() {
   const from = document.getElementById('calFrom').value;
   const to = document.getElementById('calTo').value;
   if (!from || !to) return;
+
+  await Promise.all([loadAircrafts(), loadPilotsForFilter()]);
+  await loadCalendarEvents(from, to);
+
   const res = await api('GET', `/api/admin/calendar?from=${from}&to=${to}`);
 
   // Pending bookings
@@ -2157,7 +2287,143 @@ async function loadCalendar() {
 async function approveBooking(id) {
   if (!confirm('Zatwierdzic rezerwacje?')) return;
   const res = await api('POST', '/api/admin/calendar', { action:'approve', booking_id:id });
-  if (res.ok) { showMsg('Zatwierdzone','ok'); loadCalendar(); } else showMsg(res.error,'err');
+  if (res.ok) { showMsg('Zatwierdzone (event dodany do kalendarza Macieja)','ok'); loadCalendar(); } else showMsg(res.error,'err');
+}
+
+async function loadPilotsForFilter() {
+  if (allPilots.length === 0) {
+    const r = await api('GET', '/api/admin/pilots');
+    allPilots = r.pilots || [];
+  }
+  const sel = document.getElementById('evfPilot');
+  if (sel) {
+    const cur = sel.value;
+    sel.innerHTML = '<option value="">Wszyscy piloci</option>' +
+      allPilots.filter(p => p.is_instructor).map(p => `<option value="${dataAttr(p.id)}">${esc(p.name||p.phone)}</option>`).join('');
+    sel.value = cur;
+  }
+  const modalSel = document.getElementById('evPilotId');
+  if (modalSel) {
+    modalSel.innerHTML = allPilots.filter(p => p.is_instructor).map(p => `<option value="${dataAttr(p.id)}">${esc(p.name||p.phone)}</option>`).join('');
+  }
+}
+
+async function loadAircrafts() {
+  // Aircrafts endpoint nie istnieje osobno - czytaj przez events?available_only - to zwraca aircrafts.
+  // Tymczasem: hardcoded SP-EKS z seedu migracji 035.
+  allAircrafts = [{ id: 'speks-001', tail: 'SP-EKS', type: 'Extra 300L' }];
+  const sel = document.getElementById('evfAircraft');
+  if (sel) {
+    const cur = sel.value;
+    sel.innerHTML = '<option value="">Wszystkie samoloty</option>' +
+      allAircrafts.map(a => `<option value="${dataAttr(a.id)}">${esc(a.tail)}</option>`).join('');
+    sel.value = cur;
+  }
+  const modalSel = document.getElementById('evAircraftId');
+  if (modalSel) {
+    modalSel.innerHTML = '<option value="">— (bez samolotu)</option>' +
+      allAircrafts.map(a => `<option value="${dataAttr(a.id)}">${esc(a.tail)}</option>`).join('');
+  }
+}
+
+async function loadCalendarEvents(from, to) {
+  const r = await api('GET', `/api/calendar/events?from=${from}&to=${to}`);
+  allEvents = r.events || [];
+  renderEvents();
+}
+
+function renderEvents() {
+  const fPilot = document.getElementById('evfPilot').value;
+  const fAircraft = document.getElementById('evfAircraft').value;
+  const fType = document.getElementById('evfType').value;
+  let events = allEvents.filter(e => e.status !== 'cancelled');
+  if (fPilot) events = events.filter(e => e.pilot_id === fPilot);
+  if (fAircraft) events = events.filter(e => e.aircraft_id === fAircraft);
+  if (fType) events = events.filter(e => e.type === fType);
+
+  const wrap = document.getElementById('eventsTable');
+  if (!events.length) { wrap.innerHTML = '<p style="padding:8px;color:#888;font-size:12px">Brak eventow w tym zakresie</p>'; return; }
+  wrap.innerHTML = `<table>
+    <tr><th>Start</th><th>Koniec</th><th>Typ</th><th>Pilot</th><th>Samolot</th><th>Tytul / Notatki</th><th>Zrodlo</th><th>Akcje</th></tr>
+    ${events.map(e => `<tr>
+      <td>${fmtDt(e.start_at)}</td>
+      <td>${fmtDt(e.end_at)}</td>
+      <td>${evTypeLabel(e.type)}</td>
+      <td>${esc(e.pilot_name||'-')}</td>
+      <td>${esc(e.aircraft_tail||'-')}</td>
+      <td>${esc(e.title||'')}${e.notes?'<br><small style="color:#666">'+esc(e.notes).slice(0,80)+'</small>':''}</td>
+      <td><span class="badge ${e.source==='booking'?'badge-booked':'badge-pending'}">${e.source==='booking'?'auto':'manual'}</span></td>
+      <td class="actions">
+        <button class="btn btn-red" data-action="deleteCalendarEvent" data-arg1="${dataAttr(e.id)}">Usun</button>
+      </td>
+    </tr>`).join('')}
+  </table>`;
+}
+
+async function loadAvailable() {
+  if (!document.getElementById('evfAvailable').checked) {
+    document.getElementById('availableAircraft').innerHTML = '';
+    return;
+  }
+  const from = document.getElementById('calFrom').value;
+  const to = document.getElementById('calTo').value;
+  if (!from || !to) return;
+  const r = await api('GET', `/api/calendar/events?from=${from}&to=${to}&available_only=1`);
+  const wrap = document.getElementById('availableAircraft');
+  wrap.innerHTML = `<div style="padding:8px;background:#e6ffed;border:1px solid #28a745;border-radius:4px;font-size:12px;margin:8px 0">
+    Dostepne samoloty w zakresie ${from} - ${to}: ${(r.available||[]).map(a => `<strong>${esc(a.tail)}</strong>`).join(', ') || '<em>zaden</em>'}
+  </div>`;
+}
+
+async function createCalendarEvent() {
+  const startVal = document.getElementById('evStart').value;
+  const endVal = document.getElementById('evEnd').value;
+  if (!startVal || !endVal) { showMsg('Podaj start i koniec','err'); return; }
+  const body = {
+    pilot_id: document.getElementById('evPilotId').value,
+    aircraft_id: document.getElementById('evAircraftId').value || null,
+    type: document.getElementById('evType').value,
+    title: document.getElementById('evTitle').value.trim() || undefined,
+    notes: document.getElementById('evNotes').value.trim() || undefined,
+    start_at: new Date(startVal).toISOString(),
+    end_at: new Date(endVal).toISOString(),
+    notify: document.getElementById('evNotify').checked,
+  };
+  const r = await api('POST', '/api/calendar/events', body);
+  if (r.ok) {
+    showMsg('Event dodany','ok');
+    closeModal();
+    ['evTitle','evNotes','evStart','evEnd'].forEach(id => document.getElementById(id).value='');
+    loadCalendar();
+  } else showMsg(r.error||'Blad','err');
+}
+
+async function deleteCalendarEvent(id) {
+  if (!confirm('Usunac event? (soft delete - status=cancelled)')) return;
+  const r = await fetch(`/api/calendar/events/${id}`, { method:'DELETE', headers:{ 'Authorization': `Bearer ${TOKEN}` } });
+  const j = await r.json().catch(()=>({}));
+  if (j.ok) { showMsg('Event usuniety','ok'); loadCalendar(); } else showMsg(j.error||'Blad','err');
+}
+
+function evTypeLabel(t) { return {flight:'Lot',training:'Szkolenie',maintenance:'Maint.',show:'Pokaz',other:'Inne'}[t]||t; }
+function fmtDt(iso) { if (!iso) return '-'; return new Date(iso).toLocaleString('pl-PL', { timeZone:'Europe/Warsaw', dateStyle:'short', timeStyle:'short' }); }
+
+async function createAdminUser() {
+  const email = document.getElementById('auEmail').value.trim();
+  const name = document.getElementById('auName').value.trim();
+  if (!email || !name) { showMsg('Email i nazwisko wymagane','err'); return; }
+  const r = await api('POST', '/api/admin/auth/seed', { email, name, auto_password: true });
+  if (r.ok) {
+    const box = document.getElementById('auResult');
+    box.style.display = 'block';
+    box.innerHTML = `<strong>Konto utworzone.</strong> Haslo (WIDOCZNE TYLKO TERAZ):
+      <code style="display:block;padding:8px;background:#fff;border:1px solid #ccc;border-radius:4px;margin:8px 0;font-size:13px;word-break:break-all">${esc(r.password)}</code>
+      <button class="btn btn-blue" data-action="copyAdminPassword" data-arg1="${dataAttr(r.password)}">Skopiuj haslo</button>
+      <p style="margin-top:8px;font-size:11px;color:#666">Wyslij ${esc(email)} Signalem/WhatsApp. Po zamknieciu modala haslo bedzie utracone.</p>`;
+  } else showMsg(r.error||'Blad','err');
+}
+function copyAdminPassword(pwd) {
+  navigator.clipboard.writeText(pwd).then(() => showMsg('Haslo skopiowane','ok'));
 }
 async function rejectBooking(id) {
   if (!confirm('Odrzucic rezerwacje?')) return;
@@ -2172,22 +2438,54 @@ async function loadPilots() {
   renderPilots(allPilots);
 }
 function renderPilots(pilots) {
-  document.getElementById('pilotStats').textContent = `${pilots.length} pilotow | ${pilots.filter(p=>p.balance_minutes>0).length} z saldem`;
+  document.getElementById('pilotStats').textContent = `${pilots.length} pilotow | ${pilots.filter(p=>p.balance_minutes>0).length} z saldem | ${pilots.filter(p=>p.is_instructor).length} instruktorow`;
   document.getElementById('pilotsTable').innerHTML = pilots.length ? `<table>
-    <tr><th>Telefon</th><th>Imie</th><th>Email</th><th>Licencja</th><th>Saldo</th><th>Ost. login</th><th>Akcje</th></tr>
-    ${pilots.map(p => `<tr>
+    <tr><th>Telefon</th><th>Imie</th><th>Email</th><th>Licencja</th><th>Saldo</th><th>Instruktor</th><th>Kalendarz ICS</th><th>Ost. login</th><th>Akcje</th></tr>
+    ${pilots.map(p => {
+      const icsUrl = p.calendar_token ? `${location.origin}/api/calendar/feed.ics?token=${p.calendar_token}` : null;
+      return `<tr>
       <td>${p.phone}</td>
       <td>${esc(p.name||'-')}</td>
       <td>${esc(p.email||'-')}</td>
       <td>${p.license_type||'-'} ${p.license_number||''}</td>
       <td class="amount">${Math.floor((p.balance_minutes||0)/60)}h ${(p.balance_minutes||0)%60}min</td>
+      <td><label style="cursor:pointer"><input type="checkbox" ${p.is_instructor?'checked':''} data-action="toggleInstructor" data-arg1="${dataAttr(p.id)}"></label></td>
+      <td style="max-width:200px;font-size:11px">
+        ${icsUrl ? `<input value="${dataAttr(icsUrl)}" readonly style="width:100%;font-size:10px" onclick="this.select()"><br>
+          <button class="btn btn-grey" style="margin-top:4px;padding:2px 6px;font-size:10px" data-action="copyIcsUrl" data-arg1="${dataAttr(icsUrl)}">Kopiuj</button>
+          <button class="btn btn-red" style="margin-top:4px;padding:2px 6px;font-size:10px" data-action="revokeIcsToken" data-arg1="${dataAttr(p.id)}">Rewoke</button>`
+        : `<button class="btn btn-blue" data-action="generateIcsToken" data-arg1="${dataAttr(p.id)}">Generuj token</button>`}
+      </td>
       <td>${fmtDate(p.last_login)}</td>
       <td class="actions">
         <button class="btn btn-green" data-action="openAddBalance" data-arg1="${dataAttr(p.id)}" data-arg2="${dataAttr(p.name||p.phone)}">+Godz</button>
         <button class="btn btn-grey" data-action="openDeductBalance" data-arg1="${dataAttr(p.id)}" data-arg2="${dataAttr(p.name||p.phone)}">-Godz</button>
       </td>
-    </tr>`).join('')}
-  </table>` : '<p style="padding:20px;color:#888">Brak pilotów</p>';
+    </tr>`;
+    }).join('')}
+  </table>
+  <div style="margin-top:12px;padding:8px;background:#f6f8fa;border-radius:4px;font-size:11px;color:#666">
+    URL ICS dodaj w Google Calendar: <em>Inne kalendarze → Z URL</em>. Apple/Outlook: <em>Subscribe to calendar</em>. Refresh ~12h.
+  </div>` : '<p style="padding:20px;color:#888">Brak pilotów</p>';
+}
+
+async function generateIcsToken(pilotId) {
+  const res = await api('POST', '/api/admin/pilots', { action:'generate_calendar_token', pilot_id: pilotId });
+  if (res.ok) { showMsg('Token wygenerowany','ok'); loadPilots(); } else showMsg(res.error||'Blad','err');
+}
+async function revokeIcsToken(pilotId) {
+  if (!confirm('Rewokowac token? Stara subskrypcja przestanie dzialac.')) return;
+  const res = await api('POST', '/api/admin/pilots', { action:'revoke_calendar_token', pilot_id: pilotId });
+  if (res.ok) { showMsg('Rewokowane','ok'); loadPilots(); } else showMsg(res.error||'Blad','err');
+}
+async function toggleInstructor(pilotId) {
+  const p = allPilots.find(x => x.id === pilotId);
+  const next = p && p.is_instructor ? 0 : 1;
+  const res = await api('POST', '/api/admin/pilots', { action:'set_instructor', pilot_id: pilotId, is_instructor: next });
+  if (res.ok) loadPilots(); else { showMsg(res.error||'Blad','err'); loadPilots(); }
+}
+function copyIcsUrl(url) {
+  navigator.clipboard.writeText(url).then(() => showMsg('Skopiowano URL ICS','ok'));
 }
 function filterPilots() {
   const q = document.getElementById('searchPilots').value.toLowerCase();

@@ -13,6 +13,8 @@ export interface PilotSession {
   verified: number;
   session_expires_at: string | null;
   last_login: string | null;
+  calendar_token: string | null;
+  is_instructor: number;
   created_at: string;
 }
 
@@ -47,7 +49,8 @@ export async function getPilotFromToken(
   // Primary: hash match.
   const SELECT_COLS = `SELECT id, phone, name, email, license_type, license_number,
                               balance_minutes, insurance_status, verified,
-                              session_expires_at, last_login, created_at`;
+                              session_expires_at, last_login, calendar_token,
+                              is_instructor, created_at`;
   const TTL = `(session_expires_at IS NULL OR session_expires_at > datetime('now'))`;
 
   const hashHit = await db.prepare(

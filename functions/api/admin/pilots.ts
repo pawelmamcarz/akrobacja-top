@@ -1,5 +1,5 @@
 import { type Env } from '../../../src/lib/types';
-import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
+import { checkAdminAuthAsync, randomToken } from '../../../src/lib/admin-auth';
 import { normalizePhone } from '../../../src/lib/phone';
 
 // GET /api/admin/pilots
@@ -9,7 +9,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   }
 
   const { results } = await ctx.env.DB.prepare(
-    'SELECT id, phone, name, email, license_type, license_number, balance_minutes, verified, created_at, last_login FROM pilots ORDER BY created_at DESC'
+    'SELECT id, phone, name, email, license_type, license_number, balance_minutes, verified, created_at, last_login, calendar_token, is_instructor FROM pilots ORDER BY created_at DESC'
   ).all();
 
   return Response.json({ pilots: results });
@@ -32,6 +32,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     license_type?: string;
     license_number?: string;
     balance_minutes?: number;
+    is_instructor?: boolean | number;
   };
 
   switch (body.action) {
@@ -132,6 +133,35 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         'SELECT * FROM balance_log WHERE pilot_id = ? ORDER BY created_at DESC LIMIT 50'
       ).bind(body.pilot_id).all();
       return Response.json({ history: results });
+    }
+
+    case 'generate_calendar_token': {
+      if (!body.pilot_id) return Response.json({ error: 'Podaj pilot_id' }, { status: 400 });
+      const token = randomToken();
+      const res = await ctx.env.DB.prepare(
+        'UPDATE pilots SET calendar_token = ? WHERE id = ?'
+      ).bind(token, body.pilot_id).run();
+      if (res.meta.changes === 0) {
+        return Response.json({ error: 'Pilot nie znaleziony' }, { status: 404 });
+      }
+      return Response.json({ ok: true, calendar_token: token });
+    }
+
+    case 'revoke_calendar_token': {
+      if (!body.pilot_id) return Response.json({ error: 'Podaj pilot_id' }, { status: 400 });
+      await ctx.env.DB.prepare(
+        'UPDATE pilots SET calendar_token = NULL WHERE id = ?'
+      ).bind(body.pilot_id).run();
+      return Response.json({ ok: true });
+    }
+
+    case 'set_instructor': {
+      if (!body.pilot_id) return Response.json({ error: 'Podaj pilot_id' }, { status: 400 });
+      const flag = body.is_instructor ? 1 : 0;
+      await ctx.env.DB.prepare(
+        'UPDATE pilots SET is_instructor = ? WHERE id = ?'
+      ).bind(flag, body.pilot_id).run();
+      return Response.json({ ok: true, is_instructor: flag });
     }
 
     default:

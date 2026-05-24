@@ -199,5 +199,36 @@ export interface Pilot {
   session_token?: string | null;
   session_expires_at?: string | null;
   last_login?: string | null;
+  calendar_token?: string | null;
+  is_instructor?: number;
   created_at: string;
+}
+
+export interface Aircraft {
+  id: string;
+  tail: string;
+  type: string;
+  notes?: string | null;
+  active: number;
+  created_at: string;
+}
+
+export type CalendarEventType = 'flight' | 'training' | 'maintenance' | 'show' | 'other';
+export type CalendarEventStatus = 'confirmed' | 'tentative' | 'cancelled';
+
+export interface CalendarEvent {
+  id: string;
+  pilot_id: string;
+  aircraft_id?: string | null;
+  type: CalendarEventType;
+  title?: string | null;
+  notes?: string | null;
+  start_at: string;                // ISO UTC z 'Z'
+  end_at: string;
+  status: CalendarEventStatus;
+  source: 'manual' | 'booking';
+  booking_id?: string | null;
+  created_by?: string | null;
+  created_at: string;
+  updated_at: string;
 }

@@ -195,10 +195,10 @@ export async function generateVoucherPdf(opts: {
 
   // Footer
   page.drawRectangle({ x: 0, y: 0, width: W, height: 80, color: navy });
-  page.drawText('Lotnisko Radom-Piastów (EPRP)  ·  +48 535 535 221  ·  info@akrobacja.com', {
+  page.drawText('Lotnisko Radom-Piastów (EPRP)  ·  +48 739 158 131  ·  maciej@akrobacja.com', {
     x: 50, y: 45, size: 9, font, color: rgb(0.6, 0.7, 0.85),
   });
-  page.drawText('Voucher jest imienny i niezbywalny. Rezerwacja terminu: info@akrobacja.com lub telefonicznie.', {
+  page.drawText('Voucher jest imienny i niezbywalny. Rezerwacja terminu: maciej@akrobacja.com lub telefonicznie.', {
     x: 50, y: 25, size: 7, font, color: rgb(0.45, 0.55, 0.7),
   });
 

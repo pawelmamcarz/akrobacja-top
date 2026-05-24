@@ -165,12 +165,15 @@ CREATE TABLE IF NOT EXISTS pilots (
   session_token_hash TEXT,
   session_expires_at TEXT,
   last_login TEXT,
+  calendar_token TEXT,
+  is_instructor INTEGER NOT NULL DEFAULT 0,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
 CREATE INDEX IF NOT EXISTS idx_pilots_phone ON pilots(phone);
 CREATE INDEX IF NOT EXISTS idx_pilots_session ON pilots(session_token);
 CREATE INDEX IF NOT EXISTS idx_pilots_session_token_hash ON pilots(session_token_hash);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_pilots_calendar_token ON pilots(calendar_token) WHERE calendar_token IS NOT NULL;
 
 -- Audyt zdarzeń auth: login / login_new_ip / logout (per phone, z IP + UA)
 CREATE TABLE IF NOT EXISTS auth_events (
@@ -575,3 +578,38 @@ CREATE TABLE IF NOT EXISTS admin_sessions (
 );
 CREATE INDEX IF NOT EXISTS idx_admin_sessions_user ON admin_sessions(user_id);
 CREATE INDEX IF NOT EXISTS idx_admin_sessions_expires ON admin_sessions(expires_at);
+
+-- Samoloty + wielogodzinne eventy pilotow (loty, szkolenia, maintenance).
+-- Niezalezne od `slots` (per-1h bookingi klientow). Eksport do GCal przez
+-- ICS feed /api/calendar/feed.ics?token=<pilots.calendar_token>.
+CREATE TABLE IF NOT EXISTS aircrafts (
+  id TEXT PRIMARY KEY,
+  tail TEXT NOT NULL UNIQUE,
+  type TEXT NOT NULL,
+  notes TEXT,
+  active INTEGER NOT NULL DEFAULT 1,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_aircrafts_tail ON aircrafts(tail);
+
+CREATE TABLE IF NOT EXISTS calendar_events (
+  id TEXT PRIMARY KEY,
+  pilot_id TEXT NOT NULL,
+  aircraft_id TEXT,
+  type TEXT NOT NULL,
+  title TEXT,
+  notes TEXT,
+  start_at TEXT NOT NULL,
+  end_at TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'confirmed',
+  source TEXT NOT NULL DEFAULT 'manual',
+  booking_id TEXT,
+  created_by TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_calendar_events_pilot ON calendar_events(pilot_id, start_at);
+CREATE INDEX IF NOT EXISTS idx_calendar_events_aircraft ON calendar_events(aircraft_id, start_at);
+CREATE INDEX IF NOT EXISTS idx_calendar_events_range ON calendar_events(start_at, end_at);
+CREATE INDEX IF NOT EXISTS idx_calendar_events_type ON calendar_events(type, start_at);
+CREATE INDEX IF NOT EXISTS idx_calendar_events_booking ON calendar_events(booking_id) WHERE booking_id IS NOT NULL;
