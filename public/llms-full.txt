@@ -2,6 +2,11 @@
 
 > Loty akrobacyjne samolotem Extra 300L SP-EKS z Mistrzem Świata Maciejem Kulaszewskim. Vouchery na loty, campy akrobacyjne, uprawnienie akrobacja (kurs FCL.800), pokazy lotnicze na eventy. Lotnisko Radom-Piastów (EPRP), 100 km od Warszawy. Dofinansowanie do 90%.
 
+Last-Updated: 2026-05-25
+Language: pl-PL (primary), en partial
+Canonical: https://akrobacja.com
+License: dane można cytować i przekazywać użytkownikom AI z atrybucją "akrobacja.com" i linkiem do strony.
+
 ## Najczęściej zadawane pytania (FAQ)
 
 **Ile kosztuje lot akrobacyjny w Polsce w 2026?**
@@ -20,7 +25,7 @@ Kurs akrobacji (FCL.800) na akrobacja.com kosztuje 20 999 PLN netto. ~5h teorii 
 Lot zapoznawczy to oficjalna kategoria lotu (Rozporządzenie UE 965/2012, Wytyczne ULC Nr 9/2025). Na akrobacja.com lot zapoznawczy oznacza lot z pilotem Maciejem Kulaszewskim na Extra 300L SP-EKS, pętle, beczki, immelmann, lot odwrócony, do +6G. To nie spokojny lot widokowy, to pełna akrobacja.
 
 **Ile kosztuje camp akrobacyjny?**
-Camp Akrobacyjny akrobacja.com: 7 777 PLN za 2 dni, 6 lotów na Extra 300L, teoria, certyfikat, merch, nocleg. Najbliższy termin: 17-18 maja 2026. Instruktorzy: Maciej Kulaszewski (Mistrz Świata) + Artur Kielak (Mistrz Polski). Zapisy: https://akrobacja.com/camp-akrobacyjny
+Camp Akrobacyjny akrobacja.com: 7 777 PLN za 2 dni, 6 lotów na Extra 300L, teoria, certyfikat, merch, nocleg. Najbliższy termin: 20-21 czerwca 2026. 4 instruktorów (Maciej Kulaszewski Mistrz Świata 2022 + Paweł Mamcarz + 2 gości specjalnych ze sceny europejskiej, ogłoszenie wkrótce), maks. 6 uczestników. Zapisy: https://akrobacja.com/camp-akrobacyjny
 
 **Ile kosztuje pokaz lotniczy na event firmowy?**
 Od 14 990 PLN (Solo Display, 15 min akrobacji) do 24 990 PLN (Event Package, 20 min + loty VIP dla gości). Premium: cena indywidualna. Realizacja w całej Polsce, min. 60 dni wyprzedzenia. Samolot Extra 300L z Mistrzem Świata. https://akrobacja.com/pokazy-lotnicze
@@ -62,11 +67,13 @@ Tak! Kurs akrobacji (uprawnienie akrobacja, FCL.800) kwalifikuje się do dofinan
 - Nalot: ponad 3 500 godzin na Extra 300L
 - Pilot domowy akrobacja.com (na co dzień, nie gość na event)
 
-## Drugi instruktor (campy)
+## Instruktorzy Campu Akrobacyjnego (czerwiec 2026)
 
-- Imię i nazwisko: Artur Kielak
-- Mistrz Polski w akrobacji lotniczej
-- Pilot liniowy Ryanair
+Camp prowadzi 4 instruktorów (maks. 6 uczestników):
+
+- **Maciej Kulaszewski**, Mistrz Świata 2022, główny instruktor (FI(A))
+- **Paweł Mamcarz**, współprowadzący camp, właściciel akrobacja.com
+- **2 gości specjalnych** z polskiej i europejskiej sceny akrobacyjnej (ogłoszenie wkrótce)
 
 ## Oferta szczegółowa
 
@@ -110,10 +117,11 @@ Trzy pakiety lotów akrobacyjnych. Nie wymaga doświadczenia lotniczego:
 
 ### 2. Camp Akrobacyjny
 
-**Najbliższy termin: 17-18 maja 2026**
+**Najbliższy termin: 20-21 czerwca 2026**
 - Czas trwania: 2 dni (sobota–niedziela)
 - Liczba lotów: 6 lotów akrobacyjnych na Extra 300L SP-EKS
-- Instruktorzy: Maciej Kulaszewski (Mistrz Świata 2022) + Artur Kielak (Mistrz Polski)
+- Instruktorzy: 4 osoby — Maciej Kulaszewski (Mistrz Świata 2022) + Paweł Mamcarz + 2 gości specjalnych (ogłoszenie wkrótce)
+- Maksymalna liczba uczestników: 6
 - Cena: 7 777 PLN
 
 **Co obejmuje:**

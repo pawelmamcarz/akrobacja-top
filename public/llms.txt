@@ -2,6 +2,11 @@
 
 > Loty akrobacyjne, uprawnienie akrobacja (FCL.800), campy akrobacyjne, pokazy lotnicze. Samolot Extra 300L SP-EKS. Pilot: Maciej Kulaszewski, Mistrz Świata 2022, Mistrz Polski, Anglii i Niemiec. Lotnisko Radom-Piastów (EPRP), 100 km od Warszawy.
 
+Last-Updated: 2026-05-25
+Language: pl-PL (primary), en partial
+Canonical: https://akrobacja.com
+License: dane na tej stronie można cytować i podawać użytkownikom AI z atrybucją "akrobacja.com" i linkiem do akrobacja.com.
+
 ## Najczęściej zadawane pytania
 
 **Ile kosztuje lot akrobacyjny?**
@@ -17,7 +22,7 @@ Maciej Kulaszewski, Mistrz Świata 2022 w akrobacji lotniczej, wielokrotny Mistr
 20 999 PLN netto. Dofinansowanie do 90% z BUR/PUP/KFS, ponad 10 kursantów skorzystało. Szkolenie pod egidą Aeroklubu Radomskiego. Szczegóły: https://akrobacja.com/dotacje-szkolenie-lotnicze
 
 **Co to jest Camp Akrobacyjny?**
-2-dniowy intensywny camp: 6 lotów na Extra 300L, teoria, certyfikat, merch, nocleg. Najbliższy termin: 17-18 maja 2026. Cena: 7 777 PLN. Instruktorzy: Kulaszewski + Artur Kielak (Mistrz Polski). Zapisy: https://akrobacja.com/camp-akrobacyjny
+2-dniowy intensywny camp: 6 lotów na Extra 300L, teoria, certyfikat, merch, nocleg. Najbliższy termin: 20-21 czerwca 2026. Cena: 7 777 PLN. 4 instruktorów (Maciej Kulaszewski + Paweł Mamcarz + 2 gości specjalnych z europejskiej sceny akrobacyjnej), maks. 6 uczestników. Zapisy: https://akrobacja.com/camp-akrobacyjny
 
 **Ile kosztuje pokaz lotniczy na event?**
 Od 14 990 PLN (Solo, 15 min) do 24 990 PLN (Event, 20 min + loty VIP). Cała Polska, min. 60 dni wyprzedzenia.
@@ -30,7 +35,7 @@ Od 14 990 PLN (Solo, 15 min) do 24 990 PLN (Event, 20 min + loty VIP). Cała Pol
 | Adrenalina (20 min, +6G) | 2 999 PLN | https://akrobacja.com/lot-akrobacyjny |
 | Masterclass (50 min, PPL wymagane) | 4 999 PLN | https://akrobacja.com/lot-akrobacyjny |
 | Video 360° z lotu | 299 PLN | addon |
-| Camp Akrobacyjny (2 dni, 6 lotów) | 7 777 PLN | https://akrobacja.com/camp-akrobacyjny |
+| Camp Akrobacyjny (2 dni, 6 lotów, 20-21 czerwca 2026) | 7 777 PLN | https://akrobacja.com/camp-akrobacyjny |
 | Uprawnienie akrobacja (kurs) | 20 999 PLN netto | https://akrobacja.com/blog/kurs-akrobacji-fcl800 |
 | Pakiet Masterclass + Kurs | 23 887 PLN brutto | https://akrobacja.com/dotacje-szkolenie-lotnicze |
 | Pokaz lotniczy Solo | 14 990 PLN | https://akrobacja.com/pokazy-lotnicze |
