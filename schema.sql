@@ -613,3 +613,13 @@ CREATE INDEX IF NOT EXISTS idx_calendar_events_aircraft ON calendar_events(aircr
 CREATE INDEX IF NOT EXISTS idx_calendar_events_range ON calendar_events(start_at, end_at);
 CREATE INDEX IF NOT EXISTS idx_calendar_events_type ON calendar_events(type, start_at);
 CREATE INDEX IF NOT EXISTS idx_calendar_events_booking ON calendar_events(booking_id) WHERE booking_id IS NOT NULL;
+
+-- Per-voucher override kosztow (paliwo, czas lotu). Brak rekordu = default.
+CREATE TABLE IF NOT EXISTS voucher_costs (
+  voucher_code TEXT PRIMARY KEY,
+  fuel_gr INTEGER,
+  aircraft_minutes_actual INTEGER,
+  notes TEXT,
+  updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_by TEXT
+);

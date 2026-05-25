@@ -53,6 +53,9 @@ interface OrderRow {
   addons: string | null;
   payment_method: string | null;
   status: string;
+  fuel_override_gr: number | null;
+  minutes_override: number | null;
+  cost_notes: string | null;
 }
 
 interface VoucherSplit {
@@ -61,6 +64,9 @@ interface VoucherSplit {
   package: PackageId;
   package_name: string;
   flight_minutes: number;
+  fuel_overridden: boolean;
+  minutes_overridden: boolean;
+  cost_notes: string | null;
   price_gr: number;
   cost_aircraft_gr: number;
   cost_fuel_gr: number;
@@ -94,16 +100,22 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
 
   // Pomijamy: testowe naklejki, vouchery free/barter (klient nic nie zaplacil),
   // wewnetrzne TEST za 0 zl. Te nie generuja rozliczenia miedzy Pawlem a Maciejem.
+  // LEFT JOIN voucher_costs: per-voucher override paliwa i czasu lotu.
   const orders = await ctx.env.DB.prepare(`
-    SELECT id, voucher_code, package_id, amount, paid_at, customer_name, recipient_name, addons, payment_method, status
-    FROM orders
-    WHERE status = 'paid'
-      AND paid_at IS NOT NULL
-      AND strftime('%Y-%m', paid_at) = ?
-      AND package_id != 'test_naklejka'
-      AND amount > 0
-      AND COALESCE(payment_method, 'stripe') != 'free'
-    ORDER BY paid_at
+    SELECT o.id, o.voucher_code, o.package_id, o.amount, o.paid_at, o.customer_name,
+           o.recipient_name, o.addons, o.payment_method, o.status,
+           vc.fuel_gr AS fuel_override_gr,
+           vc.aircraft_minutes_actual AS minutes_override,
+           vc.notes AS cost_notes
+    FROM orders o
+    LEFT JOIN voucher_costs vc ON vc.voucher_code = o.voucher_code
+    WHERE o.status = 'paid'
+      AND o.paid_at IS NOT NULL
+      AND strftime('%Y-%m', o.paid_at) = ?
+      AND o.package_id != 'test_naklejka'
+      AND o.amount > 0
+      AND COALESCE(o.payment_method, 'stripe') != 'free'
+    ORDER BY o.paid_at
   `).bind(month).all<OrderRow>();
 
   const rows = orders.results || [];
@@ -123,10 +135,11 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
 
   const splits: VoucherSplit[] = rows.map((o) => {
     const pkg = PACKAGES[o.package_id] || PACKAGES.pierwszy_lot;
-    const minutes = PACKAGE_FLIGHT_MINUTES[o.package_id] || 0;
+    const minutesDefault = PACKAGE_FLIGHT_MINUTES[o.package_id] || 0;
     const flights = PACKAGE_FLIGHT_COUNT[o.package_id] || 1;
+    const minutes = o.minutes_override != null ? o.minutes_override : minutesDefault;
     const costAircraft = minutes * AIRCRAFT_RATE_PER_MIN_GR;
-    const costFuel = FUEL_PER_FLIGHT_GR * flights;
+    const costFuel = o.fuel_override_gr != null ? o.fuel_override_gr : (FUEL_PER_FLIGHT_GR * flights);
     const costTotal = costAircraft + costFuel + hangarShare + marketingShare;
     // Marza moze byc ujemna (voucher promocyjny ze znizka ponizej kosztow):
     // wtedy obaj dziela strate po polowie zeby suma pawel+maciej = cena vouchera.
@@ -138,6 +151,9 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
       package: o.package_id,
       package_name: pkg.name,
       flight_minutes: minutes,
+      fuel_overridden: o.fuel_override_gr != null,
+      minutes_overridden: o.minutes_override != null,
+      cost_notes: o.cost_notes,
       price_gr: o.amount,
       cost_aircraft_gr: costAircraft,
       cost_fuel_gr: costFuel,
