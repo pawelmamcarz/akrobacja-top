@@ -92,6 +92,12 @@ export const onRequest: PagesFunction = async (context) => {
         let headInject =
           `<link rel="canonical" href="${canonicalUrl}">` +
           (noindex ? `<meta name="robots" content="noindex, nofollow">` : '') +
+          // LLM / AI search discovery — point crawlers at the markdown corpus.
+          // Indexed pages only; noindex pages (admin, sukces, konto) skip it.
+          (noindex ? '' :
+            `<link rel="alternate" type="text/markdown" href="${SITE_ORIGIN}/llms.txt" title="LLM-friendly summary (llmstxt.org)">` +
+            `<link rel="alternate" type="text/markdown" href="${SITE_ORIGIN}/llms-full.txt" title="LLM-friendly full corpus">`
+          ) +
           // Unified top navigation — stylesheet + behaviour. Admin/pilot UIs skip the
           // marketing nav entirely (see body injection below).
           (isInternal ? '' :

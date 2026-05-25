@@ -1,3 +1,9 @@
+# akrobacja.com — robots.txt
+# We welcome LLM crawlers and AI search engines. Citations and links back
+# to akrobacja.com are appreciated. Structured summary for LLMs lives at:
+#   https://akrobacja.com/llms.txt        (short, llmstxt.org spec)
+#   https://akrobacja.com/llms-full.txt   (extended product + FAQ corpus)
+
 User-agent: *
 Allow: /
 Disallow: /api/
@@ -6,6 +12,155 @@ Disallow: /sukces
 Disallow: /konto
 Disallow: /test-konwersji
 
-Sitemap: https://akrobacja.com/sitemap.xml
+# Explicit allow-list for LLM / AI search crawlers (GEO/AEO).
+# Named here so intent is unambiguous and we have a per-bot hook later.
 
-# LLM / AI context files (https://llmstxt.org/) — discovered at /llms.txt by convention.
+# OpenAI — ChatGPT, SearchGPT
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+Disallow: /test-konwersji
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# Anthropic — Claude
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# Google — Gemini / AI Overviews training corpus.
+# Googlebot itself follows the * block above; Google-Extended is the AI opt-in.
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+User-agent: FacebookBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# Common Crawl — feeds many open-source LLMs (Llama, Mistral, etc.)
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# Amazon (Alexa AI / Rufus / Q)
+User-agent: Amazonbot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# DuckDuckGo AI Assist
+User-agent: DuckAssistBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# You.com
+User-agent: YouBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+# Allen Institute for AI
+User-agent: AI2Bot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+Sitemap: https://akrobacja.com/sitemap.xml
