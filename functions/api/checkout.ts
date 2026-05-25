@@ -31,16 +31,21 @@ const CANCEL_URLS: Record<string, string> = {
 //   applicablePackages  — optional whitelist; if set, the code is rejected for any other pkg
 //   validFrom           — inclusive YYYY-MM-DD (UTC date) the code becomes active
 //   validUntil          — inclusive YYYY-MM-DD the code stops being accepted
+//   singleUse           — gdy true, kod może być wykorzystany tylko RAZ globalnie. Po pierwszym
+//                         orderze ze statusem 'paid' / 'processing' jest odrzucany dla wszystkich
+//                         kolejnych. Sprawdzane query do D1 przy próbie aplikacji.
 // WRACAM5 = -5% recovery (abandoned cart). PIERWSZY100 = -100 PLN (welcome / first-time).
 // IG10 / FB10 / MAJOWKA = -10% social campaigns.
 // ATAM2205 = Pierwszy Lot 1999 → 1555 PLN (event partnership), ważny 15-30 maja 2026.
 // KURS5OFF = -5% dla subskrybentów 5-day email course (lead magnet flow).
+// ODLOTOWY = -33% pakiet Para (3777 PLN), jednorazowy, Dzień Matki 2026-05-25→05-26.
 interface DiscountSpec {
   pct?: number;
   fixed?: number;
   applicablePackages?: PackageId[];
   validFrom?: string;
   validUntil?: string;
+  singleUse?: boolean;
 }
 const DISCOUNTS: Record<string, DiscountSpec> = {
   WRACAM5: { pct: 5 },
@@ -53,6 +58,7 @@ const DISCOUNTS: Record<string, DiscountSpec> = {
   MACIEJ10: { pct: 10 },   // Linktree akrobacja.com/maciej, ruch z IG @bullet.aerobatics
   PAWEL10: { pct: 10 },    // Linktree akrobacja.com/pawel, ruch z IG @xpoli
   URODZINY10: { pct: 10 }, // SEO landing /prezent-na-urodziny
+  ODLOTOWY: { pct: 33, applicablePackages: ['para'], validFrom: '2026-05-25', validUntil: '2026-05-26', singleUse: true },
 };
 
 function isDiscountActive(d: DiscountSpec | undefined, packageId: PackageId, today: string): boolean {
@@ -114,6 +120,18 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const today = new Date().toISOString().split('T')[0];
     const candidate = normalizedCode ? DISCOUNTS[normalizedCode] : undefined;
     const discount = isDiscountActive(candidate, body.packageId, today) ? candidate : undefined;
+    // singleUse — kod ważny tylko do pierwszego udanego zakupu. Sprawdzamy czy żaden order
+    // ze statusem paid/processing nie ma już tego kodu. Race window między dwoma równoczesnymi
+    // checkoutami akceptowalny (oba zostaną z 'pending', dopiero pierwszy zapłaci, drugi
+    // dostanie 400 dopiero gdy ponowi checkout — kod sprawdzany przy każdej próbie).
+    if (discount?.singleUse) {
+      const used = await ctx.env.DB.prepare(
+        `SELECT 1 FROM orders WHERE discount_code = ? AND status IN ('paid','processing') LIMIT 1`,
+      ).bind(normalizedCode).first();
+      if (used) {
+        return Response.json({ error: 'Ten kod został już wykorzystany.' }, { status: 400 });
+      }
+    }
     let totalAmount: number;
     if (discount?.fixed) {
       totalAmount = Math.max(200, baseAmount - discount.fixed); // Stripe min 2 PLN
