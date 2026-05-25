@@ -163,4 +163,19 @@ Disallow: /admin
 Disallow: /sukces
 Disallow: /konto
 
+# Bielik — polski model AI (SpeakLeash)
+User-agent: Bielik
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
+User-agent: SpeakLeashBot
+Allow: /
+Disallow: /api/
+Disallow: /admin
+Disallow: /sukces
+Disallow: /konto
+
 Sitemap: https://akrobacja.com/sitemap.xml
