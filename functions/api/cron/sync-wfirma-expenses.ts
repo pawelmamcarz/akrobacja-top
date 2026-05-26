@@ -68,14 +68,18 @@ export async function syncWfirmaExpenses(env: Env): Promise<{ processed: number;
 }
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
-  const expected = ctx.env.CRON_SECRET;
-  if (!expected) return Response.json({ error: 'Cron not configured' }, { status: 500 });
-  const auth = ctx.request.headers.get('Authorization') || '';
-  if (auth !== `Bearer ${expected}`) return Response.json({ error: 'Unauthorized' }, { status: 401 });
-
-  // TEMP debug: ?dump=1 zwraca surowy sample expense z wFirmy zeby zobaczyc strukture.
   const url = new URL(ctx.request.url);
-  if (url.searchParams.get('dump') === '1') {
+  const isDump = url.searchParams.get('dump') === '1';
+
+  // Dump endpoint: dostepny dla admin (przez Bearer w przegladarce) ALBO CRON_SECRET.
+  // Cron sync: tylko CRON_SECRET.
+  if (isDump) {
+    const { checkAdminAuthAsync } = await import('../../../src/lib/admin-auth');
+    const isAdmin = await checkAdminAuthAsync(ctx.request, ctx.env);
+    const expectedCron = ctx.env.CRON_SECRET;
+    const authHeader = ctx.request.headers.get('Authorization') || '';
+    const isCron = expectedCron && authHeader === `Bearer ${expectedCron}`;
+    if (!isAdmin && !isCron) return Response.json({ error: 'Unauthorized' }, { status: 401 });
     try {
       const { listWfirmaExpensesRaw } = await import('../../../src/lib/wfirma');
       const sample = await listWfirmaExpensesRaw(ctx.env, { page: 1, limit: 1 });
@@ -84,6 +88,11 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
       return Response.json({ dump_error: err instanceof Error ? err.message : String(err) }, { status: 500 });
     }
   }
+
+  const expected = ctx.env.CRON_SECRET;
+  if (!expected) return Response.json({ error: 'Cron not configured' }, { status: 500 });
+  const auth = ctx.request.headers.get('Authorization') || '';
+  if (auth !== `Bearer ${expected}`) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
   try {
     const result = await syncWfirmaExpenses(ctx.env);
