@@ -73,6 +73,18 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const auth = ctx.request.headers.get('Authorization') || '';
   if (auth !== `Bearer ${expected}`) return Response.json({ error: 'Unauthorized' }, { status: 401 });
 
+  // TEMP debug: ?dump=1 zwraca surowy sample expense z wFirmy zeby zobaczyc strukture.
+  const url = new URL(ctx.request.url);
+  if (url.searchParams.get('dump') === '1') {
+    try {
+      const { listWfirmaExpensesRaw } = await import('../../../src/lib/wfirma');
+      const sample = await listWfirmaExpensesRaw(ctx.env, { page: 1, limit: 1 });
+      return Response.json({ sample }, { status: 200 });
+    } catch (err) {
+      return Response.json({ dump_error: err instanceof Error ? err.message : String(err) }, { status: 500 });
+    }
+  }
+
   try {
     const result = await syncWfirmaExpenses(ctx.env);
     return Response.json({ ok: true, ...result, timestamp: new Date().toISOString() });

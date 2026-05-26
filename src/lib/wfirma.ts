@@ -288,3 +288,36 @@ export async function listWfirmaExpenses(
     .filter((r): r is WfirmaExpenseRow => r !== null);
 }
 
+// TEMP debug: zwraca surowy response z wFirma /expenses/find dla 1 wiersza.
+export async function listWfirmaExpensesRaw(
+  env: Env,
+  opts: { page?: number; limit?: number } = {},
+): Promise<unknown> {
+  const page = opts.page ?? 1;
+  const limit = opts.limit ?? 1;
+  const body = {
+    expenses: [{
+      parameters: {
+        conditions: [],
+        order: [{ field: 'date', order: 'DESC' }],
+        limit,
+        page,
+      },
+    }],
+  };
+  const companyId = (env.WFIRMA_COMPANY_ID || '').replace(/\s/g, '');
+  const res = await fetch(`https://api2.wfirma.pl/expenses/find?company_id=${companyId}&inputFormat=json&outputFormat=json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'accessKey': (env.WFIRMA_ACCESS_KEY || '').replace(/\s/g, ''),
+      'secretKey': (env.WFIRMA_SECRET_KEY || '').replace(/\s/g, ''),
+      'appKey': (env.WFIRMA_APP_KEY || '').replace(/\s/g, ''),
+    },
+    body: JSON.stringify(body),
+    signal: AbortSignal.timeout(20000),
+  });
+  const text = await res.text();
+  try { return JSON.parse(text); } catch { return { rawText: text.slice(0, 2000) }; }
+}
+
