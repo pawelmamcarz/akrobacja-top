@@ -59,6 +59,7 @@ const DISCOUNTS: Record<string, DiscountSpec> = {
   PAWEL10: { pct: 10 },    // Linktree akrobacja.com/pawel, ruch z IG @xpoli
   URODZINY10: { pct: 10 }, // SEO landing /prezent-na-urodziny
   ODLOTOWY: { pct: 33, applicablePackages: ['para'], validFrom: '2026-05-25', validUntil: '2026-05-26', singleUse: true },
+  LISTA10: { pct: 10, validUntil: '2026-06-09' },  // SMS blast 2026-05-26 do 10 subskrybentow SMS listy
 };
 
 function isDiscountActive(d: DiscountSpec | undefined, packageId: PackageId, today: string): boolean {
