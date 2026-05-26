@@ -18,6 +18,31 @@ interface PhotoSubmissionRow {
   caption: string | null;
 }
 
+// Pretty event names z surowych tagow w DB
+function prettyEventLabel(rawTags: string[], captions: string[]): string {
+  const all = [...rawTags, ...captions].filter(Boolean).join(' ').toLowerCase();
+  if (all.includes('jedlin') || all.includes('airsky')) return 'Airsky 2026 w Jedlińsku';
+  if (all.includes('atam') || all.includes('piotrkow')) return 'ATAM 37 w Aeroklubie Ziemi Piotrkowskiej';
+  if (rawTags[0]) return rawTags[0];
+  if (captions[0]) return captions[0];
+  return 'naszych pokazach';
+}
+
+async function getPhotoContext(env: Env, email: string): Promise<PhotoContext | undefined> {
+  const { results } = await env.DB.prepare(
+    `SELECT event_tag, caption FROM gallery_submissions
+     WHERE status='approved' AND photographer_email = ?`
+  ).bind(email).all<{ event_tag: string | null; caption: string | null }>();
+  if (!results || results.length === 0) return undefined;
+  const tags = [...new Set(results.map(r => r.event_tag).filter((x): x is string => !!x))];
+  const captions = [...new Set(results.map(r => r.caption).filter((x): x is string => !!x))];
+  return {
+    event_label: prettyEventLabel(tags, captions),
+    photo_count: results.length,
+    captions,
+  };
+}
+
 function randomCodeSuffix(): string {
   // 4 znaki [A-Z0-9] bez znakow myl0nych (0/O, 1/I)
   const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -83,27 +108,44 @@ async function callBielik(endpoint: string, prompt: string, apiKey?: string): Pr
   return text.trim();
 }
 
-async function generateMailText(env: Env, name: string, code: string): Promise<{ html: string; ai_used: string }> {
+interface PhotoContext {
+  event_label: string;       // np. "ATAM 37 w Aeroklubie Ziemi Piotrkowskiej" lub "Airsky 2026 w Jedlinsku"
+  photo_count: number;       // ilosc zdjec tej osoby
+  captions: string[];        // captions z submissions (do skomentowania)
+}
+
+async function generateMailText(env: Env, name: string, code: string, ctx?: PhotoContext): Promise<{ html: string; ai_used: string }> {
   const envExt = env as unknown as { LLAMA_ENDPOINT?: string; LLAMA_API_KEY?: string };
   const llamaEndpoint = envExt.LLAMA_ENDPOINT || LLAMA_DEFAULT_ENDPOINT;
   const llamaApiKey = envExt.LLAMA_API_KEY;
 
-  const prompt = `Napisz krótki, ciepły mail w jezyku polskim z PODZIĘKOWANIEM dla fotografa o imieniu "${name}", który wrzucił swoje zdjęcia z lotów akrobacyjnych Extra 300L SP-EKS do galerii akrobacja.com.
+  const ctxBlock = ctx ? `
+KONTEKST (uzyj konkretnie w tekscie, nie ogolnie):
+- Event: ${ctx.event_label}
+- Liczba zdjec tej osoby: ${ctx.photo_count}
+${ctx.captions.length ? `- Opisy zdjec: ${ctx.captions.join(' | ')}` : ''}
+` : '';
 
-Wymagania:
-- Maksymalnie 5-6 zdań
-- Ton: ciepły, osobisty, niesztampowy
-- BEZ emotek
-- BEZ frazesów typu "Cieszę się że...", "W obliczu", "Warto pamiętać"
-- BEZ em-dashy (—) - używaj zwyklych myslnikow (-)
-- Konkretnie:
-  1. Bezpośrednie podziękowanie za zdjęcia
-  2. Info: zdjęcia są na akrobacja.com/galeria
-  3. Propozycja: jeśli sam chciałbyś polecieć, mamy dla Ciebie 10% rabatu kodem ${code} (jednorazowy, tylko dla Ciebie, do końca lipca 2026)
-  4. Link do oferty: akrobacja.com
-  5. Stopka: "Pozdrawiamy, załoga akrobacja.com - Paweł Mamcarz i Maciej Kulaszewski"
+  const prompt = `Napisz krótki mail po polsku do fotografa "${name}" - jego zdjęcia z lotów akrobacyjnych Extra 300L SP-EKS sa juz w galerii akrobacja.com/galeria.
 
-Format: tylko treść maila (HTML akapity <p>). Bez nagłówków <html>, <head>, <body>. Włącz stopkę w ostatnim <p>.`;
+${ctxBlock}
+
+ZASADY:
+- DOKLADNIE 3-4 zdania, NIE WIECEJ
+- LUZNY ton, jak do znajomego - bez "Drogi", "och", "ach", "niesamowite", "doskonale", "uchwycilo ducha", "inspirujace", "wspaniale", "promowanie pasji"
+- ZERO emotek
+- ZERO em-dashy (—), tylko zwykle myslniki (-)
+- Wspomnij konkretny event po nazwie (nie ogolnie "pokazy")
+- Konkretnie podziekuj za te X zdjec, nie ogolnie "wkład"
+
+STRUKTURA (3-4 zdania w 1 lub 2 akapitach <p>):
+1. Krotkie podziekowanie z konkretami (imie + event + liczba zdjec)
+2. Info ze sa na akrobacja.com/galeria
+3. Propozycja lotu z kodem ${code} (-10%, jednorazowy, do 31.07.2026)
+
+Zakoncz osobnym <p> z DOKLADNIE: "Pozdrawiamy, załoga akrobacja.com - Paweł Mamcarz i Maciej Kulaszewski"
+
+Format: TYLKO tagi <p>. Bez <html>, <head>, <body>.`;
 
   // 1. Sprobuj Bielik (llm.akrobacja.com, PL-native)
   try {
@@ -181,6 +223,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     action?: 'preview' | 'send_one' | 'send_bulk' | 'send_test';
     name?: string;
     to?: string;
+    preview_email?: string;       // override default kontekstu w preview (np. 'blaszczak.lukas@gmail.com' dla Lukasza)
     submission_id?: number;
     dry_run?: boolean;
   } | null;
@@ -203,18 +246,24 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       }
     }
 
-    const r = await generateMailText(ctx.env, name, code);
-    return Response.json({ name, code, html_preview: r.html, ai_used: r.ai_used });
+    // Kontekst z fotografow ATAM37 (default Karolina jako test - ma 4 zdjec)
+    const ctxPreview = await getPhotoContext(ctx.env, body.preview_email || 'karolinadrygas@gmail.com');
+    const r = await generateMailText(ctx.env, name, code, ctxPreview);
+    return Response.json({ name, code, context: ctxPreview, html_preview: r.html, ai_used: r.ai_used });
   }
 
   if (body.action === 'send_test') {
     if (!body.to) return Response.json({ error: 'to (email) wymagany' }, { status: 400 });
     const name = body.name || 'Łukasz';
     const code = generateCode(name);
-    const r = await generateMailText(ctx.env, name, code);
+    // Dla send_test wez kontekst Lukasza (Jedlinsk) jesli imie 'Łukasz', else Karolina (ATAM)
+    const ctxEmail = name.toLowerCase().includes('łukasz') || name.toLowerCase().includes('lukasz')
+      ? 'blaszczak.lukas@gmail.com' : 'karolinadrygas@gmail.com';
+    const photoCtx = await getPhotoContext(ctx.env, ctxEmail);
+    const r = await generateMailText(ctx.env, name, code, photoCtx);
     // NIE wpisujemy do personal_discount_codes (to test, nie produkcyjny send)
     await sendThankYouMail(ctx.env, body.to, name, code, r.html);
-    return Response.json({ ok: true, sent_to: body.to, name, code, ai_used: r.ai_used, html: r.html, note: 'TEST mail - kod NIE jest aktywny w DB' });
+    return Response.json({ ok: true, sent_to: body.to, name, code, ai_used: r.ai_used, context: photoCtx, html: r.html, note: 'TEST mail - kod NIE jest aktywny w DB' });
   }
 
   if (body.action === 'send_one') {
@@ -226,7 +275,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!sub.photographer_email) return Response.json({ error: 'Brak emaila u fotografa' }, { status: 400 });
 
     const code = generateCode(sub.photographer_name);
-    const r = await generateMailText(ctx.env, sub.photographer_name, code);
+    const photoCtx = await getPhotoContext(ctx.env, sub.photographer_email);
+    const r = await generateMailText(ctx.env, sub.photographer_name, code, photoCtx);
     if (body.dry_run) return Response.json({ dry_run: true, code, html: r.html, ai_used: r.ai_used });
 
     // Insert kod do DB
@@ -256,7 +306,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     for (const row of results) {
       try {
         const code = generateCode(row.photographer_name);
-        const r = await generateMailText(ctx.env, row.photographer_name, code);
+        const photoCtx = await getPhotoContext(ctx.env, row.photographer_email);
+        const r = await generateMailText(ctx.env, row.photographer_name, code, photoCtx);
         await ctx.env.DB.prepare(
           `INSERT INTO personal_discount_codes (code, customer_email, pct, source, expires_at, created_by)
            VALUES (?, ?, 10, 'photo_thankyou', '2026-07-31', ?)`
