@@ -28,9 +28,15 @@ function randomCodeSuffix(): string {
 }
 
 function generateCode(name: string): string {
-  // PHOTO-{IMIE_2_LITERY}{4_RANDOM} np. PHOTO-LUAB12
-  const cleanName = (name || 'FOTO').replace(/[^A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż]/g, '').toUpperCase();
-  const norm = cleanName.normalize('NFD').replace(/[̀-ͯ]/g, '').slice(0, 2) || 'FT';
+  // PHOTO-{IMIE_2_LITERY_ASCII}{4_RANDOM} np. PHOTO-LUAB12.
+  // Diakrytyki usuwane (klawiatury Stripe URL nie zawsze sobie radza z Ł/Ż).
+  const ascii = (name || 'FOTO')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')      // strip combining marks (ó -> o, ż wymaga osobno)
+    .replace(/ł/g, 'l').replace(/Ł/g, 'L') // ł nie ma combining mark
+    .replace(/[^A-Za-z]/g, '')
+    .toUpperCase();
+  const norm = ascii.slice(0, 2) || 'FT';
   return `PHOTO-${norm}${randomCodeSuffix()}`;
 }
 
@@ -136,8 +142,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   }
   const adminUser = await getAdminUserAsync(ctx.request, ctx.env);
   const body = (await ctx.request.json().catch(() => null)) as {
-    action?: 'preview' | 'send_one' | 'send_bulk';
+    action?: 'preview' | 'send_one' | 'send_bulk' | 'send_test';
     name?: string;
+    to?: string;
     submission_id?: number;
     dry_run?: boolean;
   } | null;
@@ -147,7 +154,22 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const name = body.name || 'Łukasz';
     const code = generateCode(name);
     const html = await generateMailText(ctx.env, name, code);
-    return Response.json({ name, code, html_preview: html });
+    const env = ctx.env as unknown as { BIELIK_URL?: string; BIELIK_TOKEN?: string };
+    return Response.json({
+      name, code, html_preview: html,
+      ai_used: env.BIELIK_URL && env.BIELIK_TOKEN ? 'bielik' : 'cloudflare-llama-3',
+      bielik_configured: !!(env.BIELIK_URL && env.BIELIK_TOKEN),
+    });
+  }
+
+  if (body.action === 'send_test') {
+    if (!body.to) return Response.json({ error: 'to (email) wymagany' }, { status: 400 });
+    const name = body.name || 'Łukasz';
+    const code = generateCode(name);
+    const html = await generateMailText(ctx.env, name, code);
+    // NIE wpisujemy do personal_discount_codes (to test, nie produkcyjny send)
+    await sendThankYouMail(ctx.env, body.to, name, code, html);
+    return Response.json({ ok: true, sent_to: body.to, name, code, html, note: 'TEST mail - kod NIE jest aktywny w DB' });
   }
 
   if (body.action === 'send_one') {
