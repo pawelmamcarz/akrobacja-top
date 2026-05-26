@@ -36,7 +36,7 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
       to: [params.to],
       bcc: ['pawel@mamcarz.com', 'maciej.kulaszewski@gmail.com'],
       reply_to: 'voucher@akrobacja.com',
-      subject: `Twój voucher ${pkg.name} — ${params.voucherCode}`,
+      subject: `Twój voucher ${pkg.name} - ${params.voucherCode}`,
       tags: [
         { name: 'type', value: 'voucher' },
         { name: 'package', value: params.packageId },

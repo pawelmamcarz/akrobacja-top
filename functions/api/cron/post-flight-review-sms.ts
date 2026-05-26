@@ -95,7 +95,7 @@ async function runCron(ctx: Parameters<PagesFunction<Env>>[0]): Promise<Response
         `Czesc ${firstName(row.customer_name)}! ` +
         `Dzieki za lot z nami. 30 sek opinii na Google znaczy dla nas wiele: ` +
         `https://akrobacja.com/opinia ` +
-        `— Maciej & Pawel`;
+        `- Maciej & Pawel`;
 
       try {
         await sendSms(ctx.env, row.customer_phone, message);
