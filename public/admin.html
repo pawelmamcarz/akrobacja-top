@@ -332,6 +332,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div id="finStats" style="margin-top:14px"></div>
 
+    <h3 style="margin:24px 0 8px;font-size:13px;color:#1B4DB5">Eventy / pokazy (Magda sprzedaje) - split 3-way</h3>
+    <div class="toolbar" style="margin-bottom:8px">
+      <button class="btn btn-blue" onclick="openModal('newEventSold')">+ Dodaj event</button>
+      <span style="font-size:11px;color:#666">Per event edytowalne: dolot/pokaz minuty, smok, prowizja Magdy</span>
+    </div>
+    <div id="eventsSoldTable" style="margin-bottom:32px"></div>
+
     <h3 style="margin:24px 0 8px;font-size:13px;color:#1B4DB5">Split kasy Paweł / Maciej (per voucher)</h3>
     <div class="toolbar" style="margin-bottom:8px;flex-wrap:wrap;gap:6px">
       <label>Miesiąc <input type="month" id="splitMonth"></label>
@@ -777,6 +784,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="btn btn-blue" onclick="createCalendarEvent()">Utwórz event</button>
   </div>
 
+  <!-- New Event Sold -->
+  <div class="modal" id="modal-newEventSold" style="display:none">
+    <h3>Dodaj sprzedany event / pokaz</h3>
+    <div class="field"><label>Data eventu *</label><input type="date" id="evsDate"></div>
+    <div class="field"><label>Klient *</label><input id="evsClient" placeholder="np. Korpo XYZ S.A."></div>
+    <div class="field"><label>Lokalizacja</label><input id="evsLocation" placeholder="np. Lotnisko EPMO Modlin"></div>
+    <div class="field"><label>Cena brutto (zł) *</label><input type="number" id="evsAmount" placeholder="np. 12000"></div>
+    <div class="field"><label>Dolot do/z (minuty)</label><input type="number" id="evsDolot" value="30"></div>
+    <div class="field"><label>Pokaz na miejscu (minuty)</label><input type="number" id="evsPokaz" value="30"></div>
+    <div class="field"><label>Smok / pirotechnika (zł)</label><input type="number" id="evsSmok" value="400"></div>
+    <div class="field"><label>Prowizja Magdy (%)</label><input type="number" id="evsMagda" value="10"></div>
+    <div class="field"><label>Status</label>
+      <select id="evsStatus">
+        <option value="planned">planned (zaplanowany)</option>
+        <option value="confirmed">confirmed (potwierdzony)</option>
+        <option value="done">done (zrobiony)</option>
+        <option value="cancelled">cancelled (anulowany)</option>
+      </select>
+    </div>
+    <div class="field"><label>Notatki</label><textarea id="evsNotes" style="height:60px"></textarea></div>
+    <button class="btn btn-blue" onclick="createEventSold()">Dodaj event</button>
+  </div>
+
   <!-- New KSeF Contractor (whitelist) -->
   <div class="modal" id="modal-newKsefContractor" style="display:none">
     <h3>Dodaj kontrahenta do whitelisty KSeF</h3>
@@ -1124,7 +1154,121 @@ async function loadFinance() {
   if (!document.getElementById('splitMonth').value) {
     document.getElementById('splitMonth').value = new Date().toISOString().slice(0,7);
   }
+  loadEventsSold();
   loadVoucherSplit();
+}
+
+async function loadEventsSold() {
+  const wrap = document.getElementById('eventsSoldTable');
+  if (!wrap) return;
+  try {
+    const res = await api('GET', '/api/admin/events-sold');
+    const events = res.events || [];
+    const t = res.totals || {};
+    if (!events.length) {
+      wrap.innerHTML = '<p style="padding:8px;color:#888;font-size:12px">Brak sprzedanych eventów. Magda doda przez "+ Dodaj event".</p>';
+      return;
+    }
+    const rows = events.map(e => `<tr data-event="${dataAttr(e.id)}">
+      <td>${esc(e.event_date)}</td>
+      <td>${esc(e.client_name)}<br><small style="color:#888">${esc(e.location||'-')}</small></td>
+      <td><span class="badge badge-${e.status}">${esc(e.status)}</span></td>
+      <td class="amount">${fmtPln(e.gross_amount_gr)}</td>
+      <td class="amount" style="color:#666">
+        <input type="number" min="0" value="${e.dolot_minutes}" style="width:50px;font-size:11px;text-align:right" onchange="updateEventField('${dataAttr(e.id)}','dolot_minutes',this.value)"> dolot<br>
+        <input type="number" min="0" value="${e.pokaz_minutes}" style="width:50px;font-size:11px;text-align:right" onchange="updateEventField('${dataAttr(e.id)}','pokaz_minutes',this.value)"> pokaz
+      </td>
+      <td class="amount" style="color:#666">${fmtPln(e.split.aircraft_gr)} zł<br><small>${e.dolot_minutes + e.pokaz_minutes} min × 30</small></td>
+      <td class="amount" style="color:#666">${fmtPln(e.split.fuel_gr)} zł<br><small>${Math.max(1, Math.ceil((e.dolot_minutes + e.pokaz_minutes)/30))} × 200</small></td>
+      <td class="amount" style="color:#666">
+        <input type="number" min="0" value="${Math.round(e.smok_cost_gr/100)}" style="width:60px;font-size:11px;text-align:right" onchange="updateEventField('${dataAttr(e.id)}','smok_cost_gr',Math.round(this.value*100))"> zł
+      </td>
+      <td class="amount" style="color:#666">
+        <input type="number" min="0" max="50" value="${e.magda_share_pct}" style="width:40px;font-size:11px;text-align:right" onchange="updateEventField('${dataAttr(e.id)}','magda_share_pct',this.value)">%<br>
+        <small>${fmtPln(e.split.magda_commission_gr)} zł</small>
+      </td>
+      <td class="amount" style="font-weight:700;color:${e.split.margin_gr>=0?'#28a745':'#c00'}">${fmtPln(e.split.margin_gr)}</td>
+      <td class="amount" style="color:#1B4DB5;font-weight:600">${fmtPln(e.split.pawel_total_gr)}</td>
+      <td class="amount" style="color:#9333ea;font-weight:600">${fmtPln(e.split.magda_total_gr)}</td>
+      <td class="amount" style="color:#C41E3A;font-weight:600">${fmtPln(e.split.maciej_total_gr)}</td>
+      <td class="actions"><button class="btn btn-red" data-action="deleteEventSold" data-arg1="${dataAttr(e.id)}">×</button></td>
+    </tr>`).join('');
+
+    wrap.innerHTML = `<table style="font-size:11px">
+      <thead><tr style="background:#f4f8ff">
+        <th>Data</th><th>Klient</th><th>Status</th>
+        <th class="amount">Cena</th>
+        <th class="amount">Minuty</th>
+        <th class="amount">Samolot</th>
+        <th class="amount">Paliwo</th>
+        <th class="amount">Smok</th>
+        <th class="amount">Magda %</th>
+        <th class="amount">Marża</th>
+        <th class="amount" style="color:#1B4DB5">Paweł</th>
+        <th class="amount" style="color:#9333ea">Magda</th>
+        <th class="amount" style="color:#C41E3A">Maciej</th>
+        <th></th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+      <tfoot><tr style="background:#f4f8ff;font-weight:700;border-top:2px solid #1B4DB5">
+        <td colspan="3">SUMA (${events.length} eventów)</td>
+        <td class="amount">${fmtPln(t.revenue_gr)}</td>
+        <td colspan="5" class="amount" style="color:#666">${fmtPln(t.cost_total_gr)} koszt</td>
+        <td class="amount" style="color:${t.margin_gr>=0?'#28a745':'#c00'}">${fmtPln(t.margin_gr)}</td>
+        <td class="amount" style="color:#1B4DB5">${fmtPln(t.pawel_gr)}</td>
+        <td class="amount" style="color:#9333ea">${fmtPln(t.magda_gr)}</td>
+        <td class="amount" style="color:#C41E3A">${fmtPln(t.maciej_gr)}</td>
+        <td></td>
+      </tr></tfoot>
+    </table>
+    <p style="margin-top:6px;font-size:11px;color:#666">
+      <strong>Split 3-way:</strong>
+      <span style="color:#1B4DB5">Paweł = samolot 30 zł/min × (dolot+pokaz) + 50% marży</span>,
+      <span style="color:#9333ea">Magda = prowizja % × cena</span>,
+      <span style="color:#C41E3A">Maciej = paliwo (200 zł × ceil(min/30)) + smok + 50% marży</span>.
+    </p>`;
+  } catch (e) {
+    wrap.innerHTML = '<p style="padding:8px;color:#c00;font-size:12px">Blad: ' + esc(e.message||'unknown') + '</p>';
+  }
+}
+
+async function updateEventField(id, field, value) {
+  const body = { action:'update', id };
+  body[field] = Number(value);
+  const r = await api('POST', '/api/admin/events-sold', body);
+  if (r.ok) loadEventsSold(); else showMsg(r.error||'Blad','err');
+}
+
+async function createEventSold() {
+  const body = {
+    action: 'create',
+    event_date: document.getElementById('evsDate').value,
+    client_name: document.getElementById('evsClient').value.trim(),
+    location: document.getElementById('evsLocation').value.trim() || undefined,
+    gross_amount_gr: Math.round((parseFloat(document.getElementById('evsAmount').value)||0) * 100),
+    dolot_minutes: parseInt(document.getElementById('evsDolot').value) || 30,
+    pokaz_minutes: parseInt(document.getElementById('evsPokaz').value) || 30,
+    smok_cost_gr: Math.round((parseFloat(document.getElementById('evsSmok').value)||0) * 100),
+    magda_share_pct: parseInt(document.getElementById('evsMagda').value) || 10,
+    status: document.getElementById('evsStatus').value,
+    notes: document.getElementById('evsNotes').value.trim() || undefined,
+  };
+  if (!body.event_date || !body.client_name || !body.gross_amount_gr) {
+    showMsg('Data, klient i cena wymagane','err'); return;
+  }
+  const r = await api('POST', '/api/admin/events-sold', body);
+  if (r.ok) {
+    showMsg('Event dodany','ok');
+    closeModal();
+    ['evsDate','evsClient','evsLocation','evsAmount','evsNotes'].forEach(id => document.getElementById(id).value='');
+    loadEventsSold();
+  } else showMsg(r.error||'Blad','err');
+}
+
+async function deleteEventSold(id) {
+  if (!confirm('Usunac event?')) return;
+  const r = await api('POST', '/api/admin/events-sold', { action:'delete', id });
+  if (r.ok) { showMsg('Usunieto','ok'); loadEventsSold(); } else showMsg(r.error||'Blad','err');
 }
 
 async function loadVoucherSplit() {
