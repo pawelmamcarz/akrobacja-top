@@ -96,29 +96,39 @@ export async function ksefSelfTest(env: Env): Promise<KsefSelfTestResult> {
 }
 
 // Test wielu URL-i (1.0, 2.0, rozne domeny) zeby zobaczyc ktory dziala.
-export async function ksefProbeEndpoints(env: Env): Promise<Array<{ url: string; status: number; sample: string }>> {
+// api.ksef.mf.gov.pl zwroci 405 na POST do /v2/sessions/AuthorisationChallenge - czyli
+// endpoint zyje ale inna metoda lub inny path.
+export async function ksefProbeEndpoints(env: Env): Promise<Array<{ url: string; method: string; status: number; sample: string }>> {
   const nip = (env.KSEF_NIP || '').replace(/\s/g, '');
-  const urls = [
-    'https://ksef.mf.gov.pl/api/v2/sessions/AuthorisationChallenge',
-    'https://api.ksef.gov.pl/api/v2/sessions/AuthorisationChallenge',
-    'https://api.ksef.gov.pl/v2/sessions/AuthorisationChallenge',
-    'https://api.ksef.mf.gov.pl/v2/sessions/AuthorisationChallenge',
-    'https://ksef.gov.pl/api/v2/sessions/AuthorisationChallenge',
-    'https://e-faktura.gov.pl/api/v2/sessions/AuthorisationChallenge',
+  const HOST = 'https://api.ksef.mf.gov.pl';
+  // Roznych wariantow - kombinacje method + path
+  const probes: Array<{ url: string; method: string; body?: unknown }> = [
+    { url: `${HOST}/v2/sessions/AuthorisationChallenge`, method: 'GET' },
+    { url: `${HOST}/v2/sessions/online/init`, method: 'POST', body: { contextIdentifier: { type: 'onip', identifier: nip } } },
+    { url: `${HOST}/v2/sessions/online/initialization`, method: 'POST', body: { contextIdentifier: { type: 'onip', identifier: nip } } },
+    { url: `${HOST}/v2/sessions/init`, method: 'POST', body: { contextIdentifier: { type: 'onip', identifier: nip } } },
+    { url: `${HOST}/v2/auth/challenge`, method: 'POST', body: { contextIdentifier: { type: 'onip', identifier: nip } } },
+    { url: `${HOST}/v2/health`, method: 'GET' },
+    { url: `${HOST}/v2/info`, method: 'GET' },
+    { url: `${HOST}/`, method: 'GET' },
+    { url: `${HOST}/v2/`, method: 'GET' },
+    { url: `${HOST}/v2/swagger`, method: 'GET' },
+    { url: `${HOST}/v2/openapi`, method: 'GET' },
   ];
-  const results: Array<{ url: string; status: number; sample: string }> = [];
-  for (const url of urls) {
+  const results: Array<{ url: string; method: string; status: number; sample: string }> = [];
+  for (const p of probes) {
     try {
-      const r = await fetch(url, {
-        method: 'POST',
+      const opts: RequestInit = {
+        method: p.method,
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ contextIdentifier: { type: 'onip', identifier: nip } }),
         signal: AbortSignal.timeout(10000),
-      });
+      };
+      if (p.body !== undefined) opts.body = JSON.stringify(p.body);
+      const r = await fetch(p.url, opts);
       const text = await r.text();
-      results.push({ url, status: r.status, sample: text.substring(0, 200) });
+      results.push({ url: p.url, method: p.method, status: r.status, sample: text.substring(0, 250) });
     } catch (err) {
-      results.push({ url, status: 0, sample: err instanceof Error ? err.message : String(err) });
+      results.push({ url: p.url, method: p.method, status: 0, sample: err instanceof Error ? err.message : String(err) });
     }
   }
   return results;
