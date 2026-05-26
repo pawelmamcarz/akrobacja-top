@@ -196,21 +196,28 @@ function pickAmountGrosze(o: Record<string, unknown>, ...keys: string[]): number
 function normaliseExpense(raw: Record<string, unknown>): WfirmaExpenseRow | null {
   const id = pickString(raw, 'id');
   if (!id) return null;
-  const contractor = (raw.contractor || raw.contractor_detail) as Record<string, unknown> | undefined;
-  const gross = pickAmountGrosze(raw, 'total', 'gross_total', 'gross_amount');
+  // wFirma zwraca obie: `contractor` (tylko {id: N}) i `contractor_detail` (pelne dane
+  // z nazwa/NIP). Bierzemy contractor_detail jako pierwsze - ma name/nip.
+  const contractorDetail = raw.contractor_detail as Record<string, unknown> | undefined;
+  const contractor = (raw.contractor as Record<string, unknown> | undefined);
+  const contractorSrc = contractorDetail && Object.keys(contractorDetail).length > 1
+    ? contractorDetail
+    : (contractor && Object.keys(contractor).length > 1 ? contractor : null);
+  // wFirma pola kwot: brutto / total_composed (gross), netto (net). Stringi typu "2815.64".
+  const gross = pickAmountGrosze(raw, 'brutto', 'total_composed', 'total', 'gross_total', 'gross_amount');
   const net = pickAmountGrosze(raw, 'netto', 'net_total', 'net_amount');
   const vat = gross && net ? gross - net : pickAmountGrosze(raw, 'vat', 'vat_amount');
   return {
     wfirma_id: id,
-    invoice_number: pickString(raw, 'number', 'fullnumber', 'name'),
-    contractor_name: contractor ? pickString(contractor, 'name', 'altname') : null,
-    contractor_nip: contractor ? pickString(contractor, 'nip', 'tax_id_type') : null,
+    invoice_number: pickString(raw, 'fullnumber', 'number', 'name'),
+    contractor_name: contractorSrc ? pickString(contractorSrc, 'name', 'altname') : null,
+    contractor_nip: contractorSrc ? pickString(contractorSrc, 'nip') : null,
     net_amount: net || (gross - vat),
     vat_amount: vat,
     gross_amount: gross,
     currency: pickString(raw, 'currency', 'currency_code') || 'PLN',
-    issue_date: pickString(raw, 'date', 'paymentdate', 'issuedate') || new Date().toISOString().slice(0, 10),
-    description: pickString(raw, 'description', 'comment'),
+    issue_date: pickString(raw, 'date', 'taxregister_date', 'payment_date') || new Date().toISOString().slice(0, 10),
+    description: pickString(raw, 'description', 'remarks', 'comment'),
     category: pickString(raw, 'category', 'series_name', 'type'),
   };
 }
