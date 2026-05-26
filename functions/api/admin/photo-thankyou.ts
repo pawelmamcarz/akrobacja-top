@@ -40,8 +40,12 @@ function generateCode(name: string): string {
   return `PHOTO-${norm}${randomCodeSuffix()}`;
 }
 
-// Bielik GPU box (czympojade.pl) - public URL, OpenAI-compatible (vLLM/llama.cpp).
-const BIELIK_DEFAULT_URL = 'https://llm.czympojade.pl';
+// Bielik 11B v2.3 GPU box przez Cloudflare Tunnel.
+// Endpoint: https://llm.akrobacja.com/v1 (OpenAI-compatible, llama.cpp backend).
+// Auth: Bearer LLAMA_API_KEY (wgraj przez wrangler pages secret put LLAMA_API_KEY).
+// Concurrency: 1 slot (serializacja queue dla bulk requestow).
+// CF Tunnel idle timeout 100s - dla generacji >100s uzyj stream:true (tu krotkie maile = OK bez stream).
+const LLAMA_DEFAULT_ENDPOINT = 'https://llm.akrobacja.com';
 
 interface BielikResponse {
   choices?: Array<{ message?: { content?: string }; text?: string }>;
@@ -49,49 +53,40 @@ interface BielikResponse {
   message?: { content?: string };
 }
 
-async function callBielik(baseUrl: string, prompt: string, token?: string): Promise<string> {
-  // Try OpenAI-compatible /v1/chat/completions first, fallback /api/chat (Ollama).
+async function callBielik(endpoint: string, prompt: string, apiKey?: string): Promise<string> {
   const headers: Record<string, string> = { 'Content-Type': 'application/json' };
-  if (token) headers['Authorization'] = `Bearer ${token}`;
+  if (apiKey) headers['Authorization'] = `Bearer ${apiKey}`;
 
-  const paths = ['/v1/chat/completions', '/api/chat'];
-  let lastErr = '';
-  for (const path of paths) {
-    try {
-      const r = await fetch(`${baseUrl}${path}`, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify({
-          model: 'bielik',
-          messages: [{ role: 'user', content: prompt }],
-          max_tokens: 700,
-          temperature: 0.7,
-          stream: false,
-        }),
-        signal: AbortSignal.timeout(45000),
-      });
-      const txt = await r.text();
-      if (!r.ok) { lastErr = `${path} HTTP ${r.status}: ${txt.substring(0, 200)}`; continue; }
-      let data: BielikResponse;
-      try { data = JSON.parse(txt); } catch { lastErr = `${path} unparseable`; continue; }
-      const text = data.choices?.[0]?.message?.content
-        || data.choices?.[0]?.text
-        || data.message?.content
-        || data.response
-        || '';
-      if (text) return text.trim();
-      lastErr = `${path} empty response`;
-    } catch (err) {
-      lastErr = `${path} ${err instanceof Error ? err.message : String(err)}`;
-    }
-  }
-  throw new Error(`Bielik failed: ${lastErr}`);
+  const url = `${endpoint.replace(/\/$/, '')}/v1/chat/completions`;
+  const r = await fetch(url, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      model: 'bielik',
+      messages: [{ role: 'user', content: prompt }],
+      max_tokens: 700,
+      temperature: 0.7,
+      stream: false,
+    }),
+    signal: AbortSignal.timeout(90000),  // 90s - mail krotki, 1 slot moze byc w queue
+  });
+  const txt = await r.text();
+  if (!r.ok) throw new Error(`Bielik HTTP ${r.status}: ${txt.substring(0, 200)}`);
+  let data: BielikResponse;
+  try { data = JSON.parse(txt); } catch { throw new Error(`Bielik unparseable: ${txt.substring(0, 100)}`); }
+  const text = data.choices?.[0]?.message?.content
+    || data.choices?.[0]?.text
+    || data.message?.content
+    || data.response
+    || '';
+  if (!text) throw new Error(`Bielik empty response: ${txt.substring(0, 100)}`);
+  return text.trim();
 }
 
 async function generateMailText(env: Env, name: string, code: string): Promise<{ html: string; ai_used: string }> {
-  const envExt = env as unknown as { BIELIK_URL?: string; BIELIK_TOKEN?: string };
-  const bielikUrl = envExt.BIELIK_URL || BIELIK_DEFAULT_URL;
-  const bielikToken = envExt.BIELIK_TOKEN;
+  const envExt = env as unknown as { LLAMA_ENDPOINT?: string; LLAMA_API_KEY?: string };
+  const llamaEndpoint = envExt.LLAMA_ENDPOINT || LLAMA_DEFAULT_ENDPOINT;
+  const llamaApiKey = envExt.LLAMA_API_KEY;
 
   const prompt = `Napisz krótki, ciepły mail w jezyku polskim z PODZIĘKOWANIEM dla fotografa o imieniu "${name}", który wrzucił swoje zdjęcia z lotów akrobacyjnych Extra 300L SP-EKS do galerii akrobacja.com.
 
@@ -110,10 +105,10 @@ Wymagania:
 
 Format: tylko treść maila (HTML akapity <p>). Bez nagłówków <html>, <head>, <body>. Włącz stopkę w ostatnim <p>.`;
 
-  // 1. Sprobuj Bielik (czympojade.pl GPU box)
+  // 1. Sprobuj Bielik (llm.akrobacja.com, PL-native)
   try {
-    const text = await callBielik(bielikUrl, prompt, bielikToken);
-    if (text) return { html: text, ai_used: `bielik (${bielikUrl})` };
+    const text = await callBielik(llamaEndpoint, prompt, llamaApiKey);
+    if (text) return { html: text, ai_used: `bielik (${llamaEndpoint})` };
   } catch (err) {
     console.error('Bielik error, fallback to CF AI:', err);
   }
@@ -198,13 +193,13 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     // Debug: probe Bielik bezposrednio gdy ?debug=1, zwroc error pelny.
     const url = new URL(ctx.request.url);
     if (url.searchParams.get('debug') === '1') {
-      const envExt = ctx.env as unknown as { BIELIK_URL?: string; BIELIK_TOKEN?: string };
-      const bielikUrl = envExt.BIELIK_URL || 'https://llm.czympojade.pl';
+      const envExt = ctx.env as unknown as { LLAMA_ENDPOINT?: string; LLAMA_API_KEY?: string };
+      const endpoint = envExt.LLAMA_ENDPOINT || LLAMA_DEFAULT_ENDPOINT;
       try {
-        const text = await callBielik(bielikUrl, 'Test polskiego: napisz krotkie "OK" jesli rozumiesz.', envExt.BIELIK_TOKEN);
-        return Response.json({ bielik_ok: true, bielik_url: bielikUrl, response: text });
+        const text = await callBielik(endpoint, 'Test polskiego: napisz krotkie "OK" jesli rozumiesz.', envExt.LLAMA_API_KEY);
+        return Response.json({ bielik_ok: true, endpoint, has_api_key: !!envExt.LLAMA_API_KEY, response: text });
       } catch (err) {
-        return Response.json({ bielik_ok: false, bielik_url: bielikUrl, error: err instanceof Error ? err.message : String(err) }, { status: 500 });
+        return Response.json({ bielik_ok: false, endpoint, has_api_key: !!envExt.LLAMA_API_KEY, error: err instanceof Error ? err.message : String(err) }, { status: 500 });
       }
     }
 

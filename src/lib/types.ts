@@ -25,6 +25,14 @@ export interface Env {
   GOOGLE_PLACE_ID?: string;
   KSEF_TOKEN?: string;          // KSeF API token (uprawnienia: przegladanie faktur)
   KSEF_NIP?: string;            // NIP firmy 10 cyfr (kontekst sesji KSeF)
+  // Bielik 11B v2.3 GPU box przez CF Tunnel - https://llm.akrobacja.com (OpenAI-compatible).
+  // Default endpoint = llm.akrobacja.com, override przez LLAMA_ENDPOINT.
+  LLAMA_API_KEY?: string;
+  LLAMA_ENDPOINT?: string;
+  RAG_API_KEY?: string;         // https://rag.akrobacja.com - sentence-transformers + CLIP
+  RAG_ENDPOINT?: string;
+  BROWSERLESS_TOKEN?: string;   // https://scrape.akrobacja.com - headless Chromium
+  BROWSERLESS_ENDPOINT?: string;
   AI: Ai;
   RATE_LIMIT_KV: KVNamespace;
   // R2 S3-compatible API credentials — used by direct-to-R2 multipart upload
