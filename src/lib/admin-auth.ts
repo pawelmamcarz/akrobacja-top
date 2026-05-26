@@ -17,12 +17,11 @@ function timingSafeEqual(a: string, b: string): boolean {
 
 export type AdminUser = string; // 'pawel' | 'magda' (legacy) | email (DB user)
 
-// Legacy env-based users — kept so the existing cron + Magda's UI keep working
-// while the email/password flow rolls out. Add new logins via admin_users table.
+// Legacy env-based user (Pawel) — kept dla cron endpoints i back-compat.
+// Magda + Maciej + ewentualni nowi userzy ida przez admin_users (PBKDF2).
 function legacyUserCandidates(env: Env): Array<{ user: AdminUser; expected: string }> {
   const all: Array<{ user: AdminUser; expected: string }> = [
     { user: 'pawel', expected: (env.ADMIN_PASSWORD || '').replace(/\s/g, '') },
-    { user: 'magda', expected: (env.MAGDA_PASSWORD || '').replace(/\s/g, '') },
   ];
   return all.filter(c => c.expected.length > 0);
 }
