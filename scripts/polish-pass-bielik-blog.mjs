@@ -182,11 +182,23 @@ async function processBlog(path, index, total) {
   console.log(`  prompt: ${prompt.length} chars, body: ${extracted.body.length} chars`);
 
   let rewritten;
-  try {
-    rewritten = await callBielik(prompt);
-  } catch (err) {
-    console.log(`  ERROR: ${err.message}`);
-    return { slug, error: err.message };
+  let lastErr = '';
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      rewritten = await callBielik(prompt);
+      break;
+    } catch (err) {
+      lastErr = err.message;
+      const transient = /HTTP 5(0[234]|99)/.test(lastErr) || /timeout|524/i.test(lastErr);
+      if (!transient || attempt === 3) break;
+      const waitMs = attempt * 30000;  // 30s, 60s
+      console.log(`  attempt ${attempt}/3 failed: ${lastErr.substring(0, 80)} - retry in ${waitMs/1000}s`);
+      await new Promise(r => setTimeout(r, waitMs));
+    }
+  }
+  if (!rewritten) {
+    console.log(`  ERROR: ${lastErr.substring(0, 150)}`);
+    return { slug, error: lastErr };
   }
 
   // Bielik moze zwrocic z otaczajacym ``` - strip
