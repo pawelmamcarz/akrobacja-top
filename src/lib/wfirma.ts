@@ -274,7 +274,15 @@ export async function listWfirmaExpenses(
     throw new Error(`wFirma error: ${parsed.status.code}`);
   }
 
-  const rows = parsed?.expenses || [];
+  // wFirma zwraca expenses jako obiekt indexed by ID: { "12345": { expense: {...} }, "12346": ... }
+  // NIE jako array. Normalize do array zanim mapujemy.
+  const rawExpenses = parsed?.expenses;
+  let rows: Array<{ expense?: unknown }> = [];
+  if (Array.isArray(rawExpenses)) {
+    rows = rawExpenses;
+  } else if (rawExpenses && typeof rawExpenses === 'object') {
+    rows = Object.values(rawExpenses as Record<string, { expense?: unknown }>);
+  }
   return rows
     .map((r) => normaliseExpense((r.expense || {}) as Record<string, unknown>))
     .filter((r): r is WfirmaExpenseRow => r !== null);
