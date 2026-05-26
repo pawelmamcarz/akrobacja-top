@@ -95,15 +95,16 @@ export async function ksefSelfTest(env: Env): Promise<KsefSelfTestResult> {
   }
 }
 
-// Test wielu URL-i (1.0, 2.0) zeby zobaczyc ktory dziala.
+// Test wielu URL-i (1.0, 2.0, rozne domeny) zeby zobaczyc ktory dziala.
 export async function ksefProbeEndpoints(env: Env): Promise<Array<{ url: string; status: number; sample: string }>> {
   const nip = (env.KSEF_NIP || '').replace(/\s/g, '');
   const urls = [
-    'https://ksef.mf.gov.pl/api/online/Session/AuthorisationChallenge',
-    'https://ksef.mf.gov.pl/api/v2/sessions/online/initialization',
-    'https://ksef.mf.gov.pl/api/v2/online/Session/AuthorisationChallenge',
-    'https://ksef.mf.gov.pl/api/v2/auth/challenge',
-    'https://ksef.mf.gov.pl/api/v2/AuthorisationChallenge',
+    'https://ksef.mf.gov.pl/api/v2/sessions/AuthorisationChallenge',
+    'https://api.ksef.gov.pl/api/v2/sessions/AuthorisationChallenge',
+    'https://api.ksef.gov.pl/v2/sessions/AuthorisationChallenge',
+    'https://api.ksef.mf.gov.pl/v2/sessions/AuthorisationChallenge',
+    'https://ksef.gov.pl/api/v2/sessions/AuthorisationChallenge',
+    'https://e-faktura.gov.pl/api/v2/sessions/AuthorisationChallenge',
   ];
   const results: Array<{ url: string; status: number; sample: string }> = [];
   for (const url of urls) {
