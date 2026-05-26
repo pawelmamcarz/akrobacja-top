@@ -40,10 +40,59 @@ function generateCode(name: string): string {
   return `PHOTO-${norm}${randomCodeSuffix()}`;
 }
 
-async function generateMailText(env: Env, name: string, code: string): Promise<string> {
-  // Try BIELIK_URL first (jesli user ustawi swoj endpoint), fallback do Cloudflare Workers AI.
-  const bielikUrl = (env as unknown as { BIELIK_URL?: string }).BIELIK_URL;
-  const bielikToken = (env as unknown as { BIELIK_TOKEN?: string }).BIELIK_TOKEN;
+// Bielik GPU box (czympojade.pl) - public URL, OpenAI-compatible (vLLM/llama.cpp).
+const BIELIK_DEFAULT_URL = 'https://llm.czympojade.pl';
+
+interface BielikResponse {
+  choices?: Array<{ message?: { content?: string }; text?: string }>;
+  response?: string;
+  message?: { content?: string };
+}
+
+async function callBielik(baseUrl: string, prompt: string, token?: string): Promise<string> {
+  // Try OpenAI-compatible /v1/chat/completions first, fallback /api/chat (Ollama).
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+
+  const paths = ['/v1/chat/completions', '/api/chat'];
+  let lastErr = '';
+  for (const path of paths) {
+    try {
+      const r = await fetch(`${baseUrl}${path}`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          model: 'bielik',
+          messages: [{ role: 'user', content: prompt }],
+          max_tokens: 700,
+          temperature: 0.7,
+          stream: false,
+        }),
+        signal: AbortSignal.timeout(45000),
+      });
+      const txt = await r.text();
+      if (!r.ok) { lastErr = `${path} HTTP ${r.status}: ${txt.substring(0, 200)}`; continue; }
+      let data: BielikResponse;
+      try { data = JSON.parse(txt); } catch { lastErr = `${path} unparseable`; continue; }
+      const text = data.choices?.[0]?.message?.content
+        || data.choices?.[0]?.text
+        || data.message?.content
+        || data.response
+        || '';
+      if (text) return text.trim();
+      lastErr = `${path} empty response`;
+    } catch (err) {
+      lastErr = `${path} ${err instanceof Error ? err.message : String(err)}`;
+    }
+  }
+  throw new Error(`Bielik failed: ${lastErr}`);
+}
+
+async function generateMailText(env: Env, name: string, code: string): Promise<{ html: string; ai_used: string }> {
+  const envExt = env as unknown as { BIELIK_URL?: string; BIELIK_TOKEN?: string };
+  const bielikUrl = envExt.BIELIK_URL || BIELIK_DEFAULT_URL;
+  const bielikToken = envExt.BIELIK_TOKEN;
+
   const prompt = `Napisz krótki, ciepły mail w jezyku polskim z PODZIĘKOWANIEM dla fotografa o imieniu "${name}", który wrzucił swoje zdjęcia z lotów akrobacyjnych Extra 300L SP-EKS do galerii akrobacja.com.
 
 Wymagania:
@@ -57,39 +106,31 @@ Wymagania:
   2. Info: zdjęcia są na akrobacja.com/galeria
   3. Propozycja: jeśli sam chciałbyś polecieć, mamy dla Ciebie 10% rabatu kodem ${code} (jednorazowy, tylko dla Ciebie, do końca lipca 2026)
   4. Link do oferty: akrobacja.com
-  5. Pozdrowienia od Macieja Kulaszewskiego (pilot Extra 300L, Mistrz Świata 2022)
+  5. Stopka: "Pozdrawiamy, załoga akrobacja.com - Paweł Mamcarz i Maciej Kulaszewski"
 
-Format: tylko treść maila (HTML akapity <p>). Bez nagłówków <html>, <head>, <body>. Bez podpisu "Maciej" osobno - włącz go w treść.`;
+Format: tylko treść maila (HTML akapity <p>). Bez nagłówków <html>, <head>, <body>. Włącz stopkę w ostatnim <p>.`;
 
-  // 1. Sprobuj Bielik
-  if (bielikUrl && bielikToken) {
-    try {
-      const r = await fetch(bielikUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${bielikToken}` },
-        body: JSON.stringify({
-          model: 'speakleash/Bielik-11B-v2.3-Instruct',
-          messages: [{ role: 'user', content: prompt }],
-          max_tokens: 600,
-          temperature: 0.7,
-        }),
-        signal: AbortSignal.timeout(20000),
-      });
-      const data = await r.json() as { choices?: Array<{ message?: { content?: string } }>, response?: string };
-      const text = data.choices?.[0]?.message?.content || data.response || '';
-      if (text) return text.trim();
-    } catch (err) {
-      console.error('Bielik error, fallback to CF AI:', err);
-    }
+  // 1. Sprobuj Bielik (czympojade.pl GPU box)
+  try {
+    const text = await callBielik(bielikUrl, prompt, bielikToken);
+    if (text) return { html: text, ai_used: `bielik (${bielikUrl})` };
+  } catch (err) {
+    console.error('Bielik error, fallback to CF AI:', err);
   }
 
   // 2. Fallback: Cloudflare Workers AI Llama 3
   const aiRes = await env.AI.run('@cf/meta/llama-3-8b-instruct', {
     messages: [{ role: 'user', content: prompt }],
-    max_tokens: 600,
+    max_tokens: 700,
     temperature: 0.7,
   }) as { response?: string };
-  return (aiRes.response || '').trim() || `<p>Cześć ${name},</p><p>dziękujemy za zdjęcia w galerii akrobacja.com/galeria. Jeśli sam chciałbyś polecieć - kod <strong>${code}</strong> daje Ci 10% rabatu (jednorazowy, do końca lipca 2026). Sprawdź na akrobacja.com.</p><p>Pozdrawiam, Maciej Kulaszewski (pilot Extra 300L, Mistrz Świata 2022).</p>`;
+  const text = (aiRes.response || '').trim();
+  if (text) return { html: text, ai_used: 'cloudflare-llama-3 (bielik unavailable)' };
+
+  return {
+    html: `<p>Cześć ${name},</p><p>dziękujemy za zdjęcia w galerii akrobacja.com/galeria. Jeśli sam chciałbyś polecieć - kod <strong>${code}</strong> daje Ci 10% rabatu (jednorazowy, do końca lipca 2026). Sprawdź na akrobacja.com.</p><p>Pozdrawiamy, załoga akrobacja.com - Paweł Mamcarz i Maciej Kulaszewski.</p>`,
+    ai_used: 'fallback (no AI)',
+  };
 }
 
 async function sendThankYouMail(env: Env, to: string, name: string, code: string, html: string): Promise<void> {
@@ -153,23 +194,18 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   if (body.action === 'preview') {
     const name = body.name || 'Łukasz';
     const code = generateCode(name);
-    const html = await generateMailText(ctx.env, name, code);
-    const env = ctx.env as unknown as { BIELIK_URL?: string; BIELIK_TOKEN?: string };
-    return Response.json({
-      name, code, html_preview: html,
-      ai_used: env.BIELIK_URL && env.BIELIK_TOKEN ? 'bielik' : 'cloudflare-llama-3',
-      bielik_configured: !!(env.BIELIK_URL && env.BIELIK_TOKEN),
-    });
+    const r = await generateMailText(ctx.env, name, code);
+    return Response.json({ name, code, html_preview: r.html, ai_used: r.ai_used });
   }
 
   if (body.action === 'send_test') {
     if (!body.to) return Response.json({ error: 'to (email) wymagany' }, { status: 400 });
     const name = body.name || 'Łukasz';
     const code = generateCode(name);
-    const html = await generateMailText(ctx.env, name, code);
+    const r = await generateMailText(ctx.env, name, code);
     // NIE wpisujemy do personal_discount_codes (to test, nie produkcyjny send)
-    await sendThankYouMail(ctx.env, body.to, name, code, html);
-    return Response.json({ ok: true, sent_to: body.to, name, code, html, note: 'TEST mail - kod NIE jest aktywny w DB' });
+    await sendThankYouMail(ctx.env, body.to, name, code, r.html);
+    return Response.json({ ok: true, sent_to: body.to, name, code, ai_used: r.ai_used, html: r.html, note: 'TEST mail - kod NIE jest aktywny w DB' });
   }
 
   if (body.action === 'send_one') {
@@ -181,8 +217,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!sub.photographer_email) return Response.json({ error: 'Brak emaila u fotografa' }, { status: 400 });
 
     const code = generateCode(sub.photographer_name);
-    const html = await generateMailText(ctx.env, sub.photographer_name, code);
-    if (body.dry_run) return Response.json({ dry_run: true, code, html });
+    const r = await generateMailText(ctx.env, sub.photographer_name, code);
+    if (body.dry_run) return Response.json({ dry_run: true, code, html: r.html, ai_used: r.ai_used });
 
     // Insert kod do DB
     await ctx.env.DB.prepare(
@@ -190,8 +226,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
        VALUES (?, ?, 10, 'photo_thankyou', '2026-07-31', ?)`
     ).bind(code, sub.photographer_email, adminUser || 'admin').run();
 
-    await sendThankYouMail(ctx.env, sub.photographer_email, sub.photographer_name, code, html);
-    return Response.json({ ok: true, sent_to: sub.photographer_email, code });
+    await sendThankYouMail(ctx.env, sub.photographer_email, sub.photographer_name, code, r.html);
+    return Response.json({ ok: true, sent_to: sub.photographer_email, code, ai_used: r.ai_used });
   }
 
   if (body.action === 'send_bulk') {
@@ -206,20 +242,20 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         AND pdc.code IS NULL
     `).all<{ photographer_name: string; photographer_email: string }>();
 
-    const sent: Array<{ email: string; name: string; code: string }> = [];
+    const sent: Array<{ email: string; name: string; code: string; ai_used: string }> = [];
     const failed: Array<{ email: string; error: string }> = [];
-    for (const r of results) {
+    for (const row of results) {
       try {
-        const code = generateCode(r.photographer_name);
-        const html = await generateMailText(ctx.env, r.photographer_name, code);
+        const code = generateCode(row.photographer_name);
+        const r = await generateMailText(ctx.env, row.photographer_name, code);
         await ctx.env.DB.prepare(
           `INSERT INTO personal_discount_codes (code, customer_email, pct, source, expires_at, created_by)
            VALUES (?, ?, 10, 'photo_thankyou', '2026-07-31', ?)`
-        ).bind(code, r.photographer_email, adminUser || 'admin').run();
-        await sendThankYouMail(ctx.env, r.photographer_email, r.photographer_name, code, html);
-        sent.push({ email: r.photographer_email, name: r.photographer_name, code });
+        ).bind(code, row.photographer_email, adminUser || 'admin').run();
+        await sendThankYouMail(ctx.env, row.photographer_email, row.photographer_name, code, r.html);
+        sent.push({ email: row.photographer_email, name: row.photographer_name, code, ai_used: r.ai_used });
       } catch (err) {
-        failed.push({ email: r.photographer_email, error: err instanceof Error ? err.message : String(err) });
+        failed.push({ email: row.photographer_email, error: err instanceof Error ? err.message : String(err) });
       }
     }
     return Response.json({ sent_count: sent.length, failed_count: failed.length, sent, failed });
