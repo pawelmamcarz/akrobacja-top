@@ -1,42 +1,38 @@
 // KSeF API helper - MVP (do uzupelnienia o pelne sync invoices).
 //
-// UWAGA: AP 1.0 / API 1.0 KSeF zostalo WYLACZONE (zwraca HTML "Koniec dzialania AP 1.0").
-// Aktualnie obowiazuje KSeF 2.0 z nowymi endpointami. Endpointy ksef 2.0:
-//   - https://ksef.mf.gov.pl/api/v2/sessions/online/initialization
-//   - https://ksef.mf.gov.pl/api/v2/sessions/online/init
-// Trzeba sprawdzic aktualna dokumentacje MF: https://www.gov.pl/web/kas/api-i-aktualne-wersje-srodowisk-ksef
+// KSeF 2.0 production: https://api.ksef.mf.gov.pl/v2 (v2.5.0 sprawdzone 2026-05-26).
+// Stary host ksef.mf.gov.pl/api zostal wylaczony ("Koniec dzialania AP 1.0").
 //
-// Token API wygenerowany w starym KSeF moze nie pasowac do v2 - moze byc wymagana
-// migracja konta + ponowne wygenerowanie tokena.
+// Flow autoryzacji KSeF 2.0:
+//   1. POST /v2/auth/challenge  (bez auth) -> { challenge, timestamp, timestampMs }
+//   2. RSA-OAEP encrypt (KSEF_TOKEN + timestampMs) z KSeF public key
+//   3. POST /v2/auth/token-signature z { contextIdentifier, encryptedToken } -> { sessionToken, ... }
+//   4. Header SessionToken: w kolejnych requestach (24h TTL)
 //
-// Aktualnie zaimplementowane: getAuthorisationChallenge() - probuje 1.0 i 2.0 endpointow.
+// Query faktur 2.0:
+//   POST /v2/invoices/query lub /v2/invoices/sync z paginacja
+//
+// Aktualnie zaimplementowane: getAuthorisationChallenge() (action 1).
 // TODO: RSA encryption + initSession + queryInvoices + FA(2) XML parsing.
 
 import { type Env } from './types';
 
-const KSEF_BASE_URL = 'https://ksef.mf.gov.pl/api';
-const KSEF_V2_BASE_URL = 'https://ksef.mf.gov.pl/api/v2';
+const KSEF_BASE_URL = 'https://api.ksef.mf.gov.pl/v2';
 
 export interface AuthChallenge {
   challenge: string;
   timestamp: string;
+  timestampMs: number;
 }
 
-export async function getAuthorisationChallenge(env: Env): Promise<AuthChallenge> {
-  const nip = (env.KSEF_NIP || '').replace(/\s/g, '');
-  if (!nip) throw new Error('KSEF_NIP not configured');
-  if (!/^[0-9]{10}$/.test(nip)) throw new Error('KSEF_NIP must be 10 digits');
-
-  const url = `${KSEF_BASE_URL}/online/Session/AuthorisationChallenge`;
+export async function getAuthorisationChallenge(_env: Env): Promise<AuthChallenge> {
+  // POST /v2/auth/challenge - public endpoint, bez NIP w body.
+  // NIP idzie w kolejnym kroku przy InitToken.
+  const url = `${KSEF_BASE_URL}/auth/challenge`;
   const res = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      contextIdentifier: {
-        type: 'onip',
-        identifier: nip,
-      },
-    }),
+    body: JSON.stringify({}),
     signal: AbortSignal.timeout(20000),
   });
 
@@ -44,16 +40,16 @@ export async function getAuthorisationChallenge(env: Env): Promise<AuthChallenge
   if (!res.ok) {
     throw new Error(`KSeF challenge HTTP ${res.status}: ${text.substring(0, 300)}`);
   }
-  let parsed: { challenge?: string; timestamp?: string } = {};
+  let parsed: { challenge?: string; timestamp?: string; timestampMs?: number } = {};
   try {
     parsed = JSON.parse(text);
   } catch {
     throw new Error(`KSeF challenge: unparseable response: ${text.substring(0, 200)}`);
   }
-  if (!parsed.challenge || !parsed.timestamp) {
+  if (!parsed.challenge || !parsed.timestamp || parsed.timestampMs == null) {
     throw new Error(`KSeF challenge: missing fields: ${JSON.stringify(parsed)}`);
   }
-  return { challenge: parsed.challenge, timestamp: parsed.timestamp };
+  return { challenge: parsed.challenge, timestamp: parsed.timestamp, timestampMs: parsed.timestampMs };
 }
 
 // TODO: pelna implementacja:
