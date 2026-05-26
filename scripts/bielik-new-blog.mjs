@@ -73,17 +73,29 @@ const TOPICS = [
   {
     slug: 'historia-polskiej-akrobacji-lotniczej',
     title: 'Historia polskiej akrobacji lotniczej',
-    description: 'Od Stanislawa Skarzynskiego przez Iwo Rutkowskiego do Macieja Kulaszewskiego - 100 lat polskiej akrobacji lotniczej.',
-    keywords: 'historia polska akrobacja, polscy piloci akrobacja, Iwo Rutkowski, Stanislaw Skarzynski, Maciej Kulaszewski Mistrz Swiata',
+    description: 'Od Franciszka Zwirko (Challenge 1932) przez polskich mistrzow PRL, do Macieja Kulaszewskiego (Mistrz Swiata 2022) - polska szkola akrobacji w skrocie.',
+    keywords: 'historia polska akrobacja, polscy piloci akrobacja, Franciszek Zwirko, Artur Kielak, Maciej Kulaszewski Mistrz Swiata',
     angle: `Wciagajacy artykul SEO dla osob ktore wpisuja "historia polskiej akrobacji".
-    - Lata 1920-30: Stanislaw Skarzynski, Franciszek Zwirko, polskie sukcesy
-    - PRL: ograniczenia, klubowa akrobacja, pierwsze sukcesy europejskie
-    - Lata 90/2000: Iwo Rutkowski - legenda polskiej akrobacji, medale ME/MS
-    - 2010-2020: powstanie nowej generacji - Artur Kielak, Maciej Kulaszewski
-    - 2022: Maciej Kulaszewski - Mistrz Swiata Yak-52 (Tora, Hiszpania)
-    - 2024: zlote medale Cumulusy I
-    - Dzis: Maciej i Extra 300L SP-EKS na Radom-Piastow
-    - Polska szkola akrobacji: cechy, styl, miedzynarodowe uznanie`,
+
+    UWAGA: NIE WYMYSLAJ faktow ani nazwisk. Trzymaj sie listy ponizej. Jesli nie wiesz konkretnej daty - napisz ogolnie ("lata 30", "lata 70-80"). Lepiej pominac fakt niz go wymyslic.
+
+    BEZPIECZNA LISTA NAZWISK (uzywaj tylko tych):
+    - Lata 1920-30 (lotnictwo sportowe, ale nie czysta akrobacja): Franciszek Zwirko - zwyciezca Challenge International de Tourisme 1932 razem z Stanislawem Wigura (z PZL); Bolesław Orliński - lot Warszawa-Tokio 1926
+    - WAZNE: Stanislaw Skarzynski to lot przez Atlantyk Pd. 1933 - NIE akrobata, NIE wymieniaj go jako akrobate
+    - Lata PRL (50-80): Aeroklub PRL/Polski organizowal akrobacje sportowa, polska szkola akrobacji rozwijala sie mimo ograniczen sprzetowych
+    - Era nowoczesna (90-2010): polscy piloci wraczali na podium ME i MS
+    - Wspolczesnie: Artur Kielak - wielokrotny mistrz Polski w akrobacji, pilot Red Bull Air Race
+    - 2022: Maciej Kulaszewski - Mistrz Swiata 2022 na samolocie Yak-52 (Toro, Hiszpania)
+    - 2024: Maciej Kulaszewski - medale na Cumulusy I (Mistrzostwa Europy?)
+    - Dzis: Maciej i Extra 300L SP-EKS na Radom-Piastow (EPRP)
+
+    BEZPIECZNE OGOLNE STWIERDZENIA:
+    - "Polska szkola akrobacji ma silna tradycje sportowa"
+    - "Aeroklub Polski tworzy infrastrukture szkoleniowa"
+    - "Polscy piloci regularnie znajduja sie w czolówce europejskiej"
+
+    JESLI NIE WIESZ DOKLADNEJ DATY - napisz "lata 70-80" zamiast wymyslac konkretny rok.
+    JESLI NIE WIESZ SZCZEGOLU - pomin go zamiast wymyslac.`,
   },
   {
     slug: 'akrobacja-extra-300l-vs-odrzutowce',
