@@ -1,5 +1,5 @@
 // Lead magnet "5-dniowy kurs mailowy: Przygotowanie do pierwszego lotu akrobacyjnego".
-// Krok 0 (welcome) wysylany natychmiast z /api/lead-magnet. Kroki 2/4/7/14 — z crona
+// Krok 0 (welcome) wysylany natychmiast z /api/lead-magnet. Kroki 2/4/7/14 - z crona
 // lead-magnet-emails.ts. Linki w mailach kierują do istniejących blog postów,
 // zeby zbudowac email engagement + retargeting traffic na site.
 

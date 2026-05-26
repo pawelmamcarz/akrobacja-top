@@ -2,7 +2,7 @@
  * Live METAR feed for hero HUD strip.
  *
  * Source: NOAA Aviation Weather API (no auth, no key, free).
- * Station: EPRA (Radom-Sadków) — closest METAR-issuing field to EPRP Piastów (~8 km).
+ * Station: EPRA (Radom-Sadków) - closest METAR-issuing field to EPRP Piastów (~8 km).
  * EPRP itself is uncontrolled GA grass and does not issue METAR.
  *
  * Cached at CF edge for 5 min (METAR cycle is 30 min, so ~10x reduction).

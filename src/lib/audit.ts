@@ -1,7 +1,7 @@
 import { type Env } from './types';
 
 // Channels supported by the failed_deliveries audit table (matches the migration
-// comment). Keep these strings stable — the admin view groups by exact match.
+// comment). Keep these strings stable - the admin view groups by exact match.
 export type DeliveryChannel =
   | 'voucher_email'
   | 'owner_notify'
@@ -23,7 +23,7 @@ interface AuditOpts {
   error: unknown;
 }
 
-// Best-effort insert into failed_deliveries. Never throws — this is itself an
+// Best-effort insert into failed_deliveries. Never throws - this is itself an
 // error path and we don't want a bad audit write to break the calling handler.
 export async function recordFailedDelivery(env: Env, opts: AuditOpts): Promise<void> {
   try {

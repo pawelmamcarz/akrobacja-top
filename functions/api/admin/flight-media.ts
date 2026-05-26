@@ -1,7 +1,7 @@
 // /api/admin/flight-media
-// GET    ?voucher_code=AKR-... — list media files (and shares) for a voucher
-// POST   multipart, fields { voucher_code, files[] } — upload one or more
-// DELETE { id } — remove a single media file (R2 object + DB row)
+// GET    ?voucher_code=AKR-... - list media files (and shares) for a voucher
+// POST   multipart, fields { voucher_code, files[] } - upload one or more
+// DELETE { id } - remove a single media file (R2 object + DB row)
 //
 // Files stored in VOUCHER_BUCKET under prefix flight/{voucher_code}/{uuid}.{ext}.
 // Per-file limit 100 MB (Workers/Pages Functions body limit on paid plans).
@@ -12,8 +12,7 @@ import { checkAdminAuthAsync, getAdminUserAsync } from '../../../src/lib/admin-a
 
 // Per-file cap = Cloudflare Pages Functions body limit on the Standard plan
 // (500 MB). Anything larger has to go via the direct-to-R2 multipart presigned-URL
-// flow (separate endpoint, build on request). Per-request count is generous —
-// 500 files in a single multipart works for batches but timeouts loom around
+// flow (separate endpoint, build on request). Per-request count is generous - // 500 files in a single multipart works for batches but timeouts loom around
 // the 30s CPU budget if files are >50 MB on average.
 const MAX_FILE_BYTES = 500 * 1024 * 1024;
 const MAX_FILES_PER_REQUEST = 500;

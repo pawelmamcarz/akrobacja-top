@@ -6,7 +6,7 @@ import { hashToken } from '../../../src/lib/pilot-auth';
 //
 // Inwaliduje session_token + session_token_hash + session_expires_at po stronie
 // serwera, nawet jeśli klient wyczyści localStorage. Loguje do auth_events 'logout'.
-// Idempotentne — gdy token nieznany, zwraca { ok: true } bez błędu.
+// Idempotentne - gdy token nieznany, zwraca { ok: true } bez błędu.
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   const auth = ctx.request.headers.get('Authorization');
   if (!auth?.startsWith('Bearer ')) {

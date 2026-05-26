@@ -20,7 +20,7 @@ async function notifyOwner(env: Env, email: string, name: string | null, source:
         subject: `Nowy lead (kurs mailowy): ${email}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto">
-            <h2 style="color:#0A2F7C;margin:0 0 16px">Nowy lead — kurs mailowy</h2>
+            <h2 style="color:#0A2F7C;margin:0 0 16px">Nowy lead - kurs mailowy</h2>
             <table style="width:100%;border-collapse:collapse">
               <tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Email</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right"><a href="mailto:${encodeURIComponent(email)}">${escapeHtml(email)}</a></td></tr>
               ${name ? `<tr><td style="padding:8px 0;color:#6B7A90;border-bottom:1px solid #eee">Imię</td><td style="padding:8px 0;font-weight:600;border-bottom:1px solid #eee;text-align:right">${escapeHtml(name)}</td></tr>` : ''}
@@ -73,7 +73,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (existing) {
       leadId = existing.id;
       if (existing.active) {
-        return Response.json({ ok: true, already: true, message: 'Jesteś już na liście — sprawdź pocztę' });
+        return Response.json({ ok: true, already: true, message: 'Jesteś już na liście - sprawdź pocztę' });
       }
       // Reactivate
       await ctx.env.DB.prepare('UPDATE email_leads SET active = 1, name = COALESCE(?, name) WHERE id = ?')
@@ -93,7 +93,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       ).run();
     }
 
-    // Krok 0 (welcome) — wyslij od razu. Pozostale (2, 4, 7, 14) wysle cron.
+    // Krok 0 (welcome) - wyslij od razu. Pozostale (2, 4, 7, 14) wysle cron.
     ctx.waitUntil((async () => {
       try {
         await sendLeadMagnetEmail(ctx.env, { to: email, name, step: 0 });
@@ -112,7 +112,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       ctx.waitUntil(notifyOwner(ctx.env, email, name, source));
     }
 
-    return Response.json({ ok: true, message: 'Sprawdź pocztę — pierwszy mail leci do Ciebie' });
+    return Response.json({ ok: true, message: 'Sprawdź pocztę - pierwszy mail leci do Ciebie' });
   } catch (err) {
     return Response.json({ error: err instanceof Error ? err.message : 'Błąd' }, { status: 500 });
   }

@@ -15,7 +15,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   return Response.json({ pilots: results });
 };
 
-// POST /api/admin/pilots — manage pilot balance
+// POST /api/admin/pilots - manage pilot balance
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
@@ -98,7 +98,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         return Response.json({ error: 'Podaj pilot_id, minutes i reason' }, { status: 400 });
       }
 
-      // Atomowy deduct: SELECT-then-UPDATE było race-prone — dwa równoległe
+      // Atomowy deduct: SELECT-then-UPDATE było race-prone - dwa równoległe
       // requesty mogły zejść poniżej zera. Pojedynczy UPDATE z guardem
       // (balance_minutes >= ?) eliminuje wyścig.
       const res = await ctx.env.DB.prepare(

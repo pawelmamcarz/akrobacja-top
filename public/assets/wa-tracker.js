@@ -1,4 +1,4 @@
-// wa-tracker.js — fire-and-forget POST /api/wa-click on WhatsApp link clicks.
+// wa-tracker.js - fire-and-forget POST /api/wa-click on WhatsApp link clicks.
 //
 // Auto-attaches to wszystkich `<a href*="wa.me">` lub `<a href*="api.whatsapp.com">`
 // na stronie. Nie blokuje otwarcia WhatsAppa (sendBeacon jest async + reliable

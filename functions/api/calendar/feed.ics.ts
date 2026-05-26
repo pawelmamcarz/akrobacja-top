@@ -56,14 +56,14 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     aircraft_tail: r.aircraft_tail,
   }));
 
-  const calName = `akrobacja.com — ${pilot.name || 'Pilot'}`;
+  const calName = `akrobacja.com - ${pilot.name || 'Pilot'}`;
   const ics = buildICS(events, { calName, method: 'PUBLISH' });
 
   return new Response(ics, {
     headers: {
       'Content-Type': 'text/calendar; charset=utf-8',
       'Content-Disposition': `inline; filename="akrobacja-${pilot.id}.ics"`,
-      // Cache 5 min — GCal/Apple Calendar i tak refreshuja co kilka godzin,
+      // Cache 5 min - GCal/Apple Calendar i tak refreshuja co kilka godzin,
       // ale przy reczym refresh w panelu chcemy szybkie odswiezenie.
       'Cache-Control': 'private, max-age=300',
     },

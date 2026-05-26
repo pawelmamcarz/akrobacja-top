@@ -2,7 +2,7 @@ import { type Env } from '../../../src/lib/types';
 import { sendLeadMagnetEmail, type LeadMagnetStep } from '../../../src/lib/lead-magnet';
 import { recordFailedDelivery } from '../../../src/lib/audit';
 
-// Cron-driven steps. Krok 0 wysyla endpoint /api/lead-magnet od razu — tutaj tylko nurture.
+// Cron-driven steps. Krok 0 wysyla endpoint /api/lead-magnet od razu - tutaj tylko nurture.
 // delayDays = ile dni od email_leads.created_at zanim wysylac.
 const NURTURE_STEPS: Array<{ step: LeadMagnetStep; delayDays: number }> = [
   { step: 2, delayDays: 2 },

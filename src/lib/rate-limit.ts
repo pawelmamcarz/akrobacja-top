@@ -2,7 +2,7 @@ import { type Env } from './types';
 
 // Fixed-window rate limit backed by Workers KV. Eventually-consistent (~60s)
 // but cheap and adequate for blocking unsophisticated abuse on public endpoints.
-// On KV outage we fail open — better to serve traffic than block legit users.
+// On KV outage we fail open - better to serve traffic than block legit users.
 export async function rateLimit(
   env: Env,
   key: string,

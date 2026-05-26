@@ -99,7 +99,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p id="loginErr" style="color:#C41E3A;font-size:13px;margin-top:12px;display:none"></p>
     <p style="margin-top:14px;font-size:12px;text-align:center"><a href="#" onclick="event.preventDefault();showForgot()" style="color:#1B4DB5;text-decoration:none">Zapomniałem hasła</a></p>
     <div id="forgotBox" style="display:none;margin-top:12px;padding:12px;background:#f4f8ff;border:1px solid #c4d2e0">
-      <p style="font-size:12px;margin-bottom:8px">Wpisz swój email — wyślemy link do ustawienia nowego hasła.</p>
+      <p style="font-size:12px;margin-bottom:8px">Wpisz swój email - wyślemy link do ustawienia nowego hasła.</p>
       <input type="email" id="forgotEmail" placeholder="email" style="width:100%;padding:8px;border:1px solid #c4d2e0;margin-bottom:6px;font-size:13px">
       <button onclick="sendForgot()" style="padding:8px 14px;background:#1B4DB5;color:#fff;border:0;font-size:12px;cursor:pointer">Wyślij link resetujący</button>
       <p id="forgotMsg" style="margin-top:8px;font-size:11px"></p>
@@ -630,7 +630,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- New Cash/Transfer/Free Order -->
   <div class="modal" id="modal-newCashOrder" style="display:none">
     <h3>Nowy voucher (gotówka / przelew / free)</h3>
-    <p style="font-size:12px;color:#666;margin-bottom:12px">Generuje PDF, wrzuca do R2, opcjonalnie wysyła mailem. Nie tworzy faktury wFirma — to oddzielnie.</p>
+    <p style="font-size:12px;color:#666;margin-bottom:12px">Generuje PDF, wrzuca do R2, opcjonalnie wysyła mailem. Nie tworzy faktury wFirma - to oddzielnie.</p>
     <div class="field"><label>Pakiet *</label>
       <select id="ncoPackage" onchange="ncoAutofillAmount()">
         <option value="">-- wybierz --</option>
@@ -764,7 +764,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="modal" id="modal-newCalendarEvent" style="display:none">
     <h3>Dodaj event w kalendarzu</h3>
     <div class="field"><label>Pilot *</label><select id="evPilotId"></select></div>
-    <div class="field"><label>Samolot</label><select id="evAircraftId"><option value="">— (bez samolotu)</option></select></div>
+    <div class="field"><label>Samolot</label><select id="evAircraftId"><option value="">- (bez samolotu)</option></select></div>
     <div class="field"><label>Typ *</label>
       <select id="evType">
         <option value="flight">Lot</option>
@@ -819,7 +819,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- New Admin User -->
   <div class="modal" id="modal-newAdminUser" style="display:none">
     <h3>Dodaj uzytkownika admin</h3>
-    <p style="font-size:11px;color:#888;margin-bottom:12px">System wygeneruje losowe haslo i pokaze je JEDNORAZOWO — skopiuj i wyslij Signalem/WA.</p>
+    <p style="font-size:11px;color:#888;margin-bottom:12px">System wygeneruje losowe haslo i pokaze je JEDNORAZOWO - skopiuj i wyslij Signalem/WA.</p>
     <div class="field"><label>Email *</label><input id="auEmail" type="email" placeholder="np. maciej@akrobacja.com"></div>
     <div class="field"><label>Imie i nazwisko *</label><input id="auName" placeholder="np. Maciej Kulaszewski"></div>
     <button class="btn btn-blue" onclick="createAdminUser()">Utwórz konto</button>
@@ -891,7 +891,7 @@ async function sendForgot() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
     });
-    // Zawsze "ok" — endpoint nie zdradza czy email istnieje
+    // Zawsze "ok" - endpoint nie zdradza czy email istnieje
     msgEl.innerHTML = '<span style="color:#1a6e2e">Jeśli email istnieje w bazie, dostaniesz link do resetu w ciągu kilkudziesięciu sekund.</span>';
   } catch (err) {
     msgEl.innerHTML = '<span style="color:#c00">Błąd: ' + (err.message || 'unknown') + '</span>';
@@ -1575,8 +1575,8 @@ function renderKoszty(d) {
       const isWfirma = r.source === 'wfirma';
       html += `<tr>
         <td style="white-space:nowrap;font-size:11px">${esc(r.issue_date)}</td>
-        <td style="font-size:11px;color:#666">${esc(r.invoice_number || '—')}</td>
-        <td>${esc(r.contractor_name || '—')}${r.contractor_nip ? ` <span style="font-size:10px;color:#999">NIP ${esc(r.contractor_nip)}</span>` : ''}</td>
+        <td style="font-size:11px;color:#666">${esc(r.invoice_number || '-')}</td>
+        <td>${esc(r.contractor_name || '-')}${r.contractor_nip ? ` <span style="font-size:10px;color:#999">NIP ${esc(r.contractor_nip)}</span>` : ''}</td>
         <td class="amount" style="font-size:11px">${fmtPln(r.net_amount)}</td>
         <td class="amount" style="font-size:11px;color:#888">${fmtPln(r.vat_amount)}</td>
         <td class="amount"><strong>${fmtPln(r.gross_amount)}</strong></td>
@@ -1661,7 +1661,7 @@ let _lmVoucher = '';
 function populateLmVoucherList() {
   const list = document.getElementById('lmVoucherList');
   if (!list || !allOrders) return;
-  // Paid + manual cash/transfer/free orders — every voucher that's "out the door"
+  // Paid + manual cash/transfer/free orders - every voucher that's "out the door"
   // can have flight media attached. Newest first so recent passengers surface fast.
   const candidates = allOrders
     .filter(o => o.status === 'paid')
@@ -1672,7 +1672,7 @@ function populateLmVoucherList() {
     return `<option value="${esc(o.voucher_code)}">${label}</option>`;
   }).join('');
 }
-// Datalist puts the voucher_code into the input on selection — no parsing needed.
+// Datalist puts the voucher_code into the input on selection - no parsing needed.
 // Hook stays in place in case we ever switch to a "Nazwisko · KOD" value format.
 function lmPickVoucher() { /* placeholder for richer parsing */ }
 async function loadLotMedia() {
@@ -1758,7 +1758,7 @@ function renderLotMedia(data) {
       const created = new Date(s.created_at * 1000).toLocaleString('pl-PL');
       const expires = new Date(s.expires_at * 1000).toLocaleDateString('pl-PL');
       const expired = (s.expires_at * 1000) < Date.now();
-      const mail = s.notify_sent_at ? '✓ ' + new Date(s.notify_sent_at * 1000).toLocaleDateString('pl-PL') : '—';
+      const mail = s.notify_sent_at ? '✓ ' + new Date(s.notify_sent_at * 1000).toLocaleDateString('pl-PL') : '-';
       html += `<tr style="${expired ? 'opacity:.5' : ''}">
         <td style="font-family:monospace;font-size:10px;word-break:break-all"><a href="${esc(url)}" target="_blank" style="color:#1B4DB5">${esc(url)}</a></td>
         <td style="font-size:10px;color:#666">${esc(created)}</td>
@@ -1881,14 +1881,14 @@ async function lmUpload(files) {
   const progressRows = prepared.map(f => ({ label: f.name + ' · ' + fmtBytes(f.size), pct: 0, done: false, err: false, file: f }));
   lmRenderProgress(progressRows);
 
-  // ── Phase A: small files (≤100 MB each) — bundled multipart, single request.
+  // ── Phase A: small files (≤100 MB each) - bundled multipart, single request.
   if (smallFiles.length > 0) {
     const indexed = smallFiles.map(f => progressRows.findIndex(r => r.file === f));
     const fd = new FormData();
     fd.append('voucher_code', _lmVoucher);
     smallFiles.forEach(f => fd.append('files', f, f.name));
     try {
-      // No granular per-file progress for the bundled small batch — show 50%
+      // No granular per-file progress for the bundled small batch - show 50%
       // until response, then 100%. Acceptable because each file <=100 MB.
       indexed.forEach(i => { progressRows[i].pct = 50; });
       lmRenderProgress(progressRows);
@@ -1901,12 +1901,12 @@ async function lmUpload(files) {
       if (!res.ok) throw new Error(data.error || 'Upload nieudany');
       indexed.forEach(i => { progressRows[i].pct = 100; progressRows[i].done = true; });
     } catch (err) {
-      indexed.forEach(i => { progressRows[i].pct = 100; progressRows[i].err = true; progressRows[i].label += ' — ' + (err.message || 'błąd'); });
+      indexed.forEach(i => { progressRows[i].pct = 100; progressRows[i].err = true; progressRows[i].label += ' - ' + (err.message || 'błąd'); });
     }
     lmRenderProgress(progressRows);
   }
 
-  // ── Phase B: big files — presigned direct-to-R2.
+  // ── Phase B: big files - presigned direct-to-R2.
   if (bigFiles.length > 0) {
     let presignRes;
     try {
@@ -1919,7 +1919,7 @@ async function lmUpload(files) {
       bigFiles.forEach(f => {
         const i = progressRows.findIndex(r => r.file === f);
         progressRows[i].err = true; progressRows[i].pct = 100;
-        progressRows[i].label += ' — presign: ' + (err.message || 'błąd');
+        progressRows[i].label += ' - presign: ' + (err.message || 'błąd');
       });
       lmRenderProgress(progressRows);
       return;
@@ -1948,7 +1948,7 @@ async function lmUpload(files) {
       } catch (err) {
         progressRows[rowIdx].err = true;
         progressRows[rowIdx].pct = 100;
-        progressRows[rowIdx].label += ' — upload: ' + (err.message || 'błąd');
+        progressRows[rowIdx].label += ' - upload: ' + (err.message || 'błąd');
       }
       lmRenderProgress(progressRows);
       await next();
@@ -2031,7 +2031,7 @@ function lmCopy(url) {
 function lmShareWa(url) {
   // Open WhatsApp with pre-filled message; admin picks the customer from contacts
   // (we don't have customer_phone on orders today). Works in WhatsApp Web + native app.
-  const text = `Cześć! Twoje zdjęcia i filmy z lotu Extra 300L SP-EKS są gotowe — kliknij i pobieraj:\n\n${url}\n\nLink działa 180 dni. akrobacja.com`;
+  const text = `Cześć! Twoje zdjęcia i filmy z lotu Extra 300L SP-EKS są gotowe - kliknij i pobieraj:\n\n${url}\n\nLink działa 180 dni. akrobacja.com`;
   const phone = prompt('Numer telefonu odbiorcy (np. 48535535221) lub puste = wybierzesz kontakt w WhatsApp:', '');
   if (phone === null) return;
   const cleanPhone = (phone || '').replace(/[^\d]/g, '');
@@ -2452,8 +2452,7 @@ async function redeem(code) {
   if (!res.ok) { showMsg(res.error || 'Blad', 'err'); return; }
   showMsg('Voucher wykorzystany', 'ok');
   await tryLoad();
-  // After redemption admin almost always wants to attach the flight media —
-  // skip the manual voucher_code typing into Lot Media tab.
+  // After redemption admin almost always wants to attach the flight media -   // skip the manual voucher_code typing into Lot Media tab.
   if (confirm(`Voucher ${code} wykorzystany.\n\nDodać teraz zdjęcia / filmy z lotu do tego vouchera?`)) {
     switchTab('lotmedia');
     setTimeout(() => {
@@ -2625,7 +2624,7 @@ async function loadAircrafts() {
   }
   const modalSel = document.getElementById('evAircraftId');
   if (modalSel) {
-    modalSel.innerHTML = '<option value="">— (bez samolotu)</option>' +
+    modalSel.innerHTML = '<option value="">- (bez samolotu)</option>' +
       allAircrafts.map(a => `<option value="${dataAttr(a.id)}">${esc(a.tail)}</option>`).join('');
   }
 }
@@ -3291,7 +3290,7 @@ function esc(s) { const d=document.createElement('div'); d.textContent=s||''; re
 // Safe escape for HTML attribute values. esc() (textContent) only escapes < > &;
 // inserting user data into onclick or data-* without escaping quotes is an XSS sink.
 function dataAttr(v) { return String(v == null ? '' : v).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
-// One delegated click listener for every [data-action] button — replaces all inline
+// One delegated click listener for every [data-action] button - replaces all inline
 // onclick handlers, which were XSS-prone because the browser HTML-decodes the attribute
 // before parsing it as JS, defeating esc().
 document.addEventListener('click', function(e) {

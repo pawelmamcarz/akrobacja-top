@@ -29,7 +29,7 @@ async function sendResetEmail(env: Env, to: string, name: string, link: string):
         <a href="${link}" style="display:inline-block;background:#E11E26;color:#fff;text-decoration:none;padding:16px 36px;font-weight:800;font-size:14px;letter-spacing:0.06em;text-transform:uppercase">Ustaw nowe hasło →</a>
       </p>
       <p style="color:#6B7A90;font-size:13px;line-height:1.6;margin:24px 0 0">
-        Jeśli to nie Ty prosiłeś — zignoruj tę wiadomość. Twoje obecne hasło nadal działa, dopóki ktoś nie kliknie linku powyżej.
+        Jeśli to nie Ty prosiłeś - zignoruj tę wiadomość. Twoje obecne hasło nadal działa, dopóki ktoś nie kliknie linku powyżej.
       </p>
       <hr style="border:none;border-top:1px solid #eee;margin:32px 0 16px">
       <p style="color:#6B7A90;font-size:12px;line-height:1.6;margin:0;word-break:break-all">
@@ -64,7 +64,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
   const body = await ctx.request.json().catch(() => null) as { email?: string } | null;
   const email = (body?.email || '').trim().toLowerCase();
-  // Always 200 — generic response so the endpoint can't be used to probe accounts.
+  // Always 200 - generic response so the endpoint can't be used to probe accounts.
   if (!email) return Response.json({ ok: true });
 
   const user = await ctx.env.DB.prepare(
@@ -81,7 +81,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   const siteUrl = ctx.env.SITE_URL || 'https://akrobacja.com';
   const link = `${siteUrl}/admin/reset?token=${encodeURIComponent(token)}`;
 
-  // Don't await — fire-and-forget so timing of response doesn't leak success.
+  // Don't await - fire-and-forget so timing of response doesn't leak success.
   ctx.waitUntil(sendResetEmail(ctx.env, email, user.name, link).catch(err => {
     console.error('admin password reset email failed:', err);
   }));

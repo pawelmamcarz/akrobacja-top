@@ -35,7 +35,7 @@ async function notifyOwner(env: Env, phone: string, name: string | null, source:
       }),
     });
   } catch (err) {
-    // Non-critical — subscribe leci dalej nawet bez notify, ale loguj.
+    // Non-critical - subscribe leci dalej nawet bez notify, ale loguj.
     console.error('subscribe notifyOwner failed:', err);
   }
 }

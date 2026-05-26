@@ -1,5 +1,5 @@
 // POST /api/admin/recover { voucher_code }
-// Manual recovery email send — same template as cron/abandoned-checkouts but admin-triggered.
+// Manual recovery email send - same template as cron/abandoned-checkouts but admin-triggered.
 // Bypasses the 1-48h window and the abandon_email_sent_at debounce so admin can re-send
 // at will (e.g. customer asked twice, or first cron attempt bounced). Order must still be
 // status='pending' and have a customer_email.

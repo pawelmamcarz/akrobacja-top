@@ -35,7 +35,7 @@ export interface Env {
   BROWSERLESS_ENDPOINT?: string;
   AI: Ai;
   RATE_LIMIT_KV: KVNamespace;
-  // R2 S3-compatible API credentials — used by direct-to-R2 multipart upload
+  // R2 S3-compatible API credentials - used by direct-to-R2 multipart upload
   // (flight-media presign endpoint) for raw video files above the Pages
   // Functions 500 MB body limit. Set these once: wrangler pages secret put.
   R2_ACCOUNT_ID?: string;
@@ -87,13 +87,13 @@ export const PACKAGES = {
     duration: 'do 50 min w powietrzu + briefing + debriefing',
     features: ['Do 50 minut w powietrzu', 'Wyprowadzanie z korkociągu, figury zaawansowane', 'Wymagana licencja PPL(A)'],
   },
-  // Test-only product — niewidoczne w publicznym UI, dostępne tylko z /test-konwersji.
+  // Test-only product - niewidoczne w publicznym UI, dostępne tylko z /test-konwersji.
   // Webhook NIE generuje vouchera PDF i NIE wystawia faktury wfirma dla tego packageId.
   // Cena 200 gr = 2 PLN (minimum Stripe Checkout dla PLN).
   test_naklejka: {
     id: 'test_naklejka',
     name: 'Naklejka testowa',
-    subtitle: 'Produkt testowy 2 zl — do weryfikacji konwersji Google Ads / Meta Pixel',
+    subtitle: 'Produkt testowy 2 zl - do weryfikacji konwersji Google Ads / Meta Pixel',
     price: 200,
     duration: 'n/a',
     features: ['Test live checkoutu Stripe', 'Test conversion na /sukces', 'Brak vouchera PDF i faktury'],
@@ -113,8 +113,8 @@ export const VIDEO_ADDON_PRICE = 29900; // 299 PLN
 export interface AddonSpec {
   id: string;
   price: number;              // grosze
-  name: string;               // ASCII-safe — Stripe product_data.name
-  invoiceName: string;        // PL z diakrytykami — wFirma invoicecontent.name
+  name: string;               // ASCII-safe - Stripe product_data.name
+  invoiceName: string;        // PL z diakrytykami - wFirma invoicecontent.name
   applicablePackages?: PackageId[];
 }
 
@@ -136,7 +136,7 @@ export const ADDONS: Record<string, AddonSpec> = {
     id: 'ground_photo',
     price: 24900,
     name: 'Fotograf z ziemi (5 JPG w 48h)',
-    invoiceName: 'Fotograf z ziemi — minimum 5 zdjęć JPG (dostarczone w 48h)',
+    invoiceName: 'Fotograf z ziemi - minimum 5 zdjęć JPG (dostarczone w 48h)',
   },
   framed_print: {
     id: 'framed_print',
@@ -166,7 +166,7 @@ export function validAddonIds(ids: readonly string[], packageId: PackageId): str
 
 // Google Search URL for the akrobacja.com business profile. Clicking "Napisz opinię"
 // on this page opens the proper write-review dialog for the Google Business Profile
-// of "akrobacja.com — Loty akrobacyjne Extra 300L". Used in every customer-facing
+// of "akrobacja.com - Loty akrobacyjne Extra 300L". Used in every customer-facing
 // review CTA (post-purchase, email, footer, post-flight follow-up).
 export const GOOGLE_REVIEW_URL = 'https://www.google.com/search?q=akrobacja.com+%E2%80%94+Loty+akrobacyjne+Extra+300L&stick=H4sIAAAAAAAA_-NgU1I1qDAxN7RIMzc1NTYwtDAzMLK0MqhItrA0NTAzTLY0MDI1S00xWcSqm5hdlJ-UmJyVqJecn6vwqGGKgk9-SaUCVLgyKy9VwbWipChRwdjAwAcAB12ArlkAAAA&hl=pl&authuser=0';
 
@@ -190,7 +190,7 @@ export interface Order {
   // Personalizacja vouchera (migration 007)
   recipient_name?: string;   // imię obdarowanego, fallback do customer_name w PDF
   dedication?: string;       // tekst dedykacji (max 200 znaków)
-  send_at?: string;          // ISO datetime — kiedy wysłać voucher email (cron)
+  send_at?: string;          // ISO datetime - kiedy wysłać voucher email (cron)
   email_sent_at?: string;    // kiedy faktycznie wysłaliśmy voucher email (idempotency)
   addons?: string | null;    // JSON array of AddonId stringów (np. '["second_seat","ground_photo"]')
 }

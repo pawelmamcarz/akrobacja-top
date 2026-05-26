@@ -5,9 +5,9 @@ import { INTER_REGULAR_B64, INTER_BOLD_B64, b64ToUint8 } from './fonts/inter';
 
 // Safety net for dedication text that may contain emoji / non-Latin codepoints
 // outside Inter's coverage. Inter covers Latin (PL/CZ/HU/etc.), Cyrillic, Greek,
-// Vietnamese — anything past that gets replaced so embedFont doesn't throw mid-flow.
+// Vietnamese - anything past that gets replaced so embedFont doesn't throw mid-flow.
 const SAFE_MAP: Record<string, string> = {
-  '—': '—', '–': '–', '·': '·', '°': '°', '−': '-', '„': '„', '”': '”', '’': "'", '‘': "'",
+  '-': '-', '–': '–', '·': '·', '°': '°', '−': '-', '„': '„', '”': '”', '’': "'", '‘': "'",
 };
 function sanitizeUserText(text: string): string {
   // Inter covers U+0000-024F (Latin) + U+0370-03FF (Greek) + U+0400-04FF (Cyrillic) + common punctuation.
@@ -83,7 +83,7 @@ export async function generateVoucherPdf(opts: {
   // Details section
   let y = codeBoxY - 40;
 
-  // Dedykacja (opcjonalna) — ramka pod kodem vouchera.
+  // Dedykacja (opcjonalna) - ramka pod kodem vouchera.
   if (opts.dedication && opts.dedication.trim().length > 0) {
     const dedText = sanitizeUserText(opts.dedication.trim());
     // Wrap tekstu do max ~60 znaków na linię, max 4 linie (limit 200 zn. na backendzie).
@@ -141,14 +141,14 @@ export async function generateVoucherPdf(opts: {
     y -= 45;
   };
 
-  drawField('PAKIET', `${pkg.name} — ${pkg.subtitle}`);
+  drawField('PAKIET', `${pkg.name} - ${pkg.subtitle}`);
   drawField('CZAS LOTU', pkg.duration);
-  // "DLA" — preferuj recipient_name (prezent), fallback na customer_name.
+  // "DLA" - preferuj recipient_name (prezent), fallback na customer_name.
   drawField('DLA', opts.recipientName?.trim() || opts.customerName);
   drawField('WAŻNY DO', formatDate(opts.expiresAt));
 
   if (opts.videoAddon) {
-    drawField('DODATEK', 'Video 360° z lotu (montaż 90 sek — MP4 w 48h)');
+    drawField('DODATEK', 'Video 360° z lotu (montaż 90 sek - MP4 w 48h)');
   }
 
   // Features
@@ -173,13 +173,13 @@ export async function generateVoucherPdf(opts: {
   y -= 20;
 
   const tips = [
-    'Lekki posiłek 2h przed lotem — nie lataj na czczo ani po obfitym posiłku',
-    'Pij dużo wody — nawodnienie obniża ryzyko choroby lokomocyjnej',
-    'Wygodne sportowe ubranie i buty (nie klapki) — spadochron i kask zapewniamy',
+    'Lekki posiłek 2h przed lotem - nie lataj na czczo ani po obfitym posiłku',
+    'Pij dużo wody - nawodnienie obniża ryzyko choroby lokomocyjnej',
+    'Wygodne sportowe ubranie i buty (nie klapki) - spadochron i kask zapewniamy',
     'Zabierz okulary przeciwsłoneczne i dowód tożsamości',
     'Bądź na lotnisku 30 min przed planowanym lotem (briefing)',
     'Przeciwwskazania: ciąża, epilepsja, ciężkie schorzenia serca, alkohol',
-    'Max waga: 110 kg | Wiek: 13+ (niepełnoletni — zgoda rodzica)',
+    'Max waga: 110 kg | Wiek: 13+ (niepełnoletni - zgoda rodzica)',
   ];
 
   for (const tip of tips) {

@@ -1,5 +1,5 @@
 /**
- * Hero HUD — live METAR feed.
+ * Hero HUD - live METAR feed.
  * Fetches /api/metar (NOAA via EPRA, closest field to EPRP),
  * updates RWY / WIND / conditions. Falls back to static defaults on failure
  * and visually marks the dot as stale (amber, no blink).
@@ -23,7 +23,7 @@
       els.dot.style.boxShadow = '0 0 0 2px rgba(255,179,0,.25)';
       els.dot.style.animation = 'none';
     }
-    strip.title = 'Statyczne dane — METAR niedostępny (' + (reason || 'fetch') + ')';
+    strip.title = 'Statyczne dane - METAR niedostępny (' + (reason || 'fetch') + ')';
   }
 
   // Skip on slow connections
@@ -48,7 +48,7 @@
       if (j.observed) parts.push('obs: ' + j.observed);
       parts.push('źródło: NOAA · ' + (j.station || 'EPRA') + ' (najbliższe METAR do EPRP)');
       strip.title = parts.join('\n');
-      // Mark observation freshness — older than 2h = stale
+      // Mark observation freshness - older than 2h = stale
       if (j.observed) {
         var t = Date.parse(j.observed);
         if (!Number.isNaN(t) && Date.now() - t > 2 * 3600 * 1000) {

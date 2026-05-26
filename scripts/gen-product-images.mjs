@@ -99,7 +99,7 @@ const PRODUCTS = [
     accent    : C.gold,
     tag       : 'KURS  ·  UPRAWNIENIE EASA',
     name      : 'SZKOLENIE\nFCL.800',
-    sub       : 'Uprawnienie Akrobacja — EASA DTO',
+    sub       : 'Uprawnienie Akrobacja - EASA DTO',
     promoLine : 'CERTYFIKAT EASA  ·  UPRAWNIENIE AKROBACJA',
     promoGold : true,
     oldPrice  : null,
@@ -150,7 +150,7 @@ async function drawProduct(p) {
   const canvas = createCanvas(S, S);
   const ctx    = canvas.getContext('2d');
 
-  // Tło — ciemny gradient
+  // Tło - ciemny gradient
   const bgG = ctx.createLinearGradient(0, 0, 0, S);
   bgG.addColorStop(0, C.bg0);
   bgG.addColorStop(1, '#0F1E38');
@@ -165,7 +165,7 @@ async function drawProduct(p) {
     ctx.restore();
   }
 
-  // Winiety — ciemne rogi, jasny środek-prawa
+  // Winiety - ciemne rogi, jasny środek-prawa
   const vigTop = ctx.createLinearGradient(0, 0, 0, S * 0.5);
   vigTop.addColorStop(0,   'rgba(4,16,28,0.82)');
   vigTop.addColorStop(0.4, 'rgba(4,16,28,0.25)');
@@ -187,7 +187,7 @@ async function drawProduct(p) {
   ctx.fillStyle = vigLeft;
   ctx.fillRect(0, 0, S, S);
 
-  // Pasek akcentu — lewa krawędź
+  // Pasek akcentu - lewa krawędź
   ctx.fillStyle   = p.accent;
   ctx.globalAlpha = 0.95;
   ctx.fillRect(0, 0, 9, S);
@@ -224,7 +224,7 @@ async function drawProduct(p) {
   ctx.fillStyle = C.white;
   ctx.fillText(p.tag, PAD + 15, 119);
 
-  // Nazwa produktu — DOMINUJĄCA
+  // Nazwa produktu - DOMINUJĄCA
   ctx.fillStyle = C.white;
   if (p.name.includes('\n')) {
     const [l1, l2] = p.name.split('\n');
@@ -268,7 +268,7 @@ async function drawProduct(p) {
     PY += 16;
   }
 
-  // Stara cena — skreślona (czytelna: ~55% nowej)
+  // Stara cena - skreślona (czytelna: ~55% nowej)
   if (p.oldPrice) {
     const oldStr = `${p.oldPrice} PLN`;
     ctx.font      = f(62, false);
@@ -284,7 +284,7 @@ async function drawProduct(p) {
     PY += 78;
   }
 
-  // Nowa cena — MONUMENTALNA
+  // Nowa cena - MONUMENTALNA
   ctx.fillStyle = C.white;
   ctx.font      = f(58, true);
   ctx.fillText(p.currency, PAD, PY + 118);
@@ -317,11 +317,11 @@ async function drawProduct(p) {
   ctx.moveTo(PAD, lineY2); ctx.lineTo(S - PAD, lineY2);
   ctx.stroke();
 
-  // ── 3 BULLETS — DUŻE, PRZESTRONNE ─────────────────────────
+  // ── 3 BULLETS - DUŻE, PRZESTRONNE ─────────────────────────
 
   let bY = lineY2 + 52;
   for (const b of p.bullets) {
-    // Okrąg zamiast kwadratu — bardziej graficznie
+    // Okrąg zamiast kwadratu - bardziej graficznie
     ctx.beginPath();
     ctx.arc(PAD + 8, bY - 10, 9, 0, Math.PI * 2);
     ctx.fillStyle = p.accent;
@@ -338,7 +338,7 @@ async function drawProduct(p) {
     bY += 60;
   }
 
-  // ── CTA — PEŁNA SZEROKOŚĆ, MOCNY ──────────────────────────
+  // ── CTA - PEŁNA SZEROKOŚĆ, MOCNY ──────────────────────────
 
   const ctaY = bY + 30;
   // Cień przycisku

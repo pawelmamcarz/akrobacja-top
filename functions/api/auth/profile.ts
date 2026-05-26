@@ -2,7 +2,7 @@ import { type Env } from '../../../src/lib/types';
 import { getPilotFromToken } from '../../../src/lib/pilot-auth';
 import { isValidEmail } from '../../../src/lib/validate';
 
-// GET /api/auth/profile — get current pilot profile
+// GET /api/auth/profile - get current pilot profile
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const pilot = await getPilotFromToken(ctx.request, ctx.env.DB);
   if (!pilot) return Response.json({ error: 'Nie zalogowany' }, { status: 401 });
@@ -13,7 +13,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   return Response.json({ pilot, calendar_ics_url });
 };
 
-// POST /api/auth/profile — update profile
+// POST /api/auth/profile - update profile
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   const pilot = await getPilotFromToken(ctx.request, ctx.env.DB);
   if (!pilot) return Response.json({ error: 'Nie zalogowany' }, { status: 401 });
@@ -25,7 +25,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     license_number?: string;
   };
 
-  // Email is user-set without verification — validate format and prevent collisions so a
+  // Email is user-set without verification - validate format and prevent collisions so a
   // pilot can't claim someone else's email. my-bookings.ts now matches by phone instead of
   // email to close the IDOR fully; this only blocks the obvious abuse of overwriting.
   let normalizedEmail: string | undefined;

@@ -65,7 +65,7 @@ for (const { size, src, out, pad } of sizes) {
   console.log(`✓  ${out} (${size}×${size})`);
 }
 
-// favicon.ico — single PNG @ 48×48 opakowane w ICO header
+// favicon.ico - single PNG @ 48×48 opakowane w ICO header
 const ico48 = await resizePng(MARK, 48, 0.05);
 writeFileSync(join(PUB, 'favicon.ico'), makeSingleIco(ico48, 48, 48));
 console.log('✓  favicon.ico (48×48 PNG w ICO)');

@@ -2,7 +2,7 @@
 //
 // Google Places "Place Details" zwraca do 5 najnowszych opinii w polu reviews[].
 // Stable ID nie jest dostarczane przez API, wiec dedupujemy po `time + author_name`
-// (par jest praktycznie unikalna — autor nie pisze 2 opinii w tej samej sekundzie).
+// (par jest praktycznie unikalna - autor nie pisze 2 opinii w tej samej sekundzie).
 // Przy retry / update opinia jest aktualizowana (text, photo, relative_time) zamiast
 // duplikowana.
 //

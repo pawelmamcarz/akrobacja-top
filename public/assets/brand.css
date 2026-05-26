@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   akrobacja.com — REDESIGN brand system
-   Loaded LAST in <head> — overrides legacy inline tokens via CSS cascade.
+   akrobacja.com - REDESIGN brand system
+   Loaded LAST in <head> - overrides legacy inline tokens via CSS cascade.
    Tokens, fonts, utilities and component overrides shared across all pages.
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -45,7 +45,7 @@
 /* ─── BASE OVERRIDES ────────────────────────────────────────────────────── */
 body { font-family: var(--font-b); }
 
-/* New display font for headings — Anton renders without italic;
+/* New display font for headings - Anton renders without italic;
    legacy `font-style: italic` rules become slanted Anton, which is fine. */
 .section-title,
 .hero-headline,
@@ -68,7 +68,7 @@ h1.hero-headline,
     var(--sun) 14px 28px);
 }
 
-/* HUD strip — small mono labels, used on dark surfaces */
+/* HUD strip - small mono labels, used on dark surfaces */
 .hud-strip {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -125,13 +125,13 @@ h1.hero-headline,
   letter-spacing: .14em;
 }
 
-/* ─── ACCENT BAR — slim cyan rule (was red) ─────────────────────────────── */
+/* ─── ACCENT BAR - slim cyan rule (was red) ─────────────────────────────── */
 .accent-bar {
   background: var(--cyan);
   height: 2px;
 }
 
-/* ─── SECTION LABELS — keep mono+spaced ─────────────────────────────────── */
+/* ─── SECTION LABELS - keep mono+spaced ─────────────────────────────────── */
 .section-label {
   font-family: var(--font-mono);
   letter-spacing: .28em;
@@ -407,7 +407,7 @@ h1.hero-headline,
   .r-pkg-grid { grid-template-columns: 1fr; }
 }
 
-/* ─── HOW IT WORKS — checklist ──────────────────────────────────────────── */
+/* ─── HOW IT WORKS - checklist ──────────────────────────────────────────── */
 .r-flow {
   padding: 56px;
   background: var(--white);
@@ -526,7 +526,7 @@ h1.hero-headline,
   .r-pilot { grid-template-columns: 1fr; padding: 32px 24px; gap: 24px; margin: 16px; }
 }
 
-/* ─── BENEFIT STRIP — restyled with mono labels ─────────────────────────── */
+/* ─── BENEFIT STRIP - restyled with mono labels ─────────────────────────── */
 .benefit-strip {
   background: var(--navy-ink);
   border-top: 1px solid var(--cyan);
@@ -544,10 +544,10 @@ h1.hero-headline,
   box-shadow: 0 0 0 3px rgba(0,229,255,.18);
 }
 
-/* ─── CARDS / SHADOWS — global lift on hover ────────────────────────────── */
+/* ─── CARDS / SHADOWS - global lift on hover ────────────────────────────── */
 .lift:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(10,47,124,.18); }
 
-/* ─── VOUCHER CARDS (legacy .v-card) — refresh tokens ───────────────────── */
+/* ─── VOUCHER CARDS (legacy .v-card) - refresh tokens ───────────────────── */
 .v-card {
   border: 1px solid var(--bone-edge);
   background: var(--white);
@@ -592,10 +592,10 @@ h1.hero-headline,
 }
 .v-cta:hover { background: var(--red-dark); }
 
-/* ─── PROMO BANNER — softer ─────────────────────────────────────────────── */
+/* ─── PROMO BANNER - softer ─────────────────────────────────────────────── */
 .promo-title { font-family: var(--font-display); font-style: normal; }
 
-/* ─── REVIEWS / SHOP / PILOT / MACHINE / FAQ — title family + accent ──── */
+/* ─── REVIEWS / SHOP / PILOT / MACHINE / FAQ - title family + accent ──── */
 .shop-title .section-title,
 .reviews-header .section-title,
 .faq .section-title,
@@ -606,29 +606,29 @@ h1.hero-headline,
 .gift-section .section-title,
 .steps .section-title { font-family: var(--font-display); font-style: normal !important; letter-spacing: .005em !important; }
 
-/* Section-label refresh — smaller, more aviation */
+/* Section-label refresh - smaller, more aviation */
 .section-label {
   text-transform: uppercase;
   font-style: normal !important;
 }
 
-/* ─── FOOTER — subtle adjustments to use new tokens ─────────────────────── */
+/* ─── FOOTER - subtle adjustments to use new tokens ─────────────────────── */
 footer { background: var(--navy-ink); }
 
 /* ─── PILOT BADGE / STATS ───────────────────────────────────────────────── */
 .pilot-stat-num { font-family: var(--font-display); font-style: normal !important; }
 .pilot-stat-num em { color: var(--cyan); font-style: normal; }
 
-/* ─── HERO STAT EM (legacy num em) — switch to cyan accent ─────────────── */
+/* ─── HERO STAT EM (legacy num em) - switch to cyan accent ─────────────── */
 .stat-num em { color: var(--cyan); font-style: normal; }
 
-/* ─── HOTSPOT (machine viewer) — cyan accent ────────────────────────────── */
+/* ─── HOTSPOT (machine viewer) - cyan accent ────────────────────────────── */
 .hotspot-dot {
   border-color: var(--cyan) !important;
   background: rgba(0,229,255,.12) !important;
 }
 
-/* ─── BENEFIT STRIP refresh — keep dark, cyan accents ───────────────────── */
+/* ─── BENEFIT STRIP refresh - keep dark, cyan accents ───────────────────── */
 .proof-bar-num { font-family: var(--font-display); font-style: normal !important; color: var(--navy); }
 .proof-bar-num.alt { color: var(--cyan); }
 
@@ -677,7 +677,7 @@ section.hero h1,
   letter-spacing: .005em !important;
 }
 
-/* ─── Accent highlights inside hero/page h1 — cyan only on explicit accent ──
+/* ─── Accent highlights inside hero/page h1 - cyan only on explicit accent ──
    Limited to <em> and elements with .accent class so layout-only <span>s
    (e.g. line-splits in lot-akrobacyjny.html) are not recolored. */
 .hero h1 em,
@@ -698,13 +698,13 @@ section.hero h1 .accent,
   box-shadow: none;
 }
 
-/* ─── Buttons globally — mono + spaced ──────────────────────────────────── */
+/* ─── Buttons globally - mono + spaced ──────────────────────────────────── */
 .btn, .btn-primary, .btn-prime, .v-cta, .btn-ghost, .btn-outline, .nav-btn {
   font-family: var(--font-mono);
   letter-spacing: .14em;
 }
 
-/* ─── Step cards — accent number with cyan ──────────────────────────────── */
+/* ─── Step cards - accent number with cyan ──────────────────────────────── */
 .step-num { font-family: var(--font-display); color: var(--navy); font-style: normal !important; }
 .step-num::after { background: var(--cyan); }
 

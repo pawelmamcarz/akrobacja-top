@@ -1,6 +1,6 @@
 // Shared between the abandoned-checkouts cron and the admin "Wyslij recovery"
 // button on the orders panel. Both call sendRecoveryEmail; the cron also enforces
-// the 1-48h window and the abandon_email_sent_at debounce — manual admin override
+// the 1-48h window and the abandon_email_sent_at debounce - manual admin override
 // re-sends regardless of when the previous one went out.
 
 import { type Env, PACKAGES, type PackageId } from './types';

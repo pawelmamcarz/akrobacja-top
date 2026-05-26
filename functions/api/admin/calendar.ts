@@ -35,7 +35,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   return Response.json({ slots, blocks, pendingBookings });
 };
 
-// POST /api/admin/calendar — manage bookings and blocks
+// POST /api/admin/calendar - manage bookings and blocks
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
@@ -53,7 +53,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   switch (body.action) {
     case 'approve': {
       if (!body.booking_id) return Response.json({ error: 'Brak booking_id' }, { status: 400 });
-      // Idempotentny approve — tylko z 'pending'. Bez tego dwa równoległe
+      // Idempotentny approve - tylko z 'pending'. Bez tego dwa równoległe
       // klikniecia mogłyby wykonać UPDATE slots dwa razy / nadpisać status.
       const r = await ctx.env.DB.prepare(
         "UPDATE bookings SET status = 'approved', approved_at = datetime('now') WHERE id = ? AND status = 'pending'"

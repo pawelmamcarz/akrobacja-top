@@ -6,7 +6,7 @@ import { sendVoucherEmail } from '../../../src/lib/email';
 import { isValidEmail } from '../../../src/lib/validate';
 import { recordFailedDelivery } from '../../../src/lib/audit';
 
-// GET /api/admin/orders — list all orders
+// GET /api/admin/orders - list all orders
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
@@ -24,7 +24,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   return Response.json({ orders: results });
 };
 
-// POST /api/admin/orders — manually create a paid voucher (cash / bank transfer / free).
+// POST /api/admin/orders - manually create a paid voucher (cash / bank transfer / free).
 // Skips Stripe (no Stripe session) and wFirma (no sales invoice). Generates PDF,
 // uploads to R2, optionally emails the customer with the voucher attached.
 //
@@ -102,8 +102,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   const expiresAt = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
   const addonsJson = videoAddon ? JSON.stringify(['video']) : null;
 
-  // Insert as 'paid' immediately — no Stripe handshake needed.
-  // orders.customer_email is NOT NULL — fall back to empty string when admin
+  // Insert as 'paid' immediately - no Stripe handshake needed.
+  // orders.customer_email is NOT NULL - fall back to empty string when admin
   // intentionally creates a voucher without one (cash sale, no contact data).
   // orders has no customer_phone column; phone is captured at Stripe checkout
   // only, so we drop it here.

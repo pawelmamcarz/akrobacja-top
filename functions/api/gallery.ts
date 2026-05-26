@@ -1,4 +1,4 @@
-// GET /api/gallery — public list of approved photographer submissions
+// GET /api/gallery - public list of approved photographer submissions
 // for /galeria. Returns lightweight JSON; the actual image content streams from
 // /api/gallery/file/{id} (which proxies the R2 object).
 

@@ -84,7 +84,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     // Cache slots-for-a-day at the edge. Bookings rarely change for any single day in any
     // single minute, so a short cache (60s for today's date, 5 min beyond) cuts D1 + Open-
     // Meteo round-trips dramatically when a visitor browses the calendar across multiple
-    // dates. POST /api/calendar/book does NOT need to invalidate — partial UNIQUE on slots
+    // dates. POST /api/calendar/book does NOT need to invalidate - partial UNIQUE on slots
     // means the booker wins or loses atomically, and the next viewer sees fresh data within
     // the TTL.
     const isToday = dateStr === today;

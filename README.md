@@ -9,14 +9,14 @@ Produkcyjny URL: <https://akrobacja.com>
 ## Stack
 
 - **Hosting:** Cloudflare Pages (HTML) + Pages Functions (TypeScript)
-- **Baza:** D1 (SQLite) — binding `DB`
-- **Storage:** R2 (PDF-y voucherów) — binding `VOUCHER_BUCKET`
-- **AI:** Workers AI (Llama 3.1 8B Instruct) — binding `AI`, dla chatu
+- **Baza:** D1 (SQLite) - binding `DB`
+- **Storage:** R2 (PDF-y voucherów) - binding `VOUCHER_BUCKET`
+- **AI:** Workers AI (Llama 3.1 8B Instruct) - binding `AI`, dla chatu
 - **Płatności:** Stripe Checkout (P24, BLIK, karta) + webhook
 - **Faktury:** wFirma API v2
 - **Email:** Resend (vouchery, powitania, abandoned cart, notyfikacje owner)
 - **SMS:** SMSAPI.pl (OTP logowania pilotów, blast marketingowy)
-- **Merch fulfilment:** Printful (częściowo — mapping pusty, patrz "Znane luki")
+- **Merch fulfilment:** Printful (częściowo - mapping pusty, patrz "Znane luki")
 - **Analytics:** Cloudflare Web Analytics, GA4, Google Ads, Meta Pixel + CAPI
 
 ## Struktura katalogu
@@ -61,12 +61,12 @@ Kalendarz: `slots`, `bookings`, `availability_blocks`, `courses`
 Samolot: `maintenance`, `documents`
 
 Patrz `schema.sql` (świeża baza) i `migrations/*.sql` (produkcja rośnie
-przyrostowo). Kolejne migracje nazywamy `NNN-opis.sql` — guard przez
+przyrostowo). Kolejne migracje nazywamy `NNN-opis.sql` - guard przez
 `IF NOT EXISTS` żeby były idempotentne.
 
 ## Przepływ zakupu vouchera (happy path)
 
-1. `POST /api/checkout` — tworzy rekord w `orders` (`status='pending'`), generuje
+1. `POST /api/checkout` - tworzy rekord w `orders` (`status='pending'`), generuje
    unikalny `voucher_code` (`AKR-XXXX-XXXX`), tworzy Stripe Checkout Session.
 2. Klient płaci. Stripe → `POST /api/webhook` (event `checkout.session.completed`).
 3. Webhook atomowo flipuje `pending` → `processing`, potem równolegle:
@@ -78,17 +78,17 @@ przyrostowo). Kolejne migracje nazywamy `NNN-opis.sql` — guard przez
    konwersję z `sessionStorage.akro_checkout_info` (Enhanced Conversions).
 
 Produkt testowy `test_naklejka` (200 gr = 2 PLN, minimum Stripe PLN) pomija
-PDF/email/fakturę — służy tylko weryfikacji pikseli konwersji.
+PDF/email/fakturę - służy tylko weryfikacji pikseli konwersji.
 
 ## Przepływ rezerwacji kalendarza
 
-1. `GET /api/calendar/slots?date=YYYY-MM-DD` — zwraca:
-   - sunrise/sunset (EPRP, lat=51.3892, lon=21.2133) — sloty 1h od +30 min po
+1. `GET /api/calendar/slots?date=YYYY-MM-DD` - zwraca:
+   - sunrise/sunset (EPRP, lat=51.3892, lon=21.2133) - sloty 1h od +30 min po
      świcie do -30 min przed zachodem, max 8/dzień,
    - pogoda z Open-Meteo (do 7 dni do przodu), flyable jeśli
      widzialność ≥ 5 km, podstawa chmur ≥ 1500 m, wiatr < 40 km/h, brak opadów,
    - istniejące rezerwacje i bloki (`availability_blocks`).
-2. `POST /api/calendar/book` — typ `voucher` (wymaga kodu) | `course` |
+2. `POST /api/calendar/book` - typ `voucher` (wymaga kodu) | `course` |
    `proficiency` | `training`. Tworzy booking `status='pending'` + slot
    `status='pending'`.
 3. Admin w `/admin` widzi `pendingBookings` i zatwierdza (`approve`) lub
@@ -96,11 +96,11 @@ PDF/email/fakturę — służy tylko weryfikacji pikseli konwersji.
 
 ## Przepływ pilot portal (SMS OTP)
 
-1. `POST /api/auth/send-code` — rate limit 3/h/telefon, zapis `otp_codes`,
+1. `POST /api/auth/send-code` - rate limit 3/h/telefon, zapis `otp_codes`,
    SMS wysłany przez SMSAPI.
-2. `POST /api/auth/verify` — sprawdza kod (5 min TTL), tworzy lub aktualizuje
+2. `POST /api/auth/verify` - sprawdza kod (5 min TTL), tworzy lub aktualizuje
    `pilots`, generuje `session_token` (zapisywany w localStorage u klienta).
-3. `GET /api/auth/profile` / `/my-bookings` / `/insurance` — Bearer token =
+3. `GET /api/auth/profile` / `/my-bookings` / `/insurance` - Bearer token =
    `session_token`. `/insurance POST` zgłasza pilota do polisy (admin musi
    zatwierdzić w `/admin` → zakładka Samolot → Piloci w polisie).
 
@@ -115,13 +115,12 @@ dni). Kroki: day 0 (powitanie), day 2 (edukacyjny), day 5 (rabat -100 PLN
 
 `GET /api/cron/abandoned-checkouts` wysyła kod WRACAM5 (-5%) do zamówień
 `pending` starszych niż 1h, młodszych niż 48h, bez wysłanego maila. Flagę
-`abandon_email_sent_at` ustawia jako "sent" nawet przy permanent-fail (422 —
-zły email), żeby nie retry'ować.
+`abandon_email_sent_at` ustawia jako "sent" nawet przy permanent-fail (422 - zły email), żeby nie retry'ować.
 
 ## Scheduled voucher delivery (cron)
 
 `POST /api/cron/scheduled-vouchers` (rekomendowane co 1h) wysyła zaplanowane
-vouchery prezentowe — kupujący wskazał `send_at` (np. dzień urodzin
+vouchery prezentowe - kupujący wskazał `send_at` (np. dzień urodzin
 obdarowanego), webhook po opłacie wrzucił PDF do R2 i pominął email.
 Cron filtruje `status='paid' AND send_at <= now AND email_sent_at IS NULL`,
 pobiera PDF z R2 (`vouchers/{code}.pdf`), wysyła `sendVoucherEmail`
@@ -135,15 +134,15 @@ cp .dev.vars.example .dev.vars   # uzupełnij sekrety
 npm run dev                      # wrangler pages dev public --port 8788
 ```
 
-### Schemat bazy — polityka
+### Schemat bazy - polityka
 
 - **`schema.sql` jest jedynym źródłem prawdy do bootstrapu.** Tu żyje pełny
   opis wszystkich tabel, kolumn i indeksów. Świeża D1 (lokalnie, preview env,
   branch deploy, disaster recovery) MUSI być tworzona z tego pliku.
 - **`migrations/NNN-*.sql` to tylko patche driftu** dla baz istniejących
-  w produkcji — dokładają kolumny/indeksy/tabele, których ad-hoc zmiany na
+  w produkcji - dokładają kolumny/indeksy/tabele, których ad-hoc zmiany na
   prod wyprzedziły commit. **Nie stanowią zamkniętego łańcucha od zera**
-  i bootstrap wyłącznie z migracji NIE jest wspierany — zawsze `schema.sql`.
+  i bootstrap wyłącznie z migracji NIE jest wspierany - zawsze `schema.sql`.
 - Przy każdym dodaniu kolumny/tabeli/indeksu: 1) zaktualizuj `schema.sql`,
   2) dopisz migrację `NNN-<nazwa>.sql` dla istniejącej prod DB.
 
@@ -159,24 +158,23 @@ npx wrangler d1 execute akrobacja-db --remote --file=migrations/NNN-<nazwa>.sql
 
 Push na `main` → GitHub Actions (`.github/workflows/deploy.yml`) →
 `wrangler pages deploy public --project-name=akrobacja-top`. Workflow kopiuje
-`index.html` i `sukces.html` z roota do `public/` przed deployem (legacy —
-warto docelowo trzymać tylko w `public/`).
+`index.html` i `sukces.html` z roota do `public/` przed deployem (legacy - warto docelowo trzymać tylko w `public/`).
 
 Sekrety w Cloudflare: `npx wrangler pages secret put NAZWA --project-name=akrobacja-top`.
-Lista wymaganych — patrz `.dev.vars.example`.
+Lista wymaganych - patrz `.dev.vars.example`.
 
 ## Endpointy API
 
 ### Publiczne
-- `POST /api/checkout` — voucher Stripe session
-- `POST /api/merch/checkout` — merch Stripe session
-- `GET /api/merch/products` — lista produktów merch
-- `POST /api/webhook` — Stripe webhook (HMAC-SHA256 weryfikacja)
-- `POST /api/subscribe` — zapis do newslettera
-- `GET /api/voucher/{code}` — pobranie PDF z R2 (tylko paid)
+- `POST /api/checkout` - voucher Stripe session
+- `POST /api/merch/checkout` - merch Stripe session
+- `GET /api/merch/products` - lista produktów merch
+- `POST /api/webhook` - Stripe webhook (HMAC-SHA256 weryfikacja)
+- `POST /api/subscribe` - zapis do newslettera
+- `GET /api/voucher/{code}` - pobranie PDF z R2 (tylko paid)
 - `GET /api/calendar/slots?date=...`
 - `POST /api/calendar/book`
-- `POST /api/chat` — Workers AI Llama 3.1
+- `POST /api/chat` - Workers AI Llama 3.1
 
 ### Pilot (Bearer `session_token`)
 - `POST /api/auth/send-code`, `POST /api/auth/verify`
@@ -186,32 +184,32 @@ Lista wymaganych — patrz `.dev.vars.example`.
 
 ### Admin (Bearer `ADMIN_PASSWORD`)
 - `GET /api/admin/orders`
-- `POST /api/admin/redeem` — odbicie vouchera
-- `POST /api/admin/invoice` — retry wFirma
-- `GET|POST /api/admin/calendar` — slots, approve/reject, block/unblock
+- `POST /api/admin/redeem` - odbicie vouchera
+- `POST /api/admin/invoice` - retry wFirma
+- `GET|POST /api/admin/calendar` - slots, approve/reject, block/unblock
 - `GET|POST /api/admin/courses`
-- `GET|POST /api/admin/pilots` — saldo + log
-- `GET|POST /api/admin/aircraft` — maintenance, documents, insurance pilots
+- `GET|POST /api/admin/pilots` - saldo + log
+- `GET|POST /api/admin/aircraft` - maintenance, documents, insurance pilots
 - `GET|POST /api/admin/merch`
-- `GET|POST /api/admin/subscribers` — blast SMS, remove
+- `GET|POST /api/admin/subscribers` - blast SMS, remove
 
-### Cron (publiczne — **trzeba dodać CRON_SECRET**)
+### Cron (publiczne - **trzeba dodać CRON_SECRET**)
 - `GET|POST /api/cron/welcome-emails`
 - `GET|POST /api/cron/abandoned-checkouts`
-- `GET|POST /api/cron/scheduled-vouchers` — voucher prezentowy z `send_at` (co 1h)
+- `GET|POST /api/cron/scheduled-vouchers` - voucher prezentowy z `send_at` (co 1h)
 
 ## Znane luki (backlog)
 
 Zidentyfikowane podczas audytu kompleksowości (kwiecień 2026). Priorytety:
 
-### P0 — blokery
-- Brak seedu `products` — `/sklep-merch` wyświetla pustą listę po świeżym
+### P0 - blokery
+- Brak seedu `products` - `/sklep-merch` wyświetla pustą listę po świeżym
   wdrożeniu. Dodać rekordy przez admina albo `wrangler d1 execute`.
 
-### P1 — domknąć journey
+### P1 - domknąć journey
 - `calendar/book` nie wysyła maila do klienta ani admina. Admin dowiaduje się
   tylko przez aktywny polling panelu.
-- Webhook obsługuje tylko `checkout.session.completed` — sesje `expired` /
+- Webhook obsługuje tylko `checkout.session.completed` - sesje `expired` /
   `payment_failed` zostają w `pending` na zawsze.
 - Printful: `PRINTFUL_PRODUCTS = {}` → `createPrintfulOrder` rzuca wyjątek.
   Merch orders trzeba wysyłać ręcznie.
@@ -219,17 +217,17 @@ Zidentyfikowane podczas audytu kompleksowości (kwiecień 2026). Priorytety:
 - Crony `welcome-emails` i `abandoned-checkouts` są **publiczne**. Chronić
   `Authorization: Bearer ${CRON_SECRET}`.
 
-### P2 — jakość
+### P2 - jakość
 - Admin token = hasło w localStorage, bez TTL, bez 2FA. Rozważyć JWT
   `/api/admin/login`.
-- Brak formularzy lead dla B2B (`/pokazy`, `/sponsoring`, `/camp`) — tylko
+- Brak formularzy lead dla B2B (`/pokazy`, `/sponsoring`, `/camp`) - tylko
   `mailto:` i `wa.me`, zero tracking konwersji.
 - Chat widget bez ochrony przed prompt injection.
 - `/api/calendar/book` nie weryfikuje że `start_time` mieści się w
-  `generateSlots(date)` — można ręcznym POST rezerwować o 03:00.
+  `generateSlots(date)` - można ręcznym POST rezerwować o 03:00.
 - `/sukces` bez `?code=` pokazuje `---` i broken download link.
 
-### P3 — DX
+### P3 - DX
 - `GEMINI_API_KEY` w `Env` ale nieużywane.
 - Brak skryptów `db:migrate` / `db:seed` w `package.json`.
 - `/api/admin/subscribers send_blast` bez UI w admin.html.

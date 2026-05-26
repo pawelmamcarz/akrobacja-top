@@ -1,7 +1,7 @@
-/* akrobacja.com — site enhancements
- * - Sticky mobile CTA "Zarezerwuj lot — od 1999 zł"
+/* akrobacja.com - site enhancements
+ * - Sticky mobile CTA "Zarezerwuj lot - od 1999 zł"
  * - Lazy-load any <img> still missing loading attr
- * - Lightweight conversion event hooks (dataLayer — gtag itself is injected by middleware)
+ * - Lightweight conversion event hooks (dataLayer - gtag itself is injected by middleware)
  */
 (function () {
   'use strict';
@@ -45,12 +45,12 @@ body.has-akro-sticky{padding-bottom:84px}';
 
     var wrap = document.createElement('div');
     wrap.id = 'akro-sticky-cta';
-    // Cold mobile traffic landing here probably hasn't bought a voucher yet — /kalendarz
+    // Cold mobile traffic landing here probably hasn't bought a voucher yet - /kalendarz
     // demands a voucher code or pilot login and bounces first-time visitors. Send them
     // to the voucher shop instead. Logged-in pilots already reach /kalendarz via their
     // dashboard.
     wrap.innerHTML = '<a href="/lot-akrobacyjny#sklep" data-akro-cta="sticky">' +
-      '✈️ Kup voucher <span class="akro-sub">— od 1 999 zł</span></a>';
+      '✈️ Kup voucher <span class="akro-sub">- od 1 999 zł</span></a>';
     document.body.appendChild(wrap);
     document.body.classList.add('has-akro-sticky');
 
@@ -127,7 +127,7 @@ color:#7a8fa6;font-size:24px;cursor:pointer;line-height:1}\
     document.addEventListener('keyup', function (e) { if (e.key === 'Escape') close(); });
 
     document.addEventListener('mouseout', function (e) {
-      // Fires when cursor leaves the document toward the top — treat as exit intent.
+      // Fires when cursor leaves the document toward the top - treat as exit intent.
       if (!e.relatedTarget && e.clientY < 10) open();
     });
   }

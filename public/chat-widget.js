@@ -26,7 +26,7 @@
       .cw-quick { padding:0 12px 10px; }
       .cw-wa { margin:6px 12px; }
       /* Sticky mobile CTA injected by site-enhancements.js (#akro-sticky-cta) lives at
-         the bottom — push the chat bubble above it so they don't overlap. */
+         the bottom - push the chat bubble above it so they don't overlap. */
       body.has-akro-sticky .cw-btn { bottom:84px; }
     }
     @media (max-width:768px) and (min-width:481px) {
@@ -83,7 +83,7 @@
       <button class="cw-close" type="button" aria-label="Zamknij czat">&times;</button>
     </div>
     <div class="cw-messages" id="cwMessages">
-      <div class="cw-msg cw-msg-bot">Cześć! Jestem asystentem akrobacja.com. Pytaj o loty, pokazy, sponsoring — albo pomogę wybrać pakiet.</div>
+      <div class="cw-msg cw-msg-bot">Cześć! Jestem asystentem akrobacja.com. Pytaj o loty, pokazy, sponsoring - albo pomogę wybrać pakiet.</div>
     </div>
     <div class="cw-quick" id="cwQuick">
       <button class="cw-quick-btn" type="button" data-quick="Ile kosztuje lot akrobacyjny?">Ile kosztuje lot?</button>
@@ -101,7 +101,7 @@
 
   let history = [];
 
-  // Linkifies wa.me/ and akrobacja.{com,top} URLs without innerHTML — XSS-safe.
+  // Linkifies wa.me/ and akrobacja.{com,top} URLs without innerHTML - XSS-safe.
   const LINK_RE = /(https:\/\/wa\.me\/\d+|https:\/\/akrobacja\.(?:com|top)[^\s)"']*)/g;
   function appendWithLinks(container, text) {
     let last = 0;
@@ -145,7 +145,7 @@
     sendMessage(text);
   }
 
-  // Wire handlers (no inline JS — CSP-friendly)
+  // Wire handlers (no inline JS - CSP-friendly)
   panel.querySelector('.cw-close').addEventListener('click', function () {
     panel.classList.remove('open');
     btn.classList.remove('has-dot');
@@ -196,7 +196,7 @@
       // Keep last 10 exchanges
       if (history.length > 20) history = history.slice(-20);
 
-      // Remove typing, add reply (build nodes manually — never innerHTML untrusted text)
+      // Remove typing, add reply (build nodes manually - never innerHTML untrusted text)
       typing.remove();
       const botMsg = document.createElement('div');
       botMsg.className = 'cw-msg cw-msg-bot';

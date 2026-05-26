@@ -1,4 +1,4 @@
-// POST /api/admin/auth/logout — invalidates the bearer session token.
+// POST /api/admin/auth/logout - invalidates the bearer session token.
 // No-op for legacy ADMIN_PASSWORD/MAGDA_PASSWORD bearer (those don't have
 // session rows). Always returns ok so UI can clear localStorage uniformly.
 

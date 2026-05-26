@@ -33,7 +33,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ error: 'Podaj prawidłowy numer telefonu' }, { status: 400 });
     }
 
-    // Rate limit — max 3 codes per phone per hour
+    // Rate limit - max 3 codes per phone per hour
     const recent = await ctx.env.DB.prepare(
       "SELECT COUNT(*) as cnt FROM otp_codes WHERE phone = ? AND created_at > datetime('now', '-1 hour')"
     ).bind(normalized).first<{ cnt: number }>();
@@ -45,7 +45,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     // Invalidate prior unused codes for this phone before issuing a new one.
     // Previously up to 3 codes could be valid simultaneously, so an OTP brute-force
     // attempt against the latest code could also accidentally match one of the older
-    // active codes — effectively tripling the attacker's success probability.
+    // active codes - effectively tripling the attacker's success probability.
     await ctx.env.DB.prepare(
       'UPDATE otp_codes SET used = 1 WHERE phone = ? AND used = 0'
     ).bind(normalized).run();

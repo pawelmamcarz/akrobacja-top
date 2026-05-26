@@ -1,7 +1,7 @@
 import { type Env } from './types';
 import { normalizePhone } from './phone';
 
-// SMSAPI.pl — send OTP via SMS
+// SMSAPI.pl - send OTP via SMS
 export async function sendSms(env: Env, phone: string, message: string): Promise<void> {
   const sender = 'akrobacja';
   const token = (env.SMSAPI_TOKEN || '').replace(/\s/g, '');
@@ -26,7 +26,7 @@ export async function sendSms(env: Env, phone: string, message: string): Promise
 
   const text = await res.text();
 
-  // SMSAPI returns 200 even on errors — sprawdź body
+  // SMSAPI returns 200 even on errors - sprawdź body
   let data: Record<string, unknown>;
   try {
     data = JSON.parse(text);

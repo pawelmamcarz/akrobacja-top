@@ -14,7 +14,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   return Response.json({ courses: results });
 };
 
-// POST /api/admin/courses — create or update course
+// POST /api/admin/courses - create or update course
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });

@@ -1,4 +1,4 @@
-// Public GET /api/reviews — zwraca posortowane visible=1 opinie z paginacja.
+// Public GET /api/reviews - zwraca posortowane visible=1 opinie z paginacja.
 //
 // Frontend (public/index.html) wywoluje to przy zaladowaniu strony i po klikniecu
 // "Pokaz wiecej". Edge cache 1h zmniejsza obciazenie D1.

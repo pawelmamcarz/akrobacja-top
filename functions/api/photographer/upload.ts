@@ -1,5 +1,5 @@
 // POST /api/photographer/upload
-// Public endpoint — photographers submit photos for /galeria. Files are pre-resized
+// Public endpoint - photographers submit photos for /galeria. Files are pre-resized
 // client-side (canvas) to a 2048px long-edge JPEG/WebP under 2 MB; server validates,
 // stores in R2 under submissions/{uuid}.jpg and inserts a gallery_submissions row with
 // status='pending'. Admin approves from the "Zdjecia" tab; only approved rows surface

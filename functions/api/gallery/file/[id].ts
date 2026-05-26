@@ -1,4 +1,4 @@
-// GET /api/gallery/file/[id] — stream the R2 object for one approved submission.
+// GET /api/gallery/file/[id] - stream the R2 object for one approved submission.
 // Only approved rows are served; pending/rejected return 404 to keep moderation private.
 
 import { type Env } from '../../../../src/lib/types';

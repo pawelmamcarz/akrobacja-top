@@ -54,7 +54,7 @@ async function generateImage(product) {
 
   if (!res.ok) {
     const err = await res.text();
-    console.error(`  ✗ ${product.id}: HTTP ${res.status} — ${err.slice(0, 200)}`);
+    console.error(`  ✗ ${product.id}: HTTP ${res.status} - ${err.slice(0, 200)}`);
     return null;
   }
 

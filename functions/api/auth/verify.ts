@@ -48,7 +48,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     await ctx.env.DB.prepare('UPDATE otp_codes SET used = 1 WHERE id = ?').bind(otp.id).run();
 
-    // Sukces — zaloguj i wyczyść nieudane próby dla tego numeru, żeby reset limitu po legalnym logowaniu.
+    // Sukces - zaloguj i wyczyść nieudane próby dla tego numeru, żeby reset limitu po legalnym logowaniu.
     await ctx.env.DB.prepare(
       'INSERT INTO otp_attempts (id, phone, ip, success) VALUES (?, ?, ?, 1)'
     ).bind(crypto.randomUUID(), normalized, ip).run();
@@ -56,7 +56,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       'DELETE FROM otp_attempts WHERE phone = ? AND success = 0'
     ).bind(normalized).run();
 
-    // Get existing pilot (jeśli jest) — potrzebne też do detekcji nowego IP
+    // Get existing pilot (jeśli jest) - potrzebne też do detekcji nowego IP
     const existingPilot = await ctx.env.DB.prepare(
       'SELECT id, name, email, license_type, license_number, verified, session_token FROM pilots WHERE phone = ?'
     ).bind(normalized).first<{
@@ -70,7 +70,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }>();
 
     // Detekcja "login z nowego IP": jeśli istnieje pilot z aktywnym tokenem,
-    // sprawdź ostatni login_event i porównaj IP. Jeśli różne — log event.
+    // sprawdź ostatni login_event i porównaj IP. Jeśli różne - log event.
     if (existingPilot && existingPilot.session_token && ip) {
       const lastLogin = await ctx.env.DB.prepare(
         `SELECT ip FROM auth_events
@@ -92,7 +92,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!existingPilot) {
       const pilotId = crypto.randomUUID();
       // Store HASH on disk, send raw token to client. session_token (plaintext) is
-      // explicitly NULL — migrated rows from before 015 still match via legacy fallback
+      // explicitly NULL - migrated rows from before 015 still match via legacy fallback
       // in pilot-auth.ts, but new sessions never write plaintext.
       await ctx.env.DB.prepare(
         `INSERT INTO pilots (id, phone, verified, session_token, session_token_hash, session_expires_at, last_login)
@@ -110,7 +110,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       });
     }
 
-    // Existing pilot — rotate session: clear plaintext, write hash.
+    // Existing pilot - rotate session: clear plaintext, write hash.
     await ctx.env.DB.prepare(
       `UPDATE pilots SET verified = 1, session_token = NULL, session_token_hash = ?,
               session_expires_at = ${sessionExpiresClause}, last_login = datetime('now')

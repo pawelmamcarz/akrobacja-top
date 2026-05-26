@@ -1,10 +1,10 @@
 // /api/admin/gallery-submissions
-// GET  ?status=pending|approved|rejected — list submissions (default: pending first)
+// GET  ?status=pending|approved|rejected - list submissions (default: pending first)
 // POST { id, action: 'approve' | 'reject' | 'delete' | 'update', caption?, photographer_name?, photographer_instagram? }
 //
 // Approve flips status -> 'approved' and stamps approved_at/approved_by.
 // Reject keeps the row (audit trail) but flips status -> 'rejected'.
-// Delete removes both the R2 object and the row — irreversible.
+// Delete removes both the R2 object and the row - irreversible.
 //
 // Auth: Bearer ADMIN_PASSWORD (or MAGDA_PASSWORD via getAdminUser).
 

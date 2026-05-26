@@ -83,7 +83,7 @@ export async function createPrintfulOrder(env: Env, order: {
   return String(result.id);
 }
 
-// Confirm (pay for) a Printful order — sends to production
+// Confirm (pay for) a Printful order - sends to production
 export async function confirmPrintfulOrder(env: Env, printfulOrderId: string): Promise<void> {
   await pf(env, 'POST', `/orders/${printfulOrderId}/confirm`);
 }

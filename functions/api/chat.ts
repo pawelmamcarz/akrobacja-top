@@ -195,7 +195,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!rl.ok) {
       return Response.json({ error: 'Zbyt wiele wiadomości, spróbuj za chwilę' }, { status: 429 });
     }
-    // Global daily cap — defence in depth against botnet token abuse on Workers AI.
+    // Global daily cap - defence in depth against botnet token abuse on Workers AI.
     // 5000 chat replies/day across all IPs is more than the site ever needs at the
     // current traffic shape; bump if real usage approaches the ceiling.
     const dailyKey = `chat-global:${new Date().toISOString().slice(0, 10)}`;

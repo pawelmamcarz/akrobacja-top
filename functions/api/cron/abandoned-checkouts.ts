@@ -54,7 +54,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
         continue;
       }
 
-      // Claim the row BEFORE sending the email — two overlapping cron runs would otherwise
+      // Claim the row BEFORE sending the email - two overlapping cron runs would otherwise
       // both pass the abandon_email_sent_at IS NULL filter above and double-send.
       const claim = await ctx.env.DB.prepare(
         `UPDATE orders SET abandon_email_sent_at = datetime('now')

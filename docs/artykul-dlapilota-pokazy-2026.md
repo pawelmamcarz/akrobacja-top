@@ -1,4 +1,4 @@
-# Artykuł do dlapilota.pl — pokazy akrobacyjne 2026
+# Artykuł do dlapilota.pl - pokazy akrobacyjne 2026
 
 **Cel:** reklama pokazów Macieja Kulaszewskiego (Extra 300L SP-EKS) w sezonie 2026, dotrzeć do organizatorów pokazów, aeroklubowiczów i czytelników portalu.
 

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wypisz się z listy SMS i email | akrobacja.com</title>
-<meta name="description" content="Wypisz się z listy SMS i email akrobacja.com. Wystarczy podać numer telefonu lub email — usuwamy z listy natychmiast.">
+<meta name="description" content="Wypisz się z listy SMS i email akrobacja.com. Wystarczy podać numer telefonu lub email - usuwamy z listy natychmiast.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://akrobacja.com/unsubscribe">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -37,14 +37,14 @@
 <body>
 <div class="card">
   <h1>Wypisz się z listy</h1>
-  <p class="sub">Podaj numer telefonu, na który dostajesz SMS, albo email. Usuniemy Cię z listy natychmiast — bez pytań i bez "ale dlaczego".</p>
+  <p class="sub">Podaj numer telefonu, na który dostajesz SMS, albo email. Usuniemy Cię z listy natychmiast - bez pytań i bez "ale dlaczego".</p>
 
   <form id="unsubForm">
     <div class="field">
       <label for="phone">Numer telefonu</label>
       <input type="tel" id="phone" placeholder="+48 XXX XXX XXX" autocomplete="tel">
     </div>
-    <div class="or">— lub —</div>
+    <div class="or">- lub -</div>
     <div class="field">
       <label for="email">Email</label>
       <input type="email" id="email" placeholder="jan@example.com" autocomplete="email">
@@ -88,7 +88,7 @@
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Błąd');
       msg.className = 'msg ok';
-      msg.textContent = data.message || 'Gotowe — nie będziemy więcej do Ciebie pisać.';
+      msg.textContent = data.message || 'Gotowe - nie będziemy więcej do Ciebie pisać.';
       form.querySelector('input[id="phone"]').value = '';
       form.querySelector('input[id="email"]').value = '';
     } catch (err) {

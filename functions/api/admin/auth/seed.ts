@@ -1,6 +1,6 @@
 // POST /api/admin/auth/seed { email, name, password }
 // One-shot helper to create the first admin_users row. Protected by legacy
-// Bearer ADMIN_PASSWORD (the old auth path) — once a user exists with the
+// Bearer ADMIN_PASSWORD (the old auth path) - once a user exists with the
 // given email, subsequent calls return 409 so the endpoint can't be abused
 // to create extra accounts. Use this once, then ignore.
 
@@ -49,7 +49,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     VALUES (?, ?, ?, ?, 'admin', ?, ?)
   `).bind(email, name, hash, salt, Math.floor(Date.now() / 1000), Math.floor(Date.now() / 1000)).run();
 
-  // Plaintext password is returned JEDNORAZOWO — caller (admin UI) musi je skopiowac
+  // Plaintext password is returned JEDNORAZOWO - caller (admin UI) musi je skopiowac
   // i wyslac uzytkownikowi bezpiecznym kanalem (Signal/WA). Nie jest nigdzie zapisane.
   return Response.json({
     ok: true,

@@ -3,11 +3,11 @@
 Stworzono na bazie research 2026-05. Maciej + Pawel weryfikuja przed wyslaniem.
 
 ## Priorytet wysylki
-1. Prezent Marzen (reactivation) — najszybszy time-to-revenue
-2. Wyjatkowy Prezent (new) — najwiekszy traffic
-3. Super Prezenty (new) — drugi co do traffic-u
-4. Katalog Marzen (new) — niche ale ma ich pelno
-5. Tinggly (international) — long-tail premium
+1. Prezent Marzen (reactivation) - najszybszy time-to-revenue
+2. Wyjatkowy Prezent (new) - najwiekszy traffic
+3. Super Prezenty (new) - drugi co do traffic-u
+4. Katalog Marzen (new) - niche ale ma ich pelno
+5. Tinggly (international) - long-tail premium
 
 ---
 

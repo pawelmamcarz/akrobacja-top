@@ -1,5 +1,5 @@
 // Helper do odczytu pilota z tokena Bearer w nagłówku Authorization.
-// Sprawdza TTL (session_expires_at) — wygasły token zwraca null.
+// Sprawdza TTL (session_expires_at) - wygasły token zwraca null.
 
 export interface PilotSession {
   id: string;

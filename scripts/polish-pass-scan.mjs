@@ -9,7 +9,7 @@
 //   node scripts/polish-pass-scan.mjs --json    # JSON na stdout (do dalszego pipe)
 //
 // AI-tells (z memory feedback_no_emdash_aislop.md + obserwacji):
-//   - em-dash (— lub &mdash;)
+//   - em-dash (- lub - )
 //   - "kluczowy/kluczowe/kluczowa/kluczowych"
 //   - "warto pamietać"
 //   - "w erze"
@@ -57,7 +57,7 @@ const SKIP_DIRS = new Set(['assets', 'admin', 'fonts', 'rolki']);
 
 // Każdy tell ma waga (1-3) - im wyzsza tym wieksza wskazowka AI-slopu.
 const TELLS = [
-  { re: /—|&mdash;/g, name: 'em-dash', weight: 3 },
+  { re: /-|- /g, name: 'em-dash', weight: 3 },
   { re: /\bkluczow[ayie][a-ząęłńóśźż]*\b/gi, name: 'kluczowy', weight: 3 },
   { re: /warto pamie?ta(c|ć)/gi, name: 'warto pamiętać', weight: 3 },
   { re: /\bw erze\b/gi, name: 'w erze', weight: 3 },

@@ -134,7 +134,7 @@ ZASADY:
 - DOKLADNIE 3-4 zdania, NIE WIECEJ
 - LUZNY ton, jak do znajomego - bez "Drogi", "och", "ach", "niesamowite", "doskonale", "uchwycilo ducha", "inspirujace", "wspaniale", "promowanie pasji"
 - ZERO emotek
-- ZERO em-dashy (—), tylko zwykle myslniki (-)
+- ZERO em-dashy (-), tylko zwykle myslniki (-)
 - Wspomnij konkretny event po nazwie (nie ogolnie "pokazy")
 - Konkretnie podziekuj za te X zdjec, nie ogolnie "wkład"
 

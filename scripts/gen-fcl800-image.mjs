@@ -127,7 +127,7 @@ PY += 14;
 // Subtitle
 ctx.fillStyle = C.chrome;
 ctx.font      = '400 20px sans-serif';
-ctx.fillText('Uprawnienie Akrobacja — EASA DTO', PX, PY);
+ctx.fillText('Uprawnienie Akrobacja - EASA DTO', PX, PY);
 PY += 36;
 
 // Gold certification banner
@@ -142,7 +142,7 @@ ctx.textAlign = 'left';
 PY += 68;
 
 // Price block. Szkolenia lotnicze są zwolnione z VAT (art. 43 ust. 1 pkt 29 lit. a
-// ustawy o VAT) — pokazujemy więc jedną cenę i CTA o dofinansowaniu.
+// ustawy o VAT) - pokazujemy więc jedną cenę i CTA o dofinansowaniu.
 ctx.fillStyle = C.navyDeep;
 ctx.font      = 'bold 44px sans-serif';
 ctx.fillText('PLN', PX, PY + 60);
@@ -153,7 +153,7 @@ ctx.font      = '400 18px sans-serif';
 ctx.fillText('zwolnione z VAT', PX + 96, PY + 98);
 // Funding upsell
 ctx.font      = '400 17px sans-serif';
-ctx.fillText('Dofinansowanie BUR / KFS / PUP — do 90%', PX, PY + 118);
+ctx.fillText('Dofinansowanie BUR / KFS / PUP - do 90%', PX, PY + 118);
 PY += 138;
 
 // Bullets
@@ -162,7 +162,7 @@ const bullets = [
   'Teoria: przepisy, ograniczenia, bezpieczeństwo',
   'Samolot Extra 300L SP-EKS',
   'Egzamin praktyczny EASA',
-  'Instruktor FI(A) — Mistrz Świata Akrobacji',
+  'Instruktor FI(A) - Mistrz Świata Akrobacji',
   'Dofinansowanie BUR / KFS / PUP',
 ];
 for (const b of bullets) {
@@ -191,7 +191,7 @@ PY += 78;
 ctx.fillStyle = C.chrome;
 ctx.font      = '400 14px sans-serif';
 ctx.fillText('Lotnisko Radom-Piastów EPRP  ·  Certyfikat EASA  ·  akrobacja.com', PX, PY);
-ctx.fillText('20 900 PLN — usługa szkoleniowa zwolniona z VAT', PX, PY + 20);
+ctx.fillText('20 900 PLN - usługa szkoleniowa zwolniona z VAT', PX, PY + 20);
 
 // ── Bottom stats bar ─────────────────────────────────────────────
 const barY = SIZE - 74;

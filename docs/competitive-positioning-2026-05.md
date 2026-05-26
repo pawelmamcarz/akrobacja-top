@@ -1,4 +1,4 @@
-# Competitive Positioning akrobacja.com — maj 2026
+# Competitive Positioning akrobacja.com - maj 2026
 
 Data: 2026-05-21. Aktualny ranking: #10 organic na "lot akrobacyjny".
 
@@ -6,54 +6,54 @@ Data: 2026-05-21. Aktualny ranking: #10 organic na "lot akrobacyjny".
 
 ## 1. SWOT vs konkurenci
 
-### Aeroklub Warszawski (sklep.aeroklub.waw.pl) — ZAGROŻENIE PRIORYTETOWE
+### Aeroklub Warszawski (sklep.aeroklub.waw.pl) - ZAGROŻENIE PRIORYTETOWE
 
 | | |
 |---|---|
-| **S — ich sila** | Ta sama płyta (EPRP), Extra 300 LP, ATO, marka rozpoznawalna w Polsce od dekad |
-| **S — ich sila** | 3-4 listy na marketplace (Prezent Marzeń 1 998 PLN, Super Prezenty 1 599 PLN); szeroka dystrybucja |
-| **S — ich sila** | Ogromna baza klientów spoza rynku akrobacji (szybowce, balony, skoki) |
-| **W — ich słabość** | Brak zidentyfikowanego pilota z tytułami; "instruktor" anonimowy |
-| **W — ich słabość** | Extra 300 **LP** (starsza wersja gaźnikowa) vs nasz **Extra 300L** fuel-injected |
-| **W — ich słabość** | Produkt "widokowy" (do 5G); nie ma produktu sportowego porównywalnego z Adrenalina/Masterclass |
-| **W — ich słabość** | Cena 1 599 PLN na Super Prezenty to promocja, nie cena standardowa; eroduje marżę |
-| **O — nasza szansa** | Klient który szuka "Mistrza Świata" lub "akrobatyki sportowej" nie znajdzie ich |
-| **O — nasza szansa** | Możemy przejąć SERP na long-tail ("Extra 300L EPRP", "akrobatyka z mistrzem") |
-| **T — zagrożenie dla nas** | Mogą zarejestrować tańszy produkt na head term; ich DA > nasze DA |
+| **S - ich sila** | Ta sama płyta (EPRP), Extra 300 LP, ATO, marka rozpoznawalna w Polsce od dekad |
+| **S - ich sila** | 3-4 listy na marketplace (Prezent Marzeń 1 998 PLN, Super Prezenty 1 599 PLN); szeroka dystrybucja |
+| **S - ich sila** | Ogromna baza klientów spoza rynku akrobacji (szybowce, balony, skoki) |
+| **W - ich słabość** | Brak zidentyfikowanego pilota z tytułami; "instruktor" anonimowy |
+| **W - ich słabość** | Extra 300 **LP** (starsza wersja gaźnikowa) vs nasz **Extra 300L** fuel-injected |
+| **W - ich słabość** | Produkt "widokowy" (do 5G); nie ma produktu sportowego porównywalnego z Adrenalina/Masterclass |
+| **W - ich słabość** | Cena 1 599 PLN na Super Prezenty to promocja, nie cena standardowa; eroduje marżę |
+| **O - nasza szansa** | Klient który szuka "Mistrza Świata" lub "akrobatyki sportowej" nie znajdzie ich |
+| **O - nasza szansa** | Możemy przejąć SERP na long-tail ("Extra 300L EPRP", "akrobatyka z mistrzem") |
+| **T - zagrożenie dla nas** | Mogą zarejestrować tańszy produkt na head term; ich DA > nasze DA |
 
 ### Fundacja Biało-Czerwone Skrzydła (sklep.fbcs.pl)
 
 | | |
 |---|---|
-| **S — ich sila** | Jedyny TS-11 Iskra dostępny komercyjnie; silny differentiator dla niszowej grupy |
-| **S — ich sila** | Ceny 9 500-17 000 PLN za Iskrę; nie konkureują z nami cenowo na volumenowym produkcie |
-| **S — ich sila** | Extra 300L Adrenaline Booster 1 900 PLN wchodzi w nasz segment |
-| **W — ich słabość** | Mielec — 250 km od Warszawy; bariera geograficzna dla warszawskiego klienta |
-| **W — ich słabość** | Jakość obsługi opisywana przez właściciela jako niska |
-| **W — ich słabość** | Brak pilota z tytułami FAI w komunikacji; zero social proof tytularnego |
-| **W — ich słabość** | Strona zbudowana wokół samolotów, nie pilota; product-first zamiast experience-first |
-| **O — nasza szansa** | Klient z Warszawy który znalazł FBCS i chce Extra 300L to nasz lead — nie dociera do nich geograficznie |
-| **O — nasza szansa** | Mogą obsługiwać inny segment (jet-curious), nie gryzą się z naszym core |
-| **T — zagrożenie dla nas** | Gdyby otworzyli lokalizację bliżej Warszawy, staliby się realnym zagrożeniem |
+| **S - ich sila** | Jedyny TS-11 Iskra dostępny komercyjnie; silny differentiator dla niszowej grupy |
+| **S - ich sila** | Ceny 9 500-17 000 PLN za Iskrę; nie konkureują z nami cenowo na volumenowym produkcie |
+| **S - ich sila** | Extra 300L Adrenaline Booster 1 900 PLN wchodzi w nasz segment |
+| **W - ich słabość** | Mielec - 250 km od Warszawy; bariera geograficzna dla warszawskiego klienta |
+| **W - ich słabość** | Jakość obsługi opisywana przez właściciela jako niska |
+| **W - ich słabość** | Brak pilota z tytułami FAI w komunikacji; zero social proof tytularnego |
+| **W - ich słabość** | Strona zbudowana wokół samolotów, nie pilota; product-first zamiast experience-first |
+| **O - nasza szansa** | Klient z Warszawy który znalazł FBCS i chce Extra 300L to nasz lead - nie dociera do nich geograficznie |
+| **O - nasza szansa** | Mogą obsługiwać inny segment (jet-curious), nie gryzą się z naszym core |
+| **T - zagrożenie dla nas** | Gdyby otworzyli lokalizację bliżej Warszawy, staliby się realnym zagrożeniem |
 
 ### naszesamoloty.pl / Targor Aviation
 
 | | |
 |---|---|
-| **S — ich sila** | #1 organicznie na "lot akrobacyjny"; silne DA, długi staż domeny |
-| **S — ich sila** | Pitts S2B to legendarny samolot z silnym storytelling dla entuzjastów |
-| **S — ich sila** | Cena 1 500 PLN / 15 min jest realną barierą cenową dla nas |
-| **W — ich słabość** | Wąsewo — 90 km od Warszawy w kierunku Ostrołęki; gorsza komunikacja niż EPRP |
-| **W — ich słabość** | 15 minut lotu; nasz Pierwszy Lot oferuje dłuższy czas |
-| **W — ich słabość** | Pitts S2B to dwupłatowiec bez kabiny zamkniętej klimatycznie; komfort niższy |
-| **W — ich słabość** | Brak pilota z tytułami FAI; "doświadczony pilot komercyjny" bez twarzy i historii |
-| **W — ich słabość** | Strona wygląda jak sklep z 2015; słabe zdjęcia, brak video |
-| **O — nasza szansa** | Klient który szuka "Extra 300L" lub "Mistrza Świata" nie trafi do nich |
-| **T — zagrożenie dla nas** | Rank #1 generuje kliknięcia zanim klient w ogóle zobaczy naszą ofertę |
+| **S - ich sila** | #1 organicznie na "lot akrobacyjny"; silne DA, długi staż domeny |
+| **S - ich sila** | Pitts S2B to legendarny samolot z silnym storytelling dla entuzjastów |
+| **S - ich sila** | Cena 1 500 PLN / 15 min jest realną barierą cenową dla nas |
+| **W - ich słabość** | Wąsewo - 90 km od Warszawy w kierunku Ostrołęki; gorsza komunikacja niż EPRP |
+| **W - ich słabość** | 15 minut lotu; nasz Pierwszy Lot oferuje dłuższy czas |
+| **W - ich słabość** | Pitts S2B to dwupłatowiec bez kabiny zamkniętej klimatycznie; komfort niższy |
+| **W - ich słabość** | Brak pilota z tytułami FAI; "doświadczony pilot komercyjny" bez twarzy i historii |
+| **W - ich słabość** | Strona wygląda jak sklep z 2015; słabe zdjęcia, brak video |
+| **O - nasza szansa** | Klient który szuka "Extra 300L" lub "Mistrza Świata" nie trafi do nich |
+| **T - zagrożenie dla nas** | Rank #1 generuje kliknięcia zanim klient w ogóle zobaczy naszą ofertę |
 
 ---
 
-## 2. Defensible USPs — ranking sily
+## 2. Defensible USPs - ranking sily
 
 ### 1. Mistrz Swiata FAI 2022 (weryfikowalny, unikalny w PL)
 
@@ -106,7 +106,7 @@ Radom-Piastów to lotnisko komunikacyjne z regularną infrastrukturą. Wąsewo t
 
 ---
 
-## 4. SERP CTR — propozycje do A/B
+## 4. SERP CTR - propozycje do A/B
 
 ### Wariant A: "Mistrz Swiata" lead
 
@@ -169,8 +169,8 @@ Priorytet ochrony: nazwa "Lot z Mistrzem Swiata" lub "Akrobacja Extra" jako phra
 | **lot akrobacyjny** (head term) | Targor (#1), Aeroklub Waw (#2), marketplace | Pillar page informacyjny + schema FAQ; cel top-5 w 90 dni |
 | **lot akrobacyjny warszawa** | Aeroklub Warszawski, Prezent Marzeń, KatalogMarzeń | Strona /lot-akrobacyjny-warszawa z geo-sygnałami; Google Business Profile refresh (dystans od Warszawy) |
 | **lot akrobacyjny prezent** | Marketplace (PrezentMarzen, SuperPrezenty, KatalogMarzen) | Własne listingi na PrezentMarzen i SuperPrezenty; duplikacja treści produktowej z canonical na akrobacja.com |
-| **akrobatyka sportowa** | Nikt — klaster prawie nieopanowany | Strona /akrobatyka-sportowa + artykuł "co to jest akrobatyka sportowa" — możemy zająć #1 w 30 dni |
-| **mistrz swiata akrobacja** | Nikt w kontekscie PL — zapytanie bez wyraźnego zwycięzcy | /maciej-kulaszewski entity page + structured data Person; cel: Google Knowledge Panel dla Macieja |
+| **akrobatyka sportowa** | Nikt - klaster prawie nieopanowany | Strona /akrobatyka-sportowa + artykuł "co to jest akrobatyka sportowa" - możemy zająć #1 w 30 dni |
+| **mistrz swiata akrobacja** | Nikt w kontekscie PL - zapytanie bez wyraźnego zwycięzcy | /maciej-kulaszewski entity page + structured data Person; cel: Google Knowledge Panel dla Macieja |
 | **kurs akrobacji fcl.800** | akrobacja.com (już #1) | Utrzymanie; dodaj FAQ schema, backlink z aeroklub.pl lub lotnicza.pl |
 
 ---
@@ -183,7 +183,7 @@ Priorytet ochrony: nazwa "Lot z Mistrzem Swiata" lub "Akrobacja Extra" jako phra
 - [ ] Wyslij listing do Prezent Marzeń i Super Prezenty (pakiet Pierwszy Lot 1 999 PLN); canonical tag na akrobacja.com
 - [ ] Odswież Google Business Profile: zdjęcia Extra 300L z sezonu 2025, opis z "Mistrz Swiata 2022", kategoria "Usługi lotnicze"
 - [ ] Uruchom stronę /maciej-kulaszewski (entity page: wyniki FAI, tytuły, zdjęcia, video)
-- [ ] Opublikuj artykuł pillar "Co to jest akrobatyka sportowa" — klaster bez właściciela
+- [ ] Opublikuj artykuł pillar "Co to jest akrobatyka sportowa" - klaster bez właściciela
 
 ### Dni 30-60: backlinki i contenent velocity
 
@@ -191,12 +191,12 @@ Priorytet ochrony: nazwa "Lot z Mistrzem Swiata" lub "Akrobacja Extra" jako phra
 - [ ] Skontaktuj się z 2-3 portalami lotniczymi o feature Macieja po sezonie pokazów 2026
 - [ ] 1 artykuł/tydzień na blog: "lot akrobacyjny warszawa okolice", "Extra 300L vs Pitts S2B", "FCL.800 co to jest"
 - [ ] Sprawdź możliwość listingu na KatalogMarzeń dla długiego ogona
-- [ ] Pierwsza sprzedaż eventowa przez Magdę — social proof nowych recenzji Google
+- [ ] Pierwsza sprzedaż eventowa przez Magdę - social proof nowych recenzji Google
 
 ### Dni 60-90: analiza i doubling down
 
 - [ ] Pobierz GSC: jakie klastry awansowały, gdzie CTR wzrósł
-- [ ] A/B test title tagów — wybierz zwycięzcę na head term
+- [ ] A/B test title tagów - wybierz zwycięzcę na head term
 - [ ] Jeśli marketplace listy aktywne: analiza konwersji vs koszt prowizji
 - [ ] Decyzja Pawła o opcji cenowej A/B/C na podstawie danych z 60 dni
 - [ ] Ocena ROI z backlinków; czy warto skalować outreach do portali lifestylowych (Sebastian @odlotowyniewidomy)

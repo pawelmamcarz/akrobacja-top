@@ -1,5 +1,5 @@
 // Daily cron: pull last 90 days of wFirma expenses (faktury kosztowe), upsert
-// into D1 expenses table keyed by wfirma_id. Idempotent — re-running just
+// into D1 expenses table keyed by wfirma_id. Idempotent - re-running just
 // refreshes mutable fields (gross, contractor, etc.) without touching
 // manual_category which the admin may have set manually.
 //
@@ -58,7 +58,7 @@ export async function syncWfirmaExpenses(env: Env): Promise<{ processed: number;
       r.issue_date, r.description, now,
     ).run();
     if (res.meta.changes > 0) {
-      // meta.changes is 1 for both insert and update on conflict — disambiguate via last_row_id.
+      // meta.changes is 1 for both insert and update on conflict - disambiguate via last_row_id.
       if (res.meta.last_row_id && res.meta.last_row_id > 0) inserted++;
       else updated++;
     }

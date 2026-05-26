@@ -53,24 +53,24 @@ System Jakości SUS 3.0/
 ## Spis treści
 
 ### Dokumenty Systemu Zarządzania Jakością (SQM)
-1. [SQM-01 — Procedura reklamacji](#sqm-01--procedura-reklamacji-i-postępowania-w-sytuacjach-nieprzewidzianych)
-2. [SQM-02 — Deklaracja dostępności](#sqm-02--deklaracja-dostępności)
-3. [SQM-03 — Polityka praw autorskich](#sqm-03--polityka-praw-autorskich-i-licencji)
-4. [SQM-04 — Analiza potrzeb + F-01 Karta kursanta](#sqm-04--procedura-analizy-potrzeb--karta-kursanta-f-01)
-5. [SQM-05 — Ankieta ewaluacyjna F-02](#sqm-05--ankieta-ewaluacyjna-szkolenia-fcl800-f-02)
-6. [SQM-06 — Procedura ewaluacji i doskonalenia](#sqm-06--procedura-ewaluacji-i-doskonalenia)
-7. [SQM-07 — Polityka bezpieczeństwa danych](#sqm-07--polityka-bezpieczeństwa-danych-osobowych)
-8. [SQM-08 — Wzór umowy o szkolenie](#sqm-08--wzór-umowy-o-szkolenie-fcl800)
-9. [SQM-09 — Checklist kursanta](#sqm-09--checklist-kursanta-przed-szkoleniem-fcl800)
-10. [SQM-10 — Metodyka dydaktyczna](#sqm-10--opis-metodyki-dydaktycznej-briefingpracticedebriefing)
+1. [SQM-01 - Procedura reklamacji](#sqm-01--procedura-reklamacji-i-postępowania-w-sytuacjach-nieprzewidzianych)
+2. [SQM-02 - Deklaracja dostępności](#sqm-02--deklaracja-dostępności)
+3. [SQM-03 - Polityka praw autorskich](#sqm-03--polityka-praw-autorskich-i-licencji)
+4. [SQM-04 - Analiza potrzeb + F-01 Karta kursanta](#sqm-04--procedura-analizy-potrzeb--karta-kursanta-f-01)
+5. [SQM-05 - Ankieta ewaluacyjna F-02](#sqm-05--ankieta-ewaluacyjna-szkolenia-fcl800-f-02)
+6. [SQM-06 - Procedura ewaluacji i doskonalenia](#sqm-06--procedura-ewaluacji-i-doskonalenia)
+7. [SQM-07 - Polityka bezpieczeństwa danych](#sqm-07--polityka-bezpieczeństwa-danych-osobowych)
+8. [SQM-08 - Wzór umowy o szkolenie](#sqm-08--wzór-umowy-o-szkolenie-fcl800)
+9. [SQM-09 - Checklist kursanta](#sqm-09--checklist-kursanta-przed-szkoleniem-fcl800)
+10. [SQM-10 - Metodyka dydaktyczna](#sqm-10--opis-metodyki-dydaktycznej-briefingpracticedebriefing)
 
 ### Formularze
-- [F-04 — Zgoda na wykorzystanie wizerunku](#f-04--zgoda-na-wykorzystanie-wizerunku)
+- [F-04 - Zgoda na wykorzystanie wizerunku](#f-04--zgoda-na-wykorzystanie-wizerunku)
 
 ### Dokumenty BUR
 - [Charakterystyka działalności (wersja pełna i skrócona)](#charakterystyka-działalności)
-- [Opis usługi rozwojowej — FCL.800](#opis-usługi-rozwojowej--kurs-fcl800)
-- [Opis usługi rozwojowej — UPRT](#opis-usługi-rozwojowej--uprt)
+- [Opis usługi rozwojowej - FCL.800](#opis-usługi-rozwojowej--kurs-fcl800)
+- [Opis usługi rozwojowej - UPRT](#opis-usługi-rozwojowej--uprt)
 
 ### Mapowanie i plan działania
 - [Mapa zgodności SUS 3.0 ↔ dokumenty SQM](#mapa-zgodności-sus-30--dokumenty-sqm)
@@ -79,7 +79,7 @@ System Jakości SUS 3.0/
 
 ---
 
-# SQM-01 — Procedura reklamacji i postępowania w sytuacjach nieprzewidzianych
+# SQM-01 - Procedura reklamacji i postępowania w sytuacjach nieprzewidzianych
 
 **Wydawca:** Doradztwo Paweł Mamcarz, NIP 7122188089
 **Wersja:** 1.0 · **Data wydania:** 15.05.2026 · **Właściciel dokumentu:** Paweł Mamcarz
@@ -103,7 +103,7 @@ Procedura obejmuje:
 
 ## 4. Terminy
 - Potwierdzenie przyjęcia zgłoszenia: **w terminie do 3 dni roboczych** od daty otrzymania.
-- Merytoryczna odpowiedź / decyzja: **w terminie do 14 dni roboczych** od potwierdzenia przyjęcia. W sprawach złożonych wymagających dodatkowej analizy (np. zewnętrzna opinia techniczna) — do 30 dni z pisemnym zawiadomieniem klienta.
+- Merytoryczna odpowiedź / decyzja: **w terminie do 14 dni roboczych** od potwierdzenia przyjęcia. W sprawach złożonych wymagających dodatkowej analizy (np. zewnętrzna opinia techniczna) - do 30 dni z pisemnym zawiadomieniem klienta.
 
 ## 5. Tryb odwoławczy
 Klient niezadowolony z rozstrzygnięcia może:
@@ -124,7 +124,7 @@ Procedura dostępna jest:
 
 ---
 
-# SQM-02 — Deklaracja dostępności
+# SQM-02 - Deklaracja dostępności
 
 **Wydawca:** Doradztwo Paweł Mamcarz · **Wersja:** 1.0 · **Data:** 15.05.2026
 
@@ -134,7 +134,7 @@ Doradztwo Paweł Mamcarz zobowiązuje się zapewnić dostępność swoich produk
 - **standardami WCAG 2.1, poziom AA** Web Content Accessibility Guidelines,
 - **Standardami dostępności dla polityki spójności 2021–2027**, w szczególności w zakresie standardu szkoleniowego.
 
-## 2. Dostępność strony akrobacja.com (stan obecny — częściowa zgodność)
+## 2. Dostępność strony akrobacja.com (stan obecny - częściowa zgodność)
 Strona spełnia następujące wymagania:
 - semantyczne nagłówki H1–H3,
 - teksty alternatywne (alt) dla obrazów,
@@ -148,7 +148,7 @@ Elementy wymagające poprawy (plan wdrożenia do 30.06.2026):
 - focus indicators dla wszystkich aktywnych elementów,
 - aria-label dla ikon bez tekstu.
 
-## 3. Dostępność szkolenia FCL.800 — ograniczenia obiektywne
+## 3. Dostępność szkolenia FCL.800 - ograniczenia obiektywne
 Charakter szkolenia (loty akrobacyjne z przeciążeniami ±6 G) wynikają z norm bezpieczeństwa lotniczego (FCL.800, AMC1 FCL.800) wymagają od kursanta:
 - ważnego orzeczenia lotniczo-lekarskiego klasy 1 lub 2,
 - masy ciała pozwalającej spełnić ograniczenia C/G samolotu (max. 110 kg),
@@ -173,19 +173,18 @@ Koordynator ds. dostępności: Paweł Mamcarz, info@akrobacja.com.
 
 ---
 
-# SQM-03 — Polityka praw autorskich i licencji
+# SQM-03 - Polityka praw autorskich i licencji
 
 **Wydawca:** Doradztwo Paweł Mamcarz · **Wersja:** 1.0 · **Data:** 15.05.2026
 
-## 1. Materiały dydaktyczne — własność intelektualna
+## 1. Materiały dydaktyczne - własność intelektualna
 Materiały dydaktyczne wykorzystywane w szkoleniach FCL.800, UPRT i innych usługach rozwojowych prowadzonych przez Doradztwo Paweł Mamcarz, w tym:
 - skrypt teoretyczny „Kurs akrobacji samolotowej FCL.800",
 - karty figur akrobacyjnych w notacji Aresti,
 - prezentacje multimedialne,
 - materiały wideo z kamer pokładowych samolotu Extra 300L (SP-EKS),
 - formularze, checklisty, materiały pomocnicze,
-
-— są **utworami w rozumieniu ustawy z dnia 4 lutego 1994 r. o prawie autorskim i prawach pokrewnych** (Dz.U. z 2025 r.) i stanowią wyłączną własność Doradztwo Paweł Mamcarz, NIP 7122188089.
+ - są **utworami w rozumieniu ustawy z dnia 4 lutego 1994 r. o prawie autorskim i prawach pokrewnych** (Dz.U. z 2025 r.) i stanowią wyłączną własność Doradztwo Paweł Mamcarz, NIP 7122188089.
 
 ## 2. Licencja dla kursanta
 Kursant otrzymuje **niewyłączną, niezbywalną licencję** na korzystanie z materiałów dydaktycznych:
@@ -215,7 +214,7 @@ W przypadku naruszenia niniejszej polityki, Doradztwo Paweł Mamcarz zastrzega p
 
 ---
 
-# SQM-04 — Procedura analizy potrzeb + Karta kursanta (F-01)
+# SQM-04 - Procedura analizy potrzeb + Karta kursanta (F-01)
 
 **Wydawca:** Doradztwo Paweł Mamcarz · **Wersja:** 1.0 · **Data:** 15.05.2026
 
@@ -228,15 +227,15 @@ Identyfikacja potrzeb rozwojowych każdego kursanta przed rozpoczęciem szkoleni
 
 ## 2. Etapy procedury
 
-**Etap 1 — kontakt wstępny (telefon / e-mail)**
+**Etap 1 - kontakt wstępny (telefon / e-mail)**
 - omówienie celu kursu,
 - weryfikacja wstępna wymagań (licencja PPL/LAPL, nalot, orzeczenie),
 - przekazanie linku do regulaminu i dokumentów do podpisu.
 
-**Etap 2 — konsultacja indywidualna (telefon, ~30 min)**
+**Etap 2 - konsultacja indywidualna (telefon, ~30 min)**
 Kierownik Szkolenia (Maciej Kulaszewski, FI(A)) lub Przedstawiciel DTO (Paweł Mamcarz) przeprowadza ustrukturyzowaną rozmowę zgodnie z **Kartą kursanta (F-01)**. Wynik konsultacji dokumentuje się w karcie.
 
-**Etap 3 — kontraktowanie celów**
+**Etap 3 - kontraktowanie celów**
 Na podstawie konsultacji ustalane są:
 - cel główny kursu kursanta (uzyskanie uprawnienia FCL.800 / podniesienie kompetencji UPRT / rozwój zawodowy instruktora),
 - cele szczegółowe (efekty uczenia się zgodnie z taksonomią: wiedza / umiejętności / kompetencje społeczne),
@@ -245,10 +244,10 @@ Na podstawie konsultacji ustalane są:
 
 Wyniki kontraktu zapisywane są w **Karcie kursanta** i podpisywane przez obie strony przed pierwszym lotem szkoleniowym.
 
-**Etap 4 — przegląd śródokresowy**
+**Etap 4 - przegląd śródokresowy**
 Po etapie II programu (figury podstawowe) Kierownik Szkolenia weryfikuje z kursantem postępy. W razie potrzeby modyfikuje harmonogram (decyzja udokumentowana w Karcie kursanta).
 
-## 3. Karta kursanta — wzór (formularz F-01)
+## 3. Karta kursanta - wzór (formularz F-01)
 
 ```
 KARTA KURSANTA
@@ -278,7 +277,7 @@ Doświadczenie w korkociągu/locie odwróconym: TAK / NIE
 
 CEL GŁÓWNY KURSU (jeden):
 [ ] Uzyskanie uprawnienia FCL.800
-[ ] UPRT — wyprowadzanie z położeń nietypowych
+[ ] UPRT - wyprowadzanie z położeń nietypowych
 [ ] Doskonalenie pilotażu akrobacyjnego
 [ ] Inny: ........................................
 
@@ -304,7 +303,7 @@ Wypełnione Karty kursanta przechowywane są przez **3 lata od dnia zakończenia
 
 ---
 
-# SQM-05 — Ankieta ewaluacyjna szkolenia FCL.800 (F-02)
+# SQM-05 - Ankieta ewaluacyjna szkolenia FCL.800 (F-02)
 
 **Wydawca:** Doradztwo Paweł Mamcarz · **Wersja:** 1.0 · **Data:** 15.05.2026
 
@@ -314,13 +313,13 @@ Ankietę przekazuje się kursantowi po zakończeniu szkolenia (Google Forms lub 
 ANKIETA EWALUACYJNA
 Kurs FCL.800 / akrobacja.com / Extra 300L SP-EKS
 
-CZĘŚĆ I — ZADOWOLENIE OGÓLNE
+CZĘŚĆ I - ZADOWOLENIE OGÓLNE
 1. Czy kurs spełnił Twoje oczekiwania?
-   1 — wcale  2  3  4  5 — całkowicie
+   1 - wcale  2  3  4  5 - całkowicie
 
 2. Czy zarekomendowałbyś/zarekomendowałabyś kurs innym pilotom? (NPS 0-10)
 
-CZĘŚĆ II — KIEROWNIK SZKOLENIA / INSTRUKTOR
+CZĘŚĆ II - KIEROWNIK SZKOLENIA / INSTRUKTOR
 3. Kompetencje merytoryczne instruktora (Maciej Kulaszewski):  1–5
 4. Sposób przekazywania wiedzy (jasność, struktura):  1–5
 5. Bezpieczeństwo prowadzenia lotów:  1–5
@@ -328,27 +327,27 @@ CZĘŚĆ II — KIEROWNIK SZKOLENIA / INSTRUKTOR
 7. Jakość briefingu przedlotowego:  1–5
 8. Jakość debriefingu po locie (analiza video, korekty):  1–5
 
-CZĘŚĆ III — PROGRAM I MATERIAŁY
+CZĘŚĆ III - PROGRAM I MATERIAŁY
 9. Adekwatność programu teoretycznego do celów FCL.800:  1–5
 10. Adekwatność programu praktycznego (liczba lotów, dobór figur):  1–5
 11. Jakość materiałów dydaktycznych (skrypt, prezentacje, karty figur):  1–5
 12. Czy uważasz że masz wystarczającą wiedzę by samodzielnie wykonywać akrobację?  1–5
 
-CZĘŚĆ IV — INFRASTRUKTURA I ORGANIZACJA
+CZĘŚĆ IV - INFRASTRUKTURA I ORGANIZACJA
 13. Stan techniczny samolotu Extra 300L (SP-EKS):  1–5
 14. Sala wykładowa / warunki teoretyczne:  1–5
 15. Wyposażenie ratunkowe (spadochron, kask, headset):  1–5
 16. Organizacja czasu, harmonogram, punktualność:  1–5
 17. Komunikacja z DTO przed kursem (kalendarz, mail, telefon):  1–5
 
-CZĘŚĆ V — EFEKTY UCZENIA SIĘ — SAMOOCENA (przed kursem → po kursie)
+CZĘŚĆ V - EFEKTY UCZENIA SIĘ - SAMOOCENA (przed kursem → po kursie)
 18. Wiedza o przeciążeniach G+/G- i AGSM:           przed: 1–5  po: 1–5
 19. Umiejętność wykonania pętli:                    przed: 1–5  po: 1–5
 20. Umiejętność wykonania korkociągu kontrolowanego: przed: 1–5  po: 1–5
 21. Umiejętność wykonania lotu odwróconego:         przed: 1–5  po: 1–5
 22. Świadomość ograniczeń samolotu Extra 300L:      przed: 1–5  po: 1–5
 
-CZĘŚĆ VI — OPEN
+CZĘŚĆ VI - OPEN
 23. Co najbardziej Ci się podobało?
 24. Co byś zmienił/a w kursie?
 25. Czego brakowało?
@@ -363,7 +362,7 @@ Wyniki agreguje Przedstawiciel DTO po każdej grupie szkoleniowej i wykorzystuje
 
 ---
 
-# SQM-06 — Procedura ewaluacji i doskonalenia
+# SQM-06 - Procedura ewaluacji i doskonalenia
 
 **Wydawca:** Doradztwo Paweł Mamcarz · **Wersja:** 1.0 · **Data:** 15.05.2026
 
@@ -371,9 +370,9 @@ Wyniki agreguje Przedstawiciel DTO po każdej grupie szkoleniowej i wykorzystuje
 Systematyczne wykorzystanie wyników ewaluacji do doskonalenia jakości usług szkoleniowych zgodnie z pkt 5.4 SUS 3.0.
 
 ## 2. Cykl ewaluacyjny
-- **Ewaluacja krótka** — po każdym kursie indywidualnym (Karta + Ankieta F-02).
-- **Przegląd kwartalny** — agregacja wszystkich ankiet w danym kwartale.
-- **Przegląd roczny** — pełne podsumowanie + plan doskonalenia na rok następny.
+- **Ewaluacja krótka** - po każdym kursie indywidualnym (Karta + Ankieta F-02).
+- **Przegląd kwartalny** - agregacja wszystkich ankiet w danym kwartale.
+- **Przegląd roczny** - pełne podsumowanie + plan doskonalenia na rok następny.
 
 ## 3. Wskaźniki monitorowane (KPI jakości)
 | Wskaźnik | Próg minimum | Próg cel |
@@ -405,7 +404,7 @@ Wyniki ewaluacji + plan doskonalenia są:
 
 ---
 
-# SQM-07 — Polityka bezpieczeństwa danych osobowych
+# SQM-07 - Polityka bezpieczeństwa danych osobowych
 
 **Wydawca:** Doradztwo Paweł Mamcarz · **Wersja:** 1.0 · **Data:** 15.05.2026
 
@@ -413,10 +412,10 @@ Wyniki ewaluacji + plan doskonalenia są:
 **Paweł Mamcarz** prowadzący działalność gospodarczą pod firmą **Doradztwo Paweł Mamcarz**, ul. Jesionowa 18, 05-825 Grodzisk Mazowiecki, NIP 7122188089. Kontakt w sprawach danych osobowych: info@akrobacja.com.
 
 ## 2. Podstawy prawne przetwarzania
-- **art. 6 ust. 1 lit. b RODO** — wykonanie umowy o szkolenie,
-- **art. 6 ust. 1 lit. c RODO** — wypełnienie obowiązków DTO wynikających z Rozporządzenia (UE) 1178/2011 (dokumentacja szkolenia, raportowanie do ULC),
-- **art. 6 ust. 1 lit. f RODO** — prawnie uzasadniony interes (analiza skuteczności szkoleń, marketing własnych produktów),
-- **art. 6 ust. 1 lit. a RODO** — zgoda kursanta (newsletter, wizerunek).
+- **art. 6 ust. 1 lit. b RODO** - wykonanie umowy o szkolenie,
+- **art. 6 ust. 1 lit. c RODO** - wypełnienie obowiązków DTO wynikających z Rozporządzenia (UE) 1178/2011 (dokumentacja szkolenia, raportowanie do ULC),
+- **art. 6 ust. 1 lit. f RODO** - prawnie uzasadniony interes (analiza skuteczności szkoleń, marketing własnych produktów),
+- **art. 6 ust. 1 lit. a RODO** - zgoda kursanta (newsletter, wizerunek).
 
 ## 3. Zakres danych przetwarzanych
 - dane identyfikacyjne kursanta: imię, nazwisko, PESEL, adres;
@@ -433,7 +432,7 @@ Wyniki ewaluacji + plan doskonalenia są:
 - token sesji pilota: maksymalnie 30 dni (TTL).
 
 ## 5. Środki techniczne i organizacyjne
-- baza danych w Cloudflare D1 (region EEUR — Wiedeń) z szyfrowaniem at-rest;
+- baza danych w Cloudflare D1 (region EEUR - Wiedeń) z szyfrowaniem at-rest;
 - tokeny sesji przechowywane jako hash SHA-256 (zgodnie z migracją 015 systemu);
 - ograniczony dostęp administracyjny (Bearer token z constant-time compare);
 - backupy automatyczne Cloudflare;
@@ -449,19 +448,19 @@ Wyniki ewaluacji + plan doskonalenia są:
 Realizacja praw: info@akrobacja.com, termin odpowiedzi do 30 dni.
 
 ## 7. Podmioty przetwarzające
-- **Cloudflare, Inc.** (hosting + D1 + R2) — umowa DPA, transfer do USA na podstawie SCC,
-- **Stripe Payments Europe Ltd.** (płatności) — DPA, transfer do USA na podstawie SCC,
-- **Resend Inc.** (wysyłka maili) — DPA,
-- **SMSAPI sp. z o.o.** (SMS) — DPA, dane w UE,
-- **wFirma sp. z o.o.** (księgowość) — DPA, dane w UE,
-- **Meta Platforms Ireland Ltd.** (CAPI, marketing) — DPA, dane hashowane (SHA-256) przed transferem.
+- **Cloudflare, Inc.** (hosting + D1 + R2) - umowa DPA, transfer do USA na podstawie SCC,
+- **Stripe Payments Europe Ltd.** (płatności) - DPA, transfer do USA na podstawie SCC,
+- **Resend Inc.** (wysyłka maili) - DPA,
+- **SMSAPI sp. z o.o.** (SMS) - DPA, dane w UE,
+- **wFirma sp. z o.o.** (księgowość) - DPA, dane w UE,
+- **Meta Platforms Ireland Ltd.** (CAPI, marketing) - DPA, dane hashowane (SHA-256) przed transferem.
 
 ## 8. Brak profilowania zautomatyzowanego mającego skutki prawne
 Doradztwo Paweł Mamcarz nie podejmuje decyzji w sposób zautomatyzowany mającej istotny wpływ na klienta. Nie stosuje się profilowania w rozumieniu art. 22 RODO.
 
 ---
 
-# SQM-08 — Wzór umowy o szkolenie FCL.800
+# SQM-08 - Wzór umowy o szkolenie FCL.800
 
 **Wydawca:** Doradztwo Paweł Mamcarz · **Wersja:** 1.0 · **Data:** 15.05.2026
 
@@ -559,14 +558,14 @@ DTO:                          KURSANT:
 
 ---
 
-# SQM-09 — Checklist kursanta przed szkoleniem FCL.800
+# SQM-09 - Checklist kursanta przed szkoleniem FCL.800
 
 **Wydawca:** Doradztwo Paweł Mamcarz · **Wersja:** 1.0 · **Data:** 15.05.2026
 
 Materiał wysyłany kursantowi mailem co najmniej 7 dni przed pierwszym dniem szkolenia.
 
 ```
-PRZYGOTOWANIE DO KURSU FCL.800 — CHECKLIST DLA KURSANTA
+PRZYGOTOWANIE DO KURSU FCL.800 - CHECKLIST DLA KURSANTA
 
 ═══════════════════════════════════════════════════════════
 A. DOKUMENTY DO PRZYWIEZIENIA NA PIERWSZY DZIEŃ KURSU
@@ -591,8 +590,7 @@ B. PRZYGOTOWANIE MERYTORYCZNE
 ═══════════════════════════════════════════════════════════
 C. PRZYGOTOWANIE FIZYCZNE 24H PRZED LOTEM
 ═══════════════════════════════════════════════════════════
-[ ] Lekkie posiłki (NIE na czczo, NIE po obfitym posiłku —
-    optymalnie 2–3 godz. przed lotem)
+[ ] Lekkie posiłki (NIE na czczo, NIE po obfitym posiłku -     optymalnie 2–3 godz. przed lotem)
 [ ] Co najmniej 2 litry wody w ciągu doby przed lotem
 [ ] Brak alkoholu min. 24 h przed lotem (zalecane 48 h)
 [ ] Brak leków psychoaktywnych, antyhistaminowych,
@@ -616,7 +614,7 @@ E. DOJAZD I LOGISTYKA
 [ ] Czas dojazdu z Warszawy: ok. 90 min samochodem
 [ ] Stawiamy się 30 min przed planowanym lotem na briefing
 [ ] Parking dostępny przy bramie wjazdowej lotniska
-[ ] W przypadku spóźnienia powyżej 20 min — kontakt:
+[ ] W przypadku spóźnienia powyżej 20 min - kontakt:
     +48 535 535 221
 
 ═══════════════════════════════════════════════════════════
@@ -627,41 +625,41 @@ Email: info@akrobacja.com  |  Tel: +48 535 535 221
 
 ---
 
-# SQM-10 — Opis metodyki dydaktycznej (briefing → practice → debriefing)
+# SQM-10 - Opis metodyki dydaktycznej (briefing → practice → debriefing)
 
 **Wydawca:** Doradztwo Paweł Mamcarz · **Wersja:** 1.0 · **Data:** 15.05.2026
 
 ## 1. Filozofia dydaktyczna
 DTO Doradztwo Paweł Mamcarz prowadzi szkolenia metodą **demonstration → practice → correction (DPC)**, opartą na cyklu uczenia się Davida Kolba (doświadczenie → refleksja → konceptualizacja → eksperymentowanie). Standardowa sekwencja szkoleniowa składa się z trzech faz: **briefing → lot szkoleniowy → debriefing**.
 
-## 2. Faza I — Briefing przedlotowy (15–40 minut, w zależności od etapu)
+## 2. Faza I - Briefing przedlotowy (15–40 minut, w zależności od etapu)
 Briefing prowadzony przez Kierownika Szkolenia (Maciej Kulaszewski, FI(A)) w sali wykładowej EPRP. Standardowa struktura:
-1. **Przypomnienie** — krótkie podsumowanie ostatniego lotu (jeśli nie pierwszy).
-2. **Cel lotu** — co kursant nauczy się w danej sesji (max. 3 figury / kompetencje).
-3. **Demonstracja** — instruktor pokazuje na modelach / tablicy / wideo: kształt figury, prędkości wejścia/wyjścia, przeciążenia, ograniczenia.
+1. **Przypomnienie** - krótkie podsumowanie ostatniego lotu (jeśli nie pierwszy).
+2. **Cel lotu** - co kursant nauczy się w danej sesji (max. 3 figury / kompetencje).
+3. **Demonstracja** - instruktor pokazuje na modelach / tablicy / wideo: kształt figury, prędkości wejścia/wyjścia, przeciążenia, ograniczenia.
 4. **Procedury awaryjne** specyficzne dla danego ćwiczenia.
-5. **Briefing pogodowy** — METAR EPRP, TAF, prognoza dla strefy akrobacji.
-6. **Briefing techniczny samolotu** — stan SP-EKS, paliwo, MEL.
-7. **Mental rehearsal** — kursant „przelatuje" sekwencję w głowie.
-8. **Briefing bezpieczeństwa** — procedura opuszczenia samolotu, użycie spadochronu, kontakt RTF.
+5. **Briefing pogodowy** - METAR EPRP, TAF, prognoza dla strefy akrobacji.
+6. **Briefing techniczny samolotu** - stan SP-EKS, paliwo, MEL.
+7. **Mental rehearsal** - kursant „przelatuje" sekwencję w głowie.
+8. **Briefing bezpieczeństwa** - procedura opuszczenia samolotu, użycie spadochronu, kontakt RTF.
 
-## 3. Faza II — Lot szkoleniowy (30–50 minut)
-- **Demonstracja w locie** — instruktor wykonuje figurę pokazową komentując na intercom.
-- **Wykonanie przez kursanta** — kursant powtarza, instruktor koryguje na bieżąco.
-- **Powtórzenie** — figura powtarzana 2–3 razy do osiągnięcia bezpiecznego standardu.
-- **Bieżąca informacja zwrotna** — instruktor komentuje przez intercom każdą próbę.
-- **Nagranie wideo** — kamera zewnętrzna + kabinowa, używane do debriefingu.
+## 3. Faza II - Lot szkoleniowy (30–50 minut)
+- **Demonstracja w locie** - instruktor wykonuje figurę pokazową komentując na intercom.
+- **Wykonanie przez kursanta** - kursant powtarza, instruktor koryguje na bieżąco.
+- **Powtórzenie** - figura powtarzana 2–3 razy do osiągnięcia bezpiecznego standardu.
+- **Bieżąca informacja zwrotna** - instruktor komentuje przez intercom każdą próbę.
+- **Nagranie wideo** - kamera zewnętrzna + kabinowa, używane do debriefingu.
 
-## 4. Faza III — Debriefing (20–30 minut)
-- **Self-assessment kursanta** — kursant sam ocenia swoje wykonanie zanim instruktor doda komentarz.
-- **Analiza zapisu video** — przegląd kluczowych figur z kamer pokładowych, identyfikacja błędów (np. zbyt płaska pętla, zatrzymanie beczki, nieprecyzyjny hammerhead).
-- **Wskazówki do następnego lotu** — co konkretnie poprawić w kolejnej sesji.
-- **Wpis do dokumentacji szkolenia** — instruktor podpisuje wykonanie i ocenę w Karcie kursanta.
+## 4. Faza III - Debriefing (20–30 minut)
+- **Self-assessment kursanta** - kursant sam ocenia swoje wykonanie zanim instruktor doda komentarz.
+- **Analiza zapisu video** - przegląd kluczowych figur z kamer pokładowych, identyfikacja błędów (np. zbyt płaska pętla, zatrzymanie beczki, nieprecyzyjny hammerhead).
+- **Wskazówki do następnego lotu** - co konkretnie poprawić w kolejnej sesji.
+- **Wpis do dokumentacji szkolenia** - instruktor podpisuje wykonanie i ocenę w Karcie kursanta.
 
 ## 5. Adaptacja metodyki do różnych uczących się
-- **Pilot doświadczony (PPL z dużym nalotem)** — szybsze tempo, mniejsza liczba powtórzeń, więcej autonomii.
-- **Pilot początkujący w akrobacji** — wolniejsze tempo, więcej powtórzeń etapu I, dłuższe briefingi pogodowe i fizjologiczne.
-- **Instruktor (FI/CRI) szkolący się do akrobacji** — dodatkowy nacisk na metodykę przekazu (uczy się również jak nauczać akrobacji).
+- **Pilot doświadczony (PPL z dużym nalotem)** - szybsze tempo, mniejsza liczba powtórzeń, więcej autonomii.
+- **Pilot początkujący w akrobacji** - wolniejsze tempo, więcej powtórzeń etapu I, dłuższe briefingi pogodowe i fizjologiczne.
+- **Instruktor (FI/CRI) szkolący się do akrobacji** - dodatkowy nacisk na metodykę przekazu (uczy się również jak nauczać akrobacji).
 
 ## 6. Wsparcie utrwalenia efektów po szkoleniu
 - skrypt teoretyczny pozostaje u kursanta (licencja 3 lata),
@@ -677,7 +675,7 @@ Briefing prowadzony przez Kierownika Szkolenia (Maciej Kulaszewski, FI(A)) w sal
 
 ---
 
-# F-04 — Zgoda na wykorzystanie wizerunku
+# F-04 - Zgoda na wykorzystanie wizerunku
 
 ```
 ══════════════════════════════════════════════════════════════════
@@ -747,7 +745,7 @@ PRAWA UDZIELAJĄCEGO ZGODY
 
 Oświadczam, że jestem świadomy/a:
 
-1. że zgoda ma charakter dobrowolny — udział w szkoleniu nie
+1. że zgoda ma charakter dobrowolny - udział w szkoleniu nie
    jest uzależniony od jej udzielenia;
 2. że mogę ją odwołać w każdym momencie, kontaktując się
    z administratorem danych pod adresem info@akrobacja.com;
@@ -795,42 +793,42 @@ Podpis Kursanta:               Potwierdzenie DTO:
 
 # Charakterystyka działalności
 
-Do wklejenia w odpowiednie pole formularza BUR. Dwie wersje — wybierz zależnie od limitu znaków.
+Do wklejenia w odpowiednie pole formularza BUR. Dwie wersje - wybierz zależnie od limitu znaków.
 
 ## Wersja pełna (~2 700 znaków)
 
-**Doradztwo Paweł Mamcarz** prowadzi działalność szkoleniową i usługową w obszarze lotnictwa akrobacyjnego — segmentu szkoleń lotniczych charakteryzującego się najwyższymi wymaganiami dotyczącymi bezpieczeństwa, kompetencji instruktorskich oraz parametrów technicznych statku powietrznego. Marka **akrobacja.com**, pod którą firma prowadzi działania szkoleniowe i promocyjne, opiera się na własnym, certyfikowanym samolocie akrobacyjnym **Extra 300L (znaki SP-EKS)** — dwumiejscowym tandemie z silnikiem Lycoming AEIO-580 (300 KM), certyfikowanym do obciążeń ±10G, używanym przez reprezentacje narodowe i pilotów Mistrzostw Świata. Baza operacyjna mieści się na lotnisku **Radom-Piastów (EPRP)**, posiadającym status lotniska kontrolowanego i pełną infrastrukturę szkoleniową.
+**Doradztwo Paweł Mamcarz** prowadzi działalność szkoleniową i usługową w obszarze lotnictwa akrobacyjnego - segmentu szkoleń lotniczych charakteryzującego się najwyższymi wymaganiami dotyczącymi bezpieczeństwa, kompetencji instruktorskich oraz parametrów technicznych statku powietrznego. Marka **akrobacja.com**, pod którą firma prowadzi działania szkoleniowe i promocyjne, opiera się na własnym, certyfikowanym samolocie akrobacyjnym **Extra 300L (znaki SP-EKS)** - dwumiejscowym tandemie z silnikiem Lycoming AEIO-580 (300 KM), certyfikowanym do obciążeń ±10G, używanym przez reprezentacje narodowe i pilotów Mistrzostw Świata. Baza operacyjna mieści się na lotnisku **Radom-Piastów (EPRP)**, posiadającym status lotniska kontrolowanego i pełną infrastrukturę szkoleniową.
 
-Kluczową kompetencją firmy jest **kadra instruktorska**. Loty szkoleniowe oraz wszystkie zajęcia praktyczne prowadzi osobiście **Maciej Kulaszewski** — **Mistrz Świata Akrobacji Samolotowej 2022 (kategoria Unlimited)**, wielokrotny Mistrz Polski oraz Mistrz Niemiec i Wielkiej Brytanii, instruktor szkolenia akrobacyjnego z uprawnieniami **FI(A)** oraz ponad **3 000 godzin nalotu na samolocie typu Extra 300L**, w tym wieloletnia praktyka instruktorska. Tak rzadkie połączenie aktywnego startu na Mistrzostwach Świata z czynnym instruktorstwem stanowi unikalną w skali kraju ofertę dydaktyczną.
+Kluczową kompetencją firmy jest **kadra instruktorska**. Loty szkoleniowe oraz wszystkie zajęcia praktyczne prowadzi osobiście **Maciej Kulaszewski** - **Mistrz Świata Akrobacji Samolotowej 2022 (kategoria Unlimited)**, wielokrotny Mistrz Polski oraz Mistrz Niemiec i Wielkiej Brytanii, instruktor szkolenia akrobacyjnego z uprawnieniami **FI(A)** oraz ponad **3 000 godzin nalotu na samolocie typu Extra 300L**, w tym wieloletnia praktyka instruktorska. Tak rzadkie połączenie aktywnego startu na Mistrzostwach Świata z czynnym instruktorstwem stanowi unikalną w skali kraju ofertę dydaktyczną.
 
 Główne kierunki działalności obejmują:
 
-- **Szkolenie do uprawnienia akrobacji samolotowej zgodne z rozporządzeniem Komisji (UE) 1178/2011 — FCL.800** — pełny kurs teoretyczny i praktyczny prowadzący do uzyskania uprawnienia umożliwiającego wykonywanie lotów akrobacyjnych w warunkach VFR (samodzielnie lub jako instruktor).
-- **Szkolenia UPRT (Upset Prevention and Recovery Training)** — obowiązkowe wsparcie kompetencji pilotów liniowych, dyspozycyjnych oraz pilotów General Aviation w zakresie wyprowadzania samolotu z położeń nietypowych (utrata kontroli w locie, korkociąg, ekstremalne kąty natarcia/przechylenia).
-- **Loty zapoznawcze i doskonalące** dla pilotów posiadających licencję PPL(A)/CPL(A) — sesje rozwojowe pozwalające bezpiecznie poszerzyć kompetencje pilotażowe oraz tolerancję na przeciążenia.
+- **Szkolenie do uprawnienia akrobacji samolotowej zgodne z rozporządzeniem Komisji (UE) 1178/2011 - FCL.800** - pełny kurs teoretyczny i praktyczny prowadzący do uzyskania uprawnienia umożliwiającego wykonywanie lotów akrobacyjnych w warunkach VFR (samodzielnie lub jako instruktor).
+- **Szkolenia UPRT (Upset Prevention and Recovery Training)** - obowiązkowe wsparcie kompetencji pilotów liniowych, dyspozycyjnych oraz pilotów General Aviation w zakresie wyprowadzania samolotu z położeń nietypowych (utrata kontroli w locie, korkociąg, ekstremalne kąty natarcia/przechylenia).
+- **Loty zapoznawcze i doskonalące** dla pilotów posiadających licencję PPL(A)/CPL(A) - sesje rozwojowe pozwalające bezpiecznie poszerzyć kompetencje pilotażowe oraz tolerancję na przeciążenia.
 - **Pokazy lotnicze i loty fotograficzne** wykonywane na rzecz organizatorów imprez masowych, mediów oraz partnerów komercyjnych.
 
 Firma stawia na **bezpieczeństwo, jakość metodyczną i indywidualne dopasowanie programu** do kursanta. Każde szkolenie poprzedzone jest briefingiem teoretycznym, w trakcie którego ustalany jest indywidualny zakres ćwiczeń i analiza pogody, a po locie odbywa się sesja debriefingowa wraz z analizą zapisu z kamer pokładowych. Wszystkie loty objęte są pełnym ubezpieczeniem OC oraz ubezpieczeniem pasażera; uczestnicy szkoleń otrzymują w cenie pełne wyposażenie ratunkowe (spadochron, kask, headset).
 
-Doradztwo Paweł Mamcarz współpracuje z Bazą Usług Rozwojowych przy realizacji szkoleń dofinansowanych ze środków publicznych (BUR, KFS, środki PUP/PARP) — umożliwiając kursantom obniżenie kosztu kursu nawet o **90 %**. Firma posiada infrastrukturę i procedury pozwalające na realizację szkoleń w trybie indywidualnym, jak i dla grup zorganizowanych.
+Doradztwo Paweł Mamcarz współpracuje z Bazą Usług Rozwojowych przy realizacji szkoleń dofinansowanych ze środków publicznych (BUR, KFS, środki PUP/PARP) - umożliwiając kursantom obniżenie kosztu kursu nawet o **90 %**. Firma posiada infrastrukturę i procedury pozwalające na realizację szkoleń w trybie indywidualnym, jak i dla grup zorganizowanych.
 
 ## Wersja skrócona (~1 100 znaków)
 
-**Doradztwo Paweł Mamcarz** (marka **akrobacja.com**) świadczy specjalistyczne usługi szkoleniowe w obszarze akrobacji samolotowej oraz bezpieczeństwa lotów na własnym samolocie **Extra 300L (SP-EKS)** — dwumiejscowym, certyfikowanym do ±10G — z bazy operacyjnej na lotnisku **Radom-Piastów (EPRP)**.
+**Doradztwo Paweł Mamcarz** (marka **akrobacja.com**) świadczy specjalistyczne usługi szkoleniowe w obszarze akrobacji samolotowej oraz bezpieczeństwa lotów na własnym samolocie **Extra 300L (SP-EKS)** - dwumiejscowym, certyfikowanym do ±10G - z bazy operacyjnej na lotnisku **Radom-Piastów (EPRP)**.
 
 Szkolenia praktyczne prowadzi osobiście **Maciej Kulaszewski**, **Mistrz Świata Akrobacji Samolotowej 2022**, wielokrotny Mistrz Polski, instruktor **FI(A)** z ponad **3 000 godzinami nalotu** na typie. Ta kombinacja czynnego startu na zawodach najwyższej rangi i kompetencji instruktorskich stanowi unikalne zaplecze dydaktyczne w skali Polski.
 
 Główne usługi rozwojowe oferowane przez firmę:
 
-- **Kurs FCL.800** — uprawnienie do wykonywania akrobacji samolotowej (program teoretyczny + praktyczny).
-- **Szkolenia UPRT** — wyprowadzanie samolotu z położeń nietypowych dla pilotów PPL(A)/CPL(A)/ATPL.
+- **Kurs FCL.800** - uprawnienie do wykonywania akrobacji samolotowej (program teoretyczny + praktyczny).
+- **Szkolenia UPRT** - wyprowadzanie samolotu z położeń nietypowych dla pilotów PPL(A)/CPL(A)/ATPL.
 - **Loty doskonalące** dla pilotów licencjonowanych.
 
 Każde szkolenie obejmuje briefing przedlotowy, lot z analizą video oraz debriefing końcowy. Firma realizuje szkolenia w trybie indywidualnym oraz w ramach środków publicznych (BUR, KFS, PUP) z dofinansowaniem do 90 % kosztu kursu.
 
 ---
 
-# Opis usługi rozwojowej — Kurs FCL.800
+# Opis usługi rozwojowej - Kurs FCL.800
 
 ## 1. Tytuł usługi
 **Kurs do uprawnienia akrobacji samolotowej (FCL.800) na samolocie Extra 300L**
@@ -841,9 +839,9 @@ Usługa szkoleniowa zawodowa (kwalifikacyjna), forma stacjonarna (in-person).
 ## 3. Cel ogólny / cel edukacyjny
 Przygotowanie ucznia-pilota do wykonywania samodzielnych lotów akrobacyjnych na samolotach kategorii **aeroplane** zgodnie z wymaganiami pkt **FCL.800 Rozporządzenia Komisji (UE) nr 1178/2011** oraz uzyskanie zaświadczenia stanowiącego podstawę do wpisu uprawnienia akrobacyjnego (Aerobatic Rating) do licencji pilota przez Prezesa Urzędu Lotnictwa Cywilnego.
 
-## 4. Cele szczegółowe — efekty uczenia się
+## 4. Cele szczegółowe - efekty uczenia się
 
-**Wiedza — uczestnik po zakończeniu kursu:**
+**Wiedza - uczestnik po zakończeniu kursu:**
 - Opisuje zasady aerodynamiki w nietypowych położeniach statku powietrznego oraz mechanizm i sposób wyjścia z przeciągnięcia i korkociągu.
 - Wyjaśnia wpływ przeciążeń dodatnich (G+) i ujemnych (G-) na organizm pilota oraz techniki przeciwdziałania efektom grey-out / black-out / red-out (w tym AGSM).
 - Wymienia ograniczenia eksploatacyjne samolotu Extra 300L (V_A, V_NE, obwiednia akrobacyjna, dopuszczalne przeciążenia).
@@ -851,7 +849,7 @@ Przygotowanie ucznia-pilota do wykonywania samodzielnych lotów akrobacyjnych na
 - Zna przepisy regulujące loty akrobacyjne (Part-NCO, NCO.SPEC), zasady wyznaczania stref akrobacji i minimalne wysokości figur.
 - Rozumie notację figur akrobacyjnych w systemie Aresti.
 
-**Umiejętności — uczestnik potrafi:**
+**Umiejętności - uczestnik potrafi:**
 - Samodzielnie zaplanować, przeprowadzić i ocenić lot akrobacyjny w warunkach VMC zgodnie z procedurami DTO.
 - Wykonać figury podstawowe: pętla, beczka, Immelmann, Split-S, lot odwrócony, ostre zakręty 60°.
 - Wykonać figury zaawansowane: hammerhead, korkociąg kontrolowany (prosty i odwrócony), Cuban eight, humpty bump, snap roll.
@@ -859,9 +857,9 @@ Przygotowanie ucznia-pilota do wykonywania samodzielnych lotów akrobacyjnych na
 - Rozpoznać i wyjść z niezamierzonej dezorientacji przestrzennej oraz niezamierzonego korkociągu.
 - Zastosować procedurę awaryjną przy utracie ciągu silnika podczas figury akrobacyjnej.
 
-**Kompetencje społeczne / postawy — uczestnik:**
+**Kompetencje społeczne / postawy - uczestnik:**
 - Wykazuje pełną odpowiedzialność za bezpieczeństwo własne i przestrzeganie ograniczeń statku powietrznego.
-- Przestrzega zasady „NO-GO" — odmowy wykonania ćwiczenia, jeśli warunki lub stan psychofizyczny tego wymagają.
+- Przestrzega zasady „NO-GO" - odmowy wykonania ćwiczenia, jeśli warunki lub stan psychofizyczny tego wymagają.
 - Stosuje praktykę systematycznego briefingu przed lotem i debriefingu po locie jako standard pracy zawodowej.
 
 ## 5. Grupa docelowa
@@ -888,22 +886,22 @@ Przygotowanie ucznia-pilota do wykonywania samodzielnych lotów akrobacyjnych na
 ## 8. Program (synteza modułów)
 
 **Moduł teoretyczny (8 godz.):**
-1. Czynnik ludzki — wpływ przeciążeń, AGSM, dezorientacja przestrzenna, choroba lokomocyjna (2 godz.)
+1. Czynnik ludzki - wpływ przeciążeń, AGSM, dezorientacja przestrzenna, choroba lokomocyjna (2 godz.)
 2. Aerodynamika lotu akrobacyjnego, przeciągnięcie i korkociąg, zarządzanie energią (2 godz.)
 3. Znajomość Extra 300L, obwiednia akrobacyjna, systemy, ograniczenia (1,5 godz.)
 4. Procedury awaryjne, użycie spadochronu, awaria silnika w figurze (1,5 godz.)
 5. Przepisy, strefy akrobacji, notacja Aresti, briefing/debriefing (1 godz.)
 
 **Moduł praktyczny (5 godz., 10 lotów):**
-- Etap I (1 godz.) — zapoznanie z samolotem, lot poziomy, łagodne G ±3.
-- Etap II (1,5 godz.) — figury podstawowe: pętla, beczka, Immelmann, Split-S, lot odwrócony.
-- Etap III (1,5 godz.) — figury zaawansowane: hammerhead, korkociąg, Cuban eight, humpty bump, snap roll.
-- Etap IV (1 godz.) — sekwencje akrobacyjne, sprawdzian samodzielnego wykonania, scenariusze awaryjne.
+- Etap I (1 godz.) - zapoznanie z samolotem, lot poziomy, łagodne G ±3.
+- Etap II (1,5 godz.) - figury podstawowe: pętla, beczka, Immelmann, Split-S, lot odwrócony.
+- Etap III (1,5 godz.) - figury zaawansowane: hammerhead, korkociąg, Cuban eight, humpty bump, snap roll.
+- Etap IV (1 godz.) - sekwencje akrobacyjne, sprawdzian samodzielnego wykonania, scenariusze awaryjne.
 
 ## 9. Forma i metody dydaktyczne
 - **Teoria:** wykład interaktywny, prezentacja multimedialna, analiza materiałów wideo z zapisów lotów akrobacyjnych, dyskusja, ćwiczenia z notacji Aresti.
-- **Praktyka:** lot szkoleniowy z instruktorem na dwumiejscowym samolocie akrobacyjnym Extra 300L (SP-EKS), z kompletnym briefingiem przedlotowym i debriefingiem na ziemi (analiza zapisu z kamer pokładowych — zewnętrznej i kabinowej).
-- **Metoda:** „demonstration + practice + correction" — instruktor demonstruje figurę, uczeń-pilot wykonuje pod nadzorem, instruktor koryguje, ćwiczenie powtarza się do osiągnięcia bezpiecznego i kompetentnego standardu wykonania zgodnie z FCL.800(b).
+- **Praktyka:** lot szkoleniowy z instruktorem na dwumiejscowym samolocie akrobacyjnym Extra 300L (SP-EKS), z kompletnym briefingiem przedlotowym i debriefingiem na ziemi (analiza zapisu z kamer pokładowych - zewnętrznej i kabinowej).
+- **Metoda:** „demonstration + practice + correction" - instruktor demonstruje figurę, uczeń-pilot wykonuje pod nadzorem, instruktor koryguje, ćwiczenie powtarza się do osiągnięcia bezpiecznego i kompetentnego standardu wykonania zgodnie z FCL.800(b).
 
 ## 10. Materiały szkoleniowe (w cenie)
 - Skrypt teoretyczny "Kurs akrobacji samolotowej FCL.800" (PDF).
@@ -912,8 +910,8 @@ Przygotowanie ucznia-pilota do wykonywania samodzielnych lotów akrobacyjnych na
 - Pełne wyposażenie ratunkowe na czas szkolenia: spadochron ratunkowy, kask, headset, ubezpieczenie OC i NW.
 
 ## 11. Sposób walidacji efektów uczenia się (sprawdzian końcowy)
-1. **Część teoretyczna** — test pisemny (minimum 20 pytań); zaliczenie ≥ **75 % poprawnych odpowiedzi**.
-2. **Część praktyczna** — samodzielne wykonanie sekwencji minimum **5 figur akrobacyjnych** w obecności instruktora, ocenianych pod kątem bezpieczeństwa, precyzji, zarządzania energią i orientacji przestrzennej, zgodnie z FCL.800(b) "safe and competent standard".
+1. **Część teoretyczna** - test pisemny (minimum 20 pytań); zaliczenie ≥ **75 % poprawnych odpowiedzi**.
+2. **Część praktyczna** - samodzielne wykonanie sekwencji minimum **5 figur akrobacyjnych** w obecności instruktora, ocenianych pod kątem bezpieczeństwa, precyzji, zarządzania energią i orientacji przestrzennej, zgodnie z FCL.800(b) "safe and competent standard".
 3. Ocena dwustopniowa: zaliczone / niezaliczone. Ćwiczenia powtarza się do momentu osiągnięcia standardu.
 
 ## 12. Dokument wydawany po ukończeniu
@@ -926,7 +924,7 @@ Przygotowanie ucznia-pilota do wykonywania samodzielnych lotów akrobacyjnych na
 **Lotnisko Radom-Piastów (EPRP)**, ul. Lotników 1, 26-600 Radom. Wyznaczona strefa akrobacji w rejonie EPRP. Możliwość prowadzenia części teoretycznej w siedzibie w Grodzisku Mazowieckim lub online.
 
 ## 15. Trener / kadra dydaktyczna
-**Maciej Kulaszewski** — Kierownik Szkolenia DTO (Head of Training):
+**Maciej Kulaszewski** - Kierownik Szkolenia DTO (Head of Training):
 - Mistrz Świata Akrobacji Samolotowej **2022** (kat. Unlimited).
 - Wielokrotny Mistrz Polski, Mistrz Niemiec i Wielkiej Brytanii w akrobacji samolotowej.
 - Instruktor **FI(A)** z uprawnieniami akrobacyjnymi.
@@ -943,35 +941,35 @@ Przy dofinansowaniu z **BUR / KFS / PUP** koszt uczestnika może zostać obniżo
 
 ## 18. Podstawa prawna
 - Rozporządzenie Komisji (UE) nr 1178/2011, Załącznik I (Part-FCL) pkt **FCL.800**.
-- **AMC1 FCL.800** — Acceptable Means of Compliance.
+- **AMC1 FCL.800** - Acceptable Means of Compliance.
 - Rozporządzenie Komisji (UE) nr 1178/2011, Załącznik VIII (**Part-DTO**) pkt DTO.GEN.110, DTO.GEN.115, DTO.GEN.230.
 - Rozporządzenie Komisji (UE) nr 965/2012, Załącznik VII (Part-NCO).
 
 ---
 
-# Opis usługi rozwojowej — UPRT
+# Opis usługi rozwojowej - UPRT
 
 ## 1. Tytuł usługi
-**Szkolenie UPRT (Upset Prevention and Recovery Training) — wyprowadzanie samolotu z położeń nietypowych na samolocie akrobacyjnym Extra 300L**
+**Szkolenie UPRT (Upset Prevention and Recovery Training) - wyprowadzanie samolotu z położeń nietypowych na samolocie akrobacyjnym Extra 300L**
 
 ## 2. Rodzaj usługi
 Usługa szkoleniowa zawodowa (specjalistyczna), forma stacjonarna (in-person), kategoria: bezpieczeństwo lotów / podnoszenie kompetencji pilotażowych.
 
 ## 3. Cel ogólny / cel edukacyjny
-Wykształcenie u pilota umiejętności rozpoznawania, zapobiegania oraz bezpiecznego wyprowadzania samolotu z położeń nietypowych (upset) — utraty kontroli w locie (LOC-I), ekstremalnych kątów natarcia i przechylenia, korkociągu i lotu odwróconego — zgodnie z **ICAO Doc 10011 Manual on Aeroplane Upset Prevention and Recovery Training** oraz wymaganiami EASA Part-FCL w zakresie UPRT.
+Wykształcenie u pilota umiejętności rozpoznawania, zapobiegania oraz bezpiecznego wyprowadzania samolotu z położeń nietypowych (upset) - utraty kontroli w locie (LOC-I), ekstremalnych kątów natarcia i przechylenia, korkociągu i lotu odwróconego - zgodnie z **ICAO Doc 10011 Manual on Aeroplane Upset Prevention and Recovery Training** oraz wymaganiami EASA Part-FCL w zakresie UPRT.
 
 LOC-I (Loss of Control In-flight) jest **najczęstszą przyczyną katastrof lotniczych** według statystyk IATA i Boeing Statistical Summary; szkolenie UPRT istotnie zmniejsza ryzyko śmiertelnego wypadku w lotnictwie cywilnym.
 
-## 4. Cele szczegółowe — efekty uczenia się
+## 4. Cele szczegółowe - efekty uczenia się
 
-**Wiedza — uczestnik po zakończeniu kursu:**
+**Wiedza - uczestnik po zakończeniu kursu:**
 - Opisuje statystykę i przyczyny zdarzeń LOC-I w lotnictwie cywilnym i ogólnym.
 - Wyjaśnia mechanizm przeciągnięcia (stall), korkociągu (spin) i ich odmian (prosty, odwrócony, płaski).
 - Identyfikuje czynniki sprzyjające utracie kontroli: turbulencja, oblodzenie, błąd pilota, dezorientacja przestrzenna.
 - Rozumie ograniczenia obwiedni lotu (flight envelope) typowego samolotu turystycznego oraz różnice względem samolotu akrobacyjnego.
-- Zna procedury startle and surprise management — reagowania w sytuacji zaskoczenia.
+- Zna procedury startle and surprise management - reagowania w sytuacji zaskoczenia.
 
-**Umiejętności — uczestnik potrafi:**
+**Umiejętności - uczestnik potrafi:**
 - Rozpoznać objawy zbliżania się do przeciągnięcia (buffet, wibracje, lekkie sterowanie).
 - Wyprowadzić samolot z przeciągnięcia z minimalną utratą wysokości.
 - Wykonać prawidłową procedurę wyjścia z korkociągu prostego (PARE: Power-Aileron-Rudder-Elevator).
@@ -980,14 +978,14 @@ LOC-I (Loss of Control In-flight) jest **najczęstszą przyczyną katastrof lotn
 - Wykonać niski przelot poziomy w pozycji odwróconej (kontrolowany lot odwrócony).
 - Zarządzać energią (prędkość, wysokość) w trakcie odzyskiwania kontroli.
 
-**Kompetencje społeczne / postawy — uczestnik:**
+**Kompetencje społeczne / postawy - uczestnik:**
 - Wykazuje świadomość ograniczeń własnych umiejętności i ograniczeń statku powietrznego.
 - Stosuje proaktywne podejście do bezpieczeństwa (threat and error management).
-- Przyjmuje postawę „startle resistance" — opanowania w sytuacji zaskoczenia.
+- Przyjmuje postawę „startle resistance" - opanowania w sytuacji zaskoczenia.
 
 ## 5. Grupa docelowa
 - Piloci komercyjni (CPL/ATPL) wypełniający wymóg **FCL.745.A** (advanced UPRT przed pierwszym typem MPL/wieloosobowym).
-- Piloci liniowi przed promocją na MPL lub MPL(IR) — uzupełnienie obowiązkowego UPRT operatora.
+- Piloci liniowi przed promocją na MPL lub MPL(IR) - uzupełnienie obowiązkowego UPRT operatora.
 - Piloci PPL/CPL chcący dobrowolnie podnieść kompetencje w zakresie bezpieczeństwa lotów (rekomendowane przez ICAO).
 - Piloci instruktorzy (FI/CRI) szkolący pilotów w zakresie bezpieczeństwa.
 - Piloci agro-lotniczy, pilotażu specjalnego (gaśnictwo, holowanie, lotnictwo medyczne).
@@ -1016,16 +1014,16 @@ Szkolenie realizowane w trybie **1 zjazd 2-dniowy** lub **2 zjazdy weekendowe** 
 **Moduł teoretyczny (4 godz.):**
 1. Statystyka LOC-I, analiza wybranych katastrof, wnioski (1 godz.)
 2. Aerodynamika przeciągnięcia i korkociągu, różnice między samolotami GA i akrobacyjnymi (1 godz.)
-3. Procedury wyjścia z położeń nietypowych — standardowe vs. specyficzne dla typu (1 godz.)
+3. Procedury wyjścia z położeń nietypowych - standardowe vs. specyficzne dla typu (1 godz.)
 4. Czynnik ludzki: startle effect, dezorientacja przestrzenna, AGSM (1 godz.)
 
 **Moduł praktyczny (3 godz., 6 lotów):**
-- **Lot 1 — Slow flight i przeciągnięcie** (30 min): zachowanie samolotu przy minimalnej prędkości, identyfikacja symptomów stallu, standardowe wyprowadzenie.
-- **Lot 2 — Korkociąg prosty** (30 min): demonstracja, samodzielne wprowadzenie i wyjście wg procedury PARE, 3-4 cykle.
-- **Lot 3 — Korkociąg odwrócony** (30 min): pokaz, rozpoznawanie, wyjście (specyficzne dla Extra 300L).
-- **Lot 4 — Położenia ekstremalne — nos do góry** (30 min): wyjście z położeń wysokokątowych nos+ze zwałem.
-- **Lot 5 — Położenia ekstremalne — nos w dół** (30 min): wyjście z położeń wysokokątowych nos-, w tym dive recovery.
-- **Lot 6 — Sekwencja kombinowana + sprawdzian** (30 min): scenariusze "startle" — instruktor wprowadza samolot w nieoczekiwane położenie, kursant wyprowadza samodzielnie.
+- **Lot 1 - Slow flight i przeciągnięcie** (30 min): zachowanie samolotu przy minimalnej prędkości, identyfikacja symptomów stallu, standardowe wyprowadzenie.
+- **Lot 2 - Korkociąg prosty** (30 min): demonstracja, samodzielne wprowadzenie i wyjście wg procedury PARE, 3-4 cykle.
+- **Lot 3 - Korkociąg odwrócony** (30 min): pokaz, rozpoznawanie, wyjście (specyficzne dla Extra 300L).
+- **Lot 4 - Położenia ekstremalne - nos do góry** (30 min): wyjście z położeń wysokokątowych nos+ze zwałem.
+- **Lot 5 - Położenia ekstremalne - nos w dół** (30 min): wyjście z położeń wysokokątowych nos-, w tym dive recovery.
+- **Lot 6 - Sekwencja kombinowana + sprawdzian** (30 min): scenariusze "startle" - instruktor wprowadza samolot w nieoczekiwane położenie, kursant wyprowadza samodzielnie.
 
 ## 9. Forma i metody dydaktyczne
 - **Teoria:** wykład z prezentacją multimedialną, analiza materiałów wideo z faktycznych zdarzeń LOC-I (NTSB, ULC, MAK).
@@ -1040,8 +1038,8 @@ Szkolenie realizowane w trybie **1 zjazd 2-dniowy** lub **2 zjazdy weekendowe** 
 - Ubezpieczenie OC + NW kursanta na czas szkolenia.
 
 ## 11. Sposób walidacji efektów uczenia się
-1. **Część teoretyczna** — test pisemny (15 pytań); zaliczenie ≥ **75 % poprawnych odpowiedzi**.
-2. **Część praktyczna** — samodzielne wyjście z **3 różnych położeń nietypowych** wprowadzonych przez instruktora ("startle"), oceniane wg kryteriów:
+1. **Część teoretyczna** - test pisemny (15 pytań); zaliczenie ≥ **75 % poprawnych odpowiedzi**.
+2. **Część praktyczna** - samodzielne wyjście z **3 różnych położeń nietypowych** wprowadzonych przez instruktora ("startle"), oceniane wg kryteriów:
    - czas reakcji ≤ 3 s,
    - prawidłowa procedura wyjścia,
    - utrata wysokości ≤ 150 m,
@@ -1062,14 +1060,14 @@ Zaświadczenie jest **akceptowane przez operatorów lotniczych** jako element sz
 **Lotnisko Radom-Piastów (EPRP)**, ul. Lotników 1, 26-600 Radom. Wyznaczona strefa akrobacji w rejonie EPRP. Część teoretyczna na lotnisku lub online (Microsoft Teams / Zoom).
 
 ## 15. Trener / kadra dydaktyczna
-**Maciej Kulaszewski** — Kierownik Szkolenia DTO:
+**Maciej Kulaszewski** - Kierownik Szkolenia DTO:
 - Mistrz Świata Akrobacji Samolotowej 2022.
 - Instruktor **FI(A)** z uprawnieniami akrobacyjnymi.
 - Ponad 3 000 godzin nalotu na typie Extra 300L.
 - Doświadczenie w szkoleniach UPRT dla pilotów ATPL, instruktorów, pilotów wojskowych.
 
 ## 16. Sprzęt szkoleniowy
-**Extra 300L, SP-EKS**, certyfikat CofA EASA, silnik Lycoming AEIO-580 (300 KM), obwiednia akrobacyjna ±10 G — idealny samolot do UPRT bo pozwala bezpiecznie demonstrować pełen zakres położeń nietypowych, w tym ekstremalne kąty natarcia i lot odwrócony, bez ryzyka utraty zdatności konstrukcji.
+**Extra 300L, SP-EKS**, certyfikat CofA EASA, silnik Lycoming AEIO-580 (300 KM), obwiednia akrobacyjna ±10 G - idealny samolot do UPRT bo pozwala bezpiecznie demonstrować pełen zakres położeń nietypowych, w tym ekstremalne kąty natarcia i lot odwrócony, bez ryzyka utraty zdatności konstrukcji.
 
 ## 17. Cena
 **8 900 PLN netto** za pełny kurs (4 godz. teorii + 3 godz. praktyki w locie + briefingi, materiały, ubezpieczenie, wyposażenie, sprawdzian, zaświadczenie).
@@ -1077,9 +1075,9 @@ Zaświadczenie jest **akceptowane przez operatorów lotniczych** jako element sz
 Przy dofinansowaniu z **BUR / KFS / PUP** koszt uczestnika może zostać obniżony nawet o **80–90 %**.
 
 ## 18. Podstawa prawna i normy
-- **ICAO Doc 10011** — Manual on Aeroplane Upset Prevention and Recovery Training.
+- **ICAO Doc 10011** - Manual on Aeroplane Upset Prevention and Recovery Training.
 - **Rozporządzenie Komisji (UE) 1178/2011**, Część-FCL pkt **FCL.745.A** (Advanced UPRT).
-- **AMC1 FCL.745.A** — Acceptable Means of Compliance.
+- **AMC1 FCL.745.A** - Acceptable Means of Compliance.
 - **EASA Easy Access Rules for Air Operations (Part-ORO, Part-CAT)** w zakresie szkoleń okresowych UPRT operatorów.
 - Bazując na DTO Doradztwo Paweł Mamcarz, zatwierdzonym wg Załącznika VIII (Part-DTO) Rozporządzenia 1178/2011.
 
@@ -1089,21 +1087,21 @@ Przy dofinansowaniu z **BUR / KFS / PUP** koszt uczestnika może zostać obniżo
 
 Tabela: każdy punkt standardu → dokumenty pokrywające → pytania audytora → status.
 
-## Część I — Orientacja na rynek
+## Część I - Orientacja na rynek
 
 | # | Treść standardu | Pokrywający dokument SQM | Dodatkowe dowody | Możliwe pytania audytora | Status |
 |---|---|---|---|---|---|
-| **1.1** | Działalność zgodna z danymi rejestrowymi, cele, specjalizacja | — (brak osobnego SQM, dane "live") | CEIDG, REGON, NIP, opis na akrobacja.com, social media | Czy mogę zobaczyć aktualny wypis z CEIDG? Jak komunikujesz misję firmy? | ✅ |
-| **1.2** | Publikacja informacji o działalności | — | strona akrobacja.com (zakładki: o nas, kadra, FCL.800, UPRT), Instagram, Facebook | Gdzie klient dowie się o waszej kadrze? Jak prezentujecie doświadczenie? | ✅ |
+| **1.1** | Działalność zgodna z danymi rejestrowymi, cele, specjalizacja | - (brak osobnego SQM, dane "live") | CEIDG, REGON, NIP, opis na akrobacja.com, social media | Czy mogę zobaczyć aktualny wypis z CEIDG? Jak komunikujesz misję firmy? | ✅ |
+| **1.2** | Publikacja informacji o działalności | - | strona akrobacja.com (zakładki: o nas, kadra, FCL.800, UPRT), Instagram, Facebook | Gdzie klient dowie się o waszej kadrze? Jak prezentujecie doświadczenie? | ✅ |
 | **1.3** | Zgodność z RODO, prawa autorskie, dostępność, licencje | **SQM-03** (prawa autorskie) + **SQM-07** (RODO) + **SQM-02** (dostępność) | Polityka prywatności na stronie, klauzule w formularzach, regulamin | Pokażcie klauzule RODO w formularzach. Czy macie zgody na wizerunek? | ✅ po wdrożeniu SQM-02/03/07 |
 | **1.4** | Opis usługi z efektami uczenia się | program szkolenia FCL.800 / UPRT + opis BUR | publikacja na akrobacja.com (`/blog/kurs-akrobacji-fcl800`), opis w BUR | Pokażcie opis usługi z efektami uczenia w taksonomii K/U/K | ✅ |
 | **1.5** | Bezpieczeństwo przechowywania danych | **SQM-07** | Cloudflare D1 region EEUR, hash session_token (migracja 015), HSTS+CSP | Gdzie przechowujecie dane kursantów? Czy macie kopie zapasowe? | ✅ |
 | **1.6** | Procedura reklamacji i sytuacji nieprzewidzianych | **SQM-01** | rejestr reklamacji (skoroszyt), regulamin na stronie | Jak długo trwa rozpatrzenie reklamacji? Pokażcie ostatnią | ✅ po wdrożeniu SQM-01 |
-| **1.7** | Dobór kadry | — (CV Macieja, dyplomy) | dyplom FI(A), licencja Macieja, lista nalotu, dyplomy Mistrzostw Świata 2022 | Pokażcie dokumenty potwierdzające kompetencje instruktora | ✅ |
-| **1.8** | Know-how (licencje, technologie, narzędzia) | — | CofA SP-EKS, deklaracja DTO, własny skrypt FCL.800 (utwór) | Jakie macie własne materiały dydaktyczne? | ✅ |
+| **1.7** | Dobór kadry | - (CV Macieja, dyplomy) | dyplom FI(A), licencja Macieja, lista nalotu, dyplomy Mistrzostw Świata 2022 | Pokażcie dokumenty potwierdzające kompetencje instruktora | ✅ |
+| **1.8** | Know-how (licencje, technologie, narzędzia) | - | CofA SP-EKS, deklaracja DTO, własny skrypt FCL.800 (utwór) | Jakie macie własne materiały dydaktyczne? | ✅ |
 | **1.9** | Zarządzanie dostępnością | **SQM-02** | deklaracja dostępności na akrobacja.com (do dorobienia podstrona), formularz zgłaszania potrzeb | Jak klient zgłasza szczególne potrzeby? Co możecie dostosować? | ✅ po wdrożeniu SQM-02 |
 
-## Część II — Orientacja na Klienta, jego potrzeby i cel rozwoju
+## Część II - Orientacja na Klienta, jego potrzeby i cel rozwoju
 
 | # | Treść standardu | Pokrywający dokument SQM | Dodatkowe dowody | Możliwe pytania audytora | Status |
 |---|---|---|---|---|---|
@@ -1111,17 +1109,17 @@ Tabela: każdy punkt standardu → dokumenty pokrywające → pytania audytora �
 | **2.2** | Kontraktowanie celów i efektów uczenia | **SQM-04** (Karta F-01) + opis programu FCL.800 | Umowa z kursantem (SQM-08), sekcja "cele szczegółowe" w karcie | Jak weryfikujecie wspólne cele z kursantem? | ✅ |
 | **2.3** | Identyfikacja potrzeb w zakresie dostępności | **SQM-02** + **SQM-04** (sekcja "szczególne potrzeby" w Karcie) | pole "uwagi" w kalendarzu na akrobacja.com, formularz dostępności | Jak klient z niepełnosprawnością zgłasza potrzeby? | ✅ po wdrożeniu SQM-02 |
 
-## Część III — Orientacja na projektowanie
+## Część III - Orientacja na projektowanie
 
 | # | Treść standardu | Pokrywający dokument SQM | Dodatkowe dowody | Możliwe pytania audytora | Status |
 |---|---|---|---|---|---|
 | **3.1** | Podejście oparte na dowodach | program FCL.800 + opis metodyki **SQM-10** | cytaty z FCL.800, AMC1 FCL.800, Doc 10011 ICAO; statystyki LOC-I (IATA) | Skąd wiecie że wasza metodyka działa? | ✅ |
 | **3.2** | Dostęp do źródeł wiedzy | program FCL.800 (sekcja "podstawy prawne") | skrypt teoretyczny z bibliografią, lista źródeł w prezentacjach | Czy w materiałach klient widzi cytowane źródła? | ✅ |
 | **3.3** | Projekt programu usługi | program FCL.800 | dokument programu z modułami, harmonogramem, etapami | Pokażcie strukturę modułów. Jak wynikają z celów? | ✅ |
-| **3.4** | Środowisko uczenia się i warunki | — (DTO + opis EPRP) | dokumentacja DTO, deklaracja EPRP, opis strefy akrobacji | Gdzie odbywają się szkolenia? Jaka jest infrastruktura? | ✅ |
+| **3.4** | Środowisko uczenia się i warunki | - (DTO + opis EPRP) | dokumentacja DTO, deklaracja EPRP, opis strefy akrobacji | Gdzie odbywają się szkolenia? Jaka jest infrastruktura? | ✅ |
 | **3.5** | Uwzględnienie specjalnych potrzeb w projekcie | **SQM-02** + **SQM-04** | sekcja "adaptacje" w Karcie kursanta | Jak modyfikujecie program dla kursanta z potrzebami? | ✅ po wdrożeniu SQM-02 |
 
-## Część IV — Orientacja na realizację
+## Część IV - Orientacja na realizację
 
 | # | Treść standardu | Pokrywający dokument SQM | Dodatkowe dowody | Możliwe pytania audytora | Status |
 |---|---|---|---|---|---|
@@ -1131,11 +1129,11 @@ Tabela: każdy punkt standardu → dokumenty pokrywające → pytania audytora �
 | **4.4** | Bieżące dostosowywanie treści i form | **SQM-04** (przegląd śródokresowy) + **SQM-10** (DPC) | Karta kursanta z zapisami po każdym locie, decyzje doskonalące | Jak reagujecie gdy kursant nie radzi sobie? | ✅ |
 | **4.5** | Warunki realizacji (komfort, bezpieczeństwo, higiena) | **SQM-09** (warunki dla kursanta) | dokumentacja DTO, opis sali wykładowej, lista wyposażenia ratunkowego | Pokażcie warunki w sali wykładowej i samolocie | ✅ |
 
-## Część V — Orientacja na zarządzanie efektami
+## Część V - Orientacja na zarządzanie efektami
 
 | # | Treść standardu | Pokrywający dokument SQM | Dodatkowe dowody | Możliwe pytania audytora | Status |
 |---|---|---|---|---|---|
-| **5.1** | Transfer i utrwalenie efektów uczenia się | **SQM-10** (sekcja 6 — wsparcie follow-up) | konsultacja follow-up 12 mc, dostęp do materiałów, społeczność | Co kursant dostaje po szkoleniu w zakresie utrwalenia? | ✅ |
+| **5.1** | Transfer i utrwalenie efektów uczenia się | **SQM-10** (sekcja 6 - wsparcie follow-up) | konsultacja follow-up 12 mc, dostęp do materiałów, społeczność | Co kursant dostaje po szkoleniu w zakresie utrwalenia? | ✅ |
 | **5.2** | Ewaluacja usługi | **SQM-05** (ankieta F-02) | wyniki ankiet, agregaty w Excelu, zapisy w teczce kursu | Pokażcie wyniki ewaluacji z ostatnich 5 kursantów | ✅ po wdrożeniu SQM-05 |
 | **5.3** | Weryfikacja osiągnięcia celów | program FCL.800 (sprawdzian końcowy) | test pisemny 75 %, samodzielna sekwencja 5 figur | Jak sprawdzacie czy kursant nauczył się tego co miał? | ✅ |
 | **5.4** | Wnioski z ewaluacji i doskonalenie | **SQM-06** + rejestr F-03 | rejestr doskonalenia, KPI jakości (NPS, zadowolenie, zdawalność) | Jak zmieniał się wasz program przez ostatnie 12 mc? | ✅ po wdrożeniu SQM-06 |
@@ -1166,13 +1164,13 @@ Tabela: każdy punkt standardu → dokumenty pokrywające → pytania audytora �
 - **18 punktów ✅ pokrytych już istniejącą dokumentacją** (DTO, program FCL.800, akrobacja.com, akta Macieja).
 - **13 punktów ✅ po wdrożeniu dokumentów SQM-01 do SQM-10**.
 
-**Brak punktów wymagających realnej zmiany w działalności** — wszystkie luki to czysta papierologia.
+**Brak punktów wymagających realnej zmiany w działalności** - wszystkie luki to czysta papierologia.
 
 ---
 
 # Plan działania: od dziś do certyfikatu
 
-**Tydzień 1 — montaż teczki:**
+**Tydzień 1 - montaż teczki:**
 
 1. Stwórz folder `System Jakości SUS 3.0/` w Google Drive lub SharePoint.
 2. Wewnątrz utwórz pliki:
@@ -1195,24 +1193,24 @@ Tabela: każdy punkt standardu → dokumenty pokrywające → pytania audytora �
    - Dyplom FI(A) i certyfikaty Macieja.
    - CofA samolotu SP-EKS.
 
-**Tydzień 2 — wniosek do PIFS:**
+**Tydzień 2 - wniosek do PIFS:**
 1. Wejdź na sus.pifs.org.pl.
 2. Pobierz formularz wniosku o certyfikację SUS 3.0.
 3. Wypełnij + załącz teczkę (cała Google Drive jako jeden link).
-4. Wnieś opłatę wstępną (kwota uzależniona od członkostwa w PIFS — spytaj biura).
+4. Wnieś opłatę wstępną (kwota uzależniona od członkostwa w PIFS - spytaj biura).
 
-**Tydzień 3-4 — audyt:**
+**Tydzień 3-4 - audyt:**
 1. Audytor DEKRA umawia się na zdalny audyt (~3-4 godz.).
 2. Pyta o losowe punkty z mapy zgodności. Masz przygotowane dokumenty pod ręką.
 3. Po audycie: raport, ew. drobne korekty.
 
-**Tydzień 5-6 — certyfikat:**
+**Tydzień 5-6 - certyfikat:**
 1. Decyzja DEKRA → wydanie certyfikatu.
 2. Wpis do listy podmiotów certyfikowanych na sus.pifs.org.pl.
 3. Wniosek do PARP o wpis do BUR (formularz online na uslugirozwojowe.parp.gov.pl).
-4. Wpis do BUR następuje po weryfikacji certyfikatu SUS — zazwyczaj **w 7 dni roboczych**.
+4. Wpis do BUR następuje po weryfikacji certyfikatu SUS - zazwyczaj **w 7 dni roboczych**.
 
-**Tydzień 7+ — pierwsza usługa w BUR:**
+**Tydzień 7+ - pierwsza usługa w BUR:**
 1. Wpisujesz w BUR usługę FCL.800 i UPRT (każda osobny rekord).
 2. Możesz przyjmować zamówienia z dofinansowaniem.
 
@@ -1222,16 +1220,16 @@ Tabela: każdy punkt standardu → dokumenty pokrywające → pytania audytora �
 
 Audytor zdalny (Microsoft Teams / Zoom, ~3-4 godziny) prowadzi rozmowę strukturyzowaną wokół 5 części standardu SUS 3.0. Pyta o losowe punkty z listy 31; nie sprawdza wszystkich. Najczęściej:
 
-1. **Pokażcie waszą stronę internetową** — przechodzi przez akrobacja.com pytając o lokalizacje informacji o ofertach, kadrze, regulaminie.
-2. **Pokażcie kartę ostatniego kursanta** — F-01 z prawdziwymi danymi (przykryć PESEL przy zdalnym pokazie).
-3. **Pokażcie ankietę ewaluacyjną** — F-02, najlepiej z prawdziwymi wynikami za ostatnie 3-6 miesięcy.
-4. **Pokażcie program szkolenia** — wasz pełen dokument programu FCL.800 z public/program-szkolenia.
-5. **Pokażcie procedurę reklamacji** — SQM-01 i przykładową obsługę reklamacji (lub adnotację że jeszcze żadnej nie było, ale jak będzie postąpicie tak i tak).
-6. **Pokażcie dyplomy instruktora** — Maciej Kulaszewski (FI(A), Mistrzostwa Świata 2022).
-7. **Pokażcie certyfikat CofA samolotu** — SP-EKS.
-8. **Pokażcie politykę bezpieczeństwa danych** — SQM-07, gdzie przechowujecie dane, kto ma dostęp.
-9. **Pokażcie umowę wzór** — SQM-08, w szczególności klauzule RODO i prawa autorskie.
-10. **Pokażcie rejestr doskonalenia** — F-03. Jeśli pusty, opisz że to pierwsza wersja standardu.
+1. **Pokażcie waszą stronę internetową** - przechodzi przez akrobacja.com pytając o lokalizacje informacji o ofertach, kadrze, regulaminie.
+2. **Pokażcie kartę ostatniego kursanta** - F-01 z prawdziwymi danymi (przykryć PESEL przy zdalnym pokazie).
+3. **Pokażcie ankietę ewaluacyjną** - F-02, najlepiej z prawdziwymi wynikami za ostatnie 3-6 miesięcy.
+4. **Pokażcie program szkolenia** - wasz pełen dokument programu FCL.800 z public/program-szkolenia.
+5. **Pokażcie procedurę reklamacji** - SQM-01 i przykładową obsługę reklamacji (lub adnotację że jeszcze żadnej nie było, ale jak będzie postąpicie tak i tak).
+6. **Pokażcie dyplomy instruktora** - Maciej Kulaszewski (FI(A), Mistrzostwa Świata 2022).
+7. **Pokażcie certyfikat CofA samolotu** - SP-EKS.
+8. **Pokażcie politykę bezpieczeństwa danych** - SQM-07, gdzie przechowujecie dane, kto ma dostęp.
+9. **Pokażcie umowę wzór** - SQM-08, w szczególności klauzule RODO i prawa autorskie.
+10. **Pokażcie rejestr doskonalenia** - F-03. Jeśli pusty, opisz że to pierwsza wersja standardu.
 
 **Podejście audytora DEKRA:** nie szukają błędów żeby was odrzucić. Szukają potwierdzenia że macie zorganizowany sposób działania. Jeśli dokumenty istnieją i są spójne, audyt kończy się zgodnością z 1-2 drobnymi uwagami do korekt.
 
@@ -1250,18 +1248,18 @@ Lista, którą można wydrukować i mieć pod ręką podczas audytu zdalnego:
 
 | Lp. | Dokument | Status | Lokalizacja w teczce |
 |---|---|---|---|
-| 1 | CEIDG — wypis aktualny | ✅ | dokumenty-rejestrowe/ |
+| 1 | CEIDG - wypis aktualny | ✅ | dokumenty-rejestrowe/ |
 | 2 | Deklaracja DTO do ULC | ✅ | dokumenty-rejestrowe/ |
-| 3 | Licencja FI(A) — Maciej Kulaszewski | ✅ | kadra/ |
+| 3 | Licencja FI(A) - Maciej Kulaszewski | ✅ | kadra/ |
 | 4 | Dyplomy Mistrzostw Świata 2022 | ✅ | kadra/ |
 | 5 | CV Maciej Kulaszewski + lista nalotu | ✅ | kadra/ |
-| 6 | Certyfikat zdatności CofA — SP-EKS | ✅ | samolot/ |
-| 7 | Polisa OC + NW — samolot | ✅ | samolot/ |
-| 8 | Polisa OC — działalności | ✅ | ubezpieczenia/ |
+| 6 | Certyfikat zdatności CofA - SP-EKS | ✅ | samolot/ |
+| 7 | Polisa OC + NW - samolot | ✅ | samolot/ |
+| 8 | Polisa OC - działalności | ✅ | ubezpieczenia/ |
 | 9 | Program szkolenia FCL.800 | ✅ | programy/ |
 | 10 | Program szkolenia UPRT | ✅ | programy/ |
-| 11 | Opis usługi BUR — FCL.800 | ✅ | bur/ |
-| 12 | Opis usługi BUR — UPRT | ✅ | bur/ |
+| 11 | Opis usługi BUR - FCL.800 | ✅ | bur/ |
+| 12 | Opis usługi BUR - UPRT | ✅ | bur/ |
 | 13 | Charakterystyka działalności BUR | ✅ | bur/ |
 | 14 | SQM-01 Procedura reklamacji | ✅ | system-jakosci/ |
 | 15 | SQM-02 Deklaracja dostępności | ✅ | system-jakosci/ |
@@ -1287,9 +1285,9 @@ Legenda: ✅ gotowe · 🟡 do dopracowania · ⚪ pusty wzór do uzupełnienia 
 
 **Koniec dokumentu.**
 
-Dla wszystkich kontekstowych odniesień w tekście — patrz repozytorium `akrobacja-top` na GitHubie (`https://github.com/pawelmamcarz/akrobacja-top`), w szczególności:
+Dla wszystkich kontekstowych odniesień w tekście - patrz repozytorium `akrobacja-top` na GitHubie (`https://github.com/pawelmamcarz/akrobacja-top`), w szczególności:
 
-- `public/program-szkolenia-akrobacja-fcl800.html` — pełny program szkolenia FCL.800 (źródło dla wielu sekcji SQM-10 i opisu usługi BUR).
-- `migrations/015-session-token-hash.sql` — przykład wdrożonej procedury bezpieczeństwa danych (cytowane w SQM-07).
-- `functions/_middleware.ts` — implementacja CSP, HSTS, headers bezpieczeństwa (dowód do SQM-07).
-- `public/regulamin.html` i `public/polityka-prywatnosci.html` — dokumenty na żywym sklepie (wsparcie SQM-01, SQM-07).
+- `public/program-szkolenia-akrobacja-fcl800.html` - pełny program szkolenia FCL.800 (źródło dla wielu sekcji SQM-10 i opisu usługi BUR).
+- `migrations/015-session-token-hash.sql` - przykład wdrożonej procedury bezpieczeństwa danych (cytowane w SQM-07).
+- `functions/_middleware.ts` - implementacja CSP, HSTS, headers bezpieczeństwa (dowód do SQM-07).
+- `public/regulamin.html` i `public/polityka-prywatnosci.html` - dokumenty na żywym sklepie (wsparcie SQM-01, SQM-07).

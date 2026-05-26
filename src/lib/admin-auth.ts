@@ -17,7 +17,7 @@ function timingSafeEqual(a: string, b: string): boolean {
 
 export type AdminUser = string; // 'pawel' | 'magda' (legacy) | email (DB user)
 
-// Legacy env-based user (Pawel) — kept dla cron endpoints i back-compat.
+// Legacy env-based user (Pawel) - kept dla cron endpoints i back-compat.
 // Magda + Maciej + ewentualni nowi userzy ida przez admin_users (PBKDF2).
 function legacyUserCandidates(env: Env): Array<{ user: AdminUser; expected: string }> {
   const all: Array<{ user: AdminUser; expected: string }> = [
@@ -33,7 +33,7 @@ function bearerToken(request: Request): string | null {
 }
 
 // SYNC, legacy-only. Existing crons + endpoints that already use this stay
-// untouched — they accept ADMIN_PASSWORD / MAGDA_PASSWORD Bearer tokens as
+// untouched - they accept ADMIN_PASSWORD / MAGDA_PASSWORD Bearer tokens as
 // they did before. New endpoints should use getAdminUserAsync() so DB sessions
 // (email-login) also resolve.
 export function getAdminUser(request: Request, env: Env): AdminUser | null {
@@ -121,7 +121,7 @@ export interface AdminUserRow {
 // DB session lookup. Returns the resolved user identifier (legacy 'pawel'/'magda'
 // or email for DB users) or null when no auth resolves.
 export async function getAdminUserAsync(request: Request, env: Env): Promise<AdminUser | null> {
-  // Legacy first — preserves all existing cron + admin behaviour without a DB hit.
+  // Legacy first - preserves all existing cron + admin behaviour without a DB hit.
   const legacy = getAdminUser(request, env);
   if (legacy) return legacy;
 

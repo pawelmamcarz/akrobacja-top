@@ -1,5 +1,5 @@
 // Minimal RFC 5545 ICS generator dla Workers edge runtime.
-// Bez npm package (zaden VTIMEZONE — wszystko UTC z 'Z' suffix; GCal/Apple/Outlook
+// Bez npm package (zaden VTIMEZONE - wszystko UTC z 'Z' suffix; GCal/Apple/Outlook
 // poprawnie tlumacza na Europe/Warsaw).
 
 import type { CalendarEvent } from './types';

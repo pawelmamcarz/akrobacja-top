@@ -1,4 +1,4 @@
-// /api/admin/expenses — operating costs ledger (wFirma sync + manual entries).
+// /api/admin/expenses - operating costs ledger (wFirma sync + manual entries).
 // GET   ?from=YYYY-MM-DD&to=YYYY-MM-DD&category=&contractor=
 //       returns list + by_category / by_contractor aggregations
 // POST  body { action: 'refresh' } → pulls from wFirma synchronously (button "Odśwież")
@@ -150,12 +150,12 @@ export const onRequestDelete: PagesFunction<Env> = async (ctx) => {
   }
   const body = await ctx.request.json().catch(() => null) as { id?: number } | null;
   if (!body?.id) return Response.json({ error: 'id required' }, { status: 400 });
-  // Block deletion of wFirma-sourced rows — they would just come back at next sync.
+  // Block deletion of wFirma-sourced rows - they would just come back at next sync.
   const row = await ctx.env.DB.prepare(`SELECT source FROM expenses WHERE id = ?`)
     .bind(body.id).first<{ source: string }>();
   if (!row) return Response.json({ error: 'Not found' }, { status: 404 });
   if (row.source !== 'manual') {
-    return Response.json({ error: 'wFirma rows kasują się po stronie wFirmy — tutaj re-syncują się' }, { status: 400 });
+    return Response.json({ error: 'wFirma rows kasują się po stronie wFirmy - tutaj re-syncują się' }, { status: 400 });
   }
   await ctx.env.DB.prepare(`DELETE FROM expenses WHERE id = ?`).bind(body.id).run();
   return Response.json({ ok: true });

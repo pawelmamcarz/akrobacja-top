@@ -1,5 +1,5 @@
-// SEO middleware — injects canonical URLs and robots meta tags into HTML responses.
-// Single source of truth for SEO directives — no need to hardcode them in each HTML file.
+// SEO middleware - injects canonical URLs and robots meta tags into HTML responses.
+// Single source of truth for SEO directives - no need to hardcode them in each HTML file.
 // Uses HTMLRewriter for streaming transformation (zero-copy, no buffering).
 
 import { NOINDEX_PATHS, LEGACY_REDIRECTS, PRIMARY_HOST, SITE_ORIGIN } from '../src/lib/seo-config';
@@ -12,7 +12,7 @@ export const onRequest: PagesFunction = async (context) => {
   // remain reachable for QA. Production custom domain (akrobacja.com) keeps
   // canonical redirect; akrobacja.top etc. still get redirected.
   // Detection: any *.pages.dev hostname (preview hashes + project canonical)
-  // skips redirect — canonical <link> tag in HTML handles SEO for crawlers.
+  // skips redirect - canonical <link> tag in HTML handles SEO for crawlers.
   const isPagesDev = url.hostname.endsWith('.pages.dev');
 
   // 301 redirect non-primary domains (akrobacja.top etc.) → akrobacja.com
@@ -69,11 +69,11 @@ export const onRequest: PagesFunction = async (context) => {
   const path = url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
   const canonicalUrl = path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
   const noindex = NOINDEX_PATHS.has(path);
-  // Admin and pilot portal must not load any third-party analytics tags — the DOM contains
+  // Admin and pilot portal must not load any third-party analytics tags - the DOM contains
   // customer PII (emails, names, voucher codes) that auto-tracking would otherwise leak.
   const isInternal = path === '/admin' || path === '/konto';
 
-  // Cloudflare Web Analytics — inject beacon if token is configured
+  // Cloudflare Web Analytics - inject beacon if token is configured
   const cfAnalyticsToken = env.CF_ANALYTICS_TOKEN;
   const gaId = isInternal ? undefined : env.GA_MEASUREMENT_ID;              // e.g. "G-XXXXXXXXXX"
   const adsId = isInternal ? undefined : env.GOOGLE_ADS_ID;                  // e.g. "AW-XXXXXXXXXX"
@@ -92,13 +92,13 @@ export const onRequest: PagesFunction = async (context) => {
         let headInject =
           `<link rel="canonical" href="${canonicalUrl}">` +
           (noindex ? `<meta name="robots" content="noindex, nofollow">` : '') +
-          // LLM / AI search discovery — point crawlers at the markdown corpus.
+          // LLM / AI search discovery - point crawlers at the markdown corpus.
           // Indexed pages only; noindex pages (admin, sukces, konto) skip it.
           (noindex ? '' :
             `<link rel="alternate" type="text/markdown" href="${SITE_ORIGIN}/llms.txt" title="LLM-friendly summary (llmstxt.org)">` +
             `<link rel="alternate" type="text/markdown" href="${SITE_ORIGIN}/llms-full.txt" title="LLM-friendly full corpus">`
           ) +
-          // Unified top navigation — stylesheet + behaviour. Admin/pilot UIs skip the
+          // Unified top navigation - stylesheet + behaviour. Admin/pilot UIs skip the
           // marketing nav entirely (see body injection below).
           (isInternal ? '' :
             `<link rel="stylesheet" href="/assets/akro-nav.css">` +
@@ -117,14 +117,14 @@ export const onRequest: PagesFunction = async (context) => {
           headInject += `<link rel="preconnect" href="https://connect.facebook.net" crossorigin>`;
         }
         // Stripe.js is loaded only on checkout pages, but the handshake to js.stripe.com
-        // happens on every visit that lands on /lot-akrobacyjny etc. — warm it early.
+        // happens on every visit that lands on /lot-akrobacyjny etc. - warm it early.
         headInject += `<link rel="preconnect" href="https://js.stripe.com" crossorigin>`;
 
-        // Global gtag.js loader — GA4 + Google Ads with Consent Mode v2
+        // Global gtag.js loader - GA4 + Google Ads with Consent Mode v2
         if (gaId || adsId) {
           const tagId = gaId || adsId;
           headInject +=
-            // Consent Mode v2 — defaults DENIED (EU region).
+            // Consent Mode v2 - defaults DENIED (EU region).
             // Must run BEFORE gtag.js loads. Banner updates via gtag('consent','update',…).
             `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}` +
             `gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500,region:['EU','EEA','PL']});` +
@@ -135,7 +135,7 @@ export const onRequest: PagesFunction = async (context) => {
             (adsId ? `gtag('config','${adsId}');` : '') +
             `</script>` +
             `<script async src="https://www.googletagmanager.com/gtag/js?id=${tagId}"></script>`;
-          // Restore saved consent synchronously — must run before any conversion events in <body>.
+          // Restore saved consent synchronously - must run before any conversion events in <body>.
           // consent-banner.js is deferred so without this the conversion event fires before
           // consent is updated to 'granted', causing Consent Mode v2 to send a cookieless ping.
           headInject +=
@@ -146,7 +146,7 @@ export const onRequest: PagesFunction = async (context) => {
             `}}}catch(e){}})();</script>`;
         }
 
-        // Turnstile — expose the public site key for forms; the explicit-render loader
+        // Turnstile - expose the public site key for forms; the explicit-render loader
         // calls window.onloadTurnstileCallback (defined in /assets/turnstile.js) when ready.
         if (turnstileSiteKey) {
           headInject +=
@@ -154,7 +154,7 @@ export const onRequest: PagesFunction = async (context) => {
             `<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit" async defer></script>`;
         }
 
-        // Meta Pixel (Facebook/Instagram) — respects consent (denied by default, banner grants)
+        // Meta Pixel (Facebook/Instagram) - respects consent (denied by default, banner grants)
         if (metaPixelId) {
           headInject +=
             `<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');` +
@@ -169,8 +169,8 @@ export const onRequest: PagesFunction = async (context) => {
       },
     });
 
-  // /sukces — fire purchase + Enhanced Conversions from URL (?amount=…&code=…&pkg=…)
-  // Skip injection for the test_naklejka package — it exists only for live-pixel debugging
+  // /sukces - fire purchase + Enhanced Conversions from URL (?amount=…&code=…&pkg=…)
+  // Skip injection for the test_naklejka package - it exists only for live-pixel debugging
   // and we don't want it polluting GA4/Ads conversion data with PLN 1-2 events.
   if (path === '/sukces' && (gaId || adsId || metaPixelId)) {
     rewriter.on('body', {
@@ -182,13 +182,13 @@ export const onRequest: PagesFunction = async (context) => {
           `var c=p.get('code')||'';` +
           `var pk=p.get('pkg')||'';` +
           `if(!a||!c)return;` +
-          // Skip test package — see comment above.
+          // Skip test package - see comment above.
           `if(pk==='test_naklejka')return;` +
-          // Dedup against page reload — eventID dedup only handles server-vs-client, not
+          // Dedup against page reload - eventID dedup only handles server-vs-client, not
           // double-fire from the same client. GA4 and Google Ads have no built-in dedup.
           `var dedupKey='akro_pf_'+c;` +
           `try{if(sessionStorage.getItem(dedupKey))return;sessionStorage.setItem(dedupKey,'1');}catch(e){}` +
-          // Enhanced Conversions — pull email/name from sessionStorage (set at checkout)
+          // Enhanced Conversions - pull email/name from sessionStorage (set at checkout)
           `var ud=null;try{var raw=sessionStorage.getItem('akro_checkout_info');if(raw){var o=JSON.parse(raw);if(o&&o.email){ud={email:o.email,address:{first_name:o.firstName||'',last_name:o.lastName||''}}}}}catch(e){}` +
           (gaId || adsId ? (
             `if(window.gtag){` +
@@ -198,7 +198,7 @@ export const onRequest: PagesFunction = async (context) => {
             `}`
           ) : '') +
           (metaPixelId ? (
-            // Meta Pixel Purchase — eventID matches CAPI for dedup
+            // Meta Pixel Purchase - eventID matches CAPI for dedup
             `if(window.fbq){fbq('track','Purchase',{value:a,currency:'PLN',content_ids:[pk],content_type:'product',content_name:'Voucher '+pk,num_items:1},{eventID:'purchase_'+c});}`
           ) : '') +
           `try{sessionStorage.removeItem('akro_checkout_info');}catch(e){}` +
@@ -209,7 +209,7 @@ export const onRequest: PagesFunction = async (context) => {
     });
   }
 
-  // Unified top navigation — prepend single canonical <nav> on every marketing page
+  // Unified top navigation - prepend single canonical <nav> on every marketing page
   // and remove every legacy variant. Admin and pilot portals skip injection so their
   // app-shells stay isolated from the marketing chrome.
   if (!isInternal) {
@@ -272,14 +272,14 @@ export const onRequest: PagesFunction = async (context) => {
 
   const transformed = rewriter.transform(response);
 
-  // Security headers — applied to every HTML response.
+  // Security headers - applied to every HTML response.
   const secured = new Response(transformed.body, transformed);
   secured.headers.set('X-Content-Type-Options', 'nosniff');
   secured.headers.set('X-Frame-Options', 'DENY');
   secured.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
   secured.headers.set('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
   secured.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-  // CSP — allowlist matches everything the public site loads today (Stripe, GA4/Ads, Meta).
+  // CSP - allowlist matches everything the public site loads today (Stripe, GA4/Ads, Meta).
   // 'unsafe-inline' on script and style is unavoidable here because inline tags are injected
   // by both middleware and the per-page HTML; tightening further would need nonces.
   secured.headers.set(
@@ -287,7 +287,7 @@ export const onRequest: PagesFunction = async (context) => {
     [
       "default-src 'self'",
       // 'unsafe-eval' is needed by Google Tag Manager custom HTML tags / trigger evaluation.
-      // unpkg.com — meta-capi-param-builder loaded by GTM tag; analytics.tiktok.com — TikTok pixel.
+      // unpkg.com - meta-capi-param-builder loaded by GTM tag; analytics.tiktok.com - TikTok pixel.
       "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://*.js.stripe.com https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://connect.facebook.net https://challenges.cloudflare.com https://static.cloudflareinsights.com https://unpkg.com https://cdn.jsdelivr.net https://analytics.tiktok.com https://*.tiktok.com",
       // Stripe 3DS / SCA challenge redirects users into bank-owned iframes served via
       // subdomains of stripe.com (m.stripe.network for fingerprinting, *.stripe.com for ACS).
@@ -299,14 +299,14 @@ export const onRequest: PagesFunction = async (context) => {
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       // Google Fonts TTF/WOFF served from fonts.gstatic.com.
       "font-src 'self' data: https://fonts.gstatic.com",
-      // analytics.tiktok.com — TikTok pixel beacon endpoint.
+      // analytics.tiktok.com - TikTok pixel beacon endpoint.
       "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.facebook.com https://api.stripe.com https://*.stripe.com https://*.stripe.network https://challenges.cloudflare.com https://cloudflareinsights.com https://analytics.tiktok.com https://*.tiktok.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self' https://checkout.stripe.com https://*.stripe.com",
     ].join('; '),
   );
-  // Sensitive paths must not be cached by Cloudflare or the browser — admin sees fresh
+  // Sensitive paths must not be cached by Cloudflare or the browser - admin sees fresh
   // data after a deploy, /sukces never serves a stale conversion script.
   if (path === '/admin' || path === '/konto' || path === '/sukces') {
     secured.headers.set('Cache-Control', 'no-store');

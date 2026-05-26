@@ -12,7 +12,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     return Response.json({ error: 'Brak kodu vouchera' }, { status: 400 });
   }
 
-  // Atomic claim: only succeed if paid and not yet redeemed — prevents race.
+  // Atomic claim: only succeed if paid and not yet redeemed - prevents race.
   const res = await ctx.env.DB.prepare(
     "UPDATE orders SET redeemed_at = datetime('now') WHERE voucher_code = ? AND status = 'paid' AND redeemed_at IS NULL"
   ).bind(body.voucher_code).run();

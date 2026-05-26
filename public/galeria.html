@@ -181,7 +181,7 @@ const gallery = document.getElementById('gallery');
 let imgs = document.querySelectorAll('.gallery img');
 let current = 0;
 
-// Approved photographer submissions — fetched after initial render, prepended to grid.
+// Approved photographer submissions - fetched after initial render, prepended to grid.
 fetch('/api/gallery').then(r => r.json()).then(data => {
   if (!data?.photos?.length) return;
   const frag = document.createDocumentFragment();
@@ -191,7 +191,7 @@ fetch('/api/gallery').then(r => r.json()).then(data => {
     if (p.photographer_instagram) fig.dataset.authorUrl = igUrl(p.photographer_instagram);
     const img = document.createElement('img');
     img.src = '/api/gallery/file/' + p.id;
-    img.alt = p.caption || ('Extra 300L SP-EKS — fot. ' + p.photographer_name);
+    img.alt = p.caption || ('Extra 300L SP-EKS - fot. ' + p.photographer_name);
     img.loading = 'lazy';
     if (p.width && p.height) { img.width = p.width; img.height = p.height; }
     img.addEventListener('click', () => openLbByImg(img));
@@ -225,7 +225,7 @@ function openLbByImg(img) {
 function captionFor(img) {
   const fig = img.closest('figure');
   const author = fig?.dataset.author;
-  return author ? `${img.alt} — fot. ${author}` : img.alt;
+  return author ? `${img.alt} - fot. ${author}` : img.alt;
 }
 function openLb(i) {
   current = i;

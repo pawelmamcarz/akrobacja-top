@@ -5,14 +5,14 @@ interface InvoiceParams {
   customerEmail: string;
   customerNip?: string;
   packageId: PackageId;
-  videoAddon: boolean;          // legacy — utrzymane dla starych orderów (sprzed migracji 019), ignorowane gdy `addons` zawiera 'video'
+  videoAddon: boolean;          // legacy - utrzymane dla starych orderów (sprzed migracji 019), ignorowane gdy `addons` zawiera 'video'
   addons?: string[];            // lista AddonId z webhook.ts (parsed JSON z orders.addons)
   voucherCode: string;
-  amount: number;               // faktycznie pobrana kwota (grosze) — po rabacie
+  amount: number;               // faktycznie pobrana kwota (grosze) - po rabacie
   discountCode?: string | null;
 }
 
-// wFirma API v2 — https://doc.wfirma.pl/
+// wFirma API v2 - https://doc.wfirma.pl/
 // Auth: Basic (login:password) + header x-company-id
 export async function createInvoice(env: Env, params: InvoiceParams): Promise<string> {
   const pkg = PACKAGES[params.packageId];
@@ -30,8 +30,8 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
   const items: object[] = [];
 
   if (hasDiscount) {
-    // Jeden wiersz z kwotą po rabacie — inaczej suma linii rozjedzie się z alreadypaid.
-    const parts = [`Voucher akrobacyjny "${pkg.name}" — lot Extra 300L (${pkg.duration})`];
+    // Jeden wiersz z kwotą po rabacie - inaczej suma linii rozjedzie się z alreadypaid.
+    const parts = [`Voucher akrobacyjny "${pkg.name}" - lot Extra 300L (${pkg.duration})`];
     for (const id of effectiveAddons) {
       const a = ADDONS[id];
       if (a) parts.push(`+ ${a.invoiceName}`);
@@ -49,7 +49,7 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
   } else {
     items.push({
       invoicecontent: {
-        name: `Voucher akrobacyjny "${pkg.name}" — lot Extra 300L (${pkg.duration})`,
+        name: `Voucher akrobacyjny "${pkg.name}" - lot Extra 300L (${pkg.duration})`,
         unit: 'szt.',
         count: 1,
         price: pkg.price / 100,
@@ -75,7 +75,7 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
     invoices: [
       {
         invoice: {
-          type: 'normal', // faktura VAT — dla firm (z NIP) i osób fizycznych (bez NIP)
+          type: 'normal', // faktura VAT - dla firm (z NIP) i osób fizycznych (bez NIP)
           price_type: 'brutto',
           paymentmethod: 'transfer',
           paymentstate: 'paid',
@@ -116,7 +116,7 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
 
   if (!res.ok) {
     // Log details (status, body, key lengths) for ops but never bubble them into the
-    // user-visible Response — they would leak secret cardinalities and request bodies.
+    // user-visible Response - they would leak secret cardinalities and request bodies.
     console.error(`wFirma API HTTP ${res.status}`, { body: text.substring(0, 500), accessKeyLen: accessKey.length, secretKeyLen: secretKey.length, companyId });
     throw new Error('wFirma API request failed');
   }
@@ -127,7 +127,7 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
   try {
     parsed = JSON.parse(text);
   } catch {
-    // Older wFirma endpoints sometimes return XML — fall through to regex below.
+    // Older wFirma endpoints sometimes return XML - fall through to regex below.
   }
 
   if (parsed && parsed.status && typeof parsed.status.code === 'string' && parsed.status.code !== 'OK') {
@@ -149,7 +149,7 @@ export async function createInvoice(env: Env, params: InvoiceParams): Promise<st
   return String(invoiceId);
 }
 
-// Expense row pulled from wFirma /expenses/find — normalised shape that our cron
+// Expense row pulled from wFirma /expenses/find - normalised shape that our cron
 // can upsert into the local D1 expenses table.
 export interface WfirmaExpenseRow {
   wfirma_id: string;
@@ -191,7 +191,7 @@ function pickAmountGrosze(o: Record<string, unknown>, ...keys: string[]): number
   return 0;
 }
 
-// Best-effort normaliser — wFirma's expense schema varies between accounts
+// Best-effort normaliser - wFirma's expense schema varies between accounts
 // (some fields populated, some null). Cron upsert tolerates partials.
 function normaliseExpense(raw: Record<string, unknown>): WfirmaExpenseRow | null {
   const id = pickString(raw, 'id');
@@ -223,7 +223,7 @@ function normaliseExpense(raw: Record<string, unknown>): WfirmaExpenseRow | null
 }
 
 // Pulls expenses (faktury kosztowe) from wFirma. Pagination handled by caller
-// — pass page 1, 2, 3 until you get fewer than 50 rows. Date range optional;
+// - pass page 1, 2, 3 until you get fewer than 50 rows. Date range optional;
 // when both omitted, wFirma returns whatever its default window is (~last 30d).
 export async function listWfirmaExpenses(
   env: Env,

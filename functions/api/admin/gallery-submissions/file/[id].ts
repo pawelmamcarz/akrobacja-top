@@ -1,5 +1,5 @@
 // GET /api/admin/gallery-submissions/file/[id]
-// Admin-only file proxy — serves submissions regardless of status so the moderation
+// Admin-only file proxy - serves submissions regardless of status so the moderation
 // UI can preview pending/rejected entries. Public /api/gallery/file/[id] only serves
 // 'approved' rows.
 

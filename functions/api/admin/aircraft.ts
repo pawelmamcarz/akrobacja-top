@@ -1,7 +1,7 @@
 import { type Env } from '../../../src/lib/types';
 import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
 
-// Konkretny typ body — zamiast Record<string, unknown> sprawdzamy typeof przed
+// Konkretny typ body - zamiast Record<string, unknown> sprawdzamy typeof przed
 // bindem do D1, żeby nie przekazać np. obiektu/array tam gdzie ma być liczba.
 interface AircraftBody {
   action?: string;
@@ -23,7 +23,7 @@ interface AircraftBody {
   pilot_id?: string;
 }
 
-// GET /api/admin/aircraft — get maintenance, documents, insurance pilots
+// GET /api/admin/aircraft - get maintenance, documents, insurance pilots
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
@@ -48,7 +48,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   return Response.json({ maintenance, documents, insurancePilots });
 };
 
-// POST /api/admin/aircraft — manage maintenance, documents, insurance
+// POST /api/admin/aircraft - manage maintenance, documents, insurance
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });

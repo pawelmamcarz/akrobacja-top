@@ -44,7 +44,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     // start_time musi być jednym ze slotów wygenerowanych dla danej daty (slot grid = 1h od sunrise+30 do sunset-30).
     const validSlot = generateSlots(body.date).some(s => s.start === body.start_time);
     if (!validSlot) {
-      return Response.json({ error: 'Nieprawidłowa godzina — godzina poza oknem dziennym' }, { status: 400 });
+      return Response.json({ error: 'Nieprawidłowa godzina - godzina poza oknem dziennym' }, { status: 400 });
     }
 
     // For voucher bookings, verify the voucher
@@ -86,7 +86,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ error: 'Ten dzień jest zablokowany' }, { status: 400 });
     }
 
-    // Atomowa rezerwacja slotu — partial UNIQUE(date, start_time) WHERE status != 'available'
+    // Atomowa rezerwacja slotu - partial UNIQUE(date, start_time) WHERE status != 'available'
     // gwarantuje, że dwa równoległe POST-y nie przejdą oba. Zwracamy 409 dla przegranego.
     const bookingId = crypto.randomUUID();
     const slotId = crypto.randomUUID();
@@ -112,10 +112,10 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         body.notes || null,
       ).run();
     } catch (err) {
-      // Booking INSERT padł — zwolnij slot, żeby inny klient mógł go zająć.
+      // Booking INSERT padł - zwolnij slot, żeby inny klient mógł go zająć.
       await ctx.env.DB.prepare('DELETE FROM slots WHERE id = ?').bind(slotId).run();
       // The partial UNIQUE index on bookings(voucher_code) WHERE status != 'rejected'
-      // makes a concurrent booking of the same voucher fail here — surface a clear 409.
+      // makes a concurrent booking of the same voucher fail here - surface a clear 409.
       const message = err instanceof Error ? err.message.toLowerCase() : '';
       if (body.voucher_code && (message.includes('unique') || message.includes('constraint'))) {
         return Response.json({ error: 'Ten voucher jest już zarezerwowany' }, { status: 409 });
@@ -136,7 +136,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     return Response.json({
       ok: true,
       booking_id: bookingId,
-      message: 'Rezerwacja złożona — oczekuje na zatwierdzenie. Dostaniesz potwierdzenie na email.',
+      message: 'Rezerwacja złożona - oczekuje na zatwierdzenie. Dostaniesz potwierdzenie na email.',
     });
   } catch (err) {
     return Response.json({ error: err instanceof Error ? err.message : 'Unknown error' }, { status: 500 });
@@ -208,8 +208,8 @@ async function sendBookingEmails(env: Env, o: {
   };
 
   await Promise.allSettled([
-    sendEmail(o.customerEmail, `Rezerwacja złożona — ${o.date} ${o.startTime}`, customerHtml),
-    sendEmail('info@akrobacja.com', `✈️ Nowa rezerwacja: ${label} — ${o.date} ${o.startTime}`, adminHtml),
+    sendEmail(o.customerEmail, `Rezerwacja złożona - ${o.date} ${o.startTime}`, customerHtml),
+    sendEmail('info@akrobacja.com', `✈️ Nowa rezerwacja: ${label} - ${o.date} ${o.startTime}`, adminHtml),
   ]);
 }
 

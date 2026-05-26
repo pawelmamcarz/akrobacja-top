@@ -1,7 +1,7 @@
 import { type Env } from '../../../src/lib/types';
 import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
 
-// GET /api/admin/failed-deliveries — last 200 audit rows + grouped counts last 24h.
+// GET /api/admin/failed-deliveries - last 200 audit rows + grouped counts last 24h.
 // Header: Authorization: Bearer ${ADMIN_PASSWORD}
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {

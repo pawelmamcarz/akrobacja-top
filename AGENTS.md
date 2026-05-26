@@ -5,15 +5,15 @@ Stack: Cloudflare Pages + Pages Functions (TypeScript), D1, R2, Workers AI, Stri
 Repo layout i pełny opis stacku: `README.md`.
 
 ## Deployment
-- Always verify git status and remote sync (`git fetch` + `git log origin/main..HEAD`) BEFORE making changes — the local repo may be many commits behind production.
+- Always verify git status and remote sync (`git fetch` + `git log origin/main..HEAD`) BEFORE making changes - the local repo may be many commits behind production.
 - Confirm which Cloudflare project type is in use (Workers vs Pages) before debugging deploy issues.
 
 ## Data Integrity
-- Never use estimated/guessed values for TCO, rankings, or pricing — always run the real calculation engine.
+- Never use estimated/guessed values for TCO, rankings, or pricing - always run the real calculation engine.
 - Filter scraper data for invalid brand-model combinations (e.g., 'MG Mercedes CLE') before any production merge or deploy.
 
 ## Localization
-- All Polish content must include proper diacritics (ą, ć, ę, ł, ń, ó, ś, ź, ż) — verify before commit.
+- All Polish content must include proper diacritics (ą, ć, ę, ł, ń, ó, ś, ź, ż) - verify before commit.
 - When updating one language version (PL/EN), always sync the equivalent change to the other.
 
 ## Session Conventions

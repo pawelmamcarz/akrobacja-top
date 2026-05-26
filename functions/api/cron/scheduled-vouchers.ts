@@ -5,7 +5,7 @@
 // ale POMIJA sendVoucherEmail jeśli order.send_at jest w przyszłości. Ten cron
 // przelatuje co godzinę i wysyła zaplanowane maile gdy nadejdzie ich termin.
 //
-// Cron: wywoływać co 1h (zewnętrzny scheduler — GH Actions / cron-job.org / CF Worker
+// Cron: wywoływać co 1h (zewnętrzny scheduler - GH Actions / cron-job.org / CF Worker
 // cron-trigger). Nagłówek `Authorization: Bearer ${CRON_SECRET}` jeśli CRON_SECRET
 // jest ustawiony. POST i GET działają identycznie (flexibility dla różnych schedulerów).
 //
@@ -68,7 +68,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       }
 
       try {
-        // Pobierz PDF z R2 — webhook już go tam wrzucił przy paid.
+        // Pobierz PDF z R2 - webhook już go tam wrzucił przy paid.
         const obj = await ctx.env.VOUCHER_BUCKET.get(`vouchers/${row.voucher_code}.pdf`);
         if (!obj) {
           failed++;
@@ -77,8 +77,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         }
         const pdfBytes = new Uint8Array(await obj.arrayBuffer());
 
-        // W mailu używamy customer_name (kupujący widzi "Cześć Marta!"), nie recipient_name —
-        // mail leci na customer_email (chyba że kupujący podał maila obdarowanego).
+        // W mailu używamy customer_name (kupujący widzi "Cześć Marta!"), nie recipient_name -         // mail leci na customer_email (chyba że kupujący podał maila obdarowanego).
         await sendVoucherEmail(ctx.env, {
           to: row.customer_email,
           customerName: row.customer_name,
@@ -88,7 +87,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
           siteUrl,
         });
 
-        // Atomic guard — UPDATE only sets email_sent_at jeśli jeszcze NULL (defense in depth).
+        // Atomic guard - UPDATE only sets email_sent_at jeśli jeszcze NULL (defense in depth).
         await ctx.env.DB.prepare(
           `UPDATE orders SET email_sent_at = datetime('now') WHERE id = ? AND email_sent_at IS NULL`
         ).bind(row.id).run();

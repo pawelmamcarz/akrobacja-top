@@ -3,11 +3,11 @@
  * Wstrzykiwany automatycznie na każdej stronie przez middleware.
  *
  * Fires:
- *   - view_item_list — na /voucher-prezent i /lot-akrobacyjny (widok 3 pakietów)
+ *   - view_item_list - na /voucher-prezent i /lot-akrobacyjny (widok 3 pakietów)
  *   - page_view (auto przez gtag config) z custom page_type dla audience segmentation
- *   - begin_checkout — gdy user kliknie [data-package=…]
+ *   - begin_checkout - gdy user kliknie [data-package=…]
  *
- * Wszystkie eventy respektują Consent Mode v2 — gtag sam zdecyduje co wysłać.
+ * Wszystkie eventy respektują Consent Mode v2 - gtag sam zdecyduje co wysłać.
  */
 (function () {
   'use strict';
@@ -19,9 +19,9 @@
   var path = location.pathname.replace(/\/$/, '') || '/';
 
   var PKGS = {
-    pierwszy_lot: { name: 'Voucher — Pierwszy Lot', price: 1999, id: 'AKRO-V-PIERWSZY' },
-    adrenalina:   { name: 'Voucher — Adrenalina',  price: 2999, id: 'AKRO-V-ADRENALINA' },
-    masterclass:  { name: 'Voucher — Masterclass', price: 4999, id: 'AKRO-V-MASTERCLASS' },
+    pierwszy_lot: { name: 'Voucher - Pierwszy Lot', price: 1999, id: 'AKRO-V-PIERWSZY' },
+    adrenalina:   { name: 'Voucher - Adrenalina',  price: 2999, id: 'AKRO-V-ADRENALINA' },
+    masterclass:  { name: 'Voucher - Masterclass', price: 4999, id: 'AKRO-V-MASTERCLASS' },
   };
 
   // Page type classification for audience segmentation in Google Ads / GA4
@@ -39,7 +39,7 @@
   // Send page_type as user property (used for building audience lists)
   if (hasGtag) window.gtag('set', 'user_properties', { page_type: pageType });
 
-  // view_item_list / ViewContent — pages showing the 3 voucher packages
+  // view_item_list / ViewContent - pages showing the 3 voucher packages
   if (pageType === 'voucher_landing' || pageType === 'product_page') {
     var items = Object.keys(PKGS).map(function (key, i) {
       var p = PKGS[key];
@@ -107,7 +107,7 @@
     }
   }, true);
 
-  // Enhanced Conversions — capture checkout form submit and stash customer data
+  // Enhanced Conversions - capture checkout form submit and stash customer data
   // for purchase event on /sukces (improves attribution by 10–15%).
   document.addEventListener('submit', function (e) {
     var form = e.target;
@@ -124,7 +124,7 @@
         ts: Date.now(),
       }));
     } catch (err) {}
-  }, true); // capture phase — runs before the page's own submit handler redirects
+  }, true); // capture phase - runs before the page's own submit handler redirects
 
   // Expose manually fireable events
   window.akroEvents = {

@@ -32,7 +32,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     WHERE id = ?
   `).bind(hash, salt, now, user.id).run();
 
-  // Invalidate every existing session for this user — force re-login on all devices.
+  // Invalidate every existing session for this user - force re-login on all devices.
   await ctx.env.DB.prepare(`DELETE FROM admin_sessions WHERE user_id = ?`).bind(user.id).run();
 
   return Response.json({ ok: true, email: user.email });

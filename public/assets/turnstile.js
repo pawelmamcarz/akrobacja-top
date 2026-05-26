@@ -1,4 +1,4 @@
-// Cloudflare Turnstile — explicit rendering with named tokens per form.
+// Cloudflare Turnstile - explicit rendering with named tokens per form.
 // Middleware injects window.TURNSTILE_SITE_KEY and the loader script
 // (challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback&render=explicit).
 // Each form on the page declares <div class="cf-turnstile" data-name="<form>"></div>.

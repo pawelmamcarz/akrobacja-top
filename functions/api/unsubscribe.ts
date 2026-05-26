@@ -56,7 +56,7 @@ async function handle(
 
   // Match by either column. UPDATE returns row count via .meta.changes; we
   // intentionally don't differentiate "found" vs "not found" in the response
-  // — would leak subscriber status to anyone with a hit list.
+  // - would leak subscriber status to anyone with a hit list.
   const where: string[] = [];
   const binds: string[] = [];
   if (normalizedPhone) { where.push('phone = ?'); binds.push(normalizedPhone); }
@@ -68,6 +68,6 @@ async function handle(
 
   return Response.json({
     ok: true,
-    message: 'Wypisaliśmy Cię z listy. Nie dostaniesz od nas więcej SMS-ów ani emaili. Możesz wrócić w każdej chwili — wystarczy zapisać się ponownie.',
+    message: 'Wypisaliśmy Cię z listy. Nie dostaniesz od nas więcej SMS-ów ani emaili. Możesz wrócić w każdej chwili - wystarczy zapisać się ponownie.',
   });
 }

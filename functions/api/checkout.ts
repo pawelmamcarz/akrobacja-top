@@ -4,15 +4,15 @@ import { isValidEmail, isValidSendAt } from '../../src/lib/validate';
 
 interface CheckoutBody {
   packageId: PackageId;
-  videoAddon?: boolean;   // legacy — utrzymane dla starszych formularzy. Zostaje zmergowane z addons[].
-  addons?: string[];      // nowe — lista AddonId (np. ['video','second_seat']). Walidowane przeciw ADDONS + applicablePackages.
+  videoAddon?: boolean;   // legacy - utrzymane dla starszych formularzy. Zostaje zmergowane z addons[].
+  addons?: string[];      // nowe - lista AddonId (np. ['video','second_seat']). Walidowane przeciw ADDONS + applicablePackages.
   customerName: string;
   customerEmail: string;
   customerNip?: string;
   discountCode?: string;
   source?: string;        // page slug from where checkout was initiated (for cancel_url)
-  // Personalizacja vouchera (prezent) — wszystkie opcjonalne, default = obecne zachowanie.
-  recipientName?: string; // imię obdarowanego (max 80) — fallback do customerName
+  // Personalizacja vouchera (prezent) - wszystkie opcjonalne, default = obecne zachowanie.
+  recipientName?: string; // imię obdarowanego (max 80) - fallback do customerName
   dedication?: string;    // dedykacja na PDF (max 200)
   sendAt?: string;        // ISO date/datetime, planowana wysyłka maila (max +365 dni)
 }
@@ -26,12 +26,12 @@ const CANCEL_URLS: Record<string, string> = {
 };
 
 // Valid discount codes, simple registry to avoid D1 lookup on every checkout.
-//   pct                 — percentage off
-//   fixed               — fixed amount off (grosze, 100 = 1 PLN)
-//   applicablePackages  — optional whitelist; if set, the code is rejected for any other pkg
-//   validFrom           — inclusive YYYY-MM-DD (UTC date) the code becomes active
-//   validUntil          — inclusive YYYY-MM-DD the code stops being accepted
-//   singleUse           — gdy true, kod może być wykorzystany tylko RAZ globalnie. Po pierwszym
+//   pct                 - percentage off
+//   fixed               - fixed amount off (grosze, 100 = 1 PLN)
+//   applicablePackages  - optional whitelist; if set, the code is rejected for any other pkg
+//   validFrom           - inclusive YYYY-MM-DD (UTC date) the code becomes active
+//   validUntil          - inclusive YYYY-MM-DD the code stops being accepted
+//   singleUse           - gdy true, kod może być wykorzystany tylko RAZ globalnie. Po pierwszym
 //                         orderze ze statusem 'paid' / 'processing' jest odrzucany dla wszystkich
 //                         kolejnych. Sprawdzane query do D1 przy próbie aplikacji.
 // WRACAM5 = -5% recovery (abandoned cart). PIERWSZY100 = -100 PLN (welcome / first-time).
@@ -78,7 +78,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!pkg) {
       return Response.json({ error: 'Nieprawidłowy pakiet' }, { status: 400 });
     }
-    // test_naklejka exists only for live-pixel verification — never accept it from any
+    // test_naklejka exists only for live-pixel verification - never accept it from any
     // surface other than the dedicated test page. Otherwise an attacker could blast cheap
     // 2-PLN purchases that fire Meta CAPI Purchase events and pollute ML optimisation data.
     if (body.packageId === 'test_naklejka' && body.source !== 'test-konwersji') {
@@ -91,7 +91,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
     }
 
-    // Personalizacja prezentu — sanityzacja długości, walidacja sendAt.
+    // Personalizacja prezentu - sanityzacja długości, walidacja sendAt.
     const recipientName = body.recipientName?.trim().slice(0, 80) || null;
     const dedication = body.dedication?.trim().slice(0, 200) || null;
     let sendAt: string | null = null;
@@ -150,7 +150,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       }
     }
 
-    // singleUse — kod ważny tylko do pierwszego udanego zakupu (statyczne DISCOUNTS).
+    // singleUse - kod ważny tylko do pierwszego udanego zakupu (statyczne DISCOUNTS).
     // Personal codes maja wlasny mechanizm (used_at sprawdzane wyzej).
     if (discount?.singleUse && !personalCodeRow) {
       const used = await ctx.env.DB.prepare(
@@ -246,7 +246,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const cancelPath = CANCEL_URLS[body.source || ''] || '/voucher-prezent';
     params.append('cancel_url', `${siteUrl}${cancelPath}`);
     params.append('locale', 'pl');
-    // Keep card/P24/BLIK explicit — Stripe Dashboard activation of P24/BLIK is per-account,
+    // Keep card/P24/BLIK explicit - Stripe Dashboard activation of P24/BLIK is per-account,
     // not guaranteed for new accounts, and we don't want to silently drop Polish payment
     // methods our customers actually use. Apple Pay / Google Pay piggyback on the 'card'
     // method on supported devices, so the conversion win is preserved.
@@ -276,7 +276,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const session = (await stripeRes.json()) as { id?: string; url?: string; error?: { message?: string } };
 
     if (!stripeRes.ok || !session.url) {
-      // Oznacz order jako failed — inaczej zostaje 'pending' i łapie się do abandoned-cart.
+      // Oznacz order jako failed - inaczej zostaje 'pending' i łapie się do abandoned-cart.
       await ctx.env.DB.prepare(
         "UPDATE orders SET status = 'failed' WHERE id = ? AND status = 'pending'"
       ).bind(orderId).run();

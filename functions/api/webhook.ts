@@ -20,7 +20,7 @@ async function notifyOwnerMerch(env: Env, o: {
   const rows = o.items.map(i =>
     `<tr>
       <td style="padding:8px;border-bottom:1px solid #eee">${escapeHtml(i.name)}</td>
-      <td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${escapeHtml(i.variant || '—')}</td>
+      <td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${escapeHtml(i.variant || '-')}</td>
       <td style="padding:8px;border-bottom:1px solid #eee;text-align:center">${i.quantity}</td>
       <td style="padding:8px;border-bottom:1px solid #eee;text-align:right">${(i.price / 100).toFixed(2)} PLN</td>
     </tr>`
@@ -33,7 +33,7 @@ async function notifyOwnerMerch(env: Env, o: {
       from: 'akrobacja.com <system@akrobacja.com>',
       to: ['info@akrobacja.com'],
       tags: [{ name: 'type', value: 'owner-merch-notify' }],
-      subject: `🛍️ Nowe zamówienie merch — ${o.customerName} — ${totalPLN} PLN`,
+      subject: `🛍️ Nowe zamówienie merch - ${o.customerName} - ${totalPLN} PLN`,
       html: `
 <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
   <h2 style="color:#0A2F7C;margin:0 0 4px">Nowe zamówienie merch</h2>
@@ -95,7 +95,7 @@ async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: P
         from: 'akrobacja.com <system@akrobacja.com>',
         to: ['info@akrobacja.com'],
         tags: [{ name: 'type', value: 'owner-voucher-notify' }],
-        subject: `💰 Nowe zamówienie: ${pkg.name} — ${amountPLN}`,
+        subject: `💰 Nowe zamówienie: ${pkg.name} - ${amountPLN}`,
         html: `
           <div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto">
             <h2 style="color:#0A2F7C;margin:0 0 16px">Nowe zamówienie opłacone!</h2>
@@ -112,7 +112,7 @@ async function notifyOwnerOrder(env: Env, o: { voucherCode: string; packageId: P
       }),
     });
   } catch (err) {
-    // Non-critical — admin-notify nie blokuje sukcesu zamówienia, ale loguj do CF Logs
+    // Non-critical - admin-notify nie blokuje sukcesu zamówienia, ale loguj do CF Logs
     // i audit-table żeby admin widział oprócz "pusta skrzynka" konkretną przyczynę.
     console.error('notifyOwnerOrder failed:', err);
     await recordFailedDelivery(env, {
@@ -144,7 +144,7 @@ async function verifyStripeSignature(payload: string, sig: string, secret: strin
 
   if (!parts.timestamp || parts.signatures.length === 0) return false;
 
-  // Reject replayed payloads — Stripe SDK enforces the same 5-minute tolerance.
+  // Reject replayed payloads - Stripe SDK enforces the same 5-minute tolerance.
   const ts = Number(parts.timestamp);
   if (!Number.isFinite(ts) || Math.abs(Date.now() / 1000 - ts) > SIGNATURE_TOLERANCE_SECONDS) {
     return false;
@@ -175,7 +175,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     const webhookSecret = ctx.env.STRIPE_WEBHOOK_SECRET?.replace(/\s/g, '') || '';
     if (!webhookSecret) {
-      // Fail loud — without a secret any payload would pass verification.
+      // Fail loud - without a secret any payload would pass verification.
       return Response.json({ error: 'Webhook not configured' }, { status: 500 });
     }
 
@@ -186,7 +186,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const session = event.data.object;
     const metadata = session.metadata as Record<string, string> | undefined;
 
-    // Terminal non-success eventy — flip ordera, żeby nie zostawał zombie 'pending'
+    // Terminal non-success eventy - flip ordera, żeby nie zostawał zombie 'pending'
     // w abandoned-cart cronie. Tylko dla naszych orderów (matchujemy po metadata).
     if (event.type === 'checkout.session.expired' || event.type === 'checkout.session.async_payment_failed') {
       const newStatus = event.type === 'checkout.session.expired' ? 'expired' : 'failed';
@@ -232,7 +232,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       return Response.json({ ok: true, skipped: event.type });
     }
 
-    // Handle merch orders — atomic update prevents double-processing on webhook retry.
+    // Handle merch orders - atomic update prevents double-processing on webhook retry.
     if (metadata?.merch_order_id) {
       const merchOrderId = metadata.merch_order_id;
       const res = await ctx.env.DB.prepare(
@@ -282,7 +282,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     // Atomic claim: flip status pending→processing in one step. If no rows change,
-    // another webhook (or retry) is already handling this order — ack and stop.
+    // another webhook (or retry) is already handling this order - ack and stop.
     const claim = await ctx.env.DB.prepare(
       "UPDATE orders SET status = 'processing' WHERE id = ? AND status = 'pending'"
     ).bind(orderId).run();
@@ -305,7 +305,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     // Out-of-order safety: Stripe's charge.refunded may have arrived BEFORE this
     // checkout.session.completed event (rare but possible during replays). If so,
-    // refund_received_at is already set — finalize to refunded without issuing PDF,
+    // refund_received_at is already set - finalize to refunded without issuing PDF,
     // invoice or email.
     if (order.refund_received_at) {
       await ctx.env.DB.prepare(
@@ -318,7 +318,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     // Sanity: assert Stripe charged what we expected. amount_total is in the smallest
     // currency unit (grosze for PLN), same as our orders.amount. If they diverge,
     // someone or something is editing the price between checkout-create and webhook
-    // — log it and refuse to issue the voucher.
+    // - log it and refuse to issue the voucher.
     const stripeAmount = Number((session as { amount_total?: number }).amount_total);
     if (Number.isFinite(stripeAmount) && stripeAmount !== order.amount) {
       console.error(`[webhook] amount mismatch for ${voucherCode}: stripe=${stripeAmount} db=${order.amount}`);
@@ -334,7 +334,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const customerNip = order.customer_nip as string | undefined;
     const videoAddon = order.video_addon === 1;
     // orders.addons jest JSON tekstem zapisanym w checkout.ts. Stary order (sprzed migracji
-    // 019) ma NULL — fallback: 'video' tylko jeśli video_addon == 1, dzięki czemu pojedyncza
+    // 019) ma NULL - fallback: 'video' tylko jeśli video_addon == 1, dzięki czemu pojedyncza
     // pozycja "Video 360°" trafia do faktury tak jak wcześniej.
     let addons: string[];
     if (typeof order.addons === 'string' && order.addons.length > 0) {
@@ -351,12 +351,12 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const recipientName = (order.recipient_name as string | null) ?? null;
     const dedication = (order.dedication as string | null) ?? null;
     const sendAt = (order.send_at as string | null) ?? null;
-    // Voucher zaplanowany na przyszłość — generuj PDF + wrzuć do R2, ale email
+    // Voucher zaplanowany na przyszłość - generuj PDF + wrzuć do R2, ale email
     // wysyła cron scheduled-vouchers gdy nadejdzie send_at. Owner notify i Meta CAPI
     // lecą normalnie (właściciel chce wiedzieć od razu, Pixel deduplikuje purchase).
     const scheduleEmail = sendAt !== null && Date.parse(sendAt) > Date.now();
 
-    // Test product — skip PDF/invoice/email; mark paid + fire Meta CAPI and return.
+    // Test product - skip PDF/invoice/email; mark paid + fire Meta CAPI and return.
     if (packageId === 'test_naklejka') {
       await ctx.env.DB.prepare(`
         UPDATE orders SET status = 'paid', paid_at = datetime('now'), stripe_session_id = ?
@@ -378,7 +378,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     }
 
     try {
-      // PDF blocks everything else — R2, email, and the final invoice_id are derived from it.
+      // PDF blocks everything else - R2, email, and the final invoice_id are derived from it.
       const pdfBytes = await generateVoucherPdf({
         voucherCode,
         packageId,
@@ -389,7 +389,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         dedication,
       });
 
-      // Idempotency guards — on Stripe retry these may already be populated from a partial
+      // Idempotency guards - on Stripe retry these may already be populated from a partial
       // previous run. Skip the side effect rather than double-issue an invoice or email.
       const existingInvoiceId = (order.invoice_id as string | null) ?? null;
       const existingEmailSentAt = (order.email_sent_at as string | null) ?? null;
@@ -397,7 +397,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       const shouldInvoice = !!isLive && !existingInvoiceId;
       const shouldEmail = !scheduleEmail && !existingEmailSentAt;
 
-      // R2 put is idempotent (same key overwrites). Invoice and email are NOT — gate them on
+      // R2 put is idempotent (same key overwrites). Invoice and email are NOT - gate them on
       // the existing-state flags above. Promise.allSettled so a soft failure in one path does
       // not roll back the others (which would re-fire the side effect on Stripe retry).
       const [r2Res, invoiceRes, emailRes] = await Promise.allSettled([
@@ -429,7 +429,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
           : Promise.resolve(undefined),
       ]);
 
-      // R2 put is the only fatal failure — we cannot serve the PDF without it.
+      // R2 put is the only fatal failure - we cannot serve the PDF without it.
       if (r2Res.status === 'rejected') {
         throw r2Res.reason instanceof Error ? r2Res.reason : new Error('R2 put failed');
       }
@@ -462,7 +462,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         }));
       }
 
-      // Finalize — guard on status='processing' so we never overwrite a manual cancel.
+      // Finalize - guard on status='processing' so we never overwrite a manual cancel.
       // email_sent_at + invoice_id were already persisted above; this UPDATE only flips status.
       await ctx.env.DB.prepare(`
         UPDATE orders SET status = 'paid', paid_at = datetime('now'), stripe_session_id = ?

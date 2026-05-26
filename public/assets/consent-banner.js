@@ -1,8 +1,8 @@
 /**
  * Cookie Consent Banner + Google Consent Mode v2
- * Style: match akrobacja.com — navy / cyan / white premium
+ * Style: match akrobacja.com - navy / cyan / white premium
  *
- * Kategorie (uproszczone do 2 — Niezbędne + Marketing):
+ * Kategorie (uproszczone do 2 - Niezbędne + Marketing):
  *   - Niezbędne: zawsze ON (techniczne, bez nich strona nie działa)
  *   - Marketing: analytics_storage, ad_storage, ad_user_data, ad_personalization
  *

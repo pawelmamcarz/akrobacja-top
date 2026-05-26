@@ -1,4 +1,4 @@
-# Pożyczka 0% na Kurs Akrobacji FCL.800 — pełna instrukcja
+# Pożyczka 0% na Kurs Akrobacji FCL.800 - pełna instrukcja
 
 **Dokument referencyjny dla klientów akrobacja.com pytających o dofinansowanie szkolenia akrobacyjnego.**
 
@@ -6,9 +6,9 @@ Aktualny stan: maj 2026. Źródła: BGK, portal ogólnopolski pożyczkinaksztalc
 
 ---
 
-## TL;DR — co to jest
+## TL;DR - co to jest
 
-**Pożyczka na Kształcenie BGK** z programu **„Postaw na Rozwój — europejskie pożyczki na kształcenie"** — finansowana z Funduszy Europejskich dla Rozwoju Społecznego (FERS 2021–2027) i Europejskiego Funduszu Społecznego Plus (EFS+).
+**Pożyczka na Kształcenie BGK** z programu **„Postaw na Rozwój - europejskie pożyczki na kształcenie"** - finansowana z Funduszy Europejskich dla Rozwoju Społecznego (FERS 2021–2027) i Europejskiego Funduszu Społecznego Plus (EFS+).
 
 - **Operator:** Bank Gospodarstwa Krajowego (BGK), wdrażane przez 5 operatorów regionalnych (PFP, ARR Konin, BCP, BFP, inni)
 - **Oprocentowanie:** **0%** przez cały okres spłaty
@@ -41,11 +41,11 @@ Kurs FCL.800 mieści się we wszystkich wymaganiach pożyczki z dużym zapasem. 
 
 Wszystkie poniższe warunki muszą być spełnione jednocześnie:
 
-1. **Pełnoletniość** — ukończone 18 lat
-2. **Miejsce zamieszkania w Polsce** (niezależnie od województwa — od kwietnia 2025 jeden ogólnopolski system)
+1. **Pełnoletniość** - ukończone 18 lat
+2. **Miejsce zamieszkania w Polsce** (niezależnie od województwa - od kwietnia 2025 jeden ogólnopolski system)
 3. **Pełna zdolność do czynności prawnych**
-4. **Cel: kurs zawodowy pozaakademicki** — FCL.800 jako szkolenie zawodowe się kwalifikuje. NIE kwalifikują się: studia I, II, III stopnia ani jednolite magisterskie.
-5. **Czas trwania szkolenia nie dłuższy niż 36 miesięcy** — FCL.800 to 4–6 miesięcy, więc OK.
+4. **Cel: kurs zawodowy pozaakademicki** - FCL.800 jako szkolenie zawodowe się kwalifikuje. NIE kwalifikują się: studia I, II, III stopnia ani jednolite magisterskie.
+5. **Czas trwania szkolenia nie dłuższy niż 36 miesięcy** - FCL.800 to 4–6 miesięcy, więc OK.
 
 Nie ma wymagań co do statusu zatrudnienia. Można brać pożyczkę jako:
 - Pracownik na umowie o pracę
@@ -55,27 +55,27 @@ Nie ma wymagań co do statusu zatrudnienia. Można brać pożyczkę jako:
 
 ---
 
-## Krok po kroku — od kliknięcia w link do startu kursu
+## Krok po kroku - od kliknięcia w link do startu kursu
 
-### Krok 1 — Wejdź na portal
+### Krok 1 - Wejdź na portal
 
 Otwórz w przeglądarce: **[pozyczkinaksztalcenie.pl](https://pozyczkinaksztalcenie.pl/)**
 
 Od kwietnia 2025 to jeden ogólnopolski system. Niezależnie od województwa, masz dostęp do wszystkich operatorów regionalnych przez jeden formularz.
 
-### Krok 2 — Wybierz operatora
+### Krok 2 - Wybierz operatora
 
 Portal zaproponuje operatora regionalnego dopasowanego do Twojego województwa. Możesz też wybrać sam z listy:
 
-- **PFP** — Polska Fundacja Przedsiębiorczości (zachodniopomorskie i sąsiednie)
-- **ARR Konin** — Agencja Rozwoju Regionalnego (wielkopolskie i sąsiednie)
-- **BCP Bielsko-Biała** — Bielskie Centrum Przedsiębiorczości (śląskie i sąsiednie)
-- **BFP** — Brodnicka Fundacja Promocji (kujawsko-pomorskie i sąsiednie)
+- **PFP** - Polska Fundacja Przedsiębiorczości (zachodniopomorskie i sąsiednie)
+- **ARR Konin** - Agencja Rozwoju Regionalnego (wielkopolskie i sąsiednie)
+- **BCP Bielsko-Biała** - Bielskie Centrum Przedsiębiorczości (śląskie i sąsiednie)
+- **BFP** - Brodnicka Fundacja Promocji (kujawsko-pomorskie i sąsiednie)
 - Inni operatorzy regionalni
 
 **Wszyscy operatorzy mają takie same warunki finansowe.** Różnią się tylko obsługą i tempem rozpatrywania wniosku. Możesz wybrać kogo chcesz.
 
-### Krok 3 — Zbierz dokumenty
+### Krok 3 - Zbierz dokumenty
 
 Lista podstawowa (do wniosku):
 
@@ -86,29 +86,29 @@ Lista podstawowa (do wniosku):
   - Inne źródła → adekwatne dokumenty
 - **Zaświadczenie z ZUS o niezaleganiu** (jeśli prowadzisz działalność)
 - **Zaświadczenie z US o niezaleganiu** (jeśli prowadzisz działalność)
-- **Oferta szkolenia od akrobacja.com** — to ja wystawiam:
+- **Oferta szkolenia od akrobacja.com** - to ja wystawiam:
   - Program FCL.800 (zakres godzin, zaliczenia, świadectwo)
   - Cena 20 900 zł
   - Termin szkolenia (rok i orientacyjny miesiąc startu)
   - Dane DTO (Aeroklub Radomski) i numer ewidencji ULC
   - Konto bankowe akrobacja.com na które operator przeleje środki
   
-  **Aby uzyskać ofertę — napisz na info@akrobacja.com lub WhatsApp +48 739 158 131.** Przygotujemy w 24 godziny w dni robocze.
+  **Aby uzyskać ofertę - napisz na info@akrobacja.com lub WhatsApp +48 739 158 131.** Przygotujemy w 24 godziny w dni robocze.
 
-### Krok 4 — Wypełnij wniosek online
+### Krok 4 - Wypełnij wniosek online
 
 Formularz dostępny po wybraniu operatora. Trwa **około 30 minut**:
 
 - Dane osobowe
 - Dane kontaktowe
-- Cel pożyczki (kurs FCL.800 — szkolenie zawodowe lotnicze)
+- Cel pożyczki (kurs FCL.800 - szkolenie zawodowe lotnicze)
 - Kwota pożyczki (do 75 000 zł, w naszym przypadku 20 900 zł)
 - Załączenie skanów dokumentów
 - Wybór preferowanej długości spłaty (do 36 mies.)
 
 Wszystko zdalnie, bez wizyty w oddziale.
 
-### Krok 5 — Decyzja operatora
+### Krok 5 - Decyzja operatora
 
 **Czas oczekiwania: 14 do 30 dni roboczych.**
 
@@ -118,20 +118,20 @@ Operator weryfikuje:
 - Ofertę szkolenia od akrobacja.com
 - Sprawdza czy szkolenie kwalifikuje się do programu
 
-Decyzja przychodzi e-mailem. W przypadku akceptacji — przechodzisz do umowy.
+Decyzja przychodzi e-mailem. W przypadku akceptacji - przechodzisz do umowy.
 
-### Krok 6 — Podpisz umowę pożyczki
+### Krok 6 - Podpisz umowę pożyczki
 
 Dwie opcje:
-- **Elektronicznie** — profil zaufany (zalogowanie przez bank lub mObywatel) lub podpis kwalifikowany
-- **W oddziale operatora** — wizyta osobista, jeśli wolisz papier
+- **Elektronicznie** - profil zaufany (zalogowanie przez bank lub mObywatel) lub podpis kwalifikowany
+- **W oddziale operatora** - wizyta osobista, jeśli wolisz papier
 
 Umowa zawiera:
 - Harmonogram spłat (rata miesięczna × liczba miesięcy)
 - Warunki umorzenia (jakie dokumenty trzeba dostarczyć po kursie)
 - Dane organizatora kursu (akrobacja.com / Aeroklub Radomski)
 
-### Krok 7 — Wypłata środków
+### Krok 7 - Wypłata środków
 
 Operator przelewa **20 900 zł bezpośrednio na konto akrobacja.com / Aeroklubu Radomskiego**.
 
@@ -141,7 +141,7 @@ Operator przelewa **20 900 zł bezpośrednio na konto akrobacja.com / Aeroklubu 
 
 Czas: typowo 5–10 dni roboczych po podpisaniu umowy.
 
-### Krok 8 — Realizujesz kurs FCL.800
+### Krok 8 - Realizujesz kurs FCL.800
 
 Standardowy program szkoleniowy w akrobacja.com:
 
@@ -150,9 +150,9 @@ Standardowy program szkoleniowy w akrobacja.com:
 - **Zakres:** minimum 5 godzin nalotu szkoleniowego + briefingi + zaliczenia teoretyczne
 - **Po zaliczeniu:** świadectwo ukończenia FCL.800 + wpis do licencji ULC
 
-Spłata pożyczki **może już się zacząć w trakcie kursu** (zgodnie z harmonogramem umowy). Można też ustalić karencję (3–6 mies.) — pytaj operatora.
+Spłata pożyczki **może już się zacząć w trakcie kursu** (zgodnie z harmonogramem umowy). Można też ustalić karencję (3–6 mies.) - pytaj operatora.
 
-### Krok 9 — Wystąp o umorzenie kapitału
+### Krok 9 - Wystąp o umorzenie kapitału
 
 Po ukończeniu kursu, składasz u operatora wniosek o umorzenie:
 
@@ -172,7 +172,7 @@ Po ukończeniu kursu, składasz u operatora wniosek o umorzenie:
 
 Operator podejmuje decyzję o bonusach na podstawie dokumentacji. Standardowe 25% dostaje **każdy** kto skończy kurs.
 
-### Krok 10 — Spłata pozostałego kapitału
+### Krok 10 - Spłata pozostałego kapitału
 
 **Warunki:**
 - Maksymalnie 36 miesięcy
@@ -271,10 +271,10 @@ Klient załącza ten PDF/email do wniosku w pozyczkinaksztalcenie.pl.
 ## Najczęstsze obiekcje i odpowiedzi
 
 **„Nie wiem czy dostanę pożyczkę"**
-→ Decyzja jest na podstawie zdolności kredytowej. Jeśli masz stałe dochody (umowa o pracę, B2B z 6+ mies. historii), to typowo akceptowane. Operator nie sprawdza zdolności do bardzo restrykcyjnych standardów banków komercyjnych — to pożyczka unijna z innym ryzykiem.
+→ Decyzja jest na podstawie zdolności kredytowej. Jeśli masz stałe dochody (umowa o pracę, B2B z 6+ mies. historii), to typowo akceptowane. Operator nie sprawdza zdolności do bardzo restrykcyjnych standardów banków komercyjnych - to pożyczka unijna z innym ryzykiem.
 
 **„A jeśli nie skończę kursu?"**
-→ Spłacasz pełną kwotę bez umorzenia. To 580 zł miesięcznie zamiast 435 zł — różnica jest niewielka. Warto skończyć żeby dostać 25%.
+→ Spłacasz pełną kwotę bez umorzenia. To 580 zł miesięcznie zamiast 435 zł - różnica jest niewielka. Warto skończyć żeby dostać 25%.
 
 **„Gdzie idzie kasa?"**
 → Bezpośrednio na konto akrobacja.com / Aeroklubu Radomskiego. Klient nie obraca gotówką. Brak ryzyka że pieniądze gdzieś znikną.
@@ -283,17 +283,17 @@ Klient załącza ten PDF/email do wniosku w pozyczkinaksztalcenie.pl.
 → Tak, bez prowizji. Wczesna spłata nie wpływa na umorzenie (umorzenie liczy się od pełnego kapitału po ukończeniu kursu).
 
 **„Czy moja firma może wziąć tę pożyczkę?"**
-→ Nie. Pożyczka na Kształcenie BGK jest dla osób fizycznych. Dla firm jest osobny program **„Pożyczka Rozwojowa MŚP"** — to inne narzędzie, dla inwestycji w przedsiębiorstwo.
+→ Nie. Pożyczka na Kształcenie BGK jest dla osób fizycznych. Dla firm jest osobny program **„Pożyczka Rozwojowa MŚP"** - to inne narzędzie, dla inwestycji w przedsiębiorstwo.
 
 **„Mam już PPL(A), czy mogę?"**
 → Tak, FCL.800 wymaga PPL(A) jako warunek wstępny. Pożyczka pokrywa kurs FCL.800 (a nie PPL).
 
 **„A jeśli nie mam PPL(A)?"**
-→ Najpierw zrób PPL (akrobacja.com nie szkoli na PPL — kontaktujesz aeroklub). Potem FCL.800 z naszą pożyczką. Niektórzy operatorzy pozwalają wziąć pożyczkę na kombinowany kurs PPL + FCL.800 — pytaj.
+→ Najpierw zrób PPL (akrobacja.com nie szkoli na PPL - kontaktujesz aeroklub). Potem FCL.800 z naszą pożyczką. Niektórzy operatorzy pozwalają wziąć pożyczkę na kombinowany kurs PPL + FCL.800 - pytaj.
 
 ---
 
-## Wymagane dokumenty od akrobacja.com — szybka lista
+## Wymagane dokumenty od akrobacja.com - szybka lista
 
 Klient prosi nas o:
 
@@ -319,9 +319,9 @@ Czas wystawienia: **24 godziny w dni robocze**.
 ## Linki źródłowe
 
 - **Portal ogólnopolski pożyczek:** https://pozyczkinaksztalcenie.pl/
-- **BGK — strona produktu „Postaw na rozwój":** https://www.bgk.pl/osoby-prywatne/edukacja/postaw-na-rozwoj-europejskie-pozyczki-na-ksztalcenie-fers/
-- **BGK — warunki techniczne pożyczki:** https://www.bgk.pl/produkty/pozyczka-na-ksztalcenie/
-- **Ministerstwo Funduszy i Polityki Regionalnej — informacja o programie:** https://www.funduszeeuropejskie.gov.pl/
+- **BGK - strona produktu „Postaw na rozwój":** https://www.bgk.pl/osoby-prywatne/edukacja/postaw-na-rozwoj-europejskie-pozyczki-na-ksztalcenie-fers/
+- **BGK - warunki techniczne pożyczki:** https://www.bgk.pl/produkty/pozyczka-na-ksztalcenie/
+- **Ministerstwo Funduszy i Polityki Regionalnej - informacja o programie:** https://www.funduszeeuropejskie.gov.pl/
 
 ---
 

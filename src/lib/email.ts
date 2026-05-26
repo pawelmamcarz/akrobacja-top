@@ -42,7 +42,7 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
         { name: 'package', value: params.packageId },
       ],
       html: buildHtml(params),
-      // List-Unsubscribe header — required by Gmail/Yahoo bulk-sender rules and PL
+      // List-Unsubscribe header - required by Gmail/Yahoo bulk-sender rules and PL
       // Prawo Telekomunikacyjne art. 172 (opt-out from marketing comms). Voucher
       // delivery is transactional so unsubscribe is largely cosmetic here, but Gmail
       // looks at consistency across the sender domain, so it gets the header too.

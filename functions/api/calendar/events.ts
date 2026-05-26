@@ -77,7 +77,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   return Response.json({ events: results });
 };
 
-// POST /api/calendar/events — admin tworzy nowy wielogodzinny event
+// POST /api/calendar/events - admin tworzy nowy wielogodzinny event
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   const adminUser = await getAdminUserAsync(ctx.request, ctx.env);
   if (!adminUser) {
@@ -145,7 +145,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     };
     const ics = buildSingleEventICS(
       icsEvent,
-      `akrobacja.com — ${pilot.name || pilot.email}`,
+      `akrobacja.com - ${pilot.name || pilot.email}`,
       'maciej@akrobacja.com',
       pilot.email,
     );
@@ -172,7 +172,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       sendEventEmailWithICS(ctx.env, {
         to: [pilot.email],
         bcc: ['info@akrobacja.com'],
-        subject: `Nowy event: ${body.title || body.type} — ${startWarsaw}`,
+        subject: `Nowy event: ${body.title || body.type} - ${startWarsaw}`,
         html,
         icsContent: ics,
         filename: `event-${id}.ics`,

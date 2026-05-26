@@ -49,7 +49,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!r2Key.startsWith(keyPrefix)) {
       return Response.json({ error: `r2_key ${r2Key} nie pasuje do voucher ${voucherCode}` }, { status: 400 });
     }
-    // Verify object actually exists in R2 — prevents fake confirms from
+    // Verify object actually exists in R2 - prevents fake confirms from
     // adding ghost rows that 404 when admin previews them later.
     const head = await ctx.env.VOUCHER_BUCKET.head(r2Key);
     if (!head) {

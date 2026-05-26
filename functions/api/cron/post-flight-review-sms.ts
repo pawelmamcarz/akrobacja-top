@@ -13,7 +13,7 @@
 // gap in cron availability.
 //
 // Cron schedule: daily at 10:07 UTC (12:07 Warsaw summer / 11:07 winter). Avoids
-// hitting customers too early — most flights end mid-afternoon, so day-after
+// hitting customers too early - most flights end mid-afternoon, so day-after
 // SMS feels like a polite reminder.
 
 import { type Env } from '../../../src/lib/types';
@@ -80,7 +80,7 @@ async function runCron(ctx: Parameters<PagesFunction<Env>>[0]): Promise<Response
     }
 
     for (const row of rows) {
-      // Claim before send — UPDATE returns changes=1 only on first run to dodge a
+      // Claim before send - UPDATE returns changes=1 only on first run to dodge a
       // race where two cron invocations could overlap. If claim fails, skip.
       const claim = await ctx.env.DB.prepare(
         `UPDATE bookings SET review_request_sent_at = datetime('now')
@@ -103,7 +103,7 @@ async function runCron(ctx: Parameters<PagesFunction<Env>>[0]): Promise<Response
         results.push({ booking: row.id, phone: row.customer_phone, status: 'sent' });
       } catch (err) {
         // Release the claim so the next run can retry, unless the failure looks
-        // structural (invalid phone format etc.) — heuristic on error text.
+        // structural (invalid phone format etc.) - heuristic on error text.
         const msg = err instanceof Error ? err.message : 'unknown';
         const permanent = /format|invalid|blacklist/i.test(msg);
         if (!permanent) {

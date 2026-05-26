@@ -1,4 +1,4 @@
-// Meta Conversions API (server-side) — sends Purchase event with hashed user data.
+// Meta Conversions API (server-side) - sends Purchase event with hashed user data.
 // Pairs with client-side Pixel via shared event_id (dedup).
 // https://developers.facebook.com/docs/marketing-api/conversions-api
 
@@ -70,9 +70,9 @@ export async function sendMetaPurchase(env: Env, ev: PurchaseEvent): Promise<voi
           value: valuePLN,
           content_ids: [`AKRO-V-${ev.packageId.toUpperCase().replace('_', '-')}`],
           content_type: 'product',
-          content_name: `Voucher — ${pkg.name}`,
+          content_name: `Voucher - ${pkg.name}`,
           content_category: 'Voucher',
-          // One physical product (the voucher) — video is an addon, not a second item.
+          // One physical product (the voucher) - video is an addon, not a second item.
           num_items: 1,
           order_id: ev.voucherCode,
         },
@@ -80,7 +80,7 @@ export async function sendMetaPurchase(env: Env, ev: PurchaseEvent): Promise<voi
     ],
   };
 
-  // Test events mode — only visible in Meta Events Manager → Test Events tab
+  // Test events mode - only visible in Meta Events Manager → Test Events tab
   if (env.META_TEST_EVENT_CODE) {
     payload.test_event_code = env.META_TEST_EVENT_CODE;
   }

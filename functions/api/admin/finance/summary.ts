@@ -7,7 +7,7 @@
 //     split by payment_method: stripe (default + null) / cash / transfer / free (=0)
 //   merch_orders.total_amount where status='paid'
 //   courses.amount (NB: courses doesn't have a date column equivalent to paid_at;
-//     plan keeps it simple — sum all courses in period via created_at)
+//     plan keeps it simple - sum all courses in period via created_at)
 //
 // Expenses: expenses.gross_amount grouped by COALESCE(manual_category, category, 'inne').
 
@@ -79,7 +79,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   }
   if (!to) to = today.toISOString().slice(0, 10);
 
-  // Income — vouchers (orders)
+  // Income - vouchers (orders)
   const income = await ctx.env.DB.prepare(`
     SELECT strftime('${dateFmt}', paid_at) AS bucket,
            COALESCE(payment_method, 'stripe') AS payment_method,
@@ -105,7 +105,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     GROUP BY bucket
   `).bind(from, to).all<MerchRow>();
 
-  // Courses revenue (uses created_at — courses table doesn't have paid_at)
+  // Courses revenue (uses created_at - courses table doesn't have paid_at)
   const courses = await ctx.env.DB.prepare(`
     SELECT strftime('${dateFmt}', created_at) AS bucket,
            SUM(amount) AS total,

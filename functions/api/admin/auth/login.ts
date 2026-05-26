@@ -23,7 +23,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     `SELECT id, email, name, password_hash, password_salt, role, last_login_at
      FROM admin_users WHERE email = ?`,
   ).bind(email).first<AdminUserRow>();
-  // Generic error message — don't leak whether the email exists.
+  // Generic error message - don't leak whether the email exists.
   if (!user) return Response.json({ error: 'Nieprawidłowy email lub hasło' }, { status: 401 });
 
   const ok = await verifyPassword(password, user.password_salt, user.password_hash);

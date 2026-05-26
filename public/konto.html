@@ -465,7 +465,7 @@ async function saveProfile() {
 
 async function logout() {
   // Najpierw spróbuj wyzerować sesję po stronie serwera (idempotentne).
-  // Łykamy błąd — i tak czyścimy localStorage, żeby nie zablokować wylogowania.
+  // Łykamy błąd - i tak czyścimy localStorage, żeby nie zablokować wylogowania.
   const tokenToInvalidate = TOKEN;
   if (tokenToInvalidate) {
     try {
@@ -473,7 +473,7 @@ async function logout() {
         method: 'POST',
         headers: { 'Authorization': 'Bearer ' + tokenToInvalidate },
       });
-    } catch (_) { /* ignore — kontynuuj logout */ }
+    } catch (_) { /* ignore - kontynuuj logout */ }
   }
   TOKEN = ''; PHONE = '';
   localStorage.removeItem('pilot_token');

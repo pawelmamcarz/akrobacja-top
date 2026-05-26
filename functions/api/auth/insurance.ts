@@ -1,14 +1,14 @@
 import { type Env } from '../../../src/lib/types';
 import { getPilotFromToken } from '../../../src/lib/pilot-auth';
 
-// GET /api/auth/insurance — get insurance status
+// GET /api/auth/insurance - get insurance status
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const pilot = await getPilotFromToken(ctx.request, ctx.env.DB);
   if (!pilot) return Response.json({ error: 'Nie zalogowany' }, { status: 401 });
   return Response.json({ insurance_status: pilot.insurance_status });
 };
 
-// POST /api/auth/insurance — request insurance inclusion
+// POST /api/auth/insurance - request insurance inclusion
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   const pilot = await getPilotFromToken(ctx.request, ctx.env.DB);
   if (!pilot) return Response.json({ error: 'Nie zalogowany' }, { status: 401 });
@@ -22,7 +22,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   }
 
   if (pilot.insurance_status === 'pending') {
-    return Response.json({ error: 'Wniosek juz zlozony — oczekuje na zatwierdzenie' }, { status: 400 });
+    return Response.json({ error: 'Wniosek juz zlozony - oczekuje na zatwierdzenie' }, { status: 400 });
   }
 
   // Check for existing pending request
@@ -43,5 +43,5 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     "UPDATE pilots SET insurance_status = 'pending' WHERE id = ?"
   ).bind(pilot.id).run();
 
-  return Response.json({ ok: true, message: 'Wniosek zlozony — oczekuje na zatwierdzenie' });
+  return Response.json({ ok: true, message: 'Wniosek zlozony - oczekuje na zatwierdzenie' });
 };

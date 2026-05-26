@@ -17,7 +17,7 @@ interface MerchBody {
   printful_data?: string; // JSON: {store_product_id, variants:{size->id}}
 }
 
-// GET /api/admin/merch — list merch orders
+// GET /api/admin/merch - list merch orders
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
@@ -34,7 +34,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   return Response.json({ orders, products });
 };
 
-// POST /api/admin/merch — manage merch orders
+// POST /api/admin/merch - manage merch orders
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });

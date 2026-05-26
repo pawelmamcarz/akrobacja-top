@@ -14,12 +14,12 @@ export async function verifyTurnstile(
   const secret = env.TURNSTILE_SECRET;
   if (!secret) {
     // Fail-open with a console.warn so the misconfig is visible in CF Logs. We deliberately
-    // do NOT fail-closed when site key is set but secret is empty — KV rate-limit is still
+    // do NOT fail-closed when site key is set but secret is empty - KV rate-limit is still
     // active on every endpoint, and locking out legit users (today's prod state, where the
     // secret was uploaded as an empty string) is worse than letting bots through 5/min/IP.
     if (env.TURNSTILE_SITE_KEY && !_missingSecretWarned) {
       _missingSecretWarned = true;
-      console.warn('[turnstile] TURNSTILE_SITE_KEY is set but TURNSTILE_SECRET is empty — bot protection effectively OFF. Set the secret in Cloudflare Pages.');
+      console.warn('[turnstile] TURNSTILE_SITE_KEY is set but TURNSTILE_SECRET is empty - bot protection effectively OFF. Set the secret in Cloudflare Pages.');
     }
     return true;
   }

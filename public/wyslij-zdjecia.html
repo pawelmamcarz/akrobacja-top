@@ -144,7 +144,7 @@ function fmtKB(b) { return (b / 1024).toFixed(0) + ' KB'; }
 
 async function processFile(rawFile) {
   if (files.length >= MAX_FILES) return null;
-  // Decode via Image — handles JPEG/PNG/WebP. HEIC/HEIF fails silently here; browser
+  // Decode via Image - handles JPEG/PNG/WebP. HEIC/HEIF fails silently here; browser
   // support is uneven (Safari decodes, Chrome doesn't), so we just skip those gracefully.
   const dataUrl = await new Promise((resolve, reject) => {
     const r = new FileReader();
@@ -195,7 +195,7 @@ async function handleFiles(list) {
   clearMsg();
   for (const f of list) {
     if (files.length >= MAX_FILES) {
-      showMsg('err', `Maksymalnie ${MAX_FILES} zdjęć — pomijam pozostałe`);
+      showMsg('err', `Maksymalnie ${MAX_FILES} zdjęć - pomijam pozostałe`);
       break;
     }
     try {
@@ -232,7 +232,7 @@ window.onloadTurnstileCallback = function() {
       'expired-callback': () => { turnstileToken = ''; updateBtn(); },
     });
   } else {
-    // No turnstile configured — let submit happen without it (server fails open in dev).
+    // No turnstile configured - let submit happen without it (server fails open in dev).
     turnstileToken = 'dev';
     updateBtn();
   }
