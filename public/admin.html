@@ -387,6 +387,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- LEADS -->
   <div class="panel" id="panel-leads">
+    <h3 style="margin:0 0 8px;font-size:13px;color:#1B4DB5">Email Newsletter (z lead magnetu PDF)</h3>
+    <div id="emailLeadsTable" style="margin-bottom:24px"></div>
+
+    <h3 style="margin:0 0 8px;font-size:13px;color:#C41E3A">Cold leady B2B (scraper / manual)</h3>
     <div class="toolbar">
       <button class="btn btn-blue" onclick="openModal('newLead')">+ Dodaj lead</button>
       <select id="leadFilterStatus" onchange="loadLeads()" style="padding:6px 10px;border:1px solid #ccc">
@@ -1818,7 +1822,39 @@ function leadSearchDebounce() {
   if (leadSearchTimer) clearTimeout(leadSearchTimer);
   leadSearchTimer = setTimeout(loadLeads, 300);
 }
+async function loadEmailLeads() {
+  const wrap = document.getElementById('emailLeadsTable');
+  if (!wrap) return;
+  try {
+    const res = await api('GET', '/api/admin/email-leads');
+    const rows = res.leads || [];
+    if (!rows.length) {
+      wrap.innerHTML = '<p style="padding:8px;color:#888;font-size:12px">Brak zapisanych na email newsletter.</p>';
+      return;
+    }
+    const active = rows.filter(r => r.active);
+    wrap.innerHTML = `
+      <div style="font-size:11px;color:#666;margin-bottom:6px">${active.length}/${rows.length} aktywnych | nurture sequence: D+0 PDF, D+2 bezpieczenstwo, D+4 social proof, D+7 oferta, D+14 reminder</div>
+      <table style="font-size:12px">
+        <tr style="background:#f4f8ff"><th>Email</th><th>Imie</th><th>Zrodlo</th><th>UTM</th><th>Krokow wyslane</th><th>Ostatni wyslane</th><th>Zapisany</th><th>Aktywny</th></tr>
+        ${rows.map(r => `<tr>
+          <td class="code" style="font-size:11px">${esc(r.email)}</td>
+          <td>${esc(r.name||'-')}</td>
+          <td>${esc(r.source||'-')}</td>
+          <td style="font-size:10px;color:#888">${esc([r.utm_source, r.utm_medium, r.utm_campaign].filter(Boolean).join('/')||'-')}</td>
+          <td class="amount">${r.steps_sent||0}/5</td>
+          <td>${r.last_sent_at ? fmtDate(r.last_sent_at) : '-'}</td>
+          <td>${fmtDate(r.created_at)}</td>
+          <td>${r.active ? '<span style="color:#28a745">aktywny</span>' : '<span style="color:#888">unsub</span>'}</td>
+        </tr>`).join('')}
+      </table>`;
+  } catch (e) {
+    wrap.innerHTML = '<p style="padding:8px;color:#c00;font-size:12px">Blad: ' + esc(e.message||'unknown') + '</p>';
+  }
+}
+
 async function loadLeads() {
+  loadEmailLeads();
   const qs = new URLSearchParams();
   const status = (document.getElementById('leadFilterStatus') || {}).value || '';
   const category = (document.getElementById('leadFilterCategory') || {}).value || '';
