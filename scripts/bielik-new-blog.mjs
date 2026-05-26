@@ -91,9 +91,10 @@ const TOPICS = [
     description: 'Extra 300L vs F-16, MiG-29, Hawk: predkosc, przeciazenia, manewrowosc, dostepnosc, koszt. Porownanie samolot tlokowy vs odrzutowy.',
     keywords: 'Extra 300L vs odrzutowiec, akrobacja samolot tlokowy odrzutowy, F-16 akrobacja, lot na mysliwcu Polska',
     angle: `Tekst dla osob ktore widzialy pokazy F-16 i pytaja "czy to to samo co Extra 300L?".
-    - Extra 300L: 6G+/-, predkosc 100-400 km/h, manewrowy w malej przestrzeni, treningowy
-    - F-16/MiG-29: 9G+/-, predkosc 200-2000 km/h, ogromne pole manewru, militarne
-    - Akrobacja sportowa (Extra) vs taktyczna (myslowy): inne cele, inne figury
+    - Extra 300L: konstrukcyjnie +/-10G (unlimited aerobatic kategoria!), pasazerowi dajemy +4G (Pierwszy Lot) lub +6G (Adrenalina), predkosc 100-400 km/h, manewrowy w malej przestrzeni
+    - F-16/MiG-29: +9G/-3G, predkosc 200-2000 km/h, ogromne pole manewru, militarne
+    - WBREW INTUICJI: Extra wytrzymuje WIECEJ G niz F-16 (10 vs 9). Bo zero uzbrojenia, radaru, paliwa - tylko silnik 300 KM i 300 kg pustej masy.
+    - Akrobacja sportowa (Extra) vs taktyczna (mysliwiec): inne cele, inne figury
     - Przeciazenia: 6G na Extra dla pasazera = identyczne odczucia jak 6G na F-16
     - Koszt: lot Extra 1999 zl vs lot F-16 dla cywila ~5000-50000 EUR (jesli w ogole dostepne)
     - Dostepnosc cywilna: Extra TAK (akrobacja.com), F-16 brak w PL, ograniczone w EU
@@ -178,7 +179,7 @@ WYMOGI:
 - Pierwszy <h2> = "Dlaczego ten temat" lub "O czym ten artykul"
 - Kazdy <h2> ma 2-4 akapity <p>
 - Conajmniej 1 <ul> z listami praktycznymi (np. "limity wagi w roznych samolotach")
-- Konkretne fakty, liczby, nazwiska (Maciej Kulaszewski, Extra 300L, Radom-Piastow EPRP, +6G/-4G)
+- Konkretne fakty, liczby, nazwiska (Maciej Kulaszewski, Extra 300L, Radom-Piastow EPRP). UWAGA: samolot konstrukcyjnie wytrzymuje +/-10G (unlimited aerobatic kategoria), PASAZEROWI w pakietach voucher dajemy +4G (Pierwszy Lot) lub +6G (Adrenalina) - rozrozniaj te dwie liczby!
 - Polskie diakrytyki (ą, ę, ć, ł, ń, ó, ś, ź, ż)
 - ZAKAZANE: em-dashy (—), tylko zwykle myslniki (-). Bez "kluczowy", "warto pamietac", "w erze", "niesamowite", "wspaniale", "fascynujace", "uchwycic ducha", "ducha i emocje".
 - Linki wewnetrzne: ${topic.slug !== 'waga-pasazera-lot-akrobacyjny' ? '<a href="/blog/co-czuje-pasazer-podczas-lotu-akrobacyjnego">Co czuje pasazer</a> i ' : ''}<a href="/lot-akrobacyjny">Lot akrobacyjny</a>, <a href="/maciej-osiagniecia">Maciej Kulaszewski</a>
