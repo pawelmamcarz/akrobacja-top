@@ -23,6 +23,8 @@ export interface Env {
   TURNSTILE_SECRET?: string;
   GOOGLE_PLACES_API_KEY?: string;
   GOOGLE_PLACE_ID?: string;
+  KSEF_TOKEN?: string;          // KSeF API token (uprawnienia: przegladanie faktur)
+  KSEF_NIP?: string;            // NIP firmy 10 cyfr (kontekst sesji KSeF)
   AI: Ai;
   RATE_LIMIT_KV: KVNamespace;
   // R2 S3-compatible API credentials — used by direct-to-R2 multipart upload
