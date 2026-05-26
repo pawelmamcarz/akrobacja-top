@@ -61,14 +61,29 @@ const TOPICS = [
     title: 'Jak waga wpływa na latanie akrobacyjne',
     description: 'Limit wagowy w Extra 300L, dlaczego, jak waga pasażera zmienia loty akrobacyjne, środek ciężkości i przeciążenia.',
     keywords: 'waga pasażera akrobacja, limit waga lot akrobacyjny, Extra 300L masa, ciężar pilota akrobacja',
-    angle: `Praktyczny tekst dla pasazera ktory waha sie czy "za grubo zeby polecial". Konkretne liczby:
-    - Limit wagi w Extra 300L SP-EKS: 110 kg (zalecane <100)
-    - Dlaczego: total weight balance, dystrybucja masy front/back, srodek ciezkosci
-    - Co sie zmienia gdy pasazer wazy 60 vs 100 kg: dynamika lotu, przeciazenia, paliwo
-    - Pilot Maciej Kulaszewski wazy ~70 kg
-    - Konkretna nauka: zaden pasazer pod 110 kg sie nie obawia
-    - Bezpieczenstwo > komfort: jak ksztaltuje sie figury przy roznych wagach
-    - FAQ: czy moge polecial gdy mam 105 kg? (TAK), czy 115? (poszukaj inneo dostawcy)`,
+    angle: `Praktyczny tekst dla pasazera ktory waha sie czy "za grubo zeby polecial".
+
+    UWAGA: NIE WYMYSLAJ liczb. Trzymaj sie tylko ponizszych faktow. Lepiej pominac niz wymyslic.
+
+    FAKTY (uzywaj tylko tych):
+    - Limit wagi pasazera w Extra 300L SP-EKS: STANDARDOWO 110 kg
+    - Do 130 kg MOZLIWY lot - ale z REDUKCJA paliwa i KROTSZYM czasem w powietrzu (skontaktuj sie przed rezerwacja)
+    - Powyzej 130 kg - nawet z minimalnym paliwem przekraczamy MTOW (Max Take-Off Weight ~950 kg), lot NIEMOZLIWY w SP-EKS
+    - Pusta masa Extra 300L ~660 kg, MTOW ~950 kg (zrodlo: wiki + producent)
+    - Czas lotu w pakiecie = STAŁY (Pierwszy Lot 15 min w powietrzu, Adrenalina 20 min, Masterclass 50 min). Waga NIE zmienia minut w pakiecie!
+    - Samolot konstrukcyjnie +/-10G (unlimited aerobatic), pasazerowi dajemy MAKS +6G (Adrenalina) lub +4G (Pierwszy Lot)
+
+    NIE WYMYSLAJ:
+    - Ile wazy Maciej Kulaszewski (nie wiemy)
+    - Dokladnego zuzycia paliwa per kg pasazera (procentow, litrow)
+    - "Dlugosci lotu per waga" (lot to staly czas pakietu, nie zalezy od wagi)
+
+    Struktura artykulu (4-5 sekcji <h2>):
+    - O czym ten artykul (1 akapit)
+    - Limity wagowe SP-EKS (110 standard, 130 z redukcja, >130 niemozliwe)
+    - Dlaczego limity: MTOW + srodek ciezkosci (ogolnie, bez wymyslania liczb)
+    - Co zmienia waga pasazera (ogolnie: lzejszy = szybsze przyspieszenia, oszczednosc paliwa)
+    - FAQ: 105 kg OK, 115-130 z redukcja, >130 inny operator (Pitts S-2, Extra 330LX)`,
   },
   {
     slug: 'historia-polskiej-akrobacji-lotniczej',
