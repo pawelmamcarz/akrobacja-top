@@ -123,21 +123,45 @@ async function callHaiku(prompt) {
 }
 
 async function callBielik(prompt) {
+  // stream: true bo CF Tunnel idle timeout 100s - dla dluzszych generacji
+  // (rewrite 4000+ tokenow) potrzebny SSE, kazdy chunk resetuje timer.
   const r = await fetch(`${LLAMA_ENDPOINT}/v1/chat/completions`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${LLAMA_API_KEY}` },
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${LLAMA_API_KEY}`, 'Accept': 'text/event-stream' },
     body: JSON.stringify({
       model: 'bielik',
       messages: [{ role: 'user', content: prompt }],
       max_tokens: 4500,
       temperature: 0.3,
-      stream: false,
+      stream: true,
     }),
-    signal: AbortSignal.timeout(240000),
+    signal: AbortSignal.timeout(600000),  // 10 min total
   });
   if (!r.ok) throw new Error(`Bielik HTTP ${r.status}: ${(await r.text()).substring(0, 300)}`);
-  const data = await r.json();
-  return data.choices?.[0]?.message?.content?.trim() || '';
+
+  // Parse SSE: linie "data: {json}\n\n" + "data: [DONE]"
+  const decoder = new TextDecoder();
+  let buffer = '';
+  let content = '';
+  const reader = r.body.getReader();
+  while (true) {
+    const { value, done } = await reader.read();
+    if (done) break;
+    buffer += decoder.decode(value, { stream: true });
+    const lines = buffer.split('\n');
+    buffer = lines.pop() || '';
+    for (const line of lines) {
+      if (!line.startsWith('data:')) continue;
+      const payload = line.slice(5).trim();
+      if (!payload || payload === '[DONE]') continue;
+      try {
+        const j = JSON.parse(payload);
+        const delta = j.choices?.[0]?.delta?.content || '';
+        if (delta) content += delta;
+      } catch {}
+    }
+  }
+  return content.trim();
 }
 
 function haikuPrompt(topic) {
