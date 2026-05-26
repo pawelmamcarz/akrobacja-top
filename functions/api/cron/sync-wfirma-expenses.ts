@@ -77,7 +77,15 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     const result = await syncWfirmaExpenses(ctx.env);
     return Response.json({ ok: true, ...result, timestamp: new Date().toISOString() });
   } catch (err) {
-    return Response.json({ error: err instanceof Error ? err.message : 'Unknown' }, { status: 500 });
+    const msg = err instanceof Error ? err.message : 'Unknown';
+    const stack = err instanceof Error ? err.stack?.split('\n').slice(0, 5).join('\n') : undefined;
+    const envCheck = {
+      has_access_key: !!ctx.env.WFIRMA_ACCESS_KEY,
+      has_secret_key: !!ctx.env.WFIRMA_SECRET_KEY,
+      has_app_key: !!ctx.env.WFIRMA_APP_KEY,
+      has_company_id: !!ctx.env.WFIRMA_COMPANY_ID,
+    };
+    return Response.json({ error: msg, stack, envCheck }, { status: 500 });
   }
 };
 
