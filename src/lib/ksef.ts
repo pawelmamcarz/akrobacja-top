@@ -1,21 +1,21 @@
 // KSeF API helper - MVP (do uzupelnienia o pelne sync invoices).
 //
-// Flow autoryzacji KSeF online sesji z API tokenem:
-//   1. GET /online/Session/AuthorisationChallenge?... -> { challenge, timestamp }
-//   2. RSA-OAEP encrypt (KSeF_TOKEN + challenge_timestamp) using KSeF public key
-//   3. POST /online/Session/InitToken with encrypted blob -> { sessionToken }
-//   4. Use sessionToken jako naglowek SessionToken: w kolejnych requestach (24h TTL)
+// UWAGA: AP 1.0 / API 1.0 KSeF zostalo WYLACZONE (zwraca HTML "Koniec dzialania AP 1.0").
+// Aktualnie obowiazuje KSeF 2.0 z nowymi endpointami. Endpointy ksef 2.0:
+//   - https://ksef.mf.gov.pl/api/v2/sessions/online/initialization
+//   - https://ksef.mf.gov.pl/api/v2/sessions/online/init
+// Trzeba sprawdzic aktualna dokumentacje MF: https://www.gov.pl/web/kas/api-i-aktualne-wersje-srodowisk-ksef
 //
-// Query faktur:
-//   POST /online/Query/Invoice/Sync (synchroniczne, paginacja)
-//   Body: { queryCriteria: { subjectType: 'subject2' (purchase), date_range, page_size, page_offset } }
+// Token API wygenerowany w starym KSeF moze nie pasowac do v2 - moze byc wymagana
+// migracja konta + ponowne wygenerowanie tokena.
 //
-// Aktualnie zaimplementowane: getChallenge() - test ze NIP + auth.
+// Aktualnie zaimplementowane: getAuthorisationChallenge() - probuje 1.0 i 2.0 endpointow.
 // TODO: RSA encryption + initSession + queryInvoices + FA(2) XML parsing.
 
 import { type Env } from './types';
 
 const KSEF_BASE_URL = 'https://ksef.mf.gov.pl/api';
+const KSEF_V2_BASE_URL = 'https://ksef.mf.gov.pl/api/v2';
 
 export interface AuthChallenge {
   challenge: string;
@@ -93,4 +93,32 @@ export async function ksefSelfTest(env: Env): Promise<KsefSelfTestResult> {
       error: err instanceof Error ? err.message : String(err),
     };
   }
+}
+
+// Test wielu URL-i (1.0, 2.0) zeby zobaczyc ktory dziala.
+export async function ksefProbeEndpoints(env: Env): Promise<Array<{ url: string; status: number; sample: string }>> {
+  const nip = (env.KSEF_NIP || '').replace(/\s/g, '');
+  const urls = [
+    'https://ksef.mf.gov.pl/api/online/Session/AuthorisationChallenge',
+    'https://ksef.mf.gov.pl/api/v2/sessions/online/initialization',
+    'https://ksef.mf.gov.pl/api/v2/online/Session/AuthorisationChallenge',
+    'https://ksef.mf.gov.pl/api/v2/auth/challenge',
+    'https://ksef.mf.gov.pl/api/v2/AuthorisationChallenge',
+  ];
+  const results: Array<{ url: string; status: number; sample: string }> = [];
+  for (const url of urls) {
+    try {
+      const r = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ contextIdentifier: { type: 'onip', identifier: nip } }),
+        signal: AbortSignal.timeout(10000),
+      });
+      const text = await r.text();
+      results.push({ url, status: r.status, sample: text.substring(0, 200) });
+    } catch (err) {
+      results.push({ url, status: 0, sample: err instanceof Error ? err.message : String(err) });
+    }
+  }
+  return results;
 }

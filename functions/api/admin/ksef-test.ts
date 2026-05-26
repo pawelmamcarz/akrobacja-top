@@ -4,11 +4,16 @@
 
 import { type Env } from '../../../src/lib/types';
 import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
-import { ksefSelfTest } from '../../../src/lib/ksef';
+import { ksefSelfTest, ksefProbeEndpoints } from '../../../src/lib/ksef';
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+  const url = new URL(ctx.request.url);
+  if (url.searchParams.get('probe') === '1') {
+    const probes = await ksefProbeEndpoints(ctx.env);
+    return Response.json({ probes }, { status: 200 });
   }
   const result = await ksefSelfTest(ctx.env);
   return Response.json(result, { status: result.ok ? 200 : 500 });
