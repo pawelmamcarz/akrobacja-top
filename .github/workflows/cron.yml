@@ -78,6 +78,11 @@ jobs:
     steps:
       - name: Sync wFirma expenses (90-day rolling window)
         run: |
-          curl -fsS -X GET \
+          response=$(curl -sS -w "\n__HTTP_CODE__%{http_code}" -X GET \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-            https://akrobacja.com/api/cron/sync-wfirma-expenses
+            https://akrobacja.com/api/cron/sync-wfirma-expenses)
+          body=$(echo "$response" | sed '$d')
+          code=$(echo "$response" | tail -n1 | sed 's/__HTTP_CODE__//')
+          echo "HTTP $code"
+          echo "$body"
+          [ "$code" = "200" ] || exit 1
