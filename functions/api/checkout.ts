@@ -119,13 +119,40 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     // Apply discount if valid (also enforces validFrom / validUntil + applicablePackages).
     const normalizedCode = body.discountCode?.trim().toUpperCase() || '';
     const today = new Date().toISOString().split('T')[0];
+    let discount: DiscountSpec | undefined = undefined;
+    let personalCodeRow: { code: string; customer_email: string; pct: number | null; fixed_gr: number | null; expires_at: string | null; used_at: string | null } | null = null;
+
+    // 1. Statyczny DISCOUNTS
     const candidate = normalizedCode ? DISCOUNTS[normalizedCode] : undefined;
-    const discount = isDiscountActive(candidate, body.packageId, today) ? candidate : undefined;
-    // singleUse — kod ważny tylko do pierwszego udanego zakupu. Sprawdzamy czy żaden order
-    // ze statusem paid/processing nie ma już tego kodu. Race window między dwoma równoczesnymi
-    // checkoutami akceptowalny (oba zostaną z 'pending', dopiero pierwszy zapłaci, drugi
-    // dostanie 400 dopiero gdy ponowi checkout — kod sprawdzany przy każdej próbie).
-    if (discount?.singleUse) {
+    if (isDiscountActive(candidate, body.packageId, today)) {
+      discount = candidate;
+    } else if (normalizedCode) {
+      // 2. Fallback: personal_discount_codes (per-email jednorazowe kody, np. PHOTO-XXXX)
+      personalCodeRow = await ctx.env.DB.prepare(
+        `SELECT code, customer_email, pct, fixed_gr, expires_at, used_at
+         FROM personal_discount_codes WHERE code = ? LIMIT 1`
+      ).bind(normalizedCode).first();
+      if (personalCodeRow) {
+        if (personalCodeRow.used_at) {
+          return Response.json({ error: 'Ten kod został już wykorzystany.' }, { status: 400 });
+        }
+        if (personalCodeRow.expires_at && today > personalCodeRow.expires_at) {
+          return Response.json({ error: 'Kod stracił ważność.' }, { status: 400 });
+        }
+        if (personalCodeRow.customer_email.toLowerCase() !== body.customerEmail.toLowerCase()) {
+          return Response.json({ error: 'Ten kod jest przypisany do innego adresu email.' }, { status: 400 });
+        }
+        discount = {
+          pct: personalCodeRow.pct ?? undefined,
+          fixed: personalCodeRow.fixed_gr ?? undefined,
+          singleUse: true,
+        };
+      }
+    }
+
+    // singleUse — kod ważny tylko do pierwszego udanego zakupu (statyczne DISCOUNTS).
+    // Personal codes maja wlasny mechanizm (used_at sprawdzane wyzej).
+    if (discount?.singleUse && !personalCodeRow) {
       const used = await ctx.env.DB.prepare(
         `SELECT 1 FROM orders WHERE discount_code = ? AND status IN ('paid','processing') LIMIT 1`,
       ).bind(normalizedCode).first();
