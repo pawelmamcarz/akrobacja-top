@@ -194,6 +194,20 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   if (body.action === 'preview') {
     const name = body.name || 'Łukasz';
     const code = generateCode(name);
+
+    // Debug: probe Bielik bezposrednio gdy ?debug=1, zwroc error pelny.
+    const url = new URL(ctx.request.url);
+    if (url.searchParams.get('debug') === '1') {
+      const envExt = ctx.env as unknown as { BIELIK_URL?: string; BIELIK_TOKEN?: string };
+      const bielikUrl = envExt.BIELIK_URL || 'https://llm.czympojade.pl';
+      try {
+        const text = await callBielik(bielikUrl, 'Test polskiego: napisz krotkie "OK" jesli rozumiesz.', envExt.BIELIK_TOKEN);
+        return Response.json({ bielik_ok: true, bielik_url: bielikUrl, response: text });
+      } catch (err) {
+        return Response.json({ bielik_ok: false, bielik_url: bielikUrl, error: err instanceof Error ? err.message : String(err) }, { status: 500 });
+      }
+    }
+
     const r = await generateMailText(ctx.env, name, code);
     return Response.json({ name, code, html_preview: r.html, ai_used: r.ai_used });
   }
