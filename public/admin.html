@@ -355,6 +355,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="stats" id="kostStats"></div>
     </div>
     <div id="kostContent" style="margin-top:14px"></div>
+
+    <h3 style="margin:32px 0 8px;font-size:13px;color:#1B4DB5">KSeF Whitelist (NIPy kontrahentów do auto-pull)</h3>
+    <div class="toolbar" style="margin-bottom:8px">
+      <button class="btn btn-blue" onclick="openModal('newKsefContractor')">+ Dodaj kontrahenta</button>
+      <span style="font-size:11px;color:#666">Faktury z tych NIPów będą zaciągane przez KSeF cron (gdy uruchomiony)</span>
+    </div>
+    <div id="ksefWhitelistTable"></div>
   </div>
 
   <!-- LOT MEDIA (share photos+videos with passenger) -->
@@ -768,6 +775,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <input type="checkbox" id="evNotify" checked> Wyslij .ics mailem do pilota
     </label>
     <button class="btn btn-blue" onclick="createCalendarEvent()">Utwórz event</button>
+  </div>
+
+  <!-- New KSeF Contractor (whitelist) -->
+  <div class="modal" id="modal-newKsefContractor" style="display:none">
+    <h3>Dodaj kontrahenta do whitelisty KSeF</h3>
+    <div class="field"><label>NIP (10 cyfr bez kresek) *</label><input id="ksefNip" placeholder="np. 5252164172"></div>
+    <div class="field"><label>Nazwa kontrahenta *</label><input id="ksefName" placeholder="np. Meta Platforms Ireland Ltd"></div>
+    <div class="field"><label>Etykieta (przyjazna)</label><input id="ksefLabel" placeholder="np. Marketing FB"></div>
+    <button class="btn btn-blue" onclick="createKsefContractor()">Dodaj</button>
   </div>
 
   <!-- New Admin User -->
@@ -1211,27 +1227,35 @@ async function loadVoucherSplit() {
 }
 function renderFinance(d) {
   const t = d.totals;
-  const netClass = t.net >= 0 ? '#27ae60' : '#c00';
-  let html = `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px">
-    <div style="background:#f4f8ff;padding:18px;border-left:4px solid #1B4DB5">
-      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.1em">Przychód</div>
-      <div style="font-size:28px;font-weight:800;color:#1B4DB5;margin-top:6px">${fmtPln(t.income)} PLN</div>
-      <div style="font-size:11px;color:#888;margin-top:4px">${t.vouchers_sold} voucherów + merch + kursy</div>
+  const opcosts = t.opcosts || 0;
+  const netReal = t.net_real != null ? t.net_real : (t.income - t.expenses - opcosts);
+  const netRealClass = netReal >= 0 ? '#27ae60' : '#c00';
+  const opBd = t.opcosts_breakdown || { aircraft: 0, fuel: 0, hangar: 0, marketing: 0 };
+  let html = `<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px">
+    <div style="background:#f4f8ff;padding:16px;border-left:4px solid #1B4DB5">
+      <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.1em">Przychód</div>
+      <div style="font-size:24px;font-weight:800;color:#1B4DB5;margin-top:6px">${fmtPln(t.income)} PLN</div>
+      <div style="font-size:10px;color:#888;margin-top:4px">${t.vouchers_sold} voucherów + merch + kursy</div>
     </div>
-    <div style="background:#fff5f5;padding:18px;border-left:4px solid #c00">
-      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.1em">Koszty</div>
-      <div style="font-size:28px;font-weight:800;color:#c00;margin-top:6px">${fmtPln(t.expenses)} PLN</div>
-      <div style="font-size:11px;color:#888;margin-top:4px">faktury wFirma + ręczne</div>
+    <div style="background:#fff5f5;padding:16px;border-left:4px solid #c00">
+      <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.1em">Koszty (faktury)</div>
+      <div style="font-size:24px;font-weight:800;color:#c00;margin-top:6px">${fmtPln(t.expenses)} PLN</div>
+      <div style="font-size:10px;color:#888;margin-top:4px">wFirma + KSeF + ręczne</div>
     </div>
-    <div style="background:${t.net >= 0 ? '#f0fbf4' : '#fff5f5'};padding:18px;border-left:4px solid ${netClass}">
-      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.1em">Netto</div>
-      <div style="font-size:32px;font-weight:900;color:${netClass};margin-top:6px">${fmtPln(t.net)} PLN</div>
-      <div style="font-size:11px;color:#888;margin-top:4px">${t.net >= 0 ? 'zysk' : 'strata'} w okresie</div>
+    <div style="background:#fffaf0;padding:16px;border-left:4px solid #f59e0b" title="Szacunkowe stałe: samolot 30zł/min, paliwo 200zł/lot, hangar 1000zł/mies, marketing 2000zł/mies. Edytuj per voucher w Split kasy.">
+      <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.1em">Koszty oper.</div>
+      <div style="font-size:24px;font-weight:800;color:#d97706;margin-top:6px">${fmtPln(opcosts)} PLN</div>
+      <div style="font-size:10px;color:#888;margin-top:4px" title="samolot ${fmtPln(opBd.aircraft)} + paliwo ${fmtPln(opBd.fuel)} + hangar ${fmtPln(opBd.hangar)} + marketing ${fmtPln(opBd.marketing)}">samolot+paliwo+hangar+mkt</div>
     </div>
-    <div style="background:#f7f9fc;padding:18px;border-left:4px solid #7A8FA6">
-      <div style="font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.1em">Vouchery</div>
-      <div style="font-size:28px;font-weight:800;color:#0A1428;margin-top:6px">${t.vouchers_sold}</div>
-      <div style="font-size:11px;color:#888;margin-top:4px">sprzedanych · ${t.vouchers_redeemed} wykorzystanych</div>
+    <div style="background:${netReal >= 0 ? '#f0fbf4' : '#fff5f5'};padding:16px;border-left:4px solid ${netRealClass}">
+      <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.1em">Netto realne</div>
+      <div style="font-size:28px;font-weight:900;color:${netRealClass};margin-top:6px">${fmtPln(netReal)} PLN</div>
+      <div style="font-size:10px;color:#888;margin-top:4px">przychód − faktury − oper.</div>
+    </div>
+    <div style="background:#f7f9fc;padding:16px;border-left:4px solid #7A8FA6">
+      <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.1em">Vouchery</div>
+      <div style="font-size:24px;font-weight:800;color:#0A1428;margin-top:6px">${t.vouchers_sold}</div>
+      <div style="font-size:10px;color:#888;margin-top:4px">sprzedanych · ${t.vouchers_redeemed} wykorzystanych</div>
     </div>
   </div>`;
 
@@ -1308,7 +1332,64 @@ function finExportCsv() {
 }
 
 // ── KOSZTY (expenses tab) ──
+async function loadKsefWhitelist() {
+  const wrap = document.getElementById('ksefWhitelistTable');
+  if (!wrap) return;
+  try {
+    const res = await api('GET', '/api/admin/ksef-whitelist');
+    const rows = res.whitelist || [];
+    if (!rows.length) {
+      wrap.innerHTML = '<p style="padding:8px;color:#888;font-size:12px">Brak kontrahentów na whiteliście. Dodaj pierwszego (np. Sebastian Malinowski - marketing, Meta Platforms - FB Ads, MM Service, Ibex-MS).</p>';
+      return;
+    }
+    wrap.innerHTML = `<table style="font-size:12px">
+      <tr style="background:#f4f8ff"><th>NIP</th><th>Nazwa</th><th>Etykieta</th><th>Aktywny</th><th>Dodany</th><th>Akcje</th></tr>
+      ${rows.map(r => `<tr>
+        <td class="code">${esc(r.nip)}</td>
+        <td>${esc(r.name)}</td>
+        <td style="color:#888">${esc(r.label||'-')}</td>
+        <td><label><input type="checkbox" ${r.active?'checked':''} data-action="toggleKsefContractor" data-arg1="${dataAttr(r.nip)}"></label></td>
+        <td>${fmtDate(r.created_at)}</td>
+        <td class="actions">
+          <button class="btn btn-red" data-action="deleteKsefContractor" data-arg1="${dataAttr(r.nip)}">Usuń</button>
+        </td>
+      </tr>`).join('')}
+    </table>`;
+  } catch (e) {
+    wrap.innerHTML = '<p style="padding:8px;color:#c00;font-size:12px">Blad: ' + esc(e.message||'unknown') + '</p>';
+  }
+}
+
+async function createKsefContractor() {
+  const nip = document.getElementById('ksefNip').value.trim();
+  const name = document.getElementById('ksefName').value.trim();
+  const label = document.getElementById('ksefLabel').value.trim();
+  if (!nip || !name) { showMsg('NIP i nazwa wymagane','err'); return; }
+  const r = await api('POST', '/api/admin/ksef-whitelist', { action:'create', nip, name, label });
+  if (r.ok) {
+    showMsg('Dodano','ok');
+    ['ksefNip','ksefName','ksefLabel'].forEach(id => document.getElementById(id).value='');
+    closeModal();
+    loadKsefWhitelist();
+  } else showMsg(r.error||'Blad','err');
+}
+
+async function toggleKsefContractor(nip) {
+  // odczytaj aktualny stan z checkboxa po update
+  const cb = event && event.target;
+  const active = cb && cb.checked;
+  const r = await api('POST', '/api/admin/ksef-whitelist', { action:'toggle', nip, active });
+  if (!r.ok) { showMsg(r.error||'Blad','err'); loadKsefWhitelist(); }
+}
+
+async function deleteKsefContractor(nip) {
+  if (!confirm('Usunac z whitelisty?')) return;
+  const r = await api('POST', '/api/admin/ksef-whitelist', { action:'delete', nip });
+  if (r.ok) { showMsg('Usunieto','ok'); loadKsefWhitelist(); } else showMsg(r.error||'Blad','err');
+}
+
 async function loadKoszty() {
+  loadKsefWhitelist();
   const from = document.getElementById('kostFrom').value;
   const to = document.getElementById('kostTo').value;
   const contractor = document.getElementById('kostContractor').value.trim();

@@ -44,6 +44,20 @@ interface RedemptionRow {
   cnt: number;
 }
 
+// Defaulty stałych operacyjnych (Finance summary uzywa stalych, bo to ogolny widok
+// wielomiesieczny. Per-voucher edycja w /api/admin/finance/voucher-split).
+const AIRCRAFT_RATE_PER_MIN_GR = 3000;          // 30 zl/min
+const MARKETING_MONTHLY_GR_DEFAULT = 200_000;   // 2000 zl
+const HANGAR_MONTHLY_GR_DEFAULT = 100_000;      // 1000 zl
+const FUEL_PER_FLIGHT_GR = 20_000;              // 200 zl
+
+const PKG_MINUTES: Record<string, number> = {
+  pierwszy_lot: 15, adrenalina: 20, para: 30, masterclass: 50, test_naklejka: 0,
+};
+const PKG_FLIGHTS: Record<string, number> = {
+  pierwszy_lot: 1, adrenalina: 1, para: 2, masterclass: 2, test_naklejka: 0,
+};
+
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   if (!(await checkAdminAuthAsync(ctx.request, ctx.env))) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
@@ -111,6 +125,36 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     GROUP BY bucket
   `).bind(from, to).all<RedemptionRow>();
 
+  // Koszty operacyjne (szacunkowe per voucher): aircraft (min × 30zl) + paliwo per lot.
+  // Hangar i marketing - stale per miesiac, dodajemy w agregacji ponizej.
+  // LEFT JOIN voucher_costs dla override paliwa/minut.
+  const opcosts = await ctx.env.DB.prepare(`
+    SELECT
+      strftime('${dateFmt}', o.paid_at) AS bucket,
+      o.package_id,
+      COUNT(*) AS cnt,
+      SUM(COALESCE(vc.fuel_gr, ?)) AS fuel_actual_or_default
+    FROM orders o
+    LEFT JOIN voucher_costs vc ON vc.voucher_code = o.voucher_code
+    WHERE o.status = 'paid'
+      AND o.paid_at IS NOT NULL
+      AND date(o.paid_at) >= ? AND date(o.paid_at) <= ?
+      AND o.package_id != 'test_naklejka'
+      AND o.amount > 0
+      AND COALESCE(o.payment_method, 'stripe') != 'free'
+    GROUP BY bucket, o.package_id
+  `).bind(FUEL_PER_FLIGHT_GR, from, to).all<{
+    bucket: string; package_id: string; cnt: number; fuel_actual_or_default: number;
+  }>();
+
+  // Liczba kursow per miesiac (do dzielenia hangar/marketing)
+  const coursesPerMonth = await ctx.env.DB.prepare(`
+    SELECT strftime('${dateFmt}', created_at) AS bucket, COUNT(*) AS cnt
+    FROM courses
+    WHERE date(created_at) >= ? AND date(created_at) <= ?
+    GROUP BY bucket
+  `).bind(from, to).all<{ bucket: string; cnt: number }>();
+
   // Expenses
   const expenses = await ctx.env.DB.prepare(`
     SELECT strftime('${dateFmt}', issue_date) AS bucket,
@@ -127,8 +171,10 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     label: string;
     income: { vouchers_stripe: number; vouchers_cash: number; vouchers_transfer: number; vouchers_free: number; vouchers_refunded: number; merch: number; courses: number; total: number };
     expenses: { by_category: Record<string, number>; total: number };
+    opcosts: { aircraft: number; fuel: number; hangar: number; marketing: number; total: number };
     counts: { vouchers_sold: number; vouchers_redeemed: number; merch_orders: number; courses: number };
     net: number;
+    net_real: number;  // przychod - faktury - oper.
   }>();
 
   function getPeriod(bucket: string) {
@@ -138,8 +184,10 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
         label: bucket,
         income: { vouchers_stripe: 0, vouchers_cash: 0, vouchers_transfer: 0, vouchers_free: 0, vouchers_refunded: 0, merch: 0, courses: 0, total: 0 },
         expenses: { by_category: {}, total: 0 },
+        opcosts: { aircraft: 0, fuel: 0, hangar: 0, marketing: 0, total: 0 },
         counts: { vouchers_sold: 0, vouchers_redeemed: 0, merch_orders: 0, courses: 0 },
         net: 0,
+        net_real: 0,
       };
       periodsMap.set(bucket, p);
     }
@@ -183,11 +231,55 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     p.expenses.total += r.total;
   }
 
+  // Per-package koszty operacyjne (samolot + paliwo) per okres
+  const fuelPerLot = FUEL_PER_FLIGHT_GR;
+  for (const r of opcosts.results || []) {
+    if (!r.bucket) continue;
+    const p = getPeriod(r.bucket);
+    const minutes = PKG_MINUTES[r.package_id] || 0;
+    p.opcosts.aircraft += minutes * AIRCRAFT_RATE_PER_MIN_GR * r.cnt;
+    // fuel_actual_or_default to suma per voucher (z override lub default per_lot).
+    // Dla pakietow z 2 lotami (para/masterclass) - default FUEL_PER_FLIGHT_GR * flights
+    // jest juz uwzgledniony tylko gdy nie ma override. Doliczam brakujace flights:
+    const flights = PKG_FLIGHTS[r.package_id] || 1;
+    const expectedDefault = fuelPerLot * flights * r.cnt;
+    // r.fuel_actual_or_default zaklada 1 flight per voucher (FUEL_PER_FLIGHT_GR);
+    // dla 2-lotowych pakietow dodaj brakujacy 2gi lot (jesli nie ma override).
+    p.opcosts.fuel += r.fuel_actual_or_default + Math.max(0, expectedDefault - fuelPerLot * r.cnt);
+  }
+
+  // Hangar + Marketing - stale per miesiac (groupBy='month'), proporcjonalnie do dni (groupBy='day').
+  // Liczba kursow tez konsumuje share (analog do voucher-split).
+  for (const r of coursesPerMonth.results || []) {
+    if (!r.bucket) continue;
+    const p = getPeriod(r.bucket);
+    p.counts.courses += r.cnt;
+  }
+  // Dla kazdego okresu z voucherami lub kursami - dodaj share hangar/marketing
+  for (const p of periodsMap.values()) {
+    const nTotal = p.counts.vouchers_sold + p.counts.courses;
+    if (nTotal > 0) {
+      // Hangar/Marketing dzielony per voucher+kurs. Suma per okres = stała (lub proporcjonalna do dni).
+      // Dla monthly - pelna kwota; dla daily - kwota/dni_w_miesiacu * jednostki_w_okresie.
+      // Najprosciej dla monthly: cala kwota miesięczna.
+      // Dla daily - przyjmijmy ze koszty operacyjne nie sa dzielone na dni (tylko miesiace).
+      if (groupBy === 'month') {
+        p.opcosts.hangar = HANGAR_MONTHLY_GR_DEFAULT;
+        p.opcosts.marketing = MARKETING_MONTHLY_GR_DEFAULT;
+      } else {
+        p.opcosts.hangar = Math.round(HANGAR_MONTHLY_GR_DEFAULT / 30);
+        p.opcosts.marketing = Math.round(MARKETING_MONTHLY_GR_DEFAULT / 30);
+      }
+    }
+  }
+
   // Finalize income.total + net per period
   for (const p of periodsMap.values()) {
     p.income.total = p.income.vouchers_stripe + p.income.vouchers_cash
       + p.income.vouchers_transfer + p.income.merch + p.income.courses;
+    p.opcosts.total = p.opcosts.aircraft + p.opcosts.fuel + p.opcosts.hangar + p.opcosts.marketing;
     p.net = p.income.total - p.expenses.total;
+    p.net_real = p.income.total - p.expenses.total - p.opcosts.total;
   }
 
   const periods = Array.from(periodsMap.values()).sort((a, b) => a.label.localeCompare(b.label));
@@ -196,7 +288,10 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const totals = {
     income: 0,
     expenses: 0,
+    opcosts: 0,
+    opcosts_breakdown: { aircraft: 0, fuel: 0, hangar: 0, marketing: 0 },
     net: 0,
+    net_real: 0,
     vouchers_sold: 0,
     vouchers_redeemed: 0,
   };
@@ -217,8 +312,14 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     for (const [c, v] of Object.entries(p.expenses.by_category)) {
       expensesByCategory[c] = (expensesByCategory[c] || 0) + v;
     }
+    totals.opcosts += p.opcosts.total;
+    totals.opcosts_breakdown.aircraft += p.opcosts.aircraft;
+    totals.opcosts_breakdown.fuel += p.opcosts.fuel;
+    totals.opcosts_breakdown.hangar += p.opcosts.hangar;
+    totals.opcosts_breakdown.marketing += p.opcosts.marketing;
   }
   totals.net = totals.income - totals.expenses;
+  totals.net_real = totals.income - totals.expenses - totals.opcosts;
 
   return Response.json({
     range: { from, to, groupBy },

@@ -231,15 +231,17 @@ export async function listWfirmaExpenses(
 ): Promise<WfirmaExpenseRow[]> {
   const page = opts.page ?? 1;
   const limit = opts.limit ?? 50;
-  const conditions: Array<Record<string, string>> = [];
-  if (opts.from) conditions.push({ field: 'date', operator: 'ge', value: opts.from });
-  if (opts.to) conditions.push({ field: 'date', operator: 'le', value: opts.to });
+  // wFirma wymaga conditions wrapped w {condition: {field, operator, value}}.
+  // Bez wrappera filtry sa ignorowane (zwracaja wszystkie faktury bez filtra date).
+  const conditions: Array<Record<string, unknown>> = [];
+  if (opts.from) conditions.push({ condition: { field: 'date', operator: 'ge', value: opts.from } });
+  if (opts.to) conditions.push({ condition: { field: 'date', operator: 'le', value: opts.to } });
 
   const body = {
     expenses: [{
       parameters: {
         conditions,
-        order: [{ field: 'date', order: 'DESC' }],
+        order: { field: 'date', order: 'DESC' },
         limit,
         page,
       },
