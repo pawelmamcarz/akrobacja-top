@@ -2438,6 +2438,7 @@ function renderOrders(orders) {
       <td class="actions">
         <button class="btn btn-blue" ${o.status==='paid'&&!o.redeemed_at?'':'disabled'} data-action="redeem" data-arg1="${dataAttr(o.voucher_code)}">Wykorzystaj</button>
         <button class="btn btn-red" ${o.status==='paid'&&!o.invoice_id?'':'disabled'} data-action="invoice" data-arg1="${dataAttr(o.voucher_code)}">Faktura</button>
+        <button class="btn" ${o.status==='paid'?`style="background:#0A2F7C;color:#fff"`:'disabled'} data-action="regenPdf" data-arg1="${dataAttr(o.voucher_code)}" title="Regeneruj PDF voucher z aktualnego stanu zamowienia (po recznych zmianach pakietu / dedykacji)">PDF</button>
         <button class="btn" ${o.status==='pending'&&o.customer_email?`style="background:#FFB300;color:#0A2F7C"`:'disabled'} data-action="recover" data-arg1="${dataAttr(o.voucher_code)}" title="${o.abandon_email_sent_at ? 'Ostatnie wyslane: '+o.abandon_email_sent_at : 'Wyslij maila z kodem WRACAM5 (-5%)'}">Recovery${o.abandon_email_sent_at ? ' ✓' : ''}</button>
       </td>
     </tr>`).join('')}
@@ -2472,9 +2473,19 @@ async function recover(code) {
   const res = await api('POST', '/api/admin/recover', { voucher_code: code });
   if (res.ok) { showMsg(`Recovery wyslane do ${res.sent_to}`,'ok'); tryLoad(); } else showMsg(res.error || 'Blad','err');
 }
+async function regenPdf(code) {
+  if (!confirm(`Regenerowac PDF voucher ${code}? Stary PDF w R2 zostanie nadpisany.`)) return;
+  const res = await api('POST', '/api/admin/regen-voucher', { voucher_code: code });
+  if (res.ok) {
+    showMsg(`PDF zregenerowany (${res.bytes} bytes). Pobierz: ${res.download_url}`, 'ok');
+    window.open(res.download_url, '_blank');
+  } else {
+    showMsg(res.error || 'Blad regeneracji PDF', 'err');
+  }
+}
 
 // ── NEW CASH/TRANSFER/FREE VOUCHER ──
-const _ncoPrices = { pierwszy_lot: 1999, adrenalina: 2999, para: 3777, masterclass: 4999 };
+const _ncoPrices = { pierwszy_lot: 1999, adrenalina: 2999, para: 3777, para_adrenalina: 5999, masterclass: 4999 };
 function openCashOrderModal() {
   ['ncoPackage','ncoName','ncoEmail','ncoPhone','ncoAmount','ncoRecipient','ncoDedication'].forEach(id => {
     const el = document.getElementById(id); if (el) el.value = '';
