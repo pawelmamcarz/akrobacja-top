@@ -2477,8 +2477,11 @@ async function regenPdf(code) {
   if (!confirm(`Regenerowac PDF voucher ${code}? Stary PDF w R2 zostanie nadpisany.`)) return;
   const res = await api('POST', '/api/admin/regen-voucher', { voucher_code: code });
   if (res.ok) {
-    showMsg(`PDF zregenerowany (${res.bytes} bytes). Pobierz: ${res.download_url}`, 'ok');
-    window.open(res.download_url, '_blank');
+    // Cache-buster: /api/voucher/[code] zwraca Cache-Control: private, max-age=3600
+    // wiec browser trzyma stary PDF przez godzine. Dodajemy ?ts=... zeby wymusic fresh fetch.
+    const bustedUrl = res.download_url + (res.download_url.includes('?') ? '&' : '?') + 'ts=' + Date.now();
+    showMsg(`PDF zregenerowany (${res.bytes} bytes). Otwieram nowa karte.`, 'ok');
+    window.open(bustedUrl, '_blank');
   } else {
     showMsg(res.error || 'Blad regeneracji PDF', 'err');
   }
