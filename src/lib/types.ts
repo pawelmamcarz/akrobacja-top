@@ -68,9 +68,9 @@ export const PACKAGES = {
   para: {
     id: 'para',
     name: 'Para',
-    subtitle: '2 loty Pierwszy Lot, jeden po drugim w tym samym terminie. Oszczędność 221 zł.',
+    subtitle: '2 loty Pierwszy Lot dla dwojga',
     price: 377700,
-    duration: '2× (10-12 min lotu + 20 min briefing), oba loty w jednym terminie',
+    duration: '2× (10-12 min lotu + 20 min briefing)',
     features: [
       'Oba loty w tym samym terminie, jeden po drugim',
       'Każdy partner leci solo (Extra 300L = pilot + 1 pasażer)',
@@ -86,9 +86,9 @@ export const PACKAGES = {
   para_adrenalina: {
     id: 'para_adrenalina',
     name: 'Para Adrenalina',
-    subtitle: '2 loty Adrenalina, jeden po drugim w tym samym terminie. Pełny program akrobacyjny dla dwojga.',
+    subtitle: '2 loty Adrenalina dla dwojga',
     price: 599900,
-    duration: '2× (20 min lotu + 20 min briefing) + debriefing po locie, oba loty w jednym terminie',
+    duration: '2× (20 min lotu + 20 min briefing) + debriefing',
     features: [
       'Oba loty w tym samym terminie, jeden po drugim',
       'Każdy partner leci solo (Extra 300L = pilot + 1 pasażer)',
