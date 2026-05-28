@@ -10,7 +10,7 @@ Production URL: https://akrobacja.com
 
 Stack: **Cloudflare Pages** (static HTML in `public/`) + **Pages Functions** (TypeScript in `functions/api/`), **D1** (binding `DB`), **R2** (binding `VOUCHER_BUCKET`), **Workers AI** (binding `AI`), Stripe Checkout, wFirma (invoices), Resend (email), SMSAPI (SMS), Printful (merch - partly stubbed).
 
-Full repo layout, data model, all endpoints, and known backlog gaps live in `README.md` - read that first when looking up specifics. Migration policy is documented in `migrations/README.md`.
+Full repo layout, data model, and endpoint list live in `README.md` - read that first when looking up specifics. Migration policy is documented in `migrations/README.md`. **Caveat**: `README.md` § "Endpointy API" and § "Znane luki (backlog)" have drifted — many P0/P1 items there are already fixed (see "Known gaps" at the bottom of this file) and admin/cron endpoint lists are incomplete. Trust the file tree under `functions/api/` over the README's enumeration.
 
 ## Common commands
 
@@ -42,7 +42,7 @@ Auto-deploy: pushes to `main` trigger `.github/workflows/deploy.yml` → `wrangl
 - `functions/_middleware.ts` runs on every request: SEO canonical/robots injection via `HTMLRewriter`, legacy WordPress URL redirects, security headers, and analytics tag injection. Hit it before debugging "why isn't my page rendering."
 - `functions/api/**` are the API routes (file-based routing - `functions/api/foo.ts` → `/api/foo`, `functions/api/foo/bar.ts` → `/api/foo/bar`). Two distinct webhooks share the prefix: `functions/api/webhook.ts` is the **Stripe** webhook at `/api/webhook` (signature via `STRIPE_WEBHOOK_SECRET`); `functions/api/webhook/resend.ts` is the **Resend** delivery-events webhook at `/api/webhook/resend` (signature via `RESEND_WEBHOOK_SECRET`). Don't conflate them.
 - Cron endpoints live under `functions/api/cron/` and are HTTP-triggered by an external scheduler - every cron handler verifies `Authorization: Bearer ${CRON_SECRET}` and 401s on mismatch. Current crons: `welcome-emails`, `abandoned-checkouts`, `scheduled-vouchers`, `refresh-google-reviews`, `post-flight-review-sms`, `lead-magnet-emails`, `scrape-cold-leads`, `sync-wfirma-expenses`.
-- Shared TS modules in `src/lib/`: `pdf`, `email`, `wfirma`, `sms`, `pilot-auth`, `admin-auth`, `weather`, `daylight`, `meta-capi`, `validate`, `phone`, `voucher-code`, `rate-limit` (KV-backed counter), `turnstile` (Cloudflare CAPTCHA verify), `audit` (admin action log), `printful`, `lead-magnet`, `types`. `Env` interface and `PACKAGES` constant live in `src/lib/types.ts` - all voucher pricing and product IDs are defined there. Addons (cross-sell) live in `src/lib/types.ts` under `ADDONS` with per-package gating.
+- Shared TS modules in `src/lib/`: `pdf`, `email`, `wfirma`, `ksef` (e-faktura whitelist + JPK), `sms`, `pilot-auth`, `admin-auth`, `weather`, `daylight`, `meta-capi`, `validate`, `phone`, `voucher-code`, `rate-limit` (KV-backed counter, binding `RATE_LIMIT_KV`), `turnstile` (Cloudflare CAPTCHA verify; public site key injected by middleware as `window.TURNSTILE_SITE_KEY` from `wrangler.jsonc` `vars`), `audit` (admin action log), `printful`, `lead-magnet`, `lead-scraper`, `abandoned-recovery`, `ics` (calendar invites), `seo-config`, `types`. `Env` interface and `PACKAGES` constant live in `src/lib/types.ts` - all voucher pricing and product IDs are defined there. Addons (cross-sell) live in `src/lib/types.ts` under `ADDONS` with per-package gating.
 - **Email observability**: `functions/api/webhook/resend.ts` ingests Resend delivery events into the `email_events` table; admin "Maile" tab consumes `functions/api/admin/email-events.ts` + `functions/api/admin/failed-deliveries.ts`. Set `RESEND_WEBHOOK_SECRET` for signature verification.
 
 ### `email-worker/` - separate Worker (not Pages)
@@ -62,7 +62,9 @@ A second flow (`functions/api/cron/scheduled-vouchers.ts`) handles gift vouchers
 
 ### Auth model - three separate systems
 - **Public endpoints**: no auth.
-- **Admin** (`/api/admin/**`): `Authorization: Bearer ${ADMIN_PASSWORD}`. Token is the password itself, stored in `localStorage` on the admin client. No JWT, no TTL.
+- **Admin** (`/api/admin/**`): two parallel mechanisms, both live (`src/lib/admin-auth.ts`):
+  1. **Legacy**: `Authorization: Bearer ${ADMIN_PASSWORD}` — the password *is* the token. Still accepted; identifies user as `pawel`. Used by `admin.html` localStorage and any cron that calls back into admin endpoints.
+  2. **DB-backed login** (newer, multi-user): email+password against `admin_users` (PBKDF2-SHA256, 100k iter, 16-byte salt). Endpoints: `/api/admin/auth/{login,logout,password-reset,password-reset-confirm,seed}`. Successful login returns a session token (Bearer) backed by an `admin_sessions` row. `me.ts`, `login-history.ts`, `recover.ts` belong to this flow. Sync helper `getAdminUser()` only resolves legacy tokens — new endpoints that need DB sessions must use `getAdminUserAsync()`.
 - **Pilot portal** (`/api/auth/**`): SMS OTP login. `send-code` rate-limits 3/h/phone, `verify` checks code (5 min TTL), issues a `session_token` stored on `pilots` row + client `localStorage`. All `auth/*` and `auth/insurance` endpoints want `Authorization: Bearer <session_token>`.
 - **Cron** (`/api/cron/**`): `Authorization: Bearer ${CRON_SECRET}`. Endpoints are public URLs, so missing/wrong CRON_SECRET must reject - verify before adding new cron handlers.
 

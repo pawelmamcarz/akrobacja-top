@@ -637,6 +637,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <option value="pierwszy_lot">Pierwszy Lot (1 999 PLN)</option>
         <option value="adrenalina">Adrenalina (2 999 PLN)</option>
         <option value="para">Para (3 777 PLN)</option>
+        <option value="para_adrenalina">Para Adrenalina (5 999 PLN)</option>
         <option value="masterclass">Masterclass (4 999 PLN)</option>
       </select>
     </div>
@@ -3284,7 +3285,7 @@ function getOrderStatus(o) {
 }
 function typeLabel(t) { return {voucher:'Voucher',proficiency:'Doskonalacy',training:'Szkolenie',course:'Kurs'}[t]||t||'-'; }
 function statusLabel(s) { return {pending:'Oczekuje',approved:'Zatwierdzony',rejected:'Odrzucony',active:'Aktywny',completed:'Ukończony',cancelled:'Anulowany',available:'Wolny',booked:'Zajęty',paid:'Opłacony',refunded:'Zwrot'}[s]||s||'-'; }
-function pkgLabel(p) { return {pierwszy_lot:'Pierwszy Lot',adrenalina:'Adrenalina',masterclass:'Masterclass'}[p]||p||'-'; }
+function pkgLabel(p) { return {pierwszy_lot:'Pierwszy Lot',adrenalina:'Adrenalina',para:'Para',para_adrenalina:'Para Adrenalina',masterclass:'Masterclass'}[p]||p||'-'; }
 function fmtDate(d) { if (!d) return '-'; return new Date(d).toLocaleDateString('pl-PL'); }
 function esc(s) { const d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
 // Safe escape for HTML attribute values. esc() (textContent) only escapes < > &;

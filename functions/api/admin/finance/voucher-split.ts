@@ -27,17 +27,19 @@ const FUEL_PER_FLIGHT_GR = 20_000;              // 200 zl
 const PACKAGE_FLIGHT_MINUTES: Record<PackageId, number> = {
   pierwszy_lot: 15,
   adrenalina: 20,
-  para: 30,           // 2x 15 min
+  para: 30,           // 2x 15 min (blok lotu = warmup + lot 10-12 + kolowanie)
+  para_adrenalina: 40, // 2x 20 min
   masterclass: 50,
   test_naklejka: 0,
 };
 
-// Mnoznik paliwa per pakiet. Para = 2 osobne loty. Masterclass = 50 min,
+// Mnoznik paliwa per pakiet. Para / Para Adrenalina = 2 osobne loty. Masterclass = 50 min,
 // wymaga dotankowania w trakcie (zasieg ~30 min na pelnym baku akrobacji).
 const PACKAGE_FLIGHT_COUNT: Record<PackageId, number> = {
   pierwszy_lot: 1,
   adrenalina: 1,
   para: 2,
+  para_adrenalina: 2,
   masterclass: 2,
   test_naklejka: 0,
 };

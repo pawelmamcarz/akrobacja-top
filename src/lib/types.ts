@@ -51,32 +51,50 @@ export const PACKAGES = {
     name: 'Pierwszy Lot',
     subtitle: 'Twoje pierwsze spotkanie z Extra 300L',
     price: 199900, // grosze
-    duration: 'do 15 min lotu + 20 min briefing',
-    features: ['Do 15 minut w powietrzu', 'Do +4G / -2G', 'Lot zapoznawczy z podstawowymi figurami'],
+    duration: '10-12 min lotu + 20 min briefing',
+    features: ['10-12 minut w powietrzu', 'Do +4G / -2G', 'Lot zapoznawczy z podstawowymi figurami'],
   },
   adrenalina: {
     id: 'adrenalina',
     name: 'Adrenalina',
     subtitle: 'Pełen program akrobacyjny z Mistrzem',
     price: 299900,
-    duration: '20 min lotu + 40 min briefing + 15 min debriefing',
+    duration: '20 min lotu + 20 min briefing + debriefing po locie',
     features: ['20 minut w powietrzu', 'Do +6G / -4G', 'Pełny program: pętle, beczki, roll, lot odwrócony'],
   },
-  // 2x Pierwszy Lot dla pary, oba loty osobno (kazdy partner leci sam w przednim fotelu).
-  // Cena = 2×1999 - 221 zł rabatu = 3777 zł. PDF generuje jeden voucher na 2 loty, klient
-  // ustala 2 terminy przy rezerwacji. second_seat addon nie ma sensu (juz sa 2 loty).
+  // 2x Pierwszy Lot dla pary, oba loty osobno (Extra 300L: 1 pasazer na lot).
+  // Cena = 2×1999 - 221 zl rabatu = 3777 zl. Oba loty w jednym terminie, jeden po drugim.
+  // PDF generuje jeden voucher na 2 loty. second_seat addon nie ma sensu (juz sa 2 loty).
   para: {
     id: 'para',
     name: 'Para',
-    subtitle: '2 loty Pierwszy Lot dla dwojga, oszczędność 221 zł',
+    subtitle: '2 loty Pierwszy Lot, jeden po drugim w tym samym terminie. Oszczędność 221 zł.',
     price: 377700,
-    duration: '2× (do 15 min lotu + 20 min briefing)',
+    duration: '2× (10-12 min lotu + 20 min briefing), oba loty w jednym terminie',
     features: [
-      '2 osobne loty (każdy partner leci sam)',
-      'Do 15 minut w powietrzu na osobę',
+      'Oba loty w tym samym terminie, jeden po drugim',
+      'Każdy partner leci solo (Extra 300L = pilot + 1 pasażer)',
+      '10-12 minut w powietrzu na osobę',
       'Do +4G / -2G',
       'Podstawowe figury akrobacyjne',
-      'Terminy ustalacie niezależnie, oszczędność 221 zł vs 2× pakiet osobno',
+      'Oszczędność 221 zł vs 2× pakiet osobno',
+    ],
+  },
+  // 2x Adrenalina dla pary, oba loty w jednym terminie, jeden po drugim.
+  // Cena katalogowa 5999 zl (2×2999 - 1 zl). Indywidualne rabaty (np. -12% promo)
+  // schodza ad-hoc przez admin. PDF jak para: jeden voucher na 2 loty.
+  para_adrenalina: {
+    id: 'para_adrenalina',
+    name: 'Para Adrenalina',
+    subtitle: '2 loty Adrenalina, jeden po drugim w tym samym terminie. Pełny program akrobacyjny dla dwojga.',
+    price: 599900,
+    duration: '2× (20 min lotu + 20 min briefing) + debriefing po locie, oba loty w jednym terminie',
+    features: [
+      'Oba loty w tym samym terminie, jeden po drugim',
+      'Każdy partner leci solo (Extra 300L = pilot + 1 pasażer)',
+      '20 minut w powietrzu na osobę',
+      'Do +6G / -4G',
+      'Pełny program: pętle, beczki, roll, lot odwrócony',
     ],
   },
   masterclass: {
