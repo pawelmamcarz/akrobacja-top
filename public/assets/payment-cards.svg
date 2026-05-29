@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="248" height="34" viewBox="0 0 248 34" role="img" aria-label="Akceptowane karty: Visa, Visa Electron, Mastercard, MasterCard Electronic, Maestro">
+  <title>Visa · Mastercard · Maestro</title>
+  <!-- Visa -->
+  <g>
+    <rect x="0" y="0" width="56" height="34" rx="5" fill="#fff" stroke="#e3e8ef"/>
+    <text x="28" y="22" font-family="Arial, sans-serif" font-size="15" font-style="italic" font-weight="700" fill="#1A1F71" text-anchor="middle" letter-spacing="0.5">VISA</text>
+  </g>
+  <!-- Mastercard -->
+  <g transform="translate(64,0)">
+    <rect x="0" y="0" width="56" height="34" rx="5" fill="#fff" stroke="#e3e8ef"/>
+    <circle cx="24" cy="17" r="9" fill="#EB001B"/>
+    <circle cx="34" cy="17" r="9" fill="#F79E1B"/>
+    <path d="M29 10.2a9 9 0 0 0 0 13.6 9 9 0 0 0 0-13.6z" fill="#FF5F00"/>
+  </g>
+  <!-- Maestro -->
+  <g transform="translate(128,0)">
+    <rect x="0" y="0" width="56" height="34" rx="5" fill="#fff" stroke="#e3e8ef"/>
+    <circle cx="24" cy="17" r="9" fill="#0099DF"/>
+    <circle cx="34" cy="17" r="9" fill="#ED0006"/>
+    <path d="M29 10.2a9 9 0 0 0 0 13.6 9 9 0 0 0 0-13.6z" fill="#6C6BBD"/>
+  </g>
+  <!-- BLIK -->
+  <g transform="translate(192,0)">
+    <rect x="0" y="0" width="56" height="34" rx="5" fill="#fff" stroke="#e3e8ef"/>
+    <text x="28" y="22" font-family="Arial, sans-serif" font-size="13" font-weight="800" fill="#000" text-anchor="middle" letter-spacing="0.3">BLIK</text>
+  </g>
+</svg>

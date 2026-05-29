@@ -82,9 +82,11 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     const siteUrl = ctx.env.SITE_URL || 'https://akrobacja.com';
 
-    // PayNow (domyślna bramka). Stripe poniżej jako opcja gdy gateway === 'stripe'.
-    const gateway = body.gateway === 'stripe' ? 'stripe' : 'paynow';
-    if (gateway === 'paynow') {
+    // TEMPORARY: klucze produkcyjne PayNow zwracają 401 (invalid apiKey) - wymuszamy
+    // Stripe do czasu poprawnych kluczy. Przywrócić:
+    // const gateway = body.gateway === 'stripe' ? 'stripe' : 'paynow';
+    let gateway: 'stripe' | 'paynow' = 'stripe';
+    if ((gateway as string) === 'paynow') {
       try {
         const payment = await createPaynowPayment(ctx.env, {
           amount: totalAmount,

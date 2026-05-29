@@ -2542,7 +2542,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <input type="checkbox" id="checkoutVideo">
         + 360° In-flight Video (+299 PLN)
       </label>
-      <div class="gateway-select" role="radiogroup" aria-label="Payment method" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
+      <div class="gateway-select" role="radiogroup" aria-label="Payment method" style="display:none;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
         <label style="flex:1;min-width:140px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
           <input type="radio" name="akroGateway" value="paynow" checked> <span><strong>PayNow</strong><br><small style="color:#6B7A90">BLIK, card, transfer</small></span>
         </label>
@@ -2550,6 +2550,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="radio" name="akroGateway" value="stripe"> <span><strong>Stripe</strong><br><small style="color:#6B7A90">card, BLIK</small></span>
         </label>
       </div>
+      <img src="/assets/payment-cards.svg" alt="Accepted cards: Visa, Visa Electron, Mastercard, MasterCard Electronic, Maestro, BLIK" width="248" height="34" loading="lazy" style="display:block;margin:8px 0 4px">
+      <label class="modal-checkbox" id="checkoutTermsLabel" style="align-items:flex-start;margin-top:8px">
+        <input type="checkbox" id="checkoutTerms" required>
+        <span>I accept the <a href="/regulamin" target="_blank" rel="noopener" style="color:#0A2F7C;text-decoration:underline">terms</a> and <a href="/polityka-prywatnosci" target="_blank" rel="noopener" style="color:#0A2F7C;text-decoration:underline">privacy policy</a>.</span>
+      </label>
       <button type="submit" class="modal-submit" id="checkoutSubmit">Proceed to payment</button>
       <p class="modal-error" id="checkoutError"></p>
     </form>
@@ -2734,6 +2739,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     errorEl.style.display = 'none';
+    const termsEl = document.getElementById('checkoutTerms');
+    if (termsEl && !termsEl.checked) {
+      errorEl.textContent = 'Please accept the terms to continue.';
+      errorEl.style.display = 'block';
+      return;
+    }
     submitBtn.disabled = true;
     submitBtn.textContent = 'Processing...';
 

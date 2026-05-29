@@ -1369,7 +1369,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="field"><label>Miasto *</label><input id="cfCity" placeholder="Radom" autocomplete="address-level2"></div>
       </div>
       <div id="coErr"></div>
-      <div class="gateway-select" role="radiogroup" aria-label="Metoda płatności" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
+      <div class="gateway-select" role="radiogroup" aria-label="Metoda płatności" style="display:none;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
         <label style="flex:1;min-width:140px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
           <input type="radio" name="akroGateway" value="paynow" checked> <span><strong>PayNow</strong><br><small style="color:#6B7A90">BLIK, karta, przelew</small></span>
         </label>
@@ -1377,6 +1377,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="radio" name="akroGateway" value="stripe"> <span><strong>Stripe</strong><br><small style="color:#6B7A90">karta, BLIK</small></span>
         </label>
       </div>
+      <img src="/assets/payment-cards.svg" alt="Akceptowane karty: Visa, Visa Electron, Mastercard, MasterCard Electronic, Maestro, BLIK" width="248" height="34" loading="lazy" style="display:block;margin:8px 0 4px">
+      <label class="co-terms" id="coTermsLabel" style="display:flex;align-items:flex-start;gap:8px;margin:8px 0;font-size:13px;line-height:1.4">
+        <input type="checkbox" id="coTerms" required>
+        <span>Akceptuję <a href="/regulamin" target="_blank" rel="noopener" style="color:#0A2F7C;text-decoration:underline">regulamin</a> oraz <a href="/polityka-prywatnosci" target="_blank" rel="noopener" style="color:#0A2F7C;text-decoration:underline">politykę prywatności</a>.</span>
+      </label>
       <button class="co-submit" id="coSubmitBtn" onclick="placeOrder()">
         Zamawiam i płacę &nbsp;→
       </button>
@@ -1400,7 +1405,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="pd-sizes" id="pdSizes"></div>
       </div>
       <button class="pd-add" id="pdAdd" onclick="addFromPD()">Dodaj do koszyka</button>
-      <div class="pd-meta">Made to order · Produkcja 7–14 dni roboczych</div>
+      <div class="pd-meta">Made to order · Produkcja 7–14 dni roboczych · Producent: Snapwear · Skład: 100% bawełna · Cena brutto (zawiera VAT)</div>
     </div>
   </div>
 </div>
@@ -1648,6 +1653,12 @@ async function placeOrder() {
   const zip = document.getElementById('cfZip').value.trim();
   const errEl = document.getElementById('coErr');
   errEl.innerHTML = '';
+
+  const termsEl = document.getElementById('coTerms');
+  if (termsEl && !termsEl.checked) {
+    errEl.innerHTML = '<div class="co-err">Zaznacz akceptację regulaminu, aby kontynuować.</div>';
+    return;
+  }
 
   if (!name || !email || !address || !city || !zip) {
     errEl.innerHTML = '<div class="co-err">Wypełnij wszystkie wymagane pola (*)</div>';

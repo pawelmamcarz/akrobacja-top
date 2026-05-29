@@ -66,7 +66,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <label for="testEmail">Email</label>
       <input type="email" id="testEmail" required placeholder="test@example.com" autocomplete="email">
     </div>
-    <div class="gateway-select" role="radiogroup" aria-label="Metoda płatności" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
+    <div class="gateway-select" role="radiogroup" aria-label="Metoda płatności" style="display:none;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
       <label style="flex:1;min-width:140px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
         <input type="radio" name="akroGateway" value="paynow" checked> <span><strong>PayNow</strong><br><small style="color:#6B7A90">BLIK, karta, przelew</small></span>
       </label>
@@ -74,6 +74,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <input type="radio" name="akroGateway" value="stripe"> <span><strong>Stripe</strong><br><small style="color:#6B7A90">karta, BLIK</small></span>
       </label>
     </div>
+    <img src="/assets/payment-cards.svg" alt="Akceptowane karty: Visa, Visa Electron, Mastercard, MasterCard Electronic, Maestro, BLIK" width="248" height="34" loading="lazy" style="display:block;margin:8px 0 4px">
+    <label class="modal-checkbox" id="checkoutTermsLabel" style="display:flex;align-items:flex-start;gap:8px;margin-top:8px;font-size:13px">
+      <input type="checkbox" id="checkoutTerms" required>
+      <span>Akceptuję <a href="/regulamin" target="_blank" rel="noopener" style="color:#0A2F7C;text-decoration:underline">regulamin</a> oraz <a href="/polityka-prywatnosci" target="_blank" rel="noopener" style="color:#0A2F7C;text-decoration:underline">politykę prywatności</a>.</span>
+    </label>
     <button type="submit" class="submit" id="testSubmit">Kup naklejkę za 1 zł →</button>
     <p class="error" id="testError"></p>
   </form>
@@ -98,6 +103,11 @@ const errorEl = document.getElementById('testError');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   errorEl.textContent = '';
+  const termsEl = document.getElementById('checkoutTerms');
+  if (termsEl && !termsEl.checked) {
+    errorEl.textContent = 'Zaznacz akceptację regulaminu, aby kontynuować.';
+    return;
+  }
   submitBtn.disabled = true;
   submitBtn.textContent = 'Przetwarzanie…';
   try {

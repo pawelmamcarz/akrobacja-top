@@ -590,18 +590,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <input type="checkbox" id="checkoutVideo" data-addon-id="video">
         + Video 360° z lotu (+299 zł)
       </label>
-      <label class="modal-checkbox" data-addon-label="second_seat">
-        <input type="checkbox" data-addon-id="second_seat">
-        + Drugi pasażer w samolocie, ten sam lot (+799 zł)
-      </label>
-      <label class="modal-checkbox">
-        <input type="checkbox" data-addon-id="ground_photo">
-        + Fotograf z ziemi - min. 5 zdjęć JPG w 48h (+249 zł)
-      </label>
-      <label class="modal-checkbox">
-        <input type="checkbox" data-addon-id="framed_print">
-        + Wydruk najlepszego kadru + rama A3, kurier (+199 zł)
-      </label>
 
       <!-- Personalizacja prezentu - collapsible -->
       <div class="gift-block" id="giftBlock">
@@ -646,7 +634,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <input type="text" id="checkoutDiscount" placeholder="np. PIERWSZY100 (-100 zł)" autocomplete="off" style="text-transform:uppercase;letter-spacing:.08em">
         <p id="discountStatus" style="font-size:11px;margin-top:6px;min-height:14px;font-family:var(--font-h);font-weight:700;letter-spacing:.05em"></p>
       </div>
-      <div class="gateway-select" role="radiogroup" aria-label="Metoda płatności" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
+      <div class="gateway-select" role="radiogroup" aria-label="Metoda płatności" style="display:none;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
         <label style="flex:1;min-width:140px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
           <input type="radio" name="akroGateway" value="paynow" checked> <span><strong>PayNow</strong><br><small style="color:#6B7A90">BLIK, karta, przelew</small></span>
         </label>
@@ -654,6 +642,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="radio" name="akroGateway" value="stripe"> <span><strong>Stripe</strong><br><small style="color:#6B7A90">karta, BLIK</small></span>
         </label>
       </div>
+      <img src="/assets/payment-cards.svg" alt="Akceptowane karty: Visa, Visa Electron, Mastercard, MasterCard Electronic, Maestro, BLIK" width="248" height="34" loading="lazy" style="display:block;margin:8px 0 4px">
+      <label class="modal-checkbox" id="checkoutTermsLabel" style="align-items:flex-start;margin-top:8px">
+        <input type="checkbox" id="checkoutTerms" required>
+        <span>Akceptuję <a href="/regulamin" target="_blank" rel="noopener" style="color:#0A2F7C;text-decoration:underline">regulamin</a> oraz <a href="/polityka-prywatnosci" target="_blank" rel="noopener" style="color:#0A2F7C;text-decoration:underline">politykę prywatności</a>.</span>
+      </label>
       <button type="submit" class="modal-submit" id="checkoutSubmit">Przejdź do płatności →</button>
       <p class="modal-error" id="checkoutError"></p>
       <div class="modal-secure">🔒 Płatność SSL · PDF w mailu · Zwrot 14 dni</div>
@@ -871,6 +864,12 @@ if (urlPkg && PKGS[urlPkg]) setTimeout(() => openModal(urlPkg), 300);
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   errorEl.style.display = 'none';
+  const termsEl = document.getElementById('checkoutTerms');
+  if (termsEl && !termsEl.checked) {
+    errorEl.textContent = 'Zaznacz akceptację regulaminu, aby kontynuować.';
+    errorEl.style.display = 'block';
+    return;
+  }
   submitBtn.disabled = true;
   submitBtn.textContent = 'Przetwarzanie…';
   try {

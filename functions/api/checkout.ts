@@ -237,9 +237,11 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const siteUrlBase = ctx.env.SITE_URL || 'https://akrobacja.com';
     const continueUrl = `${siteUrlBase}/sukces?code=${voucherCode}&pkg=${body.packageId}&amount=${totalAmount / 100}`;
 
-    // PayNow (domyślna bramka). Stripe poniżej jako opcja gdy gateway === 'stripe'.
-    const gateway = body.gateway === 'stripe' ? 'stripe' : 'paynow';
-    if (gateway === 'paynow') {
+    // TEMPORARY: klucze produkcyjne PayNow zwracają 401 (invalid apiKey) - do czasu
+    // dostarczenia poprawnych kluczy wymuszamy Stripe, żeby checkout działał.
+    // Przywrócić: const gateway = body.gateway === 'stripe' ? 'stripe' : 'paynow';
+    let gateway: 'stripe' | 'paynow' = 'stripe';
+    if ((gateway as string) === 'paynow') {
       try {
         const descParts = [`Voucher "${pkg.name}" - lot akrobacyjny Extra 300L`];
         for (const id of validatedAddons) {
