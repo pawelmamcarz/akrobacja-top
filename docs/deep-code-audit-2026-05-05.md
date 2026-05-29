@@ -145,3 +145,82 @@ npx wrangler pages functions build --outdir /private/tmp/akrobacja-functions-bui
 rg -n "TODO|FIXME|HACK|CRON_SECRET|Authorization|localStorage|innerHTML|fetch\\(" functions src public/*.html public/assets public/*.js
 rg -n "Pelen|Pelny|pilotow|Uzupelnij|imie|Jestes|juz|zlozony|oczekujacy|lotow|korkociagu|odwrocony" src functions public/*.html public/blog public/assets public/*.js
 ```
+
+---
+
+# Aktualizacja 2026-05-29 — re-audyt end-to-end + naprawy
+
+Re-audyt całego systemu (3 równoległe agenty: payment/voucher/merch, auth/security,
+data-layer/quality), z **ręczną weryfikacją każdego ustalenia czytając kod** — bo
+agenty zgłosiły kilka rażąco błędnych "P0". Naprawy zacommitowane i wdrożone
+(`83f370c`, deploy green, smoke OK).
+
+## Status ustaleń z 2026-05-05
+
+- **P0 drift `products`** → naprawione wcześniej (migracja 013 + `schema.sql`). Smoke `/api/merch/products` = 200.
+- **P1 walidacja `quantity` merch** → **NAPRAWIONE** w tej turze (patrz niżej).
+- **P1 crony fail-open** → większość już fail-closed; ostatni wyjątek `refresh-google-reviews` **NAPRAWIONY**.
+- **P1 chat AI bez limitów** → **już naprawione** w międzyczasie: `chat.ts` tnie historię `slice(-10)`, limit 2000 zn./wiadomość, rate-limit 20/min/IP + dzienny cap.
+- **P2 Stripe timestamp tolerance** → **już naprawione**: `webhook.ts:147-151` (5-min `SIGNATURE_TOLERANCE_SECONDS`) + `timingSafeEqualHex` (`:128/166`).
+- **P2 migracje nieidempotentne** → patrz nowa sekcja "Idempotentność migracji" niżej.
+- **P2 diakrytyki** → publiczne teksty/API mają już diakrytyki (spot-check OK); zaległości głównie w komentarzach (nie user-facing).
+
+## Nowe ustalenia — NAPRAWIONE (commit `83f370c`, live)
+
+### P1 — Osobiste kody rabatowe nigdy nie oznaczane jako użyte
+`checkout.ts:136` odrzuca kod gdy `used_at` ustawione, `:148` ustawia `singleUse: true`, ale
+**w całym repo nie istniał żaden `UPDATE personal_discount_codes SET used_at`**. Ścieżka
+egzekwowania `singleUse` (`:155`) działa tylko dla statycznych `DISCOUNTS` (`&& !personalCodeRow`),
+więc kody osobiste (PHOTO-XXXX) były **wielokrotnie używalne** → wyciek przychodu.
+**Fix:** webhook stempluje `used_at` + `used_order_id` przy `processing → paid`, idempotentnie
+(`WHERE used_at IS NULL`). `functions/api/webhook.ts`.
+
+### P1 — Dryf schematu: tabele/kolumny tylko w migracjach, brak w `schema.sql`
+`schema.sql` to jedyne źródło bootstrapu/DR. Brakowało: `personal_discount_codes` (mig. 039),
+`ksef_whitelist` + `expenses.ksef_invoice_uuid` (mig. 037), `events_sold` (mig. 038),
+`merch_orders.baselinker_order_id` (mig. 010). Świeży bootstrap rzucałby "no such table".
+**Fix:** dopisane 1:1 do `schema.sql`. Zweryfikowano programowo parytet wszystkich 23 kolumn
+dodawanych przez 15 migracji `ALTER TABLE` — teraz 100% pokrycia.
+
+### P2 — Merch checkout: brak walidacji `quantity` + brak cleanup przy błędzie Stripe
+`merch/checkout.ts`: `product.price * item.quantity` bez sprawdzenia typu/zakresu (ujemne/0/NaN/
+ułamki/ogromne → śmieciowy `total_amount` + zombie `pending`); przy błędzie Stripe rekord
+zostawał `pending` na zawsze.
+**Fix:** `Number.isInteger && 1..20` (live smoke: `quantity:-5` → 400) oraz `status='failed'` przy błędzie Stripe.
+
+### P3 — Hardening
+- `cron/refresh-google-reviews.ts` — jedyny cron bez guardu `if (!CRON_SECRET) return 500` (przy braku sekretu `Bearer undefined` przechodził). Fail-closed.
+- `webhook/resend.ts` — porównanie podpisu Svix zmienione na constant-time (`timingSafeEqual`), spójnie ze Stripe webhookiem.
+
+## Idempotentność migracji (sprostowanie)
+
+Pełnej idempotentności `ALTER TABLE ... ADD COLUMN` **nie da się osiągnąć w czystym SQL na
+D1/SQLite** (brak `ADD COLUMN IF NOT EXISTS` i warunkowego DDL) — i **nie jest potrzebna**, bo
+DR/bootstrap idzie przez `schema.sql`, nie przez replay migracji. Realnym zabezpieczeniem jest
+kompletność `schema.sql` (zweryfikowana powyżej). Komentarz w `migrations/013` fałszywie sugerował
+istnienie "PRAGMA idiom" i bezpieczny re-run — poprawiony. `migrations/README.md` doprecyzowany.
+
+## Jawnie ODRZUCONE fałszywe alarmy (zweryfikowane jako nieprawda)
+
+- ❌ "OTP generuje tylko 54/256 kodów" — `sms.ts:46` używa `Uint32Array` (pełny zakres 32-bit), `% 900000 + 100000` → ~900k kodów ~jednorodnie; brute-force ograniczony limitem 10 prób/10 min.
+- ❌ "SQL injection przez `WINDOW_MINUTES`/`SESSION_TTL_DAYS`" — interpolacja **hardcodowanych stałych**, nie inputu użytkownika.
+- ❌ "Faktura wFirma rozjeżdża się z rabatem" — `wfirma.ts:27-28` używa faktycznie pobranej kwoty; webhook (`:322-328`) dodatkowo asertuje `amount_total == order.amount`. Faktura zgadza się z płatnością.
+- ❌ "`seed.ts` fail-open / plaintext" — `admin-auth.ts:26` filtruje pusty `ADMIN_PASSWORD` → `checkAdminAuth` zwraca 401 (**fail-closed**); guard 409 na duplikat; plaintext jednorazowy intencjonalnie.
+
+## Backlog (realne, niepilne)
+
+- ~15 migracji kolumnowych nieidempotentnych — z natury D1, nie do naprawy w SQL; ryzyko tylko przy (niewspieranym) replayu. Mitygacja = kompletny `schema.sql` (zrobione).
+- `voucher-code.ts` bez retry na kolizję — prawdopodobieństwo ~1/10¹², opcjonalne.
+- rate-limit ufa `CF-Connecting-IP` — w prod OK (CF ustawia na edge), znaczenie tylko lokalnie/staging.
+- Brak recovery-maili dla porzuconego merch — feature gap, nie bug.
+
+## Weryfikacja wykonana (2026-05-29)
+
+```bash
+npm run db:typecheck                       # tsc --noEmit — czysto
+sqlite3 <tmp> < schema.sql                 # ładuje się czysto; PRAGMA table_info parytet 23/23 kolumn
+gh run list --branch main                  # Deploy to Cloudflare Pages = success (39s)
+curl -s -o /dev/null -w '%{http_code}' https://akrobacja.com/api/merch/products   # 200
+curl -X POST .../api/merch/checkout -d '{"items":[{"quantity":-5}...]}'           # 400 (walidacja live)
+```
+
