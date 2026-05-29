@@ -150,3 +150,55 @@ export async function getAdminUserAsync(request: Request, env: Env): Promise<Adm
 export async function checkAdminAuthAsync(request: Request, env: Env): Promise<boolean> {
   return (await getAdminUserAsync(request, env)) !== null;
 }
+
+// ──────────────────────────────────────────────────────────────────
+// Role-based access. admin_users.role: 'admin' (pełny dostęp) | 'mechanic'
+// (tylko część techniczna - samolot/maintenance/dziennik/MS, bez finansów).
+// Legacy ADMIN_PASSWORD ⇒ 'admin'. Używaj w endpointach zamiast samego
+// checkAdminAuthAsync, gdy potrzebujesz rozróżnienia roli.
+
+export type AdminRole = 'admin' | 'mechanic';
+
+export interface AdminIdentity {
+  user: AdminUser;
+  role: AdminRole;
+}
+
+export async function getAdminIdentityAsync(request: Request, env: Env): Promise<AdminIdentity | null> {
+  // Legacy Bearer (ADMIN_PASSWORD) = pełny admin.
+  const legacy = getAdminUser(request, env);
+  if (legacy) return { user: legacy, role: 'admin' };
+
+  const token = bearerToken(request);
+  if (!token) return null;
+  if (!/^[a-f0-9]{32,128}$/.test(token)) return null;
+
+  const now = Math.floor(Date.now() / 1000);
+  const row = await env.DB.prepare(
+    `SELECT u.email, u.role
+     FROM admin_sessions s
+     JOIN admin_users u ON u.id = s.user_id
+     WHERE s.token = ? AND s.expires_at > ?`,
+  ).bind(token, now).first<{ email: string; role: string }>();
+  if (!row) return null;
+
+  await env.DB.prepare(`UPDATE admin_sessions SET last_used_at = ? WHERE token = ?`)
+    .bind(now, token).run().catch(() => {});
+
+  const role: AdminRole = row.role === 'mechanic' ? 'mechanic' : 'admin';
+  return { user: row.email, role };
+}
+
+// True gdy zalogowany i ma dostęp do części technicznej (admin lub mechanic).
+export async function checkTechAccessAsync(request: Request, env: Env): Promise<AdminIdentity | null> {
+  const id = await getAdminIdentityAsync(request, env);
+  if (!id) return null;
+  return (id.role === 'admin' || id.role === 'mechanic') ? id : null;
+}
+
+// True tylko dla pełnego admina (finanse, zamówienia, marketing itp.).
+export async function checkFullAdminAsync(request: Request, env: Env): Promise<AdminIdentity | null> {
+  const id = await getAdminIdentityAsync(request, env);
+  if (!id) return null;
+  return id.role === 'admin' ? id : null;
+}

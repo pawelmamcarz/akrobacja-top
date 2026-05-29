@@ -217,6 +217,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div id="myEventsTable"></div>
     </div>
 
+    <!-- Dziennik techniczny (tylko instruktorzy) -->
+    <div id="techLogSection" style="display:none">
+      <div class="section-title">Dziennik techniczny</div>
+      <p style="font-size:12px;color:#666;margin-bottom:10px">Zrób zdjęcie strony dziennika pokładowego po locie. Trafi do zatwierdzenia przez administrację.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:8px">
+        <input type="file" id="techLogFile" accept="image/*" capture="environment" style="font-size:13px">
+        <button class="btn-sm btn-save" id="techLogBtn" onclick="uploadTechLog()">Wyślij zdjęcie dziennika</button>
+        <span id="techLogStatus" style="font-size:12px;color:#666"></span>
+      </div>
+      <h4 style="font-size:13px;color:var(--navy);margin:16px 0 8px">Ostatnie wpisy</h4>
+      <div id="techLogList"></div>
+    </div>
+
     <!-- Courses -->
     <div class="section-title">Kursy akrobacji</div>
     <div id="coursesTable"></div>
@@ -326,8 +339,115 @@ async function loadDashboard() {
     loadInsurance(p.insurance_status);
     loadBookings();
     loadMyCalendar(res.calendar_ics_url);
+    loadTechLog(p.is_instructor);
   } catch (e) {
     logout();
+  }
+}
+
+// ── Dziennik techniczny (instruktorzy) ──
+const TECH_LOG_LONG_EDGE = 1600;
+const TECH_LOG_QUALITY = 0.85;
+
+function loadTechLog(isInstructor) {
+  const section = document.getElementById('techLogSection');
+  if (!section) return;
+  if (!isInstructor) { section.style.display = 'none'; return; }
+  section.style.display = 'block';
+  refreshTechLogList();
+}
+
+async function refreshTechLogList() {
+  const wrap = document.getElementById('techLogList');
+  if (!wrap) return;
+  const res = await api('GET', '/api/auth/logbook');
+  const entries = (res && res.entries) || [];
+  if (!entries.length) {
+    wrap.innerHTML = '<p style="font-size:13px;color:#888;padding:8px 0">Brak wpisów.</p>';
+    return;
+  }
+  wrap.innerHTML = `<table style="width:100%;border-collapse:collapse;font-size:13px">
+    <tr style="background:#f6f8fa"><th style="text-align:left;padding:8px">Data lotu</th><th style="text-align:left;padding:8px">Czas</th><th style="text-align:left;padding:8px">Status</th></tr>
+    ${entries.map(e => `<tr style="border-bottom:1px solid #eee">
+      <td style="padding:8px">${escHtml(e.flight_date || '—')}</td>
+      <td style="padding:8px">${e.flight_minutes != null ? escHtml(String(e.flight_minutes)) + ' min' : '—'}</td>
+      <td style="padding:8px">${techLogStatus(e.status)}</td>
+    </tr>`).join('')}
+  </table>`;
+}
+
+function techLogStatus(s) {
+  const map = {
+    pending_review: ['#856404', '#fff3cd', 'Czeka na zatwierdzenie'],
+    confirmed:      ['#155724', '#d4edda', 'Zatwierdzony'],
+    rejected:       ['#721c24', '#f8d7da', 'Odrzucony'],
+  };
+  const [color, bg, label] = map[s] || ['#555', '#eee', s || '—'];
+  return `<span style="display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;background:${bg};color:${color}">${label}</span>`;
+}
+
+// Downscale image to ~1600px long edge JPEG (same approach as wyslij-zdjecia.html).
+async function downscaleToJpeg(rawFile) {
+  const dataUrl = await new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = reject;
+    r.readAsDataURL(rawFile);
+  });
+  const img = await new Promise((resolve, reject) => {
+    const i = new Image();
+    i.onload = () => resolve(i);
+    i.onerror = reject;
+    i.src = dataUrl;
+  });
+  const longEdge = Math.max(img.naturalWidth, img.naturalHeight);
+  const scale = longEdge > TECH_LOG_LONG_EDGE ? TECH_LOG_LONG_EDGE / longEdge : 1;
+  const w = Math.round(img.naturalWidth * scale);
+  const h = Math.round(img.naturalHeight * scale);
+  const canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext('2d');
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(img, 0, 0, w, h);
+  const blob = await new Promise((res) => canvas.toBlob(res, 'image/jpeg', TECH_LOG_QUALITY));
+  if (!blob) throw new Error('Konwersja JPEG nieudana');
+  return blob;
+}
+
+async function uploadTechLog() {
+  const fileEl = document.getElementById('techLogFile');
+  const statusEl = document.getElementById('techLogStatus');
+  const btn = document.getElementById('techLogBtn');
+  if (!fileEl || !fileEl.files || !fileEl.files[0]) { statusEl.textContent = 'Wybierz zdjęcie'; return; }
+
+  btn.disabled = true; statusEl.textContent = 'Przetwarzanie zdjęcia...';
+  try {
+    let blob;
+    try {
+      blob = await downscaleToJpeg(fileEl.files[0]);
+    } catch (_) {
+      // Decode failed (np. HEIC w Chrome) - wyślij oryginał.
+      blob = fileEl.files[0];
+    }
+    statusEl.textContent = 'Wysyłanie...';
+    const fd = new FormData();
+    fd.append('photo', blob, 'dziennik.jpg');
+    fd.append('aircraft_id', 'speks-001');
+    // IMPORTANT: do NOT set Content-Type - browser sets multipart boundary.
+    const r = await fetch('/api/auth/logbook', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${TOKEN}` },
+      body: fd,
+    });
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok || data.error) throw new Error(data.error || 'Błąd wysyłki');
+    statusEl.textContent = 'Wysłano — czeka na zatwierdzenie';
+    fileEl.value = '';
+    refreshTechLogList();
+  } catch (err) {
+    statusEl.textContent = err.message || 'Błąd';
+  } finally {
+    btn.disabled = false;
   }
 }
 
@@ -498,6 +618,8 @@ function statusLabel(s) {
 function pkgLabel(p) {
   return {pierwszy_lot:'Pierwszy Lot',adrenalina:'Adrenalina',para:'Para',para_adrenalina:'Para Adrenalina',masterclass:'Masterclass'}[p]||p;
 }
+
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(() => {}); }
 </script>
 
 <div style="background:var(--black);border-top:1px solid rgba(255,255,255,.05);padding:48px 32px 32px;text-align:center;font-family:var(--font-b)">

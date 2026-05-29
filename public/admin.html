@@ -207,18 +207,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- AIRCRAFT -->
   <div class="panel" id="panel-aircraft">
     <h3 style="font-size:14px;color:#1B4DB5;margin-bottom:4px">Extra 300L · SP-EKS</h3>
-    <p style="font-size:11px;color:#888;margin-bottom:20px">Harmonogram przegladow, dokumenty, polisa</p>
+    <p style="font-size:11px;color:#888;margin-bottom:8px">Harmonogram przeglądów, dokumenty, polisa, dziennik pokładowy</p>
+    <div id="aircraftHeader" style="font-size:12px;color:#0A2F7C;background:#f1f8ff;border:1px solid #c4d2e0;border-radius:4px;padding:8px 12px;margin-bottom:16px"></div>
 
-    <div style="display:flex;gap:8px;margin-bottom:16px">
-      <button class="btn btn-blue" onclick="openModal('newMaintenance')">+ Przeglad</button>
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
+      <button class="btn btn-blue" onclick="openModal('newMaintenance')">+ Przegląd</button>
       <button class="btn btn-blue" onclick="openModal('newDocument')">+ Dokument</button>
+      <button class="btn" style="background:#0A2F7C;color:#fff" onclick="toggleMsUpload()">+ MS / dokument (plik)</button>
     </div>
 
-    <h4 style="font-size:12px;color:#C41E3A;margin:16px 0 8px">Harmonogram przegladow</h4>
+    <div id="msUploadForm" style="display:none;background:#f7f9fc;border:1px solid #c4d2e0;border-radius:4px;padding:14px;margin-bottom:16px">
+      <h4 style="font-size:12px;color:#0A2F7C;margin-bottom:10px">Wgraj dokument / MS (plik PDF lub zdjęcie)</h4>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-bottom:10px">
+        <div class="field"><label>Plik *</label><input type="file" id="msFile" accept="image/*,application/pdf"></div>
+        <div class="field"><label>Nazwa *</label><input type="text" id="msName" placeholder="np. MS-2026-014"></div>
+        <div class="field"><label>Typ dokumentu</label>
+          <select id="msDocType">
+            <option value="ms" selected>MS (Maintenance Statement)</option>
+            <option value="arc">ARC</option>
+            <option value="cofa">CofA</option>
+            <option value="registration">Rejestracja</option>
+            <option value="other">Inny</option>
+          </select>
+        </div>
+        <div class="field"><label>Ważny od</label><input type="date" id="msFrom"></div>
+        <div class="field"><label>Ważny do</label><input type="date" id="msTo"></div>
+        <div class="field"><label>Uwagi</label><input type="text" id="msNotes" placeholder="opcjonalnie"></div>
+      </div>
+      <button class="btn btn-green" id="msUploadBtn" onclick="uploadMsDoc()">Wgraj</button>
+      <button class="btn btn-grey" onclick="toggleMsUpload()">Anuluj</button>
+      <span id="msUploadStatus" style="margin-left:10px;font-size:11px;color:#666"></span>
+    </div>
+
+    <h4 style="font-size:12px;color:#C41E3A;margin:16px 0 8px">Harmonogram przeglądów</h4>
     <div id="maintenanceTable"></div>
 
     <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Dokumenty</h4>
     <div id="documentsTable"></div>
+
+    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Dziennik pokładowy</h4>
+    <div id="logbookSection"></div>
 
     <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Piloci w polisie
       <button class="btn btn-blue" style="margin-left:8px;font-size:11px;padding:4px 10px" onclick="openModal('addInsurance')">+ Wpisz pilota</button>
@@ -832,6 +860,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 let TOKEN = localStorage.getItem('admin_token') || '';
 let USER = null;
+let ROLE = null;
 let allOrders = [], allPilots = [], allCourses = [], allEvents = [], allAircrafts = [];
 
 if (TOKEN) tryLoad();
@@ -920,9 +949,21 @@ function doLogout() {
 async function fetchUser() {
   try {
     const r = await api('GET', '/api/admin/me');
-    if (r && r.user) return r.user;
+    if (r && r.user) { ROLE = r.role || null; return r.user; }
   } catch {}
   return null;
+}
+
+// Mechanik widzi wyłącznie zakładkę "Samolot". Pełny admin (lub brak roli) - bez zmian.
+function applyRoleGating() {
+  if (ROLE !== 'mechanic') return;
+  document.querySelectorAll('.tab').forEach(t => {
+    const oc = t.getAttribute('onclick') || '';
+    if (!/switchTab\(\s*['"]aircraft['"]\s*\)/.test(oc)) {
+      t.style.display = 'none';
+    }
+  });
+  switchTab('aircraft');
 }
 
 function applyUserBadge() {
@@ -940,12 +981,19 @@ async function tryLoad() {
   try {
     USER = await fetchUser();
     if (!USER) throw new Error('no user');
-    const res = await api('GET', '/api/admin/orders');
-    if (res.error) throw new Error();
-    allOrders = res.orders || [];
     document.getElementById('loginView').style.display = 'none';
     document.getElementById('appView').classList.add('active');
     applyUserBadge();
+
+    // Mechanik: tylko zakładka "Samolot", bez ładowania zamówień/kalendarza.
+    if (ROLE === 'mechanic') {
+      applyRoleGating();
+      return true;
+    }
+
+    const res = await api('GET', '/api/admin/orders');
+    if (res.error) throw new Error();
+    allOrders = res.orders || [];
     renderOrders(allOrders);
     // Set calendar defaults
     const today = new Date().toISOString().split('T')[0];
@@ -2959,51 +3007,75 @@ async function removeBlock(id) {
 // ── AIRCRAFT ──
 async function loadAircraft() {
   const res = await api('GET', '/api/admin/aircraft');
+  const tok = encodeURIComponent(localStorage.getItem('admin_token') || '');
+
+  // Aircraft header (nalot + tempo)
+  const ac = res.aircraft || {};
+  const headEl = document.getElementById('aircraftHeader');
+  if (headEl) {
+    const hrs = (ac.current_hours != null) ? ac.current_hours : '—';
+    const tempo = (ac.hours_per_day != null) ? (Math.round(ac.hours_per_day * 10) / 10) : '—';
+    const upd = ac.hours_updated_at ? ` · aktualizacja: ${fmtDate(ac.hours_updated_at)}` : '';
+    headEl.innerHTML = `<strong>Nalot:</strong> ${esc(String(hrs))} h · <strong>tempo</strong> ~${esc(String(tempo))} h/dzień${esc(upd)}`;
+  }
 
   // Maintenance
   const mt = res.maintenance || [];
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('maintenanceTable').innerHTML = mt.length ? `<table>
-    <tr><th>Typ</th><th>Opis</th><th>Termin data</th><th>Termin godz.</th><th>Akt. nalot</th><th>Status</th><th>Akcje</th></tr>
+    <tr><th>Typ</th><th>Opis</th><th>Termin data</th><th>Termin godz.</th><th>Akt. nalot</th><th>Estymacja</th><th>Status</th><th>Akcje</th></tr>
     ${mt.map(m => {
       const overdue = (m.due_date && m.due_date < today && m.status !== 'completed') || (m.due_hours && m.current_hours && m.current_hours >= m.due_hours && m.status !== 'completed');
       const badge = m.status === 'completed' ? 'completed' : overdue ? 'expired' : 'pending';
-      const label = m.status === 'completed' ? 'Wykonany' : overdue ? 'ZALEGLY' : 'Zaplanowany';
+      const label = m.status === 'completed' ? 'Wykonany' : overdue ? 'ZALEGŁY' : 'Zaplanowany';
+      const est = m.est_date ? `~${esc(String(m.est_days))} dni (${esc(String(m.est_date))})` : '—';
       return `<tr style="${overdue?'background:#fff5f5':''}">
-        <td><strong>${m.type}</strong></td>
+        <td><strong>${esc(m.type)}</strong></td>
         <td>${esc(m.description||'-')}</td>
         <td>${m.due_date||'-'}</td>
         <td>${m.due_hours ? m.due_hours+'h' : '-'}</td>
         <td>${m.current_hours ? m.current_hours+'h' : '-'}</td>
+        <td>${est}</td>
         <td><span class="badge badge-${badge}">${label}</span></td>
         <td class="actions">
           ${m.status!=='completed' ? `<button class="btn btn-green" data-action="completeMaint" data-arg1="${dataAttr(m.id)}">Wykonany</button>` : ''}
-          <button class="btn btn-grey" data-action="deleteMaint" data-arg1="${dataAttr(m.id)}">Usun</button>
+          <button class="btn btn-grey" data-action="deleteMaint" data-arg1="${dataAttr(m.id)}">Usuń</button>
         </td>
       </tr>`;
     }).join('')}
-  </table>` : '<p style="padding:12px;color:#888">Brak zaplanowanych przegladow</p>';
+  </table>` : '<p style="padding:12px;color:#888">Brak zaplanowanych przeglądów</p>';
 
   // Documents
   const docs = res.documents || [];
   document.getElementById('documentsTable').innerHTML = docs.length ? `<table>
-    <tr><th>Nazwa</th><th>Typ</th><th>Wazny od</th><th>Wazny do</th><th>Status</th><th>Uwagi</th><th>Akcje</th></tr>
+    <tr><th>Nazwa</th><th>Typ</th><th>Źródło</th><th>Ważny od</th><th>Ważny do</th><th>Status</th><th>Uwagi</th><th>Akcje</th></tr>
     ${docs.map(d => {
       const expired = d.valid_to && d.valid_to < today;
       const soon = d.valid_to && !expired && d.valid_to < new Date(Date.now()+30*86400000).toISOString().split('T')[0];
       const badge = expired ? 'expired' : soon ? 'pending' : 'active';
-      const label = expired ? 'WYGASLY' : soon ? 'Wygasa wkrotce' : 'Wazny';
+      const label = expired ? 'WYGASŁY' : soon ? 'Wygasa wkrótce' : 'Ważny';
+      const srcBadge = d.source === 'camo'
+        ? '<span class="badge badge-active">CAMO</span>'
+        : (d.source === 'ms' || d.type === 'ms') ? '<span class="badge badge-pending">MS</span>'
+        : (d.source ? `<span class="badge">${esc(d.source)}</span>` : '—');
+      const preview = d.r2_key
+        ? `<a class="btn btn-blue" href="/api/admin/aircraft/file/${dataAttr(d.id)}?kind=doc&t=${tok}" target="_blank" rel="noopener">Podgląd</a>`
+        : '';
       return `<tr style="${expired?'background:#fff5f5':''}">
         <td><strong>${esc(d.name)}</strong></td>
         <td>${docTypeLabel(d.type)}</td>
+        <td>${srcBadge}</td>
         <td>${d.valid_from||'-'}</td>
         <td>${d.valid_to||'-'}</td>
         <td><span class="badge badge-${badge}">${label}</span></td>
         <td>${esc(d.notes||'-')}</td>
-        <td><button class="btn btn-grey" data-action="deleteDoc" data-arg1="${dataAttr(d.id)}">Usun</button></td>
+        <td class="actions">${preview}<button class="btn btn-grey" data-action="deleteDoc" data-arg1="${dataAttr(d.id)}">Usuń</button></td>
       </tr>`;
     }).join('')}
-  </table>` : '<p style="padding:12px;color:#888">Brak dokumentow</p>';
+  </table>` : '<p style="padding:12px;color:#888">Brak dokumentów</p>';
+
+  // Logbook (dziennik pokładowy)
+  renderLogbook(res.logbook || [], tok);
 
   // Insurance pilots
   const ins = res.insurancePilots || [];
@@ -3034,6 +3106,152 @@ async function loadAircraft() {
   if (select) {
     select.innerHTML = '<option value="">- wybierz -</option>' +
       available.map(p => `<option value="${p.id}">${esc(p.name||'(bez imienia)')}, ${p.phone}</option>`).join('');
+  }
+}
+
+// ── LOGBOOK (dziennik pokładowy) ──
+function logbookStatusBadge(s) {
+  const map = {
+    pending_review: ['pending', 'Do zatwierdzenia'],
+    confirmed:      ['approved', 'Zatwierdzony'],
+    rejected:       ['rejected', 'Odrzucony'],
+  };
+  const [cls, label] = map[s] || ['pending', s || '—'];
+  return `<span class="badge badge-${cls}">${esc(label)}</span>`;
+}
+
+function renderLogbook(entries, tok) {
+  const wrap = document.getElementById('logbookSection');
+  if (!wrap) return;
+  if (!entries.length) {
+    wrap.innerHTML = '<p style="padding:12px;color:#888">Brak wpisów w dzienniku pokładowym</p>';
+    return;
+  }
+  let html = '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px">';
+  entries.forEach(e => {
+    const img = e.photo_r2_key
+      ? `<img src="/api/admin/aircraft/file/${dataAttr(e.id)}?kind=logbook&t=${tok}" onerror="this.style.display='none'" style="width:100%;aspect-ratio:4/3;object-fit:cover;background:#000;display:block;cursor:pointer" onclick="window.open(this.src,'_blank')">`
+      : '<div style="aspect-ratio:4/3;background:#0A1428;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px">brak zdjęcia</div>';
+
+    if (e.status === 'pending_review') {
+      // Editable card
+      html += `<div style="background:#fff;border:1px solid #FFB300;overflow:hidden">
+        ${img}
+        <div style="padding:10px;font-size:11px">
+          <div style="margin-bottom:6px">${logbookStatusBadge(e.status)} <span style="color:#aaa">#${dataAttr(e.id)}</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+            <label style="font-size:10px;color:#666">Data lotu<input type="date" id="lb_flight_date_${dataAttr(e.id)}" value="${dataAttr(e.flight_date||'')}" style="width:100%;padding:4px;border:1px solid #ccc;font-size:11px"></label>
+            <label style="font-size:10px;color:#666">Liczba lotów<input type="number" min="0" step="1" id="lb_flights_count_${dataAttr(e.id)}" value="${dataAttr(e.flights_count!=null?e.flights_count:'')}" style="width:100%;padding:4px;border:1px solid #ccc;font-size:11px"></label>
+            <label style="font-size:10px;color:#666">Czas (min)<input type="number" min="0" step="1" id="lb_flight_minutes_${dataAttr(e.id)}" value="${dataAttr(e.flight_minutes!=null?e.flight_minutes:'')}" style="width:100%;padding:4px;border:1px solid #ccc;font-size:11px"></label>
+            <label style="font-size:10px;color:#666">Lądowania<input type="number" min="0" step="1" id="lb_landings_${dataAttr(e.id)}" value="${dataAttr(e.landings!=null?e.landings:'')}" style="width:100%;padding:4px;border:1px solid #ccc;font-size:11px"></label>
+            <label style="font-size:10px;color:#666">Nalot po (h)<input type="number" min="0" step="0.1" id="lb_hours_after_${dataAttr(e.id)}" value="${dataAttr(e.hours_after!=null?e.hours_after:'')}" style="width:100%;padding:4px;border:1px solid #ccc;font-size:11px"></label>
+            <label style="font-size:10px;color:#666">Paliwo (L)<input type="number" min="0" step="0.1" id="lb_fuel_l_${dataAttr(e.id)}" value="${dataAttr(e.fuel_l!=null?e.fuel_l:'')}" style="width:100%;padding:4px;border:1px solid #ccc;font-size:11px"></label>
+          </div>
+          <label style="font-size:10px;color:#666;display:block;margin-top:6px">Uwagi<input type="text" id="lb_remarks_${dataAttr(e.id)}" value="${dataAttr(e.remarks||'')}" style="width:100%;padding:4px;border:1px solid #ccc;font-size:11px"></label>
+          <div style="display:flex;gap:6px;margin-top:8px">
+            <button class="btn btn-green" style="flex:1" data-action="confirmLogbook" data-arg1="${dataAttr(e.id)}">Zatwierdź</button>
+            <button class="btn btn-red" style="flex:1" data-action="rejectLogbook" data-arg1="${dataAttr(e.id)}">Odrzuć</button>
+          </div>
+        </div>
+      </div>`;
+    } else {
+      // Read-only summary
+      const parts = [];
+      if (e.flight_date) parts.push(esc(e.flight_date));
+      if (e.flights_count != null) parts.push(esc(String(e.flights_count)) + ' lot(ów)');
+      if (e.flight_minutes != null) parts.push(esc(String(e.flight_minutes)) + ' min');
+      if (e.landings != null) parts.push(esc(String(e.landings)) + ' ląd.');
+      if (e.hours_after != null) parts.push('nalot ' + esc(String(e.hours_after)) + 'h');
+      if (e.fuel_l != null) parts.push(esc(String(e.fuel_l)) + 'L');
+      html += `<div style="background:#fff;border:1px solid #ddd;overflow:hidden">
+        ${img}
+        <div style="padding:10px;font-size:11px">
+          <div style="margin-bottom:6px">${logbookStatusBadge(e.status)} <span style="color:#aaa">#${dataAttr(e.id)}</span></div>
+          <div style="color:#444;line-height:1.5">${parts.join(' · ') || '—'}</div>
+          ${e.remarks ? `<div style="color:#666;margin-top:4px">${esc(e.remarks)}</div>` : ''}
+        </div>
+      </div>`;
+    }
+  });
+  html += '</div>';
+  wrap.innerHTML = html;
+}
+
+function lbInputVal(id) {
+  const el = document.getElementById(id);
+  return el ? el.value : '';
+}
+
+async function confirmLogbook(id) {
+  // First persist current edits, then confirm.
+  const editPayload = {
+    action: 'edit_logbook', id,
+    flight_date: lbInputVal('lb_flight_date_' + id) || null,
+    flights_count: lbInputVal('lb_flights_count_' + id) !== '' ? parseInt(lbInputVal('lb_flights_count_' + id), 10) : null,
+    flight_minutes: lbInputVal('lb_flight_minutes_' + id) !== '' ? parseInt(lbInputVal('lb_flight_minutes_' + id), 10) : null,
+    landings: lbInputVal('lb_landings_' + id) !== '' ? parseInt(lbInputVal('lb_landings_' + id), 10) : null,
+    hours_after: lbInputVal('lb_hours_after_' + id) !== '' ? parseFloat(lbInputVal('lb_hours_after_' + id)) : null,
+    fuel_l: lbInputVal('lb_fuel_l_' + id) !== '' ? parseFloat(lbInputVal('lb_fuel_l_' + id)) : null,
+    remarks: lbInputVal('lb_remarks_' + id),
+  };
+  const edit = await api('POST', '/api/admin/aircraft', editPayload);
+  if (edit && edit.error) { showMsg(edit.error, 'err'); return; }
+  const res = await api('POST', '/api/admin/aircraft', { action: 'confirm_logbook', id });
+  if (res.ok) { showMsg('Wpis zatwierdzony', 'ok'); loadAircraft(); } else showMsg(res.error || 'Błąd', 'err');
+}
+
+async function rejectLogbook(id) {
+  if (!confirm('Odrzucić wpis dziennika?')) return;
+  const res = await api('POST', '/api/admin/aircraft', { action: 'reject_logbook', id });
+  if (res.ok) { showMsg('Wpis odrzucony', 'ok'); loadAircraft(); } else showMsg(res.error || 'Błąd', 'err');
+}
+
+// ── MS / dokument upload (multipart) ──
+function toggleMsUpload() {
+  const f = document.getElementById('msUploadForm');
+  if (f) f.style.display = (f.style.display === 'none' || !f.style.display) ? 'block' : 'none';
+}
+
+async function uploadMsDoc() {
+  const fileEl = document.getElementById('msFile');
+  const name = (document.getElementById('msName').value || '').trim();
+  const statusEl = document.getElementById('msUploadStatus');
+  const btn = document.getElementById('msUploadBtn');
+  if (!fileEl || !fileEl.files || !fileEl.files[0]) { statusEl.textContent = 'Wybierz plik'; return; }
+  if (!name) { statusEl.textContent = 'Podaj nazwę'; return; }
+
+  const fd = new FormData();
+  fd.append('photo', fileEl.files[0]);
+  fd.append('name', name);
+  fd.append('doc_type', document.getElementById('msDocType').value || 'ms');
+  fd.append('valid_from', document.getElementById('msFrom').value || '');
+  fd.append('valid_to', document.getElementById('msTo').value || '');
+  fd.append('notes', document.getElementById('msNotes').value || '');
+  fd.append('source', 'camo');
+
+  btn.disabled = true; statusEl.textContent = 'Wgrywanie...';
+  try {
+    // IMPORTANT: do NOT set Content-Type - let the browser set the multipart boundary.
+    const r = await fetch('/api/admin/aircraft/upload', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${TOKEN}` },
+      body: fd,
+    });
+    const data = await r.json().catch(() => ({}));
+    if (!r.ok || data.error) throw new Error(data.error || 'Błąd wgrywania');
+    statusEl.textContent = 'Wgrano ✓';
+    showMsg('Dokument wgrany', 'ok');
+    // Reset + reload
+    fileEl.value = ''; document.getElementById('msName').value = '';
+    document.getElementById('msFrom').value = ''; document.getElementById('msTo').value = '';
+    document.getElementById('msNotes').value = '';
+    toggleMsUpload();
+    loadAircraft();
+  } catch (err) {
+    statusEl.textContent = err.message || 'Błąd';
+    showMsg(err.message || 'Błąd wgrywania', 'err');
+  } finally {
+    btn.disabled = false;
   }
 }
 
@@ -3264,7 +3482,7 @@ async function sendBlast() {
   } else showMsg(res.error,'err');
 }
 
-function docTypeLabel(t) { return {insurance_oc:'Polisa OC',insurance_nnw:'Polisa NNW',cofa:'CofA',arc:'ARC',registration:'Rejestracja',noise:'Hałas',radio:'Licencja radiowa',other:'Inny'}[t]||t; }
+function docTypeLabel(t) { return {insurance_oc:'Polisa OC',insurance_nnw:'Polisa NNW',cofa:'CofA',arc:'ARC',registration:'Rejestracja',noise:'Hałas',radio:'Licencja radiowa',ms:'MS',other:'Inny'}[t]||t; }
 
 // ── HELPERS ──
 function openModal(name) {
@@ -3323,6 +3541,8 @@ document.addEventListener('click', function(e) {
   while (btn.dataset['arg' + i] !== undefined) { args.push(btn.dataset['arg' + i]); i++; }
   fn.apply(null, args);
 });
+
+if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js').catch(() => {}); }
 </script>
 <script src="/assets/site-enhancements.js" defer></script>
 </body>
