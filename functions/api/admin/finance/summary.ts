@@ -14,7 +14,7 @@
 import { type Env } from '../../../../src/lib/types';
 import { checkAdminAuthAsync } from '../../../../src/lib/admin-auth';
 
-type GroupBy = 'month' | 'day';
+type GroupBy = 'month' | 'day' | 'week';
 
 interface IncomeRow {
   bucket: string;
@@ -64,16 +64,19 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   }
 
   const url = new URL(ctx.request.url);
-  const groupBy = (url.searchParams.get('groupBy') === 'day' ? 'day' : 'month') as GroupBy;
-  const dateFmt = groupBy === 'day' ? '%Y-%m-%d' : '%Y-%m';
+  const gbParam = url.searchParams.get('groupBy');
+  const groupBy = (gbParam === 'day' ? 'day' : gbParam === 'week' ? 'week' : 'month') as GroupBy;
+  // %W = numer tygodnia w roku (00-53), tydzień od poniedziałku. Bucket np. "2026-W21".
+  const dateFmt = groupBy === 'day' ? '%Y-%m-%d' : groupBy === 'week' ? '%Y-W%W' : '%Y-%m';
 
-  // Default range: last 12 months ending today (or last 30 days if groupBy=day).
+  // Default range: last 12 months (month), last 12 weeks (week), or last 30 days (day).
   const today = new Date();
   let from = url.searchParams.get('from');
   let to = url.searchParams.get('to');
   if (!from) {
     const fromDate = new Date(today);
     if (groupBy === 'day') fromDate.setDate(fromDate.getDate() - 30);
+    else if (groupBy === 'week') fromDate.setDate(fromDate.getDate() - 7 * 12);
     else fromDate.setMonth(fromDate.getMonth() - 11);
     from = fromDate.toISOString().slice(0, 10);
   }
@@ -266,6 +269,10 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
       if (groupBy === 'month') {
         p.opcosts.hangar = HANGAR_MONTHLY_GR_DEFAULT;
         p.opcosts.marketing = MARKETING_MONTHLY_GR_DEFAULT;
+      } else if (groupBy === 'week') {
+        // Tydzień = 7/30 miesiąca, żeby nie liczyć pełnego kosztu stałego na każdy tydzień.
+        p.opcosts.hangar = Math.round(HANGAR_MONTHLY_GR_DEFAULT / 30 * 7);
+        p.opcosts.marketing = Math.round(MARKETING_MONTHLY_GR_DEFAULT / 30 * 7);
       } else {
         p.opcosts.hangar = Math.round(HANGAR_MONTHLY_GR_DEFAULT / 30);
         p.opcosts.marketing = Math.round(MARKETING_MONTHLY_GR_DEFAULT / 30);

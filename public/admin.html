@@ -325,6 +325,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <label>Do <input type="date" id="finTo"></label>
       <button class="btn" onclick="finPreset('this_month')">Ten miesiąc</button>
       <button class="btn" onclick="finPreset('last_month')">Poprzedni</button>
+      <button class="btn" onclick="finPreset('12w')">Ostatnie 12 tyg.</button>
       <button class="btn" onclick="finPreset('ytd')">Od początku roku</button>
       <button class="btn" onclick="finPreset('12m')">Ostatnie 12 mies.</button>
       <button class="btn btn-blue" onclick="loadFinance()">Wczytaj</button>
@@ -1128,6 +1129,9 @@ function finPreset(name) {
   } else if (name === '12m') {
     const d = new Date(now); d.setMonth(d.getMonth() - 11); d.setDate(1);
     from = d.toISOString().slice(0, 10);
+  } else if (name === '12w') {
+    const d = new Date(now); d.setDate(d.getDate() - 7 * 12);
+    from = d.toISOString().slice(0, 10);
   }
   document.getElementById('finFrom').value = from;
   document.getElementById('finTo').value = to;
@@ -1140,11 +1144,11 @@ function fmtPln(grosze) {
 async function loadFinance() {
   const from = document.getElementById('finFrom').value;
   const to = document.getElementById('finTo').value;
-  if (!from || !to) { finPreset('12m'); return; }
+  if (!from || !to) { finPreset('12w'); return; }
   const stats = document.getElementById('finStats');
   stats.innerHTML = '<p style="padding:20px;color:#888">Ladowanie...</p>';
   try {
-    const res = await api('GET', `/api/admin/finance/summary?from=${from}&to=${to}`);
+    const res = await api('GET', `/api/admin/finance/summary?from=${from}&to=${to}&groupBy=week`);
     if (res.error) { stats.innerHTML = '<p style="padding:20px;color:#c00">Blad: ' + esc(res.error) + '</p>'; return; }
     _finData = res;
     renderFinance(res);
@@ -1407,7 +1411,7 @@ function renderFinance(d) {
   // Monthly bar chart
   if (d.periods && d.periods.length > 0) {
     const maxVal = Math.max(...d.periods.map(p => Math.max(p.income.total, p.expenses.total)));
-    html += '<h3 style="font-size:13px;color:#1B4DB5;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 14px">Miesięcznie</h3>';
+    html += '<h3 style="font-size:13px;color:#1B4DB5;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 14px">Tygodniowo (nr tygodnia)</h3>';
     html += '<div style="display:flex;gap:8px;align-items:flex-end;height:240px;background:#fafbfc;padding:16px;border-radius:4px">';
     d.periods.forEach(p => {
       const incH = maxVal ? (p.income.total / maxVal) * 200 : 0;
@@ -1452,7 +1456,7 @@ function renderFinance(d) {
 }
 function finExportCsv() {
   if (!_finData) { alert('Najpierw wczytaj dane'); return; }
-  const rows = [['Miesiac', 'Vouchery Stripe (PLN)', 'Vouchery Gotówka', 'Vouchery Przelew', 'Merch', 'Kursy', 'Przychód razem', 'Koszty razem', 'Netto', 'Vouchery sprzedane', 'Vouchery wykorzystane']];
+  const rows = [['Tydzień', 'Vouchery Stripe (PLN)', 'Vouchery Gotówka', 'Vouchery Przelew', 'Merch', 'Kursy', 'Przychód razem', 'Koszty razem', 'Netto', 'Vouchery sprzedane', 'Vouchery wykorzystane']];
   (_finData.periods || []).forEach(p => {
     rows.push([
       p.label,
