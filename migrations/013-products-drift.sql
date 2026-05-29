@@ -4,16 +4,15 @@
 -- created the table without them — they were added ad-hoc on prod. A fresh
 -- environment that rebuilt from migrations alone would crash merch endpoints.
 --
--- D1/SQLite has no ALTER TABLE ADD COLUMN IF NOT EXISTS, so we shadow-copy
--- only if the columns are missing. The simpler ALTER would error out on
--- production where the columns are already present.
-
--- The PRAGMA below is the canonical idempotent column-add idiom for SQLite/D1:
--- it succeeds only when the column does not yet exist (otherwise raises
--- "duplicate column name" which we expect any rerun to swallow with --batch).
--- Running this on a fresh DB created from schema.sql is also safe — these
--- columns already exist, ALTER will fail with "duplicate column name" and
--- the rest of the migration is a no-op.
+-- D1/SQLite has NO `ALTER TABLE ... ADD COLUMN IF NOT EXISTS`, and there is no
+-- pure-SQL idempotent column-add idiom. These ALTERs are a ONE-SHOT drift patch:
+-- run once against a prod DB that lacks the columns. Re-running this file (or
+-- running it against a DB that already has the columns) WILL fail with
+-- "duplicate column name" and abort — that is expected, not a safety net.
+--
+-- Never rebuild a DB by replaying migrations. Fresh/DR bootstrap always goes
+-- through schema.sql (which already declares these columns + indexes). See
+-- migrations/README.md.
 
 ALTER TABLE products ADD COLUMN slug TEXT;
 ALTER TABLE products ADD COLUMN category TEXT;

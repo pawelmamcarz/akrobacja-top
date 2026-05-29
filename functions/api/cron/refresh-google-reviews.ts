@@ -49,8 +49,14 @@ function stableGoogleId(time: number, authorName: string): string {
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   // Cron-only endpoint - same protocol jak inne crons (CRON_SECRET bearer).
-  const auth = ctx.request.headers.get('Authorization');
-  if (auth !== `Bearer ${ctx.env.CRON_SECRET}`) {
+  // Fail-closed: bez ustawionego sekretu nie wpuszczamy nikogo (inaczej
+  // "Bearer undefined" przeszedlby przez porownanie ponizej).
+  const expected = ctx.env.CRON_SECRET;
+  if (!expected) {
+    return Response.json({ error: 'Cron not configured' }, { status: 500 });
+  }
+  const auth = ctx.request.headers.get('Authorization') || '';
+  if (auth !== `Bearer ${expected}`) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 

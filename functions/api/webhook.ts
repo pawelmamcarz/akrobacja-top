@@ -469,6 +469,16 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
         WHERE id = ? AND status = 'processing'
       `).bind(session.id as string, orderId).run();
 
+      // Mark personal one-time discount code as used. Static DISCOUNTS codes aren't in this
+      // table, so this is a no-op for them. Guard `used_at IS NULL` keeps it idempotent on
+      // Stripe retry and blocks reuse - checkout.ts:136 rejects codes with used_at set.
+      const usedDiscountCode = (order.discount_code as string | null) ?? null;
+      if (usedDiscountCode) {
+        await ctx.env.DB.prepare(
+          "UPDATE personal_discount_codes SET used_at = datetime('now'), used_order_id = ? WHERE code = ? AND used_at IS NULL"
+        ).bind(orderId, usedDiscountCode).run();
+      }
+
       ctx.waitUntil(notifyOwnerOrder(ctx.env, { voucherCode, packageId, customerName, customerEmail, amount: order.amount as number, addons }));
 
       // Meta CAPI Purchase pairs with client Pixel via event_id for dedup.

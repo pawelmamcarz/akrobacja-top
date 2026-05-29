@@ -37,6 +37,13 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       const product = productMap.get(item.product_id);
       if (!product) return Response.json({ error: `Produkt ${item.product_id} nie znaleziony` }, { status: 400 });
 
+      // Walidacja ilosci: dodatnia liczba calkowita w rozsadnym zakresie. Bez tego
+      // ujemne/zero/NaN/ulamkowe/ogromne wartosci tworza smieciowy total_amount i rekord
+      // pending, a Stripe i tak odrzuca quantity != dodatnia liczba calkowita.
+      if (!Number.isInteger(item.quantity) || item.quantity < 1 || item.quantity > 20) {
+        return Response.json({ error: `Nieprawidłowa ilość dla ${product.name}` }, { status: 400 });
+      }
+
       const variants = JSON.parse(product.variants || '[]') as string[];
       if (variants.length > 0 && (!item.variant || !variants.includes(item.variant))) {
         return Response.json({ error: `Wybierz rozmiar dla ${product.name}` }, { status: 400 });
@@ -112,6 +119,11 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     const session = (await stripeRes.json()) as { id?: string; url?: string; error?: { message?: string } };
     if (!stripeRes.ok || !session.url) {
+      // Oznacz zamowienie jako failed - inaczej zostaje 'pending' na zawsze (zombie row),
+      // analogicznie do voucher checkout. Guard na status, by nie nadpisac innego stanu.
+      await ctx.env.DB.prepare(
+        "UPDATE merch_orders SET status = 'failed' WHERE id = ? AND status = 'pending'"
+      ).bind(orderId).run();
       return Response.json({ error: session.error?.message || 'Stripe error' }, { status: 500 });
     }
 

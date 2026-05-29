@@ -75,6 +75,7 @@ CREATE TABLE IF NOT EXISTS merch_orders (
   shipped_at TEXT,
   tracking_number TEXT,
   refund_received_at TEXT,
+  baselinker_order_id INTEGER,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
@@ -540,12 +541,14 @@ CREATE TABLE IF NOT EXISTS expenses (
   issue_date TEXT NOT NULL,
   description TEXT,
   created_at INTEGER NOT NULL,
-  added_by TEXT
+  added_by TEXT,
+  ksef_invoice_uuid TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_expenses_issue_date ON expenses(issue_date DESC);
 CREATE INDEX IF NOT EXISTS idx_expenses_contractor ON expenses(contractor_name);
 CREATE INDEX IF NOT EXISTS idx_expenses_category ON expenses(category);
 CREATE INDEX IF NOT EXISTS idx_expenses_source ON expenses(source);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_expenses_ksef_uuid ON expenses(ksef_invoice_uuid) WHERE ksef_invoice_uuid IS NOT NULL;
 
 -- Proper admin auth — email + PBKDF2 password + session tokens + magic-link reset.
 -- Legacy ADMIN_PASSWORD / MAGDA_PASSWORD Bearer secrets still work in parallel as
@@ -623,3 +626,53 @@ CREATE TABLE IF NOT EXISTS voucher_costs (
   updated_at TEXT NOT NULL DEFAULT (datetime('now')),
   updated_by TEXT
 );
+
+-- KSeF whitelist: NIPy kontrahentow ktorych faktury kosztowe zaciagamy automatycznie
+-- do expenses (source='ksef'). Manage przez admin panel: Koszty -> KSeF Whitelist.
+-- (migracja 037-ksef.sql)
+CREATE TABLE IF NOT EXISTS ksef_whitelist (
+  nip TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  label TEXT,                            -- przyjazna nazwa (np. "Marketing FB")
+  active INTEGER NOT NULL DEFAULT 1,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- Sprzedane eventy (pokazy, korpo, prywatne). 3-way split Pawel/Maciej/Magda.
+-- NIE myli sie z calendar_events (loty pilotow). (migracja 038-events-sold.sql)
+CREATE TABLE IF NOT EXISTS events_sold (
+  id TEXT PRIMARY KEY,
+  event_date TEXT NOT NULL,                 -- YYYY-MM-DD
+  client_name TEXT NOT NULL,
+  location TEXT,                            -- np. "Lotnisko EPMO Modlin"
+  gross_amount_gr INTEGER NOT NULL,         -- cena w groszach
+  dolot_minutes INTEGER NOT NULL DEFAULT 30,   -- minuty samolotu do miejsca i z powrotem
+  pokaz_minutes INTEGER NOT NULL DEFAULT 30,   -- minuty pokazu na miejscu
+  smok_cost_gr INTEGER NOT NULL DEFAULT 40000, -- koszt smoka/pirotechniki (default 400 zl)
+  magda_share_pct INTEGER NOT NULL DEFAULT 10, -- % prowizji Magdy od ceny (default 10%)
+  status TEXT NOT NULL DEFAULT 'planned',   -- planned/confirmed/done/cancelled
+  notes TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_events_sold_date ON events_sold(event_date DESC);
+CREATE INDEX IF NOT EXISTS idx_events_sold_status ON events_sold(status, event_date DESC);
+
+-- Per-email jednorazowe kody rabatowe (np. PHOTO-XXXX dla fotografow po akceptacji
+-- zdjec). Checkout.ts najpierw sprawdza statyczny DISCOUNTS, potem fallback tutaj.
+-- (migracja 039-personal-discount-codes.sql)
+CREATE TABLE IF NOT EXISTS personal_discount_codes (
+  code TEXT PRIMARY KEY,
+  customer_email TEXT NOT NULL,
+  pct INTEGER,                       -- rabat procentowy (np. 10 dla -10%)
+  fixed_gr INTEGER,                  -- ALBO kwota fixed w groszach
+  source TEXT,                       -- np. 'photo_thankyou', 'event_partner'
+  expires_at TEXT,                   -- YYYY-MM-DD lub NULL = bez limitu
+  used_at TEXT,                      -- gdy wykorzystany
+  used_order_id TEXT,                -- orders.id ktore go wykorzystalo
+  notes TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  created_by TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_personal_codes_email ON personal_discount_codes(customer_email);
+CREATE INDEX IF NOT EXISTS idx_personal_codes_source ON personal_discount_codes(source, created_at DESC);

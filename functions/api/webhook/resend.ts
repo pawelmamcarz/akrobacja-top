@@ -37,6 +37,15 @@ function bytesToBase64(bytes: Uint8Array): string {
   return btoa(bin);
 }
 
+// Constant-time string compare - nie przerywaj na pierwszej roznicy, zeby nie
+// wyciekac dlugosci wspolnego prefiksu podpisu przez timing (jak Stripe webhook).
+function timingSafeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+}
+
 async function verifySvixSignature(
   secret: string,
   svixId: string,
@@ -64,7 +73,7 @@ async function verifySvixSignature(
     .map((s) => s.trim())
     .filter((s) => s.startsWith('v1,'))
     .map((s) => s.slice(3));
-  return sigs.some((s) => s === expected);
+  return sigs.some((s) => timingSafeEqual(s, expected));
 }
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {

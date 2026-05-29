@@ -39,6 +39,15 @@ w `migrations/`.
 npx wrangler d1 execute akrobacja-db --remote --file=migrations/NNN-<nazwa>.sql
 ```
 
-Wszystkie migracje powinny być idempotentne (`IF NOT EXISTS`), ale zawsze
-sprawdź target-state SELECTem przed run — szczególnie jeśli dodajesz UNIQUE
-(możliwe duplikaty w danych).
+Migracje tworzące tabele/indeksy używają `IF NOT EXISTS` i są idempotentne.
+Migracje kolumnowe (`ALTER TABLE ... ADD COLUMN`) **nie są** i być nie mogą —
+D1/SQLite nie ma `ADD COLUMN IF NOT EXISTS` ani warunkowego DDL w czystym SQL.
+Traktuj je jako jednorazowe: uruchom raz na bazie, której brakuje kolumny;
+ponowny run wywali się na "duplicate column name" i to jest oczekiwane.
+Zawsze sprawdź target-state SELECTem / `PRAGMA table_info(tabela)` przed runem —
+szczególnie przy UNIQUE (możliwe duplikaty w danych).
+
+**Nie odtwarzaj bazy przez replay migracji.** Bootstrap/DR zawsze idzie przez
+`schema.sql`, który musi zawierać KOMPLETNY stan prod (wszystkie kolumny i
+tabele dodane kiedykolwiek migracjami). Po dodaniu migracji kolumnowej dopisz
+tę samą kolumnę do `schema.sql` w tej samej zmianie.
