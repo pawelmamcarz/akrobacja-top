@@ -1456,10 +1456,11 @@ function renderFinance(d) {
 }
 function finExportCsv() {
   if (!_finData) { alert('Najpierw wczytaj dane'); return; }
-  const rows = [['Tydzień', 'Vouchery Stripe (PLN)', 'Vouchery Gotówka', 'Vouchery Przelew', 'Merch', 'Kursy', 'Przychód razem', 'Koszty razem', 'Netto', 'Vouchery sprzedane', 'Vouchery wykorzystane']];
+  const rows = [['Tydzień', 'Nr tygodnia', 'Vouchery Stripe (PLN)', 'Vouchery Gotówka', 'Vouchery Przelew', 'Merch', 'Kursy', 'Przychód razem', 'Koszty razem', 'Netto', 'Vouchery sprzedane', 'Vouchery wykorzystane']];
   (_finData.periods || []).forEach(p => {
     rows.push([
       p.label,
+      (String(p.label).match(/W(\d+)/) || [])[1] || '',
       (p.income.vouchers_stripe / 100).toFixed(2),
       (p.income.vouchers_cash / 100).toFixed(2),
       (p.income.vouchers_transfer / 100).toFixed(2),
