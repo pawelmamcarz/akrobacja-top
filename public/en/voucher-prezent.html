@@ -319,6 +319,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </label>
 
       <div class="cf-turnstile" data-name="checkout-gift" data-size="flexible" style="margin-bottom:12px"></div>
+      <div class="gateway-select" role="radiogroup" aria-label="Payment method" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
+        <label style="flex:1;min-width:140px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
+          <input type="radio" name="akroGateway" value="paynow" checked> <span><strong>PayNow</strong><br><small style="color:#6B7A90">BLIK, card, transfer</small></span>
+        </label>
+        <label style="flex:1;min-width:140px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
+          <input type="radio" name="akroGateway" value="stripe"> <span><strong>Stripe</strong><br><small style="color:#6B7A90">card, BLIK</small></span>
+        </label>
+      </div>
       <button type="submit" class="modal-submit" id="checkoutSubmit">Continue to payment</button>
       <p class="modal-error" id="checkoutError"></p>
     </form>
@@ -452,6 +460,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           recipientName: document.getElementById('recipientName').value.trim() || undefined,
           dedication: document.getElementById('dedication').value.trim() || undefined,
           sendAt: sendAtVal || undefined,
+          gateway: document.querySelector('input[name="akroGateway"]:checked')?.value || 'paynow',
           source: 'en-voucher-prezent',
           turnstileToken,
         }),

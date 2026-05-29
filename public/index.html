@@ -2916,6 +2916,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span>Karta</span>
       <span>Przelewy24</span>
     </div>
+    <div class="gateway-select" role="radiogroup" aria-label="Metoda płatności" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
+      <label style="flex:1;min-width:140px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
+        <input type="radio" name="akroGateway" value="paynow" checked> <span><strong>PayNow</strong><br><small style="color:#6B7A90">BLIK, karta, przelew</small></span>
+      </label>
+      <label style="flex:1;min-width:140px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
+        <input type="radio" name="akroGateway" value="stripe"> <span><strong>Stripe</strong><br><small style="color:#6B7A90">karta, BLIK</small></span>
+      </label>
+    </div>
     <form id="checkoutForm">
       <input type="hidden" id="checkoutPackage" value="">
       <div class="modal-field">
@@ -3170,6 +3178,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           customerEmail: document.getElementById('checkoutEmail').value.trim(),
           customerNip: document.getElementById('checkoutNip').value.trim() || undefined,
           discountCode: (document.getElementById('checkoutDiscount')?.value || '').trim().toUpperCase() || undefined,
+          gateway: document.querySelector('input[name="akroGateway"]:checked')?.value || 'paynow',
           source: 'index',
         }),
       });

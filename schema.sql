@@ -25,7 +25,9 @@ CREATE TABLE IF NOT EXISTS orders (
   email_sent_at TEXT,
   refund_received_at TEXT,
   addons TEXT,
-  payment_method TEXT
+  payment_method TEXT,
+  payment_gateway TEXT,
+  paynow_payment_id TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_orders_voucher_code ON orders(voucher_code);
@@ -76,6 +78,8 @@ CREATE TABLE IF NOT EXISTS merch_orders (
   tracking_number TEXT,
   refund_received_at TEXT,
   baselinker_order_id INTEGER,
+  payment_gateway TEXT,
+  paynow_payment_id TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
@@ -302,6 +306,7 @@ CREATE TABLE IF NOT EXISTS maintenance (
   status TEXT NOT NULL DEFAULT 'upcoming',
   completed_at TEXT,
   notes TEXT,
+  aircraft_id TEXT DEFAULT 'speks-001',
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
@@ -312,6 +317,9 @@ CREATE TABLE IF NOT EXISTS documents (
   valid_from TEXT,
   valid_to TEXT,
   notes TEXT,
+  aircraft_id TEXT DEFAULT 'speks-001',
+  r2_key TEXT,                          -- skan/plik (np. MS od CAMO); NULL = brak pliku
+  source TEXT DEFAULT 'manual',         -- 'manual' | 'camo'
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
@@ -591,9 +599,34 @@ CREATE TABLE IF NOT EXISTS aircrafts (
   type TEXT NOT NULL,
   notes TEXT,
   active INTEGER NOT NULL DEFAULT 1,
+  current_hours REAL,                   -- nalot narastajaco (z ostatniego zatwierdzonego wpisu dziennika)
+  hours_updated_at TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_aircrafts_tail ON aircrafts(tail);
+
+-- Cyfrowy dziennik pokladowy: wpisy auto-uzupelniane ze zdjec papierowego dziennika
+-- technicznego (Workers AI wizja), z obowiazkowa recenzja czlowieka przed zatwierdzeniem.
+CREATE TABLE IF NOT EXISTS flight_logbook (
+  id TEXT PRIMARY KEY,
+  aircraft_id TEXT NOT NULL DEFAULT 'speks-001',
+  pilot_id TEXT,
+  photo_r2_key TEXT,                    -- zdjecie strony dziennika w R2
+  flight_date TEXT,                     -- YYYY-MM-DD
+  flights_count INTEGER,
+  flight_minutes INTEGER,               -- laczny czas lotu w danym dniu (min)
+  landings INTEGER,
+  hours_after REAL,                     -- nalot narastajaco po locie (h)
+  fuel_l REAL,
+  remarks TEXT,                         -- uwagi / usterki
+  extracted_json TEXT,                  -- surowy wynik ekstrakcji AI (audyt)
+  status TEXT NOT NULL DEFAULT 'pending_review', -- pending_review | confirmed | rejected
+  confirmed_by TEXT,
+  confirmed_at TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_flight_logbook_aircraft ON flight_logbook(aircraft_id, flight_date DESC);
+CREATE INDEX IF NOT EXISTS idx_flight_logbook_status ON flight_logbook(status, created_at DESC);
 
 CREATE TABLE IF NOT EXISTS calendar_events (
   id TEXT PRIMARY KEY,

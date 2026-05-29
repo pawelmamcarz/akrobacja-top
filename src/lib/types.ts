@@ -4,6 +4,8 @@ export interface Env {
   VOUCHER_BUCKET: R2Bucket;
   STRIPE_SECRET_KEY: string;
   STRIPE_WEBHOOK_SECRET: string;
+  PAYNOW_API_KEY: string;
+  PAYNOW_SIGNATURE_KEY: string;
   WFIRMA_ACCESS_KEY: string;
   WFIRMA_SECRET_KEY: string;
   WFIRMA_LOGIN: string;

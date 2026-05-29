@@ -646,6 +646,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <input type="text" id="checkoutDiscount" placeholder="np. PIERWSZY100 (-100 zł)" autocomplete="off" style="text-transform:uppercase;letter-spacing:.08em">
         <p id="discountStatus" style="font-size:11px;margin-top:6px;min-height:14px;font-family:var(--font-h);font-weight:700;letter-spacing:.05em"></p>
       </div>
+      <div class="gateway-select" role="radiogroup" aria-label="Metoda płatności" style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
+        <label style="flex:1;min-width:140px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
+          <input type="radio" name="akroGateway" value="paynow" checked> <span><strong>PayNow</strong><br><small style="color:#6B7A90">BLIK, karta, przelew</small></span>
+        </label>
+        <label style="flex:1;min-width:140px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
+          <input type="radio" name="akroGateway" value="stripe"> <span><strong>Stripe</strong><br><small style="color:#6B7A90">karta, BLIK</small></span>
+        </label>
+      </div>
       <button type="submit" class="modal-submit" id="checkoutSubmit">Przejdź do płatności →</button>
       <p class="modal-error" id="checkoutError"></p>
       <div class="modal-secure">🔒 Płatność SSL · PDF w mailu · Zwrot 14 dni</div>
@@ -883,6 +891,7 @@ form.addEventListener('submit', async (e) => {
         customerEmail: document.getElementById('checkoutEmail').value.trim(),
         customerNip: document.getElementById('checkoutNip').value.trim() || undefined,
         discountCode: (discountInput.value || '').trim().toUpperCase() || undefined,
+        gateway: document.querySelector('input[name="akroGateway"]:checked')?.value || 'paynow',
         source: 'voucher-prezent',
         recipientName: recipientInput.value.trim() || undefined,
         dedication: dedicationInput.value.trim() || undefined,

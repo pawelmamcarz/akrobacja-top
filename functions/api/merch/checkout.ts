@@ -1,5 +1,6 @@
 import { type Env } from '../../../src/lib/types';
 import { isValidEmail } from '../../../src/lib/validate';
+import { createPaynowPayment } from '../../../src/lib/paynow';
 
 interface MerchCheckoutBody {
   items: Array<{ product_id: string; variant?: string; quantity: number }>;
@@ -9,6 +10,7 @@ interface MerchCheckoutBody {
   shipping_address: string;
   shipping_city: string;
   shipping_zip: string;
+  gateway?: 'paynow' | 'stripe'; // domyślnie 'paynow', Stripe jako opcja
 }
 
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
@@ -77,6 +79,32 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       body.shipping_address, body.shipping_city, body.shipping_zip,
       JSON.stringify(orderItems), totalAmount,
     ).run();
+
+    const siteUrl = ctx.env.SITE_URL || 'https://akrobacja.com';
+
+    // PayNow (domyślna bramka). Stripe poniżej jako opcja gdy gateway === 'stripe'.
+    const gateway = body.gateway === 'stripe' ? 'stripe' : 'paynow';
+    if (gateway === 'paynow') {
+      try {
+        const payment = await createPaynowPayment(ctx.env, {
+          amount: totalAmount,
+          externalId: `m_${orderId}`,
+          description: `Zamówienie merch akrobacja.com (${orderItems.length} poz.)`,
+          email: body.customer_email,
+          continueUrl: `${siteUrl}/sklep-merch?success=1&order=${orderId}`,
+        });
+        await ctx.env.DB.prepare(
+          "UPDATE merch_orders SET payment_gateway = 'paynow', paynow_payment_id = ? WHERE id = ?"
+        ).bind(payment.paymentId, orderId).run();
+        return Response.json({ url: payment.redirectUrl });
+      } catch (err) {
+        await ctx.env.DB.prepare(
+          "UPDATE merch_orders SET status = 'failed' WHERE id = ? AND status = 'pending'"
+        ).bind(orderId).run();
+        const message = err instanceof Error ? err.message : 'PayNow error';
+        return Response.json({ error: message }, { status: 500 });
+      }
+    }
 
     // Create Stripe Checkout
     const params = new URLSearchParams();

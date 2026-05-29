@@ -1,6 +1,7 @@
 import { type Env, PACKAGES, ADDONS, sumAddons, validAddonIds, type PackageId } from '../../src/lib/types';
 import { generateVoucherCode } from '../../src/lib/voucher-code';
 import { isValidEmail, isValidSendAt } from '../../src/lib/validate';
+import { createPaynowPayment } from '../../src/lib/paynow';
 
 interface CheckoutBody {
   packageId: PackageId;
@@ -15,6 +16,7 @@ interface CheckoutBody {
   recipientName?: string; // imię obdarowanego (max 80) - fallback do customerName
   dedication?: string;    // dedykacja na PDF (max 200)
   sendAt?: string;        // ISO date/datetime, planowana wysyłka maila (max +365 dni)
+  gateway?: 'paynow' | 'stripe'; // bramka płatności; domyślnie 'paynow', Stripe jako opcja
 }
 
 // Map source slug → cancel URL, Stripe "Back" button vraca user tam skąd przyszedł
@@ -229,6 +231,39 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
           },
           quantity: 1,
         });
+      }
+    }
+
+    const siteUrlBase = ctx.env.SITE_URL || 'https://akrobacja.com';
+    const continueUrl = `${siteUrlBase}/sukces?code=${voucherCode}&pkg=${body.packageId}&amount=${totalAmount / 100}`;
+
+    // PayNow (domyślna bramka). Stripe poniżej jako opcja gdy gateway === 'stripe'.
+    const gateway = body.gateway === 'stripe' ? 'stripe' : 'paynow';
+    if (gateway === 'paynow') {
+      try {
+        const descParts = [`Voucher "${pkg.name}" - lot akrobacyjny Extra 300L`];
+        for (const id of validatedAddons) {
+          const a = ADDONS[id];
+          if (a) descParts.push(`+ ${a.name}`);
+        }
+        const payment = await createPaynowPayment(ctx.env, {
+          amount: totalAmount,
+          externalId: `v_${orderId}`,
+          description: descParts.join(' '),
+          email: body.customerEmail,
+          continueUrl,
+        });
+        await ctx.env.DB.prepare(
+          "UPDATE orders SET payment_gateway = 'paynow', paynow_payment_id = ? WHERE id = ?"
+        ).bind(payment.paymentId, orderId).run();
+        return Response.json({ url: payment.redirectUrl });
+      } catch (err) {
+        // Oznacz order jako failed - inaczej zostaje 'pending' i łapie się do abandoned-cart.
+        await ctx.env.DB.prepare(
+          "UPDATE orders SET status = 'failed' WHERE id = ? AND status = 'pending'"
+        ).bind(orderId).run();
+        const message = err instanceof Error ? err.message : 'PayNow error';
+        return Response.json({ error: message }, { status: 500 });
       }
     }
 
