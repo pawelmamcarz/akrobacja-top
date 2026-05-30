@@ -83,13 +83,13 @@ export const PACKAGES = {
     ],
   },
   // 2x Adrenalina dla pary, oba loty w jednym terminie, jeden po drugim.
-  // Cena katalogowa 5999 zl (2×2999 - 1 zl). Indywidualne rabaty (np. -12% promo)
+  // Cena katalogowa 5777 zl. Indywidualne rabaty (np. -12% promo)
   // schodza ad-hoc przez admin. PDF jak para: jeden voucher na 2 loty.
   para_adrenalina: {
     id: 'para_adrenalina',
     name: 'Para Adrenalina',
     subtitle: '2 loty Adrenalina dla dwojga',
-    price: 599900,
+    price: 577700,
     duration: '2× (20 min lotu + 20 min briefing) + debriefing',
     features: [
       'Oba loty w tym samym terminie, jeden po drugim',
@@ -106,6 +106,16 @@ export const PACKAGES = {
     price: 499900,
     duration: 'do 50 min w powietrzu + briefing + debriefing',
     features: ['Do 50 minut w powietrzu', 'Wyprowadzanie z korkociągu, figury zaawansowane', 'Wymagana licencja PPL(A)'],
+  },
+  // Rozszerzony program doskonalenia akrobacji dla pilotów z licencją (jak Masterclass,
+  // ale obszerniejszy/zawodniczy). Cena katalogowa 9999 zl.
+  doskonalenie: {
+    id: 'doskonalenie',
+    name: 'Doskonalenie Akrobacji',
+    subtitle: 'Zaawansowany trening dla pilotów z licencją PPL(A)+',
+    price: 999900,
+    duration: 'rozszerzona sesja + briefing + debriefing',
+    features: ['Rozszerzony program doskonalenia akrobacji', 'Zaawansowane figury i sekwencje zawodnicze', 'Briefing + debriefing z analizą', 'Wymagana ważna licencja PPL(A)+'],
   },
   // Test-only product - niewidoczne w publicznym UI, dostępne tylko z /test-konwersji.
   // Webhook NIE generuje vouchera PDF i NIE wystawia faktury wfirma dla tego packageId.

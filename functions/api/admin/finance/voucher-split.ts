@@ -30,6 +30,7 @@ const PACKAGE_FLIGHT_MINUTES: Record<PackageId, number> = {
   para: 30,           // 2x 15 min (blok lotu = warmup + lot 10-12 + kolowanie)
   para_adrenalina: 40, // 2x 20 min
   masterclass: 50,
+  doskonalenie: 60,   // rozszerzona sesja doskonalenia
   test_naklejka: 0,
 };
 
@@ -41,6 +42,7 @@ const PACKAGE_FLIGHT_COUNT: Record<PackageId, number> = {
   para: 2,
   para_adrenalina: 2,
   masterclass: 2,
+  doskonalenie: 2,
   test_naklejka: 0,
 };
 
