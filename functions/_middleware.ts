@@ -6,9 +6,14 @@ import { NOINDEX_PATHS, LEGACY_REDIRECTS, PRIMARY_HOST, SITE_ORIGIN } from '../s
 import { type Env } from '../src/lib/types';
 import { getAdminIdentityAsync } from '../src/lib/admin-auth';
 
-// Ścieżki /api/admin/** dostępne dla roli 'mechanic' (część techniczna).
-// Wszystko inne pod /api/admin/ jest tylko dla pełnego admina.
-const MECHANIC_ALLOWED_PREFIXES = ['/api/admin/aircraft', '/api/admin/me', '/api/admin/auth/'];
+// Ścieżki /api/admin/** dostępne dla ról ograniczonych. Rola 'admin' ma pełny dostęp;
+// każda inna rola widzi tylko swoje prefiksy, reszta /api/admin/** → 403.
+//   mechanic - część techniczna (samolot)
+//   supplier - tylko merch (zamówienia, produkty, wysyłki/etykiety apaczka)
+const ROLE_ALLOWED_PREFIXES: Record<string, string[]> = {
+  mechanic: ['/api/admin/aircraft', '/api/admin/me', '/api/admin/auth/'],
+  supplier: ['/api/admin/merch', '/api/admin/me', '/api/admin/auth/'],
+};
 
 export const onRequest: PagesFunction = async (context) => {
   const url = new URL(context.request.url);
@@ -53,16 +58,17 @@ export const onRequest: PagesFunction = async (context) => {
   }
 
   if (url.pathname.startsWith('/api/')) {
-    // Centralne gatowanie roli mechanika: dostęp tylko do technicznych endpointów
-    // admina. Reszta /api/admin/** → 403 (zamiast edytować ~30 endpointów osobno).
+    // Centralne gatowanie ról ograniczonych: rola widzi tylko swoje prefiksy,
+    // reszta /api/admin/** → 403 (zamiast edytować ~30 endpointów osobno).
     // Niezalogowanych nie ruszamy - endpoint sam zwróci 401 z właściwym komunikatem.
     if (url.pathname.startsWith('/api/admin/')) {
-      const techAllowed = MECHANIC_ALLOWED_PREFIXES.some(p => url.pathname.startsWith(p));
-      if (!techAllowed) {
-        const identity = await getAdminIdentityAsync(context.request, context.env as unknown as Env);
-        if (identity && identity.role === 'mechanic') {
-          return Response.json({ error: 'Brak dostępu - rola mechanik ma tylko część techniczną' }, { status: 403 });
-        }
+      const identity = await getAdminIdentityAsync(context.request, context.env as unknown as Env);
+      const allowed = identity ? ROLE_ALLOWED_PREFIXES[identity.role] : undefined;
+      if (identity && allowed && !allowed.some(p => url.pathname.startsWith(p))) {
+        return Response.json(
+          { error: `Brak dostępu - rola ${identity.role} ma ograniczony zakres` },
+          { status: 403 },
+        );
       }
     }
     return context.next();

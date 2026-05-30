@@ -27,6 +27,12 @@ SMSAPI_TOKEN=
 # ── Printful (merch fulfilment — currently dormant, mapping pusty) ──
 PRINTFUL_TOKEN=
 
+# ── Apaczka.pl (kurier dla merch — etykiety/listy przewozowe) ──
+# Z panelu apaczka → Ustawienia → API. APACZKA_API_KEY = App Secret (klucz HMAC),
+# APACZKA_APP_ID = App ID (publiczny identyfikator). Oba wymagane do podpisu żądań.
+APACZKA_API_KEY=
+APACZKA_APP_ID=
+
 # ── Meta Pixel + Conversions API ──
 # Pixel fires client-side; CAPI server-side with hashed user data (dedup przez event_id).
 META_PIXEL_ID=

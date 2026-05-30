@@ -276,6 +276,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="panel" id="panel-merch">
     <div class="toolbar">
       <button class="btn btn-blue" onclick="openModal('newProduct')">+ Dodaj produkt</button>
+      <button class="btn btn-grey" data-action="showApaczkaServices" title="Lista usług apaczka z ich service_id (do konfiguracji kuriera)">Usługi apaczka (ID)</button>
       <div class="stats" id="merchStats"></div>
     </div>
     <h4 style="font-size:12px;color:#0A2F7C;margin:16px 0 8px">Produkty</h4>
@@ -891,6 +892,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <select id="auRole">
         <option value="admin">Admin (pełny dostęp)</option>
         <option value="mechanic">Mechanik (tylko zakładka Samolot)</option>
+        <option value="supplier">Dostawca (tylko zakładka Merch)</option>
       </select>
     </div>
     <button class="btn btn-blue" onclick="createAdminUser()">Utwórz konto</button>
@@ -998,17 +1000,18 @@ async function fetchUser() {
 }
 
 // Mechanik widzi wyłącznie zakładkę "Samolot". Pełny admin (lub brak roli) - bez zmian.
+// Role ograniczone widzą tylko jedną zakładkę. mechanik → Samolot, dostawca → Merch.
+const ROLE_TAB = { mechanic: 'aircraft', supplier: 'merch' };
 function applyRoleGating() {
-  if (ROLE !== 'mechanic') return;
+  const tab = ROLE_TAB[ROLE];
+  if (!tab) return;
+  const re = new RegExp("switchTab\\(\\s*['\"]" + tab + "['\"]\\s*\\)");
   document.querySelectorAll('.tab').forEach(t => {
-    const oc = t.getAttribute('onclick') || '';
-    if (!/switchTab\(\s*['"]aircraft['"]\s*\)/.test(oc)) {
-      t.style.display = 'none';
-    }
+    if (!re.test(t.getAttribute('onclick') || '')) t.style.display = 'none';
   });
-  // Mechanik widzi tylko "Samolot" - ukryj nagłówki grup sidebaru (byłyby puste).
+  // Ukryj nagłówki grup sidebaru (byłyby puste przy jednej zakładce).
   document.querySelectorAll('.nav-group-label').forEach(l => { l.style.display = 'none'; });
-  switchTab('aircraft');
+  switchTab(tab);
 }
 
 function applyUserBadge() {
@@ -1030,8 +1033,9 @@ async function tryLoad() {
     document.getElementById('appView').classList.add('active');
     applyUserBadge();
 
-    // Mechanik: tylko zakładka "Samolot", bez ładowania zamówień/kalendarza.
-    if (ROLE === 'mechanic') {
+    // Role ograniczone: tylko ich zakładka, bez ładowania reszty (orders/kalendarz).
+    // Mechanik → Samolot, dostawca → Merch (loadMerch odpala się przez switchTab).
+    if (ROLE === 'mechanic' || ROLE === 'supplier') {
       applyRoleGating();
       return true;
     }
@@ -3418,23 +3422,32 @@ async function loadMerch() {
   const total = orders.reduce((s,o) => s + (o.status!=='cancelled' ? o.total_amount : 0), 0);
   document.getElementById('merchStats').textContent = `${orders.length} zamowien | ${paid} do wysylki | ${shipped} wyslanych | ${(total/100).toLocaleString('pl-PL')} PLN`;
 
+  const authT = encodeURIComponent(localStorage.getItem('admin_token')||'');
   document.getElementById('merchTable').innerHTML = orders.length ? `<table>
-    <tr><th>Data</th><th>Klient</th><th>Email</th><th>Produkty</th><th>Adres</th><th>Kwota</th><th>Status</th><th>Tracking</th><th>Akcje</th></tr>
+    <tr><th>Data</th><th>Klient</th><th>Email</th><th>Produkty</th><th>Dostawa</th><th>Adres</th><th>Kwota</th><th>Status</th><th>Tracking</th><th>Akcje</th></tr>
     ${orders.map(o => {
       const items = JSON.parse(o.items || '[]');
       const itemsStr = items.map(i => `${i.name}${i.variant?' ('+i.variant+')':''} x${i.quantity}`).join('<br>');
+      const deliv = o.delivery_method==='inpost_locker'
+        ? ('Paczkomat'+(o.inpost_point_code?'<br><span style="font-family:monospace">'+esc(o.inpost_point_code)+'</span>':''))
+        : 'Kurier';
+      const labelLink = o.apaczka_label_r2_key
+        ? `<a class="btn btn-grey" href="/api/admin/merch/label/${encodeURIComponent(o.id)}?t=${authT}" target="_blank" rel="noopener">Etykieta</a>` : '';
       return `<tr>
         <td>${fmtDate(o.created_at)}</td>
         <td>${esc(o.customer_name)}</td>
         <td>${esc(o.customer_email)}</td>
         <td style="font-size:11px">${itemsStr}</td>
+        <td style="font-size:11px">${deliv}</td>
         <td style="font-size:11px">${esc(o.shipping_address)}<br>${esc(o.shipping_zip)} ${esc(o.shipping_city)}</td>
         <td class="amount">${(o.total_amount/100).toLocaleString('pl-PL')} PLN</td>
         <td><span class="badge badge-${merchStatus(o.status).cls}">${merchStatus(o.status).label}</span></td>
         <td>${o.tracking_number||'-'}</td>
         <td class="actions">
           ${o.status==='pending' ? `<button class="btn btn-green" data-action="merchAction" data-arg1="mark_paid" data-arg2="${dataAttr(o.id)}">Oplacone</button>` : ''}
-          ${o.status==='paid' ? `<button class="btn btn-blue" data-action="merchShip" data-arg1="${dataAttr(o.id)}">Wyslij</button>` : ''}
+          ${o.status==='paid' ? `<button class="btn btn-blue" data-action="merchLabel" data-arg1="${dataAttr(o.id)}">Generuj etykietę</button>` : ''}
+          ${o.status==='paid' ? `<button class="btn btn-grey" data-action="merchShip" data-arg1="${dataAttr(o.id)}">Wyślij ręcznie</button>` : ''}
+          ${labelLink}
           ${o.status==='shipped' ? `<button class="btn btn-green" data-action="merchAction" data-arg1="mark_completed" data-arg2="${dataAttr(o.id)}">Dostarczono</button>` : ''}
           ${o.status!=='completed'&&o.status!=='cancelled' ? `<button class="btn btn-grey" data-action="merchAction" data-arg1="cancel" data-arg2="${dataAttr(o.id)}">Anuluj</button>` : ''}
         </td>
@@ -3483,9 +3496,32 @@ function merchShip(id) {
   const tracking = prompt('Numer przesylki (opcjonalnie):');
   merchActionWithTracking('mark_shipped', id, tracking);
 }
+
+// Generuje etykietę kuriera przez apaczka: tworzy przesyłkę, pobiera PDF, oznacza wysłane.
+async function merchLabel(id) {
+  const w = prompt('Waga paczki w gramach (domyślnie 1000):', '1000');
+  if (w === null) return; // anulowane
+  const body = { action:'generate_label', id };
+  const weight = parseInt(w, 10);
+  if (Number.isFinite(weight) && weight > 0) body.weight_g = weight;
+  showMsg('Generuję etykietę…','ok');
+  const res = await api('POST', '/api/admin/merch', body);
+  if (res.ok) { showMsg('Etykieta gotowa'+(res.tracking_number?' — '+res.tracking_number:''),'ok'); loadMerch(); }
+  else showMsg(res.error || 'Błąd generowania etykiety','err');
+}
 async function merchActionWithTracking(action, id, tracking) {
   const res = await api('POST', '/api/admin/merch', { action, id, tracking: tracking || null });
   if (res.ok) { showMsg('Wyslano','ok'); loadMerch(); } else showMsg(res.error,'err');
+}
+
+// Listuje usługi apaczka (service_id + nazwa) — do wpisania w wrangler.jsonc
+// (APACZKA_SERVICE_ID_COURIER / _INPOST). Narzędzie jednorazowe przy konfiguracji.
+async function showApaczkaServices() {
+  showMsg('Pobieram usługi apaczka…','ok');
+  const res = await api('POST', '/api/admin/merch', { action:'apaczka_services' });
+  if (!res.ok) { showMsg(res.error || 'Błąd','err'); return; }
+  const list = (res.services || []).map(s => `${s.id} — ${s.name}${s.deliveryType?' ['+s.deliveryType+']':''}`).join('\n');
+  alert(list ? 'Usługi apaczka (service_id — nazwa):\n\n'+list : 'Brak usług (sprawdź konfigurację kluczy apaczka).');
 }
 
 function merchStatus(s) {

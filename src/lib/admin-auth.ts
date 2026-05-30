@@ -152,12 +152,15 @@ export async function checkAdminAuthAsync(request: Request, env: Env): Promise<b
 }
 
 // ──────────────────────────────────────────────────────────────────
-// Role-based access. admin_users.role: 'admin' (pełny dostęp) | 'mechanic'
-// (tylko część techniczna - samolot/maintenance/dziennik/MS, bez finansów).
-// Legacy ADMIN_PASSWORD ⇒ 'admin'. Używaj w endpointach zamiast samego
-// checkAdminAuthAsync, gdy potrzebujesz rozróżnienia roli.
+// Role-based access. admin_users.role:
+//   'admin'    - pełny dostęp
+//   'mechanic' - tylko część techniczna (samolot/maintenance/dziennik/MS)
+//   'supplier' - tylko merch (zamówienia, produkty, wysyłki/etykiety apaczka)
+// Legacy ADMIN_PASSWORD ⇒ 'admin'. Bramkowanie ścieżek robi centralnie
+// functions/_middleware.ts (ROLE_ALLOWED_PREFIXES); używaj tych helperów, gdy
+// endpoint potrzebuje rozróżnienia roli.
 
-export type AdminRole = 'admin' | 'mechanic';
+export type AdminRole = 'admin' | 'mechanic' | 'supplier';
 
 export interface AdminIdentity {
   user: AdminUser;
@@ -185,7 +188,7 @@ export async function getAdminIdentityAsync(request: Request, env: Env): Promise
   await env.DB.prepare(`UPDATE admin_sessions SET last_used_at = ? WHERE token = ?`)
     .bind(now, token).run().catch(() => {});
 
-  const role: AdminRole = row.role === 'mechanic' ? 'mechanic' : 'admin';
+  const role: AdminRole = (row.role === 'mechanic' || row.role === 'supplier') ? row.role : 'admin';
   return { user: row.email, role };
 }
 
@@ -201,4 +204,11 @@ export async function checkFullAdminAsync(request: Request, env: Env): Promise<A
   const id = await getAdminIdentityAsync(request, env);
   if (!id) return null;
   return id.role === 'admin' ? id : null;
+}
+
+// True gdy zalogowany i ma dostęp do merch (admin lub supplier/dostawca).
+export async function checkMerchAccessAsync(request: Request, env: Env): Promise<AdminIdentity | null> {
+  const id = await getAdminIdentityAsync(request, env);
+  if (!id) return null;
+  return (id.role === 'admin' || id.role === 'supplier') ? id : null;
 }

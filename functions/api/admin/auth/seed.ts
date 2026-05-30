@@ -28,8 +28,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   } | null;
   const email = (body?.email || '').trim().toLowerCase();
   const name = (body?.name || '').trim();
-  // 'admin' (pełny dostęp, domyślnie) | 'mechanic' (tylko część techniczna).
-  const role = body?.role === 'mechanic' ? 'mechanic' : 'admin';
+  // 'admin' (pełny dostęp, domyślnie) | 'mechanic' (część techniczna) | 'supplier' (tylko merch).
+  const role = (body?.role === 'mechanic' || body?.role === 'supplier') ? body.role : 'admin';
   if (!email || !name) {
     return Response.json({ error: 'email i name wymagane' }, { status: 400 });
   }

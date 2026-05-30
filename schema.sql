@@ -80,12 +80,19 @@ CREATE TABLE IF NOT EXISTS merch_orders (
   baselinker_order_id INTEGER,
   payment_gateway TEXT,
   paynow_payment_id TEXT,
+  -- Dostawa + kurier apaczka.pl (migracja 044)
+  delivery_method TEXT NOT NULL DEFAULT 'courier', -- 'courier' | 'inpost_locker'
+  inpost_point_code TEXT,        -- ID punktu apaczka (→ receiver.foreign_address_id)
+  apaczka_order_id TEXT,         -- ID przesyłki w apaczka
+  apaczka_label_r2_key TEXT,     -- klucz PDF etykiety w R2 (labels/merch/{id}.pdf)
+  parcel_weight_g INTEGER,       -- waga paczki w gramach (domyślnie 1000)
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
 CREATE INDEX IF NOT EXISTS idx_merch_orders_status ON merch_orders(status);
 CREATE INDEX IF NOT EXISTS idx_merch_orders_stripe ON merch_orders(stripe_session_id);
 CREATE INDEX IF NOT EXISTS idx_merch_orders_created_at ON merch_orders(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_merch_orders_apaczka ON merch_orders(apaczka_order_id);
 
 -- SMS subscribers (email column used by welcome email sequence)
 CREATE TABLE IF NOT EXISTS subscribers (

@@ -10,6 +10,8 @@ interface MerchCheckoutBody {
   shipping_address: string;
   shipping_city: string;
   shipping_zip: string;
+  delivery_method?: 'courier' | 'inpost_locker'; // domyślnie 'courier'
+  inpost_point_code?: string;                     // wymagane dla paczkomatu
   gateway?: 'paynow' | 'stripe'; // domyślnie 'paynow', Stripe jako opcja
 }
 
@@ -20,7 +22,18 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!body.items?.length) return Response.json({ error: 'Koszyk jest pusty' }, { status: 400 });
     if (!body.customer_name || !body.customer_email) return Response.json({ error: 'Imię i email wymagane' }, { status: 400 });
     if (!isValidEmail(body.customer_email)) return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
-    if (!body.shipping_address || !body.shipping_city || !body.shipping_zip) return Response.json({ error: 'Adres dostawy wymagany' }, { status: 400 });
+
+    const deliveryMethod: 'courier' | 'inpost_locker' = body.delivery_method === 'inpost_locker' ? 'inpost_locker' : 'courier';
+    const inpostPointCode = (body.inpost_point_code || '').trim();
+    if (deliveryMethod === 'inpost_locker') {
+      if (!inpostPointCode) return Response.json({ error: 'Wybierz paczkomat InPost' }, { status: 400 });
+    } else if (!body.shipping_address || !body.shipping_city || !body.shipping_zip) {
+      return Response.json({ error: 'Adres dostawy wymagany' }, { status: 400 });
+    }
+    // Kolumny shipping_* są NOT NULL — dla paczkomatu zapisujemy kod punktu jako adres.
+    const shipAddress = deliveryMethod === 'inpost_locker' ? `Paczkomat ${inpostPointCode}` : body.shipping_address;
+    const shipCity = deliveryMethod === 'inpost_locker' ? (body.shipping_city || '') : body.shipping_city;
+    const shipZip = deliveryMethod === 'inpost_locker' ? (body.shipping_zip || '') : body.shipping_zip;
 
     // Fetch products and calculate total
     const productIds = body.items.map(i => i.product_id);
@@ -65,19 +78,21 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       });
     }
 
-    // Add shipping (flat rate 15 PLN, free over 200 PLN)
-    const shippingCost = totalAmount >= 20000 ? 0 : 1500;
+    // Dostawa: paczkomat taniej niż kurier; darmowa od 200 PLN. (grosze)
+    const baseShipping = deliveryMethod === 'inpost_locker' ? 1200 : 1500;
+    const shippingCost = totalAmount >= 20000 ? 0 : baseShipping;
     totalAmount += shippingCost;
 
     // Create order in DB
     const orderId = crypto.randomUUID();
     await ctx.env.DB.prepare(`
-      INSERT INTO merch_orders (id, customer_name, customer_email, customer_phone, shipping_address, shipping_city, shipping_zip, items, total_amount, status)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending')
+      INSERT INTO merch_orders (id, customer_name, customer_email, customer_phone, shipping_address, shipping_city, shipping_zip, items, total_amount, status, delivery_method, inpost_point_code)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?)
     `).bind(
       orderId, body.customer_name, body.customer_email, body.customer_phone || null,
-      body.shipping_address, body.shipping_city, body.shipping_zip,
+      shipAddress, shipCity, shipZip,
       JSON.stringify(orderItems), totalAmount,
+      deliveryMethod, deliveryMethod === 'inpost_locker' ? inpostPointCode : null,
     ).run();
 
     const siteUrl = ctx.env.SITE_URL || 'https://akrobacja.com';

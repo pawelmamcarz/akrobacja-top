@@ -17,6 +17,19 @@ export interface Env {
   ADMIN_PASSWORD: string;
   SMSAPI_TOKEN: string;
   PRINTFUL_TOKEN: string;
+  // Apaczka.pl kurier (REST API v2). Podpis HMAC-SHA256: app_id (publiczny) + app_secret (klucz).
+  APACZKA_API_KEY?: string;          // app_secret — klucz do HMAC (sekret)
+  APACZKA_APP_ID?: string;           // app_id — publiczny identyfikator aplikacji
+  APACZKA_SERVICE_ID_COURIER?: string;  // service_id usługi kuriera pod adres
+  APACZKA_SERVICE_ID_INPOST?: string;   // service_id usługi paczkomatu InPost
+  // Adres nadawcy na etykiecie (producent, bo on fizycznie nadaje)
+  APACZKA_SENDER_NAME?: string;
+  APACZKA_SENDER_LINE1?: string;
+  APACZKA_SENDER_POSTAL?: string;
+  APACZKA_SENDER_CITY?: string;
+  APACZKA_SENDER_CONTACT?: string;
+  APACZKA_SENDER_PHONE?: string;
+  APACZKA_SENDER_EMAIL?: string;
   META_PIXEL_ID?: string;
   META_CAPI_TOKEN?: string;
   META_TEST_EVENT_CODE?: string;

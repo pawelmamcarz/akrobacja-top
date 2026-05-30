@@ -1346,11 +1346,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="field"><label>Email *</label><input id="cfEmail" type="email" placeholder="jan@example.com" autocomplete="email"></div>
         <div class="field"><label>Telefon</label><input id="cfPhone" placeholder="+48 XXX XXX XXX" autocomplete="tel"></div>
       </div>
-      <div class="co-section">Adres dostawy</div>
-      <div class="field"><label>Ulica i numer *</label><input id="cfAddress" placeholder="ul. Lotników 1/2" autocomplete="street-address"></div>
-      <div class="field-row">
-        <div class="field"><label>Kod pocztowy *</label><input id="cfZip" placeholder="26-600" autocomplete="postal-code"></div>
-        <div class="field"><label>Miasto *</label><input id="cfCity" placeholder="Radom" autocomplete="address-level2"></div>
+      <div class="co-section">Sposób dostawy</div>
+      <div class="delivery-select" role="radiogroup" aria-label="Sposób dostawy" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+        <label style="flex:1;min-width:150px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
+          <input type="radio" name="akroDelivery" value="courier" checked onchange="updateDeliveryUI()"> <span><strong>Kurier</strong><br><small style="color:#6B7A90">pod adres · 15 zł</small></span>
+        </label>
+        <label style="flex:1;min-width:150px;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #d6deea;border-radius:8px;cursor:pointer;font-size:14px">
+          <input type="radio" name="akroDelivery" value="inpost_locker" onchange="updateDeliveryUI()"> <span><strong>Paczkomat InPost</strong><br><small style="color:#6B7A90">odbiór 24/7 · 12 zł</small></span>
+        </label>
+      </div>
+      <div id="coCourierFields">
+        <div class="co-section">Adres dostawy</div>
+        <div class="field"><label>Ulica i numer *</label><input id="cfAddress" placeholder="ul. Lotników 1/2" autocomplete="street-address"></div>
+        <div class="field-row">
+          <div class="field"><label>Kod pocztowy *</label><input id="cfZip" placeholder="26-600" autocomplete="postal-code"></div>
+          <div class="field"><label>Miasto *</label><input id="cfCity" placeholder="Radom" autocomplete="address-level2"></div>
+        </div>
+      </div>
+      <div id="coLockerFields" style="display:none">
+        <div class="co-section">Paczkomat InPost</div>
+        <div class="field"><label>Kod paczkomatu *</label><input id="cfLocker" placeholder="np. KRA010" autocomplete="off"></div>
+        <p style="font-size:12px;color:#6B7A90;margin:-4px 0 8px">Nie znasz kodu? <a href="https://inpost.pl/znajdz-paczkomat" target="_blank" rel="noopener" style="color:#0A2F7C;text-decoration:underline">Znajdź paczkomat</a> i wpisz jego kod (np. KRA010).</p>
       </div>
       <div id="coErr"></div>
       <div class="gateway-select" role="radiogroup" aria-label="Metoda płatności" style="display:none;gap:8px;flex-wrap:wrap;margin:10px 0 4px">
@@ -1599,14 +1615,37 @@ function closeCart() {
 }
 
 // ─── CHECKOUT MODAL ─────────────────────────────────────────────
-function openCheckout() {
-  closeCart();
-  // Build summary
+function currentDelivery() {
+  return document.querySelector('input[name="akroDelivery"]:checked')?.value || 'courier';
+}
+
+// Koszt dostawy spójny z backendem (functions/api/merch/checkout.ts): paczkomat 12 zł,
+// kurier 15 zł, gratis od 200 zł.
+function deliveryCost(subtotal) {
+  if (subtotal >= 20000) return 0;
+  return currentDelivery() === 'inpost_locker' ? 1200 : 1500;
+}
+
+function renderCoSummary() {
   const subtotal = cart.reduce((s, i) => s + i.price * i.quantity, 0);
-  const shipping = subtotal >= 20000 ? 0 : 1500;
+  const shipping = deliveryCost(subtotal);
   const rows = cart.map(i => `<div class="co-summary-row"><span>${esc(i.name)}${i.variant ? ' ('+esc(i.variant)+')' : ''} ×${i.quantity}</span><span>${Math.round(i.price*i.quantity/100)} PLN</span></div>`).join('');
   document.getElementById('coSummary').innerHTML = rows +
+    `<div class="co-summary-row"><span>Dostawa</span><span>${shipping ? Math.round(shipping/100)+' PLN' : 'Gratis'}</span></div>` +
     `<div class="co-summary-row total"><span>Do zapłaty</span><span>${Math.round((subtotal+shipping)/100)} PLN</span></div>`;
+}
+
+// Przełącza pola adres/paczkomat i odświeża koszt dostawy.
+function updateDeliveryUI() {
+  const locker = currentDelivery() === 'inpost_locker';
+  document.getElementById('coCourierFields').style.display = locker ? 'none' : '';
+  document.getElementById('coLockerFields').style.display = locker ? '' : 'none';
+  renderCoSummary();
+}
+
+function openCheckout() {
+  closeCart();
+  updateDeliveryUI();
 
   // Pre-fill from pilot account
   const token = localStorage.getItem('pilot_token');
@@ -1644,7 +1683,14 @@ async function placeOrder() {
     return;
   }
 
-  if (!name || !email || !address || !city || !zip) {
+  const delivery = currentDelivery();
+  const locker = (document.getElementById('cfLocker')?.value || '').trim();
+  if (delivery === 'inpost_locker') {
+    if (!name || !email || !locker) {
+      errEl.innerHTML = '<div class="co-err">Podaj imię, email i kod paczkomatu</div>';
+      return;
+    }
+  } else if (!name || !email || !address || !city || !zip) {
     errEl.innerHTML = '<div class="co-err">Wypełnij wszystkie wymagane pola (*)</div>';
     return;
   }
@@ -1665,6 +1711,8 @@ async function placeOrder() {
         shipping_address: address,
         shipping_city: city,
         shipping_zip: zip,
+        delivery_method: delivery,
+        inpost_point_code: delivery === 'inpost_locker' ? locker : undefined,
         gateway: document.querySelector('input[name="akroGateway"]:checked')?.value || 'paynow',
       }),
     });
