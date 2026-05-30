@@ -1,6 +1,7 @@
 import { type Env, PACKAGES, type PackageId } from '../../../src/lib/types';
 import { escapeHtml } from '../../../src/lib/email';
 import { generateSlots } from '../../../src/lib/daylight';
+import { getBlockingEventsForDate } from '../../../src/lib/calendar-availability';
 import { rateLimit, clientIp } from '../../../src/lib/rate-limit';
 import { verifyTurnstile } from '../../../src/lib/turnstile';
 
@@ -84,6 +85,16 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
 
     if (block) {
       return Response.json({ error: 'Ten dzień jest zablokowany' }, { status: 400 });
+    }
+
+    // Slot nie może nachodzić na zajętość samolotu z calendar_events (lot z Google,
+    // serwis mechanika, trening, pokaz) - inaczej klient zarezerwowałby realny lot.
+    const toMin = (t: string) => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+    const sMin = toMin(body.start_time);
+    const eMin = toMin(addHour(body.start_time));
+    const blockingEvents = await getBlockingEventsForDate(ctx.env, body.date);
+    if (blockingEvents.some(ev => ev.startMin < eMin && ev.endMin > sMin)) {
+      return Response.json({ error: 'Ten termin jest niedostępny (samolot zajęty)' }, { status: 409 });
     }
 
     // Atomowa rezerwacja slotu - partial UNIQUE(date, start_time) WHERE status != 'available'

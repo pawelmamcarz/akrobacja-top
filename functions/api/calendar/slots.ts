@@ -1,5 +1,6 @@
 import { type Env } from '../../../src/lib/types';
-import { generateSlots, getDaylight } from '../../../src/lib/daylight';
+import { getDaylight } from '../../../src/lib/daylight';
+import { getDayAvailability } from '../../../src/lib/calendar-availability';
 import { getWeatherForecast } from '../../../src/lib/weather';
 import { rateLimit, clientIp } from '../../../src/lib/rate-limit';
 
@@ -25,31 +26,20 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
       return Response.json({ error: 'Nie można rezerwować w przeszłości' }, { status: 400 });
     }
 
-    // Check for blocks
-    const block = await ctx.env.DB.prepare(
-      'SELECT reason FROM availability_blocks WHERE date_from <= ? AND date_to >= ?'
-    ).bind(dateStr, dateStr).first<{ reason: string }>();
-
-    if (block) {
+    // Realna dostępność: sloty − rezerwacje − availability_blocks − calendar_events
+    // (loty z Google, serwis mechanika, treningi, pokazy). Jedno źródło prawdy.
+    const day = await getDayAvailability(ctx.env, dateStr);
+    if (day.blocked) {
       return Response.json({
         date: dateStr,
         available: false,
-        reason: block.reason,
+        reason: day.reason,
         slots: [],
       });
     }
 
     // Get daylight info
     const daylight = getDaylight(dateStr);
-
-    // Generate potential slots
-    const potentialSlots = generateSlots(dateStr);
-
-    // Get existing bookings for this date
-    const { results: existingBookings } = await ctx.env.DB.prepare(
-      "SELECT start_time FROM slots WHERE date = ? AND status != 'available'"
-    ).bind(dateStr).all<{ start_time: string }>();
-    const bookedTimes = new Set(existingBookings.map(b => b.start_time));
 
     // Get weather (only for dates within 7 days)
     const daysAhead = Math.floor((new Date(dateStr).getTime() - new Date(today).getTime()) / (1000 * 60 * 60 * 24));
@@ -61,16 +51,17 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
     }
 
     // Build slots with availability and weather
-    const slots = potentialSlots.map(slot => {
+    const slots = day.slots.map(slot => {
       const hour = parseInt(slot.start.split(':')[0]);
       const weather = weatherAvailable && weatherHourly[hour] ? weatherHourly[hour] : null;
-      const booked = bookedTimes.has(slot.start);
+      const booked = slot.booked;
 
       return {
         start: slot.start,
         end: slot.end,
         available: !booked && (!weather || weather.flyable),
         booked,
+        blocked_reason: slot.blockedBy ?? null,
         weather: weather ? {
           flyable: weather.flyable,
           reason: weather.reason,
