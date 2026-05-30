@@ -92,7 +92,16 @@ Jeśli wydarzenie nie pojawia się na stronie po ~20 min:
 
 ### (Dla Pawła — jednorazowe włączenie)
 
-Są **dwie osobne rzeczy** w ustawieniach kalendarza „Loty akrobacja.com":
+**0) Najpierw utwórz kalendarz** (tylko na komputerze — telefon nie pozwala utworzyć):
+1. Wejdź na **calendar.google.com**.
+2. Przy „Inne kalendarze" (lewa kolumna) kliknij **„+"** → **„Utwórz nowy kalendarz"**.
+3. Nazwa: **`Loty akrobacja.com`**, strefa **(GMT+01:00) Warszawa** → **„Utwórz kalendarz"**.
+
+Potem są **dwie osobne rzeczy** w ustawieniach tego kalendarza:
+
+> Uwaga na „dam mu link": **link = tylko podgląd** — Maciej zobaczy, ale nie doda lotu.
+> Żeby mógł dodawać, użyj punktu **A** poniżej (dodanie jego Gmaila z prawem edycji);
+> kalendarz pojawi się u niego sam, bez linku.
 
 **A) Żeby Maciej (i każdy inny) mógł DODAWAĆ loty:**
 - „Udostępnij konkretnym osobom" → dodaj e-mail Macieja → uprawnienie
