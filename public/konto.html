@@ -15,7 +15,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap"></noscript>
 <style>
-  :root { --navy:#1B4DB5; --navy-mid:#2258C3; --navy-deep:#0A1428; --red:#C41E3A; --red-dark:#A31830; --white:#FFFFFF; --black:#0A1428; --chrome:#7A8FA6; --grey-lt:#C8D4E0; --font-h:'Montserrat',sans-serif; --font-b:'Inter',sans-serif; }
+  :root { --navy:#0A2F7C; --navy-mid:#2258C3; --navy-deep:#0A1428; --red:#C41E3A; --red-dark:#A31830; --white:#FFFFFF; --black:#0A1428; --chrome:#7A8FA6; --grey-lt:#C8D4E0; --font-h:'Montserrat',sans-serif; --font-b:'Inter',sans-serif; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:var(--font-b); background:var(--white); color:#1a1a2e; }
 
@@ -460,13 +460,13 @@ async function loadMyCalendar(icsUrl) {
     return;
   }
   section.style.display = 'block';
-  box.innerHTML = `<div style="padding:14px;background:#f1f8ff;border:1px solid #1B4DB5;border-radius:6px;font-size:13px;line-height:1.5">
+  box.innerHTML = `<div style="padding:14px;background:#f1f8ff;border:1px solid #0A2F7C;border-radius:6px;font-size:13px;line-height:1.5">
     <strong>Subskrybuj swój kalendarz w GCal/Apple/Outlook:</strong>
     <div style="display:flex;gap:8px;margin:10px 0">
       <input value="${icsUrl}" readonly style="flex:1;padding:8px;border:1px solid #ccc;border-radius:4px;font-size:11px" onclick="this.select()">
-      <button onclick="navigator.clipboard.writeText('${icsUrl}').then(()=>this.textContent='Skopiowano')" style="padding:8px 14px;background:#1B4DB5;color:#fff;border:none;border-radius:4px;font-size:12px;cursor:pointer">Kopiuj</button>
+      <button onclick="navigator.clipboard.writeText('${icsUrl}').then(()=>this.textContent='Skopiowano')" style="padding:8px 14px;background:#0A2F7C;color:#fff;border:none;border-radius:4px;font-size:12px;cursor:pointer">Kopiuj</button>
     </div>
-    <details style="margin-top:6px"><summary style="cursor:pointer;color:#1B4DB5">Jak dodać do kalendarza?</summary>
+    <details style="margin-top:6px"><summary style="cursor:pointer;color:#0A2F7C">Jak dodać do kalendarza?</summary>
       <ul style="margin:8px 0 0 16px;font-size:12px;color:#555">
         <li><strong>Google Calendar</strong>: calendar.google.com → Inne kalendarze (+) → Z URL → wklej.</li>
         <li><strong>Apple Calendar (Mac)</strong>: Plik → Nowa subskrypcja kalendarza → wklej URL.</li>
@@ -509,7 +509,7 @@ function loadInsurance(status) {
   } else {
     el.innerHTML = `<div style="padding:16px;background:#f8f9fa;font-size:13px;color:#666">
       Nie jesteś wpisany do polisy samolotu SP-EKS.<br>
-      <button onclick="requestInsurance()" style="margin-top:8px;padding:8px 16px;background:#1B4DB5;color:#fff;border:none;font-size:12px;font-weight:600;cursor:pointer">Wnioskuj o wpisanie do polisy</button>
+      <button onclick="requestInsurance()" style="margin-top:8px;padding:8px 16px;background:#0A2F7C;color:#fff;border:none;font-size:12px;font-weight:600;cursor:pointer">Wnioskuj o wpisanie do polisy</button>
     </div>`;
   }
 }

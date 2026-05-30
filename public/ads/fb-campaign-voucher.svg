@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Facebook Square Ad  1080 × 1080 px
      Fonts:  Montserrat (headings 700-900) · Inter (body 400-600)
-     Colors: #0A1428 navy-deep · #C41E3A red · #1B4DB5 navy · #FFFFFF white
+     Colors: #0A1428 navy-deep · #C41E3A red · #0A2F7C navy · #FFFFFF white
      Swap background image in Affinity Designer: currently ../speks-city.jpg
 -->
 <svg width="1080" height="1080" viewBox="0 0 1080 1080"
@@ -322,7 +322,7 @@
         fill="#7A8FA6" letter-spacing="2.6">AKROBACJA EXTRA</text>
 
   <!-- Live-chat support badge -->
-  <circle cx="1042" cy="1042" r="28" fill="#1B4DB5"/>
+  <circle cx="1042" cy="1042" r="28" fill="#0A2F7C"/>
   <path d="M1032,1035 h20 a4,4 0 0 1 4,4 v12 a4,4 0 0 1 -4,4
            h-7 l-6,5 v-5 h-7 a4,4 0 0 1 -4,-4 v-12 a4,4 0 0 1 4,-4 z"
         fill="#FFFFFF"/>

@@ -22,20 +22,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .login-box { background:#fff; padding:48px; max-width:380px; width:100%; box-shadow:0 2px 12px rgba(0,0,0,.08); }
   .login-box h1 { font-size:20px; margin-bottom:24px; }
   .login-box input { width:100%; padding:12px; border:1px solid #ddd; font-size:14px; margin-bottom:16px; }
-  .login-box button { width:100%; padding:12px; background:#1B4DB5; color:#fff; border:none; font-weight:600; cursor:pointer; }
+  .login-box button { width:100%; padding:12px; background:#0A2F7C; color:#fff; border:none; font-weight:600; cursor:pointer; }
 
   .app { display:none; }
   .app.active { display:block; }
 
-  .topbar { background:#1B4DB5; color:#fff; padding:12px 32px; display:flex; justify-content:space-between; align-items:center; }
+  .topbar { background:#0A2F7C; color:#fff; padding:12px 32px; display:flex; justify-content:space-between; align-items:center; }
   .topbar h1 { font-size:15px; font-weight:600; }
   .topbar .logout { background:none; border:1px solid rgba(255,255,255,.3); color:#fff; padding:5px 14px; cursor:pointer; font-size:11px; }
 
   /* Tabs */
   .tabs { display:flex; background:#fff; border-bottom:2px solid #eee; padding:0 32px; }
   .tab { padding:12px 20px; cursor:pointer; font-size:12px; font-weight:600; color:#888; border-bottom:2px solid transparent; margin-bottom:-2px; }
-  .tab:hover { color:#1B4DB5; }
-  .tab.active { color:#1B4DB5; border-bottom-color:#C41E3A; }
+  .tab:hover { color:#0A2F7C; }
+  .tab.active { color:#0A2F7C; border-bottom-color:#C41E3A; }
 
   .panel { display:none; padding:24px 32px; }
   .panel.active { display:block; }
@@ -56,13 +56,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .badge-expired,.badge-rejected,.badge-cancelled,.badge-failed { background:#f8d7da; color:#721c24; }
 
   .btn { padding:5px 12px; font-size:10px; font-weight:600; border:none; cursor:pointer; text-transform:uppercase; letter-spacing:.04em; }
-  .btn-blue { background:#1B4DB5; color:#fff; }
+  .btn-blue { background:#0A2F7C; color:#fff; }
   .btn-red { background:#C41E3A; color:#fff; }
   .btn-green { background:#28a745; color:#fff; }
   .btn-grey { background:#6c757d; color:#fff; }
   .btn:disabled { opacity:.4; cursor:not-allowed; }
 
-  .code { font-family:'Courier New',monospace; font-weight:700; color:#1B4DB5; }
+  .code { font-family:'Courier New',monospace; font-weight:700; color:#0A2F7C; }
   .amount { font-weight:600; }
   .actions { display:flex; gap:4px; }
 
@@ -74,7 +74,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .modal-bg { position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:100; display:none; align-items:center; justify-content:center; }
   .modal-bg.show { display:flex; }
   .modal { background:#fff; padding:32px; max-width:480px; width:100%; max-height:90vh; overflow-y:auto; }
-  .modal h3 { font-size:16px; margin-bottom:16px; color:#1B4DB5; }
+  .modal h3 { font-size:16px; margin-bottom:16px; color:#0A2F7C; }
   .modal .field { margin-bottom:12px; }
   .modal label { display:block; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:#888; margin-bottom:4px; }
   .modal input,.modal select,.modal textarea { width:100%; padding:8px; border:1px solid #ddd; font-size:13px; }
@@ -97,11 +97,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <input type="password" id="passInput" placeholder="Hasło" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
     <button onclick="doLogin()">Zaloguj</button>
     <p id="loginErr" style="color:#C41E3A;font-size:13px;margin-top:12px;display:none"></p>
-    <p style="margin-top:14px;font-size:12px;text-align:center"><a href="#" onclick="event.preventDefault();showForgot()" style="color:#1B4DB5;text-decoration:none">Zapomniałem hasła</a></p>
+    <p style="margin-top:14px;font-size:12px;text-align:center"><a href="#" onclick="event.preventDefault();showForgot()" style="color:#0A2F7C;text-decoration:none">Zapomniałem hasła</a></p>
     <div id="forgotBox" style="display:none;margin-top:12px;padding:12px;background:#f4f8ff;border:1px solid #c4d2e0">
       <p style="font-size:12px;margin-bottom:8px">Wpisz swój email - wyślemy link do ustawienia nowego hasła.</p>
       <input type="email" id="forgotEmail" placeholder="email" style="width:100%;padding:8px;border:1px solid #c4d2e0;margin-bottom:6px;font-size:13px">
-      <button onclick="sendForgot()" style="padding:8px 14px;background:#1B4DB5;color:#fff;border:0;font-size:12px;cursor:pointer">Wyślij link resetujący</button>
+      <button onclick="sendForgot()" style="padding:8px 14px;background:#0A2F7C;color:#fff;border:0;font-size:12px;cursor:pointer">Wyślij link resetujący</button>
       <p id="forgotMsg" style="margin-top:8px;font-size:11px"></p>
     </div>
   </div>
@@ -109,7 +109,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <div class="app" id="appView">
   <div class="topbar">
-    <h1>akrobacja.com, Panel Admina <span id="userBadge" style="display:none;background:#1B4DB5;color:#fff;padding:3px 10px;font-size:11px;font-weight:600;border-radius:3px;margin-left:8px;vertical-align:middle"></span></h1>
+    <h1>akrobacja.com, Panel Admina <span id="userBadge" style="display:none;background:#0A2F7C;color:#fff;padding:3px 10px;font-size:11px;font-weight:600;border-radius:3px;margin-left:8px;vertical-align:middle"></span></h1>
     <button class="logout" onclick="doLogout()">Wyloguj</button>
   </div>
 
@@ -152,7 +152,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="stats" id="calStats"></div>
     </div>
 
-    <h3 style="margin:8px 0;font-size:13px;color:#1B4DB5">Eventy pilotów (loty, szkolenia, maintenance)</h3>
+    <h3 style="margin:8px 0;font-size:13px;color:#0A2F7C">Eventy pilotów (loty, szkolenia, maintenance)</h3>
     <div class="toolbar" style="margin-bottom:8px;flex-wrap:wrap;gap:6px">
       <button class="btn btn-blue" onclick="openModal('newCalendarEvent')">+ Dodaj event</button>
       <select id="evfPilot" onchange="renderEvents()"><option value="">Wszyscy piloci</option></select>
@@ -172,7 +172,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <h3 style="margin:16px 0 8px;font-size:13px;color:#C41E3A">Rezerwacje klientów</h3>
     <div id="pendingBookings"></div>
-    <h3 style="margin:16px 0 8px;font-size:13px;color:#1B4DB5">Wszystkie sloty</h3>
+    <h3 style="margin:16px 0 8px;font-size:13px;color:#0A2F7C">Wszystkie sloty</h3>
     <div id="calTable"></div>
   </div>
 
@@ -206,7 +206,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- AIRCRAFT -->
   <div class="panel" id="panel-aircraft">
-    <h3 style="font-size:14px;color:#1B4DB5;margin-bottom:4px">Extra 300L · SP-EKS</h3>
+    <h3 style="font-size:14px;color:#0A2F7C;margin-bottom:4px">Extra 300L · SP-EKS</h3>
     <p style="font-size:11px;color:#888;margin-bottom:8px">Harmonogram przeglądów, dokumenty, polisa, dziennik pokładowy</p>
     <div id="aircraftHeader" style="font-size:12px;color:#0A2F7C;background:#f1f8ff;border:1px solid #c4d2e0;border-radius:4px;padding:8px 12px;margin-bottom:16px"></div>
 
@@ -242,13 +242,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h4 style="font-size:12px;color:#C41E3A;margin:16px 0 8px">Harmonogram przeglądów</h4>
     <div id="maintenanceTable"></div>
 
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Dokumenty</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Dokumenty</h4>
     <div id="documentsTable"></div>
 
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Dziennik pokładowy</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Dziennik pokładowy</h4>
     <div id="logbookSection"></div>
 
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Piloci w polisie
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Piloci w polisie
       <button class="btn btn-blue" style="margin-left:8px;font-size:11px;padding:4px 10px" onclick="openModal('addInsurance')">+ Wpisz pilota</button>
     </h4>
     <div id="insuranceTable"></div>
@@ -260,9 +260,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="btn btn-blue" onclick="openModal('newProduct')">+ Dodaj produkt</button>
       <div class="stats" id="merchStats"></div>
     </div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Produkty</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:16px 0 8px">Produkty</h4>
     <div id="productsTable"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Zamówienia</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Zamówienia</h4>
     <div id="merchTable"></div>
   </div>
 
@@ -282,13 +282,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="btn btn-blue" onclick="loadWaClicks()">Odswiez</button>
       <div class="stats" id="waStats"></div>
     </div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Klikniecia w 30 dniach wg numeru naszego (Pawel vs Maciej)</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:16px 0 8px">Klikniecia w 30 dniach wg numeru naszego (Pawel vs Maciej)</h4>
     <div id="waByTarget"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Klikniecia w 30 dniach wg strony</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:16px 0 8px">Klikniecia w 30 dniach wg strony</h4>
     <div id="waByPage"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Klikniecia w 30 dniach wg lokalizacji CTA</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Klikniecia w 30 dniach wg lokalizacji CTA</h4>
     <div id="waByLocation"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 200 klikniec</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Ostatnie 200 klikniec</h4>
     <div id="waRecentTable"></div>
   </div>
 
@@ -320,13 +320,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="stats" id="mailStats"></div>
     </div>
     <div id="mailAlerts" style="margin-top:8px"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Eventy w 30 dniach wg typu</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:16px 0 8px">Eventy w 30 dniach wg typu</h4>
     <div id="mailByType"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Wg sendera</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Wg sendera</h4>
     <div id="mailBySender"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Wg kategorii (tag)</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Wg kategorii (tag)</h4>
     <div id="mailByTag"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 200 eventow</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Ostatnie 200 eventow</h4>
     <div id="mailRecentTable"></div>
   </div>
 
@@ -361,14 +361,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div id="finStats" style="margin-top:14px"></div>
 
-    <h3 style="margin:24px 0 8px;font-size:13px;color:#1B4DB5">Eventy / pokazy (Magda sprzedaje) - split 3-way</h3>
+    <h3 style="margin:24px 0 8px;font-size:13px;color:#0A2F7C">Eventy / pokazy (Magda sprzedaje) - split 3-way</h3>
     <div class="toolbar" style="margin-bottom:8px">
       <button class="btn btn-blue" onclick="openModal('newEventSold')">+ Dodaj event</button>
       <span style="font-size:11px;color:#666">Per event edytowalne: dolot/pokaz minuty, smok, prowizja Magdy</span>
     </div>
     <div id="eventsSoldTable" style="margin-bottom:32px"></div>
 
-    <h3 style="margin:24px 0 8px;font-size:13px;color:#1B4DB5">Split kasy Paweł / Maciej (per voucher)</h3>
+    <h3 style="margin:24px 0 8px;font-size:13px;color:#0A2F7C">Split kasy Paweł / Maciej (per voucher)</h3>
     <div class="toolbar" style="margin-bottom:8px;flex-wrap:wrap;gap:6px">
       <label>Miesiąc <input type="month" id="splitMonth"></label>
       <label title="Ile faktycznie wydales na FB w tym miesiacu">Marketing FB [zł] <input type="number" id="splitMarketing" value="2000" style="width:90px"></label>
@@ -392,14 +392,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div id="kostContent" style="margin-top:14px"></div>
 
-    <h3 style="margin:32px 0 8px;font-size:13px;color:#1B4DB5">Whitelist kontrahentów - auto-pull faktur z wFirmy (od 2026-01)</h3>
+    <h3 style="margin:32px 0 8px;font-size:13px;color:#0A2F7C">Whitelist kontrahentów - auto-pull faktur z wFirmy (od 2026-01)</h3>
     <div class="toolbar" style="margin-bottom:8px">
       <button class="btn btn-blue" onclick="openModal('newExpenseContractor')">+ Dodaj kontrahenta</button>
       <span style="font-size:11px;color:#666">Cron i „↻ Pobierz z wFirmy" zaciągają TYLKO faktury od tych kontrahentów, wystawione od 2026-01-01. Reszta jest pomijana i czyszczona z bazy przy każdym sync.</span>
     </div>
     <div id="expenseContractorsTable"></div>
 
-    <h3 style="margin:32px 0 8px;font-size:13px;color:#1B4DB5">KSeF Whitelist (NIPy kontrahentów do auto-pull)</h3>
+    <h3 style="margin:32px 0 8px;font-size:13px;color:#0A2F7C">KSeF Whitelist (NIPy kontrahentów do auto-pull)</h3>
     <div class="toolbar" style="margin-bottom:8px">
       <button class="btn btn-blue" onclick="openModal('newKsefContractor')">+ Dodaj kontrahenta</button>
       <span style="font-size:11px;color:#666">Faktury z tych NIPów będą zaciągane przez KSeF cron (gdy uruchomiony)</span>
@@ -425,19 +425,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="stats" id="seoStats"></div>
     </div>
     <div id="seoAlerts" style="margin-top:8px"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Sitemap pages.xml</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:16px 0 8px">Sitemap pages.xml</h4>
     <div id="seoSitemapPages"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Sitemap blog.xml</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Sitemap blog.xml</h4>
     <div id="seoSitemapBlog"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Redirecty legacy (LEGACY_REDIRECTS) z health checkiem destynacji</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Redirecty legacy (LEGACY_REDIRECTS) z health checkiem destynacji</h4>
     <div id="seoRedirects"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Sciezki noindex (middleware NOINDEX_PATHS)</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Sciezki noindex (middleware NOINDEX_PATHS)</h4>
     <div id="seoNoindex"></div>
   </div>
 
   <!-- LEADS -->
   <div class="panel" id="panel-leads">
-    <h3 style="margin:0 0 8px;font-size:13px;color:#1B4DB5">Email Newsletter (z lead magnetu PDF)</h3>
+    <h3 style="margin:0 0 8px;font-size:13px;color:#0A2F7C">Email Newsletter (z lead magnetu PDF)</h3>
     <div id="emailLeadsTable" style="margin-bottom:24px"></div>
 
     <h3 style="margin:0 0 8px;font-size:13px;color:#C41E3A">Cold leady B2B (scraper / manual)</h3>
@@ -495,9 +495,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="btn" onclick="loadScraper()">Odswiez</button>
       <div class="stats" id="scraperStats"></div>
     </div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Zrodla scrapera</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:16px 0 8px">Zrodla scrapera</h4>
     <div id="scraperSources"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 20 uruchomien</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Ostatnie 20 uruchomien</h4>
     <div id="scraperRuns"></div>
   </div>
 
@@ -507,11 +507,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="btn btn-blue" onclick="loadLoginHistory()">Odswiez</button>
       <div class="stats" id="loginStats"></div>
     </div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:16px 0 8px">Logowania w 7 dniach (wg uzytkownika)</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:16px 0 8px">Logowania w 7 dniach (wg uzytkownika)</h4>
     <div id="loginByUser7"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Logowania w 30 dniach (wg uzytkownika)</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Logowania w 30 dniach (wg uzytkownika)</h4>
     <div id="loginByUser30"></div>
-    <h4 style="font-size:12px;color:#1B4DB5;margin:24px 0 8px">Ostatnie 100 logowan</h4>
+    <h4 style="font-size:12px;color:#0A2F7C;margin:24px 0 8px">Ostatnie 100 logowan</h4>
     <div id="loginRecent"></div>
   </div>
 </div>
@@ -875,7 +875,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </select>
     </div>
     <button class="btn btn-blue" onclick="createAdminUser()">Utwórz konto</button>
-    <div id="auResult" style="display:none;margin-top:16px;padding:12px;background:#f1f8ff;border:1px solid #1B4DB5;border-radius:4px"></div>
+    <div id="auResult" style="display:none;margin-top:16px;padding:12px;background:#f1f8ff;border:1px solid #0A2F7C;border-radius:4px"></div>
   </div>
 </div>
 
@@ -1138,7 +1138,7 @@ function zdjCard(s, token) {
   const ts = new Date(s.submitted_at * 1000).toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' });
   const ig = s.photographer_instagram || '';
   const igLink = ig
-    ? `<a href="https://instagram.com/${esc(ig.replace(/^@/, ''))}" target="_blank" style="color:#1B4DB5">${esc(ig)}</a>`
+    ? `<a href="https://instagram.com/${esc(ig.replace(/^@/, ''))}" target="_blank" style="color:#0A2F7C">${esc(ig)}</a>`
     : '<span style="color:#aaa">brak IG</span>';
   const statusBadge = {
     pending:  '<span style="background:#ffd56b;padding:2px 8px;font-size:10px;font-weight:700">PENDING</span>',
@@ -1160,7 +1160,7 @@ function zdjCard(s, token) {
         ${statusBadge}
       </div>
       <div style="color:#666;font-size:11px;margin-bottom:4px">${esc(s.photographer_city || '-')} · ${igLink}</div>
-      ${s.event_tag ? `<div style="margin-bottom:6px"><span style="background:#1B4DB5;color:#fff;padding:2px 6px;font-size:10px;font-weight:600">${esc(s.event_tag)}</span></div>` : ''}
+      ${s.event_tag ? `<div style="margin-bottom:6px"><span style="background:#0A2F7C;color:#fff;padding:2px 6px;font-size:10px;font-weight:600">${esc(s.event_tag)}</span></div>` : ''}
       ${s.caption ? `<div style="font-size:11px;color:#444;margin-bottom:6px;font-style:italic">"${esc(s.caption)}"</div>` : ''}
       <div style="color:#aaa;font-size:10px;margin-bottom:8px">${ts} · ${s.width}×${s.height}</div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">${actions}</div>
@@ -1263,7 +1263,7 @@ async function loadEventsSold() {
         <small>${fmtPln(e.split.magda_commission_gr)} zł</small>
       </td>
       <td class="amount" style="font-weight:700;color:${e.split.margin_gr>=0?'#28a745':'#c00'}">${fmtPln(e.split.margin_gr)}</td>
-      <td class="amount" style="color:#1B4DB5;font-weight:600">${fmtPln(e.split.pawel_total_gr)}</td>
+      <td class="amount" style="color:#0A2F7C;font-weight:600">${fmtPln(e.split.pawel_total_gr)}</td>
       <td class="amount" style="color:#9333ea;font-weight:600">${fmtPln(e.split.magda_total_gr)}</td>
       <td class="amount" style="color:#C41E3A;font-weight:600">${fmtPln(e.split.maciej_total_gr)}</td>
       <td class="actions"><button class="btn btn-red" data-action="deleteEventSold" data-arg1="${dataAttr(e.id)}">×</button></td>
@@ -1279,18 +1279,18 @@ async function loadEventsSold() {
         <th class="amount">Smok</th>
         <th class="amount">Magda %</th>
         <th class="amount">Marża</th>
-        <th class="amount" style="color:#1B4DB5">Paweł</th>
+        <th class="amount" style="color:#0A2F7C">Paweł</th>
         <th class="amount" style="color:#9333ea">Magda</th>
         <th class="amount" style="color:#C41E3A">Maciej</th>
         <th></th>
       </tr></thead>
       <tbody>${rows}</tbody>
-      <tfoot><tr style="background:#f4f8ff;font-weight:700;border-top:2px solid #1B4DB5">
+      <tfoot><tr style="background:#f4f8ff;font-weight:700;border-top:2px solid #0A2F7C">
         <td colspan="3">SUMA (${events.length} eventów)</td>
         <td class="amount">${fmtPln(t.revenue_gr)}</td>
         <td colspan="5" class="amount" style="color:#666">${fmtPln(t.cost_total_gr)} koszt</td>
         <td class="amount" style="color:${t.margin_gr>=0?'#28a745':'#c00'}">${fmtPln(t.margin_gr)}</td>
-        <td class="amount" style="color:#1B4DB5">${fmtPln(t.pawel_gr)}</td>
+        <td class="amount" style="color:#0A2F7C">${fmtPln(t.pawel_gr)}</td>
         <td class="amount" style="color:#9333ea">${fmtPln(t.magda_gr)}</td>
         <td class="amount" style="color:#C41E3A">${fmtPln(t.maciej_gr)}</td>
         <td></td>
@@ -1298,7 +1298,7 @@ async function loadEventsSold() {
     </table>
     <p style="margin-top:6px;font-size:11px;color:#666">
       <strong>Split 3-way:</strong>
-      <span style="color:#1B4DB5">Paweł = samolot 30 zł/min × (dolot+pokaz) + 50% marży</span>,
+      <span style="color:#0A2F7C">Paweł = samolot 30 zł/min × (dolot+pokaz) + 50% marży</span>,
       <span style="color:#9333ea">Magda = prowizja % × cena</span>,
       <span style="color:#C41E3A">Maciej = paliwo (200 zł × ceil(min/30)) + smok + 50% marży</span>.
     </p>`;
@@ -1402,7 +1402,7 @@ async function loadVoucherSplit() {
     <td class="amount" style="color:#666">${fmtPln(s.cost_hangar_share_gr)}</td>
     <td class="amount" style="color:#666">${fmtPln(s.cost_marketing_share_gr)}</td>
     <td class="amount" style="font-weight:700;color:${s.margin_gr>=0?'#28a745':'#c00'}">${fmtPln(s.margin_gr)}</td>
-    <td class="amount" style="color:#1B4DB5;font-weight:600">${fmtPln(s.pawel_total_gr)}</td>
+    <td class="amount" style="color:#0A2F7C;font-weight:600">${fmtPln(s.pawel_total_gr)}</td>
     <td class="amount" style="color:#C41E3A;font-weight:600">${fmtPln(s.maciej_total_gr)}</td>
   </tr>`;
   }).join('');
@@ -1417,25 +1417,25 @@ async function loadVoucherSplit() {
         <th class="amount" title="hangar (zl/mies) / N">Hangar</th>
         <th class="amount" title="marketing (zl/mies) / N">Marketing</th>
         <th class="amount">Marża</th>
-        <th class="amount" style="color:#1B4DB5">Paweł</th>
+        <th class="amount" style="color:#0A2F7C">Paweł</th>
         <th class="amount" style="color:#C41E3A">Maciej</th>
       </tr>
     </thead>
     <tbody>${rows}</tbody>
     <tfoot>
-      <tr style="background:#f4f8ff;font-weight:700;border-top:2px solid #1B4DB5">
+      <tr style="background:#f4f8ff;font-weight:700;border-top:2px solid #0A2F7C">
         <td colspan="3">SUMA (${c.vouchers_sold} voucherow)</td>
         <td class="amount">${fmtPln(t.revenue_gr)}</td>
         <td colspan="4" class="amount" style="color:#666">${fmtPln(t.cost_total_gr)} koszt</td>
         <td class="amount" style="color:${t.margin_gr>=0?'#28a745':'#c00'}">${fmtPln(t.margin_gr)}</td>
-        <td class="amount" style="color:#1B4DB5">${fmtPln(t.pawel_gr)}</td>
+        <td class="amount" style="color:#0A2F7C">${fmtPln(t.pawel_gr)}</td>
         <td class="amount" style="color:#C41E3A">${fmtPln(t.maciej_gr)}</td>
       </tr>
     </tfoot>
   </table>
   <p style="margin-top:8px;font-size:11px;color:#666">
     <strong>Założenia:</strong>
-    <span style="color:#1B4DB5">Paweł = samolot Extra 300L (30 zł/min) + marketing FB / N</span>,
+    <span style="color:#0A2F7C">Paweł = samolot Extra 300L (30 zł/min) + marketing FB / N</span>,
     <span style="color:#C41E3A">Maciej = paliwo + hangar / N</span>.
     N = vouchery + kursy w miesiącu (kursanci też z FB).
     Marża = cena − wszystkie koszty, dzielona 50/50.
@@ -1451,9 +1451,9 @@ function renderFinance(d) {
   const netRealClass = netReal >= 0 ? '#27ae60' : '#c00';
   const opBd = t.opcosts_breakdown || { aircraft: 0, fuel: 0, hangar: 0, marketing: 0 };
   let html = `<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px">
-    <div style="background:#f4f8ff;padding:16px;border-left:4px solid #1B4DB5">
+    <div style="background:#f4f8ff;padding:16px;border-left:4px solid #0A2F7C">
       <div style="font-size:10px;color:#666;text-transform:uppercase;letter-spacing:.1em">Przychód</div>
-      <div style="font-size:24px;font-weight:800;color:#1B4DB5;margin-top:6px">${fmtPln(t.income)} PLN</div>
+      <div style="font-size:24px;font-weight:800;color:#0A2F7C;margin-top:6px">${fmtPln(t.income)} PLN</div>
       <div style="font-size:10px;color:#888;margin-top:4px">${t.vouchers_sold} voucherów + merch + kursy</div>
     </div>
     <div style="background:#fff5f5;padding:16px;border-left:4px solid #c00">
@@ -1481,7 +1481,7 @@ function renderFinance(d) {
   // Monthly bar chart
   if (d.periods && d.periods.length > 0) {
     const maxVal = Math.max(...d.periods.map(p => Math.max(p.income.total, p.expenses.total)));
-    html += '<h3 style="font-size:13px;color:#1B4DB5;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 14px">Tygodniowo (nr tygodnia)</h3>';
+    html += '<h3 style="font-size:13px;color:#0A2F7C;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 14px">Tygodniowo (nr tygodnia)</h3>';
     html += '<div style="display:flex;gap:8px;align-items:flex-end;height:240px;background:#fafbfc;padding:16px;border-radius:4px">';
     d.periods.forEach(p => {
       const incH = maxVal ? (p.income.total / maxVal) * 200 : 0;
@@ -1489,18 +1489,18 @@ function renderFinance(d) {
       html += `<div style="flex:1;display:flex;flex-direction:column;align-items:center;min-width:30px" title="${esc(p.label)}: +${fmtPln(p.income.total)} / -${fmtPln(p.expenses.total)} / net ${fmtPln(p.net)}">
         <div style="font-size:9px;color:${p.net >= 0 ? '#27ae60' : '#c00'};font-weight:600;margin-bottom:2px">${fmtPln(p.net)}</div>
         <div style="display:flex;align-items:flex-end;gap:2px;height:200px">
-          <div style="width:14px;background:#1B4DB5;height:${incH}px" title="Przychód"></div>
+          <div style="width:14px;background:#0A2F7C;height:${incH}px" title="Przychód"></div>
           <div style="width:14px;background:#c00;height:${expH}px" title="Koszty"></div>
         </div>
         <div style="font-size:10px;color:#666;margin-top:6px;writing-mode:vertical-rl;text-orientation:mixed">${esc(p.label)}</div>
       </div>`;
     });
     html += '</div>';
-    html += '<div style="display:flex;gap:24px;font-size:11px;color:#666;margin-top:8px"><span><span style="display:inline-block;width:12px;height:12px;background:#1B4DB5;vertical-align:middle"></span> Przychód</span><span><span style="display:inline-block;width:12px;height:12px;background:#c00;vertical-align:middle"></span> Koszty</span></div>';
+    html += '<div style="display:flex;gap:24px;font-size:11px;color:#666;margin-top:8px"><span><span style="display:inline-block;width:12px;height:12px;background:#0A2F7C;vertical-align:middle"></span> Przychód</span><span><span style="display:inline-block;width:12px;height:12px;background:#c00;vertical-align:middle"></span> Koszty</span></div>';
   }
 
   // Income by source
-  html += '<h3 style="font-size:13px;color:#1B4DB5;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 10px">Przychody wg źródła</h3>';
+  html += '<h3 style="font-size:13px;color:#0A2F7C;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 10px">Przychody wg źródła</h3>';
   html += '<table><tr><th>Źródło</th><th>Brutto</th></tr>';
   const incLabels = { stripe: 'Stripe (karta/p24/BLIK)', cash: 'Gotówka', transfer: 'Przelew (bez Stripe)', free: 'Free (vouchery 0 zł)', merch: 'Merch', courses: 'Kursy', refunded: 'Zwroty (refunded)' };
   Object.entries(d.income_by_source || {}).forEach(([k, v]) => {
@@ -1713,7 +1713,7 @@ function renderKoszty(d) {
         <td class="amount" style="font-size:11px;color:#888">${fmtPln(r.vat_amount)}</td>
         <td class="amount"><strong>${fmtPln(r.gross_amount)}</strong></td>
         <td><input type="text" value="${esc(cat)}" onblur="kostUpdateCategory(${r.id}, this.value)" style="width:120px;padding:3px 6px;font-size:11px;border:1px solid #ccc" placeholder="kategoria"></td>
-        <td>${isWfirma ? '<span style="background:#1B4DB5;color:#fff;padding:2px 6px;font-size:9px">wFirma</span>' : '<span style="background:#FFB300;color:#0A1428;padding:2px 6px;font-size:9px">ręczne</span>'}</td>
+        <td>${isWfirma ? '<span style="background:#0A2F7C;color:#fff;padding:2px 6px;font-size:9px">wFirma</span>' : '<span style="background:#FFB300;color:#0A1428;padding:2px 6px;font-size:9px">ręczne</span>'}</td>
         <td>${!isWfirma ? `<button class="btn btn-red" style="font-size:10px" onclick="kostDelete(${r.id})">Usun</button>` : '<span style="color:#aaa;font-size:10px">re-sync z wFirma</span>'}</td>
       </tr>`;
     });
@@ -1851,7 +1851,7 @@ function renderLotMedia(data) {
   if (mediaCount === 0) {
     html += '<p style="padding:14px;background:#fff8e8;border-left:3px solid #FFB300;color:#666;font-size:13px">Brak materialu dla tego voucha. Wgraj pliki najpierw, potem wygeneruj link.</p>';
   } else {
-    html += '<h3 style="font-size:13px;color:#1B4DB5;text-transform:uppercase;letter-spacing:.12em;margin:18px 0 10px">Pliki (' + mediaCount + ')</h3>';
+    html += '<h3 style="font-size:13px;color:#0A2F7C;text-transform:uppercase;letter-spacing:.12em;margin:18px 0 10px">Pliki (' + mediaCount + ')</h3>';
     html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px">';
     (data.media || []).forEach(m => {
       const isVid = m.kind === 'video';
@@ -1874,7 +1874,7 @@ function renderLotMedia(data) {
   }
 
   // Shares list + create
-  html += `<h3 style="font-size:13px;color:#1B4DB5;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 10px">Linki dla pasazera (${shareCount})</h3>`;
+  html += `<h3 style="font-size:13px;color:#0A2F7C;text-transform:uppercase;letter-spacing:.12em;margin:24px 0 10px">Linki dla pasazera (${shareCount})</h3>`;
   if (mediaCount > 0) {
     html += `<div style="background:#f4f8ff;border:1px solid #c4d2e0;padding:14px;margin-bottom:14px">
       <button class="btn btn-green" onclick="lmCreateShare(true)" style="margin-right:6px">Generuj link + wyslij mail</button>
@@ -1893,7 +1893,7 @@ function renderLotMedia(data) {
       const expired = (s.expires_at * 1000) < Date.now();
       const mail = s.notify_sent_at ? '✓ ' + new Date(s.notify_sent_at * 1000).toLocaleDateString('pl-PL') : '-';
       html += `<tr style="${expired ? 'opacity:.5' : ''}">
-        <td style="font-family:monospace;font-size:10px;word-break:break-all"><a href="${esc(url)}" target="_blank" style="color:#1B4DB5">${esc(url)}</a></td>
+        <td style="font-family:monospace;font-size:10px;word-break:break-all"><a href="${esc(url)}" target="_blank" style="color:#0A2F7C">${esc(url)}</a></td>
         <td style="font-size:10px;color:#666">${esc(created)}</td>
         <td style="font-size:10px;color:${expired ? '#c00' : '#666'}">${esc(expires)}${expired ? ' (wygasł)' : ''}</td>
         <td class="amount">${s.view_count}${s.last_viewed_at ? ' (ostatnie ' + new Date(s.last_viewed_at * 1000).toLocaleDateString('pl-PL') + ')' : ''}</td>
@@ -1969,7 +1969,7 @@ function lmRenderProgress(rows) {
   if (rows.length === 0) { status.textContent = ''; return; }
   status.innerHTML = '<div style="display:flex;flex-direction:column;gap:4px">' + rows.map(r => {
     const pct = Math.round(r.pct);
-    const bar = `<div style="background:#e5eaf2;height:14px;position:relative;overflow:hidden"><div style="background:${r.err?'#c00':r.done?'#27ae60':'#1B4DB5'};width:${pct}%;height:100%;transition:width .2s"></div><div style="position:absolute;top:0;left:0;right:0;text-align:center;font-size:10px;line-height:14px;color:#fff;text-shadow:0 0 2px #000;font-family:monospace">${pct}% · ${esc(r.label)}</div></div>`;
+    const bar = `<div style="background:#e5eaf2;height:14px;position:relative;overflow:hidden"><div style="background:${r.err?'#c00':r.done?'#27ae60':'#0A2F7C'};width:${pct}%;height:100%;transition:width .2s"></div><div style="position:absolute;top:0;left:0;right:0;text-align:center;font-size:10px;line-height:14px;color:#fff;text-shadow:0 0 2px #000;font-family:monospace">${pct}% · ${esc(r.label)}</div></div>`;
     return bar;
   }).join('') + '</div>';
 }
@@ -2235,8 +2235,8 @@ async function loadLeads() {
       ${res.byStatus.map(r => `<div style="background:#f3f4f6;border:1px solid #e2e8f0;padding:4px 10px;font-size:11px;border-radius:3px">${esc(r.status)}: <strong>${r.cnt}</strong></div>`).join('')}
     </div>` : '';
 
-    const prioColor = p => p === 'high' ? '#c41e3a' : (p === 'medium' ? '#1B4DB5' : '#999');
-    const statusColor = s => ({won:'#2e7d32', lost:'#999', contacted:'#1B4DB5', responded:'#1B4DB5', qualified:'#8a6d00', archived:'#bbb'})[s] || '#666';
+    const prioColor = p => p === 'high' ? '#c41e3a' : (p === 'medium' ? '#0A2F7C' : '#999');
+    const statusColor = s => ({won:'#2e7d32', lost:'#999', contacted:'#0A2F7C', responded:'#0A2F7C', qualified:'#8a6d00', archived:'#bbb'})[s] || '#666';
 
     document.getElementById('leadsTable').innerHTML = total ? `<table>
       <tr><th>Prio</th><th>Status</th><th>Kategoria</th><th>Nazwa</th><th>Osoba</th><th>Email / Tel</th><th>Miasto</th><th>Akcja</th></tr>
@@ -2244,7 +2244,7 @@ async function loadLeads() {
         <td style="color:${prioColor(l.priority)};font-weight:600;font-size:10px">${esc(l.priority || '-')}</td>
         <td><span style="background:${statusColor(l.status)};color:#fff;font-size:10px;padding:2px 6px;border-radius:3px">${esc(l.status)}</span></td>
         <td style="font-size:10px;color:#666">${esc(l.category)}</td>
-        <td style="font-size:11px"><strong>${esc(l.name)}</strong>${l.url ? ' <a href="' + esc(l.url) + '" target="_blank" rel="noopener" style="font-size:10px;color:#1B4DB5">link</a>' : ''}${l.notes ? '<br><span style="color:#666;font-size:10px">' + esc((l.notes || '').slice(0,140)) + '</span>' : ''}</td>
+        <td style="font-size:11px"><strong>${esc(l.name)}</strong>${l.url ? ' <a href="' + esc(l.url) + '" target="_blank" rel="noopener" style="font-size:10px;color:#0A2F7C">link</a>' : ''}${l.notes ? '<br><span style="color:#666;font-size:10px">' + esc((l.notes || '').slice(0,140)) + '</span>' : ''}</td>
         <td style="font-size:11px">${esc(l.contact_person || '-')}</td>
         <td style="font-size:10px">${esc(l.email || '')}${l.email && l.phone ? '<br>' : ''}${esc(l.phone || '')}</td>
         <td style="font-size:11px">${esc(l.city || '-')}</td>
@@ -2421,7 +2421,7 @@ async function loadSeoSnapshot() {
         return `<tr>
           <td style="font-size:11px">${esc(r.from)}</td>
           <td style="font-size:11px">${esc(r.to)}</td>
-          <td style="font-size:10px;color:${r.external ? '#1B4DB5' : '#666'}">${r.external ? 'external' : 'self'}</td>
+          <td style="font-size:10px;color:${r.external ? '#0A2F7C' : '#666'}">${r.external ? 'external' : 'self'}</td>
           <td style="color:${statusColor};font-weight:600">${esc(String(statusText))}</td>
         </tr>`;
       }).join('')}
@@ -2482,7 +2482,7 @@ async function loadEmailEvents() {
     const typeColor = (t) => {
       if (t === 'email.bounced' || t === 'email.failed' || t === 'email.complained') return '#c00';
       if (t === 'email.delivered') return '#2e7d32';
-      if (t === 'email.opened' || t === 'email.clicked') return '#1B4DB5';
+      if (t === 'email.opened' || t === 'email.clicked') return '#0A2F7C';
       return '#666';
     };
 
@@ -2493,7 +2493,7 @@ async function loadEmailEvents() {
         <td><span style="color:${typeColor(r.type)};font-weight:600">${esc((r.type || '').replace('email.',''))}</span></td>
         <td style="font-size:11px">${esc(r.sender || '')}</td>
         <td style="font-size:11px">${esc(r.recipient || '')}</td>
-        <td style="font-size:11px;color:#1B4DB5">${esc(r.tag_type || '')}</td>
+        <td style="font-size:11px;color:#0A2F7C">${esc(r.tag_type || '')}</td>
         <td style="font-size:11px">${esc((r.subject || '').slice(0, 60))}</td>
       </tr>`).join('')}
     </table>` : '<p style="padding:8px;color:#888">Brak eventow dla filtra. Sprawdz czy webhook Resend jest skonfigurowany na https://akrobacja.com/api/webhook/resend i secret w env RESEND_WEBHOOK_SECRET.</p>';
@@ -2537,7 +2537,7 @@ async function loadWaClicks() {
       <tr><th>Czas</th><th>Nasz nr</th><th>Strona</th><th>Lokalizacja</th><th>Tekst CTA</th><th>Referer</th></tr>
       ${res.recent.map(r => `<tr>
         <td>${fmtDate(r.created_at)}</td>
-        <td style="font-size:11px;color:#1B4DB5">${esc(labelNumber(r.target_number))}</td>
+        <td style="font-size:11px;color:#0A2F7C">${esc(labelNumber(r.target_number))}</td>
         <td>${esc(r.page)}</td>
         <td>${esc(r.location || '-')}</td>
         <td style="max-width:300px;font-size:11px;color:#555">${esc((r.prefilled_text || '').slice(0,80))}</td>

@@ -1,5 +1,5 @@
 (function(){
-  const BLUE = '#1B4DB5';
+  const BLUE = '#0A2F7C';
   const RED = '#C41E3A';
   const DARK = '#0A1428';
 
