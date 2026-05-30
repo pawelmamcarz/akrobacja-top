@@ -2792,8 +2792,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     .merch-teaser__credit{margin-top:22px;font-size:12px;color:rgba(255,255,255,.4)}
     .merch-teaser__credit a{color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
     /* Stage z rotacją */
-    .merch-stage{position:relative;aspect-ratio:1/1;max-width:440px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:center}
-    .mt-mug{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.96) translateY(8px);transition:opacity .6s ease,transform .6s ease}
+    .merch-stage{position:relative;max-width:540px;width:100%;margin:0 auto;display:grid}
+    .mt-mug{grid-area:1/1;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.98) translateY(6px);transition:opacity .6s ease,transform .6s ease}
+    .mt-mug__photo{width:100%;height:auto;display:block;border-radius:14px;background:#fff;box-shadow:0 26px 54px rgba(0,0,0,.42)}
     .mt-mug.is-active{opacity:1;transform:none}
     /* Ścianka kubka (placeholder — podmień na <img class="mt-mug__photo" src="/assets/merch/mug-X.png">) */
     .mt-mug__body{position:relative;width:62%;aspect-ratio:5/4.4;background:#fff;border-radius:14px 18px 18px 14px;box-shadow:0 30px 60px rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:26px;text-align:center}
@@ -2823,21 +2824,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="merch-teaser__credit">Produkcja: <a href="https://polisz.to/" target="_blank" rel="noopener noreferrer">polisz.to</a></p>
     </div>
     <div class="merch-stage" id="merchStage" aria-label="Kubki akrobacja.com">
-      <figure class="mt-mug is-active" data-mug>
-        <div class="mt-mug__body">
-          <img src="/assets/logo-mark.png" alt="" class="mt-mug__logo">
-          <span class="mt-mug__brand">akrobacja.com</span>
-        </div>
-      </figure>
-      <figure class="mt-mug" data-mug>
-        <div class="mt-mug__body"><span class="mt-mug__slogan">May G-Force<br>be with you</span></div>
-      </figure>
-      <figure class="mt-mug" data-mug>
-        <div class="mt-mug__body"><span class="mt-mug__slogan">Drink<br>before<br>flight</span></div>
-      </figure>
-      <figure class="mt-mug mt-mug--flip" data-mug>
-        <div class="mt-mug__body"><span class="mt-mug__slogan">Akrobacja</span></div>
-      </figure>
+      <figure class="mt-mug is-active" data-mug><img class="mt-mug__photo" src="/assets/merch/mug-gforce.jpg" alt="Kubek akrobacja.com — May G-Force Be With You" loading="lazy"></figure>
+      <figure class="mt-mug" data-mug><img class="mt-mug__photo" src="/assets/merch/mug-blueprint.jpg" alt="Kubek akrobacja.com — blueprint Extra 300" loading="lazy"></figure>
+      <figure class="mt-mug" data-mug><img class="mt-mug__photo" src="/assets/merch/mug-akro.jpg" alt="Kubek akrobacja.com — odwrócone logo AKROBACJA" loading="lazy"></figure>
+      <figure class="mt-mug" data-mug><img class="mt-mug__photo" src="/assets/merch/mug-drink.jpg" alt="Kubek akrobacja.com — Drink Before Flight" loading="lazy"></figure>
+      <figure class="mt-mug" data-mug><img class="mt-mug__photo" src="/assets/merch/mug-loop.jpg" alt="Kubek akrobacja.com — pętla toru lotu" loading="lazy"></figure>
       <div class="merch-dots" id="merchDots" role="tablist" aria-label="Wybierz kubek"></div>
     </div>
   </div>
