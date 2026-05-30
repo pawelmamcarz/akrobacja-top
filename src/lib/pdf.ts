@@ -2,6 +2,7 @@ import { PDFDocument, rgb } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import { PACKAGES, type PackageId } from './types';
 import { INTER_REGULAR_B64, INTER_BOLD_B64, b64ToUint8 } from './fonts/inter';
+import { LOGO_MARK_WHITE_B64 } from './logo-pdf';
 
 // Safety net for dedication text that may contain emoji / non-Latin codepoints
 // outside Inter's coverage. Inter covers Latin (PL/CZ/HU/etc.), Cyrillic, Greek,
@@ -45,6 +46,14 @@ export async function generateVoucherPdf(opts: {
 
   // Navy header background
   page.drawRectangle({ x: 0, y: H - 200, width: W, height: 200, color: navy });
+
+  // Logo mark (white) - prawy górny róg nagłówka
+  const logoMark = await doc.embedPng(b64ToUint8(LOGO_MARK_WHITE_B64));
+  const logoH = 64;
+  const logoW = logoH * (logoMark.width / logoMark.height);
+  page.drawImage(logoMark, {
+    x: W - 45 - logoW, y: H - 42 - logoH, width: logoW, height: logoH,
+  });
 
   // Brand
   page.drawText('akrobacja.com', {
