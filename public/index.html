@@ -261,6 +261,9 @@ img { display: block; max-width: 100%; }
   text-transform: uppercase; line-height: .87; letter-spacing: -.025em;
   margin-bottom: 48px;
 }
+.r-hero__points { list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.r-hero__points li { position: relative; padding-left: 22px; color: rgba(255,255,255,.92); font-size: 16px; font-weight: 500; font-family: var(--font-b); }
+.r-hero__points li::before { content: "•"; position: absolute; left: 4px; color: var(--cyan, #00E5FF); font-weight: 700; }
 .hl-1 {
   display: block;
   font-size: clamp(64px, 10.5vw, 152px);
@@ -1738,31 +1741,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="r-hero__stripe r-hero__stripe--top" aria-hidden="true"></div>
   <div class="r-hero__stripe r-hero__stripe--bottom" aria-hidden="true"></div>
 
-  <div class="r-hero__hud">
-    <div class="hud-strip" id="hud-strip" data-fallback-rwy="RWY 27" data-fallback-wind="240/06" data-fallback-cond="CAVOK">
-      <span><span class="live-dot" id="hud-live-dot"></span><span id="hud-status">LIVE</span> · EPRP <span id="hud-rwy">RWY 27</span> · WIND <span id="hud-wind">240/06</span> · <span id="hud-cond">CAVOK</span></span>
-      <span>N51°23'21" E021°12'48"</span>
-    </div>
-  </div>
-
-  <div class="r-hero__tail">
-    <div class="r-hero__tail-eyebrow">REG. NUMBER</div>
-    <div class="r-hero__tail-id">SP-EKS</div>
-    <div class="r-hero__tail-meta">EXTRA 300L · S/N 1290</div>
-  </div>
-
   <div class="r-hero__inner">
-    <div class="r-hero__eyebrow" style="color:var(--cyan,#00E5FF);font-weight:700;letter-spacing:.45em">
-      ★ MISTRZ ŚWIATA AKROBACJI · EXTRA 300L · RADOM
-    </div>
-    <h1 class="hero-headline r-hero__h1">
-      LOT, KTÓREGO<br>NIE ZAPOMNISZ.<br><span class="accent">±6G NAD RADOMIEM.</span>
+    <h1 class="hero-headline r-hero__h1" style="text-transform:none;font-style:normal;font-family:var(--font-h);font-weight:800">
+      Lot, którego<br>nie zapomnisz.<br>Poczuj 6G.
     </h1>
     <p class="r-hero__lead">
-      20 minut w kokpicie <b>Extra 300L SP-EKS</b>. 50 min z Warszawy. Voucher PDF na maila w 60 sekund.
+      20 minut w kokpicie samolotu akrobacyjnego <b>Extra 300L</b> z Mistrzem Świata Akrobacji. Lotnisko Radom.
     </p>
     <div class="r-hero__cta" style="display:flex;gap:10px;flex-wrap:wrap">
-      <a href="#sklep?path=self" class="cta cta-primary" data-persona="self" style="background:#E11E26;color:#fff;padding:20px 26px;display:flex;flex-direction:column;gap:3px;text-decoration:none;font-family:'Inter',sans-serif">
+      <a href="#sklep" class="cta cta-primary" data-persona="self" style="background:#E11E26;color:#fff;padding:20px 26px;display:flex;flex-direction:column;gap:3px;text-decoration:none;font-family:'Inter',sans-serif">
         <span style="font-size:10px;letter-spacing:.3em;opacity:.85;font-weight:600;text-transform:uppercase">Dla siebie</span>
         <span style="font-size:13px;font-weight:800;letter-spacing:.15em;text-transform:uppercase">Wybierz lot, od 1 999 zł →</span>
       </a>
@@ -1771,6 +1758,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span style="font-size:13px;font-weight:800;letter-spacing:.15em;text-transform:uppercase">Voucher PDF · 60 sek →</span>
       </a>
     </div>
+    <ul class="r-hero__points">
+      <li>Voucher PDF na maila w 1 minutę</li>
+      <li>Dojazd tylko 50 minut z Warszawy</li>
+    </ul>
     <a href="/blog/kurs-akrobacji-fcl800?path=ppl" class="hero-ppl-link" data-persona="ppl" style="display:inline-block;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.7);text-decoration:none;text-transform:uppercase">
       ✈ Jesteś pilotem PPL? → Kurs FCL.800 (dofinansowanie 90%)
     </a>

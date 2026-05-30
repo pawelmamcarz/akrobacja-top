@@ -3,7 +3,7 @@
 .akro-nav *{box-sizing:border-box}
 .akro-nav__logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex-shrink:0}
 .akro-nav__logo img{display:block;height:44px;width:auto}
-.akro-nav__logo-text{font-family:'Montserrat',sans-serif;font-weight:900;font-size:15px;letter-spacing:.04em;color:#fff;text-transform:lowercase}
+.akro-nav__logo-text{font-family:'Montserrat',sans-serif;font-weight:600;font-size:16px;letter-spacing:.2em;color:#fff;text-transform:uppercase}
 .akro-nav__menu{list-style:none;display:flex;gap:22px;margin:0;padding:0;align-items:center;flex:1;justify-content:center}
 .akro-nav__menu li{display:block}
 .akro-nav__menu a{color:rgba(255,255,255,.62);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;transition:color .18s;white-space:nowrap}
