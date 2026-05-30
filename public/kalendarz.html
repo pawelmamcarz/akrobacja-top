@@ -300,6 +300,17 @@ let selectedType = null;
 let pilot = null;
 let dayCache = {};
 
+// Deep-link z /sukces lub maila: ?date=YYYY-MM-DD (auto-otwarcie dnia) + ?voucher=KOD.
+const _params = new URLSearchParams(location.search);
+let _wantDate = _params.get('date');
+const _wantVoucher = _params.get('voucher');
+if (_wantDate && /^\d{4}-\d{2}-\d{2}$/.test(_wantDate)) {
+  const _wd = new Date(_wantDate + 'T00:00:00');
+  const _todayStart = new Date(new Date().toDateString());
+  if (!isNaN(_wd.getTime()) && _wd >= _todayStart) { calMonth = _wd.getMonth(); calYear = _wd.getFullYear(); }
+  else { _wantDate = null; }
+}
+
 // Check if pilot logged in
 const pilotToken = localStorage.getItem('pilot_token');
 if (pilotToken) {
@@ -316,7 +327,15 @@ if (pilotToken) {
 }
 
 renderCalendar();
-loadMonthAvailability();
+loadMonthAvailability().then(() => {
+  if (_wantVoucher) {
+    const vb = document.querySelector('.type-btn[data-type="voucher"]');
+    if (vb) selectType(vb);
+    const vc = document.getElementById('voucherCode');
+    if (vc) vc.value = _wantVoucher.toUpperCase();
+  }
+  if (_wantDate) { openDay(_wantDate); _wantDate = null; }
+});
 
 function renderCalendar() {
   document.getElementById('calMonth').textContent = `${MONTHS_PL[calMonth]} ${calYear}`;

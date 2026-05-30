@@ -103,3 +103,28 @@ export async function getDayAvailability(env: Env, dateStr: string): Promise<Day
 
   return { blocked: false, slots };
 }
+
+// Najbliższe wolne terminy (do propozycji po zakupie vouchera). Skanuje dni od jutra.
+// Bez pogody (propozycje sięgają dalej niż prognoza). Zwraca pierwsze `count` wolnych.
+export async function getNextAvailableSlots(
+  env: Env,
+  count = 3,
+  horizonDays = 60,
+): Promise<Array<{ date: string; start: string; end: string }>> {
+  const out: Array<{ date: string; start: string; end: string }> = [];
+  const today = new Date();
+  for (let i = 1; i <= horizonDays && out.length < count; i++) {
+    const d = new Date(today);
+    d.setUTCDate(d.getUTCDate() + i);
+    const dateStr = d.toISOString().slice(0, 10);
+    const day = await getDayAvailability(env, dateStr);
+    if (day.blocked) continue;
+    for (const s of day.slots) {
+      if (!s.booked) {
+        out.push({ date: dateStr, start: s.start, end: s.end });
+        if (out.length >= count) break;
+      }
+    }
+  }
+  return out;
+}

@@ -158,6 +158,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <button class="code-copy" id="copyBtn" type="button">Skopiuj kod</button>
     </div>
 
+    <div id="suggestedSlots" style="display:none;margin:0 auto 24px;max-width:540px">
+      <div class="code-label" style="margin-bottom:10px">Najbliższe wolne terminy</div>
+      <div id="suggestedList" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center"></div>
+    </div>
+
     <p style="margin-bottom: 24px;">
       <a class="btn-primary" id="bookBtn" href="/kalendarz">Zarezerwuj termin lotu →</a>
     </p>
@@ -300,6 +305,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       downloadBtn.href = '/api/voucher/' + encodeURIComponent(code);
       // Pre-fill voucher code into the booking flow.
       bookBtn.href = '/kalendarz?voucher=' + encodeURIComponent(code);
+
+      // Propozycje najbliższych wolnych terminów (realna dostępność samolotu).
+      var DNI = ['niedz.','pon.','wt.','śr.','czw.','pt.','sob.'];
+      var MIES = ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'];
+      fetch('/api/calendar/next-slots?count=3').then(function (r) { return r.json(); }).then(function (data) {
+        var slots = (data && data.slots) || [];
+        if (!slots.length) return;
+        var list = document.getElementById('suggestedList');
+        slots.forEach(function (s) {
+          var d = new Date(s.date + 'T00:00:00');
+          var label = DNI[d.getDay()] + ' ' + d.getDate() + ' ' + MIES[d.getMonth()] + ' · ' + s.start;
+          var a = document.createElement('a');
+          a.href = '/kalendarz?voucher=' + encodeURIComponent(code) + '&date=' + encodeURIComponent(s.date);
+          a.textContent = label;
+          a.style.cssText = 'display:inline-block;background:var(--navy);color:#fff;text-decoration:none;padding:12px 18px;border-radius:8px;font-weight:600;font-size:14px';
+          list.appendChild(a);
+        });
+        document.getElementById('suggestedSlots').style.display = 'block';
+      }).catch(function () { /* propozycje to bonus - cisza przy błędzie */ });
     } else {
       codeBox.style.display = 'none';
       downloadBtn.style.display = 'none';

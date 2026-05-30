@@ -1,4 +1,27 @@
 import { type Env, PACKAGES, type PackageId, GOOGLE_REVIEW_URL } from './types';
+import { getNextAvailableSlots } from './calendar-availability';
+
+const DNI_PL = ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'];
+const MIES_PL = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
+
+// Sekcja "Najbliższe wolne terminy" do maila z voucherem. Best-effort: '' przy
+// braku terminów lub błędzie (nie blokuje wysyłki vouchera).
+async function buildNextSlotsHtml(env: Env, voucherCode: string, siteUrl: string): Promise<string> {
+  try {
+    const slots = await getNextAvailableSlots(env, 3);
+    if (!slots.length) return '';
+    const rows = slots.map(s => {
+      const d = new Date(s.date + 'T00:00:00Z');
+      const label = `${DNI_PL[d.getUTCDay()]} ${d.getUTCDate()} ${MIES_PL[d.getUTCMonth()]} · ${s.start}`;
+      const href = `${siteUrl}/kalendarz?voucher=${encodeURIComponent(voucherCode)}&date=${encodeURIComponent(s.date)}`;
+      return `<a href="${href}" style="display:inline-block;background:#0A2F7C;color:#fff;text-decoration:none;padding:10px 16px;font-weight:600;font-size:13px;border-radius:6px;margin:0 6px 8px 0">${label}</a>`;
+    }).join('');
+    return `<p style="color:#0A2F7C;font-size:14px;font-weight:700;margin:0 0 10px">Najbliższe wolne terminy</p>
+      <div style="margin:0 0 28px">${rows}</div>`;
+  } catch {
+    return '';
+  }
+}
 
 // HTML-escape user-controlled text before interpolating into email/webhook templates.
 // Prevents broken layout or injection when name/email contains < > & " '.
@@ -24,6 +47,7 @@ interface EmailParams {
 export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<void> {
   const pkg = PACKAGES[params.packageId];
   const pdfBase64 = uint8ToBase64(params.pdfBytes);
+  const nextSlotsHtml = await buildNextSlotsHtml(env, params.voucherCode, params.siteUrl);
 
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -41,7 +65,7 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
         { name: 'type', value: 'voucher' },
         { name: 'package', value: params.packageId },
       ],
-      html: buildHtml(params),
+      html: buildHtml(params, nextSlotsHtml),
       // List-Unsubscribe header - required by Gmail/Yahoo bulk-sender rules and PL
       // Prawo Telekomunikacyjne art. 172 (opt-out from marketing comms). Voucher
       // delivery is transactional so unsubscribe is largely cosmetic here, but Gmail
@@ -67,7 +91,7 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
   }
 }
 
-function buildHtml(p: EmailParams): string {
+function buildHtml(p: EmailParams, nextSlotsHtml = ''): string {
   const pkg = PACKAGES[p.packageId];
   return `
 <!DOCTYPE html>
@@ -110,6 +134,8 @@ function buildHtml(p: EmailParams): string {
         <strong>Jak umówić lot?</strong><br>
         Zadzwoń pod <a href="tel:+48739158131" style="color:#0A2F7C">+48 739 158 131</a> lub napisz na <a href="mailto:maciej@akrobacja.com" style="color:#0A2F7C">maciej@akrobacja.com</a> podając kod vouchera.
       </p>
+
+      ${nextSlotsHtml}
 
       <div style="background:linear-gradient(135deg,#fff5e6 0%,#ffe8b8 100%);border-left:4px solid #f59e0b;padding:18px 22px;border-radius:6px;margin-bottom:8px">
         <p style="color:#0A2F7C;font-size:14px;font-weight:700;margin:0 0 6px">⭐⭐⭐⭐⭐ Po locie zostawisz nam opinię?</p>
