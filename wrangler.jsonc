@@ -39,6 +39,7 @@
   // forms can read them as window.TURNSTILE_SITE_KEY.
   "vars": {
     "TURNSTILE_SITE_KEY": "0x4AAAAAADPZ9pGhzOnOfdiW",
-    "GOOGLE_CALENDAR_ICS_URL": "https://calendar.google.com/calendar/ical/c_a5084b682afffd89b5393e61985adb1551c3464678642a7c3a4d05a1909edab8%40group.calendar.google.com/public/basic.ics"
+    "GOOGLE_CALENDAR_ICS_URL": "https://calendar.google.com/calendar/ical/c_a5084b682afffd89b5393e61985adb1551c3464678642a7c3a4d05a1909edab8%40group.calendar.google.com/public/basic.ics",
+    "GOOGLE_CALENDAR_ID": "c_a5084b682afffd89b5393e61985adb1551c3464678642a7c3a4d05a1909edab8@group.calendar.google.com"
   }
 }

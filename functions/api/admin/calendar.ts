@@ -1,5 +1,6 @@
 import { type Env } from '../../../src/lib/types';
 import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
+import { createGoogleEvent } from '../../../src/lib/google-calendar';
 
 // GET /api/admin/calendar?from=2026-04-01&to=2026-04-30
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {
@@ -175,10 +176,16 @@ async function createBookingCalendarEvent(env: Env, bookingId: string): Promise<
   if (row.notes) notesParts.push(`Uwagi: ${row.notes}`);
   const notes = notesParts.join('\n');
 
-  const id = crypto.randomUUID();
+  // Zapis do Google (best-effort). Kalendarz jest PUBLICZNY -> wysyłamy tylko ogólny
+  // tytuł (baseLabel), bez danych klienta. Pełny tytuł/notatki zostają lokalnie (admin).
+  const g = await createGoogleEvent(env, { summary: baseLabel, startUtc: startAt, endUtc: endAt });
+  const id = g ? `gcal:${g.iCalUID}` : crypto.randomUUID();
   await env.DB.prepare(
-    `INSERT INTO calendar_events (id, pilot_id, aircraft_id, type, title, notes, start_at, end_at, status, source, booking_id, created_by)
-     VALUES (?, ?, ?, 'flight', ?, ?, ?, ?, 'confirmed', 'booking', ?, 'system')`
+    `INSERT INTO calendar_events (id, pilot_id, aircraft_id, type, title, notes, start_at, end_at, status, source, booking_id, created_by, google_event_id)
+     VALUES (?, ?, ?, 'flight', ?, ?, ?, ?, 'confirmed', 'booking', ?, 'system', ?)
+     ON CONFLICT(id) DO UPDATE SET title=excluded.title, notes=excluded.notes,
+       start_at=excluded.start_at, end_at=excluded.end_at, status='confirmed',
+       booking_id=excluded.booking_id, google_event_id=excluded.google_event_id, updated_at=datetime('now')`
   ).bind(
     id,
     MACIEJ_PILOT_ID,
@@ -188,5 +195,6 @@ async function createBookingCalendarEvent(env: Env, bookingId: string): Promise<
     startAt,
     endAt,
     bookingId,
+    g?.id ?? null,
   ).run();
 }

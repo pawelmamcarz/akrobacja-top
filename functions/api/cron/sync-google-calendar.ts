@@ -79,12 +79,17 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
       const type = eventType(ev.summary);
       const status = icsStatusToDb(ev.status);
 
+      // Dla wierszy app-origin (source='booking'/'manual' - powstały z zapisu strona->Google)
+      // NIE nadpisujemy tytułu/typu generykiem z publicznego kalendarza (chronimy lokalne dane
+      // klienta). Czasy i status aktualizujemy zawsze (reschedule/odwołanie w Google działa).
       await ctx.env.DB.prepare(
         `INSERT INTO calendar_events (id, pilot_id, aircraft_id, type, title, start_at, end_at, status, source, created_by, updated_at)
          VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'google', 'google-sync', datetime('now'))
          ON CONFLICT(id) DO UPDATE SET
-           type = excluded.type, title = excluded.title, start_at = excluded.start_at,
-           end_at = excluded.end_at, status = excluded.status, updated_at = datetime('now')`
+           type = CASE WHEN calendar_events.source = 'google' THEN excluded.type ELSE calendar_events.type END,
+           title = CASE WHEN calendar_events.source = 'google' THEN excluded.title ELSE calendar_events.title END,
+           start_at = excluded.start_at, end_at = excluded.end_at, status = excluded.status,
+           updated_at = datetime('now')`
       ).bind(id, DEFAULT_PILOT, DEFAULT_AIRCRAFT, type, ev.summary || 'Lot', ev.startUtc, ev.endUtc, status).run();
       synced++;
     } catch {

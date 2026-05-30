@@ -28,6 +28,10 @@ export interface Env {
   // Publiczny adres iCal wspólnego kalendarza Google "Loty akrobacja.com".
   // Cron sync-google-calendar zaciąga z niego eventy do calendar_events (source='google').
   GOOGLE_CALENDAR_ICS_URL?: string;
+  // Zapis strona -> Google (src/lib/google-calendar.ts) przez konto serwisowe.
+  GOOGLE_CALENDAR_ID?: string;        // id kalendarza "Loty akrobacja.com"
+  GOOGLE_SA_CLIENT_EMAIL?: string;    // e-mail konta serwisowego
+  GOOGLE_SA_PRIVATE_KEY?: string;     // klucz prywatny PEM (secret)
   KSEF_TOKEN?: string;          // KSeF API token (uprawnienia: przegladanie faktur)
   KSEF_NIP?: string;            // NIP firmy 10 cyfr (kontekst sesji KSeF)
   // Bielik 11B v2.3 GPU box przez CF Tunnel - https://llm.akrobacja.com (OpenAI-compatible).

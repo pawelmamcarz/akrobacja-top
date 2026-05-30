@@ -654,6 +654,7 @@ CREATE TABLE IF NOT EXISTS calendar_events (
   source TEXT NOT NULL DEFAULT 'manual',
   booking_id TEXT,
   created_by TEXT,
+  google_event_id TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now')),
   updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );

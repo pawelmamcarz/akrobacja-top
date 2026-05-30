@@ -2,6 +2,7 @@ import { type Env, type CalendarEvent } from '../../../src/lib/types';
 import { checkAdminAuthAsync, getAdminUserAsync } from '../../../src/lib/admin-auth';
 import { buildSingleEventICS, type IcsEventInput } from '../../../src/lib/ics';
 import { sendEventEmailWithICS, escapeHtml } from '../../../src/lib/email';
+import { createGoogleEvent } from '../../../src/lib/google-calendar';
 
 interface EventCreateBody {
   pilot_id: string;
@@ -114,10 +115,25 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     aircraftTail = air.tail;
   }
 
-  const id = crypto.randomUUID();
+  const startIso = new Date(startMs).toISOString();
+  const endIso = new Date(endMs).toISOString();
+
+  // Zapis do Google (best-effort). Gdy się uda, lokalne id = gcal:<iCalUID>, żeby
+  // późniejszy odczyt ICS trafił w ten sam wiersz (ON CONFLICT) - bez duplikatu/pętli.
+  const g = await createGoogleEvent(ctx.env, {
+    summary: body.title || body.type,
+    description: body.notes || undefined,
+    startUtc: startIso,
+    endUtc: endIso,
+  });
+  const id = g ? `gcal:${g.iCalUID}` : crypto.randomUUID();
+
   await ctx.env.DB.prepare(
-    `INSERT INTO calendar_events (id, pilot_id, aircraft_id, type, title, notes, start_at, end_at, status, source, created_by)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'manual', ?)`
+    `INSERT INTO calendar_events (id, pilot_id, aircraft_id, type, title, notes, start_at, end_at, status, source, created_by, google_event_id)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'manual', ?, ?)
+     ON CONFLICT(id) DO UPDATE SET title=excluded.title, notes=excluded.notes, type=excluded.type,
+       start_at=excluded.start_at, end_at=excluded.end_at, status=excluded.status,
+       google_event_id=excluded.google_event_id, updated_at=datetime('now')`
   ).bind(
     id,
     body.pilot_id,
@@ -125,10 +141,11 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     body.type,
     body.title || null,
     body.notes || null,
-    new Date(startMs).toISOString(),
-    new Date(endMs).toISOString(),
+    startIso,
+    endIso,
     status,
     adminUser,
+    g?.id ?? null,
   ).run();
 
   if (body.notify !== false && pilot.email) {
