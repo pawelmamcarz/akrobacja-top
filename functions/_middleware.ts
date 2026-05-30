@@ -258,7 +258,7 @@ export const onRequest: PagesFunction = async (context) => {
     rewriter
       .on('body', { element(el) { el.prepend(unifiedNav, { html: true }); } })
       .on(
-        'nav.nav, div.topbar, nav.nav-links, nav.top, nav.links',
+        'nav.nav, div.topbar, nav.nav-links, nav.top, nav.top-nav, nav.links',
         { element(el) { el.remove(); } },
       );
   }
