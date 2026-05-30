@@ -18,6 +18,7 @@ function wrapHtml(body: string): string {
 <body style="margin:0;padding:0;font-family:'Montserrat',Arial,sans-serif;background:#f5f7fa">
   <div style="max-width:600px;margin:0 auto;background:#ffffff">
     <div style="background:#0A2F7C;padding:40px;text-align:center">
+      <img src="https://akrobacja.com/assets/logo-mark-white.png" alt="" width="62" height="50" style="display:block;margin:0 auto 14px;height:50px;width:auto;border:0" />
       <h1 style="color:#ffffff;margin:0;font-size:28px;font-weight:700;letter-spacing:0.02em">akrobacja.com</h1>
       <p style="color:rgba(255,255,255,0.6);margin:8px 0 0;font-size:13px">Extra 300L &middot; SP-EKS</p>
     </div>

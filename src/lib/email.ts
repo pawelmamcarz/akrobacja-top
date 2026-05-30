@@ -76,6 +76,7 @@ function buildHtml(p: EmailParams): string {
 <body style="margin:0;padding:0;font-family:Arial,sans-serif;background:#f5f7fa">
   <div style="max-width:600px;margin:0 auto;background:#fff">
     <div style="background:#0A2F7C;padding:40px;text-align:center">
+      <img src="https://akrobacja.com/assets/logo-mark-white.png" alt="" width="62" height="50" style="display:block;margin:0 auto 14px;height:50px;width:auto;border:0" />
       <h1 style="color:#fff;margin:0;font-size:28px">akrobacja.com</h1>
       <p style="color:rgba(255,255,255,0.7);margin:8px 0 0;font-size:13px">Extra 300L · SP-EKS</p>
     </div>

@@ -29,6 +29,7 @@ function wrap(preheader: string, contentHtml: string): string {
   <div style="max-width:600px;margin:0 auto;background:#fff">
     <div style="background:#0A2F7C;padding:32px 24px;text-align:center">
       <a href="${SITE}" style="text-decoration:none">
+        <img src="https://akrobacja.com/assets/logo-mark-white.png" alt="" width="56" height="45" style="display:block;margin:0 auto 12px;height:45px;width:auto;border:0" />
         <h1 style="color:#fff;margin:0;font-size:24px;letter-spacing:-0.5px">akrobacja.com</h1>
         <p style="color:rgba(255,255,255,0.6);margin:4px 0 0;font-size:12px;letter-spacing:1px">EXTRA 300L · SP-EKS · RADOM</p>
       </a>

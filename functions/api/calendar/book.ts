@@ -164,6 +164,7 @@ async function sendBookingEmails(env: Env, o: {
   const customerHtml = `
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
       <div style="background:#0A2F7C;padding:32px;text-align:center">
+        <img src="https://akrobacja.com/assets/logo-mark-white.png" alt="" width="56" height="45" style="display:block;margin:0 auto 12px;height:45px;width:auto;border:0" />
         <h1 style="color:#fff;margin:0;font-size:24px">akrobacja.com</h1>
       </div>
       <div style="padding:32px">
