@@ -32,10 +32,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .topbar .logout { background:none; border:1px solid rgba(255,255,255,.3); color:#fff; padding:5px 14px; cursor:pointer; font-size:11px; }
 
   /* Tabs */
-  .tabs { display:flex; background:#fff; border-bottom:2px solid #eee; padding:0 32px; }
-  .tab { padding:12px 20px; cursor:pointer; font-size:12px; font-weight:600; color:#888; border-bottom:2px solid transparent; margin-bottom:-2px; }
-  .tab:hover { color:#0A2F7C; }
-  .tab.active { color:#0A2F7C; border-bottom-color:#C41E3A; }
+  /* Lewy sidebar z grupami (zamiast jednego rzędu 18 zakładek) */
+  .admin-layout { display:flex; align-items:flex-start; }
+  .tabs { display:flex; flex-direction:column; gap:1px; width:212px; flex-shrink:0; background:#fff; border-right:2px solid #eee; padding:10px 0 24px; position:sticky; top:0; align-self:stretch; min-height:calc(100vh - 44px); }
+  .nav-group-label { padding:14px 22px 5px; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#9aa5b8; }
+  .tab { padding:9px 22px; cursor:pointer; font-size:12.5px; font-weight:600; color:#667; border-left:3px solid transparent; }
+  .tab:hover { color:#0A2F7C; background:#f6f8fc; }
+  .tab.active { color:#0A2F7C; border-left-color:#C41E3A; background:#eef3fb; }
+  .admin-main { flex:1; min-width:0; }
+  @media (max-width:820px) {
+    .admin-layout { flex-direction:column; }
+    .tabs { flex-direction:row; width:auto; overflow-x:auto; border-right:none; border-bottom:2px solid #eee; padding:0 8px; position:static; min-height:0; gap:0; }
+    .nav-group-label { display:none; }
+    .tab { border-left:none; border-bottom:3px solid transparent; white-space:nowrap; padding:12px 16px; }
+    .tab.active { border-left-color:transparent; border-bottom-color:#C41E3A; background:transparent; }
+  }
 
   .panel { display:none; padding:24px 32px; }
   .panel.active { display:block; }
@@ -113,26 +124,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="logout" onclick="doLogout()">Wyloguj</button>
   </div>
 
-  <div class="tabs">
-    <div class="tab active" onclick="switchTab('orders')">Zamowienia</div>
+  <div class="admin-layout">
+  <nav class="tabs">
+    <div class="nav-group-label">Sprzedaż</div>
+    <div class="tab active" onclick="switchTab('orders')">Zamówienia</div>
+    <div class="tab" onclick="switchTab('merch')">Merch</div>
     <div class="tab" onclick="switchTab('finance')">Rozliczenia</div>
     <div class="tab" onclick="switchTab('koszty')">Koszty</div>
+    <div class="nav-group-label">Kalendarz</div>
     <div class="tab" onclick="switchTab('calendar')">Kalendarz</div>
-    <div class="tab" onclick="switchTab('pilots')">Piloci</div>
-    <div class="tab" onclick="switchTab('courses')">Kursy</div>
     <div class="tab" onclick="switchTab('blocks')">Blokady</div>
+    <div class="tab" onclick="switchTab('courses')">Kursy</div>
+    <div class="nav-group-label">Operacje</div>
+    <div class="tab" onclick="switchTab('pilots')">Piloci</div>
     <div class="tab" onclick="switchTab('aircraft')">Samolot</div>
-    <div class="tab" onclick="switchTab('merch')">Merch</div>
-    <div class="tab" onclick="switchTab('subs')">SMS Lista</div>
-    <div class="tab" onclick="switchTab('waclicks')">WA Klikniecia</div>
-    <div class="tab" onclick="switchTab('maile')">Maile</div>
-    <div class="tab" onclick="switchTab('zdjecia')">Zdjecia</div>
     <div class="tab" onclick="switchTab('lotmedia')">Lot Media</div>
+    <div class="tab" onclick="switchTab('zdjecia')">Zdjęcia</div>
+    <div class="nav-group-label">Marketing</div>
+    <div class="tab" onclick="switchTab('subs')">SMS Lista</div>
+    <div class="tab" onclick="switchTab('waclicks')">WA Kliknięcia</div>
+    <div class="tab" onclick="switchTab('maile')">Maile</div>
     <div class="tab" onclick="switchTab('seo')">SEO</div>
     <div class="tab" onclick="switchTab('leads')">Leady</div>
     <div class="tab" onclick="switchTab('scraper')">Scraper</div>
+    <div class="nav-group-label">System</div>
     <div class="tab" onclick="switchTab('logi')">Logi</div>
-  </div>
+  </nav>
+  <div class="admin-main">
 
   <!-- ORDERS -->
   <div class="panel active" id="panel-orders">
@@ -878,6 +896,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="btn btn-blue" onclick="createAdminUser()">Utwórz konto</button>
     <div id="auResult" style="display:none;margin-top:16px;padding:12px;background:#f1f8ff;border:1px solid #0A2F7C;border-radius:4px"></div>
   </div>
+  </div><!-- /admin-main -->
+  </div><!-- /admin-layout -->
 </div>
 
 <script>
@@ -986,6 +1006,8 @@ function applyRoleGating() {
       t.style.display = 'none';
     }
   });
+  // Mechanik widzi tylko "Samolot" - ukryj nagłówki grup sidebaru (byłyby puste).
+  document.querySelectorAll('.nav-group-label').forEach(l => { l.style.display = 'none'; });
   switchTab('aircraft');
 }
 
