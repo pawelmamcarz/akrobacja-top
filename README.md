@@ -157,8 +157,8 @@ npx wrangler d1 execute akrobacja-db --remote --file=migrations/NNN-<nazwa>.sql
 ## Deploy
 
 Push na `main` → GitHub Actions (`.github/workflows/deploy.yml`) →
-`wrangler pages deploy public --project-name=akrobacja-top`. Workflow kopiuje
-`index.html` i `sukces.html` z roota do `public/` przed deployem (legacy - warto docelowo trzymać tylko w `public/`).
+`wrangler pages deploy public --project-name=akrobacja-top`. Deploywany jest
+wyłącznie katalog `public/` - wszystkie strony (`index.html`, `sukces.html` itd.) żyją tam i tylko tam.
 
 Sekrety w Cloudflare: `npx wrangler pages secret put NAZWA --project-name=akrobacja-top`.
 Lista wymaganych - patrz `.dev.vars.example`.
