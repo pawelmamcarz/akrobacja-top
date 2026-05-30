@@ -2796,6 +2796,95 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </section>
 
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     MERCH TEASER (rotujące kubki) — zdjęcia: public/assets/merch/mug-*.png
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section class="merch-teaser" id="merch" aria-labelledby="merch-h">
+  <style>
+    .merch-teaser{background:linear-gradient(180deg,rgba(10,22,40,.98),rgba(10,22,40,.94));border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);padding:80px 20px;color:#fff}
+    .merch-teaser__wrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+    .merch-teaser__copy .section-label{color:var(--cyan,#00E5FF)}
+    .merch-teaser__lead{color:rgba(255,255,255,.72);font-size:16px;line-height:1.6;margin:18px 0 24px;max-width:42ch}
+    .merch-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+    .merch-chip{font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.78)}
+    .merch-chip--soon{color:rgba(255,255,255,.5)}
+    .merch-chip--soon::after{content:" · wkrótce";color:var(--cyan,#00E5FF);font-weight:600}
+    .merch-teaser__credit{margin-top:22px;font-size:12px;color:rgba(255,255,255,.4)}
+    .merch-teaser__credit a{color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+    /* Stage z rotacją */
+    .merch-stage{position:relative;aspect-ratio:1/1;max-width:440px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:center}
+    .mt-mug{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.96) translateY(8px);transition:opacity .6s ease,transform .6s ease}
+    .mt-mug.is-active{opacity:1;transform:none}
+    /* Ścianka kubka (placeholder — podmień na <img class="mt-mug__photo" src="/assets/merch/mug-X.png">) */
+    .mt-mug__body{position:relative;width:62%;aspect-ratio:5/4.4;background:#fff;border-radius:14px 18px 18px 14px;box-shadow:0 30px 60px rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:26px;text-align:center}
+    .mt-mug__body::after{content:"";position:absolute;right:-46px;top:28%;width:46px;height:44%;border:11px solid #fff;border-left:none;border-radius:0 40px 40px 0;box-shadow:6px 0 18px rgba(0,0,0,.18)}
+    .mt-mug__slogan{font-family:var(--font-h);font-weight:700;color:#0A2F7C;font-size:clamp(17px,2.4vw,26px);line-height:1.12;letter-spacing:.04em;text-transform:uppercase}
+    .mt-mug__logo{height:34px;width:auto;opacity:.95}
+    .mt-mug__brand{font-family:var(--font-h);font-weight:700;font-size:10px;letter-spacing:.22em;color:#0A2F7C;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+    .mt-mug--flip .mt-mug__slogan{transform:rotate(180deg)}
+    .merch-dots{position:absolute;bottom:-30px;left:0;right:0;display:flex;gap:8px;justify-content:center}
+    .merch-dots button{width:8px;height:8px;border-radius:50%;border:0;background:rgba(255,255,255,.25);cursor:pointer;padding:0}
+    .merch-dots button[aria-current="true"]{background:var(--cyan,#00E5FF)}
+    @media(max-width:780px){.merch-teaser__wrap{grid-template-columns:1fr;gap:48px}.merch-stage{order:-1}}
+    @media(prefers-reduced-motion:reduce){.mt-mug{transition:none}}
+  </style>
+  <div class="merch-teaser__wrap">
+    <div class="merch-teaser__copy reveal">
+      <p class="section-label">Sklep</p>
+      <h2 class="section-title" id="merch-h" style="color:#fff">Merch akrobacja.com</h2>
+      <div class="accent-bar" style="background:var(--red)"></div>
+      <p class="merch-teaser__lead">Kubki z duszą akrobacji — w nowym logo i z lotniczym pazurem. Reszta kolekcji w drodze, ten sam fason.</p>
+      <div class="merch-chips">
+        <span class="merch-chip">Kubki</span>
+        <span class="merch-chip merch-chip--soon">Koszulki</span>
+        <span class="merch-chip merch-chip--soon">Torby</span>
+      </div>
+      <a href="/sklep-merch" class="btn-primary" style="background:var(--red);color:#fff;text-decoration:none">Zobacz sklep →</a>
+      <p class="merch-teaser__credit">Produkcja: <a href="https://polisz.to/" target="_blank" rel="noopener noreferrer">polisz.to</a></p>
+    </div>
+    <div class="merch-stage" id="merchStage" aria-label="Kubki akrobacja.com">
+      <figure class="mt-mug is-active" data-mug>
+        <div class="mt-mug__body">
+          <img src="/assets/logo-mark.png" alt="" class="mt-mug__logo">
+          <span class="mt-mug__brand">akrobacja.com</span>
+        </div>
+      </figure>
+      <figure class="mt-mug" data-mug>
+        <div class="mt-mug__body"><span class="mt-mug__slogan">May G-Force<br>be with you</span></div>
+      </figure>
+      <figure class="mt-mug" data-mug>
+        <div class="mt-mug__body"><span class="mt-mug__slogan">Drink<br>before<br>flight</span></div>
+      </figure>
+      <figure class="mt-mug mt-mug--flip" data-mug>
+        <div class="mt-mug__body"><span class="mt-mug__slogan">Akrobacja</span></div>
+      </figure>
+      <div class="merch-dots" id="merchDots" role="tablist" aria-label="Wybierz kubek"></div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var stage=document.getElementById('merchStage');if(!stage)return;
+    var mugs=[].slice.call(stage.querySelectorAll('[data-mug]'));
+    var dotsWrap=document.getElementById('merchDots');if(mugs.length<2)return;
+    var i=0,timer=null;
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var dots=mugs.map(function(_,n){
+      var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Kubek '+(n+1));
+      b.addEventListener('click',function(){go(n);restart();});dotsWrap.appendChild(b);return b;
+    });
+    function go(n){mugs[i].classList.remove('is-active');dots[i].removeAttribute('aria-current');
+      i=n;mugs[i].classList.add('is-active');dots[i].setAttribute('aria-current','true');}
+    function next(){go((i+1)%mugs.length);}
+    function start(){if(reduce)return;timer=setInterval(next,3600);}
+    function restart(){clearInterval(timer);start();}
+    dots[0].setAttribute('aria-current','true');
+    stage.addEventListener('mouseenter',function(){clearInterval(timer);});
+    stage.addEventListener('mouseleave',start);
+    start();
+  })();
+  </script>
+</section>
+
 </main>
 <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
      FOOTER
