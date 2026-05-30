@@ -42,10 +42,11 @@
     "GOOGLE_CALENDAR_ICS_URL": "https://calendar.google.com/calendar/ical/c_a5084b682afffd89b5393e61985adb1551c3464678642a7c3a4d05a1909edab8%40group.calendar.google.com/public/basic.ics",
     "GOOGLE_CALENDAR_ID": "c_a5084b682afffd89b5393e61985adb1551c3464678642a7c3a4d05a1909edab8@group.calendar.google.com",
     // Apaczka.pl — nie-sekretna konfiguracja (sekrety APACZKA_API_KEY / APACZKA_APP_ID idą przez `wrangler pages secret`).
-    // service_id: odczytaj przyciskiem „Usługi apaczka (ID)" w panelu Merch i wpisz tutaj.
+    // service_id z apaczka service_structure: 42 = InPost Kurier (pod adres), 41 = InPost Paczkomat.
+    // (Alternatywy: 21 DPD Kurier, 82 DHL Parcel Kurier — podmień ID jeśli chcesz innego przewoźnika.)
     // Nadawca: tymczasowo dane akrobacja.com — zmienić na dane producenta (nazwa/kontakt/tel/email).
-    "APACZKA_SERVICE_ID_COURIER": "",
-    "APACZKA_SERVICE_ID_INPOST": "",
+    "APACZKA_SERVICE_ID_COURIER": "42",
+    "APACZKA_SERVICE_ID_INPOST": "41",
     "APACZKA_SENDER_NAME": "akrobacja.com",
     "APACZKA_SENDER_LINE1": "Jesionowa 18",
     "APACZKA_SENDER_POSTAL": "05-825",
