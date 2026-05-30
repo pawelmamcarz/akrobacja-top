@@ -92,10 +92,16 @@ Jeśli wydarzenie nie pojawia się na stronie po ~20 min:
 
 ### (Dla Pawła — jednorazowe włączenie)
 
-Żeby strona w ogóle zaczęła czytać kalendarz:
-1. W ustawieniach kalendarza „Loty akrobacja.com" → **Uprawnienia dostępu** →
-   zaznacz **„Udostępnij publicznie”**.
-2. Niżej: **„Zintegruj kalendarz”** → skopiuj **„Tajny adres w formacie iCal”**.
+Są **dwie osobne rzeczy** w ustawieniach kalendarza „Loty akrobacja.com":
+
+**A) Żeby Maciej (i każdy inny) mógł DODAWAĆ loty:**
+- „Udostępnij konkretnym osobom" → dodaj e-mail Macieja → uprawnienie
+  **„Wprowadzanie zmian w wydarzeniach"**. Maciej zobaczy kalendarz u siebie w
+  aplikacji i dodaje loty tak jak Ty.
+
+**B) Żeby STRONA mogła CZYTAĆ kalendarz (read-only):**
+1. „Uprawnienia dostępu" → zaznacz **„Udostępnij publicznie”**.
+2. „Zintegruj kalendarz" → skopiuj **„Tajny adres w formacie iCal”**.
 3. Wklej ten URL w czacie z asystentem (Claude Code) — reszta dzieje się sama:
    secret `GOOGLE_CALENDAR_ICS_URL` + harmonogram crona `/api/cron/sync-google-calendar` (~15 min).
    Pod maską: `npx wrangler pages secret put GOOGLE_CALENDAR_ICS_URL --project-name=akrobacja-top`.
