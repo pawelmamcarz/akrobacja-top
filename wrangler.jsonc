@@ -42,15 +42,16 @@
     "GOOGLE_CALENDAR_ICS_URL": "https://calendar.google.com/calendar/ical/c_a5084b682afffd89b5393e61985adb1551c3464678642a7c3a4d05a1909edab8%40group.calendar.google.com/public/basic.ics",
     "GOOGLE_CALENDAR_ID": "c_a5084b682afffd89b5393e61985adb1551c3464678642a7c3a4d05a1909edab8@group.calendar.google.com",
     // Apaczka.pl — nie-sekretna konfiguracja (sekrety APACZKA_API_KEY / APACZKA_APP_ID idą przez `wrangler pages secret`).
-    // DO UZUPEŁNIENIA: service_id z `service_structure` oraz adres nadawcy (producent merchu).
+    // service_id: odczytaj przyciskiem „Usługi apaczka (ID)" w panelu Merch i wpisz tutaj.
+    // Nadawca: tymczasowo dane akrobacja.com — zmienić na dane producenta (nazwa/kontakt/tel/email).
     "APACZKA_SERVICE_ID_COURIER": "",
     "APACZKA_SERVICE_ID_INPOST": "",
-    "APACZKA_SENDER_NAME": "",
-    "APACZKA_SENDER_LINE1": "",
-    "APACZKA_SENDER_POSTAL": "",
-    "APACZKA_SENDER_CITY": "",
-    "APACZKA_SENDER_CONTACT": "",
-    "APACZKA_SENDER_PHONE": "",
-    "APACZKA_SENDER_EMAIL": ""
+    "APACZKA_SENDER_NAME": "akrobacja.com",
+    "APACZKA_SENDER_LINE1": "Jesionowa 18",
+    "APACZKA_SENDER_POSTAL": "05-825",
+    "APACZKA_SENDER_CITY": "Grodzisk Mazowiecki",
+    "APACZKA_SENDER_CONTACT": "akrobacja.com",
+    "APACZKA_SENDER_PHONE": "535535221",
+    "APACZKA_SENDER_EMAIL": "info@akrobacja.com"
   }
 }
