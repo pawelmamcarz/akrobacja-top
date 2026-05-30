@@ -6,12 +6,14 @@ on:
     - cron: '7 * * * *'
     # Daily at 04:17 UTC (06:17 Europe/Warsaw) — wFirma expenses pull.
     - cron: '17 4 * * *'
+    # Every 15 min — Google Calendar -> D1 sync (lot/serwis blokuje sloty klienta).
+    - cron: '*/15 * * * *'
   workflow_dispatch:
 
 jobs:
   trigger:
-    # Hourly jobs — skip when this run is the daily wfirma slot.
-    if: github.event_name == 'workflow_dispatch' || github.event.schedule != '17 4 * * *'
+    # Hourly bundle — skip on the daily wFirma slot and the 15-min calendar slot.
+    if: github.event_name == 'workflow_dispatch' || (github.event.schedule != '17 4 * * *' && github.event.schedule != '*/15 * * * *')
     runs-on: ubuntu-latest
     steps:
       - name: Welcome emails (day 0/2/5)
@@ -67,6 +69,20 @@ jobs:
           curl -fsS -X POST \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             https://akrobacja.com/api/cron/lead-magnet-emails
+        continue-on-error: true
+
+  # Google Calendar -> D1 sync every 15 min. Zaciąga publiczny kalendarz "Loty
+  # akrobacja.com" (GOOGLE_CALENDAR_ICS_URL) do calendar_events; loty i serwis
+  # mechanika blokują wolne terminy klientów. Idempotentne, reconcile usuniętych.
+  google-calendar:
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '*/15 * * * *'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync Google Calendar (ICS -> calendar_events)
+        run: |
+          curl -fsS -X POST \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            https://akrobacja.com/api/cron/sync-google-calendar
         continue-on-error: true
 
   # Daily pull of last-90-days expenses from wFirma into D1 (feeds admin
