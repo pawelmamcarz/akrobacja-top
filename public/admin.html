@@ -392,6 +392,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div id="kostContent" style="margin-top:14px"></div>
 
+    <h3 style="margin:32px 0 8px;font-size:13px;color:#1B4DB5">Whitelist kontrahentów - auto-pull faktur z wFirmy (od 2026-01)</h3>
+    <div class="toolbar" style="margin-bottom:8px">
+      <button class="btn btn-blue" onclick="openModal('newExpenseContractor')">+ Dodaj kontrahenta</button>
+      <span style="font-size:11px;color:#666">Cron i „↻ Pobierz z wFirmy" zaciągają TYLKO faktury od tych kontrahentów, wystawione od 2026-01-01. Reszta jest pomijana i czyszczona z bazy przy każdym sync.</span>
+    </div>
+    <div id="expenseContractorsTable"></div>
+
     <h3 style="margin:32px 0 8px;font-size:13px;color:#1B4DB5">KSeF Whitelist (NIPy kontrahentów do auto-pull)</h3>
     <div class="toolbar" style="margin-bottom:8px">
       <button class="btn btn-blue" onclick="openModal('newKsefContractor')">+ Dodaj kontrahenta</button>
@@ -838,6 +845,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- New KSeF Contractor (whitelist) -->
+  <div class="modal" id="modal-newExpenseContractor" style="display:none">
+    <h3>Dodaj kontrahenta (auto-pull z wFirmy)</h3>
+    <p style="font-size:12px;color:#666;margin-bottom:12px">Dopasowanie po fragmencie nazwy, bez wielkości liter - np. „Milik" złapie „MILIK MICHAŁ ...". NIP opcjonalnie (dokładne dopasowanie).</p>
+    <div class="field"><label>Nazwa / fragment *</label><input id="ecName" placeholder="np. Milik, Kulaszewski, Ibex"></div>
+    <div class="field"><label>NIP (opcj., 10 cyfr)</label><input id="ecNip" placeholder="opcjonalnie"></div>
+    <div class="field"><label>Etykieta (opcj.)</label><input id="ecLabel" placeholder="np. Michał Milik - mechanik"></div>
+    <button class="btn btn-blue" onclick="createExpenseContractor()">Dodaj</button>
+  </div>
+
   <div class="modal" id="modal-newKsefContractor" style="display:none">
     <h3>Dodaj kontrahenta do whitelisty KSeF</h3>
     <div class="field"><label>NIP (10 cyfr bez kresek) *</label><input id="ksefNip" placeholder="np. 5252164172"></div>
@@ -852,6 +868,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p style="font-size:11px;color:#888;margin-bottom:12px">System wygeneruje losowe haslo i pokaze je JEDNORAZOWO - skopiuj i wyslij Signalem/WA.</p>
     <div class="field"><label>Email *</label><input id="auEmail" type="email" placeholder="np. maciej@akrobacja.com"></div>
     <div class="field"><label>Imie i nazwisko *</label><input id="auName" placeholder="np. Maciej Kulaszewski"></div>
+    <div class="field"><label>Rola</label>
+      <select id="auRole">
+        <option value="admin">Admin (pełny dostęp)</option>
+        <option value="mechanic">Mechanik (tylko zakładka Samolot)</option>
+      </select>
+    </div>
     <button class="btn btn-blue" onclick="createAdminUser()">Utwórz konto</button>
     <div id="auResult" style="display:none;margin-top:16px;padding:12px;background:#f1f8ff;border:1px solid #1B4DB5;border-radius:4px"></div>
   </div>
@@ -1586,7 +1608,63 @@ async function deleteKsefContractor(nip) {
   if (r.ok) { showMsg('Usunieto','ok'); loadKsefWhitelist(); } else showMsg(r.error||'Blad','err');
 }
 
+async function loadExpenseContractors() {
+  const wrap = document.getElementById('expenseContractorsTable');
+  if (!wrap) return;
+  try {
+    const res = await api('GET', '/api/admin/expense-contractors');
+    const rows = res.contractors || [];
+    if (!rows.length) {
+      wrap.innerHTML = '<p style="padding:8px;color:#c00;font-size:12px">Lista pusta - sync z wFirmy nic nie zaciągnie. Dodaj kontrahentów (np. Milik, Kulaszewski, Ibex).</p>';
+      return;
+    }
+    wrap.innerHTML = `<table style="font-size:12px">
+      <tr style="background:#f4f8ff"><th>Nazwa / fragment</th><th>NIP</th><th>Etykieta</th><th>Aktywny</th><th>Dodany</th><th>Akcje</th></tr>
+      ${rows.map(r => `<tr>
+        <td><b>${esc(r.match_name)}</b></td>
+        <td class="code">${esc(r.nip||'-')}</td>
+        <td style="color:#888">${esc(r.label||'-')}</td>
+        <td><label><input type="checkbox" ${r.active?'checked':''} data-action="toggleExpenseContractor" data-arg1="${dataAttr(r.id)}"></label></td>
+        <td>${fmtDate(r.created_at)}</td>
+        <td class="actions">
+          <button class="btn btn-red" data-action="deleteExpenseContractor" data-arg1="${dataAttr(r.id)}">Usuń</button>
+        </td>
+      </tr>`).join('')}
+    </table>`;
+  } catch (e) {
+    wrap.innerHTML = '<p style="padding:8px;color:#c00;font-size:12px">Blad: ' + esc(e.message||'unknown') + '</p>';
+  }
+}
+
+async function createExpenseContractor() {
+  const match_name = document.getElementById('ecName').value.trim();
+  const nip = document.getElementById('ecNip').value.trim();
+  const label = document.getElementById('ecLabel').value.trim();
+  if (!match_name) { showMsg('Nazwa / fragment wymagana','err'); return; }
+  const r = await api('POST', '/api/admin/expense-contractors', { action:'create', match_name, nip, label });
+  if (r.ok) {
+    showMsg('Dodano','ok');
+    ['ecName','ecNip','ecLabel'].forEach(id => document.getElementById(id).value='');
+    closeModal();
+    loadExpenseContractors();
+  } else showMsg(r.error||'Blad','err');
+}
+
+async function toggleExpenseContractor(id) {
+  const cb = event && event.target;
+  const active = cb && cb.checked;
+  const r = await api('POST', '/api/admin/expense-contractors', { action:'toggle', id: Number(id), active });
+  if (!r.ok) { showMsg(r.error||'Blad','err'); loadExpenseContractors(); }
+}
+
+async function deleteExpenseContractor(id) {
+  if (!confirm('Usunąć kontrahenta z whitelisty? Jego faktury zostaną usunięte z bazy przy następnym sync.')) return;
+  const r = await api('POST', '/api/admin/expense-contractors', { action:'delete', id: Number(id) });
+  if (r.ok) { showMsg('Usunieto','ok'); loadExpenseContractors(); } else showMsg(r.error||'Blad','err');
+}
+
 async function loadKoszty() {
+  loadExpenseContractors();
   loadKsefWhitelist();
   const from = document.getElementById('kostFrom').value;
   const to = document.getElementById('kostTo').value;
@@ -1650,7 +1728,8 @@ async function kostRefresh() {
   try {
     const res = await api('POST', '/api/admin/expenses', { action: 'refresh' });
     if (res.error) { alert('Blad: ' + res.error); return; }
-    showMsg(`wFirma sync: ${res.inserted} nowych, ${res.updated} zaktualizowanych`, 'ok');
+    if (res.skipped) { showMsg('Whitelista pusta - nic nie zaciągnięto. Dodaj kontrahentów.', 'err'); }
+    else { showMsg(`wFirma sync: ${res.inserted} nowych, ${res.updated} zaktualizowanych, ${res.matched} pasujących, ${res.pruned} usuniętych spoza listy`, 'ok'); }
     loadKoszty();
   } catch (err) { alert('Blad: ' + (err.message || 'unknown')); }
   finally { btn.disabled = false; btn.textContent = '↻ Pobierz z wFirmy'; }
@@ -2794,7 +2873,8 @@ async function createAdminUser() {
   const email = document.getElementById('auEmail').value.trim();
   const name = document.getElementById('auName').value.trim();
   if (!email || !name) { showMsg('Email i nazwisko wymagane','err'); return; }
-  const r = await api('POST', '/api/admin/auth/seed', { email, name, auto_password: true });
+  const role = (document.getElementById('auRole') || {}).value || 'admin';
+  const r = await api('POST', '/api/admin/auth/seed', { email, name, role, auto_password: true });
   if (r.ok) {
     const box = document.getElementById('auResult');
     box.style.display = 'block';

@@ -10,9 +10,11 @@
 import { type Env } from '../../../src/lib/types';
 import { listWfirmaExpenses, type WfirmaExpenseRow } from '../../../src/lib/wfirma';
 
-const LOOKBACK_DAYS = 90;
+// Data graniczna: zaciagamy WYLACZNIE faktury wystawione od tego dnia w gore.
+// Wszystko starsze jest ignorowane przy pull i przycinane z bazy przy sync.
+const EXPENSES_SINCE = '2026-01-01';
 const PAGE_SIZE = 50;
-const MAX_PAGES = 20;
+const MAX_PAGES = 40;
 
 async function pullAll(env: Env, from: string, to: string): Promise<WfirmaExpenseRow[]> {
   const out: WfirmaExpenseRow[] = [];
@@ -24,13 +26,42 @@ async function pullAll(env: Env, from: string, to: string): Promise<WfirmaExpens
   return out;
 }
 
-export async function syncWfirmaExpenses(env: Env): Promise<{ processed: number; inserted: number; updated: number }> {
+interface WhitelistTerm { name: string; nip: string }
+
+async function loadWhitelist(env: Env): Promise<WhitelistTerm[]> {
+  const { results } = await env.DB.prepare(
+    'SELECT match_name, nip FROM expense_contractors WHERE active = 1'
+  ).all<{ match_name: string; nip: string | null }>();
+  return (results || [])
+    .map((r) => ({ name: (r.match_name || '').toLowerCase().trim(), nip: (r.nip || '').replace(/\D/g, '') }))
+    .filter((t) => t.name || t.nip);
+}
+
+// Faktura "nalezy" do whitelisty gdy nazwa kontrahenta zawiera ktorys fragment
+// (case-insensitive) ALBO NIP zgadza sie dokladnie.
+function matchesWhitelist(contractorName: string | null, contractorNip: string | null, wl: WhitelistTerm[]): boolean {
+  const name = (contractorName || '').toLowerCase();
+  const nip = (contractorNip || '').replace(/\D/g, '');
+  return wl.some((t) => (t.name && name.includes(t.name)) || (t.nip && nip && nip === t.nip));
+}
+
+export async function syncWfirmaExpenses(
+  env: Env,
+): Promise<{ processed: number; matched: number; inserted: number; updated: number; pruned: number; whitelist: number; skipped?: boolean }> {
+  const wl = await loadWhitelist(env);
+  // Pusta whitelista = nie wiadomo kogo zaciagac. Nic nie pobieramy i nic nie
+  // kasujemy (zabezpieczenie przed przypadkowym wyczyszczeniem calej bazy).
+  if (wl.length === 0) {
+    return { processed: 0, matched: 0, inserted: 0, updated: 0, pruned: 0, whitelist: 0, skipped: true };
+  }
+
   const today = new Date();
   const to = today.toISOString().slice(0, 10);
-  const fromDate = new Date(today.getTime() - LOOKBACK_DAYS * 86400000);
-  const from = fromDate.toISOString().slice(0, 10);
+  const from = EXPENSES_SINCE;
 
-  const rows = await pullAll(env, from, to);
+  const all = await pullAll(env, from, to);
+  // Podwojny guard: data >= granica ORAZ kontrahent na whiteliscie.
+  const rows = all.filter((r) => r.issue_date >= EXPENSES_SINCE && matchesWhitelist(r.contractor_name, r.contractor_nip, wl));
   const now = Math.floor(Date.now() / 1000);
   let inserted = 0;
   let updated = 0;
@@ -64,7 +95,24 @@ export async function syncWfirmaExpenses(env: Env): Promise<{ processed: number;
     }
   }
 
-  return { processed: rows.length, inserted, updated };
+  // Przytnij: skasuj rekordy source='wfirma' ktore nie spelniaja kryteriow
+  // (data < granicy LUB kontrahent spadl z whitelisty / zostal dezaktywowany).
+  // Wpisy 'manual' nie sa ruszane.
+  const existing = await env.DB.prepare(
+    `SELECT id, contractor_name, contractor_nip, issue_date FROM expenses WHERE source = 'wfirma'`
+  ).all<{ id: number; contractor_name: string | null; contractor_nip: string | null; issue_date: string }>();
+  const toDelete = (existing.results || [])
+    .filter((e) => e.issue_date < EXPENSES_SINCE || !matchesWhitelist(e.contractor_name, e.contractor_nip, wl))
+    .map((e) => e.id);
+  let pruned = 0;
+  for (let i = 0; i < toDelete.length; i += 50) {
+    const chunk = toDelete.slice(i, i + 50);
+    const placeholders = chunk.map(() => '?').join(',');
+    await env.DB.prepare(`DELETE FROM expenses WHERE id IN (${placeholders})`).bind(...chunk).run();
+    pruned += chunk.length;
+  }
+
+  return { processed: all.length, matched: rows.length, inserted, updated, pruned, whitelist: wl.length };
 }
 
 export const onRequestGet: PagesFunction<Env> = async (ctx) => {

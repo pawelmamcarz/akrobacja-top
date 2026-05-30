@@ -558,6 +558,19 @@ CREATE INDEX IF NOT EXISTS idx_expenses_category ON expenses(category);
 CREATE INDEX IF NOT EXISTS idx_expenses_source ON expenses(source);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_expenses_ksef_uuid ON expenses(ksef_invoice_uuid) WHERE ksef_invoice_uuid IS NOT NULL;
 
+-- Whitelist kontrahentow do auto-pull faktur kosztowych z wFirmy. Sync zaciaga
+-- TYLKO faktury od tych kontrahentow (match po fragmencie nazwy lub NIP) i tylko
+-- od daty granicznej (EXPENSES_SINCE = 2026-01-01). Patrz migrations/042.
+CREATE TABLE IF NOT EXISTS expense_contractors (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  match_name TEXT NOT NULL,
+  nip TEXT,
+  label TEXT,
+  active INTEGER NOT NULL DEFAULT 1,
+  created_at INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS idx_expense_contractors_active ON expense_contractors(active);
+
 -- Proper admin auth — email + PBKDF2 password + session tokens + magic-link reset.
 -- Legacy ADMIN_PASSWORD / MAGDA_PASSWORD Bearer secrets still work in parallel as
 -- fallback (cron jobs and any non-migrated users keep working).
