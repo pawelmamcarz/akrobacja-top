@@ -173,7 +173,7 @@
   <line x1="594" y1="261" x2="712" y2="261"
         stroke="#7A8FA6" stroke-width="1.8"/>
 
-  <!-- Main price: PLN  1999  /osoba -->
+  <!-- Main price: PLN  2111  /osoba -->
   <text x="596" y="330"
         font-family="Montserrat, sans-serif"
         font-weight="900" font-size="38"
@@ -181,7 +181,7 @@
   <text x="661" y="338"
         font-family="Montserrat, sans-serif"
         font-weight="900" font-size="82"
-        fill="#0A1428">1999</text>
+        fill="#0A1428">2111</text>
   <text x="968" y="330"
         font-family="Inter, sans-serif"
         font-weight="400" font-size="15"
@@ -219,7 +219,7 @@
         text-anchor="middle"
         font-family="Montserrat, sans-serif"
         font-weight="800" font-size="17"
-        fill="#FFFFFF" letter-spacing="0.8">KUP VOUCHER, 1 999 ZŁ</text>
+        fill="#FFFFFF" letter-spacing="0.8">KUP VOUCHER, 2 111 ZŁ</text>
 
   <!-- ── Video 360° upsell ── -->
   <line x1="596" y1="578" x2="1024" y2="578"
@@ -281,7 +281,7 @@
         text-anchor="middle"
         font-family="Montserrat, sans-serif"
         font-weight="800" font-size="24"
-        fill="#FFFFFF" letter-spacing="1.6">KUP VOUCHER, OD 1 999 PLN  →</text>
+        fill="#FFFFFF" letter-spacing="1.6">KUP VOUCHER, OD 2 111 PLN  →</text>
 
   <!-- ══════════════════════════════════════════
        LAYER 6 – BOTTOM STATS BAR

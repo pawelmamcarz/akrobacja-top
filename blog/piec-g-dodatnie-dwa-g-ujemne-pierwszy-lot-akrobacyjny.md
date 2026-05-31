@@ -81,7 +81,7 @@ Przygotowanie pasażera, najważniejsze rzeczy:
 
 Mam trzy pakiety voucherów, każdy zoptymalizowany dla innego pasażera:
 
-- **[Pierwszy Lot](/lot-akrobacyjny), 1 999 zł.** 15 min w powietrzu + briefing. Podstawowe figury: pętla, beczka, roll, lot odwrócony. Przeciążenia do +4G / −2G. Dla absolutnie pierwszego razu.
+- **[Pierwszy Lot](/lot-akrobacyjny), 2 111 zł.** do 10 min w powietrzu + briefing. Podstawowe figury: pętla, beczka, roll, lot odwrócony. Przeciążenia do +4G / −2G. Dla absolutnie pierwszego razu.
 - **[Adrenalina](/lot-akrobacyjny), 2 999 zł.** 20 min w powietrzu + dłuższy briefing + debriefing. Pełny program akrobacyjny: hammerhead, snap, immelman, split-S. Przeciążenia do +6G / −4G. Dla osób, które już latały w małym samolocie lub szukają mocnego adrenalinowego przeżycia.
 - **[Masterclass](/lot-akrobacyjny), 4 999 zł.** 2 loty po 20 min + zaawansowany briefing/debriefing. Wymaga PPL(A). Przeciążenia do +8G / −4G. Dla pilotów, którzy rozważają kurs FCL.800.
 

@@ -31,11 +31,11 @@ Zaplanuj 2 godziny na wizytę, żeby nie gonić po debriefingu. Briefing może t
 
 Pierwszy Lot
 
-15 min
+do 10 min
 
 Podstawowe figury: beczka, looping, immelmann. Do +4G. Idealne pierwsze doświadczenie.
 
-1 999 PLN
+2 111 PLN
 
 [REZERWUJ](/lot-akrobacyjny)
 
@@ -63,13 +63,13 @@ Masterclass
 
 ## Co wchodzi w czas lotu: taksowanie, start, figury, powrót
 
-Czas lotu "15 minut" liczymy od momentu oderwania kół od pasa do przyziemienia. W tych 15 minutach jest:
+Czas lotu "do 10 minut" liczymy od momentu oderwania kół od pasa do przyziemienia. W tych do 10 minutach jest:
 
 - **Wznoszenie do strefy akrobacji:** 2-3 minuty. Strefa jest bezpośrednio nad lotniskiem lub w odległości maksymalnie 3 minut lotu. Podczas wznoszenia masz czas, żeby się uspokoić i przyswoić pierwsze odczucia lotu.
 - **Program akrobacyjny:** 8-15 minut w zależności od pakietu. To jest czas "intensywnych" figur.
 - **Powrót i podejście do lądowania:** 2-3 minuty. Spokojny lot na prostą lądowania, zbliżanie, przyziemienie.
 
-Z 15 minut lotu "Pierwszy Lot" na figury akrobacyjne przypada faktycznie około 9-10 minut. Z 20 minut "Adrenaliny" ok. 13-14 minut. Taksowanie (kołowanie) po pasie to czas przed i po locie, nie jest wliczany w czas lotu.
+Z do 10 minut lotu "Pierwszy Lot" na figury akrobacyjne przypada faktycznie 7-9 minut. Z 20 minut "Adrenaliny" ok. 13-14 minut. Taksowanie (kołowanie) po pasie to czas przed i po locie, nie jest wliczany w czas lotu.
 
 ## Lot akrobacyjny vs lot widokowy: czas jest mylący
 
@@ -100,7 +100,7 @@ Szczegóły o fizjologii G w artykule [przeciążenia G-force, co naprawdę czuj
 
 Ile trwa lot akrobacyjny?
 
-Czas lotu netto wynosi 15 minut (Pierwszy Lot), 20 minut (Adrenalina) lub do 50 minut łącznie (Masterclass, 2 oddzielne loty). Całkowita wizyta na lotnisku trwa około 90 minut. Zaplanuj 2 godziny z zapasem.
+Czas lotu netto wynosi do 10 minut (Pierwszy Lot), 20 minut (Adrenalina) lub do 50 minut łącznie (Masterclass, 2 oddzielne loty). Całkowita wizyta na lotnisku trwa około 90 minut. Zaplanuj 2 godziny z zapasem.
 
 Dlaczego lot akrobacyjny trwa tak krótko?
 
@@ -118,6 +118,6 @@ Czas jest podobny lub krótszy, intensywność nieporównywalna. Lot widokowy 30
 
 Zarezerwuj termin online. Extra 300L SP-EKS na Ciebie czeka.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz na WhatsApp](https://wa.me/48535535221)

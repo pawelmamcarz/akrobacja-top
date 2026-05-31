@@ -6,7 +6,7 @@
 
 # Lot akrobacyjny Warszawa, Extra 300L, lotnisko 100 km od centrum
 
-**Szybka odpowiedź:** Loty akrobacyjne dla mieszkańców Warszawy odbywają się na lotnisku **Radom-Piastów (EPRP)**, 100 km od centrum (~1,5h trasą S7). Samolot: **Extra 300L SP-EKS**. Ceny od **1 999 PLN**. Pilot: **Maciej Kulaszewski**, Mistrz Polski w akrobacji samolotowej, ponad 3 500h w powietrzu.
+**Szybka odpowiedź:** Loty akrobacyjne dla mieszkańców Warszawy odbywają się na lotnisku **Radom-Piastów (EPRP)**, 100 km od centrum (~1,5h trasą S7). Samolot: **Extra 300L SP-EKS**. Ceny od **2 111 PLN**. Pilot: **Maciej Kulaszewski**, Mistrz Polski w akrobacji samolotowej, ponad 3 500h w powietrzu.
 
 Szukasz **lotu akrobacyjnego w Warszawie**? Bezpośrednio w mieście nie polecisz akrobacji, ale 100 km na południe, na lotnisku Radom-Piastów, czeka na Ciebie jeden z najlepszych samolotów akrobacyjnych na świecie: [Extra 300L SP-EKS](/blog/extra-300l-samolot-akrobacyjny). Dojazd z centrum Warszawy trasą S7 to zaledwie 1,5 godziny, tyle co na drugi koniec miasta w godzinach szczytu.
 
@@ -45,10 +45,10 @@ Na rynku jest kilka opcji dla mieszkańców Warszawy. Poniżej rzetelne porówna
 |  | akrobacja.com (Radom EPRP) | Aeroklub Warszawski (Radom EPRP) | This Way Up (Chrcynno) |
 |----|----|----|----|
 | **Samolot** | Extra 300L SP-EKS | Extra 300LP | ? |
-| **Cena od** | 1 999 PLN | 1 999 PLN | ~1 500 PLN |
+| **Cena od** | 2 111 PLN | 1 999 PLN | ~1 500 PLN |
 | **Pakiety** | 3 (Pierwszy Lot / Adrenalina / Masterclass) | 1 | 1 |
 | **Max G** | +6G (Adrenalina) | +5G | ? |
-| **Czas lotu** | do 15-50 min | ~10 min | ~10 min |
+| **Czas lotu** | do 10-50 min | ~10 min | ~10 min |
 | **Camp / Kurs** | Tak (Camp 7 777, Kurs FCL.800) | Kurs 20 999 | Nie |
 
 Jak widać, [akrobacja.com](/lot-akrobacyjny) oferuje **największy wybór pakietów**, najdłuższy czas lotu i najwyższe dostępne przeciążenia. Jeśli szukasz **lotu akrobacyjnego w okolicach Warszawy** z prawdziwymi emocjami, wybór jest oczywisty. Szczegóły cenowe znajdziesz w artykule [ile kosztuje lot akrobacyjny](/blog/ile-kosztuje-lot-akrobacyjny).
@@ -57,9 +57,9 @@ Jak widać, [akrobacja.com](/lot-akrobacyjny) oferuje **największy wybór pakie
 
 Pierwszy Lot
 
-1 999 PLN
+2 111 PLN
 
-15 min lotu. Podstawowe figury akrobacyjne: beczka, looping, immelman. Do +4G. Idealny na start, Twój pierwszy kontakt z akrobacją.
+do 10 min lotu. Podstawowe figury akrobacyjne: beczka, looping, immelman. Do +4G. Idealny na start, Twój pierwszy kontakt z akrobacją.
 
 [WYBIERAM](/lot-akrobacyjny)
 
@@ -91,7 +91,7 @@ Nie wiesz, który pakiet wybrać? Napisz do nas, [WhatsApp](https://wa.me/485355
 
 ### Ile kosztuje lot akrobacyjny w Warszawie?
 
-**Lot akrobacyjny w okolicach Warszawy** kosztuje od **1 999 PLN** (pakiet Pierwszy Lot, 15 min) do **4 999 PLN** (pakiet Masterclass, do 50 min w powietrzu). Najchętniej wybierany pakiet Adrenalina to **2 999 PLN** za 20 min pełnego programu akrobacyjnego z nagraniem video. Ceny zawierają briefing, paliwo, ubezpieczenie i czas pilota. Aktualny [cennik lotów akrobacyjnych](/blog/ile-kosztuje-lot-akrobacyjny).
+**Lot akrobacyjny w okolicach Warszawy** kosztuje od **2 111 PLN** (pakiet Pierwszy Lot, do 10 min) do **4 999 PLN** (pakiet Masterclass, do 50 min w powietrzu). Najchętniej wybierany pakiet Adrenalina to **2 999 PLN** za 20 min pełnego programu akrobacyjnego z nagraniem video. Ceny zawierają briefing, paliwo, ubezpieczenie i czas pilota. Aktualny [cennik lotów akrobacyjnych](/blog/ile-kosztuje-lot-akrobacyjny).
 
 ### Jak daleko jest lotnisko z Warszawy?
 
@@ -107,6 +107,6 @@ Ceny promocyjne, tylko do końca miesiąca
 
 Wybierz pakiet i zarezerwuj termin. Dojazd z Warszawy, 1,5h trasą S7.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz do nas na WhatsApp](https://wa.me/48535535221)

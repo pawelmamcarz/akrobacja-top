@@ -67,7 +67,7 @@ Voucher na Lot Akrobacyjny
 Prezent, Którego Nie Zapomni
 Lot Akrobacyjny Extra 300L
 Voucher PDF w 3 Minuty
-Od 1999 zł — Płatność Online
+Od 2111 zł — Płatność Online
 Pilot z 3 000+ h Doświadczenia
 Ważny 12 Miesięcy
 Mistrz Polski w Akrobacji
@@ -86,7 +86,7 @@ Gwarancja Zwrotu 14 Dni
 Voucher PDF na lot akrobacyjny Extra 300L. W mailu w kilka minut, ważny 12 miesięcy. Płatność online — Blik, karta, P24.
 Pilot o 3 000+ h doświadczenia. Figury do +6G w certyfikowanym Extra 300L. 187 weryfikowanych opinii — 4.9/5.
 Prezent, którego nie zapomni nigdy. Zero planowania — kupujesz, dostajesz PDF, on sam umawia lot. Gwarancja 14 dni.
-Od 1999 zł za 15 min do 4999 zł za Masterclass z Mistrzem Polski. Faktura VAT dla firm. Radom, 1h z Warszawy.
+Od 2111 zł (do 10 min lotu) do 4999 zł za Masterclass z Mistrzem Polski. Faktura VAT dla firm. Radom, 1h z Warszawy.
 ```
 
 ---
@@ -112,13 +112,13 @@ Nie Krawat. Lot Akrobacyjny.
 Prezent Który Opowiada Latami
 Idealny Prezent Ślubny / Kawalerski
 Prezent Na Dzień Ojca
-Od 1999 zł · Voucher 12 Miesięcy
+Od 2111 zł · Voucher 12 Miesięcy
 ```
 
 ### Descriptions (4):
 
 ```
-Koniec z krawatami. Kup voucher na lot akrobacyjny — PDF natychmiast, ważny rok. Od 1999 zł. On sam umawia termin.
+Koniec z krawatami. Kup voucher na lot akrobacyjny — PDF natychmiast, ważny rok. Od 2111 zł. On sam umawia termin.
 Prezent firmowy dla kontrahenta? Faktura VAT, elegancki PDF, zero logistyki. 187 opinii 4.9/5 — sprawdzony.
 Na 30, 40, 50-tkę. Kawalerski. Dzień Ojca. Komunia. Lot akrobacyjny Extra 300L to wspomnienie na lata — nie przedmiot.
 Wielokrotny Mistrz Polski, 3 000+ h w powietrzu, certyfikowany samolot do +10G. Bezpieczeństwo to procedura, nie slogan.
@@ -233,7 +233,7 @@ Dla „firmowy" i „integracja" kampanii — dodatkowo:
 - **Video:** YouTube `SlSr4NH2ftQ` (już używane na `/`)
 - **Headlines:** te same co z „Generic" powyżej
 - **Long headlines (3):**
-  - `Voucher na Lot Akrobacyjny Extra 300L — Prezent PDF od 1999 zł`
+  - `Voucher na Lot Akrobacyjny Extra 300L — Prezent PDF od 2111 zł`
   - `Prezent Dla Niego, Który Zapamięta Na Zawsze — Lot z Mistrzem Polski`
   - `Lot Akrobacyjny w Prezencie. PDF w Mailu w 3 Minuty. Ważny 12 Miesięcy.`
 - **Descriptions:** te same co z „Generic"
@@ -294,7 +294,7 @@ GOOGLE_ADS_PURCHASE_LABEL = XXXXXXXXXXXXXX     # nadpisuje 3g00CNLcnZwcElCm8roD
 
 ### Weryfikacja
 
-1. **Tag Assistant (Chrome)** → wejdź na `/sukces?code=AKR-TEST-TEST&amount=1999&pkg=pierwszy_lot` → kliknij „Zgoda na wszystkie" w cookie banner → Tag Assistant powinien pokazać konwersję `Zakup Vouchera` jako wykryta
+1. **Tag Assistant (Chrome)** → wejdź na `/sukces?code=AKR-TEST-TEST&amount=2111&pkg=pierwszy_lot` → kliknij „Zgoda na wszystkie" w cookie banner → Tag Assistant powinien pokazać konwersję `Zakup Vouchera` jako wykryta
 2. **Google Ads → Conversions** → Status powinien być `Recording conversions` (po ~30 min od pierwszego eventu)
 3. **DevTools → Network → filter `google.com`** → szukaj request do `pagead/conversion/928813824/` (po consent grant)
 
@@ -408,7 +408,7 @@ Kod wstrzykuje już `user_properties.page_type` (home / voucher_landing / produc
 ## 12. Plan Day 1–30 — uruchamianie krok po kroku
 
 ### Dzień 1 (dziś, po konfiguracji konwersji):
-- [ ] Test `/sukces?code=AKR-TEST-TEST&amount=1999&pkg=pierwszy_lot` w Tag Assistant → potwierdź purchase + conversion
+- [ ] Test `/sukces?code=AKR-TEST-TEST&amount=2111&pkg=pierwszy_lot` w Tag Assistant → potwierdź purchase + conversion
 - [ ] Włącz **Search Generic** — budżet 40 zł/dzień, Max Clicks (bez Max Conversions dopóki 0 konwersji)
 - [ ] Włącz **PMax** — budżet 50 zł/dzień, Max Conversion Value (bez tROAS dopóki brak danych)
 - [ ] Utwórz wszystkie 7 audiences (§ 11) — potrzebują 30 członków żeby się aktywować
@@ -513,7 +513,7 @@ Przy tym evencie CAPI pokazuje się w Events Manager → Test Events tab (nie tr
 **Kreacje (3 warianty po 1080×1080 i 1080×1920):**
 
 1. **Emocjonalny** — zdjęcie z lotu / hero takeoff + text overlay „Prezent, którego NIE ZAPOMNI"
-2. **Produktowy** — kokpit + 3 pakiety z cenami „Voucher od 1999 zł · PDF w mailu"
+2. **Produktowy** — kokpit + 3 pakiety z cenami „Voucher od 2111 zł · PDF w mailu"
 3. **Video** — clip z YouTube `SlSr4NH2ftQ` (first 15s) + CTA „Kup voucher →"
 
 **Primary text (body):**
@@ -522,11 +522,11 @@ Kup voucher na lot akrobacyjny Extra 300L.
 PDF w mailu w kilka minut. Ważny 12 miesięcy.
 Pilot z 3 000+ h doświadczenia — 187 opinii 4.9/5.
 
-Od 1999 zł. Zero logistyki. Ty kupujesz, on leci.
+Od 2111 zł. Zero logistyki. Ty kupujesz, on leci.
 ```
 
 **Headline:** `Lot Akrobacyjny Extra 300L · Voucher PDF`
-**Description:** `Idealny prezent dla faceta. Od 1999 zł.`
+**Description:** `Idealny prezent dla faceta. Od 2111 zł.`
 **CTA:** `Shop Now` (Sklep teraz)
 **URL:** `https://akrobacja.com/voucher-prezent?utm_source=meta&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}`
 
@@ -661,7 +661,7 @@ Aby dodać kolejny kod — np. `URODZINY10` na kampanię urodzinową — wystarc
 
 ## 16. Test konwersji — produkt 1 zł „Naklejka testowa"
 
-Dedykowany flow do weryfikacji **końcowej konwersji** z prawdziwą transakcją w Stripe live mode (tańsze niż voucher za 1999 zł).
+Dedykowany flow do weryfikacji **końcowej konwersji** z prawdziwą transakcją w Stripe live mode (tańsze niż voucher za 2111 zł).
 
 ### Gdzie
 
@@ -911,7 +911,7 @@ Audience: wszyscy odwiedzający `akrobacja.com` w ostatnich 30 dniach. Keywords:
 Lot Akrobacyjny Extra 300L
 Z Mistrzem Świata Akrobacji
 Voucher PDF w 2 Minuty
-Od 1 999 zł, Kod -100 zł
+Od 2 111 zł, Kod -100 zł
 Prezent, Który Zapamiętają
 Radom, 100 km z Warszawy
 Mistrz Świata 2022 za Sterami
@@ -919,7 +919,7 @@ Ważny 12 Miesięcy
 +6G, -2G, Pełna Akrobacja
 Bezpłatne Przełożenie Terminu
 ★ 5.0 / 8 Opinii
-3 Pakiety, od 1 999 zł
+3 Pakiety, od 2 111 zł
 Dokończ Zakup, Kod PIERWSZY100
 4 000+ h Nalotu Pilota
 Kup w 2 Minuty Online
@@ -929,7 +929,7 @@ Kup w 2 Minuty Online
 ```
 1. Lot akrobacyjny z Mistrzem Świata 2022. Extra 300L, +6G, pętle, beczki. Voucher PDF natychmiast. Kod PIERWSZY100 = -100 zł.
 
-2. Najlepszy prezent 2026 dla poszukiwacza adrenaliny. 3 pakiety od 1 999 zł. PDF w mailu w 2 min. Ważny 12 miesięcy.
+2. Najlepszy prezent 2026 dla poszukiwacza adrenaliny. 3 pakiety od 2 111 zł. PDF w mailu w 2 min. Ważny 12 miesięcy.
 
 3. Lotnisko Radom-Piastów (EPRP), 1h 15 min z Warszawy trasą S7. Pilot: 4 000+ h nalotu, 3× Mistrz Polski.
 
@@ -1000,7 +1000,7 @@ Dzień dobry,
 Nazywam się [imię], reprezentuję akrobacja.com, platformę lotów akrobacyjnych Extra 300L z Mistrzem Świata 2022 Maciejem Kulaszewskim.
 
 Proponuję włączenie naszych voucherów do Państwa oferty:
-- 3 pakiety: 1 999 zł / 2 999 zł / 4 999 zł
+- 3 pakiety: 2 111 zł / 2 999 zł / 4 999 zł
 - PDF voucher natychmiast po zakupie
 - 15% prowizji dla Państwa firmy
 - Ważność 12 miesięcy, realizacja Radom (1h z Warszawy)

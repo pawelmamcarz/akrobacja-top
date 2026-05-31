@@ -148,9 +148,9 @@ Rynek lotów akrobacyjnych w Polsce jest stosunkowo mały, co ogranicza porówny
 
 - **Podstawowe loty akrobacyjne** (1-2 figury, samolot kategorii Utility/Aerobatic, pilot bez tytułów sportowych): 1 500-1 800 PLN za 15 min
 - **Loty z pełnym programem** (Extra 300L lub Pitts, pilot z doświadczeniem zawodniczym): 2 000-3 500 PLN za 15-25 min
-- **Premium z Mistrzem Świata** (na akrobacja.com): 1 999-4 999 PLN, pakiety 15-50 min
+- **Premium z Mistrzem Świata** (na akrobacja.com): 2 111-4 999 PLN, pakiety do 10-50 min
 
-Na akrobacja.com mamy trzy pakiety. Pakiet **Pierwszy Lot** (1 999 PLN, 15 min, figury podstawowe) to dobry start dla kogoś, kto nigdy nie leciał akrobacyjnie. Pakiet **Adrenalina** (2 999 PLN, 20 min, do +6G, wideo z kokpitu w cenie) to bestseller, pełny program. Pakiet **Masterclass** (4 999 PLN, 2 loty, do 50 min, figury zaawansowane) jest dla pilotów z PPL(A). Szczegóły i rezerwacja na stronie [lot akrobacyjny](/lot-akrobacyjny).
+Na akrobacja.com mamy trzy pakiety. Pakiet **Pierwszy Lot** (2 111 PLN, do 10 min, figury podstawowe) to dobry start dla kogoś, kto nigdy nie leciał akrobacyjnie. Pakiet **Adrenalina** (2 999 PLN, 20 min, do +6G, wideo z kokpitu w cenie) to bestseller, pełny program. Pakiet **Masterclass** (4 999 PLN, 2 loty, do 50 min, figury zaawansowane) jest dla pilotów z PPL(A). Szczegóły i rezerwacja na stronie [lot akrobacyjny](/lot-akrobacyjny).
 
 Co wchodzi w cenę: briefing, czas w powietrzu, paliwo, kombinezon, kask, spadochron, ubezpieczenie OC+NNW, certyfikat lotu, debriefing. Wideo 360° z kokpitu to opcja za 299 PLN. Nie ma żadnych ukrytych opłat.
 
@@ -196,6 +196,6 @@ Na lotnisku Radom-Piastów (EPRP), 100 km od Warszawy, dojazd S7 ok. 1,5 godziny
 
 Extra 300L SP-EKS czeka na Ciebie na lotnisku Radom-Piastów. Wybierz pakiet i zarezerwuj termin online.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz do nas na WhatsApp](https://wa.me/48535535221)

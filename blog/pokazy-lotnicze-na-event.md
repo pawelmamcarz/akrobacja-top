@@ -141,7 +141,7 @@ Pokaz akrobacyjny nie wymaga pasa startowego w miejscu eventu - samolot startuje
 Oprócz standardowego pokazu oferujemy rozszerzenia, które mogą wzbogacić Twój event:
 
   
-    - **Loty VIP z pasażerami** - do 5 lotów akrobacyjnych z wybranymi gośćmi. Każdy lot to 15 minut adrenaliny w kokpicie Extra 300L. Idealne jako nagroda w konkursie, upominek dla kluczowych klientów lub niezapomniany prezent dla szefa. Ceny lotów akrobacyjnych od 1 999 PLN za lot.
+    - **Loty VIP z pasażerami** - do 5 lotów akrobacyjnych z wybranymi gośćmi. Każdy lot to do 10 minut adrenaliny w kokpicie Extra 300L. Idealne jako nagroda w konkursie, upominek dla kluczowych klientów lub niezapomniany prezent dla szefa. Ceny lotów akrobacyjnych od 2 111 PLN za lot.
 
     - **Branding samolotu** - tymczasowe oklejenie samolotu logo Twojej firmy. Extra 300L z Twoim brandem lecący nad eventem to reklama, której nie da się przeoczyć. Realizacja w ciągu 2-3 dni roboczych, usunięcie po evencie bez śladu.
 

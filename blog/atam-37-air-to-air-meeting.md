@@ -56,6 +56,6 @@ Dziękujemy **wszystkim fotografom ATAM #37** za przyjazd i robotę w powietrzu,
 
 ## Chcesz polecieć Extra 300L?
 
-Sesja air-to-air to format zamknięty, ale **vouchery na loty akrobacyjne** z SP-EKS są dostępne na bieżąco. Cztery pakiety od 1 999 do 4 999 PLN, baza Radom-Piastów (EPRP), godzina jazdy z Warszawy. Pełna oferta na stronie [voucher na lot akrobacyjny](/voucher-prezent), terminy w [kalendarzu](/kalendarz).
+Sesja air-to-air to format zamknięty, ale **vouchery na loty akrobacyjne** z SP-EKS są dostępne na bieżąco. Cztery pakiety od 2 111 do 4 999 PLN, baza Radom-Piastów (EPRP), godzina jazdy z Warszawy. Pełna oferta na stronie [voucher na lot akrobacyjny](/voucher-prezent), terminy w [kalendarzu](/kalendarz).
 
 A jeśli chcesz, żeby Extra 300L wystąpiła na Twoim evencie - sprawdź ofertę [pokazów lotniczych](/pokazy-lotnicze). Pakiety Solo / Event / Premium, koordynacja z PAŻP w cenie.

@@ -16,9 +16,9 @@ Ty dajesz ten impuls. Voucher na lot akrobacyjny to nie jest prezent, przy któr
 
 ## Jakie pakiety mamy w ofercie?
 
-### Pierwszy Lot, 1 999 PLN
+### Pierwszy Lot, 2 111 PLN
 
-15 minut akrobacji, pętle, beczki, lot na plecach. Idealne wprowadzenie w świat wyższego pilotażu. Pilot tłumaczy każdą figurę, dostosowuje intensywność do możliwości pasażera. Żadnych niespodzianek, sama czysta adrenalina.
+Do 10 minut akrobacji, pętle, beczki, lot na plecach. Idealne wprowadzenie w świat wyższego pilotażu. Pilot tłumaczy każdą figurę, dostosowuje intensywność do możliwości pasażera. Żadnych niespodzianek, sama czysta adrenalina.
 
 ### Adrenalina, 2 999 PLN
 
@@ -40,7 +40,7 @@ Lotnisko **Radom-Piastów (EPRP)**, godzina drogi od Warszawy trasą S7. Cała w
 
 ### Ile kosztuje lot akrobacyjny na 40 urodziny?
 
-Od 1999 PLN (Pierwszy Lot) do 4999 PLN (Masterclass). Voucher PDF gotowy do wręczenia od razu po zakupie online.
+Od 2111 PLN (Pierwszy Lot) do 4999 PLN (Masterclass). Voucher PDF gotowy do wręczenia od razu po zakupie online.
 
 ### Czy lot akrobacyjny to dobry pomysł na 40 urodziny?
 
@@ -54,6 +54,6 @@ Nie. Pasażer nie musi umieć latać. Pilot Maciej Kulaszewski prowadzi samolot 
 
 Voucher PDF w 60 sekund. BLIK, Apple Pay, karta. Ważny 12 miesięcy.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz na WhatsApp, pomożemy wybrać pakiet](https://wa.me/48535535221)

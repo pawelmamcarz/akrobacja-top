@@ -66,7 +66,7 @@ Zamiast kolejnego paintballa lub eventu w hotelu, uczestnicy wychodzą z certyfi
 
 ## Pakiety i ceny
 
-Trzy pakiety: Pierwszy Lot (do 15 min, 1 999 PLN), Adrenalina (20 min + pełny program, 2 999 PLN), Masterclass dla pilotów PPL(A) (do 50 min, 4 999 PLN). Voucher ważny 12 miesięcy, termin lotu ustalasz indywidualnie. Pełne opisy i szczegóły techniczne na [stronie głównej pakietów](/lot-akrobacyjny#pakiety).
+Trzy pakiety: Pierwszy Lot (do 10 min, 2 111 PLN), Adrenalina (20 min + pełny program, 2 999 PLN), Masterclass dla pilotów PPL(A) (do 50 min, 4 999 PLN). Voucher ważny 12 miesięcy, termin lotu ustalasz indywidualnie. Pełne opisy i szczegóły techniczne na [stronie głównej pakietów](/lot-akrobacyjny#pakiety).
 
 ## FAQ z Grodziska
 

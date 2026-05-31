@@ -40,7 +40,7 @@ Dla grupy przyjaciół z okolic Siedlec i Mińska Radom-Piastów jest logistyczn
 
 ## Pakiety i ceny
 
-Dostępne są trzy pakiety: Pierwszy Lot (od 1 999 zł, do 15 min w powietrzu), Adrenalina (2 999 zł, 20 min, pełny program) oraz Masterclass (4 999 zł, do 50 min, dla posiadaczy PPL(A)). Voucher ważny 12 miesięcy, termin ustalasz indywidualnie. [Lot akrobacyjny](/lot-akrobacyjny) kupisz bezpośrednio online, płatność kartą lub BLIK.
+Dostępne są trzy pakiety: Pierwszy Lot (od 2 111 zł, do 10 min w powietrzu), Adrenalina (2 999 zł, 20 min, pełny program) oraz Masterclass (4 999 zł, do 50 min, dla posiadaczy PPL(A)). Voucher ważny 12 miesięcy, termin ustalasz indywidualnie. [Lot akrobacyjny](/lot-akrobacyjny) kupisz bezpośrednio online, płatność kartą lub BLIK.
 
 Pełny opis pakietów z listą figur i opcją zakupu: [akrobacja.com/lot-akrobacyjny#pakiety](/lot-akrobacyjny#pakiety).
 

@@ -55,16 +55,16 @@ Pelnoprawna analiza profilu linkow wymaga narzedzi platnych (Ahrefs, Semrush). P
 
 3. **Dodaj link do rezerwacji.** W GBP Dashboard: Edytuj profil > "Linki" > "Zarezerwuj wizyte". Wstaw: `https://akrobacja.com/#pakiety`.
 
-4. **Dodaj uslugi.** W GBP > "Uslugi": Pierwszy Lot (1 999 PLN, 15 min), Adrenalina (2 999 PLN, 20 min), Masterclass (4 999 PLN), Camp (szkolenie akrobacji), FCL.800 (kurs z dofinansowaniem).
+4. **Dodaj uslugi.** W GBP > "Uslugi": Pierwszy Lot (2 111 PLN, do 10 min), Adrenalina (2 999 PLN, 20 min), Masterclass (4 999 PLN), Camp (szkolenie akrobacji), FCL.800 (kurs z dofinansowaniem).
 
 5. **Zbieraj opinie aktywnie.** 8 to za malo. Kazdemu pasazerowi po locie wyslij SMS z linkiem do recenzji (przez post-flight-review-sms cron, ktory juz dziala). Cel: 30 opinii do konca sezonu 2026.
 
 6. **Publikuj posty GBP co tydzien.** Cztery szablony do rotacji:
 
-   - *Nowy voucher:* "Voucher na lot akrobacyjny Extra 300L z Mistrzem Swiata 2022 od 1 999 PLN. Idealna niespodzianka urodzinowa. Zamow na akrobacja.com."
+   - *Nowy voucher:* "Voucher na lot akrobacyjny Extra 300L z Mistrzem Swiata 2022 od 2 111 PLN. Idealna niespodzianka urodzinowa. Zamow na akrobacja.com."
    - *Wolny termin w tygodniu:* "Wolne miejsce w [dzien], [data]. Extra 300L gotowy na EPRP. Rezerwacja przez WhatsApp lub akrobacja.com."
    - *Lot z mistrzem:* "Kolejny gos'c Macieja Kulaszewskiego wladowal bezpiecznie po programie pelnej akrobacji. Dziekujemy za zaufanie. Twoja kolej?"
-   - *Promocja sezonowa:* "Sezon 2026 w pelni. Do konca [miesiac]: voucher Adrenalina (20 min) w tej samej cenie co Pierwszy Lot (15 min). Ilosc ograniczona."
+   - *Promocja sezonowa:* "Sezon 2026 w pelni. Do konca [miesiac]: voucher Adrenalina (20 min) w tej samej cenie co Pierwszy Lot (do 10 min). Ilosc ograniczona."
 
 7. **Dodaj zdjecia (10 kategorii, min. 1 zdjecie na kategorie):**
    kabina Extra 300L od srodka, samolot na plytce EPRP, pasazer wkladajacy kask, briefing przy tablicy, lot w powietrzu (zewn.), kombinezon i sprzet, panorama lotniska Piastow, Maciej Kulaszewski w kokpicie, wydrukowany voucher, pamiatka po locie (foto z ramka)

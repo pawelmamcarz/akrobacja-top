@@ -131,6 +131,6 @@ Lycoming AEIO-580 w Extra 300L to silnik specjalnie projektowany do akrobacji, z
 
 Extra 300L SP-EKS i Maciej Kulaszewski na Ciebie czekają. Zarezerwuj termin online.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz na WhatsApp](https://wa.me/48535535221)

@@ -14,6 +14,8 @@ export const NOINDEX_PATHS = new Set([
 ]);
 
 export const LEGACY_REDIRECTS: Record<string, string> = {
+  '/dostepnosc': '/lot-akrobacyjny-dostepny',
+  '/dostepnosc/': '/lot-akrobacyjny-dostepny',
   '/flota': '/blog/extra-300l-samolot-akrobacyjny',
   '/flota/': '/blog/extra-300l-samolot-akrobacyjny',
   '/szkolenia': '/blog/kurs-akrobacji-fcl800',

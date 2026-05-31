@@ -107,4 +107,4 @@ Większość osób po wyjściu z kokpitu mówi to samo zdanie: **"Chcę jeszcze 
 
     Napisz na WhatsApp
     
-Lot akrobacyjny od 1999 PLN &middot; Lotnisko Radom-Piastów EPRP
+Lot akrobacyjny od 2111 PLN &middot; Lotnisko Radom-Piastów EPRP

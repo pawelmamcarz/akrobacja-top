@@ -40,7 +40,7 @@ Jeśli chcecie lecieć w kilka osób - nie ma problemu. Loty odbywają się jede
 W akrobacja.com oferujemy trzy pakiety, które różnią się czasem trwania i intensywnością figur:
 
   
-    - **Pierwszy Lot (od 1 999 PLN)** - 15 minut akrobacji, idealne wprowadzenie. Pętle, beczki, loty na plecach. Dla tych, którzy chcą spróbować i poczuć, czym jest akrobacja. Idealny wybór, jeśli pan młody nigdy nie latał akrobacyjnie.
+    - **Pierwszy Lot (od 2 111 PLN)** - do 10 minut akrobacji, idealne wprowadzenie. Pętle, beczki, loty na plecach. Dla tych, którzy chcą spróbować i poczuć, czym jest akrobacja. Idealny wybór, jeśli pan młody nigdy nie latał akrobacyjnie.
 
     - **Adrenalina (od 2 999 PLN)** - 20 minut intensywnej akrobacji. Wszystkie figury z pakietu Pierwszy Lot plus hammerhead, korkociąg, przeciążenia do +5G. Dla tych, którzy chcą więcej i nie boją się mocnych wrażeń.
 

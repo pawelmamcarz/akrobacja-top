@@ -91,6 +91,81 @@ export async function sendVoucherEmail(env: Env, params: EmailParams): Promise<v
   }
 }
 
+interface DiplomaEmailParams {
+  to: string;
+  participantName: string;
+  voucherCode: string;
+  packageId: PackageId;
+  pdfBytes: Uint8Array;
+}
+
+// Mail z dyplomem uczestnika - wysylany po locie (oznaczenie 'Wykorzystaj').
+export async function sendDiplomaEmail(env: Env, params: DiplomaEmailParams): Promise<void> {
+  const pkg = PACKAGES[params.packageId];
+  const pdfBase64 = uint8ToBase64(params.pdfBytes);
+
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+    },
+    body: JSON.stringify({
+      from: 'akrobacja.com <voucher@akrobacja.com>',
+      to: [params.to],
+      bcc: ['pawel@mamcarz.com', 'maciej.kulaszewski@gmail.com'],
+      reply_to: 'voucher@akrobacja.com',
+      subject: `Twój dyplom uczestnika - ${params.voucherCode}`,
+      tags: [
+        { name: 'type', value: 'diploma' },
+        { name: 'package', value: params.packageId },
+      ],
+      html: `<!DOCTYPE html>
+<html lang="pl">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;font-family:Arial,sans-serif;background:#f5f7fa">
+  <div style="max-width:600px;margin:0 auto;background:#fff">
+    <div style="background:#0A2F7C;padding:40px;text-align:center">
+      <img src="https://akrobacja.com/assets/logo-mark-white.png" alt="" width="62" height="50" style="display:block;margin:0 auto 14px;height:50px;width:auto;border:0" />
+      <h1 style="color:#fff;margin:0;font-size:28px">akrobacja.com</h1>
+      <p style="color:rgba(255,255,255,0.7);margin:8px 0 0;font-size:13px">Extra 300L · SP-EKS</p>
+    </div>
+    <div style="padding:40px">
+      <h2 style="color:#0A2F7C;margin:0 0 8px;font-size:22px">Gratulacje, ${escapeHtml(params.participantName)}!</h2>
+      <p style="color:#6B7A90;line-height:1.6;margin:0 0 24px">
+        Lot akrobacyjny w pakiecie <strong>${pkg.name}</strong> za Tobą. W załączniku znajdziesz <strong>imienny dyplom uczestnika</strong> z podpisem pilota prowadzącego. Pochwal się nim!
+      </p>
+      <div style="background:linear-gradient(135deg,#fff5e6 0%,#ffe8b8 100%);border-left:4px solid #f59e0b;padding:18px 22px;border-radius:6px;margin-bottom:8px">
+        <p style="color:#0A2F7C;font-size:14px;font-weight:700;margin:0 0 6px">⭐⭐⭐⭐⭐ Zostawisz nam opinię?</p>
+        <p style="color:#6B7A90;font-size:13px;line-height:1.5;margin:0 0 12px">Pomagasz innym zdecydować się na lot z Mistrzem Świata. 30 sekund Twojego czasu znaczy dla nas dużo.</p>
+        <a href="${GOOGLE_REVIEW_URL}" style="display:inline-block;background:#0A2F7C;color:#fff;text-decoration:none;padding:10px 20px;font-weight:700;font-size:13px;border-radius:4px">Zostaw opinię na Google →</a>
+      </div>
+    </div>
+    <div style="background:#0A2F7C;padding:24px;text-align:center">
+      <p style="color:rgba(255,255,255,0.5);font-size:11px;margin:0">
+        akrobacja.com · Lotnisko Radom-Piastów (EPRP) · +48 535 535 221
+      </p>
+    </div>
+  </div>
+</body>
+</html>`,
+      attachments: [
+        {
+          filename: `dyplom-${params.voucherCode}.pdf`,
+          content: pdfBase64,
+          content_type: 'application/pdf',
+        },
+      ],
+    }),
+    signal: AbortSignal.timeout(10000),
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`Resend diploma error ${res.status}: ${text}`);
+  }
+}
+
 function buildHtml(p: EmailParams, nextSlotsHtml = ''): string {
   const pkg = PACKAGES[p.packageId];
   return `

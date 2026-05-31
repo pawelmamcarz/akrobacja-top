@@ -6,7 +6,7 @@
 
 # Figury akrobacyjne, od pętli po lot odwrócony. Co poczujesz w kokpicie Extra 300L
 
-**Szybka odpowiedź:** Podstawowe **figury akrobacyjne** to **pętla** (loop, +3-5G), **beczka** (roll, +1-2G), **immelmann** (+3-4G), **hammerhead** (0G na szczycie) i **lot odwrócony** (-1G do -2G). Każda figura ma swój symbol w międzynarodowym **systemie Aresti**. W akrobacja.com wykonujemy je wszystkie na [Extra 300L SP-EKS](/blog/extra-300l-samolot-akrobacyjny), [od 1 999 PLN](/lot-akrobacyjny).
+**Szybka odpowiedź:** Podstawowe **figury akrobacyjne** to **pętla** (loop, +3-5G), **beczka** (roll, +1-2G), **immelmann** (+3-4G), **hammerhead** (0G na szczycie) i **lot odwrócony** (-1G do -2G). Każda figura ma swój symbol w międzynarodowym **systemie Aresti**. W akrobacja.com wykonujemy je wszystkie na [Extra 300L SP-EKS](/blog/extra-300l-samolot-akrobacyjny), [od 2 111 PLN](/lot-akrobacyjny).
 
 Kiedy patrzysz na samolot akrobacyjny podczas pokazu lotniczego, widzisz sekwencję figur, które wyglądają jak taniec w trzech wymiarach. Ale za każdą **pętlą**, **beczką** czy **immelmmannem** kryje się precyzyjna fizyka, konkretne przeciążenia, prędkości wejścia i kąty. Każda **figura akrobacji lotniczej** jest skodyfikowana w międzynarodowym [systemie zapisu](/blog/historia-akrobacji-lotniczej), który pilot musi znać na pamięć.
 

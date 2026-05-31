@@ -23,7 +23,7 @@ Mieszkasz w Krakowie i szukasz lotu akrobacyjnego? W Małopolsce nie ma żadnego
 
 ## Co mówią pasażerowie z Krakowa
 
-Najczęstsza opinia: "Bałem się długiej drogi, ale po locie 220 km wstecz przeszło bez śladu". Akrobacja zostawia wrażenia, które zdominowują wszystko inne w pamięci dnia. Z Krakowa do nas to ~220 km jednym hopem A4+S7. [Pakiety lotu akrobacyjnego](/lot-akrobacyjny) startują od 1 999 PLN.
+Najczęstsza opinia: "Bałem się długiej drogi, ale po locie 220 km wstecz przeszło bez śladu". Akrobacja zostawia wrażenia, które zdominowują wszystko inne w pamięci dnia. Z Krakowa do nas to ~220 km jednym hopem A4+S7. [Pakiety lotu akrobacyjnego](/lot-akrobacyjny) startują od 2 111 PLN.
 
 [✈️ Sprawdź wolne terminy z Krakowa](/kalendarz)
 

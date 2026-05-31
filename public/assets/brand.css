@@ -714,3 +714,25 @@ footer h3, footer h4, footer .footer-title {
   letter-spacing: .25em;
   text-transform: uppercase;
 }
+
+/* ─── Dostepnosc (a11y) ─────────────────────────────────────────────────── */
+/* Tresc tylko dla czytnikow ekranu (etykiety, opisy kontekstowe). */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+/* Widoczny wskaznik fokusu dla nawigacji klawiatura. */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 3px solid var(--cyan, #2BB3FF);
+  outline-offset: 2px;
+}
+/* Szanuj preferencje uzytkownikow wrazliwych na ruch. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

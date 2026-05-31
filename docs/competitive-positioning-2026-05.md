@@ -86,17 +86,17 @@ Radom-Piastów to lotnisko komunikacyjne z regularną infrastrukturą. Wąsewo t
 
 ## 3. Opcje cenowe
 
-### Opcja A: Utrzymanie premium (1 999 / 2 999 / 4 999 PLN)
+### Opcja A: Utrzymanie premium (2 111 / 2 999 / 4 999 PLN)
 
 **Za:** Spójność wizerunkowa. Klient który przyszedł po Mistrza Swiata nie jest wrażliwy cenowo; kanibalizacja wewnętrzna zerowa. Pozwala utrzymać marżę i inwestować w jakość (nowe filmy, foto, obsługa). Nie angażujemy się w wojnę cenową z Aeroklubem.
 
-**Przeciw:** Na head term "lot akrobacyjny" pierwsze kliknięcie idzie do 1 500 PLN Targor. Klient ktory nie zna Macieja widzi 1 500 vs 1 999 bez kontekstu. Bez przebicia się na pozycje 1-5 tracmy volumetryczny ruch.
+**Przeciw:** Na head term "lot akrobacyjny" pierwsze kliknięcie idzie do 1 500 PLN Targor. Klient ktory nie zna Macieja widzi 1 500 vs 2 111 bez kontekstu. Bez przebicia się na pozycje 1-5 tracmy volumetryczny ruch.
 
 ### Opcja B: Dodanie pakietu "Pierwszy Lot Light" 1 599-1 699 PLN
 
 **Za:** Bezpośrednio matchuje Super Prezenty Aeroklubu (1 599 PLN) i Targor (1 500 PLN). Obniża barierę wejścia; klient który kupił Light wraca na Adrenalina. Wzmacnia pozycję w marketplace gdzie filtrowanie cenowe jest kluczowe.
 
-**Przeciw:** Ryzyko kanibalizacji Pierwszego Lotu 1 999 PLN (30% klientów może zejść z pakietu). Operacyjnie: Light musi oferować krótsz czas lub mniej figur, co trudno zakomunikować premium. Może zepsuć brand positioning "premium aerobatics".
+**Przeciw:** Ryzyko kanibalizacji Pierwszego Lotu 2 111 PLN (30% klientów może zejść z pakietu). Operacyjnie: Light musi oferować krótsz czas lub mniej figur, co trudno zakomunikować premium. Może zepsuć brand positioning "premium aerobatics".
 
 ### Opcja C: Promocja sezonowa "20% off intro" bez zmiany SKU
 
@@ -114,7 +114,7 @@ Radom-Piastów to lotnisko komunikacyjne z regularną infrastrukturą. Wąsewo t
 `Lot Akrobacyjny z Mistrzem Swiata 2022 | Extra 300L`
 
 **Meta description (154 znaki):**
-`Maciej Kulaszewski, Mistrz Swiata FAI 2022, zaprasza na lot Extra 300L w Radomiu. Voucher PDF w 60 sek. Pakiety od 1 999 PLN. Rezerwacja online.`
+`Maciej Kulaszewski, Mistrz Swiata FAI 2022, zaprasza na lot Extra 300L w Radomiu. Voucher PDF w 60 sek. Pakiety od 2 111 PLN. Rezerwacja online.`
 
 **Kat kotwicy:** Trust i unikalnosc; dla klienta ktory zna sport lotniczy lub szuka prestiżu.
 
@@ -124,14 +124,14 @@ Radom-Piastów to lotnisko komunikacyjne z regularną infrastrukturą. Wąsewo t
 `Extra 300L Akrobacje | Voucher Lot Akrobacyjny | EPRP`
 
 **Meta description (155 znaki):**
-`Extra 300L, +6G/-3G, pełne ubezpieczenie, 12 miesięcy ważności. Loty akrobacyjne w Radomiu-Piastowie z certyfikowanym ATO. Od 1 999 PLN.`
+`Extra 300L, +6G/-3G, pełne ubezpieczenie, 12 miesięcy ważności. Loty akrobacyjne w Radomiu-Piastowie z certyfikowanym ATO. Od 2 111 PLN.`
 
 **Kat kotwicy:** Specyfikacja i bezpieczenstwo; dla klienta ktory porownuje samoloty.
 
 ### Wariant C: "Voucher prezent + szybka dostawa" lead
 
 **Title (61 znaki):**
-`Voucher Lot Akrobacyjny | PDF 60 sek | od 1 999 PLN`
+`Voucher Lot Akrobacyjny | PDF 60 sek | od 2 111 PLN`
 
 **Meta description (153 znaki):**
 `Idealny prezent: voucher na lot akrobacyjny Extra 300L. PDF natychmiast, fizyczny w kopercie. Pilot Mistrz Swiata 2022. Ważny 12 miesięcy.`
@@ -180,7 +180,7 @@ Priorytet ochrony: nazwa "Lot z Mistrzem Swiata" lub "Akrobacja Extra" jako phra
 ### Dni 0-30: fundament
 
 - [ ] On-page SEO: dodaj `meta description` wariant A do strony glownej; dodaj schema `Product` + `Person` dla Macieja
-- [ ] Wyslij listing do Prezent Marzeń i Super Prezenty (pakiet Pierwszy Lot 1 999 PLN); canonical tag na akrobacja.com
+- [ ] Wyslij listing do Prezent Marzeń i Super Prezenty (pakiet Pierwszy Lot 2 111 PLN); canonical tag na akrobacja.com
 - [ ] Odswież Google Business Profile: zdjęcia Extra 300L z sezonu 2025, opis z "Mistrz Swiata 2022", kategoria "Usługi lotnicze"
 - [ ] Uruchom stronę /maciej-kulaszewski (entity page: wyniki FAI, tytuły, zdjęcia, video)
 - [ ] Opublikuj artykuł pillar "Co to jest akrobatyka sportowa" - klaster bez właściciela

@@ -31,7 +31,7 @@ Najczęstsza reakcja po locie: "Bałem się przeciążeń, ale to nie tak strasz
 
 ## Pakiety dla mieszkańców Łodzi
 
-- **Pierwszy Lot**, do 15 min w powietrzu + briefing, podstawowe figury akrobacyjne, 1 999 PLN, idealny na pierwszy kontakt z akrobacją.
+- **Pierwszy Lot**, do 10 min w powietrzu + briefing, podstawowe figury akrobacyjne, 2 111 PLN, idealny na pierwszy kontakt z akrobacją.
 - **Adrenalina**, 20 min lotu + pełny program akrobacyjny (pętle, beczki, immelmanny, lot odwrócony) + debriefing, 2 999 PLN.
 - **Masterclass**, sesja szkoleniowa dla pilotów z licencją PPL(A), do 50 min w powietrzu, wyprowadzanie z korkociągu i figury zaawansowane, 4 999 PLN.
 

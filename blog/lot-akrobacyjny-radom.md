@@ -134,7 +134,7 @@ Sezon 2026 ruszamy w **kwietniu**. Vouchery kupione zimą są ważne 12 miesięc
 ## Lot akrobacyjny Radom - od czego zacząć?
 
   
-Procedura jest prosta. Kupujesz voucher online (od **1 999 PLN**), rezerwujesz termin w kalendarzu, przyjeżdżasz na lotnisko Radom-Piastów. Na miejscu czeka na Ciebie briefing z pilotem, przygotowanie do lotu i samo doświadczenie - od 15 do 50 minut akrobacji w kokpicie Extra 300L, które zapamiętasz na całe życie.
+Procedura jest prosta. Kupujesz voucher online (od **2 111 PLN**), rezerwujesz termin w kalendarzu, przyjeżdżasz na lotnisko Radom-Piastów. Na miejscu czeka na Ciebie briefing z pilotem, przygotowanie do lotu i samo doświadczenie - od 15 do 50 minut akrobacji w kokpicie Extra 300L, które zapamiętasz na całe życie.
 
   
 Jeśli jesteś pilotem z licencją PPL(A), sprawdź nasz kurs akrobacji FCL.800 - szkolenie również realizujemy na lotnisku EPRP. A jeśli szukasz atrakcji na event firmowy lub festiwal - organizujemy pokazy lotnicze na terenie całej Polski, ale baza zawsze jest w Radomiu.

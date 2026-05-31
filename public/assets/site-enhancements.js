@@ -1,5 +1,5 @@
 /* akrobacja.com - site enhancements
- * - Sticky mobile CTA "Zarezerwuj lot - od 1999 zł"
+ * - Sticky mobile CTA "Zarezerwuj lot - od 2111 zł"
  * - Lazy-load any <img> still missing loading attr
  * - Lightweight conversion event hooks (dataLayer - gtag itself is injected by middleware)
  */
@@ -50,7 +50,7 @@ body.has-akro-sticky{padding-bottom:84px}';
     // to the voucher shop instead. Logged-in pilots already reach /kalendarz via their
     // dashboard.
     wrap.innerHTML = '<a href="/lot-akrobacyjny#sklep" data-akro-cta="sticky">' +
-      '✈️ Kup voucher <span class="akro-sub">- od 1 999 zł</span></a>';
+      '✈️ Kup voucher <span class="akro-sub">- od 2 111 zł</span></a>';
     document.body.appendChild(wrap);
     document.body.classList.add('has-akro-sticky');
 

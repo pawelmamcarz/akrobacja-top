@@ -124,6 +124,6 @@ Tak, w rozsądnej ilości (1-2 filiżanki). Nie zastępuj kawą wody, bo kofeina
 
 Extra 300L SP-EKS czeka na Ciebie. Wybierz termin w kalendarzu online.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz na WhatsApp](https://wa.me/48535535221) z pytaniem

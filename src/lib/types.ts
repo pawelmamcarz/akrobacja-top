@@ -72,9 +72,9 @@ export const PACKAGES = {
     id: 'pierwszy_lot',
     name: 'Pierwszy Lot',
     subtitle: 'Twoje pierwsze spotkanie z Extra 300L',
-    price: 199900, // grosze
-    duration: '10-12 min lotu + 20 min briefing',
-    features: ['10-12 minut w powietrzu', 'Do +4G / -2G', 'Lot zapoznawczy z podstawowymi figurami'],
+    price: 211100, // grosze
+    duration: 'do 10 min lotu + 20 min briefing',
+    features: ['do 10 min w powietrzu', 'Do +4G / -2G', 'Lot zapoznawczy z podstawowymi figurami'],
   },
   adrenalina: {
     id: 'adrenalina',
@@ -85,18 +85,18 @@ export const PACKAGES = {
     features: ['20 minut w powietrzu', 'Do +6G / -4G', 'Pełny program: pętle, beczki, roll, lot odwrócony'],
   },
   // 2x Pierwszy Lot dla pary, oba loty osobno (Extra 300L: 1 pasazer na lot).
-  // Cena = 2×1999 - 221 zl rabatu = 3777 zl. Oba loty w jednym terminie, jeden po drugim.
+  // Cena = 2×2111 - 221 zl rabatu = 4001 zl. Oba loty w jednym terminie, jeden po drugim.
   // PDF generuje jeden voucher na 2 loty. second_seat addon nie ma sensu (juz sa 2 loty).
   para: {
     id: 'para',
     name: 'Para',
     subtitle: '2 loty Pierwszy Lot dla dwojga',
-    price: 377700,
-    duration: '2× (10-12 min lotu + 20 min briefing)',
+    price: 400100,
+    duration: '2× (do 10 min lotu + 20 min briefing)',
     features: [
       'Oba loty w tym samym terminie, jeden po drugim',
       'Każdy partner leci solo (Extra 300L = pilot + 1 pasażer)',
-      '10-12 minut w powietrzu na osobę',
+      'do 10 min w powietrzu na osobę',
       'Do +4G / -2G',
       'Podstawowe figury akrobacyjne',
       'Oszczędność 221 zł vs 2× pakiet osobno',

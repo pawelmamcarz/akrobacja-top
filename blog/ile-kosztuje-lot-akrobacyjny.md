@@ -4,7 +4,7 @@
 # Ile kosztuje lot akrobacyjny w Polsce?
 
   
-**Cena lotu akrobacyjnego** w Polsce waha się od **1 999 PLN do 4 999 PLN** w zależności od wybranego pakietu, czasu trwania lotu i typu samolotu. Na rynku znajdziesz oferty na lekkich maszynach szkolnych, ale jeśli szukasz prawdziwych emocji w kokpicie dwumiejscowego samolotu akrobacyjnego klasy unlimited, to musisz liczyć się z wyższym budżetem. W tym artykule rozkładamy **cenę lotu akrobacyjnego** na czynniki pierwsze.
+**Cena lotu akrobacyjnego** w Polsce waha się od **2 111 PLN do 4 999 PLN** w zależności od wybranego pakietu, czasu trwania lotu i typu samolotu. Na rynku znajdziesz oferty na lekkich maszynach szkolnych, ale jeśli szukasz prawdziwych emocji w kokpicie dwumiejscowego samolotu akrobacyjnego klasy unlimited, to musisz liczyć się z wyższym budżetem. W tym artykule rozkładamy **cenę lotu akrobacyjnego** na czynniki pierwsze.
 
   
 W akrobacja.com latamy samolotem **Extra 300L SP-EKS** - jedną z najlepszych maszyn akrobacyjnych na świecie. Pilot, Maciej Kulaszewski, to Mistrz Polski w akrobacji samolotowej z ponad **3 000 godzin** doświadczenia w powietrzu. To ma bezpośredni wpływ na jakość i bezpieczeństwo Twojego lotu - a więc i na to, **ile kosztuje lot akrobacyjny** na najwyższym poziomie.
@@ -27,8 +27,8 @@ Poniżej znajdziesz aktualne ceny na sezon 2026. Każdy pakiet to kompletne doś
     
       
         Pierwszy Lot
-        1 999 PLN
-        15 min
+        2 111 PLN
+        do 10 min
         Lot zapoznawczy, podstawowe figury akrobacyjne (beczka, looping, immelman), briefing + debriefing
       
       
@@ -97,7 +97,7 @@ Zależy, z czym porównujesz. Każdy wydatek wygląda inaczej obok odpowiedniego
 
 **Skok ze spadochronem (tandem)** — około 900 PLN za 60 sekund swobodnego spadania. Adrenalina jest, ale kontroli nad tym, co się dzieje, masz zero.
 
-**Lot akrobacyjny Extra 300L** — od 1 999 PLN za 15 minut w kokpicie wyczynowego samolotu akrobacyjnego, z Mistrzem Polski za drążkiem, z +6G na własnej skórze, z widokiem ziemi nad głową. To nie jest 15 minut "wziął mnie i leci" — to 15 minut, w których Twój mózg rejestruje coś, czego wcześniej nie znał.
+**Lot akrobacyjny Extra 300L** - od 2 111 PLN za do 10 minut w kokpicie wyczynowego samolotu akrobacyjnego, z Mistrzem Polski za drążkiem, z +6G na własnej skórze, z widokiem ziemi nad głową. To nie jest "wziął mnie i leci" - to do 10 minut, w których Twój mózg rejestruje coś, czego wcześniej nie znał.
 
   
 
@@ -105,7 +105,7 @@ Zależy, z czym porównujesz. Każdy wydatek wygląda inaczej obok odpowiedniego
 Nie ma jednej odpowiedzi na pytanie "czy to drogo". Ale jest jedna stała: **wszyscy, którzy wrócili na ziemię z naszego samolotu, powiedzieli że to było warte każdej złotówki**. Nie dlatego, że tak powinni mówić — ale dlatego, że momentu, w którym świat odwraca się do góry nogami, nie da się zapomnieć.
 
   
-    **Ile kosztuje lot akrobacyjny?** Tyle, ile kosztuje jedno z najintensywniejszych przeżyć, jakich możesz doświadczyć bez licencji pilota. Od 1 999 PLN.
+    **Ile kosztuje lot akrobacyjny?** Tyle, ile kosztuje jedno z najintensywniejszych przeżyć, jakich możesz doświadczyć bez licencji pilota. Od 2 111 PLN.
   
 
   
@@ -137,7 +137,7 @@ Masz pytania o **cenę lotu akrobacyjnego** lub chcesz dopasować pakiet do swoi
 ### Widzisz wartość — teraz wybierz pakiet
 
     
-Pierwszy Lot 1999 PLN, Adrenalina 2999 PLN, Masterclass 4999 PLN. Napisz, jeśli nie wiesz, który wybrać — podpowiemy.
+Pierwszy Lot 2111 PLN, Adrenalina 2999 PLN, Masterclass 4999 PLN. Napisz, jeśli nie wiesz, który wybrać - podpowiemy.
 
     NAPISZ NA WHATSAPP
     

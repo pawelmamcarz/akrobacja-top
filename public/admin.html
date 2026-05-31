@@ -689,9 +689,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="field"><label>Pakiet *</label>
       <select id="ncoPackage" onchange="ncoAutofillAmount()">
         <option value="">-- wybierz --</option>
-        <option value="pierwszy_lot">Pierwszy Lot (1 999 PLN)</option>
+        <option value="pierwszy_lot">Pierwszy Lot (2 111 PLN)</option>
         <option value="adrenalina">Adrenalina (2 999 PLN)</option>
-        <option value="para">Para (3 777 PLN)</option>
+        <option value="para">Para (4 001 PLN)</option>
         <option value="para_adrenalina">Para Adrenalina (5 777 PLN)</option>
         <option value="masterclass">Masterclass (4 999 PLN)</option>
         <option value="doskonalenie">Doskonalenie Akrobacji (9 999 PLN)</option>
@@ -700,7 +700,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="field"><label>Imię i nazwisko klienta *</label><input id="ncoName" placeholder="np. Jan Kowalski"></div>
     <div class="field"><label>Email (opcj., bez = bez wysłania)</label><input id="ncoEmail" type="email" placeholder="jan@example.com"></div>
     <div class="field"><label>Telefon (opcj.)</label><input id="ncoPhone" placeholder="np. 535535221"></div>
-    <div class="field"><label>Kwota (PLN, edytowalna)</label><input id="ncoAmount" type="number" step="0.01" min="0" placeholder="1999"></div>
+    <div class="field"><label>Kwota (PLN, edytowalna)</label><input id="ncoAmount" type="number" step="0.01" min="0" placeholder="2111"></div>
     <div class="field"><label>Metoda płatności *</label>
       <select id="ncoMethod" onchange="ncoMethodChange()">
         <option value="cash">Gotówka</option>
@@ -2596,6 +2596,7 @@ function renderOrders(orders) {
       <td>${o.invoice_id ? '#'+o.invoice_id : '-'}</td>
       <td class="actions">
         <button class="btn btn-blue" ${o.status==='paid'&&!o.redeemed_at?'':'disabled'} data-action="redeem" data-arg1="${dataAttr(o.voucher_code)}">Wykorzystaj</button>
+        <button class="btn" ${o.redeemed_at?`style="background:#C8A24B;color:#fff"`:'disabled'} data-action="diploma" data-arg1="${dataAttr(o.voucher_code)}" title="${o.diploma_sent_at ? 'Dyplom wyslany: '+o.diploma_sent_at+' (klik = regeneracja)' : 'Generuj i wyslij dyplom uczestnika'}">Dyplom${o.diploma_sent_at ? ' ✓' : ''}</button>
         <button class="btn btn-red" ${o.status==='paid'&&!o.invoice_id?'':'disabled'} data-action="invoice" data-arg1="${dataAttr(o.voucher_code)}">Faktura</button>
         <button class="btn" ${o.status==='paid'?`style="background:#0A2F7C;color:#fff"`:'disabled'} data-action="regenPdf" data-arg1="${dataAttr(o.voucher_code)}" title="Regeneruj PDF voucher z aktualnego stanu zamowienia (po recznych zmianach pakietu / dedykacji)">PDF</button>
         <button class="btn" ${o.status==='pending'&&o.customer_email?`style="background:#FFB300;color:#0A2F7C"`:'disabled'} data-action="recover" data-arg1="${dataAttr(o.voucher_code)}" title="${o.abandon_email_sent_at ? 'Ostatnie wyslane: '+o.abandon_email_sent_at : 'Wyslij maila z kodem WRACAM5 (-5%)'}">Recovery${o.abandon_email_sent_at ? ' ✓' : ''}</button>
@@ -2622,6 +2623,11 @@ async function redeem(code) {
     }, 50);
   }
 }
+async function diploma(code) {
+  if (!confirm(`Wygenerowac i wyslac dyplom uczestnika dla ${code}? Jesli juz istnieje, zostanie nadpisany.`)) return;
+  const res = await api('POST', '/api/admin/diploma', { voucher_code: code });
+  if (res.ok) { showMsg('Dyplom wygenerowany i wyslany', 'ok'); tryLoad(); } else showMsg(res.error || 'Blad', 'err');
+}
 async function invoice(code) {
   if (!confirm(`Wystawic fakture dla ${code}?`)) return;
   const res = await api('POST', '/api/admin/invoice', { voucher_code: code });
@@ -2647,7 +2653,7 @@ async function regenPdf(code) {
 }
 
 // ── NEW CASH/TRANSFER/FREE VOUCHER ──
-const _ncoPrices = { pierwszy_lot: 1999, adrenalina: 2999, para: 3777, para_adrenalina: 5999, masterclass: 4999 };
+const _ncoPrices = { pierwszy_lot: 2111, adrenalina: 2999, para: 4001, para_adrenalina: 5999, masterclass: 4999 };
 function openCashOrderModal() {
   ['ncoPackage','ncoName','ncoEmail','ncoPhone','ncoAmount','ncoRecipient','ncoDedication'].forEach(id => {
     const el = document.getElementById(id); if (el) el.value = '';

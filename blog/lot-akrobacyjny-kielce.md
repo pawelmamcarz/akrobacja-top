@@ -46,7 +46,7 @@ Całe weekendowe wyjście: wyjazd z Kielc o 8:00, lot w Radomiu ok. 10:00, obiad
 
 ## Pakiety (skrót)
 
-Trzy pakiety: Pierwszy Lot (do 15 min, 1 999 PLN), Adrenalina (20 min, 2 999 PLN), Masterclass dla pilotów PPL(A) (do 50 min, 4 999 PLN). Voucher ważny 12 miesięcy, termin indywidualny. Pełne opisy i płatność kartą/BLIK/Przelewy24: [voucher na lot akrobacyjny](/lot-akrobacyjny) dostępny od ręki online.
+Trzy pakiety: Pierwszy Lot (do 10 min, 2 111 PLN), Adrenalina (20 min, 2 999 PLN), Masterclass dla pilotów PPL(A) (do 50 min, 4 999 PLN). Voucher ważny 12 miesięcy, termin indywidualny. Pełne opisy i płatność kartą/BLIK/Przelewy24: [voucher na lot akrobacyjny](/lot-akrobacyjny) dostępny od ręki online.
 
 [Szczegóły pakietów i zakup vouchera →](/lot-akrobacyjny#pakiety)
 

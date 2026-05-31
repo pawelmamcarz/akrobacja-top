@@ -15,7 +15,7 @@ export const onRequestGet: PagesFunction<Env> = async (ctx) => {
   const { results } = await ctx.env.DB.prepare(`
     SELECT id, voucher_code, package_id, video_addon, customer_name, customer_email,
            customer_nip, amount, status, invoice_id, created_at, paid_at, expires_at,
-           redeemed_at, payment_method, abandon_email_sent_at
+           redeemed_at, diploma_sent_at, payment_method, abandon_email_sent_at
     FROM orders
     ORDER BY created_at DESC
     LIMIT 100

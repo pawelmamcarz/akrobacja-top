@@ -57,6 +57,6 @@ Piotr, inżynier lotniczy, Poznań
 - **Jak spokojny jest pilot.** Żadnego pokazowego "wow, trzymaj się!". Po prostu robi swoje.
 - **Jak szybko mija 20 minut.** Po locie masz wrażenie, że było 5 minut.
 
-[✈️ Zarezerwuj swoją historię, od 1 999 zł](/kalendarz)
+[✈️ Zarezerwuj swoją historię, od 2 111 zł](/kalendarz)
 
 Zobacz też: [Co czujesz podczas lotu](/blog/co-czujesz-podczas-lotu-akrobacyjnego) · [Galeria zdjęć i filmów](/galeria)

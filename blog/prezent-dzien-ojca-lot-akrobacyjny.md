@@ -6,7 +6,7 @@
 
 # Prezent na Dzień Ojca 2026, lot akrobacyjny, nie kolejny krawat
 
-**Dzień Ojca, 23 czerwca 2026.** Voucher na lot akrobacyjny Extra 300L od **1 999 PLN**. Elegancki PDF natychmiast po zakupie, ważny 12 miesięcy. Pętle, beczki, +6G. Kup na [akrobacja.com](/lot-akrobacyjny).
+**Dzień Ojca, 23 czerwca 2026.** Voucher na lot akrobacyjny Extra 300L od **2 111 PLN**. Elegancki PDF natychmiast po zakupie, ważny 12 miesięcy. Pętle, beczki, +6G. Kup na [akrobacja.com](/lot-akrobacyjny).
 
 Znowu szukasz **prezentu na Dzień Ojca** i znowu widzisz te same propozycje: skarpetki, perfumy, portfel, grill. Tata ma to wszystko. W tym roku daj mu coś, czego nie kupi sam i czego nie zapomni do końca życia, **lot akrobacyjny na Extra 300L**.
 
@@ -26,9 +26,9 @@ Przeczytaj też [dlaczego lot akrobacyjny to najlepszy prezent dla mężczyzny](
 
 Pierwszy Lot
 
-1 999 PLN
+2 111 PLN
 
-Tata nigdy nie latał? Start tutaj. 15 min lotu, podstawowe figury akrobacyjne. Bezpieczne wprowadzenie do akrobacji. Do +4G.
+Tata nigdy nie latał? Start tutaj. Do 10 min lotu, podstawowe figury akrobacyjne. Bezpieczne wprowadzenie do akrobacji. Do +4G.
 
 [KUP DLA TATY](/lot-akrobacyjny)
 
@@ -93,7 +93,7 @@ Dzień Ojca, 23 czerwca 2026
 
 ### Daj tacie lot, nie krawat
 
-Voucher na lot akrobacyjny Extra 300L. PDF natychmiast, ważny 12 miesięcy. Od 1 999 PLN.
+Voucher na lot akrobacyjny Extra 300L. PDF natychmiast, ważny 12 miesięcy. Od 2 111 PLN.
 
 [KUP VOUCHER DLA TATY](/#sklep)
 

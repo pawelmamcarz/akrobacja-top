@@ -1,5 +1,6 @@
 import { type Env } from '../../../src/lib/types';
 import { checkAdminAuthAsync } from '../../../src/lib/admin-auth';
+import { fulfillDiploma } from '../../../src/lib/diploma-fulfillment';
 
 // POST /api/admin/redeem { voucher_code }
 export const onRequestPost: PagesFunction<Env> = async (ctx) => {
@@ -18,6 +19,9 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
   ).bind(body.voucher_code).run();
 
   if (res.meta.changes === 1) {
+    // Po locie auto-generujemy dyplom uczestnika (PDF -> R2 -> mail). Best-effort
+    // w tle, zeby ewentualny blad nie blokowal oznaczenia 'wykorzystany'.
+    ctx.waitUntil(fulfillDiploma(ctx.env, body.voucher_code).then(() => {}));
     return Response.json({ ok: true, message: 'Voucher oznaczony jako wykorzystany' });
   }
 

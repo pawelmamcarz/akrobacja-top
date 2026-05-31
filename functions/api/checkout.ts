@@ -17,6 +17,7 @@ interface CheckoutBody {
   dedication?: string;    // dedykacja na PDF (max 200)
   sendAt?: string;        // ISO date/datetime, planowana wysyłka maila (max +365 dni)
   gateway?: 'paynow' | 'stripe'; // bramka płatności; domyślnie 'paynow', Stripe jako opcja
+  safetyAccepted?: boolean; // akceptacja oświadczenia o bezpieczeństwie (wymagana)
 }
 
 // Map source slug → cancel URL, Stripe "Back" button vraca user tam skąd przyszedł
@@ -38,9 +39,9 @@ const CANCEL_URLS: Record<string, string> = {
 //                         kolejnych. Sprawdzane query do D1 przy próbie aplikacji.
 // WRACAM5 = -5% recovery (abandoned cart). PIERWSZY100 = -100 PLN (welcome / first-time).
 // IG10 / FB10 / MAJOWKA = -10% social campaigns.
-// ATAM2205 = Pierwszy Lot 1999 → 1555 PLN (event partnership), ważny 15-30 maja 2026.
+// ATAM2205 = -444 PLN na Pierwszy Lot (event partnership), wazny 15-30 maja 2026 (wygasl).
 // KURS5OFF = -5% dla subskrybentów 5-day email course (lead magnet flow).
-// ODLOTOWY = -33% pakiet Para (3777 PLN), jednorazowy, Dzień Matki 2026-05-25→05-26.
+// ODLOTOWY = -33% pakiet Para, jednorazowy, Dzień Matki 2026-05-25→05-26 (wygasl).
 interface DiscountSpec {
   pct?: number;
   fixed?: number;
@@ -92,6 +93,11 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     if (!isValidEmail(body.customerEmail)) {
       return Response.json({ error: 'Nieprawidłowy adres email' }, { status: 400 });
     }
+    // Oświadczenie o bezpieczeństwie wymagane (poza produktem testowym test_naklejka).
+    if (body.packageId !== 'test_naklejka' && body.safetyAccepted !== true) {
+      return Response.json({ error: 'Wymagana akceptacja oświadczenia o bezpieczeństwie' }, { status: 400 });
+    }
+    const safetyAcceptedAt = body.safetyAccepted === true ? new Date().toISOString() : null;
 
     // Personalizacja prezentu - sanityzacja długości, walidacja sendAt.
     const recipientName = body.recipientName?.trim().slice(0, 80) || null;
@@ -177,8 +183,8 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
     const expiresAt = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString();
 
     await ctx.env.DB.prepare(`
-      INSERT INTO orders (id, voucher_code, package_id, video_addon, customer_name, customer_email, customer_nip, amount, status, created_at, expires_at, discount_code, recipient_name, dedication, send_at, addons)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', datetime('now'), ?, ?, ?, ?, ?, ?)
+      INSERT INTO orders (id, voucher_code, package_id, video_addon, customer_name, customer_email, customer_nip, amount, status, created_at, expires_at, discount_code, recipient_name, dedication, send_at, addons, safety_accepted_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', datetime('now'), ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       orderId, voucherCode, body.packageId,
       videoAddonFinal ? 1 : 0,
@@ -186,6 +192,7 @@ export const onRequestPost: PagesFunction<Env> = async (ctx) => {
       totalAmount, expiresAt, appliedDiscountCode,
       recipientName, dedication, sendAt,
       validatedAddons.length > 0 ? JSON.stringify(validatedAddons) : null,
+      safetyAcceptedAt,
     ).run();
 
     // Create Stripe Checkout session via fetch

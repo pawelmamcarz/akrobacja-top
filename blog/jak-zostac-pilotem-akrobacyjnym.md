@@ -138,12 +138,12 @@ Sam **kurs FCL.800** (uprawnienie akrobacyjne) w sprzyjających warunkach można
 
 ### Czy mogę spróbować akrobacji bez licencji?
 
-**Tak!** Nie musisz mieć licencji, żeby poczuć akrobację lotniczą. Lot zapoznawczy na akrobacja.com kosztuje od **1 999 PLN**, latasz z pilotem jako pasażer, doświadczasz pętli, beczek i przeciążeń do +6G. [Camp Akrobacyjny](/blog/camp-akrobacyjny-2026) (**7 777 PLN**, 6 lotów, 2 dni) to jeszcze lepszy sposób na sprawdzenie, czy akrobacja jest dla Ciebie, zanim zainwestujesz w pełną ścieżkę. Przeczytaj też [co czujesz podczas lotu akrobacyjnego](/blog/co-czujesz-podczas-lotu-akrobacyjnego).
+**Tak!** Nie musisz mieć licencji, żeby poczuć akrobację lotniczą. Lot zapoznawczy na akrobacja.com kosztuje od **2 111 PLN**, latasz z pilotem jako pasażer, doświadczasz pętli, beczek i przeciążeń do +6G. [Camp Akrobacyjny](/blog/camp-akrobacyjny-2026) (**7 777 PLN**, 6 lotów, 2 dni) to jeszcze lepszy sposób na sprawdzenie, czy akrobacja jest dla Ciebie, zanim zainwestujesz w pełną ścieżkę. Przeczytaj też [co czujesz podczas lotu akrobacyjnego](/blog/co-czujesz-podczas-lotu-akrobacyjnego).
 
 ### Gotowy na pierwszy krok?
 
 Zacznij od lotu zapoznawczego albo od razu zapisz się na Camp. Twoja droga do FCL.800 zaczyna się tutaj.
 
-[LOT OD 1 999 PLN](/#sklep)
+[LOT OD 2 111 PLN](/#sklep)
 
 lub [napisz do nas na WhatsApp](https://wa.me/48535535221)

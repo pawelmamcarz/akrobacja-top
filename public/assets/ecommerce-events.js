@@ -19,7 +19,7 @@
   var path = location.pathname.replace(/\/$/, '') || '/';
 
   var PKGS = {
-    pierwszy_lot: { name: 'Voucher - Pierwszy Lot', price: 1999, id: 'AKRO-V-PIERWSZY' },
+    pierwszy_lot: { name: 'Voucher - Pierwszy Lot', price: 2111, id: 'AKRO-V-PIERWSZY' },
     adrenalina:   { name: 'Voucher - Adrenalina',  price: 2999, id: 'AKRO-V-ADRENALINA' },
     masterclass:  { name: 'Voucher - Masterclass', price: 4999, id: 'AKRO-V-MASTERCLASS' },
   };

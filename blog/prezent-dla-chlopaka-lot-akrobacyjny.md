@@ -6,7 +6,7 @@
 
 # Prezent dla chłopaka, lot akrobacyjny Extra 300L
 
-**Szukasz prezentu dla chłopaka, który naprawdę go zaskoczy?** Voucher na lot akrobacyjny samolotem **Extra 300L SP-EKS**, od **1 999 PLN**. Pętla, beczka, lot odwrócony, przeciążenia do **+6G**. Elegancki PDF natychmiast po zakupie, ważny **12 miesięcy**. Z pilotem, Mistrzem Polski w akrobacji samolotowej.
+**Szukasz prezentu dla chłopaka, który naprawdę go zaskoczy?** Voucher na lot akrobacyjny samolotem **Extra 300L SP-EKS**, od **2 111 PLN**. Pętla, beczka, lot odwrócony, przeciążenia do **+6G**. Elegancki PDF natychmiast po zakupie, ważny **12 miesięcy**. Z pilotem, Mistrzem Polski w akrobacji samolotowej.
 
 Kolejna bluza? Portfel? Słuchawki, które ma już trzy pary? Jeśli szukasz **prezentu dla chłopaka**, który wywoła reakcję "WOW" zamiast uprzejmego "dziękuję, fajne", musisz wyjść poza schemat. Lot akrobacyjny na [Extra 300L](/blog/extra-300l-samolot-akrobacyjny) to prezent, który zapamiętuje się na całe życie. Nie na tydzień. Nie na miesiąc. Na zawsze.
 
@@ -24,7 +24,7 @@ Voucher PDF, natychmiast po zakupie
 
 ### Zaskocz go lotem akrobacyjnym
 
-Elegancki voucher na lot Extra 300L. Od 1 999 PLN. Ważny 12 miesięcy.
+Elegancki voucher na lot Extra 300L. Od 2 111 PLN. Ważny 12 miesięcy.
 
 [ZOBACZ PAKIETY](/lot-akrobacyjny)
 
@@ -47,9 +47,9 @@ Mamy trzy pakiety lotów akrobacyjnych. Każdy z nich to gotowy **prezent dla ch
 
 Pierwszy Lot
 
-1 999 PLN
+2 111 PLN
 
-Pierwszy raz w pętli, do +4G, 15 min lotu. Beczka, looping, immelman. Idealny na start, dla chłopaka, który chce spróbować akrobacji bez rzucania się od razu na głęboką wodę.
+Pierwszy raz w pętli, do +4G, do 10 min lotu. Beczka, looping, immelman. Idealny na start, dla chłopaka, który chce spróbować akrobacji bez rzucania się od razu na głęboką wodę.
 
 [KUP VOUCHER](/lot-akrobacyjny)
 
@@ -115,7 +115,7 @@ Nie mogą latać osoby z: poważnymi chorobami serca, niekontrolowaną padaczką
 
 ### Ile kosztuje lot akrobacyjny jako prezent dla chłopaka?
 
-Od **1 999 PLN** (pakiet Pierwszy Lot, 15 min) do **4 999 PLN** (pakiet Masterclass, do 50 min). Najczęściej wybierany jako **prezent dla chłopaka** to pakiet **Adrenalina za 2 999 PLN**, pełny program akrobacyjny, +6G, video z kokpitu w cenie. Aktualne ceny i szczegóły na [akrobacja.com/lot-akrobacyjny](/lot-akrobacyjny).
+Od **2 111 PLN** (pakiet Pierwszy Lot, do 10 min) do **4 999 PLN** (pakiet Masterclass, do 50 min). Najczęściej wybierany jako **prezent dla chłopaka** to pakiet **Adrenalina za 2 999 PLN**, pełny program akrobacyjny, +6G, video z kokpitu w cenie. Aktualne ceny i szczegóły na [akrobacja.com/lot-akrobacyjny](/lot-akrobacyjny).
 
 ### Jak długo ważny jest voucher?
 
@@ -125,8 +125,8 @@ Elegancki voucher PDF, natychmiast po zakupie
 
 ### Kup prezent, który zapamiętuje się na zawsze
 
-Voucher na lot akrobacyjny Extra 300L. Od 1 999 PLN. Ważny 12 miesięcy. Bez ryzyka, bezpłatne przełożenie przy złej pogodzie.
+Voucher na lot akrobacyjny Extra 300L. Od 2 111 PLN. Ważny 12 miesięcy. Bez ryzyka, bezpłatne przełożenie przy złej pogodzie.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz do nas na WhatsApp](https://wa.me/48535535221)

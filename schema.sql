@@ -27,7 +27,9 @@ CREATE TABLE IF NOT EXISTS orders (
   addons TEXT,
   payment_method TEXT,
   payment_gateway TEXT,
-  paynow_payment_id TEXT
+  paynow_payment_id TEXT,
+  diploma_sent_at TEXT,
+  safety_accepted_at TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_orders_voucher_code ON orders(voucher_code);

@@ -103,7 +103,7 @@ G-force to fizyka. Ale to też najlepsze doświadczenie, jakie możesz mieć bez
 ### Poczujesz różnicę między +2G a +6G — na własnej skórze
 
     
-Briefing, Extra 300L, Maciej Kulaszewski, Radom-Piastów. Od 1 999 PLN. Napisz i zarezerwuj termin.
+Briefing, Extra 300L, Maciej Kulaszewski, Radom-Piastów. Od 2 111 PLN. Napisz i zarezerwuj termin.
 
     NAPISZ NA WHATSAPP
     

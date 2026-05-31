@@ -10,7 +10,7 @@ Cały proces zajmuje 5 minut. W tym artykule prowadzę Cię przez każdy krok, o
 
 ## Krok po kroku
 
-1.  **Wybierz pakiet.** Wejdź na [/lot-akrobacyjny](/lot-akrobacyjny), zobaczysz trzy główne pakiety: START (1 999 zł), PRO (2 999 zł), MASTER (4 999 zł). Różnią się czasem w powietrzu i intensywnością figur.
+1.  **Wybierz pakiet.** Wejdź na [/lot-akrobacyjny](/lot-akrobacyjny), zobaczysz trzy główne pakiety: START (2 111 zł), PRO (2 999 zł), MASTER (4 999 zł). Różnią się czasem w powietrzu i intensywnością figur.
 2.  **Skonfiguruj voucher.** Wpisz dane obdarowanego (lub własne, jeśli kupujesz dla siebie). Wybierz dodatki: sesja foto na ziemi (+299 zł), opakowanie premium (+149 zł), dyplom oprawiony (+89 zł).
 3.  **Zapłać online.** Akceptujemy BLIK, karty Visa/Mastercard, Apple Pay, Google Pay i PayPo (raty). Płatność jest natychmiastowa, bez przekierowań do banku w 90% przypadków.
 4.  **Pobierz voucher PDF.** Voucher trafia na Twój e-mail w 2 minuty. To jeden plik PDF z imieniem obdarowanego, kodem rezerwacyjnym i opisem pakietu. Możesz wydrukować lub wysłać MMS-em.

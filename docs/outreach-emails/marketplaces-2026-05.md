@@ -26,7 +26,7 @@ komplementarną, nie konkurencyjną -- a właściwie wyraźnie wyżej na skali p
 
 Nasz pilot, Maciej Kulaszewski, jest Mistrzem Świata Akrobacji Lotniczej 2022 i
 3-krotnym Mistrzem Polski. Tego tytułu nie ma żaden inny oferent w Polsce. Latamy
-na Extra 300L SP-EKS z tego samego lotniska Radom-Piastów. Pakiety od 1 999 PLN do
+na Extra 300L SP-EKS z tego samego lotniska Radom-Piastów. Pakiety od 2 111 PLN do
 4 999 PLN, pełne ubezpieczenie, voucher 12 miesięcy.
 
 Jestem otwarty na rozmowę o stawce prowizyjnej. Mogę przesłać brief oferty, zdjęcia
@@ -54,7 +54,7 @@ odrzutowcem TS-11 od Fundacji Biało-Czerwone Skrzydła. Chciałbym dodać trzec
 z unikalnym wyróżnikiem: nasz pilot Maciej Kulaszewski jest Mistrzem Świata Akrobacji
 Lotniczej 2022 i 3-krotnym Mistrzem Polski.
 
-Latamy na Extra 300L SP-EKS z Radomia-Piastowa. Pakiety: Pierwszy Lot (1 999 PLN),
+Latamy na Extra 300L SP-EKS z Radomia-Piastowa. Pakiety: Pierwszy Lot (2 111 PLN),
 Adrenalina (2 999 PLN), Masterclass (4 999 PLN). Pełne ubezpieczenie, stały grafik,
 voucher ważny 12 miesięcy.
 
@@ -83,7 +83,7 @@ Chcemy być premium alternatywą: Maciej Kulaszewski, nasz pilot, jest Mistrzem
 Świata Akrobacji Lotniczej 2022 i 3-krotnym Mistrzem Polski. To tytuł unikalny
 w Polsce, potwierdzony przez FAI.
 
-Extra 300L SP-EKS, Radom-Piastów (EPRP). Pakiety od 1 999 do 4 999 PLN.
+Extra 300L SP-EKS, Radom-Piastów (EPRP). Pakiety od 2 111 do 4 999 PLN.
 Voucher 12 miesięcy, pełne ubezpieczenie.
 
 Czy prowadzicie nabór nowych oferentów? Chętnie prześlę materiały do opisu i zdjęcia.
@@ -110,7 +110,7 @@ Radom-Piastów (EPRP), 90 minut od Warszawy. Nasz pilot, Maciej Kulaszewski, jes
 Mistrzem Świata Akrobacji Lotniczej 2022 i 3-krotnym Mistrzem Polski. Tytuł
 potwierdzony przez FAI, jedyny taki w Polsce.
 
-Trzy pakiety voucherowe: Pierwszy Lot (1 999 PLN), Adrenalina (2 999 PLN),
+Trzy pakiety voucherowe: Pierwszy Lot (2 111 PLN), Adrenalina (2 999 PLN),
 Masterclass (4 999 PLN). Pełne ubezpieczenie, voucher ważny 12 miesięcy, booking
 online na akrobacja.com.
 
@@ -143,7 +143,7 @@ Aerobatic Champion and a three-time Polish national champion.
 As far as I can tell, Tinggly has no Polish aerobatic flight in its catalog. We can
 be the first, with a credential that is verifiable and genuinely unique on the market.
 
-Three packages available: introductory (1 999 PLN, approx. 450 EUR), adrenaline
+Three packages available: introductory (2 111 PLN, approx. 497 EUR), adrenaline
 (2 999 PLN), and masterclass (4 999 PLN). Full insurance, 12-month voucher validity,
 online booking. We have been featured by dlapilota.pl and Aviation24.pl.
 

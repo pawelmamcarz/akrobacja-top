@@ -34,11 +34,11 @@ Najczęstsza reakcja: "Nawet nie wiedziałem, że Radom jest tak blisko. Cały l
 
 ## Pakiety dla mieszkańców Tomaszowa Mazowieckiego
 
-- **Pierwszy Lot**, do 15 min w powietrzu + briefing, podstawowe figury akrobacyjne, 1 999 PLN.
+- **Pierwszy Lot**, do 10 min w powietrzu + briefing, podstawowe figury akrobacyjne, 2 111 PLN.
 - **Adrenalina**, 20 min lotu + pełny program akrobacyjny + debriefing, 2 999 PLN.
 - **Masterclass**, sesja szkoleniowa dla pilotów z licencją PPL(A), do 50 min w powietrzu, 4 999 PLN.
 
-Voucher ważny 12 miesięcy, termin lotu ustalasz indywidualnie przez kalendarz online lub telefonicznie. Płatność kartą, BLIK lub Przelewy24. Z Tomaszowa do nas to jeden z najkrótszych dojazdów w Polsce: [voucher na lot akrobacyjny](/lot-akrobacyjny) od 1 999 PLN.
+Voucher ważny 12 miesięcy, termin lotu ustalasz indywidualnie przez kalendarz online lub telefonicznie. Płatność kartą, BLIK lub Przelewy24. Z Tomaszowa do nas to jeden z najkrótszych dojazdów w Polsce: [voucher na lot akrobacyjny](/lot-akrobacyjny) od 2 111 PLN.
 
 ## FAQ
 

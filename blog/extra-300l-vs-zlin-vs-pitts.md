@@ -49,6 +49,6 @@ Pitts S-2 to dwupłat z wszystkimi wadami i zaletami konstrukcji ze stali i pł�
 - **Zlin 50**, wyłącznie loty pokazowe pilotów zawodowych, brak dostępności komercyjnej.
 - **Pitts S-2**, pojedyncze egzemplarze w Polsce, sporadyczne loty z pasażerem.
 
-[✈️ Polec Extra 300L SP-EKS, od 1 999 zł](/kalendarz)
+[✈️ Polec Extra 300L SP-EKS, od 2 111 zł](/kalendarz)
 
 Zobacz też: [Extra 300L, wszystko o samolocie](/blog/extra-300l-samolot-akrobacyjny) · [Pełne porównanie samolotów akrobacyjnych](/blog/samoloty-akrobacyjne-porownanie)

@@ -81,7 +81,7 @@ Strona Główna / Blog / Lot akrobacyjny prezent
       
 ### Pierwszy Lot
 
-      1 999 PLN
+      2 111 PLN
       Delikatne wprowadzenie w świat akrobacji. Idealne dla kogoś, kto nigdy nie latał akrobacyjnie. Bezpiecznie, ale z porcją emocji - beczka, zwrot, lekkie przeciążenia.
     
     

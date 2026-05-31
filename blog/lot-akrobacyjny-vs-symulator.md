@@ -20,7 +20,7 @@ Przeciążenia G. Ruchoma platforma symulatora to akcelerometry oszukujące ucho
 | Strach                    | Wyłączalny         | Adrenalina prawdziwa  |
 | Pogoda                    | Dowolna            | Wymagana dobra        |
 | Długość sesji             | 30-60 min          | 15-25 min w powietrzu |
-| Cena                      | 300-600 zł         | Od 1 999 zł           |
+| Cena                      | 300-600 zł         | Od 2 111 zł           |
 | Nauka pilotażu            | TAK (bardzo dobra) | Ograniczona           |
 | Doznania fizyczne         | Symulowane         | Prawdziwe             |
 | "Historia do opowiadania" | Umiarkowana        | Dominująca            |

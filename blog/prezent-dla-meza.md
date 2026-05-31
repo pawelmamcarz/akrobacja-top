@@ -16,9 +16,9 @@ Przeciążenia do **+6G**, beczki, pętle, hammerheady, i reakcja twarzy nagrana
 
 ## Pakiety, wybierz odpowiedni poziom adrenaliny
 
-### Pierwszy Lot, 1 999 PLN
+### Pierwszy Lot, 2 111 PLN
 
-15 minut w powietrzu. Pętle, beczki, loty na plecach. Idealne dla kogoś, kto nigdy nie latał akrobacyjnie i chce sprawdzić, jak to jest naprawdę. Pilot na bieżąco tłumaczy co robi i dlaczego, nie ma niespodzianek, jest czysta adrenalina.
+Do 10 minut w powietrzu. Pętle, beczki, loty na plecach. Idealne dla kogoś, kto nigdy nie latał akrobacyjnie i chce sprawdzić, jak to jest naprawdę. Pilot na bieżąco tłumaczy co robi i dlaczego, nie ma niespodzianek, jest czysta adrenalina.
 
 ### Adrenalina, 2 999 PLN
 
@@ -34,13 +34,13 @@ Do 50 minut w kokpicie, w tym możliwość prowadzenia samolotu z tylnego siedze
 
 Kupujesz [voucher online](/lot-akrobacyjny), płacisz BLIK-iem, kartą lub Apple Pay, voucher PDF trafia na Twojego maila w 60 sekund. Możesz go wydrukować, zapakować i wręczyć jak klasyczny prezent. Termin lotu mąż rezerwuje sam przez [kalendarz online](/kalendarz), kiedy mu pasuje, voucher jest ważny **12 miesięcy**.
 
-W dniu lotu przyjeżdża na lotnisko **Radom-Piastów (EPRP)**, godzina drogi od Warszawy trasą S7. Briefing z pilotem, kombinezon, kask, szelki, i wchodzi do kokpitu Extra 300L SP-EKS. Lot trwa od 15 do 50 minut w zależności od pakietu. Po lądowaniu: uśmiech, drżące nogi i natychmiast chęć na kolejny raz.
+W dniu lotu przyjeżdża na lotnisko **Radom-Piastów (EPRP)**, godzina drogi od Warszawy trasą S7. Briefing z pilotem, kombinezon, kask, szelki, i wchodzi do kokpitu Extra 300L SP-EKS. Lot trwa do 10-50 minut w zależności od pakietu. Po lądowaniu: uśmiech, drżące nogi i natychmiast chęć na kolejny raz.
 
 ## Najczęściej zadawane pytania
 
 ### Ile kosztuje lot akrobacyjny jako prezent dla męża?
 
-Od 1999 PLN (Pierwszy Lot, 15 min) do 4999 PLN (Masterclass, do 50 min). Voucher PDF jest gotowy do wręczenia w 60 sekund po zakupie.
+Od 2111 PLN (Pierwszy Lot, do 10 min) do 4999 PLN (Masterclass, do 50 min). Voucher PDF jest gotowy do wręczenia w 60 sekund po zakupie.
 
 ### Czy lot akrobacyjny to bezpieczny prezent?
 
@@ -54,6 +54,6 @@ Tak. Pilot Maciej Kulaszewski to Wielokrotny Mistrz Polski z ponad 3500 godzinam
 
 Voucher PDF na maila w 60 sekund. BLIK, Apple Pay, karta. Ważny 12 miesięcy.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz na WhatsApp, pomożemy wybrać pakiet](https://wa.me/48535535221)

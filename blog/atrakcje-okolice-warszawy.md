@@ -18,7 +18,7 @@ Przygotowaliśmy subiektywny ranking **7 najciekawszych atrakcji w okolicach War
 
 Lot akrobacyjny samolotem Extra 300L SP-EKS
 
-**Odległość:** 100 km (1,5h trasą S7) **Lokalizacja:** Radom-Piastów (EPRP) **Cena:** od 1 999 PLN
+**Odległość:** 100 km (1,5h trasą S7) **Lokalizacja:** Radom-Piastów (EPRP) **Cena:** od 2 111 PLN
 
 Najlepsza **atrakcja w okolicach Warszawy** dla osób szukających czegoś naprawdę wyjątkowego. Siadasz w kokpicie jednego z najlepszych samolotów akrobacyjnych na świecie, [Extra 300L SP-EKS](/blog/extra-300l-samolot-akrobacyjny), i przez kilkanaście do kilkudziesięciu minut przeżywasz pętle, beczki, immelmanny i przeciążenia do **+6G**.
 
@@ -30,9 +30,9 @@ Lot akrobacyjny dostępny jest w **3 pakietach**, od pierwszego kontaktu z akrob
 
 Pierwszy Lot
 
-1 999 PLN
+2 111 PLN
 
-15 min lotu. Podstawowe figury: beczka, looping, immelman. Do +4G. Idealny na start.
+do 10 min lotu. Podstawowe figury: beczka, looping, immelman. Do +4G. Idealny na start.
 
 [WYBIERAM](/lot-akrobacyjny)
 
@@ -58,7 +58,7 @@ Najlepsza atrakcja w okolicach Warszawy
 
 ### Lot akrobacyjny Extra 300L
 
-Voucher od 1 999 PLN. Dojazd z Warszawy 1,5h. Rezerwacja online.
+Voucher od 2 111 PLN. Dojazd z Warszawy 1,5h. Rezerwacja online.
 
 [SPRAWDŹ PAKIETY](/lot-akrobacyjny)
 
@@ -127,7 +127,7 @@ Dla miłośników szybkości na ziemi. Profesjonalny tor kartingowy z gokartami 
 
 **Tip:** Szukasz najsilniejszych wrażeń? Lot akrobacyjny Extra 300L z przeciążeniami do +6G to zdecydowany lider. Szukasz spokojnego weekendu? Kazimierz Dolny lub Puszcza Kozienicka. A najlepiej, połącz obie rzeczy: lot rano w Radomiu, popołudnie w Puszczy Kozienickiej.
 
-- **Lot akrobacyjny Extra 300L**, adrenalina 10/10, cena od 1 999 PLN, czas: pół dnia z dojazdem
+- **Lot akrobacyjny Extra 300L**, adrenalina 10/10, cena od 2 111 PLN, czas: pół dnia z dojazdem
 - **Kazimierz Dolny**, relaks 9/10, cena: niski koszt, czas: cały dzień
 - **Puszcza Kozienicka**, natura 8/10, cena: bezpłatnie, czas: pół dnia
 - **Muzeum Sił Powietrznych Dęblin**, edukacja 8/10, cena: 15-25 PLN, czas: 2-3h
@@ -139,11 +139,11 @@ Dla miłośników szybkości na ziemi. Profesjonalny tor kartingowy z gokartami 
 
 ### Jakie są najlepsze atrakcje w okolicach Warszawy?
 
-Najciekawsze **atrakcje w okolicach Warszawy** to: lot akrobacyjny Extra 300L (Radom, od 1 999 PLN), Kazimierz Dolny, Puszcza Kozienicka, Muzeum Sił Powietrznych w Dęblinie, tunel aerodynamiczny Skyfall, Pustynia Błędowska i tor kartingowy Kartmania. Każda z nich to świetny pomysł na weekend, a lot akrobacyjny to zdecydowanie najbardziej emocjonujący z nich.
+Najciekawsze **atrakcje w okolicach Warszawy** to: lot akrobacyjny Extra 300L (Radom, od 2 111 PLN), Kazimierz Dolny, Puszcza Kozienicka, Muzeum Sił Powietrznych w Dęblinie, tunel aerodynamiczny Skyfall, Pustynia Błędowska i tor kartingowy Kartmania. Każda z nich to świetny pomysł na weekend, a lot akrobacyjny to zdecydowanie najbardziej emocjonujący z nich.
 
 ### Ile kosztuje lot akrobacyjny w okolicach Warszawy?
 
-**Lot akrobacyjny** w okolicach Warszawy (lotnisko Radom-Piastów, 100 km od centrum) kosztuje od **1 999 PLN** (pakiet Pierwszy Lot, 15 min) do **4 999 PLN** (pakiet Masterclass, do 50 min w powietrzu). Bestseller to pakiet Adrenalina za **2 999 PLN**, 20 min lotu z przeciążeniami do +6G. Aktualny [cennik lotów akrobacyjnych](/blog/ile-kosztuje-lot-akrobacyjny).
+**Lot akrobacyjny** w okolicach Warszawy (lotnisko Radom-Piastów, 100 km od centrum) kosztuje od **2 111 PLN** (pakiet Pierwszy Lot, do 10 min) do **4 999 PLN** (pakiet Masterclass, do 50 min w powietrzu). Bestseller to pakiet Adrenalina za **2 999 PLN**, 20 min lotu z przeciążeniami do +6G. Aktualny [cennik lotów akrobacyjnych](/blog/ile-kosztuje-lot-akrobacyjny).
 
 ### Co robić w okolicach Warszawy w weekend?
 
@@ -153,8 +153,8 @@ Atrakcja \#1 w okolicach Warszawy
 
 ### Zarezerwuj lot akrobacyjny
 
-Voucher od 1 999 PLN. Ważny 12 miesięcy. Dojazd z Warszawy, 1,5h trasą S7.
+Voucher od 2 111 PLN. Ważny 12 miesięcy. Dojazd z Warszawy, 1,5h trasą S7.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz do nas na WhatsApp](https://wa.me/48535535221)

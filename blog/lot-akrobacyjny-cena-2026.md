@@ -14,7 +14,7 @@ Wszystkie ceny są cenami brutto, w polskich złotych, bez ukrytych kosztów. Vo
 
 | Pakiet | Czas w powietrzu | Cena 2026 |
 |----|----|----|
-| Pierwszy Lot | do 15 min lotu + 20 min briefing | 1 999 zł |
+| Pierwszy Lot | do 10 min lotu + 20 min briefing | 2 111 zł |
 | Adrenalina | 20 min lotu + 40 min briefing + 15 min debriefing | 2 999 zł |
 | Masterclass (dla pilotów PPL(A)) | do 50 min lotu + briefing + debriefing | 4 999 zł |
 | Pokazy lotnicze (Solo Display) | na wycenę | od 14 990 zł |
@@ -51,7 +51,7 @@ Cennik zamykamy raz na sezon i nie podnosimy go po 1 kwietnia. Voucher kupiony d
 
 Ile kosztuje lot akrobacyjny w 2026?
 
-Pakiet Pierwszy Lot od 1 999 zł, Adrenalina 2 999 zł, Masterclass dla pilotów PPL(A) 4 999 zł. Wszystkie ceny brutto. Pokazy lotnicze (Solo Display, Event Package) od 14 990 zł, wycena indywidualna.
+Pakiet Pierwszy Lot od 2 111 zł, Adrenalina 2 999 zł, Masterclass dla pilotów PPL(A) 4 999 zł. Wszystkie ceny brutto. Pokazy lotnicze (Solo Display, Event Package) od 14 990 zł, wycena indywidualna.
 
 Czy są dostępne raty?
 

@@ -6,7 +6,7 @@
 
 # Lot zapoznawczy samolotem akrobacyjnym Extra 300L, poczuj akrobację na żywo
 
-**Lot zapoznawczy samolotem akrobacyjnym** to Twój pierwszy kontakt ze światem akrobacji lotniczej. Na **akrobacja.com** latasz na **Extra 300L SP-EKS**, jednym z najlepszych samolotów akrobacyjnych na świecie. Pętle, beczki, immelmann, lot odwrócony, od **1 999 PLN**. Pilot: **Maciej Kulaszewski** (3 500+ h, instruktor FI(A)). Lotnisko **Radom-Piastów (EPRP)**.
+**Lot zapoznawczy samolotem akrobacyjnym** to Twój pierwszy kontakt ze światem akrobacji lotniczej. Na **akrobacja.com** latasz na **Extra 300L SP-EKS**, jednym z najlepszych samolotów akrobacyjnych na świecie. Pętle, beczki, immelmann, lot odwrócony, od **2 111 PLN**. Pilot: **Maciej Kulaszewski** (3 500+ h, instruktor FI(A)). Lotnisko **Radom-Piastów (EPRP)**.
 
 Szukasz czegoś więcej niż spokojnego przelotu nad miastem? **Lot zapoznawczy samolotem** akrobacyjnym to oficjalna kategoria lotu, która pozwala doświadczyć prawdziwej akrobacji lotniczej, pętli, beczek, przeciążeń do +6G, bez żadnego doświadczenia lotniczego. Na [akrobacja.com](/lot-akrobacyjny) lot zapoznawczy odbywa się na samolocie [Extra 300L SP-EKS](/blog/figury-akrobacyjne), który jest certyfikowany do ekstremalnych przeciążeń +10G/-10G.
 
@@ -28,8 +28,8 @@ Jeśli zastanawiasz się, czym **lot zapoznawczy akrobacyjny** różni się od t
 | **Co poczujesz** | Pętle, beczki, +6G, lot odwrócony | Spokojny przelot nad miastem |
 | **Pilot** | Maciej Kulaszewski, 3 500+ h akrobacji | Instruktor aeroklubowy |
 | **Adrenalina** | MAX | Niska |
-| **Czas lotu** | 15-50 min | 15-30 min |
-| **Cena od** | 1 999 PLN | 300-800 PLN |
+| **Czas lotu** | do 10-50 min | 15-30 min |
+| **Cena od** | 2 111 PLN | 300-800 PLN |
 | **Briefing** | Tak (20-40 min), figury, bezpieczeństwo, G-force | Krótki (5-10 min) |
 | **Video** | Opcja 360° za 299 PLN | Zwykle brak |
 | **Spadochron** | Tak, obowiązkowy | Nie |
@@ -40,9 +40,9 @@ Lot widokowy to spokojne doświadczenie, które warto przeżyć. Ale jeśli szuk
 
 Pierwszy Lot
 
-1 999 PLN
+2 111 PLN
 
-Do 15 min lotu. Podstawowe figury akrobacyjne: beczka, looping, immelman. Do +4G.\
+Do 10 min lotu. Podstawowe figury akrobacyjne: beczka, looping, immelman. Do +4G.\
 **Twój pierwszy kontakt z akrobacją.**
 
 [WYBIERAM](/lot-akrobacyjny)
@@ -125,7 +125,7 @@ Oficjalne uprawnienie do wykonywania akrobacji lotniczej wg przepisów EASA. Po 
 
 ### Ile kosztuje lot zapoznawczy samolotem akrobacyjnym?
 
-**Lot zapoznawczy samolotem** akrobacyjnym na akrobacja.com kosztuje od **1 999 PLN** (pakiet Pierwszy Lot, 15 min) do **4 999 PLN** (pakiet Masterclass, do 50 min w powietrzu). Najchętniej wybierany pakiet **Adrenalina** to **2 999 PLN** za 20 min pełnego programu akrobacyjnego z nagraniem video. Ceny zawierają briefing, paliwo, ubezpieczenie i czas pilota.
+**Lot zapoznawczy samolotem** akrobacyjnym na akrobacja.com kosztuje od **2 111 PLN** (pakiet Pierwszy Lot, do 10 min) do **4 999 PLN** (pakiet Masterclass, do 50 min w powietrzu). Najchętniej wybierany pakiet **Adrenalina** to **2 999 PLN** za 20 min pełnego programu akrobacyjnego z nagraniem video. Ceny zawierają briefing, paliwo, ubezpieczenie i czas pilota.
 
 ### Czy lot zapoznawczy jest bezpieczny?
 
@@ -145,6 +145,6 @@ Ceny promocyjne, tylko do końca miesiąca
 
 Wybierz pakiet i zarezerwuj termin. Extra 300L SP-EKS czeka na Ciebie na lotnisku Radom-Piastów.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz do nas na WhatsApp](https://wa.me/48535535221)

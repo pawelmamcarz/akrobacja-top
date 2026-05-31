@@ -64,7 +64,7 @@ Przeciążenie 1G to normalna siła grawitacji — czujesz ją teraz, siedząc w
 
 Jak to wygląda w naszych pakietach?
 
-- **Pierwszy Lot** (15 min) — przeciążenia do ok. **+3G / -1G**. Delikatne wprowadzenie: pętle, beczki, loty na plecach. Porównywalne z intensywnym roller coasterem, ale dłużej i bardziej płynnie.
+- **Pierwszy Lot** (do 10 min) - przeciążenia do ok. **+3G / -1G**. Delikatne wprowadzenie: pętle, beczki, loty na plecach. Porównywalne z intensywnym roller coasterem, ale dłużej i bardziej płynnie.
 
 - **Adrenalina** (20 min) — przeciążenia do ok. **+4.5G / -1.5G**. Pełny program akrobacyjny: pętle, beczki, młynki, loty nożowe, hammerhead. Znacznie więcej niż jakikolwiek roller coaster.
 
@@ -148,6 +148,6 @@ Wiek sam w sobie nie jest przeciwwskazaniem. Liczy się stan zdrowia, nie metryk
 
 Lot akrobacyjny jest dostępny dla prawie każdego zdrowego człowieka. Jeśli nadal masz wątpliwości co do swojego stanu zdrowia — napisz, opiszemy Twoją sytuację i powiemy wprost, czy lot jest możliwy.
 
-    KUP VOUCHER OD 1 999 PLN
+    KUP VOUCHER OD 2 111 PLN
 
 lub napisz do nas z pytaniem — odpowiemy szczerze

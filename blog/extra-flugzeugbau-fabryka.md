@@ -54,7 +54,7 @@ Ten konkretny egzemplarz ma ciekawą historię — był wcześniej jednym z samo
 
 Za sterami SP-EKS siedzi Maciej Kulaszewski — wielokrotny Mistrz Polski w akrobacji lotniczej, z ponad 3000 godzinami nalotu. Samolot stacjonuje na lotnisku Radom-Piastów (EPRP), godzinę od Warszawy.
 
-Możesz przelecieć się tym samolotem — od lotu zapoznawczego (Pierwszy Lot, 1999 PLN) po pełny program akrobacyjny (Adrenalina, 2999 PLN) lub dwulotowy Masterclass (4999 PLN).
+Możesz przelecieć się tym samolotem - od lotu zapoznawczego (Pierwszy Lot, 2111 PLN) po pełny program akrobacyjny (Adrenalina, 2999 PLN) lub dwulotowy Masterclass (4999 PLN).
 
 ## Extra NG - przyszłość akrobacji
 
@@ -64,7 +64,7 @@ Na razie Extra 300L pozostaje sprawdzonym fundamentem. SP-EKS to dowód, że kla
 
 ### Polecisz Extra 300L?
 
-Voucher na lot akrobacyjny od 1999 PLN. Napisz do nas i zarezerwuj swój termin na Radom-Piastów.
+Voucher na lot akrobacyjny od 2111 PLN. Napisz do nas i zarezerwuj swój termin na Radom-Piastów.
 
 NAPISZ NA WHATSAPP
 

@@ -6,7 +6,7 @@
 
 # Prezent dla mężczyzny, który ma już wszystko, lot akrobacyjny Extra 300L
 
-**Voucher na lot akrobacyjny** to prezent, który zapamięta na całe życie. Od **1 999 PLN**, elegancki PDF natychmiast po zakupie, ważny **12 miesięcy**. Pętle, beczki, lot odwrócony, do **+6G** na **Extra 300L SP-EKS** z Mistrzem Świata w akrobacji samolotowej.
+**Voucher na lot akrobacyjny** to prezent, który zapamięta na całe życie. Od **2 111 PLN**, elegancki PDF natychmiast po zakupie, ważny **12 miesięcy**. Pętle, beczki, lot odwrócony, do **+6G** na **Extra 300L SP-EKS** z Mistrzem Świata w akrobacji samolotowej.
 
 Perfumy? Ma. Zegarek? Trzeci w szufladzie. Gadżety elektroniczne? Sam sobie kupuje. Jeśli szukasz **prezentu dla mężczyzny**, który naprawdę go zaskoczy, przestań szukać rzeczy. Daj mu **doświadczenie**. Daj mu lot akrobacyjny na [Extra 300L](/blog/extra-300l-samolot-akrobacyjny).
 
@@ -34,9 +34,9 @@ Voucher na lot akrobacyjny sprawdza się na każdą okazję. A najlepsze prezent
 
 Pierwszy Lot
 
-1 999 PLN
+2 111 PLN
 
-Pierwszy raz w pętli, do +4G, 15 min lotu. Idealny na start, beczka, looping, immelman. Dla tych, którzy chcą spróbować akrobacji bez rzucania się na głęboką wodę.
+Pierwszy raz w pętli, do +4G, do 10 min lotu. Idealny na start, beczka, looping, immelman. Dla tych, którzy chcą spróbować akrobacji bez rzucania się na głęboką wodę.
 
 [KUP VOUCHER](/lot-akrobacyjny)
 
@@ -88,7 +88,7 @@ Jeśli chcesz dać coś **NAPRAWDĘ dużego**, [Camp Akrobacyjny](/camp-akrobacy
 
 ### Ile kosztuje voucher na lot akrobacyjny jako prezent?
 
-Voucher na lot akrobacyjny kosztuje od **1 999 PLN** (pakiet Pierwszy Lot, 15 min) do **4 999 PLN** (pakiet Masterclass, do 50 min w powietrzu). Najczęściej wybierany jako **prezent dla mężczyzny** jest pakiet Adrenalina za **2 999 PLN**. Po płatności otrzymujesz elegancki PDF natychmiast na e-mail. Aktualne ceny na [akrobacja.com](/lot-akrobacyjny).
+Voucher na lot akrobacyjny kosztuje od **2 111 PLN** (pakiet Pierwszy Lot, do 10 min) do **4 999 PLN** (pakiet Masterclass, do 50 min w powietrzu). Najczęściej wybierany jako **prezent dla mężczyzny** jest pakiet Adrenalina za **2 999 PLN**. Po płatności otrzymujesz elegancki PDF natychmiast na e-mail. Aktualne ceny na [akrobacja.com](/lot-akrobacyjny).
 
 ### Jak długo ważny jest voucher?
 
@@ -102,8 +102,8 @@ Elegancki voucher PDF, natychmiast po zakupie
 
 ### Kup prezent, który zapamięta na zawsze
 
-Voucher na lot akrobacyjny Extra 300L. Od 1 999 PLN. Ważny 12 miesięcy.
+Voucher na lot akrobacyjny Extra 300L. Od 2 111 PLN. Ważny 12 miesięcy.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz do nas na WhatsApp](https://wa.me/48535535221)

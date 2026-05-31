@@ -32,7 +32,7 @@ Najczęstsza reakcja: "Bałem się że trasa przez Sochaczew będzie korkowa, al
 
 ## Pakiety dla mieszkańców Płocka
 
-- **Pierwszy Lot**, do 15 min w powietrzu + briefing, podstawowe figury akrobacyjne, 1 999 PLN.
+- **Pierwszy Lot**, do 10 min w powietrzu + briefing, podstawowe figury akrobacyjne, 2 111 PLN.
 - **Adrenalina**, 20 min lotu + pełny program akrobacyjny + debriefing, 2 999 PLN.
 - **Masterclass**, sesja szkoleniowa dla pilotów z licencją PPL(A), do 50 min w powietrzu, 4 999 PLN. Popularny u pilotów aeroklubu Płock i Aeroklubu Warszawskiego.
 

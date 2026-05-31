@@ -122,6 +122,6 @@ Najczęstsze reakcje: euforia, drżenie rąk przez 10-15 minut, bardzo duże pob
 
 Extra 300L SP-EKS czeka na Ciebie na lotnisku Radom-Piastów. Zarezerwuj termin online.
 
-[KUP VOUCHER OD 1 999 PLN](/#sklep)
+[KUP VOUCHER OD 2 111 PLN](/#sklep)
 
 lub [napisz na WhatsApp](https://wa.me/48535535221)

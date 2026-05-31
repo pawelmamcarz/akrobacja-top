@@ -21,7 +21,7 @@ W Polsce oba terminy są używane zamiennie, a czasem nawet ten sam dostawca ofe
 | Figury akrobacyjne | Nie | Pętla, beczka, hammerhead, tumble |
 | Spadochron pasażera | Nie | Tak (obowiązkowy) |
 | Czas trwania | 20-40 min | 15-25 min |
-| Cena orient. | 400-900 zł | 1 999 - 4 999 zł |
+| Cena orient. | 400-900 zł | 2 111 - 4 999 zł |
 
 ## Czym jest lot widokowy
 

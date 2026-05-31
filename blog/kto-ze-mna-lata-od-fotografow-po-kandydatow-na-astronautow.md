@@ -16,7 +16,7 @@ Największa grupa. Osoby, dla których jest to pierwszy lot w życiu w samolocie
 
 Tomasz Filipiak, fotograf lotniczy ze **Stowarzyszenia Polskich Fotografów Lotniczych Air-Action**, po swoim pierwszym locie ze mną w Otwarciu Sezonu 2026 w Aeroklubie Radomskim napisał: *„Wrażenia niesamowite. Przeciążenia dodatnie 5G ujemne 2G mieliśmy. Jak na pierwszy raz było mega."* Taka reakcja, którą chcemy zbudować, nie zawstydzić pasażera, tylko dać mu solidną dawkę tego, co czuje prawdziwy pilot akrobacyjny.
 
-Dla tej grupy mam pakiety [Pierwszy Lot](/lot-akrobacyjny) (1 999 PLN) i [Adrenalina](/lot-akrobacyjny) (2 999 PLN). Wymagania: dobry stan zdrowia i chęć. Reszta to moja robota.
+Dla tej grupy mam pakiety [Pierwszy Lot](/lot-akrobacyjny) (2 111 PLN) i [Adrenalina](/lot-akrobacyjny) (2 999 PLN). Wymagania: dobry stan zdrowia i chęć. Reszta to moja robota.
 
 ## Grupa 2: Fotografowie lotniczy
 
@@ -76,6 +76,6 @@ Różne cele, ten sam samolot, ten sam pilot. Co łączy wszystkich:
 
 ## Jeśli chcesz dołączyć
 
-Voucher na lot akrobacyjny, [trzy pakiety](/lot-akrobacyjny) od 1 999 PLN. Voucher PDF w mailu w 60 sekund, ważny 12 miesięcy. Jeśli jesteś fotografem lotniczym, pilotem albo uczestnikiem programu wymagającego treningu g-force, [napisz do mnie bezpośrednio](https://wa.me/48535535221), dogadamy plan lotu pod Twoje potrzeby.
+Voucher na lot akrobacyjny, [trzy pakiety](/lot-akrobacyjny) od 2 111 PLN. Voucher PDF w mailu w 60 sekund, ważny 12 miesięcy. Jeśli jesteś fotografem lotniczym, pilotem albo uczestnikiem programu wymagającego treningu g-force, [napisz do mnie bezpośrednio](https://wa.me/48535535221), dogadamy plan lotu pod Twoje potrzeby.
 
 Więcej o mojej drodze w artykule [„Moja droga do akrobacji, od Dęblina do Mistrzostwa Świata"](/blog/moja-droga-do-akrobacji-od-deblina-do-mistrzostwa-swiata). O tym, co naprawdę czujesz przy +5G, w [„5G dodatnie, 2G ujemne, pierwszy lot akrobacyjny"](/blog/piec-g-dodatnie-dwa-g-ujemne-pierwszy-lot-akrobacyjny).

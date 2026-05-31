@@ -53,7 +53,7 @@ Dziękuję wszystkim, którzy byli i są częścią tej drogi:
 
 Wracam na lotnisko. Do treningów, do szkoleń, do pasażerów, do moich podopiecznych, do własnej sekwencji. Odznaczenie kładę w szafie, nie na pokaz, ale żeby pamiętać, po co się wstaje o 5 rano.
 
-Jeśli chcesz ze mną polatać albo zacząć swoją drogę w akrobacji, [napisz na WhatsApp](https://wa.me/48535535221). Voucher na lot od 1 999 zł, kurs FCL.800 od 20 999 PLN netto (z [dofinansowaniem do 90%](/dotacje-szkolenie-lotnicze)). Camp Akrobacyjny majem, [szczegóły tutaj](/camp-akrobacyjny).
+Jeśli chcesz ze mną polatać albo zacząć swoją drogę w akrobacji, [napisz na WhatsApp](https://wa.me/48535535221). Voucher na lot od 2 111 zł, kurs FCL.800 od 20 999 PLN netto (z [dofinansowaniem do 90%](/dotacje-szkolenie-lotnicze)). Camp Akrobacyjny majem, [szczegóły tutaj](/camp-akrobacyjny).
 
 Dziękuję. ✈️
 
